@@ -20,15 +20,16 @@ export const Page = styled.div`
     background-repeat: no-repeat;
     overflow: hidden;
 
-    &::after {
+    &::before {
       content: "";
       position: absolute;
       inset: 0;
 
       background: url(${bubble}) center / cover no-repeat;
 
-      z-index: 2;
+      z-index: 1;
       pointer-events: none;
+      background-position: bottom;
     }
     
     @media (min-height: 874px) {
@@ -45,6 +46,7 @@ export const Phone = styled.div`
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  z-index: 2;
 
   &::-webkit-scrollbar {
     display: none;
