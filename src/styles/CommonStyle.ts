@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Page = styled.div`
-  @media (min-width: 768px), (hover: hover) and (pointer: fine){
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     width: 100vw;
     height: 100dvh;
     box-sizing: border-box;
@@ -14,12 +14,11 @@ export const Page = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     @media (min-height: 874px) {
-    position: relative;
+      position: relative;
     }
   }
-  
 `;
 
 export const Phone = styled.div`
