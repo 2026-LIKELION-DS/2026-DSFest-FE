@@ -20,9 +20,17 @@ export const Page = styled.div`
     background-repeat: no-repeat;
     overflow: hidden;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background: url(${bubble}) center / cover no-repeat;
+
+      z-index: 1;
+      pointer-events: none;
+      background-position: bottom;
+    }
 
     @media (min-height: 874px) {
       position: relative;
