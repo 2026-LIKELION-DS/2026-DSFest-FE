@@ -25,6 +25,7 @@ export const DayTab = styled.div<{ $active: boolean }>`
 export const Label = styled.span`
   font-size: 24px;
   font-weight: 700;
+  margin: 10px 0;
 `;
 
 export const DateText = styled.span`
@@ -40,4 +41,35 @@ export const ListSection = styled.div`
     font-size: 20px;
     margin-bottom: 16px;
   }
+`;
+
+export const MapInfoText = styled.p`
+  font-size: 12px;
+  color: #adb5bd;
+  text-align: center;
+`;
+
+export const BoothList = styled.div`
+  font-weight: 700;
+  font-size: 24px;
+  margin: 10px 0;
+`;
+
+export const BoothCur = styled.div`
+  display: flex;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 20px 0;
+`;
+
+export const BoothAmount = styled.div`
+  font-weight: 700;
+  color: #0b4112;
+`;
+
+export const MapHugger = styled.div`
+  width: 100%;
+  height: 402px;
+  overflow: hidden;
+  position: relative;
 `;

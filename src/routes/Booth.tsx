@@ -29,19 +29,49 @@ const BoothPage: React.FC = () => {
           </S.DayTab>
         ))}
       </S.DayNav>
-
-      <BoothMapComponent />
+      <S.MapHugger>
+        <BoothMapComponent />
+      </S.MapHugger>
+      <S.MapInfoText>
+        지도 위에서 부스를 클릭하면 자세한 정보를 볼 수 있습니다.
+      </S.MapInfoText>
 
       <S.ListSection>
-        <h2>부스 리스트</h2>
+        <S.BoothList>부스 리스트</S.BoothList>
+        <S.BoothCur>
+          <S.BoothAmount>총 52개</S.BoothAmount>의 부스
+        </S.BoothCur>
         <BoothInfoComponent
           booth={{
             id: 1,
             name: "오세요 잡화점",
             category: "판매",
-            operator: "부스운영진",
-            description: "설명 텍스트입니다...",
+            operator: "부스운영진 이름",
+            description:
+              "부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게",
             status: "운영 중",
+          }}
+        />
+        <BoothInfoComponent
+          booth={{
+            id: 2,
+            name: "가세요 잡화점",
+            category: "판매",
+            operator: "부스운영진 이름",
+            description:
+              "부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게",
+            status: "운영 예정",
+          }}
+        />
+        <BoothInfoComponent
+          booth={{
+            id: 3,
+            name: "다시오세요 잡화점",
+            category: "판매",
+            operator: "부스운영진 이름",
+            description:
+              "부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게",
+            status: "운영 종료",
           }}
         />
       </S.ListSection>

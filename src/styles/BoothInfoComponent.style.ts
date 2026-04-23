@@ -3,35 +3,37 @@ import styled from "styled-components";
 export type StatusType = "운영 중" | "운영 예정" | "운영 종료";
 
 export const Card = styled.div`
-  border: 1px solid #e9ecef;
-  border-radius: 12px;
-  padding: 16px;
+  border: 0.5px solid #0b4112;
+  border-radius: 4px;
+  padding: 30px 20px;
   background: white;
-  margin-bottom: 16px;
+  margin: 30px 0;
+  position: relative;
 `;
 
 export const StatusBadge = styled.span<{ $status: StatusType }>`
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: bold;
-  border: 1px solid;
-  margin-bottom: 8px;
+  position: absolute;
+  top: -20px;
+  padding: 8px 15px;
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 0.5px solid;
 
   ${({ $status }) => {
     if ($status === "운영 중")
-      return `background: #f1f8f1; color: #2d5a27; border-color: #dceddc;`;
+      return `background: #E5EBCF; color: #0B4112; border-color: #0B4112;`;
     if ($status === "운영 예정")
-      return `background: #f8f9fa; color: #6c757d; border-color: #e9ecef;`;
-    return `background: #fff5f5; color: #fa5252; border-color: #ffe3e3;`;
+      return `background: #ffffff; color: #0B4112; border-color: #0B4112;`;
+    return `background: #D6D6D6; color: #828282; border-color: #0B4112;`;
   }}
 `;
 
-export const Title = styled.h3`
-  font-size: 18px;
-  font-weight: 800;
-  margin: 0 0 8px 0;
+export const Title = styled.div`
+  font-size: 20px;
+  font-weight: 700;
+  color: #0b4112;
+  margin: 3px 0;
 `;
 
 export const InfoRow = styled.div`
@@ -42,12 +44,12 @@ export const InfoRow = styled.div`
 `;
 
 export const CategoryTag = styled.span`
-  background: #eef5ee;
-  color: #3a6332;
-  font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: bold;
+  background: #e5ebcf;
+  color: #0b4112;
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 9999px;
+  font-weight: 700;
 `;
 
 export const ImageRow = styled.div`
@@ -64,9 +66,9 @@ export const PhotoPlaceholder = styled.div`
 `;
 
 export const Description = styled.p`
-  font-size: 13px;
-  color: #666;
-  line-height: 1.5;
+  font-size: 14px;
+  color: #161716;
+  line-height: 21px;
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -75,6 +77,6 @@ export const Description = styled.p`
 `;
 
 export const BoothName = styled.span`
-  fontSize: 13px,
-  color: #495057
+  font-size: 14px;
+  font-weight: 700;
 `;

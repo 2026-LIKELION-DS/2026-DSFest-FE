@@ -1,65 +1,25 @@
 import styled, { css } from "styled-components";
 
-// 공통 변수
 const borderColor = "#7daa76";
 
-/** BoothPage 전용 스타일 **/
-export const PageWrapper = styled.div`
-  max-width: 480px;
-  margin: 0 auto;
-  background: white;
-  min-height: 100vh;
-`;
-
-export const DayNav = styled.nav`
-  display: flex;
-  justify-content: space-around;
-  padding: 16px 0;
-  border-bottom: 1px solid #f1f3f5;
-`;
-
-export const DayTab = styled.div<{ $active: boolean }>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  color: ${(props) => (props.$active ? "#1a4314" : "#adb5bd")};
-  .label {
-    font-size: 12px;
-    font-weight: 800;
-  }
-  .date {
-    font-size: 14px;
-    margin-top: 4px;
-  }
-`;
-
-export const ListContainer = styled.div`
-  padding: 20px;
-  h2 {
-    font-size: 20px;
-    margin-bottom: 16px;
-  }
-`;
-
-/** BoothMapComponent 전용 스타일 **/
 export const MapWrapper = styled.div`
   width: 100%;
-  overflow: hidden; // 지도가 영역 밖으로 나가지 않게 함
-  background-color: #f8f9fa;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 0;
-  touch-action: none; // 브라우저 스크롤과 줌 충돌 방지
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #f5f7ed;
+  touch-action: none;
 `;
 
 export const MapCanvas = styled.div`
   position: relative;
-  width: 750px; // 지도 원본 가로 크기
-  height: 550px; // 지도 원본 세로 크기
-  background-color: white;
-  transform-origin: 0 0; // 줌 기준점 고정
+  width: 700px; /* 1200px에서 실제 지도가 차지하는 영역만큼 줄임 */
+  height: 600px; /* 1000px에서 줄임 */
+  background-color: #f5f7ed;
+  /* 0 0 대신 center center를 고려할 수 있지만, 
+     pinch-zoom 라이브러리 특성상 0 0이 계산하기 편할 수 있습니다. */
+  transform-origin: 0 0;
+  will-change: transform;
 `;
 
 export const Section = styled.div<{
@@ -89,17 +49,6 @@ export const Section = styled.div<{
     width: ${props.$width};
     height: ${props.$height};
   `}
-`;
-
-export const BuildingLabel = styled.span<{ $rotate?: boolean }>`
-  font-weight: bold;
-  font-size: 14px;
-  color: #333;
-  ${(props) =>
-    props.$rotate &&
-    css`
-      transform: rotate(-90deg);
-    `}
 `;
 
 export const BoothList = styled.div<{
@@ -132,6 +81,7 @@ export const BoothSlot = styled.div<{ $isActive: boolean }>`
   cursor: pointer;
   background-color: ${(props) => (props.$isActive ? "#1a4314" : "white")};
   color: ${(props) => (props.$isActive ? "white" : "#495057")};
+  transition: background-color 0.2s; /* 클릭 피드백용은 괜찮음 */
 `;
 
 export const AbsoluteBooth = styled.div<{
@@ -190,6 +140,27 @@ export const GreenZone = styled.div<{
   `}
 `;
 
+export const BuildingLabel = styled.span<{
+  $rotate?: boolean;
+  $top?: string;
+  $left?: string;
+  $width?: string;
+  $height?: string;
+}>`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  ${(props) => css`
+    top: ${props.$top};
+    left: ${props.$left};
+    width: ${props.$width};
+    height: ${props.$height};
+  `}
+`;
+
 export const InnerBlock = styled.div<{
   $top?: string;
   $right?: string;
@@ -217,11 +188,4 @@ export const InnerBlock = styled.div<{
       border-bottom: 1px solid ${borderColor};
     }
   }
-`;
-
-export const MapInfoText = styled.p`
-  font-size: 11px;
-  color: #adb5bd;
-  margin-top: 10px;
-  text-align: center;
 `;
