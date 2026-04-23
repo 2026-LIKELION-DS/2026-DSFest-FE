@@ -1,20 +1,65 @@
 import styled, { css } from "styled-components";
 
+// 공통 변수
 const borderColor = "#7daa76";
 
-export const MapWrapper = styled.div`
-  width: 100%;
+/** BoothPage 전용 스타일 **/
+export const PageWrapper = styled.div`
+  max-width: 480px;
+  margin: 0 auto;
+  background: white;
+  min-height: 100vh;
+`;
+
+export const DayNav = styled.nav`
+  display: flex;
+  justify-content: space-around;
+  padding: 16px 0;
+  border-bottom: 1px solid #f1f3f5;
+`;
+
+export const DayTab = styled.div<{ $active: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0;
+  cursor: pointer;
+  color: ${(props) => (props.$active ? "#1a4314" : "#adb5bd")};
+  .label {
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .date {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+`;
+
+export const ListContainer = styled.div`
+  padding: 20px;
+  h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+`;
+
+/** BoothMapComponent 전용 스타일 **/
+export const MapWrapper = styled.div`
+  width: 100%;
+  overflow: hidden; // 지도가 영역 밖으로 나가지 않게 함
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  touch-action: none; // 브라우저 스크롤과 줌 충돌 방지
 `;
 
 export const MapCanvas = styled.div`
   position: relative;
-  width: 750px;
-  height: 550px;
+  width: 750px; // 지도 원본 가로 크기
+  height: 550px; // 지도 원본 세로 크기
   background-color: white;
+  transform-origin: 0 0; // 줌 기준점 고정
 `;
 
 export const Section = styled.div<{
@@ -66,7 +111,7 @@ export const BoothList = styled.div<{
 }>`
   position: absolute;
   display: flex;
-  flex-direction: ${(props) => props.$direction as any};
+  flex-direction: ${(props) => props.$direction};
   gap: 2px;
   ${(props) => css`
     top: ${props.$top};
@@ -178,4 +223,5 @@ export const MapInfoText = styled.p`
   font-size: 11px;
   color: #adb5bd;
   margin-top: 10px;
+  text-align: center;
 `;

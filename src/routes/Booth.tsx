@@ -3,28 +3,37 @@ import * as S from "../styles/Booth.style";
 import BoothMapComponent from "../components/BoothMapComponent";
 import BoothInfoComponent from "../components/BoothInfoComponent";
 
+const DAYS_DATA = [
+  { id: 1, date: "13일", dayOfWeek: "수" },
+  { id: 2, date: "14일", dayOfWeek: "목" },
+  { id: 3, date: "15일", dayOfWeek: "금" },
+];
+
 const BoothPage: React.FC = () => {
   const [activeDay, setActiveDay] = useState(1);
 
   return (
     <S.PageWrapper>
       <S.DayNav>
-        {[1, 2, 3].map((d) => (
+        {DAYS_DATA.map((d) => (
           <S.DayTab
-            key={d}
-            $active={activeDay === d}
-            onClick={() => setActiveDay(d)}
+            key={d.id}
+            $active={activeDay === d.id}
+            onClick={() => setActiveDay(d.id)}
           >
-            <span className="label">DAY {d}</span>
-            <span className="date">{12 + d}일</span>
+            <S.Label>DAY {d.id}</S.Label>
+            <S.DateText>
+              <div>{d.date}</div>
+              <div>({d.dayOfWeek})</div>
+            </S.DateText>
           </S.DayTab>
         ))}
       </S.DayNav>
 
       <BoothMapComponent />
 
-      <div style={{ padding: "20px" }}>
-        <h2 style={{ fontSize: "20px" }}>부스 리스트</h2>
+      <S.ListSection>
+        <h2>부스 리스트</h2>
         <BoothInfoComponent
           booth={{
             id: 1,
@@ -35,11 +44,9 @@ const BoothPage: React.FC = () => {
             status: "운영 중",
           }}
         />
-      </div>
+      </S.ListSection>
     </S.PageWrapper>
   );
 };
 
 export default BoothPage;
-
-// 모든 인라인 스타일들 다 스타일시트로 옮기기
