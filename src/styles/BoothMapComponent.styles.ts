@@ -13,11 +13,9 @@ export const MapWrapper = styled.div`
 
 export const MapCanvas = styled.div`
   position: relative;
-  width: 700px; /* 1200px에서 실제 지도가 차지하는 영역만큼 줄임 */
-  height: 600px; /* 1000px에서 줄임 */
+  width: 700px;
+  height: 600px;
   background-color: #f5f7ed;
-  /* 0 0 대신 center center를 고려할 수 있지만, 
-     pinch-zoom 라이브러리 특성상 0 0이 계산하기 편할 수 있습니다. */
   transform-origin: 0 0;
   will-change: transform;
 `;
@@ -81,7 +79,7 @@ export const BoothSlot = styled.div<{ $isActive: boolean }>`
   cursor: pointer;
   background-color: ${(props) => (props.$isActive ? "#1a4314" : "white")};
   color: ${(props) => (props.$isActive ? "white" : "#495057")};
-  transition: background-color 0.2s; /* 클릭 피드백용은 괜찮음 */
+  transition: background-color 0.2s;
 `;
 
 export const AbsoluteBooth = styled.div<{

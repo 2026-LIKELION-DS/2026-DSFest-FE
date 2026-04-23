@@ -12,10 +12,8 @@ const BoothMapComponent: React.FC<MapProps> = ({
   onBoothClick,
 }) => {
   const mapRef = useRef<HTMLDivElement>(null);
-  // QuickPinchZoom 인스턴스에 접근하기 위한 Ref (타입은 any로 지정하거나 라이브러리 내부 타입을 사용)
   const pinchZoomRef = useRef<any>(null);
 
-  // 줌/드래그 시 실시간 스타일 적용
   const onUpdate = useCallback(
     ({ x, y, scale }: { x: number; y: number; scale: number }) => {
       if (mapRef.current) {
@@ -26,14 +24,10 @@ const BoothMapComponent: React.FC<MapProps> = ({
     [],
   );
 
-  // 컴포넌트가 마운트된 직후 초기 배율을 설정합니다.
   useLayoutEffect(() => {
     if (pinchZoomRef.current && mapRef.current) {
-      // 1. 컨테이너(부모)와 캔버스(자식)의 높이 가져오기
       const containerHeight = mapRef.current.parentElement?.clientHeight || 400;
-      const canvasHeight = 1000; // S.MapCanvas에서 설정한 height
-
-      // 2. 높이에 딱 맞게 들어갈 배율 계산 (약 0.4 정도 나오겠지만 화면에 따라 가변적)
+      const canvasHeight = 1000;
       const initialScale = containerHeight / canvasHeight;
 
       pinchZoomRef.current.scaleTo({
