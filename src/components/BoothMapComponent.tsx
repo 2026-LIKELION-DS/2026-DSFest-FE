@@ -6,7 +6,7 @@ interface MapProps {
   day: number;
   selectedId?: number | null;
   onBoothClick?: (id: number) => void;
-  booths: any[]; // 부모로부터 부스 데이터를 받음
+  booths: any[];
 }
 
 const BOOTH_LAYOUT_BY_DAY: Record<number, any> = {
@@ -62,7 +62,6 @@ const BoothMapComponent: React.FC<MapProps> = ({
 
   const renderBooth = (id: number) => {
     const isActive = selectedId === id;
-    // 넘겨받은 booths 프롭스에서 해당 ID의 이름을 찾음
     const boothName = booths?.find((b) => b.id === id)?.name || `부스 ${id}`;
 
     return (

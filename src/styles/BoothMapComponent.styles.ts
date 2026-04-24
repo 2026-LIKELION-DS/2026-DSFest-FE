@@ -217,10 +217,9 @@ export const BoothContainer = styled.div`
   align-items: center;
 `;
 
-// 이미지 가이드 기반 부스 이름 말풍선
 export const BoothNameBubble = styled.div`
   position: absolute;
-  bottom: calc(100% + 8px); /* 부스 슬롯 위로 8px 띄움 */
+  bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
 
