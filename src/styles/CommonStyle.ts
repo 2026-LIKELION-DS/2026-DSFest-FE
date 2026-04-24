@@ -3,7 +3,7 @@ import background from "../assets/responsive/PC_background.svg";
 import bubble from "../assets/responsive/PC_background_bubble.svg";
 
 export const Page = styled.div`
-  @media (min-width: 768px), (hover: hover) and (pointer: fine){
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     width: 100vw;
     height: 100dvh;
     box-sizing: border-box;
@@ -31,12 +31,11 @@ export const Page = styled.div`
       pointer-events: none;
       background-position: bottom;
     }
-    
+
     @media (min-height: 874px) {
-    position: relative;
+      position: relative;
     }
   }
-  
 `;
 
 export const Phone = styled.div`
@@ -52,16 +51,16 @@ export const Phone = styled.div`
     display: none;
   }
 
-  background-color: #FFFEFB;
+  background-color: #fffefb;
 
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     width: 402px;
 
     @media (min-height: 874px) {
       height: 874px;
-      border: 12px solid #F5F7ED;
+      border: 12px solid #f5f7ed;
       border-radius: 24px;
-      box-shadow: 0 0 15px 0 rgba(118, 156, 117, 0.40);
+      box-shadow: 0 0 15px 0 rgba(118, 156, 117, 0.4);
     }
   }
 `;
