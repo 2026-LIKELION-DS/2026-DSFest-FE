@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { typography } from "./theme";
+
+const setTypo = (key: keyof typeof typography) => {
+  const typo = typography[key];
+  return css`
+    font-family: ${typo.fontFamily};
+    font-weight: ${typo.fontWeight};
+    font-size: ${typo.fontSize};
+    line-height: ${typo.lineHeight};
+  `;
+};
 
 export const PageWrapper = styled.div`
   max-width: 480px;
@@ -24,14 +35,12 @@ export const DayTab = styled.div<{ $active: boolean }>`
 `;
 
 export const Label = styled.span`
-  font-size: 24px;
-  font-weight: 700;
+  ${setTypo("h1")};
   margin: 10px 0;
 `;
 
 export const DateText = styled.span`
-  font-size: 14px;
-  font-weight: 500;
+  ${setTypo("bodyMd")};
   display: flex;
   gap: 5px;
 `;
@@ -39,34 +48,31 @@ export const DateText = styled.span`
 export const ListSection = styled.div`
   padding: 20px;
   h2 {
-    font-size: 20px;
+    ${setTypo("h2")};
     color: ${({ theme }) => theme.colors.fg.primary};
     margin-bottom: 16px;
   }
 `;
 
 export const MapInfoText = styled.p`
-  font-size: 12px;
+  ${setTypo("bodySm")};
   color: ${({ theme }) => theme.colors.fg.subtle};
   text-align: center;
 `;
 
 export const BoothList = styled.div`
-  font-weight: 700;
-  font-size: 24px;
+  ${setTypo("h1")};
   margin: 10px 0;
   color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const BoothCur = styled.div`
-  display: flex;
-  font-size: 16px;
-  font-weight: 500;
+  ${setTypo("bodyLg")};
   margin: 20px 0;
   color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
-export const BoothAmount = styled.div`
+export const BoothAmount = styled.span`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.bg.brandLight};
 `;
@@ -79,20 +85,18 @@ export const MapHugger = styled.div`
 `;
 
 export const FilterButton = styled.button<{ $active: boolean }>`
+  ${setTypo("buttonMd")};
+
   background: ${({ $active, theme }) =>
     $active ? theme.colors.bg.brand : theme.colors.bg.neutral};
-
   color: ${({ $active, theme }) =>
     $active ? theme.colors.fg.primaryInverted : theme.colors.fg.primary};
-
   border: 1px solid
     ${({ $active, theme }) =>
       $active ? theme.colors.bg.brand : theme.colors.stroke.subtle};
 
   padding: 8px 15px;
   border-radius: 9999px;
-  font-size: 14px;
-  font-weight: 700;
   cursor: pointer;
   margin-bottom: 10px;
   transition: all 0.1s ease-in-out;

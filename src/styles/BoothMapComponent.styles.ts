@@ -1,4 +1,15 @@
 import styled, { css } from "styled-components";
+import { typography } from "./theme";
+
+const setTypo = (key: keyof typeof typography) => {
+  const typo = typography[key];
+  return css`
+    font-family: ${typo.fontFamily};
+    font-weight: ${typo.fontWeight};
+    font-size: ${typo.fontSize};
+    line-height: ${typo.lineHeight};
+  `;
+};
 
 export const MapWrapper = styled.div`
   width: 100%;
@@ -33,6 +44,7 @@ export const Section = styled.div<{
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  color: ${({ theme }) => theme.colors.bg.brand};
   ${(props) => css`
     top: ${props.$top};
     bottom: ${props.$bottom};
@@ -41,6 +53,7 @@ export const Section = styled.div<{
     width: ${props.$width};
     height: ${props.$height};
   `}
+  ${setTypo("bodyMd")};
 `;
 
 export const BoothSlot = styled.div<{ $isActive: boolean }>`
@@ -50,7 +63,7 @@ export const BoothSlot = styled.div<{ $isActive: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  ${setTypo("bodySm")};
   background-color: ${({ $isActive, theme }) =>
     $isActive ? theme.colors.bg.brand : theme.colors.bg.yellowLight};
   color: ${({ $isActive, theme }) =>
@@ -70,7 +83,7 @@ export const AbsoluteBooth = styled.div<{
 }>`
   background-color: ${({ theme }) => theme.colors.bg.olive};
   color: ${({ theme }) => theme.colors.bg.brandLight};
-  font-size: 12px;
+  ${setTypo("bodySm")};
   font-weight: 500;
   border: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
   position: absolute;
@@ -118,7 +131,7 @@ export const UnitD = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  ${setTypo("bodySm")};
   height: 85px;
 `;
 
@@ -128,7 +141,7 @@ export const UnitStage = styled.div`
   align-items: center;
   justify-content: center;
   border-left: 1px solid ${({ theme }) => theme.colors.bg.brand};
-  font-size: 14px;
+  ${setTypo("bodyMd")};
 `;
 
 export const UnitB = styled.div`
@@ -136,7 +149,7 @@ export const UnitB = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  ${setTypo("bodySm")};
 `;
 
 export const GreenZone = styled.div<{
@@ -153,12 +166,12 @@ export const GreenZone = styled.div<{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  ${setTypo("bodySm")};
   color: ${({ theme }) => theme.colors.bg.brandLight};
 `;
 
 export const BuildingLabel = styled.div<{ $left?: string; $width?: string }>`
-  font-size: 14px;
+  ${setTypo("bodyMd")};
   color: ${({ theme }) => theme.colors.bg.brand};
   position: absolute;
   left: ${(props) => props.$left};
@@ -167,7 +180,8 @@ export const BuildingLabel = styled.div<{ $left?: string; $width?: string }>`
 `;
 
 export const SubLabel = styled.div<{ $align?: string }>`
-  font-size: 11px;
+  ${setTypo("bodySm")};
+  font-size: 10px;
   text-align: ${(props) => props.$align || "center"};
   line-height: 1.2;
 `;

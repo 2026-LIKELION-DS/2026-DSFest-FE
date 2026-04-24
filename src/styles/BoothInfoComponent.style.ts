@@ -1,4 +1,15 @@
 import styled, { css } from "styled-components";
+import { typography } from "./theme";
+
+const setTypo = (key: keyof typeof typography) => {
+  const typo = typography[key];
+  return css`
+    font-family: ${typo.fontFamily};
+    font-weight: ${typo.fontWeight};
+    font-size: ${typo.fontSize};
+    line-height: ${typo.lineHeight};
+  `;
+};
 
 export type StatusType = "운영 중" | "운영 예정" | "운영 종료";
 
@@ -16,8 +27,7 @@ export const StatusBadge = styled.span<{ $status: StatusType }>`
   top: -20px;
   padding: 8px 15px;
   border-radius: 2px;
-  font-size: 16px;
-  font-weight: 700;
+  ${setTypo("h3")};
   border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
 
   ${({ $status, theme }) => {
@@ -39,8 +49,7 @@ export const StatusBadge = styled.span<{ $status: StatusType }>`
 `;
 
 export const Title = styled.div`
-  font-size: 20px;
-  font-weight: 700;
+  ${setTypo("h2")};
   color: ${({ theme }) => theme.colors.bg.brand};
   margin: 3px 0 10px 0;
 `;
@@ -55,10 +64,9 @@ export const InfoRow = styled.div`
 export const CategoryTag = styled.span`
   background: ${({ theme }) => theme.colors.bg.olive};
   color: ${({ theme }) => theme.colors.bg.brand};
-  font-size: 14px;
+  ${setTypo("buttonMd")};
   padding: 10px 15px;
   border-radius: 9999px;
-  font-weight: 700;
 `;
 
 export const ImageRow = styled.div`
@@ -70,7 +78,7 @@ export const ImageRow = styled.div`
 export const PhotoPlaceholder = styled.div`
   width: 80px;
   height: 80px;
-  background: ${({ theme }) => theme.colors.grey[50]};
+  background: ${({ theme }) => theme.colors.grey};
   border-radius: 6px;
 `;
 
@@ -80,9 +88,8 @@ export const DescriptionContainer = styled.div`
 `;
 
 export const Description = styled.p<{ $isExpanded: boolean }>`
-  font-size: 14px;
+  ${setTypo("bodyMd")};
   color: ${({ theme }) => theme.colors.grey.black};
-  line-height: 21px;
   margin: 0;
 
   ${({ $isExpanded }) =>
@@ -98,14 +105,12 @@ export const Description = styled.p<{ $isExpanded: boolean }>`
 
 export const MoreButton = styled.span`
   display: block;
-  font-size: 14px;
+  ${setTypo("bodySm")};
   color: ${({ theme }) => theme.colors.fg.subtle};
   margin-top: 4px;
-  font-weight: 500;
 `;
 
 export const BoothName = styled.span`
-  font-size: 14px;
-  font-weight: 700;
+  ${setTypo("h4")};
   color: ${({ theme }) => theme.colors.fg.primary};
 `;
