@@ -11,7 +11,6 @@ const DAYS_DATA = [
 
 const BoothPage: React.FC = () => {
   const [activeDay, setActiveDay] = useState(1);
-  // 운영 중 필터 상태
   const [isOperatingOnly, setIsOperatingOnly] = useState(false);
 
   return (
@@ -46,7 +45,6 @@ const BoothPage: React.FC = () => {
           <S.BoothAmount>총 52개</S.BoothAmount>의 부스
         </S.BoothCur>
 
-        {/* 필터 버튼 추가 */}
         <S.FilterButton
           $active={isOperatingOnly}
           onClick={() => setIsOperatingOnly(!isOperatingOnly)}
@@ -54,7 +52,6 @@ const BoothPage: React.FC = () => {
           운영 중
         </S.FilterButton>
 
-        {/* 필터 로직 예시: 운영 중만 보기 활성화 시 "운영 중"인 부스만 렌더링 */}
         <BoothInfoComponent
           booth={{
             id: 1,
@@ -67,7 +64,6 @@ const BoothPage: React.FC = () => {
           }}
         />
 
-        {/* 필터가 꺼져있을 때만 보여줌 (예시용 조건부 렌더링) */}
         {!isOperatingOnly && (
           <>
             <BoothInfoComponent
