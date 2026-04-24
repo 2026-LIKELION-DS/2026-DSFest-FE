@@ -5,6 +5,14 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Pretendard';
+    src: url('/fonts/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Pretendard';
     src: url('/fonts/Pretendard-Medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
@@ -41,6 +49,16 @@ const GlobalStyle = createGlobalStyle`
 
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+  }
+
+    #root {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui,
+      sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: inherit;
   }
 
   a {
