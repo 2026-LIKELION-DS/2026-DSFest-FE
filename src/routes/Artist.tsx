@@ -133,7 +133,6 @@ function ArtistPage() {
           </S.DayButton>
         ))}
       </S.SubHeader>
-
       <S.ArtistContent>
         <S.ArtistSection>
           <S.CarouselWrapper>
