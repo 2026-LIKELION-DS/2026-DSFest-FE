@@ -8,8 +8,10 @@ export const Container = styled.header`
   background: #fff;
 `;
 
-export const Left = styled.div`
-  width: 40px;
+export const Left = styled.div<{ $show: boolean }>`
+  width: ${({ $show }) => ($show ? "40px" : "8px")};
+  display: flex;
+  align-items: center;
 `;
 
 export const TitleWrapper = styled.div`

@@ -17,7 +17,7 @@ export default function Header({
 }: HeaderProps) {
   return (
     <S.Container>
-      <S.Left>
+      <S.Left $show={showBackButton}>
         {showBackButton && (
           <img src={chevronLeft} alt="뒤로 가기" onClick={onBack} />
         )}
