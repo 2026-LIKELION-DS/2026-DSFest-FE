@@ -46,7 +46,7 @@ export const CarouselWrapper = styled.div`
   width: calc(100% + 48px);
   margin-left: -24px;
   overflow: hidden;
-  padding: 30px 58px 10px;
+  padding: 30px 0 10px 58px;
 `;
 
 export const CarouselTrack = styled.div<{ $currentPage: number }>`

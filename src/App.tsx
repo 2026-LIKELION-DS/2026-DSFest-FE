@@ -4,6 +4,10 @@ import AppLayout from "./layouts/AppLayout";
 
 import BoothPage from "./routes/Booth";
 import ArtistPage from "./routes/Artist";
+import NoticePage from "./routes/Notice/Notice";
+import NoticeAllPage from "./routes/Notice/NoticeAll";
+import NoticeDetail from "./routes/Notice/NoticeDetail";
+import NoticeImageDetail from "./routes/Notice/NoticeImageDetail";
 
 function App() {
   return (
@@ -36,6 +40,50 @@ function App() {
             </AppLayout>
           }
         />
+
+        <Route
+          path="/notice"
+          element={
+            <AppLayout
+              title="공지사항"
+              subtitle="NOTICE"
+              showBackButton={false}
+              showNavBar={true}
+              activeTab="notice"
+            >
+              <NoticePage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/notice/all"
+          element={
+            <AppLayout
+              title="공지 전체보기"
+              subtitle="NOTICE"
+              showBackButton={true}
+              showNavBar={true}
+              activeTab="notice"
+            >
+              <NoticeAllPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/notice/:id"
+          element={
+            <AppLayout
+              title="공지 상세보기"
+              subtitle="NOTICE"
+              showBackButton={true}
+              showNavBar={true}
+              activeTab="notice"
+            >
+              <NoticeDetail />
+            </AppLayout>
+          }
+        />
+        <Route path="/notice/:id/image" element={<NoticeImageDetail />} />
       </Routes>
     </Router>
   );
