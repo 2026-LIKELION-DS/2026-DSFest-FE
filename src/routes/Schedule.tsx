@@ -1,7 +1,8 @@
 import * as S from "../styles/Schedule.style";
 import TimeTable from "../components/Schedule/TimeTableComponent";
+import ScheduleButton from "../components/Schedule/ScheduleButton";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const scheduleData = [
   {
@@ -139,10 +140,32 @@ export default function SchedulePage() {
   const [currentDay, setCurrentDay] = useState<"day1" | "day2" | "day3">(
     "day1",
   );
+  const [direction, setDirection] = useState<"up" | "down">("down");
+  const activeRef = useRef<HTMLDivElement>(null);
   const dayRefs = {
     day1: useRef<HTMLDivElement>(null),
     day2: useRef<HTMLDivElement>(null),
     day3: useRef<HTMLDivElement>(null),
+  };
+
+  // 현재 day에 진행중 아이템 있는지 확인
+  const currentSchedule = scheduleData.find((d) => d.key === currentDay);
+  const hasActive =
+    currentSchedule?.data.some((item) => item.isActive) ?? false;
+
+  // 스크롤 위치에 따라 방향 변경
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!activeRef.current) return;
+      const rect = activeRef.current.getBoundingClientRect();
+      setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleClick = () => {
+    activeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   return (
@@ -172,6 +195,9 @@ export default function SchedulePage() {
           <TimeTable day={item.day} schedule={item.data} />
         </S.DaySection>
       ))}
+      {hasActive && (
+        <ScheduleButton direction={direction} onClick={handleClick} />
+      )}
     </S.SchedulePage>
   );
 }

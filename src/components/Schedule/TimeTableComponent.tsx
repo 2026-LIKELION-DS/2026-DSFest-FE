@@ -15,9 +15,14 @@ interface ScheduleItem {
 interface TimeTableProps {
   day: string;
   schedule: ScheduleItem[];
+  activeRef?: React.RefObject<HTMLDivElement>;
 }
 
-export default function TimeTable({ day, schedule }: TimeTableProps) {
+export default function TimeTable({
+  day,
+  schedule,
+  activeRef,
+}: TimeTableProps) {
   const navigate = useNavigate();
 
   return (
@@ -29,6 +34,7 @@ export default function TimeTable({ day, schedule }: TimeTableProps) {
           {schedule.map((item, index) => (
             <S.Row
               key={item.id}
+              ref={item.isActive ? activeRef : null}
               onClick={() => item.link && navigate(item.link)}
               style={{ cursor: item.link ? "pointer" : "default" }}
             >
