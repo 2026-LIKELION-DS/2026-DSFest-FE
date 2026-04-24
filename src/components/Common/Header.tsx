@@ -14,7 +14,6 @@ export default function Header({
   showBackButton = false,
   onBack,
 }: HeaderProps) {
-  // ⭐ 실시간 오늘 날짜 및 시간대 판별 로직
   const getTodayStatusBubble = () => {
     const today = new Date();
     const month = today.getMonth() + 1;
