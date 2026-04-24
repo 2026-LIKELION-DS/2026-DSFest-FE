@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-    
+
+import AppLayout from "./layouts/AppLayout";
+
 import BoothPage from "./routes/Booth";
 import ArtistPage from "./routes/Artist";
 
@@ -7,8 +9,33 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/booth" element={<BoothPage />} />
-        <Route path="/artist" element={<ArtistPage />} />
+        <Route
+          path="/booth"
+          element={
+            <AppLayout
+              title="부스"
+              subtitle="BOOTH"
+              showBackButton={true}
+              showNavBar={false}
+            >
+              <BoothPage />
+            </AppLayout>
+          }
+        />
+
+        <Route
+          path="/artist"
+          element={
+            <AppLayout
+              title="아티스트"
+              subtitle="ARTIST"
+              showBackButton={true}
+              showNavBar={false}
+            >
+              <ArtistPage />
+            </AppLayout>
+          }
+        />
       </Routes>
     </Router>
   );
