@@ -12,10 +12,10 @@ const setTypo = (key: keyof typeof typography) => {
 };
 
 export const Container = styled.header`
-  //   height: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
-  padding: 4px 16px;
+  padding: 0 16px;
   background: #fff;
 `;
 
