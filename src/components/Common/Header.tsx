@@ -24,7 +24,6 @@ export default function Header({
     const currentTime = hours * 100 + minutes;
 
     let dayText = "";
-    // 축제 기간 판별 (5월 13~15일)
     if (month === 5) {
       if (date === 13) dayText = "Day 1";
       else if (date === 14) dayText = "Day 2";
@@ -54,7 +53,6 @@ export default function Header({
         {subtitle && <S.Subtitle>{subtitle}</S.Subtitle>}
       </S.TitleWrapper>
 
-      {/* ⭐ 타이틀이 '부스'일 때만 말풍선 표시 */}
       {title === "부스" && (
         <S.StatusBubble>{getTodayStatusBubble()}</S.StatusBubble>
       )}
