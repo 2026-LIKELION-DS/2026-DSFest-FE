@@ -26,7 +26,6 @@ export const MapCanvas = styled.div`
   height: 1000px;
   background-color: ${({ theme }) => theme.colors.bg.oliveLight};
   transform-origin: 0 0;
-  will-change: transform;
 `;
 
 export const Section = styled.div<{

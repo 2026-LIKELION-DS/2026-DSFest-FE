@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import * as S from "../styles/BoothInfoComponent.style";
+import examplePhoto from "../assets/hahyunsang_sample.svg";
 
 interface Booth {
   id: number;
@@ -8,12 +9,28 @@ interface Booth {
   operator: string;
   description: string;
   status: S.StatusType;
+  images?: string[];
 }
 
 const BoothInfoComponent: React.FC<{ booth: Booth }> = ({ booth }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showMoreBtn, setShowMoreBtn] = useState(false);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
+
+  useLayoutEffect(() => {
+    const checkOverflow = () => {
+      const element = descriptionRef.current;
+      if (element) {
+        const isOverflowing = element.scrollHeight > element.clientHeight;
+        setShowMoreBtn(isOverflowing);
+      }
+    };
+    checkOverflow();
+    window.addEventListener("resize", checkOverflow);
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [booth.description]);
 
   return (
     <S.Card>
@@ -25,17 +42,25 @@ const BoothInfoComponent: React.FC<{ booth: Booth }> = ({ booth }) => {
         <S.CategoryTag>{booth.category}</S.CategoryTag>
         <S.BoothName>{booth.operator}</S.BoothName>
       </S.InfoRow>
+
       <S.ImageRow>
-        <S.PhotoPlaceholder />
-        <S.PhotoPlaceholder />
-        <S.PhotoPlaceholder />
+        {[1, 2, 3].map((idx) => (
+          <S.BoothImage
+            key={idx}
+            src={booth.images?.[idx] || examplePhoto}
+            alt={`${booth.name} 사진 ${idx + 1}`}
+          />
+        ))}
       </S.ImageRow>
 
-      <S.DescriptionContainer onClick={toggleExpand}>
-        <S.Description $isExpanded={isExpanded}>
+      <S.DescriptionContainer onClick={showMoreBtn ? toggleExpand : undefined}>
+        <S.Description ref={descriptionRef} $isExpanded={isExpanded}>
           {booth.description}
         </S.Description>
-        {!isExpanded && <S.MoreButton>자세히 보기</S.MoreButton>}
+
+        {(showMoreBtn || isExpanded) && (
+          <S.MoreButton>{isExpanded ? "접기" : "자세히 보기"}</S.MoreButton>
+        )}
       </S.DescriptionContainer>
     </S.Card>
   );

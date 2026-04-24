@@ -3,11 +3,51 @@ import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
 import * as S from "../styles/BoothMapComponent.styles";
 
 interface MapProps {
+  day: number;
   selectedId?: number;
   onBoothClick?: (id: number) => void;
 }
 
+// 📅 날짜별 부스 배치 데이터 (Day 1, 2, 3 전체)
+const BOOTH_LAYOUT_BY_DAY: Record<
+  number,
+  {
+    studentHall: number[];
+    soyoung: number[];
+    minju: number[];
+    youngTop: number[];
+    youngLeft: number[];
+    youngBottom: number[];
+  }
+> = {
+  1: {
+    studentHall: [1],
+    soyoung: [2, 3, 4],
+    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
+    youngTop: [18, 17, 16, 15, 14],
+    youngLeft: [19, 20, 21, 22, 23, 24, 25],
+    youngBottom: [26, 27, 28, 29, 30],
+  },
+  2: {
+    studentHall: [1],
+    soyoung: [2, 3, 4],
+    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
+    youngTop: [18, 17, 16, 15, 14],
+    youngLeft: [19, 20, 21, 22, 23, 24, 25],
+    youngBottom: [26, 27, 28, 29, 30],
+  },
+  3: {
+    studentHall: [1],
+    soyoung: [2, 3, 4],
+    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
+    youngTop: [18, 17, 16, 15, 14],
+    youngLeft: [19, 20, 21, 22, 23, 24, 25],
+    youngBottom: [26, 27, 28, 29, 30],
+  },
+};
+
 const BoothMapComponent: React.FC<MapProps> = ({
+  day = 1,
   selectedId,
   onBoothClick,
 }) => {
@@ -60,7 +100,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
         }}
       >
         <S.MapCanvas ref={mapRef}>
-          {/* 상단 라인: 학생회관 - 소영근터 - 예술대학 */}
+          {/* 학생회관 구역 */}
           <S.Section $top="131px" $left="115px" $width="242px" $height="118px">
             <S.BuildingLabel>학생회관</S.BuildingLabel>
             <S.AbsoluteBooth
@@ -84,10 +124,11 @@ const BoothMapComponent: React.FC<MapProps> = ({
               <S.SubLabel>포토부스</S.SubLabel>
             </S.AbsoluteBooth>
             <S.BoothList $bottom="-37px" $right="3px" $direction="row">
-              {renderBooth(1)}
+              {BOOTH_LAYOUT_BY_DAY[day]?.studentHall?.map(renderBooth)}
             </S.BoothList>
           </S.Section>
 
+          {/* 소영근터 구역 */}
           <S.Section $top="131px" $left="420px" $width="242px" $height="118px">
             <S.BuildingLabel>
               <S.SmallParkVoid>소영근터</S.SmallParkVoid>
@@ -105,7 +146,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
               </S.SubLabel>
             </S.AbsoluteBooth>
             <S.BoothList $top="-1px" $right="32px" $direction="column">
-              {[2, 3, 4].map(renderBooth)}
+              {BOOTH_LAYOUT_BY_DAY[day]?.soyoung?.map(renderBooth)}
             </S.BoothList>
             <S.AbsoluteBooth
               $bottom="-42px"
@@ -117,6 +158,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
             </S.AbsoluteBooth>
           </S.Section>
 
+          {/* 예술대학 구역 */}
           <S.Section $top="131px" $left="716px" $width="307px" $height="118px">
             <S.BuildingLabel>예술대학</S.BuildingLabel>
             <S.AbsoluteBooth
@@ -141,7 +183,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
             </S.AbsoluteBooth>
           </S.Section>
 
-          {/* 중간 라인: 도서관 & 푸드트럭 - 민주동산 */}
+          {/* 도서관 & 푸드트럭 구역 */}
           <S.Section $top="321px" $left="109px" $width="132px" $height="379px">
             <S.BuildingLabel $left="0" $width="66px">
               도서관
@@ -151,10 +193,11 @@ const BoothMapComponent: React.FC<MapProps> = ({
             </S.GreenZone>
           </S.Section>
 
+          {/* 민주동산 구역 */}
           <S.Section $top="325px" $left="297px" $width="182px" $height="350px">
             <S.BuildingLabel>민주동산</S.BuildingLabel>
             <S.BoothList $top="-1px" $right="-57px" $direction="column">
-              {[5, 6, 7, 8, 9, 10, 11, 12, 13].map(renderBooth)}
+              {BOOTH_LAYOUT_BY_DAY[day]?.minju?.map(renderBooth)}
             </S.BoothList>
             <S.AbsoluteBooth
               $bottom="-41px"
@@ -166,16 +209,16 @@ const BoothMapComponent: React.FC<MapProps> = ({
             </S.AbsoluteBooth>
           </S.Section>
 
-          {/* 영근터 영역 */}
+          {/* 영근터 구역 */}
           <S.Section $top="322px" $left="689px" $width="455px" $height="403px">
             <S.BuildingLabel>영근터</S.BuildingLabel>
             {/* 상단 부스 */}
             <S.BoothList $top="-1px" $right="50px" $direction="row">
-              {[18, 17, 16, 15, 14].map(renderBooth)}
+              {BOOTH_LAYOUT_BY_DAY[day]?.youngTop?.map(renderBooth)}
             </S.BoothList>
             {/* 좌측 부스 */}
             <S.BoothList $top="65px" $left="-1px" $direction="column">
-              {[19, 20, 21, 22, 23, 24, 25].map(renderBooth)}
+              {BOOTH_LAYOUT_BY_DAY[day]?.youngLeft?.map(renderBooth)}
             </S.BoothList>
             {/* 우측 무대/덕우존 */}
             <S.InnerBlock
@@ -192,7 +235,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
             </S.InnerBlock>
             {/* 하단 부스 */}
             <S.BoothList $bottom="3.5px" $right="50px" $direction="row">
-              {[26, 27, 28, 29, 30].map(renderBooth)}
+              {BOOTH_LAYOUT_BY_DAY[day]?.youngBottom?.map(renderBooth)}
             </S.BoothList>
           </S.Section>
 
@@ -213,7 +256,6 @@ const BoothMapComponent: React.FC<MapProps> = ({
           >
             <S.SubLabel>푸드트럭</S.SubLabel>
           </S.AbsoluteBooth>
-
           <S.Section $top="804px" $left="539px" $width="123px" $height="64px">
             정문
           </S.Section>

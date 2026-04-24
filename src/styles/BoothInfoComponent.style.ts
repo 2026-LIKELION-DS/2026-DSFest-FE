@@ -69,12 +69,6 @@ export const CategoryTag = styled.span`
   border-radius: 9999px;
 `;
 
-export const ImageRow = styled.div`
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-`;
-
 export const PhotoPlaceholder = styled.div`
   width: 80px;
   height: 80px;
@@ -91,6 +85,7 @@ export const Description = styled.p<{ $isExpanded: boolean }>`
   ${setTypo("bodyMd")};
   color: ${({ theme }) => theme.colors.grey.black};
   margin: 0;
+  word-break: break-all;
 
   ${({ $isExpanded }) =>
     !$isExpanded &&
@@ -99,7 +94,7 @@ export const Description = styled.p<{ $isExpanded: boolean }>`
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      text-overflow: ellipsis;
+      max-height: 42px;
     `}
 `;
 
@@ -113,4 +108,19 @@ export const MoreButton = styled.span`
 export const BoothName = styled.span`
   ${setTypo("h4")};
   color: ${({ theme }) => theme.colors.fg.primary};
+`;
+
+export const ImageRow = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+`;
+
+export const BoothImage = styled.img`
+  width: 80px;
+  height: 80px;
+  background: ${({ theme }) => theme.colors.grey};
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid ${({ theme }) => theme.colors.bg.oliveLight};
 `;
