@@ -111,6 +111,8 @@ export const TimeFilter = styled.div`
   top: 16px;
   left: 16px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   align-items: center;
   z-index: 10;
   gap: 3px;
@@ -198,4 +200,18 @@ export const RandomFloatBtn = styled.button`
     bottom: -20px;
     text-shadow: 0 0 4px rgba(113, 122, 114, 0.4);
   }
+`;
+
+export const TimeText = styled.div`
+  ${setTypo("bodySm")};
+  color: ${({ theme }) => theme.colors.bg.brand};
+  font-weight: 500;
+  text-align: left;
+  padding-left: 4px;
+`;
+
+export const TimeButtonGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3px;
 `;

@@ -70,6 +70,7 @@ export const BoothSlot = styled.div<{ $isActive: boolean }>`
   cursor: pointer;
   margin-bottom: -4.5px;
   margin-right: -4.5px;
+  z-index: ${({ $isActive }) => ($isActive ? 10 : 1)};
 `;
 
 export const AbsoluteBooth = styled.div<{
@@ -207,4 +208,48 @@ export const BoothList = styled.div<{
 export const SmallParkVoid = styled.div`
   display: flex;
   width: 120px;
+`;
+
+export const BoothContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+// 이미지 가이드 기반 부스 이름 말풍선
+export const BoothNameBubble = styled.div`
+  position: absolute;
+  bottom: calc(100% + 8px); /* 부스 슬롯 위로 8px 띄움 */
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: ${({ theme }) => theme.colors.bg.brand};
+  color: ${({ theme }) => theme.colors.fg.primaryInverted};
+
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  width: max-content;
+  max-width: 80px; /* 가이드 준수 */
+
+  text-align: center;
+  word-break: keep-all;
+  ${setTypo("bodySm")};
+  font-size: 11px;
+  line-height: 1.2;
+  z-index: 20;
+
+  /* 하단 중앙 꼬리표 */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: ${({ theme }) => theme.colors.bg.brand} transparent
+      transparent transparent;
+  }
 `;
