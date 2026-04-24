@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "../../styles/TimeTable.style";
 
-import CircleIcon from "../../assets/motions/CircleDefault.svg";
-import CircleSelectedIcon from "../../assets/motions/CircleSelected.svg";
+import CircleIcon from "../../assets/Schedule/CircleDefault.svg";
+import CircleSelectedIcon from "../../assets/Schedule/CircleSelected.svg";
 
 interface ScheduleItem {
   id: number;

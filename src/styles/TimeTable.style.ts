@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin-top: 20px;
+  margin-top: 80px;
 `;
 
 export const DayHeader = styled.div`
