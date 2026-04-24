@@ -230,7 +230,7 @@ export const BoothNameBubble = styled.div`
   border-radius: 999px;
 
   width: max-content;
-  max-width: 80px; /* 가이드 준수 */
+  max-width: 80px;
 
   text-align: center;
   word-break: keep-all;
@@ -239,7 +239,6 @@ export const BoothNameBubble = styled.div`
   line-height: 1.2;
   z-index: 20;
 
-  /* 하단 중앙 꼬리표 */
   &::after {
     content: "";
     position: absolute;
