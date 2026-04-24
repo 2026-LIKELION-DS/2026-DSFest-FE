@@ -28,11 +28,11 @@ const BoothMapComponent: React.FC<MapProps> = ({
     if (pinchZoomRef.current && mapRef.current) {
       const containerHeight = mapRef.current.parentElement?.clientHeight || 400;
       const canvasHeight = 700; // 맵 높이에 맞춰 조정
-      const initialScale = containerHeight / canvasHeight;
+      const initialScale = (containerHeight / canvasHeight) * 3;
 
       pinchZoomRef.current.scaleTo({
-        x: 0,
-        y: 0,
+        x: 100,
+        y: 100,
         scale: initialScale,
       });
     }

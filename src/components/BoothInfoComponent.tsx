@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "../styles/BoothInfoComponent.style";
 
 interface Booth {
@@ -11,6 +11,10 @@ interface Booth {
 }
 
 const BoothInfoComponent: React.FC<{ booth: Booth }> = ({ booth }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpand = () => setIsExpanded(!isExpanded);
+
   return (
     <S.Card>
       <S.StatusBadge $status={booth.status}>{booth.status}</S.StatusBadge>
@@ -26,7 +30,13 @@ const BoothInfoComponent: React.FC<{ booth: Booth }> = ({ booth }) => {
         <S.PhotoPlaceholder />
         <S.PhotoPlaceholder />
       </S.ImageRow>
-      <S.Description>{booth.description}</S.Description>
+
+      <S.DescriptionContainer onClick={toggleExpand}>
+        <S.Description $isExpanded={isExpanded}>
+          {booth.description}
+        </S.Description>
+        {!isExpanded && <S.MoreButton>자세히 보기</S.MoreButton>}
+      </S.DescriptionContainer>
     </S.Card>
   );
 };

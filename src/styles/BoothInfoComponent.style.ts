@@ -33,7 +33,7 @@ export const Title = styled.div`
   font-size: 20px;
   font-weight: 700;
   color: #0b4112;
-  margin: 3px 0;
+  margin: 3px 0 10px 0;
 `;
 
 export const InfoRow = styled.div`
@@ -65,15 +65,34 @@ export const PhotoPlaceholder = styled.div`
   border-radius: 6px;
 `;
 
-export const Description = styled.p`
+export const DescriptionContainer = styled.div`
+  cursor: pointer;
+  position: relative;
+`;
+
+export const Description = styled.p<{ $isExpanded: boolean }>`
   font-size: 14px;
   color: #161716;
   line-height: 21px;
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+
+  ${({ $isExpanded }) =>
+    !$isExpanded &&
+    `
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `}
+`;
+
+export const MoreButton = styled.span`
+  display: block;
+  font-size: 14px;
+  color: #9e9e9e;
+  margin-top: 4px;
+  font-weight: 500;
 `;
 
 export const BoothName = styled.span`

@@ -57,7 +57,7 @@ export const BoothList = styled.div`
 
 export const BoothCur = styled.div`
   display: flex;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
   margin: 20px 0;
 `;
@@ -72,4 +72,21 @@ export const MapHugger = styled.div`
   height: 402px;
   overflow: hidden;
   position: relative;
+`;
+
+export const FilterButton = styled.button<{ $active: boolean }>`
+  background: ${(props) => (props.$active ? "#0B4112" : "#ffffff")};
+  color: ${(props) => (props.$active ? "#FFFFFF" : "#161716")};
+  border: 1px solid ${(props) => (props.$active ? "#0B4112" : "#9E9E9E")};
+  padding: 8px 15px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
