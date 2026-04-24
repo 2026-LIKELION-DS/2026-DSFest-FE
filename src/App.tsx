@@ -1,26 +1,16 @@
-// import "./App.css";
-
-// function App() {
-//   return (
-//     <>
-//       <h1>Hello React</h1>
-//     </>
-//   );
-// }
-
-// export default App;
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+    
+import BoothPage from "./routes/Booth";
 import ArtistPage from "./routes/Artist";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
+        <Route path="/booth" element={<BoothPage />} />
         <Route path="/artist" element={<ArtistPage />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
