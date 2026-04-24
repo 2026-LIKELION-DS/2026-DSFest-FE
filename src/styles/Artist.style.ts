@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ArtistPage = styled.div`
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 24px 24px;
   background: #fff;
   overflow-x: hidden;
 `;
@@ -51,7 +51,7 @@ export const CarouselWrapper = styled.div`
 
 export const CarouselTrack = styled.div<{ $currentPage: number }>`
   display: flex;
-  gap: 16px;
+  gap: 24px;
   transition: transform 0.4s ease;
 
   transform: translateX(

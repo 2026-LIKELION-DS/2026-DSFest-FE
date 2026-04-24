@@ -24,7 +24,7 @@ export const TimeBlock = styled.div`
   top: -1px;
   right: 25px;
   padding: 6px 12px;
-  border: 1px solid #0b4112;
+  border: 0.5px solid #0b4112;
   border-radius: 2px;
   background: #f5f7ed;
   color: #0b4112;
@@ -33,7 +33,7 @@ export const TimeBlock = styled.div`
 
 export const ArtistTime = styled.div`
   font-size: 18px;
-  font-weight: 400;
+  font-family: "OwnglyphSeaBreeze", sans-serif;
 `;
 
 export const ArtistImage = styled.img`
@@ -65,12 +65,11 @@ export const ArtistDesc = styled.p`
 `;
 
 export const LinkBlock = styled.div`
-  display: flex;
   background: #f5f7ed;
-  border: 1px solid #0b4112;
+  border: 0.5px solid #0b4112;
   border-radius: 2px;
   display: flex;
-  width: 120px;
+  width: 100px;
   padding: 4px 12px;
   justify-content: center;
   align-items: center;
@@ -89,7 +88,7 @@ export const ArtistLink = styled.div`
   a {
     color: #0b4112;
     font-size: 14px;
-    font-weight: 400;
+    font-family: "OwnglyphSeaBreeze", sans-serif;
   }
 `;
 
