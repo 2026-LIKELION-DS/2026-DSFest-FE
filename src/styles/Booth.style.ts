@@ -74,7 +74,7 @@ export const BoothCur = styled.div`
 
 export const BoothAmount = styled.span`
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.bg.brandLight};
+  color: ${({ theme }) => theme.colors.bg.brand};
 `;
 
 export const MapHugger = styled.div`
@@ -103,5 +103,99 @@ export const FilterButton = styled.button<{ $active: boolean }>`
 
   &:hover {
     opacity: 0.8;
+  }
+`;
+
+export const TimeFilter = styled.div`
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  gap: 3px;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.1));
+`;
+
+export const TimeOption = styled.button<{ $active: boolean }>`
+  ${setTypo("bodySm")};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  background: ${({ $active, theme }) =>
+    $active ? theme.colors.bg.brand : "#E3E9D2"};
+  color: ${({ $active, theme }) =>
+    $active ? "#FFFFFF" : theme.colors.bg.brand};
+
+  &:first-child {
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
+    border-top-right-radius: ${({ $active }) => ($active ? "999px" : "4px")};
+    border-bottom-right-radius: ${({ $active }) => ($active ? "999px" : "4px")};
+    z-index: ${({ $active }) => ($active ? 2 : 1)};
+  }
+
+  &:last-child {
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+    border-top-left-radius: ${({ $active }) => ($active ? "999px" : "24px")};
+    border-bottom-left-radius: ${({ $active }) => ($active ? "999px" : "24px")};
+    z-index: ${({ $active }) => ($active ? 2 : 1)};
+  }
+
+  ${({ $active }) =>
+    !$active &&
+    css`
+      box-shadow: 0 0 4px 0 rgba(113, 122, 114, 0.4);
+    `}
+
+  img {
+    width: 18px;
+    height: 18px;
+    ${({ $active }) =>
+      !$active &&
+      css`
+        filter: brightness(0) saturate(100%) invert(18%) sepia(50%)
+          saturate(1000%) hue-rotate(80deg);
+      `}
+  }
+`;
+
+export const RandomFloatBtn = styled.button`
+  position: absolute;
+  bottom: 40px;
+  right: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.bg.brand};
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 0 4px 0 rgba(113, 122, 114, 0.4);
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
+
+  span {
+    ${setTypo("bodySm")};
+    font-size: 14px;
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.bg.brand};
+    position: absolute;
+    bottom: -20px;
+    text-shadow: 0 0 4px rgba(113, 122, 114, 0.4);
   }
 `;

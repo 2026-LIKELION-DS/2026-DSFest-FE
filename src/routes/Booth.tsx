@@ -3,6 +3,12 @@ import * as S from "../styles/Booth.style";
 import BoothMapComponent from "../components/BoothMapComponent";
 import BoothInfoComponent from "../components/BoothInfoComponent";
 
+import daySelected from "../assets/DaySelected.svg";
+import dayUnselected from "../assets/DayUnselected.svg";
+import nightSelected from "../assets/NightSelected.svg";
+import nightUnselected from "../assets/NightUnselected.svg";
+import randomIcon from "../assets/RandomBooth.svg";
+
 const DAYS_DATA = [
   { id: 1, date: "13일", dayOfWeek: "수" },
   { id: 2, date: "14일", dayOfWeek: "목" },
@@ -42,6 +48,7 @@ const BOOTH_DATA = [
 const BoothPage: React.FC = () => {
   const [activeDay, setActiveDay] = useState(1);
   const [isOperatingOnly, setIsOperatingOnly] = useState(false);
+  const [isNight, setIsNight] = useState(false); // 낮/밤 상태
 
   const filteredBooths = useMemo(() => {
     if (isOperatingOnly) {
@@ -49,6 +56,9 @@ const BoothPage: React.FC = () => {
     }
     return BOOTH_DATA;
   }, [isOperatingOnly]);
+
+  // 랜덤 추천 핸들러, 이후 모달 받아 구현 예정
+  const handleRandomRecommend = () => {};
 
   return (
     <S.PageWrapper>
@@ -69,6 +79,23 @@ const BoothPage: React.FC = () => {
       </S.DayNav>
 
       <S.MapHugger>
+        <S.TimeFilter>
+          <S.TimeOption $active={!isNight} onClick={() => setIsNight(false)}>
+            <img src={!isNight ? daySelected : dayUnselected} alt="day" />
+            <span>낮</span>
+          </S.TimeOption>
+          <S.TimeOption $active={isNight} onClick={() => setIsNight(true)}>
+            <img src={isNight ? nightSelected : nightUnselected} alt="night" />
+            <span>밤</span>
+          </S.TimeOption>
+        </S.TimeFilter>
+
+        {/* 랜덤 추천 버튼 */}
+        <S.RandomFloatBtn onClick={handleRandomRecommend}>
+          <img src={randomIcon} alt="random" />
+          <span>랜덤 추천</span>
+        </S.RandomFloatBtn>
+
         <BoothMapComponent day={activeDay} />
       </S.MapHugger>
 
