@@ -4,14 +4,18 @@ import "./index.css";
 import App from "./App";
 import * as C from "./styles/CommonStyle";
 import GlobalStyle from "./styles/GlobalStyle";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/theme";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <GlobalStyle />
-    <C.Page>
-      <C.Phone>
-        <App />
-      </C.Phone>
-    </C.Page>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <C.Page>
+        <C.Phone>
+          <App />
+        </C.Phone>
+      </C.Page>
+    </ThemeProvider>
   </StrictMode>,
 );
