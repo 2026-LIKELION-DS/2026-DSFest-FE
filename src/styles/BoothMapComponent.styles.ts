@@ -5,7 +5,7 @@ export const MapWrapper = styled.div`
   height: 100%;
   overflow: hidden;
   position: relative;
-  background-color: #f5f7ed;
+  background-color: ${({ theme }) => theme.colors.bg.oliveLight};
   touch-action: none;
 `;
 
@@ -13,7 +13,7 @@ export const MapCanvas = styled.div`
   position: relative;
   width: 1200px;
   height: 1000px;
-  background-color: #f5f7ed;
+  background-color: ${({ theme }) => theme.colors.bg.oliveLight};
   transform-origin: 0 0;
   will-change: transform;
 `;
@@ -27,8 +27,8 @@ export const Section = styled.div<{
   $height?: string;
 }>`
   position: absolute;
-  border: 1px solid #0b4112;
-  background-color: white;
+  border: 1px solid ${({ theme }) => theme.colors.bg.brand};
+  background-color: ${({ theme }) => theme.colors.bg.neutral};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,13 +46,15 @@ export const Section = styled.div<{
 export const BoothSlot = styled.div<{ $isActive: boolean }>`
   width: 60px;
   height: 40px;
-  border: 1px solid #277b31;
+  border: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 11px;
-  background-color: ${(props) => (props.$isActive ? "#0B4112" : "#FDF7E7")};
-  color: ${(props) => (props.$isActive ? "white" : "#277b31")};
+  background-color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors.bg.brand : theme.colors.bg.yellowLight};
+  color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors.fg.primaryInverted : theme.colors.bg.brandLight};
   cursor: pointer;
   margin-bottom: -4.5px;
   margin-right: -4.5px;
@@ -66,11 +68,11 @@ export const AbsoluteBooth = styled.div<{
   $width?: string;
   $height?: string;
 }>`
-  background-color: #e5ebcf;
-  color: #277b31;
+  background-color: ${({ theme }) => theme.colors.bg.olive};
+  color: ${({ theme }) => theme.colors.bg.brandLight};
   font-size: 12px;
   font-weight: 500;
-  border: 1px solid #277b31;
+  border: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
   position: absolute;
   display: flex;
   align-items: center;
@@ -92,9 +94,9 @@ export const InnerBlock = styled.div<{
   $height?: string;
 }>`
   position: absolute;
-  color: #0b4112;
-  border: 1px solid #0b4112;
-  background: white;
+  color: ${({ theme }) => theme.colors.bg.brand};
+  border: 1px solid ${({ theme }) => theme.colors.bg.brand};
+  background: ${({ theme }) => theme.colors.bg.neutral};
   display: flex;
   font-size: 11px;
   ${(props) => css`
@@ -110,22 +112,25 @@ export const FlexRow = styled.div`
   flex-direction: column;
   flex: 2;
 `;
+
 export const UnitD = styled.div`
-  border-bottom: 1px solid #0b4112;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.bg.brand};
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   height: 85px;
 `;
+
 export const UnitStage = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 1px solid #0b4112;
+  border-left: 1px solid ${({ theme }) => theme.colors.bg.brand};
   font-size: 14px;
 `;
+
 export const UnitB = styled.div`
   flex: 1;
   display: flex;
@@ -143,18 +148,18 @@ export const GreenZone = styled.div<{
   right: ${(props) => props.$right};
   width: ${(props) => props.$width};
   height: ${(props) => props.$height};
-  background-color: #e8ede0;
-  border-left: 1px solid #277b31;
+  background-color: ${({ theme }) => theme.colors.bg.oliveLight};
+  border-left: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  color: #277b31;
+  color: ${({ theme }) => theme.colors.bg.brandLight};
 `;
 
 export const BuildingLabel = styled.div<{ $left?: string; $width?: string }>`
   font-size: 14px;
-  color: #0b4112;
+  color: ${({ theme }) => theme.colors.bg.brand};
   position: absolute;
   left: ${(props) => props.$left};
   width: ${(props) => props.$width};

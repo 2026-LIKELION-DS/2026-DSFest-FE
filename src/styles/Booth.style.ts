@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const PageWrapper = styled.div`
   max-width: 480px;
   margin: 0 auto;
-  background: white;
+  background: ${({ theme }) => theme.colors.bg.neutral};
   min-height: 100vh;
 `;
 
@@ -11,7 +11,7 @@ export const DayNav = styled.nav`
   display: flex;
   justify-content: space-around;
   padding: 16px 0;
-  border-bottom: 1px solid #f1f3f5;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.stroke.oliveLight};
 `;
 
 export const DayTab = styled.div<{ $active: boolean }>`
@@ -19,7 +19,8 @@ export const DayTab = styled.div<{ $active: boolean }>`
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  color: ${(props) => (props.$active ? "#277B31" : "#9E9E9E")};
+  color: ${({ $active, theme }) =>
+    $active ? theme.colors.bg.brandLight : theme.colors.fg.subtle};
 `;
 
 export const Label = styled.span`
@@ -39,13 +40,14 @@ export const ListSection = styled.div`
   padding: 20px;
   h2 {
     font-size: 20px;
+    color: ${({ theme }) => theme.colors.fg.primary};
     margin-bottom: 16px;
   }
 `;
 
 export const MapInfoText = styled.p`
   font-size: 12px;
-  color: #adb5bd;
+  color: ${({ theme }) => theme.colors.fg.subtle};
   text-align: center;
 `;
 
@@ -53,6 +55,7 @@ export const BoothList = styled.div`
   font-weight: 700;
   font-size: 24px;
   margin: 10px 0;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const BoothCur = styled.div`
@@ -60,11 +63,12 @@ export const BoothCur = styled.div`
   font-size: 16px;
   font-weight: 500;
   margin: 20px 0;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const BoothAmount = styled.div`
   font-weight: 700;
-  color: #0b4112;
+  color: ${({ theme }) => theme.colors.bg.brandLight};
 `;
 
 export const MapHugger = styled.div`
@@ -75,9 +79,16 @@ export const MapHugger = styled.div`
 `;
 
 export const FilterButton = styled.button<{ $active: boolean }>`
-  background: ${(props) => (props.$active ? "#0B4112" : "#ffffff")};
-  color: ${(props) => (props.$active ? "#FFFFFF" : "#161716")};
-  border: 1px solid ${(props) => (props.$active ? "#0B4112" : "#9E9E9E")};
+  background: ${({ $active, theme }) =>
+    $active ? theme.colors.bg.brand : theme.colors.bg.neutral};
+
+  color: ${({ $active, theme }) =>
+    $active ? theme.colors.fg.primaryInverted : theme.colors.fg.primary};
+
+  border: 1px solid
+    ${({ $active, theme }) =>
+      $active ? theme.colors.bg.brand : theme.colors.stroke.subtle};
+
   padding: 8px 15px;
   border-radius: 9999px;
   font-size: 14px;
