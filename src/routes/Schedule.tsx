@@ -1,6 +1,13 @@
 import * as S from "../styles/Schedule.style";
 import TimeTable from "../components/Schedule/TimeTableComponent";
 import ScheduleButton from "../components/Schedule/ScheduleButton";
+import CamFlower from "../assets/Schedule/camFlower.svg";
+import CamFlower2 from "../assets/Schedule/camFlower2.svg";
+import CamLeaf from "../assets/Schedule/camLeaf.svg";
+import Leaf from "../assets/Schedule/leaf.svg";
+import Leaf1 from "../assets/Schedule/leaf1.svg";
+import Flower from "../assets/Schedule/flower.svg";
+import Flowers2 from "../assets/Schedule/flowers2.svg";
 
 import { useState, useRef, useEffect } from "react";
 
@@ -8,6 +15,10 @@ const scheduleData = [
   {
     key: "day1",
     day: "DAY 1",
+    deco: {
+      topLeft: Leaf,
+      bottomRight: Flower,
+    },
     data: [
       {
         id: 1,
@@ -170,6 +181,15 @@ export default function SchedulePage() {
 
   return (
     <S.SchedulePage>
+      <S.DecoLayer>
+        <S.Leafs src={Leaf} />
+        <S.Flower src={Flower} />
+        <S.CamFlower src={CamFlower} />
+        <S.Leafs1 src={Leaf1} />
+        <S.CamLeaf src={CamLeaf} />
+        <S.Flowers2 src={Flowers2} />
+        <S.CamFlower2 src={CamFlower2} />
+      </S.DecoLayer>
       <S.SubHeader>
         {days.map((day) => (
           <S.DayButton
@@ -195,6 +215,7 @@ export default function SchedulePage() {
           <TimeTable day={item.day} schedule={item.data} />
         </S.DaySection>
       ))}
+      {/* 진행 중 버튼 위치 */}
       {hasActive && (
         <ScheduleButton direction={direction} onClick={handleClick} />
       )}

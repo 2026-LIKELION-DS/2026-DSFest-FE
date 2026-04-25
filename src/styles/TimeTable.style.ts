@@ -4,7 +4,7 @@ import { theme } from "./theme";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   position: relative;
   margin-top: 80px;
 `;
@@ -18,17 +18,19 @@ export const DayHeader = styled.div`
   background-color: ${({ theme }) => theme.colors.bg.oliveLight};
   position: absolute;
   top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
 `;
 
 export const Container = styled.div`
-  width: 258px;
   border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
   border-radius: 4px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   padding: 32px 24px 10px 24px;
+  background-color: ${({ theme }) => theme.colors.bg.offWhite};
 `;
 
 export const Guide = styled.p`
@@ -58,7 +60,6 @@ export const DotWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 24px;
 `;
 
