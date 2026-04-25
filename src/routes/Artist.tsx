@@ -7,6 +7,7 @@ import ArtistActionButtons from "../components/Artist/ArtistActionButton";
 import ArtistPagination from "../components/Artist/ArtistPagination";
 import PlaylistNotice from "../components/Artist/PlaylistNotice";
 import ArtistPlaylist from "../components/Artist/ArtistPlaylist";
+import Modal from "../components/Common/ModalComponent";
 
 import { getPerformanceStatus } from "../utils/artist";
 import type { PerformanceStatus } from "../utils/artist";
@@ -76,6 +77,46 @@ const artistsByDay: Record<"day1" | "day2" | "day3", Artist[]> = {
   ],
 };
 
+const getPlaylistDesc = (status: PerformanceStatus) => {
+  if (status === "BEFORE") return "무대 보기 전에 예습할까요?";
+  if (status === "LIVE") return "지금 공연 중! 같이 즐겨요!";
+  if (status === "ENDED") return "무대 보고 난 후 복습할까요?";
+  return "";
+};
+
+const artistPlaylists: Record<
+  number,
+  {
+    playlistUrl: string;
+    thumbnailUrl: string;
+  }
+> = {
+  1: {
+    playlistUrl: "https://youtube.com/playlist?list=하현상플리",
+    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
+  },
+  2: {
+    playlistUrl: "https://youtube.com/playlist?list=앙앙이플리",
+    thumbnailUrl: "https://img.youtube.com/vi/fkUAZMnuNSE/maxresdefault.jpg",
+  },
+  3: {
+    playlistUrl: "https://youtube.com/playlist?list=왕왕이플리",
+    thumbnailUrl: "https://img.youtube.com/vi/왕왕이영상ID/maxresdefault.jpg",
+  },
+  4: {
+    playlistUrl: "https://youtube.com/playlist?list=양양이플리",
+    thumbnailUrl: "https://img.youtube.com/vi/양양이영상ID/maxresdefault.jpg",
+  },
+  5: {
+    playlistUrl: "https://youtube.com/playlist?list=광광이플리",
+    thumbnailUrl: "https://img.youtube.com/vi/광광이영상ID/maxresdefault.jpg",
+  },
+  6: {
+    playlistUrl: "https://youtube.com/playlist?list=황황이플리",
+    thumbnailUrl: "https://img.youtube.com/vi/황황이영상ID/maxresdefault.jpg",
+  },
+};
+
 const days = [
   { key: "day1", label: "DAY 1", date: "13일 수" },
   { key: "day2", label: "DAY 2", date: "14일 목" },
@@ -93,7 +134,12 @@ function ArtistPage() {
   const [status, setStatus] = useState<PerformanceStatus>("BEFORE");
   const [statusText, setStatusText] = useState("");
 
+  const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
+
   const artists = artistsByDay[currentDay];
+
+  const currentArtist = artists[currentPage - 1];
+  const currentPlaylist = artistPlaylists[currentArtist.id];
 
   useEffect(() => {
     const start = new Date("2026-04-24T19:00:00");
@@ -156,17 +202,26 @@ function ArtistPage() {
           status={status}
           statusText={statusText}
           onLiveClick={() => navigate("/live")}
-          onGuideClick={() => navigate("/guide")}
+          // 라이브톡 입장 경로 수정하기
+          onGuideClick={() => setIsGuideModalOpen(true)}
         />
 
         <S.PlaylistSection>
           <ArtistPlaylist
-            playlistUrl="https://youtube.com/playlist?list=..."
-            thumbnailUrl="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+            playlistUrl={currentPlaylist.playlistUrl}
+            thumbnailUrl={currentPlaylist.thumbnailUrl}
+            desc={getPlaylistDesc(status)}
           />
         </S.PlaylistSection>
 
         <PlaylistNotice />
+
+        <Modal
+          isOpen={isGuideModalOpen}
+          onClose={() => setIsGuideModalOpen(false)}
+          title="스탠딩존 입장 관련 안내"
+          content="스탠딩존 입장 관련 안내"
+        />
       </S.ArtistContent>
     </S.ArtistPage>
   );

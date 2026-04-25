@@ -16,6 +16,7 @@ type ArtistActionButtonsProps = {
 function ArtistActionButtons({
   status,
   statusText,
+  onGuideClick,
   onLiveClick,
 }: ArtistActionButtonsProps) {
   return (
@@ -41,7 +42,7 @@ function ArtistActionButtons({
           </S.CountdownButtonBlock>
         </S.CountdownButton>
 
-        <S.EntranceButton type="button">
+        <S.EntranceButton type="button" onClick={onGuideClick}>
           <S.EntranceButtonBlock>
             <img src={megaphone} alt="무대 입장 방법" />
             <p>무대 입장 방법 확인하기</p>
