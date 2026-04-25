@@ -25,7 +25,9 @@ export const MapCanvas = styled.div`
   width: 1200px;
   height: 1000px;
   background-color: ${({ theme }) => theme.colors.bg.oliveLight};
-  transform-origin: 0 0;
+
+  padding: 200px;
+  box-sizing: border-box;
 `;
 
 export const Section = styled.div<{
@@ -82,6 +84,33 @@ export const AbsoluteBooth = styled.div<{
   $height?: string;
 }>`
   background-color: ${({ theme }) => theme.colors.bg.olive};
+  color: ${({ theme }) => theme.colors.bg.brandLight};
+  ${setTypo("bodySm")};
+  font-weight: 500;
+  border: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ${(props) => css`
+    top: ${props.$top};
+    bottom: ${props.$bottom};
+    left: ${props.$left};
+    right: ${props.$right};
+    width: ${props.$width};
+    height: ${props.$height};
+  `}
+`;
+
+export const AbsoluteFoodTruck = styled.div<{
+  $top?: string;
+  $bottom?: string;
+  $left?: string;
+  $right?: string;
+  $width?: string;
+  $height?: string;
+}>`
+  background-color: ${({ theme }) => theme.colors.bg.neutralDeep};
   color: ${({ theme }) => theme.colors.bg.brandLight};
   ${setTypo("bodySm")};
   font-weight: 500;
@@ -161,7 +190,7 @@ export const GreenZone = styled.div<{
   right: ${(props) => props.$right};
   width: ${(props) => props.$width};
   height: ${(props) => props.$height};
-  background-color: ${({ theme }) => theme.colors.bg.oliveLight};
+  background-color: ${({ theme }) => theme.colors.bg.neutralDeep};
   border-left: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
   display: flex;
   align-items: center;
@@ -219,35 +248,57 @@ export const BoothContainer = styled.div`
 
 export const BoothNameBubble = styled.div`
   position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
+  bottom: calc(100% - 4px);
+  left: calc(50% + 2px);
   transform: translateX(-50%);
 
   background-color: ${({ theme }) => theme.colors.bg.brand};
   color: ${({ theme }) => theme.colors.fg.primaryInverted};
 
-  padding: 8px 12px;
-  border-radius: 999px;
+  padding: 5px 12px;
+  border: 1.5px solid ${({ theme }) => theme.colors.fg.primaryInverted};
+  border-radius: 9999px;
 
   width: max-content;
-  max-width: 80px;
 
   text-align: center;
-  word-break: keep-all;
-  ${setTypo("bodySm")};
-  font-size: 11px;
+  ${setTypo("buttonSm")};
   line-height: 1.2;
-  z-index: 20;
+  z-index: 21;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 
   &::after {
+    z-index: 22;
     content: "";
     position: absolute;
-    top: 100%;
+    top: calc(100% - 2.5px);
     left: 50%;
     transform: translateX(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: ${({ theme }) => theme.colors.bg.brand} transparent
-      transparent transparent;
+    width: 10px;
+    height: 10px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 16 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10L1 1H15L8 10Z' fill='%23064112'/%3E%3Cpath d='M1 1L8 10L15 1' stroke='%23F2F2F2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
+`;
+export const BoothNameText = styled.span`
+  ${setTypo("buttonSm")};
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+  word-break: break-all;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  max-height: 2.4em;
+  max-width: 56px;
 `;

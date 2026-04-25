@@ -1,23 +1,28 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
-import * as S from "../styles/BoothInfoComponent.style";
-import examplePhoto from "../assets/hahyunsang_sample.svg";
+import * as S from "../../styles/BoothInfoComponent.style";
+import examplePhoto from "../../assets/hahyunsang_sample.svg";
 
-interface Booth {
+export interface Booth {
   id: number;
   name: string;
   category: string;
   operator: string;
   description: string;
-  status: S.StatusType;
+  status: "운영 중" | "운영 예정" | "운영 종료";
   images?: string[];
 }
 
-const BoothInfoComponent: React.FC<{ booth: Booth }> = ({ booth }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+interface BoothInfoProps {
+  booth: Booth;
+  onDetailClick: (booth: Booth) => void;
+}
+
+const BoothInfoComponent: React.FC<BoothInfoProps> = ({
+  booth,
+  onDetailClick,
+}) => {
   const [showMoreBtn, setShowMoreBtn] = useState(false);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
-
-  const toggleExpand = () => setIsExpanded(!isExpanded);
 
   useLayoutEffect(() => {
     const checkOverflow = () => {
@@ -27,6 +32,7 @@ const BoothInfoComponent: React.FC<{ booth: Booth }> = ({ booth }) => {
         setShowMoreBtn(isOverflowing);
       }
     };
+
     checkOverflow();
     window.addEventListener("resize", checkOverflow);
     return () => window.removeEventListener("resize", checkOverflow);
@@ -35,9 +41,11 @@ const BoothInfoComponent: React.FC<{ booth: Booth }> = ({ booth }) => {
   return (
     <S.Card>
       <S.StatusBadge $status={booth.status}>{booth.status}</S.StatusBadge>
+
       <S.Title>
         {booth.id}. {booth.name}
       </S.Title>
+
       <S.InfoRow>
         <S.CategoryTag>{booth.category}</S.CategoryTag>
         <S.BoothName>{booth.operator}</S.BoothName>
@@ -53,14 +61,12 @@ const BoothInfoComponent: React.FC<{ booth: Booth }> = ({ booth }) => {
         ))}
       </S.ImageRow>
 
-      <S.DescriptionContainer onClick={showMoreBtn ? toggleExpand : undefined}>
-        <S.Description ref={descriptionRef} $isExpanded={isExpanded}>
+      <S.DescriptionContainer onClick={() => onDetailClick(booth)}>
+        <S.Description ref={descriptionRef} $isExpanded={false}>
           {booth.description}
         </S.Description>
 
-        {(showMoreBtn || isExpanded) && (
-          <S.MoreButton>{isExpanded ? "접기" : "자세히 보기"}</S.MoreButton>
-        )}
+        {showMoreBtn && <S.MoreButton>자세히 보기</S.MoreButton>}
       </S.DescriptionContainer>
     </S.Card>
   );
