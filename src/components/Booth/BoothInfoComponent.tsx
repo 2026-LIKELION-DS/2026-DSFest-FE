@@ -39,7 +39,7 @@ const BoothInfoComponent: React.FC<BoothInfoProps> = ({
   }, [booth.description]);
 
   return (
-    <S.Card>
+    <S.Card onClick={() => onDetailClick(booth)} style={{ cursor: "pointer" }}>
       <S.StatusBadge $status={booth.status}>{booth.status}</S.StatusBadge>
 
       <S.Title>
@@ -61,7 +61,7 @@ const BoothInfoComponent: React.FC<BoothInfoProps> = ({
         ))}
       </S.ImageRow>
 
-      <S.DescriptionContainer onClick={() => onDetailClick(booth)}>
+      <S.DescriptionContainer>
         <S.Description ref={descriptionRef} $isExpanded={false}>
           {booth.description}
         </S.Description>
