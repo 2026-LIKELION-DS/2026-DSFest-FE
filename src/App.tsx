@@ -9,6 +9,8 @@ import NoticePage from "./routes/Notice/Notice";
 import NoticeAllPage from "./routes/Notice/NoticeAll";
 import NoticeDetail from "./routes/Notice/NoticeDetail";
 import ImageDetailPage from "./components/Common/ImageDetail";
+import NoticeImageDetail from "./routes/Notice/NoticeImageDetail";
+import LiveTalk from "./routes/LiveTalk";
 
 function App() {
   return (
@@ -99,6 +101,21 @@ function App() {
         <Route
           path="/image-detail/:targetType/:targetId"
           element={<ImageDetailPage />}
+        />
+        <Route path="/notice/:id/image" element={<NoticeImageDetail />} />
+        <Route
+          path="/livetalk"
+          element={
+            <AppLayout
+              title="라이브톡"
+              subtitle="LIVE TALK"
+              showBackButton={false}
+              showNavBar={true}
+              activeTab="livetalk"
+            >
+              <LiveTalk />
+            </AppLayout>
+          }
         />
       </Routes>
     </Router>
