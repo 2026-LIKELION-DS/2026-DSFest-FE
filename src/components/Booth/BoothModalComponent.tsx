@@ -1,10 +1,11 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
 // @ts-expect-error: Swiper CSS modules are not recognized by TS
 import "swiper/css";
 // @ts-expect-error: Swiper CSS modules are not recognized by TS
 import "swiper/css/pagination";
+
+import ImageDetailComponent from "../Common/ImageDetail";
 
 import * as S from "../../styles/BoothModalComponent.style";
 import Phone from "../../assets/Booth/Phone.svg";
@@ -25,7 +26,10 @@ const BoothModalComponent: React.FC<ModalProps> = ({
   onClose,
   onNavigateToMap,
 }) => {
-  const navigate = useNavigate();
+  const [detailConfig, setDetailConfig] = useState({
+    isOpen: false,
+    initialIndex: 0,
+  });
 
   if (!booth) return null;
 
@@ -34,16 +38,13 @@ const BoothModalComponent: React.FC<ModalProps> = ({
       ? booth.images
       : [examplePhoto, examplePhoto, examplePhoto];
 
-  const handleImageClick = (idx: number) => {
-    navigate(`/image-detail/booth/${booth.id}`, {
-      state: {
-        initialIndex: idx,
-        imageCount: images.length,
-        images: images,
-      },
-    });
+  const openImageDetail = (idx: number) => {
+    setDetailConfig({ isOpen: true, initialIndex: idx });
   };
 
+  const closeImageDetail = () => {
+    setDetailConfig({ ...detailConfig, isOpen: false });
+  };
   return (
     <>
       <S.ModalOverlay onClick={onClose}>
@@ -76,7 +77,7 @@ const BoothModalComponent: React.FC<ModalProps> = ({
                 <S.BoothImage
                   key={idx}
                   src={src}
-                  onClick={() => handleImageClick(idx)}
+                  onClick={() => openImageDetail(idx)}
                   alt={`부스 이미지 ${idx + 1}`}
                 />
               ))}
@@ -118,6 +119,12 @@ const BoothModalComponent: React.FC<ModalProps> = ({
           </S.ButtonGroup>
         </S.ModalContainer>
       </S.ModalOverlay>
+      <ImageDetailComponent
+        isOpen={detailConfig.isOpen}
+        initialIndex={detailConfig.initialIndex}
+        images={images}
+        onClose={closeImageDetail}
+      />
     </>
   );
 };
