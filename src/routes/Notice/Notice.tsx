@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { useMemo, useState } from "react";
 
-import NoticeCard from "../../components/Notice/NoticeCard";
+import NoticeListItem from "../../components/Notice/NoticeListItem";
 import FAQCard from "../../components/Notice/FAQCard";
-import * as S from "../../styles/Notice.style";
+import SearchInput from "../../components/Notice/SearchInput";
+import FrequentNotice from "../../components/Notice/FrequentNotice";
 
-import search from "../../assets/Notice/Search.svg";
-import chevronRight from "../../assets/Notice/ChevronRight.svg";
+import * as S from "../../styles/Notice.style";
 
 const noticeCards = [
   {
@@ -45,50 +45,77 @@ const faqList = [
 ];
 
 export default function Notice() {
-  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState("");
+
+  const trimmedKeyword = keyword.trim();
+
+  const filteredNotices = useMemo(() => {
+    if (!trimmedKeyword) return [];
+
+    return noticeCards.filter((notice) => {
+      const title = notice.title.replaceAll("\n", " ");
+
+      return (
+        notice.category.includes(trimmedKeyword) ||
+        title.includes(trimmedKeyword)
+      );
+    });
+  }, [trimmedKeyword]);
+
+  const isSearching = trimmedKeyword.length > 0;
+  const hasSearchResult = filteredNotices.length > 0;
 
   return (
     <S.NoticePage>
-      <S.SearchSection>
-        <S.SearchBox>
-          <img src={search} alt="Search" />
-          <S.SearchInput placeholder="궁금한 것을 검색해 보세요" />
-        </S.SearchBox>
-      </S.SearchSection>
+      <SearchInput
+        value={keyword}
+        onChange={setKeyword}
+        placeholder="궁금한 것을 검색해 보세요"
+      />
 
-      <S.SectionHeader>
-        <S.SectionTitle>자주 찾는 공지</S.SectionTitle>
-        <S.ViewAll onClick={() => navigate("/notice/all")}>
-          <p>전체보기</p>
-          <img src={chevronRight} alt="Chevron Right" />
-        </S.ViewAll>
-      </S.SectionHeader>
+      {isSearching ? (
+        hasSearchResult ? (
+          <S.SearchResultList>
+            {filteredNotices.map((notice, index) => (
+              <NoticeListItem
+                key={`${notice.category}-${notice.title}-${index}`}
+                category={notice.category}
+                title={notice.title.replaceAll("\n", " ")}
+              />
+            ))}
+          </S.SearchResultList>
+        ) : (
+          <>
+            <S.SearchEmpty>
+              “{trimmedKeyword}”에 해당하는
+              <br />
+              공지가 없어요
+            </S.SearchEmpty>
 
-      <S.ScrollWrapper>
-        <S.CardScrollArea>
-          {noticeCards.map((card) => (
-            <NoticeCard
-              key={card.category}
-              category={card.category}
-              title={card.title}
-            />
-          ))}
-        </S.CardScrollArea>
-      </S.ScrollWrapper>
+            <S.SearchRecommendArea>
+              <FrequentNotice noticeCards={noticeCards} />
+            </S.SearchRecommendArea>
+          </>
+        )
+      ) : (
+        <>
+          <FrequentNotice noticeCards={noticeCards} />
 
-      <S.FAQSection>
-        <S.SectionTitle>자주 묻는 질문 (FAQ)</S.SectionTitle>
+          <S.FAQSection>
+            <S.SectionTitle>자주 묻는 질문 (FAQ)</S.SectionTitle>
 
-        <S.FAQList>
-          {faqList.map((faq, index) => (
-            <FAQCard
-              key={`${faq.question}-${index}`}
-              question={faq.question}
-              answer={faq.answer}
-            />
-          ))}
-        </S.FAQList>
-      </S.FAQSection>
+            <S.FAQList>
+              {faqList.map((faq, index) => (
+                <FAQCard
+                  key={`${faq.question}-${index}`}
+                  question={faq.question}
+                  answer={faq.answer}
+                />
+              ))}
+            </S.FAQList>
+          </S.FAQSection>
+        </>
+      )}
     </S.NoticePage>
   );
 }

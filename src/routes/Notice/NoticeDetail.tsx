@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+
 import * as S from "../../styles/Notice.style";
 
 interface NoticeDetailData {
@@ -59,7 +60,7 @@ export default function NoticeDetail() {
             type="button"
             aria-label={`${index + 1}번째 공지 이미지 크게 보기`}
             onClick={() =>
-              navigate(`/notice/${notice.id}/image`, {
+              navigate(`/image-detail/notice/${notice.id}`, {
                 state: {
                   initialIndex: index,
                   imageCount: notice.imageCount,

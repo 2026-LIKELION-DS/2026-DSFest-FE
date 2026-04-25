@@ -4,9 +4,11 @@ import AppLayout from "./layouts/AppLayout";
 
 import BoothPage from "./routes/Booth";
 import ArtistPage from "./routes/Artist";
+import SchedulePage from "./routes/Schedule";
 import NoticePage from "./routes/Notice/Notice";
 import NoticeAllPage from "./routes/Notice/NoticeAll";
 import NoticeDetail from "./routes/Notice/NoticeDetail";
+import ImageDetailPage from "./components/Common/ImageDetail";
 import NoticeImageDetail from "./routes/Notice/NoticeImageDetail";
 import LiveTalk from "./routes/LiveTalk";
 
@@ -27,7 +29,6 @@ function App() {
             </AppLayout>
           }
         />
-
         <Route
           path="/artist"
           element={
@@ -38,6 +39,19 @@ function App() {
               showNavBar={false}
             >
               <ArtistPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/schedule"
+          element={
+            <AppLayout
+              title="일정표"
+              subtitle="TIME TABLE"
+              showBackButton={false}
+              showNavBar={true}
+            >
+              <SchedulePage />
             </AppLayout>
           }
         />
@@ -83,6 +97,10 @@ function App() {
               <NoticeDetail />
             </AppLayout>
           }
+        />
+        <Route
+          path="/image-detail/:targetType/:targetId"
+          element={<ImageDetailPage />}
         />
         <Route path="/notice/:id/image" element={<NoticeImageDetail />} />
         <Route
