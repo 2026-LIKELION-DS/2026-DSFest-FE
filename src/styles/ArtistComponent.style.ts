@@ -106,7 +106,7 @@ export const PageButton = styled.button<{ $active: boolean }>`
   padding: 0;
   border: none;
   border-radius: 100px;
-  background: ${({ $active }) => ($active ? "#2f7d3b" : "#b8b8b8")};
+  background: ${({ $active }) => ($active ? "#277B31" : "#9E9E9E")};
   cursor: pointer;
 `;
 
