@@ -69,7 +69,7 @@ export const LinkBlock = styled.div`
   border: 0.5px solid #0b4112;
   border-radius: 2px;
   display: flex;
-  width: 100px;
+  width: 121px;
   padding: 4px 12px;
   justify-content: center;
   align-items: center;
