@@ -27,6 +27,8 @@ export const ModalOverlay = styled.div`
   }
 
   background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
