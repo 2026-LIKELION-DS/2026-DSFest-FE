@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 // @ts-expect-error: Swiper CSS modules are not recognized by TS
 import "swiper/css";
@@ -26,7 +25,7 @@ const BoothModalComponent: React.FC<ModalProps> = ({
   onClose,
   onNavigateToMap,
 }) => {
-  const [selectedImgIdx, setSelectedImgIdx] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   if (!booth) return null;
 
@@ -34,6 +33,16 @@ const BoothModalComponent: React.FC<ModalProps> = ({
     booth.images && booth.images.length > 0
       ? booth.images
       : [examplePhoto, examplePhoto, examplePhoto];
+
+  const handleImageClick = (idx: number) => {
+    navigate(`/image-detail/booth/${booth.id}`, {
+      state: {
+        initialIndex: idx,
+        imageCount: images.length,
+        images: images,
+      },
+    });
+  };
 
   return (
     <>
@@ -67,7 +76,7 @@ const BoothModalComponent: React.FC<ModalProps> = ({
                 <S.BoothImage
                   key={idx}
                   src={src}
-                  onClick={() => setSelectedImgIdx(idx)}
+                  onClick={() => handleImageClick(idx)}
                   alt={`부스 이미지 ${idx + 1}`}
                 />
               ))}
@@ -109,34 +118,6 @@ const BoothModalComponent: React.FC<ModalProps> = ({
           </S.ButtonGroup>
         </S.ModalContainer>
       </S.ModalOverlay>
-
-      {selectedImgIdx !== null && (
-        <S.FullImageOverlay onClick={() => setSelectedImgIdx(null)}>
-          <S.SwiperWrapper onClick={(e) => e.stopPropagation()}>
-            <Swiper
-              modules={[Pagination]}
-              initialSlide={selectedImgIdx}
-              spaceBetween={0}
-              slidesPerView={1}
-              pagination={{ type: "fraction" }}
-              observer={true}
-              observeParents={true}
-              touchEventsTarget="container"
-              className="mySwiper"
-            >
-              {images.map((src: string, index: number) => (
-                <SwiperSlide key={index}>
-                  <S.FullImage src={src} draggable={false} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </S.SwiperWrapper>
-
-          <S.FullCloseButton onClick={() => setSelectedImgIdx(null)}>
-            닫기
-          </S.FullCloseButton>
-        </S.FullImageOverlay>
-      )}
     </>
   );
 };
