@@ -15,7 +15,16 @@ export const PageWrapper = styled.div`
   max-width: 480px;
   margin: 0 auto;
   background: ${({ theme }) => theme.colors.bg.neutral};
-  min-height: 100vh;
+
+  height: 100dvh;
+  overflow-y: auto;
+
+  position: relative;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 export const DayNav = styled.nav`
@@ -219,4 +228,51 @@ export const TimeButtonGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 3px;
+`;
+
+export const FloatingButtonGroup = styled.div<{ $hasTopBtn: boolean }>`
+  position: fixed;
+  bottom: ${({ $hasTopBtn }) =>
+    $hasTopBtn ? "calc(50% - 380px)" : "calc(50% - 370px)"};
+  transform: translateY(50%);
+  left: calc(50% - 10px);
+  transform: translateX(130px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 50;
+  transition: bottom 0.3s ease;
+
+  @media (max-width: 480px) {
+    left: auto;
+    right: 16px;
+    transform: none;
+    bottom: ${({ $hasTopBtn }) =>
+      $hasTopBtn ? "calc(50% - 250px)" : "calc(50% - 270px)"};
+    transform: translateY(50%);
+  }
+`;
+
+export const FloatingCircleBtn = styled.button`
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.bg.brand}; /* 진한 초록 배경 */
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  img {
+    width: 26px;
+    height: 26px;
+  }
 `;
