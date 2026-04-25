@@ -54,11 +54,17 @@ const BoothMapComponent: React.FC<MapProps> = ({
 
   useLayoutEffect(() => {
     if (pinchZoomRef.current && mapRef.current) {
-      const containerHeight = mapRef.current.parentElement?.clientHeight || 400;
-      const initialScale = (containerHeight / 700) * 3;
-      pinchZoomRef.current.scaleTo({ x: 100, y: 100, scale: initialScale });
+      const containerHeight = mapRef.current.parentElement?.clientHeight || 402;
+
+      const initialScale = (containerHeight / 700) * 5;
+
+      pinchZoomRef.current.scaleTo({
+        x: 200,
+        y: 150,
+        scale: initialScale,
+      });
     }
-  }, []);
+  }, [day]);
 
   const renderBooth = (id: number) => {
     const isActive = selectedId === id;
@@ -84,6 +90,14 @@ const BoothMapComponent: React.FC<MapProps> = ({
         ref={pinchZoomRef}
         onUpdate={onUpdate}
         draggableUnZoomed={true}
+        wheelScaleFactor={500}
+        tapZoomFactor={0}
+        containerProps={{
+          style: {
+            width: "100%",
+            height: "100%",
+          },
+        }}
       >
         <S.MapCanvas ref={mapRef}>
           {/* 1. 학생회관 구역 */}

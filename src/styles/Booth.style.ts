@@ -86,6 +86,7 @@ export const MapHugger = styled.div`
   overflow: hidden;
   position: relative;
   touch-action: none;
+  background-color: ${({ theme }) => theme.colors.bg.oliveLight};
 `;
 
 export const FilterButton = styled.button<{ $active: boolean }>`

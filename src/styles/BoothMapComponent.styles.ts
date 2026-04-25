@@ -25,7 +25,9 @@ export const MapCanvas = styled.div`
   width: 1200px;
   height: 1000px;
   background-color: ${({ theme }) => theme.colors.bg.oliveLight};
-  transform-origin: 0 0;
+
+  padding: 200px;
+  box-sizing: border-box;
 `;
 
 export const Section = styled.div<{
@@ -161,7 +163,7 @@ export const GreenZone = styled.div<{
   right: ${(props) => props.$right};
   width: ${(props) => props.$width};
   height: ${(props) => props.$height};
-  background-color: ${({ theme }) => theme.colors.bg.oliveLight};
+  background-color: ${({ theme }) => theme.colors.bg.neutralDeep};
   border-left: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
   display: flex;
   align-items: center;
