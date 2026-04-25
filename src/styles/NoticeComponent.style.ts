@@ -74,3 +74,26 @@ export const AnswerText = styled.p`
   padding-left: 20px;
   text-indent: -18px;
 `;
+
+// NoticeSearchResult
+export const ResultRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #e5ebcf;
+  cursor: pointer;
+`;
+
+export const ResultText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const ResultTitle = styled.p`
+  margin: 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+`;

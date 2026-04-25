@@ -102,6 +102,26 @@ export const FAQList = styled.div`
   margin-top: 28px;
 `;
 
+// NoticeSearchResult
+export const SearchResultList = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+`;
+
+export const SearchEmpty = styled.div`
+  margin-top: 48px;
+  text-align: center;
+  color: #9e9e9e;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+`;
+
+export const SearchRecommendArea = styled.div`
+  margin-top: 64px;
+`;
+
 // NoticeAll
 export const CategoryList = styled.div`
   display: flex;
@@ -130,7 +150,7 @@ export const CategoryButton = styled.button<{ $isActive: boolean }>`
 export const NoticeList = styled.ul`
   display: flex;
   flex-direction: column;
-  margin: 48px 0 0;
+  margin: 24px 0 0;
   padding: 0;
   list-style: none;
 `;
@@ -209,54 +229,4 @@ export const DetailContent = styled.p`
   font-weight: 500;
   line-height: 1.5;
   white-space: pre-line;
-`;
-
-// NoticeImageDetail
-export const ImageDetailPage = styled.main`
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  background-color: #000;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-`;
-
-export const ImageContent = styled.div`
-  width: 100%;
-  max-width: 402px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 24px 0;
-  box-sizing: border-box;
-`;
-
-export const ImageModalCount = styled.p`
-  color: #f2f2f2;
-  font-size: 24px;
-  font-weight: 700;
-`;
-
-export const ImageModalImage = styled.div`
-  width: 100%;
-  height: 500px;
-  background-color: #d9d9d9;
-`;
-
-export const ImageModalCloseButton = styled.button`
-  width: 354px;
-  height: 44px;
-  border: none;
-  border-radius: 100px;
-  background-color: #ffffff;
-  color: #000;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
 `;

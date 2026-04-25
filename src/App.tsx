@@ -8,7 +8,7 @@ import SchedulePage from "./routes/Schedule";
 import NoticePage from "./routes/Notice/Notice";
 import NoticeAllPage from "./routes/Notice/NoticeAll";
 import NoticeDetail from "./routes/Notice/NoticeDetail";
-import NoticeImageDetail from "./routes/Notice/NoticeImageDetail";
+import ImageDetailPage from "./components/Common/ImageDetail";
 
 function App() {
   return (
@@ -27,7 +27,6 @@ function App() {
             </AppLayout>
           }
         />
-
         <Route
           path="/artist"
           element={
@@ -41,7 +40,6 @@ function App() {
             </AppLayout>
           }
         />
-
         <Route
           path="/schedule"
           element={
@@ -98,7 +96,10 @@ function App() {
             </AppLayout>
           }
         />
-        <Route path="/notice/:id/image" element={<NoticeImageDetail />} />
+        <Route
+          path="/image-detail/:targetType/:targetId"
+          element={<ImageDetailPage />}
+        />
       </Routes>
     </Router>
   );
