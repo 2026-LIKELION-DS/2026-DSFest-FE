@@ -258,7 +258,7 @@ export const FloatingCircleBtn = styled.button`
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.bg.brand}; /* 진한 초록 배경 */
+  background: ${({ theme }) => theme.colors.bg.brand};
   border: none;
   display: flex;
   align-items: center;

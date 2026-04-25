@@ -110,7 +110,6 @@ const BoothModalComponent: React.FC<ModalProps> = ({
         </S.ModalContainer>
       </S.ModalOverlay>
 
-      {/* 이미지 상세 모달 (Swipe 활성 버전) */}
       {selectedImgIdx !== null && (
         <S.FullImageOverlay onClick={() => setSelectedImgIdx(null)}>
           <S.SwiperWrapper onClick={(e) => e.stopPropagation()}>
