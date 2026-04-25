@@ -1,7 +1,8 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import * as S from "../styles/Booth.style";
 import BoothMapComponent from "../components/Booth/BoothMapComponent";
 import BoothInfoComponent from "../components/Booth/BoothInfoComponent";
+import BoothModalComponent from "../components/Booth/BoothModalComponent";
 
 import daySelected from "../assets/Booth/DaySelected.svg";
 import dayUnselected from "../assets/Booth/DayUnselected.svg";
@@ -46,35 +47,37 @@ const BOOTH_DATA = [
 ];
 
 const BoothPage: React.FC = () => {
+  const mapSectionRef = useRef<HTMLDivElement>(null);
+
   const [activeDay, setActiveDay] = useState(1);
   const [isOperatingOnly, setIsOperatingOnly] = useState(false);
   const [isNight, setIsNight] = useState(false);
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [targetBooth, setTargetBooth] = useState<any | null>(null);
 
-  const getTodayStatusBubble = () => {
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    const date = today.getDate();
-    const hours = today.getHours();
-    const minutes = today.getMinutes();
-    const currentTime = hours * 100 + minutes;
+  const handleOpenModal = (booth: any) => {
+    setTargetBooth(booth);
+    setIsModalOpen(true);
+  };
 
-    let dayText = "";
-    if (month === 4 || month === 5) {
-      // 테스트를 위해 4월/5월 허용
-      if (date === 25 || date === 13) dayText = "Day 1";
-      else if (date === 14) dayText = "Day 2";
-      else if (date === 15) dayText = "Day 3";
-    }
+  useEffect(() => {
+    setSelectedId(null);
+  }, [activeDay]);
 
-    if (!dayText) return "축제 준비 중입니다! ✨";
-
-    if (currentTime >= 1100 && currentTime <= 1430)
-      return `${dayText} 낮부스 운영 중!`;
-    if (currentTime >= 1500 && currentTime <= 1730)
-      return `${dayText} 밤부스 운영 중!`;
-
-    return `${dayText} 운영 준비 중!`;
+  const handleNavigateToMap = (id: number) => {
+    setIsModalOpen(false);
+    setSelectedId(id);
+    setTimeout(() => {
+      if (mapSectionRef.current) {
+        mapSectionRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }, 10);
   };
 
   const filteredBooths = useMemo(() => {
@@ -84,7 +87,7 @@ const BoothPage: React.FC = () => {
   }, [isOperatingOnly]);
 
   return (
-    <S.PageWrapper>
+    <S.PageWrapper ref={mapSectionRef}>
       <S.DayNav>
         {DAYS_DATA.map((d) => (
           <S.DayTab
@@ -144,9 +147,20 @@ const BoothPage: React.FC = () => {
           운영 중
         </S.FilterButton>
         {filteredBooths.map((booth) => (
-          <BoothInfoComponent key={booth.id} booth={booth} />
+          <BoothInfoComponent
+            key={booth.id}
+            booth={booth}
+            onDetailClick={() => handleOpenModal(booth)} // 자세히보기 클릭 핸들러 전달
+          />
         ))}
       </S.ListSection>
+      {isModalOpen && (
+        <BoothModalComponent
+          booth={targetBooth}
+          onClose={() => setIsModalOpen(false)}
+          onNavigateToMap={handleNavigateToMap}
+        />
+      )}
     </S.PageWrapper>
   );
 };

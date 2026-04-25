@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useLayoutEffect } from "react";
+import React, { useRef, useCallback, useLayoutEffect, useEffect } from "react";
 import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
 import * as S from "../../styles/BoothMapComponent.styles";
 
@@ -45,12 +45,88 @@ const BoothMapComponent: React.FC<MapProps> = ({
   const mapRef = useRef<HTMLDivElement>(null);
   const pinchZoomRef = useRef<any>(null);
 
+  const canvasWidth = 1200;
+  const canvasHeight = 1000;
+  const padding = 200;
+  const totalWidth = canvasWidth + padding * 2;
+  const totalHeight = canvasHeight + padding * 2;
+
   const onUpdate = useCallback(({ x, y, scale }: any) => {
     if (mapRef.current) {
       const value = make3dTransformValue({ x, y, scale });
       mapRef.current.style.setProperty("transform", value);
     }
   }, []);
+
+  useEffect(() => {
+    const BOOTH_POSITIONS_13KH: Record<number, { x: number; y: number }> = {
+      1: { x: 529, y: 432 },
+
+      2: { x: 805, y: 350 },
+      3: { x: 805, y: 418 },
+      4: { x: 805, y: 486 },
+
+      5: { x: 711, y: 544 },
+      6: { x: 711, y: 592 },
+      7: { x: 711, y: 640 },
+      8: { x: 711, y: 688 },
+      9: { x: 711, y: 736 },
+      10: { x: 711, y: 784 },
+      11: { x: 711, y: 832 },
+      12: { x: 711, y: 880 },
+      13: { x: 711, y: 928 },
+
+      14: { x: 1269, y: 541 },
+      15: { x: 1221, y: 541 },
+      16: { x: 1173, y: 541 },
+      17: { x: 1125, y: 541 },
+      18: { x: 1077, y: 541 },
+
+      19: { x: 913, y: 607 },
+      20: { x: 913, y: 655 },
+      21: { x: 913, y: 703 },
+      22: { x: 913, y: 751 },
+      23: { x: 913, y: 799 },
+      24: { x: 913, y: 847 },
+      25: { x: 913, y: 895 },
+
+      30: { x: 1269, y: 942 },
+      29: { x: 1221, y: 942 },
+      28: { x: 1173, y: 942 },
+      27: { x: 1125, y: 942 },
+      26: { x: 1077, y: 942 },
+    };
+
+    if (selectedId && pinchZoomRef.current && mapRef.current) {
+      const targetPos = BOOTH_POSITIONS_13KH[selectedId];
+
+      if (targetPos) {
+        const container = mapRef.current.parentElement;
+        if (!container) return;
+
+        const containerWidth = container.clientWidth;
+        const containerHeight = container.clientHeight;
+
+        const focusScale = (containerHeight / 700) * 5;
+
+        const x =
+          ((targetPos.x * focusScale) / 2 - containerWidth) /
+          (focusScale - 1) /
+          2;
+        const y =
+          ((targetPos.y * focusScale) / 2 - containerHeight) /
+          (focusScale - 1) /
+          2;
+
+        pinchZoomRef.current.scaleTo({
+          x,
+          y,
+          scale: focusScale,
+          animate: true,
+        });
+      }
+    }
+  }, [selectedId]);
 
   useLayoutEffect(() => {
     if (pinchZoomRef.current && mapRef.current) {
@@ -59,9 +135,10 @@ const BoothMapComponent: React.FC<MapProps> = ({
       const initialScale = (containerHeight / 700) * 5;
 
       pinchZoomRef.current.scaleTo({
-        x: 200,
+        x: 210,
         y: 150,
         scale: initialScale,
+        animate: false,
       });
     }
   }, [day]);
@@ -224,22 +301,22 @@ const BoothMapComponent: React.FC<MapProps> = ({
           </S.Section>
 
           {/* 7. 하단 푸드트럭 및 정문 */}
-          <S.AbsoluteBooth
+          <S.AbsoluteFoodTruck
             $top="764px"
             $left="176px"
             $width="60px"
             $height="40px"
           >
             <S.SubLabel>푸드트럭</S.SubLabel>
-          </S.AbsoluteBooth>
-          <S.AbsoluteBooth
+          </S.AbsoluteFoodTruck>
+          <S.AbsoluteFoodTruck
             $top="805px"
             $left="237px"
             $width="122px"
             $height="40px"
           >
             <S.SubLabel>푸드트럭</S.SubLabel>
-          </S.AbsoluteBooth>
+          </S.AbsoluteFoodTruck>
           <S.Section $top="804px" $left="539px" $width="123px" $height="64px">
             정문
           </S.Section>

@@ -102,6 +102,33 @@ export const AbsoluteBooth = styled.div<{
   `}
 `;
 
+export const AbsoluteFoodTruck = styled.div<{
+  $top?: string;
+  $bottom?: string;
+  $left?: string;
+  $right?: string;
+  $width?: string;
+  $height?: string;
+}>`
+  background-color: ${({ theme }) => theme.colors.bg.neutralDeep};
+  color: ${({ theme }) => theme.colors.bg.brandLight};
+  ${setTypo("bodySm")};
+  font-weight: 500;
+  border: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ${(props) => css`
+    top: ${props.$top};
+    bottom: ${props.$bottom};
+    left: ${props.$left};
+    right: ${props.$right};
+    width: ${props.$width};
+    height: ${props.$height};
+  `}
+`;
+
 export const InnerBlock = styled.div<{
   $top?: string;
   $right?: string;
