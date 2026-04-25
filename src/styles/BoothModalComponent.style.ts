@@ -26,7 +26,7 @@ export const ModalOverlay = styled.div`
     border-radius: 24px;
   }
 
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
