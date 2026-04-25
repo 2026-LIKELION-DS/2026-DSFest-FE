@@ -10,6 +10,7 @@ import NoticeAllPage from "./routes/Notice/NoticeAll";
 import NoticeDetail from "./routes/Notice/NoticeDetail";
 // import ImageDetailPage from "./components/Common/ImageDetail";
 import LiveTalk from "./routes/LiveTalk";
+import Error from "./routes/Error";
 
 function App() {
   return (
@@ -115,6 +116,7 @@ function App() {
             </AppLayout>
           }
         />
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   );
