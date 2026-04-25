@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as S from "../../styles/Notice.style";
 
-import searchIcon from "../../assets/Notice/Search.svg";
-import chevronRight from "../../assets/Notice/ChevronRight_black.svg";
+import SearchInput from "../../components/Notice/SearchInput";
+import NoticeListItem from "../../components/Notice/NoticeListItem";
+
+import * as S from "../../styles/Notice.style";
 
 type NoticeCategory = "전체보기" | "공연" | "이벤트" | "안내" | "기타";
 
@@ -32,22 +33,31 @@ const noticeList: NoticeItem[] = [
 export default function NoticeAll() {
   const navigate = useNavigate();
 
+  const [keyword, setKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] =
     useState<NoticeCategory>("전체보기");
 
-  const filteredList =
-    selectedCategory === "전체보기"
-      ? noticeList
-      : noticeList.filter((item) => item.category === selectedCategory);
+  const trimmedKeyword = keyword.trim();
+
+  const filteredList = noticeList.filter((item) => {
+    const isCategoryMatched =
+      selectedCategory === "전체보기" || item.category === selectedCategory;
+
+    const isKeywordMatched =
+      trimmedKeyword.length === 0 ||
+      item.category.includes(trimmedKeyword) ||
+      item.title.includes(trimmedKeyword);
+
+    return isCategoryMatched && isKeywordMatched;
+  });
 
   return (
     <S.NoticePage>
-      <S.SearchSection>
-        <S.SearchBox>
-          <S.SearchIcon src={searchIcon} alt="" />
-          <S.SearchInput placeholder="궁금한 것을 검색해 보세요" />
-        </S.SearchBox>
-      </S.SearchSection>
+      <SearchInput
+        value={keyword}
+        onChange={setKeyword}
+        placeholder="궁금한 것을 검색해 보세요"
+      />
 
       <S.CategoryList>
         {categories.map((category) => (
@@ -62,21 +72,24 @@ export default function NoticeAll() {
         ))}
       </S.CategoryList>
 
-      <S.NoticeList>
-        {filteredList.map((notice) => (
-          <S.NoticeItem
-            key={notice.id}
-            onClick={() => navigate(`/notice/${notice.id}`)}
-          >
-            <S.NoticeTextBox>
-              <S.NoticeCategory>{notice.category}</S.NoticeCategory>
-              <S.NoticeTitle>{notice.title}</S.NoticeTitle>
-            </S.NoticeTextBox>
-
-            <img src={chevronRight} alt="상세보기" />
-          </S.NoticeItem>
-        ))}
-      </S.NoticeList>
+      {filteredList.length > 0 ? (
+        <S.NoticeList>
+          {filteredList.map((notice) => (
+            <NoticeListItem
+              key={notice.id}
+              category={notice.category}
+              title={notice.title}
+              onClick={() => navigate(`/notice/${notice.id}`)}
+            />
+          ))}
+        </S.NoticeList>
+      ) : (
+        <S.SearchEmpty>
+          “{trimmedKeyword}”에 해당하는
+          <br />
+          공지가 없어요
+        </S.SearchEmpty>
+      )}
     </S.NoticePage>
   );
 }

@@ -102,6 +102,26 @@ export const FAQList = styled.div`
   margin-top: 28px;
 `;
 
+// NoticeSearchResult
+export const SearchResultList = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+`;
+
+export const SearchEmpty = styled.div`
+  margin-top: 48px;
+  text-align: center;
+  color: #9e9e9e;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+`;
+
+export const SearchRecommendArea = styled.div`
+  margin-top: 64px;
+`;
+
 // NoticeAll
 export const CategoryList = styled.div`
   display: flex;
@@ -130,7 +150,7 @@ export const CategoryButton = styled.button<{ $isActive: boolean }>`
 export const NoticeList = styled.ul`
   display: flex;
   flex-direction: column;
-  margin: 48px 0 0;
+  margin: 24px 0 0;
   padding: 0;
   list-style: none;
 `;
