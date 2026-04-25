@@ -9,7 +9,7 @@ import ArtistActionButtons from "../components/Artist/ArtistActionButton";
 import ArtistPagination from "../components/Artist/ArtistPagination";
 import PlaylistNotice from "../components/Artist/PlaylistNotice";
 import ArtistPlaylist from "../components/Artist/ArtistPlaylist";
-import Modal from "../components/Common/ModalComponent";
+import ArtistModal from "../components/Artist/ArtistModalComponent";
 
 import { getPerformanceStatus } from "../utils/artist";
 import { useArtistCarousel } from "../hooks/Artist/useArtistCarousel";
@@ -131,7 +131,6 @@ function ArtistPage() {
   const [currentDay, setCurrentDay] = useState<"day1" | "day2" | "day3">(
     "day1",
   );
-
   const [status, setStatus] = useState<PerformanceStatus>("BEFORE");
   const [statusText, setStatusText] = useState("");
   const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
@@ -159,7 +158,6 @@ function ArtistPage() {
 
     const updateStatus = () => {
       const result = getPerformanceStatus(start, end);
-
       setStatus(result.status);
       setStatusText(result.text);
     };
@@ -181,9 +179,7 @@ function ArtistPage() {
             key={day.key}
             type="button"
             $active={currentDay === day.key}
-            onClick={() => {
-              setCurrentDay(day.key);
-            }}
+            onClick={() => setCurrentDay(day.key)}
           >
             {day.label}
             <span>{day.date}</span>
@@ -235,11 +231,9 @@ function ArtistPage() {
 
         <PlaylistNotice />
 
-        <Modal
+        <ArtistModal
           isOpen={isGuideModalOpen}
           onClose={() => setIsGuideModalOpen(false)}
-          title="스탠딩존 입장 관련 안내"
-          content="스탠딩존 입장 관련 안내"
         />
       </S.ArtistContent>
     </S.ArtistPage>

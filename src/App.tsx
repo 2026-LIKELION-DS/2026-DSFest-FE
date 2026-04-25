@@ -8,7 +8,7 @@ import SchedulePage from "./routes/Schedule";
 import NoticePage from "./routes/Notice/Notice";
 import NoticeAllPage from "./routes/Notice/NoticeAll";
 import NoticeDetail from "./routes/Notice/NoticeDetail";
-import ImageDetailPage from "./components/Common/ImageDetail";
+// import ImageDetailPage from "./components/Common/ImageDetail";
 import LiveTalk from "./routes/LiveTalk";
 import Error from "./routes/Error";
 
@@ -98,6 +98,10 @@ function App() {
             </AppLayout>
           }
         />
+        {/* <Route
+          path="/image-detail/:targetType/:targetId"
+          element={<ImageDetailPage />}
+        /> */}
         <Route
           path="/livetalk"
           element={
