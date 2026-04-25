@@ -3,12 +3,16 @@ import * as S from "../styles/Booth.style";
 import BoothMapComponent from "../components/Booth/BoothMapComponent";
 import BoothInfoComponent from "../components/Booth/BoothInfoComponent";
 import BoothModalComponent from "../components/Booth/BoothModalComponent";
+import Modal from "../components/Common/ModalComponent";
 
 import daySelected from "../assets/Booth/DaySelected.svg";
 import dayUnselected from "../assets/Booth/DayUnselected.svg";
 import nightSelected from "../assets/Booth/NightSelected.svg";
 import nightUnselected from "../assets/Booth/NightUnselected.svg";
 import randomIcon from "../assets/Booth/RandomBooth.svg";
+import announceIcon from "../assets/Booth/BoothAnnounce.svg";
+import upIcon from "../assets/Booth/BoothUp.svg";
+import examplePhoto from "../assets/hahyunsang_sample.svg";
 
 const DAYS_DATA = [
   { id: 1, date: "13일", dayOfWeek: "수" },
@@ -55,6 +59,49 @@ const BoothPage: React.FC = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [targetBooth, setTargetBooth] = useState<any | null>(null);
+  const [showTopBtn, setShowTopBtn] = useState(false);
+  const [isNoticeOpen, setIsNoticeOpen] = useState(false);
+
+  const noticeData = {
+    title: "부스 관련 공지 제목",
+    content: `공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 
+    
+    공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게`,
+    images: [examplePhoto, examplePhoto], // 공지사항용 이미지가 있다면 여기에 추가
+  };
+
+  useEffect(() => {
+    const handleShowButton = () => {
+      if (window.scrollY > 0) {
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleShowButton);
+    return () => {
+      window.removeEventListener("scroll", handleShowButton);
+    };
+  }, []);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const scrollTop = e.currentTarget.scrollTop;
+    if (scrollTop > 0) {
+      setShowTopBtn(true);
+    } else {
+      setShowTopBtn(false);
+    }
+  };
+
+  const handleScrollToTop = () => {
+    if (mapSectionRef.current) {
+      mapSectionRef.current.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const handleOpenModal = (booth: any) => {
     setTargetBooth(booth);
@@ -70,12 +117,10 @@ const BoothPage: React.FC = () => {
     setSelectedId(id);
     setTimeout(() => {
       if (mapSectionRef.current) {
-        mapSectionRef.current.scrollIntoView({
+        mapSectionRef.current.scrollTo({
+          top: 0,
           behavior: "smooth",
-          block: "start",
         });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     }, 10);
   };
@@ -87,7 +132,7 @@ const BoothPage: React.FC = () => {
   }, [isOperatingOnly]);
 
   return (
-    <S.PageWrapper ref={mapSectionRef}>
+    <S.PageWrapper ref={mapSectionRef} onScroll={handleScroll}>
       <S.DayNav>
         {DAYS_DATA.map((d) => (
           <S.DayTab
@@ -103,7 +148,6 @@ const BoothPage: React.FC = () => {
           </S.DayTab>
         ))}
       </S.DayNav>
-
       <S.MapHugger>
         <S.TimeFilter>
           <S.TimeButtonGroup>
@@ -134,7 +178,6 @@ const BoothPage: React.FC = () => {
           booths={BOOTH_DATA}
         />
       </S.MapHugger>
-
       <S.ListSection>
         <S.BoothList>부스 리스트</S.BoothList>
         <S.BoothCur>
@@ -150,10 +193,21 @@ const BoothPage: React.FC = () => {
           <BoothInfoComponent
             key={booth.id}
             booth={booth}
-            onDetailClick={() => handleOpenModal(booth)} // 자세히보기 클릭 핸들러 전달
+            onDetailClick={() => handleOpenModal(booth)}
           />
         ))}
       </S.ListSection>
+      <S.FloatingButtonGroup $hasTopBtn={showTopBtn}>
+        <S.FloatingCircleBtn onClick={() => setIsNoticeOpen(true)}>
+          <img src={announceIcon} alt="announce" />
+        </S.FloatingCircleBtn>
+
+        {showTopBtn && (
+          <S.FloatingCircleBtn onClick={handleScrollToTop}>
+            <img src={upIcon} alt="scroll to top" />
+          </S.FloatingCircleBtn>
+        )}
+      </S.FloatingButtonGroup>
       {isModalOpen && (
         <BoothModalComponent
           booth={targetBooth}
@@ -161,6 +215,13 @@ const BoothPage: React.FC = () => {
           onNavigateToMap={handleNavigateToMap}
         />
       )}
+      <Modal
+        isOpen={isNoticeOpen}
+        onClose={() => setIsNoticeOpen(false)}
+        title={noticeData.title}
+        content={noticeData.content}
+        images={noticeData.images}
+      />
     </S.PageWrapper>
   );
 };
