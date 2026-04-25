@@ -4,6 +4,7 @@ import AppLayout from "./layouts/AppLayout";
 
 import BoothPage from "./routes/Booth";
 import ArtistPage from "./routes/Artist";
+import SchedulePage from "./routes/Schedule";
 import NoticePage from "./routes/Notice/Notice";
 import NoticeAllPage from "./routes/Notice/NoticeAll";
 import NoticeDetail from "./routes/Notice/NoticeDetail";
@@ -37,6 +38,20 @@ function App() {
               showNavBar={false}
             >
               <ArtistPage />
+            </AppLayout>
+          }
+        />
+
+        <Route
+          path="/schedule"
+          element={
+            <AppLayout
+              title="일정표"
+              subtitle="TIME TABLE"
+              showBackButton={false}
+              showNavBar={true}
+            >
+              <SchedulePage />
             </AppLayout>
           }
         />
