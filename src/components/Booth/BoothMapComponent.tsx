@@ -1,6 +1,6 @@
 import React, { useRef, useCallback, useLayoutEffect } from "react";
 import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
-import * as S from "../styles/BoothMapComponent.styles";
+import * as S from "../../styles/BoothMapComponent.styles";
 
 interface MapProps {
   day: number;
@@ -66,7 +66,11 @@ const BoothMapComponent: React.FC<MapProps> = ({
 
     return (
       <S.BoothContainer key={id}>
-        {isActive && <S.BoothNameBubble>{boothName}</S.BoothNameBubble>}
+        {isActive && (
+          <S.BoothNameBubble>
+            <S.BoothNameText>{boothName}</S.BoothNameText>
+          </S.BoothNameBubble>
+        )}
         <S.BoothSlot $isActive={isActive} onClick={() => onBoothClick?.(id)}>
           {id}
         </S.BoothSlot>

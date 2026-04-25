@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import * as S from "../styles/Booth.style";
-import BoothMapComponent from "../components/BoothMapComponent";
-import BoothInfoComponent from "../components/BoothInfoComponent";
+import BoothMapComponent from "../components/Booth/BoothMapComponent";
+import BoothInfoComponent from "../components/Booth/BoothInfoComponent";
 
 import daySelected from "../assets/Booth/DaySelected.svg";
 import dayUnselected from "../assets/Booth/DayUnselected.svg";
@@ -18,7 +18,7 @@ const DAYS_DATA = [
 const BOOTH_DATA = [
   {
     id: 1,
-    name: "오세요 잡화점",
+    name: "오세요 잡화점오세요 잡화점오세요 잡화점오세요 잡화점",
     category: "판매",
     operator: "운영진",
     description:
@@ -95,7 +95,7 @@ const BoothPage: React.FC = () => {
             <S.Label>DAY {d.id}</S.Label>
             <S.DateText>
               <div>{d.date}</div>
-              <div>({d.dayOfWeek})</div>
+              <div>{d.dayOfWeek}</div>
             </S.DateText>
           </S.DayTab>
         ))}

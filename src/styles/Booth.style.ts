@@ -20,12 +20,13 @@ export const PageWrapper = styled.div`
 
 export const DayNav = styled.nav`
   display: flex;
-  justify-content: space-around;
-  padding: 16px 0;
+  justify-content: space-between;
+  padding: 24px 24px 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.stroke.oliveLight};
 `;
 
 export const DayTab = styled.div<{ $active: boolean }>`
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,13 +37,15 @@ export const DayTab = styled.div<{ $active: boolean }>`
 
 export const Label = styled.span`
   ${setTypo("h1")};
-  margin: 10px 0;
+  margin-bottom: 8px;
+  line-height: 1;
 `;
 
 export const DateText = styled.span`
   ${setTypo("bodyMd")};
   display: flex;
-  gap: 5px;
+  gap: 3px;
+  margin-bottom: 10px;
 `;
 
 export const ListSection = styled.div`
@@ -82,6 +85,7 @@ export const MapHugger = styled.div`
   height: 402px;
   overflow: hidden;
   position: relative;
+  touch-action: none;
 `;
 
 export const FilterButton = styled.button<{ $active: boolean }>`

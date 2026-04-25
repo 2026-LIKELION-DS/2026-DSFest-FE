@@ -1,6 +1,6 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
-import * as S from "../styles/BoothInfoComponent.style";
-import examplePhoto from "../assets/hahyunsang_sample.svg";
+import * as S from "../../styles/BoothInfoComponent.style";
+import examplePhoto from "../../assets/hahyunsang_sample.svg";
 
 interface Booth {
   id: number;
