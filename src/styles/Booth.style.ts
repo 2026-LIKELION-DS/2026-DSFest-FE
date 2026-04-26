@@ -276,3 +276,25 @@ export const FloatingCircleBtn = styled.button`
     height: 26px;
   }
 `;
+
+export const EmptyStateWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  text-align: center;
+`;
+
+export const EmptyMessage = styled.div`
+  ${setTypo("h2")};
+  color: ${({ theme }) => theme.colors.fg.subtle};
+  margin-bottom: 8px;
+  white-space: pre-wrap;
+`;
+
+export const NextTimeText = styled.div`
+  ${setTypo("bodyMd")};
+  font-size: 14px;
+  color: #c0c0c0;
+`;

@@ -28,7 +28,7 @@ const BOOTH_DATA = [
     operator: "운영진",
     description:
       "부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게",
-    status: "운영 중" as const,
+    status: "운영 예정" as const,
   },
   {
     id: 2,
@@ -52,6 +52,7 @@ const BOOTH_DATA = [
 
 const BoothPage: React.FC = () => {
   const mapSectionRef = useRef<HTMLDivElement>(null);
+  const listSectionRef = useRef<HTMLDivElement>(null);
 
   const [activeDay, setActiveDay] = useState(1);
   const [isOperatingOnly, setIsOperatingOnly] = useState(false);
@@ -110,7 +111,7 @@ const BoothPage: React.FC = () => {
 
   useEffect(() => {
     setSelectedId(null);
-  }, [activeDay]);
+  }, [activeDay, isNight]);
 
   const handleNavigateToMap = (id: number) => {
     setIsModalOpen(false);
@@ -130,6 +131,45 @@ const BoothPage: React.FC = () => {
       ? BOOTH_DATA.filter((b) => b.status === "운영 중")
       : BOOTH_DATA;
   }, [isOperatingOnly]);
+
+  const currentPeriodBooths = useMemo(() => {
+    return BOOTH_DATA;
+  }, [activeDay, isNight]);
+
+  const operatingBooths = useMemo(() => {
+    return currentPeriodBooths.filter((b) => b.status === "운영 중");
+  }, [currentPeriodBooths]);
+
+  const displayBooths = useMemo(() => {
+    if (selectedId) {
+      return BOOTH_DATA.filter((b) => b.id === selectedId);
+    }
+    const baseList = isOperatingOnly
+      ? BOOTH_DATA.filter((b) => b.status === "운영 중")
+      : BOOTH_DATA;
+    return baseList;
+  }, [selectedId, isOperatingOnly]);
+
+  const isOffHours = useMemo(() => {
+    return (
+      operatingBooths.length === 0 &&
+      currentPeriodBooths.some((b) => b.status === "운영 예정")
+    );
+  }, [operatingBooths, currentPeriodBooths]);
+
+  const handleBoothClick = (id: number) => {
+    if (selectedId === id) {
+      setSelectedId(null);
+    } else {
+      setSelectedId(id);
+      setTimeout(() => {
+        listSectionRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 100);
+    }
+  };
 
   return (
     <S.PageWrapper ref={mapSectionRef} onScroll={handleScroll}>
@@ -163,7 +203,7 @@ const BoothPage: React.FC = () => {
               <span>밤</span>
             </S.TimeOption>
           </S.TimeButtonGroup>
-          <S.TimeText>{isNight ? "15:00~17:30" : "11:00~14:30"}</S.TimeText>
+          <S.TimeText>{isNight ? "16:00~19:30" : "11:00~14:30"}</S.TimeText>
         </S.TimeFilter>
 
         <S.RandomFloatBtn onClick={() => {}}>
@@ -173,29 +213,51 @@ const BoothPage: React.FC = () => {
 
         <BoothMapComponent
           day={activeDay}
+          time={isNight ? "night" : "day"}
           selectedId={selectedId}
-          onBoothClick={setSelectedId}
+          onBoothClick={handleBoothClick}
           booths={BOOTH_DATA}
         />
       </S.MapHugger>
       <S.ListSection>
-        <S.BoothList>부스 리스트</S.BoothList>
+        <S.BoothList>
+          {selectedId ? "선택한 부스 정보" : "부스 리스트"}
+        </S.BoothList>
         <S.BoothCur>
-          <S.BoothAmount>총 {filteredBooths.length}개</S.BoothAmount>의 부스
+          <S.BoothAmount>총 {displayBooths.length}개</S.BoothAmount>의 부스
         </S.BoothCur>
-        <S.FilterButton
-          $active={isOperatingOnly}
-          onClick={() => setIsOperatingOnly(!isOperatingOnly)}
-        >
-          운영 중
-        </S.FilterButton>
-        {filteredBooths.map((booth) => (
-          <BoothInfoComponent
-            key={booth.id}
-            booth={booth}
-            onDetailClick={() => handleOpenModal(booth)}
-          />
-        ))}
+        {!selectedId && (
+          <S.FilterButton
+            $active={isOperatingOnly}
+            onClick={() => setIsOperatingOnly(!isOperatingOnly)}
+          >
+            운영 중
+          </S.FilterButton>
+        )}
+        {displayBooths.length > 0 ? (
+          displayBooths.map((booth) => (
+            <BoothInfoComponent
+              key={booth.id}
+              booth={booth}
+              onDetailClick={() => handleOpenModal(booth)}
+            />
+          ))
+        ) : (
+          <S.EmptyStateWrapper>
+            {isOffHours ? (
+              <>
+                <S.EmptyMessage>지금은 부스 운영시간이 아닙니다</S.EmptyMessage>
+                <S.NextTimeText>
+                  다음 부스 시간 : {isNight ? "11:00~14:30" : "11:00~14:30"}
+                </S.NextTimeText>
+              </>
+            ) : (
+              <S.EmptyMessage>
+                DAY {activeDay}의 부스가 모두 종료되었습니다
+              </S.EmptyMessage>
+            )}
+          </S.EmptyStateWrapper>
+        )}
       </S.ListSection>
       <S.FloatingButtonGroup $hasTopBtn={showTopBtn}>
         <S.FloatingCircleBtn onClick={() => setIsNoticeOpen(true)}>
