@@ -12,7 +12,7 @@ const setTypo = (key: keyof typeof typography) => {
 };
 
 export const PageWrapper = styled.div`
-  max-width: 480px;
+  max-width: 767px;
   margin: 0 auto;
   background: ${({ theme }) => theme.colors.bg.neutral};
 
@@ -146,21 +146,23 @@ export const TimeButtonGroup = styled.div`
 `;
 
 export const FloatingButtonGroup = styled.div<{ $hasTopBtn: boolean }>`
-  position: fixed;
   bottom: 13px;
   z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3px;
-
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translateX(calc(201px - 100% - 25px));
-  @media (min-height: 874px) {
-    bottom: calc(50% - 437px + 13px + 12px);
-  }
-  @media (max-width: 320px) {
-    transform: translateX(calc(201px - 100% - 60px));
+  transform: translate(calc(-10%), calc(35%));
+
+  width: 100%;
+  height: 100dvh;
+  @media (min-width: 768px) or (max-height: 973px) {
+    height: 874px;
+    border-radius: 24px;
+    max-width: 402px;
   }
 `;
 
