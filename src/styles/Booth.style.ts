@@ -98,91 +98,6 @@ export const MapHugger = styled.div`
   background-color: ${({ theme }) => theme.colors.bg.oliveLight};
 `;
 
-export const FilterButton = styled.button<{ $active: boolean }>`
-  ${setTypo("buttonMd")};
-
-  background: ${({ $active, theme }) =>
-    $active ? theme.colors.bg.brand : theme.colors.bg.neutral};
-  color: ${({ $active, theme }) =>
-    $active ? theme.colors.fg.primaryInverted : theme.colors.fg.primary};
-  border: 1px solid
-    ${({ $active, theme }) =>
-      $active ? theme.colors.bg.brand : theme.colors.stroke.subtle};
-
-  padding: 8px 15px;
-  border-radius: 9999px;
-  cursor: pointer;
-  margin-bottom: 10px;
-  transition: all 0.1s ease-in-out;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
-export const TimeFilter = styled.div`
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-items: center;
-  z-index: 10;
-  gap: 3px;
-  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.1));
-`;
-
-export const TimeOption = styled.button<{ $active: boolean }>`
-  ${setTypo("bodySm")};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  padding: 7px 15px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-
-  background: ${({ $active, theme }) =>
-    $active ? theme.colors.bg.brand : "#E3E9D2"};
-  color: ${({ $active, theme }) =>
-    $active ? "#FFFFFF" : theme.colors.bg.brand};
-
-  &:first-child {
-    border-top-left-radius: 999px;
-    border-bottom-left-radius: 999px;
-    border-top-right-radius: ${({ $active }) => ($active ? "999px" : "4px")};
-    border-bottom-right-radius: ${({ $active }) => ($active ? "999px" : "4px")};
-    z-index: ${({ $active }) => ($active ? 2 : 1)};
-  }
-
-  &:last-child {
-    border-top-right-radius: 999px;
-    border-bottom-right-radius: 999px;
-    border-top-left-radius: ${({ $active }) => ($active ? "999px" : "24px")};
-    border-bottom-left-radius: ${({ $active }) => ($active ? "999px" : "24px")};
-    z-index: ${({ $active }) => ($active ? 2 : 1)};
-  }
-
-  ${({ $active }) =>
-    !$active &&
-    css`
-      box-shadow: 0 0 4px 0 rgba(113, 122, 114, 0.4);
-    `}
-
-  img {
-    width: 18px;
-    height: 18px;
-    ${({ $active }) =>
-      !$active &&
-      css`
-        filter: brightness(0) saturate(100%) invert(18%) sepia(50%)
-          saturate(1000%) hue-rotate(80deg);
-      `}
-  }
-`;
-
 export const RandomFloatBtn = styled.button`
   position: absolute;
   bottom: 40px;
@@ -232,25 +147,17 @@ export const TimeButtonGroup = styled.div`
 
 export const FloatingButtonGroup = styled.div<{ $hasTopBtn: boolean }>`
   position: fixed;
-  bottom: ${({ $hasTopBtn }) =>
-    $hasTopBtn ? "calc(50% - 380px)" : "calc(50% - 370px)"};
-  transform: translateY(50%);
-  left: calc(50% - 10px);
-  transform: translateX(130px);
-
+  bottom: 13px;
+  z-index: 100;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  z-index: 50;
-  transition: bottom 0.3s ease;
+  align-items: center;
+  gap: 3px;
 
-  @media (max-width: 480px) {
-    left: auto;
-    right: 16px;
-    transform: none;
-    bottom: ${({ $hasTopBtn }) =>
-      $hasTopBtn ? "calc(50% - 250px)" : "calc(50% - 270px)"};
-    transform: translateY(50%);
+  left: 50%;
+  transform: translateX(calc(201px - 100% - 25px));
+  @media (min-height: 874px) {
+    bottom: calc(50% - 437px + 13px + 12px);
   }
 `;
 
@@ -264,7 +171,6 @@ export const FloatingCircleBtn = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
 
   &:active {
@@ -297,4 +203,111 @@ export const NextTimeText = styled.div`
   ${setTypo("bodyMd")};
   font-size: 14px;
   color: #c0c0c0;
+`;
+
+export const FilterButton = styled.button<{ $active: boolean }>`
+  ${setTypo("buttonMd")};
+
+  background: ${({ $active, theme }) =>
+    $active ? theme.colors.bg.brand : theme.colors.bg.neutral};
+
+  color: ${({ $active, theme }) =>
+    $active ? theme.colors.fg.primaryInverted : theme.colors.fg.primary};
+
+  border: 1px solid
+    ${({ $active, theme }) =>
+      $active ? theme.colors.bg.brand : theme.colors.stroke.subtle};
+
+  padding: 8px 15px;
+
+  border-radius: 9999px;
+
+  cursor: pointer;
+
+  margin-bottom: 10px;
+
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+export const TimeTextContainer = styled.div`
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+`;
+
+export const HeaderToggleOverlay = styled.div`
+  position: fixed;
+  top: 13px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.1));
+
+  left: 50%;
+  transform: translateX(calc(201px - 100% - 25px));
+  @media (min-height: 874px) {
+    top: calc(50% - 437px + 13px + 12px);
+  }
+`;
+
+export const HeaderTimeOption = styled.button<{ $active: boolean }>`
+  ${setTypo("buttonSm")};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  background: ${({ $active, theme }) =>
+    $active ? theme.colors.bg.brand : theme.colors.bg.olive};
+  color: ${({ $active, theme }) =>
+    $active ? theme.colors.fg.primaryInverted : theme.colors.bg.brand};
+
+  &:first-child {
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
+    border-top-right-radius: ${({ $active }) => ($active ? "999px" : "24px")};
+    border-bottom-right-radius: ${({ $active }) =>
+      $active ? "999px" : "24px"};
+    z-index: ${({ $active }) => ($active ? 2 : 1)};
+  }
+
+  &:last-child {
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+    border-top-left-radius: ${({ $active }) => ($active ? "999px" : "24px")};
+    border-bottom-left-radius: ${({ $active }) => ($active ? "999px" : "24px")};
+    z-index: ${({ $active }) => ($active ? 2 : 1)};
+  }
+
+  ${({ $active }) =>
+    !$active &&
+    css`
+      box-shadow: 0 0 4px 0 rgba(113, 122, 114, 0.4);
+    `}
+
+  img {
+    width: 18px;
+    height: 18px;
+    ${({ $active }) =>
+      !$active &&
+      css`
+        filter: brightness(0) saturate(100%) invert(18%) sepia(50%)
+          saturate(1000%) hue-rotate(80deg);
+      `}
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
