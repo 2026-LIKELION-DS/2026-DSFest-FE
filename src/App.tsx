@@ -13,6 +13,7 @@ import ContestPage from "./routes/Contest";
 // import ImageDetailPage from "./components/Common/ImageDetail";
 import LiveTalk from "./routes/LiveTalk";
 import Error from "./routes/Error";
+import Food from "./routes/Food";
 
 function App() {
   return (
@@ -135,6 +136,19 @@ function App() {
           }
         />
         <Route path="*" element={<Error />} />
+        <Route
+          path="/foodtruck"
+          element={
+            <AppLayout
+              title="푸드트럭"
+              subtitle="FOOD TRUCK"
+              showBackButton={true}
+              showNavBar={false}
+            >
+              <Food />
+            </AppLayout>
+          }
+        />
       </Routes>
     </Router>
   );
