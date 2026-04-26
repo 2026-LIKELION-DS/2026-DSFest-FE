@@ -2,14 +2,11 @@ import styled from "styled-components";
 import { theme } from "./theme";
 
 export const Overlay = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,9 +54,10 @@ export const ImageRow = styled.div`
 export const Image = styled.img`
   flex: 1px;
   height: 180px;
-
+  width: 144px;
   object-fit: cover;
   border-radius: 4px;
+  cursor: pointer;
 `;
 
 export const Content = styled.p`
@@ -84,4 +82,41 @@ export const CloseButton = styled.button`
   border: 0.5px solid var(--Stroke-subtle, #9e9e9e);
   font-family: ${theme.typography.buttonMd};
   cursor: pointer;
+`;
+
+export const CommonModalOverlay = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  height: 100dvh;
+  @media (min-width: 768px) {
+    border: 12px solid ${({ theme }) => theme.colors.olive[50]};
+    height: 874px;
+    border-radius: 24px;
+    max-width: 402px;
+  }
+
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+`;
+
+export const CommonModalContainer = styled.div`
+  width: 100%;
+  max-width: 354px;
+  max-height: 90%;
+  border-radius: 4px;
+  position: relative;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;

@@ -13,6 +13,7 @@ import randomIcon from "../assets/Booth/RandomBooth.svg";
 import announceIcon from "../assets/Booth/BoothAnnounce.svg";
 import upIcon from "../assets/Booth/BoothUp.svg";
 import examplePhoto from "../assets/hahyunsang_sample.svg";
+import upWhiteIcon from "../assets/Booth/BoothUpWhite.svg";
 
 const DAYS_DATA = [
   { id: 1, date: "13일", dayOfWeek: "수" },
@@ -72,13 +73,14 @@ const BoothPage: React.FC = () => {
   const [targetBooth, setTargetBooth] = useState<Booth | null>(null);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
+  const [showGuide, setShowGuide] = useState(true);
 
   const noticeData = {
     title: "부스 관련 공지 제목",
     content: `공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 
     
     공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게`,
-    images: [examplePhoto, examplePhoto],
+    images: [examplePhoto, examplePhoto], // 공지사항용 이미지가 있다면 여기에 추가
   };
 
   useEffect(() => {
@@ -132,132 +134,105 @@ const BoothPage: React.FC = () => {
     }, 10);
   };
 
-  // 리스트 표시용 부스 데이터 (클릭 여부와 상관없이 유지되도록 수정)
-  const displayBooths = useMemo(() => {
-    const baseList = BOOTH_DATA;
-    return isOperatingOnly
-      ? baseList.filter((b) => b.status === "운영 중")
-      : baseList;
-  }, [isOperatingOnly]);
+  const currentPeriodBooths = useMemo(() => {
+    return BOOTH_DATA;
+  }, []);
 
   const operatingBooths = useMemo(() => {
-    return BOOTH_DATA.filter((b) => b.status === "운영 중");
-  }, []);
+    return currentPeriodBooths.filter((b) => b.status === "운영 중");
+  }, [currentPeriodBooths]);
+
+  const displayBooths = useMemo(() => {
+    if (selectedId) {
+      return BOOTH_DATA.filter((b) => b.id === selectedId);
+    }
+    const baseList = isOperatingOnly
+      ? BOOTH_DATA.filter((b) => b.status === "운영 중")
+      : BOOTH_DATA;
+    return baseList;
+  }, [selectedId, isOperatingOnly]);
 
   const isOffHours = useMemo(() => {
     return (
       operatingBooths.length === 0 &&
-      BOOTH_DATA.some((b) => b.status === "운영 예정")
+      currentPeriodBooths.some((b) => b.status === "운영 예정")
     );
-  }, [operatingBooths]);
+  }, [operatingBooths, currentPeriodBooths]);
 
   const handleBoothClick = (id: number) => {
     setSelectedId(id);
+
     const clickedBooth = BOOTH_DATA.find((b) => b.id === id);
+
     if (clickedBooth) {
       handleOpenModal(clickedBooth);
     }
   };
-
   return (
-    <S.PageWrapper ref={mapSectionRef} onScroll={handleScroll}>
-      <S.DayNav>
-        {DAYS_DATA.map((d) => (
-          <S.DayTab
-            key={d.id}
-            $active={activeDay === d.id}
-            onClick={() => {
-              setActiveDay(d.id);
-              setSelectedId(null);
-            }}
-          >
-            <S.Label>DAY {d.id}</S.Label>
-            <S.DateText>
-              <div>{d.date}</div>
-              <div>{d.dayOfWeek}</div>
-            </S.DateText>
-          </S.DayTab>
-        ))}
-      </S.DayNav>
-      <S.MapHugger>
-        <S.TimeFilter>
-          <S.TimeButtonGroup>
-            <S.TimeOption
-              $active={!isNight}
-              onClick={() => {
-                setIsNight(false);
-                setSelectedId(null);
-              }}
-            >
-              <img src={!isNight ? daySelected : dayUnselected} alt="day" />
-              <span>낮</span>
-            </S.TimeOption>
-            <S.TimeOption
-              $active={isNight}
-              onClick={() => {
-                setIsNight(true);
-                setSelectedId(null);
-              }}
-            >
-              <img
-                src={isNight ? nightSelected : nightUnselected}
-                alt="night"
-              />
-              <span>밤</span>
-            </S.TimeOption>
-          </S.TimeButtonGroup>
-          <S.TimeText>{isNight ? "16:00~19:30" : "11:00~14:30"}</S.TimeText>
-        </S.TimeFilter>
+    <>
+      {showGuide && (
+        <S.OnboardingOverlay onClick={() => setShowGuide(false)}>
+          <S.GuideContainer onClick={(e) => e.stopPropagation()}>
+            {/* 1. 가짜 버튼 위치 잡기 */}
+            <S.WhiteHighlight>
+              <S.FakeHeaderWrapper>
+                <S.HeaderToggleOverlay
+                  style={{
+                    position: "relative",
+                    top: 0,
+                    left: 0,
+                    transform: "none",
+                    margin: 0,
+                    zIndex: 1,
+                    filter: "none",
+                    boxShadow: "none",
+                  }}
+                >
+                  <S.HeaderTimeOption $active={true}>
+                    <img src={daySelected} alt="낮" />
+                    <span>낮</span>
+                  </S.HeaderTimeOption>
+                  <S.HeaderTimeOption $active={false}>
+                    <img src={nightUnselected} alt="밤" />
+                    <span>밤</span>
+                  </S.HeaderTimeOption>
+                </S.HeaderToggleOverlay>
+              </S.FakeHeaderWrapper>
+            </S.WhiteHighlight>
 
-        <S.RandomFloatBtn onClick={() => {}}>
-          <img src={randomIcon} alt="random" />
-          <span>랜덤 추천</span>
-        </S.RandomFloatBtn>
+            <S.GuideText>
+              <img src={upWhiteIcon} alt="arrow" />
+              <span>낮과 밤, 원하는 시간대의{"\n"}부스를 확인해 보세요!</span>
+            </S.GuideText>
 
-        <BoothMapComponent
-          day={activeDay}
-          time={isNight ? "night" : "day"}
-          selectedId={selectedId}
-          onBoothClick={handleBoothClick}
-          booths={BOOTH_DATA}
-        />
-      </S.MapHugger>
-      <S.ListSection>
-        <S.BoothList>부스 리스트</S.BoothList>
-        <S.BoothCur>
-          <S.BoothAmount>총 {displayBooths.length}개</S.BoothAmount>의 부스
-        </S.BoothCur>
-        <S.FilterButton
-          $active={isOperatingOnly}
-          onClick={() => setIsOperatingOnly(!isOperatingOnly)}
+            <S.CloseGuideBtn onClick={() => setShowGuide(false)}>
+              닫기
+            </S.CloseGuideBtn>
+          </S.GuideContainer>
+        </S.OnboardingOverlay>
+      )}
+      <S.HeaderToggleOverlay>
+        <S.HeaderTimeOption
+          $active={!isNight}
+          onClick={() => {
+            setIsNight(false);
+            setSelectedId(null);
+          }}
         >
-          운영 중
-        </S.FilterButton>
-        {displayBooths.length > 0 ? (
-          displayBooths.map((booth) => (
-            <BoothInfoComponent
-              key={booth.id}
-              booth={booth}
-              onDetailClick={() => handleOpenModal(booth)}
-            />
-          ))
-        ) : (
-          <S.EmptyStateWrapper>
-            {isOffHours ? (
-              <>
-                <S.EmptyMessage>지금은 부스 운영시간이 아닙니다</S.EmptyMessage>
-                <S.NextTimeText>
-                  다음 부스 시간 : {isNight ? "11:00~14:30" : "11:00~14:30"}
-                </S.NextTimeText>
-              </>
-            ) : (
-              <S.EmptyMessage>
-                DAY {activeDay}의 부스가 모두 종료되었습니다
-              </S.EmptyMessage>
-            )}
-          </S.EmptyStateWrapper>
-        )}
-      </S.ListSection>
+          <img src={!isNight ? daySelected : dayUnselected} alt="낮" />
+          <span>낮</span>
+        </S.HeaderTimeOption>
+        <S.HeaderTimeOption
+          $active={isNight}
+          onClick={() => {
+            setIsNight(true);
+            setSelectedId(null);
+          }}
+        >
+          <img src={isNight ? nightSelected : nightUnselected} alt="밤" />
+          <span>밤</span>
+        </S.HeaderTimeOption>
+      </S.HeaderToggleOverlay>
       <S.FloatingButtonGroup $hasTopBtn={showTopBtn}>
         <S.FloatingCircleBtn onClick={() => setIsNoticeOpen(true)}>
           <img src={announceIcon} alt="announce" />
@@ -269,21 +244,97 @@ const BoothPage: React.FC = () => {
           </S.FloatingCircleBtn>
         )}
       </S.FloatingButtonGroup>
-      {isModalOpen && targetBooth && (
-        <BoothModalComponent
-          booth={targetBooth}
-          onClose={() => setIsModalOpen(false)}
-          onNavigateToMap={handleNavigateToMap}
+      <S.PageWrapper ref={mapSectionRef} onScroll={handleScroll}>
+        <S.DayNav>
+          {DAYS_DATA.map((d) => (
+            <S.DayTab
+              key={d.id}
+              $active={activeDay === d.id}
+              onClick={() => {
+                setActiveDay(d.id);
+                setSelectedId(null);
+              }}
+            >
+              <S.Label>DAY {d.id}</S.Label>
+              <S.DateText>
+                <div>{d.date}</div>
+                <div>{d.dayOfWeek}</div>
+              </S.DateText>
+            </S.DayTab>
+          ))}
+        </S.DayNav>
+        <S.MapHugger>
+          <S.RandomFloatBtn onClick={() => {}}>
+            <img src={randomIcon} alt="random" />
+            <span>랜덤 추천</span>
+          </S.RandomFloatBtn>
+
+          <BoothMapComponent
+            day={activeDay}
+            time={isNight ? "night" : "day"}
+            selectedId={selectedId}
+            onBoothClick={handleBoothClick}
+            booths={BOOTH_DATA}
+          />
+        </S.MapHugger>
+        <S.ListSection>
+          <S.BoothList>
+            {selectedId ? "선택한 부스 정보" : "부스 리스트"}
+          </S.BoothList>
+          <S.BoothCur>
+            <S.BoothAmount>총 {displayBooths.length}개</S.BoothAmount>의 부스
+          </S.BoothCur>
+          {!selectedId && (
+            <S.FilterButton
+              $active={isOperatingOnly}
+              onClick={() => setIsOperatingOnly(!isOperatingOnly)}
+            >
+              운영 중
+            </S.FilterButton>
+          )}
+          {displayBooths.length > 0 ? (
+            displayBooths.map((booth) => (
+              <BoothInfoComponent
+                key={booth.id}
+                booth={booth}
+                onDetailClick={() => handleOpenModal(booth)}
+              />
+            ))
+          ) : (
+            <S.EmptyStateWrapper>
+              {isOffHours ? (
+                <>
+                  <S.EmptyMessage>
+                    지금은 부스 운영시간이 아닙니다
+                  </S.EmptyMessage>
+                  <S.NextTimeText>
+                    다음 부스 시간 : {isNight ? "11:00~14:30" : "11:00~14:30"}
+                  </S.NextTimeText>
+                </>
+              ) : (
+                <S.EmptyMessage>
+                  DAY {activeDay}의 부스가 모두 종료되었습니다
+                </S.EmptyMessage>
+              )}
+            </S.EmptyStateWrapper>
+          )}
+        </S.ListSection>
+        {isModalOpen && targetBooth && (
+          <BoothModalComponent
+            booth={targetBooth}
+            onClose={() => setIsModalOpen(false)}
+            onNavigateToMap={handleNavigateToMap}
+          />
+        )}
+        <Modal
+          isOpen={isNoticeOpen}
+          onClose={() => setIsNoticeOpen(false)}
+          title={noticeData.title}
+          content={noticeData.content}
+          images={noticeData.images}
         />
-      )}
-      <Modal
-        isOpen={isNoticeOpen}
-        onClose={() => setIsNoticeOpen(false)}
-        title={noticeData.title}
-        content={noticeData.content}
-        images={noticeData.images}
-      />
-    </S.PageWrapper>
+      </S.PageWrapper>
+    </>
   );
 };
 
