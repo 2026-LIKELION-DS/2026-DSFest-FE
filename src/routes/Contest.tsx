@@ -1,20 +1,20 @@
 import * as S from "../styles/Contest.style";
 import ContestNotice from "../components/Contest/ContestNotice";
 import ContestImg from "../assets/Contest/favicon-512w.png";
+import ContestVoteButton from "../components/Contest/ContestVoteButton";
 
 export default function ContestPag() {
   return (
     <S.ContestPage>
       <S.ContestImg src={ContestImg} />
       <ContestNotice />
-      <S.ContestTab>
-        <S.TimeLine>
-          <S.span>응모 시작 까지</S.span>
-          <S.span>0000000</S.span>
-          <S.span>남음</S.span>
-        </S.TimeLine>
-        <S.voteButton>청춘 한 컷 응모하기</S.voteButton>
-      </S.ContestTab>
+      <S.VoteButtonWrapper>
+        <ContestVoteButton
+          phase="before"
+          remainingTime="23:59:59"
+          kakaoLink="https://open.kakao.com/..."
+        />
+      </S.VoteButtonWrapper>
     </S.ContestPage>
   );
 }
