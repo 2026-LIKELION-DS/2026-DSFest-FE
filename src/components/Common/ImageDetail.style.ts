@@ -8,11 +8,15 @@ export const ImageDetailPage = styled.div`
 
   width: 100%;
   height: 100dvh;
-  @media (min-width: 768px) {
+  @media (min-width: 768px) or (max-height: 973px) {
     border: 12px solid ${({ theme }) => theme.colors.olive[50]};
-    height: 874px;
+    max-height: 874px;
     border-radius: 24px;
     max-width: 402px;
+  }
+  @media (max-height: 910px) {
+    border-radius: 0;
+    border: none;
   }
 
   background: ${({ theme }) => theme.colors.fg.primary};
