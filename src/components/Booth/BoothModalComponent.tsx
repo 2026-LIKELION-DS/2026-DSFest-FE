@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 
 // @ts-expect-error: Swiper CSS modules are not recognized by TS
 import "swiper/css";
 // @ts-expect-error: Swiper CSS modules are not recognized by TS
 import "swiper/css/pagination";
+
+import ImageDetailComponent from "../Common/ImageDetail";
 
 import * as S from "../../styles/BoothModalComponent.style";
 import Phone from "../../assets/Booth/Phone.svg";
@@ -15,8 +15,20 @@ import Clock from "../../assets/Booth/Clock.svg";
 import Link from "../../assets/Booth/Link.svg";
 import examplePhoto from "../../assets/hahyunsang_sample.svg";
 
+interface Booth {
+  id: number;
+  name: string;
+  status: string;
+  operator?: string;
+  category?: string;
+  description?: string;
+  images?: string[];
+  everytimeUrl?: string;
+  instagramUrl?: string;
+}
+
 interface ModalProps {
-  booth: any;
+  booth: Booth;
   onClose: () => void;
   onNavigateToMap: (id: number) => void;
 }
@@ -26,7 +38,10 @@ const BoothModalComponent: React.FC<ModalProps> = ({
   onClose,
   onNavigateToMap,
 }) => {
-  const [selectedImgIdx, setSelectedImgIdx] = useState<number | null>(null);
+  const [detailConfig, setDetailConfig] = useState({
+    isOpen: false,
+    initialIndex: 0,
+  });
 
   if (!booth) return null;
 
@@ -35,6 +50,13 @@ const BoothModalComponent: React.FC<ModalProps> = ({
       ? booth.images
       : [examplePhoto, examplePhoto, examplePhoto];
 
+  const openImageDetail = (idx: number) => {
+    setDetailConfig({ isOpen: true, initialIndex: idx });
+  };
+
+  const closeImageDetail = () => {
+    setDetailConfig({ ...detailConfig, isOpen: false });
+  };
   return (
     <>
       <S.ModalOverlay onClick={onClose}>
@@ -67,7 +89,7 @@ const BoothModalComponent: React.FC<ModalProps> = ({
                 <S.BoothImage
                   key={idx}
                   src={src}
-                  onClick={() => setSelectedImgIdx(idx)}
+                  onClick={() => openImageDetail(idx)}
                   alt={`부스 이미지 ${idx + 1}`}
                 />
               ))}
@@ -109,34 +131,12 @@ const BoothModalComponent: React.FC<ModalProps> = ({
           </S.ButtonGroup>
         </S.ModalContainer>
       </S.ModalOverlay>
-
-      {selectedImgIdx !== null && (
-        <S.FullImageOverlay onClick={() => setSelectedImgIdx(null)}>
-          <S.SwiperWrapper onClick={(e) => e.stopPropagation()}>
-            <Swiper
-              modules={[Pagination]}
-              initialSlide={selectedImgIdx}
-              spaceBetween={0}
-              slidesPerView={1}
-              pagination={{ type: "fraction" }}
-              observer={true}
-              observeParents={true}
-              touchEventsTarget="container"
-              className="mySwiper"
-            >
-              {images.map((src: string, index: number) => (
-                <SwiperSlide key={index}>
-                  <S.FullImage src={src} draggable={false} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </S.SwiperWrapper>
-
-          <S.FullCloseButton onClick={() => setSelectedImgIdx(null)}>
-            닫기
-          </S.FullCloseButton>
-        </S.FullImageOverlay>
-      )}
+      <ImageDetailComponent
+        isOpen={detailConfig.isOpen}
+        initialIndex={detailConfig.initialIndex}
+        images={images}
+        onClose={closeImageDetail}
+      />
     </>
   );
 };
