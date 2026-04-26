@@ -20,7 +20,18 @@ const DAYS_DATA = [
   { id: 3, date: "15일", dayOfWeek: "금" },
 ];
 
-const BOOTH_DATA = [
+type BoothStatus = "운영 중" | "운영 예정" | "운영 종료";
+
+interface Booth {
+  id: number;
+  name: string;
+  category: string;
+  operator: string;
+  description: string;
+  status: BoothStatus;
+}
+
+const BOOTH_DATA: Booth[] = [
   {
     id: 1,
     name: "오세요 잡화점오세요 잡화점오세요 잡화점오세요 잡화점",
@@ -59,7 +70,7 @@ const BoothPage: React.FC = () => {
   const [isNight, setIsNight] = useState(false);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [targetBooth, setTargetBooth] = useState<any | null>(null);
+  const [targetBooth, setTargetBooth] = useState<Booth | null>(null);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
 
@@ -104,14 +115,10 @@ const BoothPage: React.FC = () => {
     }
   };
 
-  const handleOpenModal = (booth: any) => {
+  const handleOpenModal = (booth: Booth) => {
     setTargetBooth(booth);
     setIsModalOpen(true);
   };
-
-  useEffect(() => {
-    setSelectedId(null);
-  }, [activeDay, isNight]);
 
   const handleNavigateToMap = (id: number) => {
     setIsModalOpen(false);
@@ -126,15 +133,9 @@ const BoothPage: React.FC = () => {
     }, 10);
   };
 
-  const filteredBooths = useMemo(() => {
-    return isOperatingOnly
-      ? BOOTH_DATA.filter((b) => b.status === "운영 중")
-      : BOOTH_DATA;
-  }, [isOperatingOnly]);
-
   const currentPeriodBooths = useMemo(() => {
     return BOOTH_DATA;
-  }, [activeDay, isNight]);
+  }, []);
 
   const operatingBooths = useMemo(() => {
     return currentPeriodBooths.filter((b) => b.status === "운영 중");
@@ -178,7 +179,10 @@ const BoothPage: React.FC = () => {
           <S.DayTab
             key={d.id}
             $active={activeDay === d.id}
-            onClick={() => setActiveDay(d.id)}
+            onClick={() => {
+              setActiveDay(d.id);
+              setSelectedId(null);
+            }}
           >
             <S.Label>DAY {d.id}</S.Label>
             <S.DateText>
@@ -191,11 +195,23 @@ const BoothPage: React.FC = () => {
       <S.MapHugger>
         <S.TimeFilter>
           <S.TimeButtonGroup>
-            <S.TimeOption $active={!isNight} onClick={() => setIsNight(false)}>
+            <S.TimeOption
+              $active={!isNight}
+              onClick={() => {
+                setIsNight(false);
+                setSelectedId(null);
+              }}
+            >
               <img src={!isNight ? daySelected : dayUnselected} alt="day" />
               <span>낮</span>
             </S.TimeOption>
-            <S.TimeOption $active={isNight} onClick={() => setIsNight(true)}>
+            <S.TimeOption
+              $active={isNight}
+              onClick={() => {
+                setIsNight(true);
+                setSelectedId(null);
+              }}
+            >
               <img
                 src={isNight ? nightSelected : nightUnselected}
                 alt="night"
@@ -270,7 +286,7 @@ const BoothPage: React.FC = () => {
           </S.FloatingCircleBtn>
         )}
       </S.FloatingButtonGroup>
-      {isModalOpen && (
+      {isModalOpen && targetBooth && (
         <BoothModalComponent
           booth={targetBooth}
           onClose={() => setIsModalOpen(false)}

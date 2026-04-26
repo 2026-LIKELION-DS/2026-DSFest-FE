@@ -1,16 +1,22 @@
 import React, { useRef, useCallback, useLayoutEffect, useEffect } from "react";
+import type { ElementRef } from "react";
 import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
 import * as S from "../../styles/BoothMapComponent.styles";
+
+interface Booth {
+  id: number;
+  name: string;
+}
 
 interface MapProps {
   day: number;
   time?: "day" | "night";
   selectedId?: number | null;
   onBoothClick?: (id: number) => void;
-  booths: any[];
+  booths: Booth[];
 }
 
-const BOOTH_LAYOUTS: Record<string, any> = {
+const BOOTH_LAYOUTS: Record<string, Record<string, number[]>> = {
   "1_day": {
     studentHall: [1],
     soyoung: [2, 3, 4],
@@ -71,20 +77,17 @@ const BoothMapComponent: React.FC<MapProps> = ({
   const currentKey = `${day}_${time}`;
   const currentLayout = BOOTH_LAYOUTS[currentKey] || {};
   const mapRef = useRef<HTMLDivElement>(null);
-  const pinchZoomRef = useRef<any>(null);
+  const pinchZoomRef = useRef<ElementRef<typeof QuickPinchZoom>>(null);
 
-  const canvasWidth = 1200;
-  const canvasHeight = 1000;
-  const padding = 200;
-  const totalWidth = canvasWidth + padding * 2;
-  const totalHeight = canvasHeight + padding * 2;
-
-  const onUpdate = useCallback(({ x, y, scale }: any) => {
-    if (mapRef.current) {
-      const value = make3dTransformValue({ x, y, scale });
-      mapRef.current.style.setProperty("transform", value);
-    }
-  }, []);
+  const onUpdate = useCallback(
+    ({ x, y, scale }: { x: number; y: number; scale: number }) => {
+      if (mapRef.current) {
+        const value = make3dTransformValue({ x, y, scale });
+        mapRef.current.style.setProperty("transform", value);
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
     const BOOTH_POSITIONS_13KH: Record<number, { x: number; y: number }> = {
@@ -150,7 +153,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
           x,
           y,
           scale: focusScale,
-          animate: true,
+          animated: true,
         });
       }
     }
@@ -166,22 +169,6 @@ const BoothMapComponent: React.FC<MapProps> = ({
         x: 210,
         y: 150,
         scale: initialScale,
-        animate: false,
-      });
-    }
-  }, [day, time]);
-
-  useLayoutEffect(() => {
-    if (pinchZoomRef.current && mapRef.current) {
-      const containerHeight = mapRef.current.parentElement?.clientHeight || 402;
-
-      const initialScale = (containerHeight / 700) * 5;
-
-      pinchZoomRef.current.scaleTo({
-        x: 210,
-        y: 150,
-        scale: initialScale,
-        animate: false,
       });
     }
   }, [day, time]);

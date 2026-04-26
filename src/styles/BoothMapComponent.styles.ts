@@ -20,7 +20,7 @@ export const MapWrapper = styled.div`
   touch-action: none;
 `;
 
-export const MapCanvas = styled.div`
+export const MapCanvas = styled.div<{ $isNight: boolean }>`
   position: relative;
   width: 1200px;
   height: 1000px;
