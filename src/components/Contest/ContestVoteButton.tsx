@@ -34,7 +34,7 @@ export default function ContestVoteButton({
       window.open(kakaoLink, "_blank");
     }
     if (phase === "vote") {
-      navigate("/contest/vote");
+      navigate("/contest/vote"); //투표페이지 이동
     }
   };
 
