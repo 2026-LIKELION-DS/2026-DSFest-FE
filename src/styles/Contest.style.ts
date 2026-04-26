@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { theme } from "./theme";
 
-export const ContestPage = styled.div`
-  margin: 0 auto;
-  padding: 0 24px 24px;
-  background: ${({ theme }) => theme.colors.bg.neutral};
-  overflow-x: hidden;
-`;
+// export const ContestPage = styled.div`
+//   margin: 0 auto;
+//   padding: 0 24px 24px;
+//   background: ${({ theme }) => theme.colors.bg.neutral};
+//   overflow-x: hidden;
+// `;
 
 export const ContestImg = styled.img`
   position: relative;
@@ -18,7 +18,22 @@ export const ContestImg = styled.img`
   margin-top: 18.72px;
 `;
 
-export const ContestTab = styled.div``;
+// export const ContestTab = styled.div``;
+export const ContestPage = styled.div`
+  margin: 0 auto;
+  padding: 0 24px 24px;
+  background: ${({ theme }) => theme.colors.bg.neutral};
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 68.5vh;
+`;
+
+export const ContestTab = styled.div`
+  margin-top: auto;
+  padding-top: 16px;
+`;
+//
 export const TimeLine = styled.div`
   display: flex;
   justify-content: center;
