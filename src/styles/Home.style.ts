@@ -8,6 +8,7 @@ export const Wrapper= styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 `
 
 export const BackgroundBubble= styled.div`
@@ -24,7 +25,7 @@ export const Background= styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px 0;
+    padding: 24px;
     gap: 32px;
 `
 
@@ -114,7 +115,6 @@ export const BannerSection = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
     gap: 12px;
 `;
 
@@ -159,7 +159,41 @@ export const BannerDot = styled.div<{ $active: boolean }>`
     $active ? theme.colors.bg.brandLight : theme.colors.fg.subtle};
 `;
 
-export const UrgentNoticeBox= styled.div`
+export const UrgentNoticeBox= styled.a`
+    display: flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 24px;
+    gap: 4px;
+    border-radius: 22px;
+    align-self: stretch;
+    border: 1px solid ${({ theme }) => theme.colors.fg.critical};
+    background-color: ${({ theme }) => theme.colors.bg.neutral};
+`
+export const UrgentNotice= styled.div`
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 2px 0;
+`
+
+export const UrgentNoticeContent= styled.p`
+    width: 242px;
+    display: flex;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: ${({ theme }) => theme.colors.fg.critical};
+    font-family: ${theme.typography.buttonMd.fontFamily};
+    font-weight: ${theme.typography.buttonMd.fontWeight};
+    font-size: ${theme.typography.buttonMd.fontSize};
+`
+
+export const UrgentNoticeIcon= styled.img`
+
+`
+
+export const SideClick= styled.img`
 
 `
 
