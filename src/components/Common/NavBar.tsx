@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import * as S from "./NavBar.style";
 
 import homeIcon from "../../assets/Home.svg";
@@ -22,36 +23,43 @@ interface NavBarProps {
 const NAV_ITEMS: {
   key: Tab;
   label: string;
+  path: string;
   defaultIcon: string;
   activeIcon: string;
 }[] = [
   {
     key: "home",
     label: "홈",
+    path: "/",
     defaultIcon: homeIcon,
     activeIcon: homeActiveIcon,
   },
   {
     key: "schedule",
     label: "일정표",
+    path: "/schedule",
     defaultIcon: scheduleIcon,
     activeIcon: scheduleActiveIcon,
   },
   {
     key: "livetalk",
     label: "라이브톡",
+    path: "/livetalk",
     defaultIcon: livetalkIcon,
     activeIcon: livetalkActiveIcon,
   },
   {
     key: "notice",
     label: "공지사항",
+    path: "/notice",
     defaultIcon: noticeIcon,
     activeIcon: noticeActiveIcon,
   },
 ];
 
 export default function NavBar({ activeTab, onTabChange }: NavBarProps) {
+  const navigate = useNavigate();
+
   return (
     <S.Container>
       {NAV_ITEMS.map((item) => {
@@ -62,7 +70,10 @@ export default function NavBar({ activeTab, onTabChange }: NavBarProps) {
             key={item.key}
             type="button"
             active={isActive}
-            onClick={() => onTabChange?.(item.key)}
+            onClick={() => {
+              navigate(item.path);
+              onTabChange?.(item.key);
+            }}
           >
             <S.Icon
               src={isActive ? item.activeIcon : item.defaultIcon}
