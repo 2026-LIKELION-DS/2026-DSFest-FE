@@ -14,6 +14,7 @@ import ContestPage from "./routes/Contest";
 import LiveTalk from "./routes/LiveTalk";
 import Error from "./routes/Error";
 import Food from "./routes/Food";
+import ContestVote from "./routes/ContestVote";
 
 function App() {
   return (
@@ -146,6 +147,19 @@ function App() {
               showNavBar={false}
             >
               <Food />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/vote"
+          element={
+            <AppLayout
+              title="투표하기"
+              subtitle="근화제 사진 콘테스트"
+              showBackButton={true}
+              showNavBar={false}
+            >
+              <ContestVote />
             </AppLayout>
           }
         />
