@@ -15,8 +15,20 @@ import Clock from "../../assets/Booth/Clock.svg";
 import Link from "../../assets/Booth/Link.svg";
 import examplePhoto from "../../assets/hahyunsang_sample.svg";
 
+interface Booth {
+  id: number;
+  name: string;
+  status: string;
+  operator?: string;
+  category?: string;
+  description?: string;
+  images?: string[];
+  everytimeUrl?: string;
+  instagramUrl?: string;
+}
+
 interface ModalProps {
-  booth: any;
+  booth: Booth;
   onClose: () => void;
   onNavigateToMap: (id: number) => void;
 }

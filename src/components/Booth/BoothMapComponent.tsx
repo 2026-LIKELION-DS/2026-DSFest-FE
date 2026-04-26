@@ -1,16 +1,23 @@
 import React, { useRef, useCallback, useLayoutEffect, useEffect } from "react";
+import type { ElementRef } from "react";
 import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
 import * as S from "../../styles/BoothMapComponent.styles";
 
-interface MapProps {
-  day: number;
-  selectedId?: number | null;
-  onBoothClick?: (id: number) => void;
-  booths: any[];
+interface Booth {
+  id: number;
+  name: string;
 }
 
-const BOOTH_LAYOUT_BY_DAY: Record<number, any> = {
-  1: {
+interface MapProps {
+  day: number;
+  time?: "day" | "night";
+  selectedId?: number | null;
+  onBoothClick?: (id: number) => void;
+  booths: Booth[];
+}
+
+const BOOTH_LAYOUTS: Record<string, Record<string, number[]>> = {
+  "1_day": {
     studentHall: [1],
     soyoung: [2, 3, 4],
     minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
@@ -18,7 +25,7 @@ const BOOTH_LAYOUT_BY_DAY: Record<number, any> = {
     youngLeft: [19, 20, 21, 22, 23, 24, 25],
     youngBottom: [26, 27, 28, 29, 30],
   },
-  2: {
+  "1_night": {
     studentHall: [1],
     soyoung: [2, 3, 4],
     minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
@@ -26,7 +33,31 @@ const BOOTH_LAYOUT_BY_DAY: Record<number, any> = {
     youngLeft: [19, 20, 21, 22, 23, 24, 25],
     youngBottom: [26, 27, 28, 29, 30],
   },
-  3: {
+  "2_day": {
+    studentHall: [1],
+    soyoung: [2, 3, 4],
+    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
+    youngTop: [18, 17, 16, 15, 14],
+    youngLeft: [19, 20, 21, 22, 23, 24, 25],
+    youngBottom: [26, 27, 28, 29, 30],
+  },
+  "2_night": {
+    studentHall: [1],
+    soyoung: [2, 3, 4],
+    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
+    youngTop: [18, 17, 16, 15, 14],
+    youngLeft: [19, 20, 21, 22, 23, 24, 25],
+    youngBottom: [26, 27, 28, 29, 30],
+  },
+  "3_day": {
+    studentHall: [1],
+    soyoung: [2, 3, 4],
+    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
+    youngTop: [18, 17, 16, 15, 14],
+    youngLeft: [19, 20, 21, 22, 23, 24, 25],
+    youngBottom: [26, 27, 28, 29, 30],
+  },
+  "3_night": {
     studentHall: [1],
     soyoung: [2, 3, 4],
     minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
@@ -38,25 +69,25 @@ const BOOTH_LAYOUT_BY_DAY: Record<number, any> = {
 
 const BoothMapComponent: React.FC<MapProps> = ({
   day = 1,
+  time = "day",
   selectedId,
   onBoothClick,
   booths,
 }) => {
+  const currentKey = `${day}_${time}`;
+  const currentLayout = BOOTH_LAYOUTS[currentKey] || {};
   const mapRef = useRef<HTMLDivElement>(null);
-  const pinchZoomRef = useRef<any>(null);
+  const pinchZoomRef = useRef<ElementRef<typeof QuickPinchZoom>>(null);
 
-  const canvasWidth = 1200;
-  const canvasHeight = 1000;
-  const padding = 200;
-  const totalWidth = canvasWidth + padding * 2;
-  const totalHeight = canvasHeight + padding * 2;
-
-  const onUpdate = useCallback(({ x, y, scale }: any) => {
-    if (mapRef.current) {
-      const value = make3dTransformValue({ x, y, scale });
-      mapRef.current.style.setProperty("transform", value);
-    }
-  }, []);
+  const onUpdate = useCallback(
+    ({ x, y, scale }: { x: number; y: number; scale: number }) => {
+      if (mapRef.current) {
+        const value = make3dTransformValue({ x, y, scale });
+        mapRef.current.style.setProperty("transform", value);
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
     const BOOTH_POSITIONS_13KH: Record<number, { x: number; y: number }> = {
@@ -122,11 +153,11 @@ const BoothMapComponent: React.FC<MapProps> = ({
           x,
           y,
           scale: focusScale,
-          animate: true,
+          animated: true,
         });
       }
     }
-  }, [selectedId]);
+  }, [selectedId, currentKey]);
 
   useLayoutEffect(() => {
     if (pinchZoomRef.current && mapRef.current) {
@@ -138,10 +169,9 @@ const BoothMapComponent: React.FC<MapProps> = ({
         x: 210,
         y: 150,
         scale: initialScale,
-        animate: false,
       });
     }
-  }, [day]);
+  }, [day, time]);
 
   const renderBooth = (id: number) => {
     const isActive = selectedId === id;
@@ -154,7 +184,13 @@ const BoothMapComponent: React.FC<MapProps> = ({
             <S.BoothNameText>{boothName}</S.BoothNameText>
           </S.BoothNameBubble>
         )}
-        <S.BoothSlot $isActive={isActive} onClick={() => onBoothClick?.(id)}>
+        <S.BoothSlot
+          $isActive={isActive}
+          onClick={(e) => {
+            e.stopPropagation();
+            onBoothClick?.(id);
+          }}
+        >
           {id}
         </S.BoothSlot>
       </S.BoothContainer>
@@ -176,7 +212,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
           },
         }}
       >
-        <S.MapCanvas ref={mapRef}>
+        <S.MapCanvas ref={mapRef} $isNight={time === "night"}>
           {/* 1. 학생회관 구역 */}
           <S.Section $top="131px" $left="115px" $width="242px" $height="118px">
             <S.BuildingLabel>학생회관</S.BuildingLabel>
@@ -197,7 +233,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
               <S.SubLabel>포토부스</S.SubLabel>
             </S.AbsoluteBooth>
             <S.BoothList $bottom="-37px" $right="3px" $direction="row">
-              {BOOTH_LAYOUT_BY_DAY[day]?.studentHall?.map(renderBooth)}
+              {currentLayout.studentHall?.map(renderBooth)}
             </S.BoothList>
           </S.Section>
 
@@ -223,7 +259,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
               <S.SubLabel>운영 본부</S.SubLabel>
             </S.AbsoluteBooth>
             <S.BoothList $top="-1px" $right="32px" $direction="column">
-              {BOOTH_LAYOUT_BY_DAY[day]?.soyoung?.map(renderBooth)}
+              {currentLayout.soyoung?.map(renderBooth)}
             </S.BoothList>
           </S.Section>
 
@@ -262,7 +298,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
           <S.Section $top="325px" $left="297px" $width="182px" $height="350px">
             <S.BuildingLabel>민주동산</S.BuildingLabel>
             <S.BoothList $top="-1px" $right="-57px" $direction="column">
-              {BOOTH_LAYOUT_BY_DAY[day]?.minju?.map(renderBooth)}
+              {currentLayout.minju?.map(renderBooth)}
             </S.BoothList>
             <S.AbsoluteBooth
               $bottom="-41px"
@@ -278,10 +314,10 @@ const BoothMapComponent: React.FC<MapProps> = ({
           <S.Section $top="322px" $left="689px" $width="455px" $height="403px">
             <S.BuildingLabel>영근터</S.BuildingLabel>
             <S.BoothList $top="-1px" $right="50px" $direction="row">
-              {BOOTH_LAYOUT_BY_DAY[day]?.youngTop?.map(renderBooth)}
+              {currentLayout.youngTop?.map(renderBooth)}
             </S.BoothList>
             <S.BoothList $top="65px" $left="-1px" $direction="column">
-              {BOOTH_LAYOUT_BY_DAY[day]?.youngLeft?.map(renderBooth)}
+              {currentLayout.youngLeft?.map(renderBooth)}
             </S.BoothList>
             <S.InnerBlock
               $top="140px"
@@ -296,7 +332,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
               <S.UnitStage>무대</S.UnitStage>
             </S.InnerBlock>
             <S.BoothList $bottom="3.5px" $right="50px" $direction="row">
-              {BOOTH_LAYOUT_BY_DAY[day]?.youngBottom?.map(renderBooth)}
+              {currentLayout.youngBottom?.map(renderBooth)}
             </S.BoothList>
           </S.Section>
 
