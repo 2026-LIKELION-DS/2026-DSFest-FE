@@ -8,6 +8,8 @@ import SchedulePage from "./routes/Schedule";
 import NoticePage from "./routes/Notice/Notice";
 import NoticeAllPage from "./routes/Notice/NoticeAll";
 import NoticeDetail from "./routes/Notice/NoticeDetail";
+// import NoticeImageDetail from "./routes/Notice/NoticeImageDetail";
+import ContestPage from "./routes/Contest";
 // import ImageDetailPage from "./components/Common/ImageDetail";
 import LiveTalk from "./routes/LiveTalk";
 import Error from "./routes/Error";
@@ -51,6 +53,7 @@ function App() {
               subtitle="TIME TABLE"
               showBackButton={false}
               showNavBar={true}
+              activeTab="schedule"
             >
               <SchedulePage />
             </AppLayout>
@@ -99,6 +102,21 @@ function App() {
             </AppLayout>
           }
         />
+        <Route
+          path="contest"
+          element={
+            <AppLayout
+              title="청춘 한 컷"
+              subtitle="근화제 사진 콘테스트"
+              showBackButton={true}
+              showNavBar={false}
+              activeTab="notice"
+            >
+              <ContestPage />
+            </AppLayout>
+          }
+        />
+        {/* <Route path="/notice/:id/image" element={<NoticeImageDetail />} /> */}
         {/* <Route
           path="/image-detail/:targetType/:targetId"
           element={<ImageDetailPage />}
