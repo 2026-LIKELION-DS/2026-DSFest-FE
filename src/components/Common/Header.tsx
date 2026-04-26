@@ -1,5 +1,4 @@
 import * as S from "./Header.style";
-
 import chevronLeft from "../../assets/ChevronLeft.svg";
 
 interface HeaderProps {

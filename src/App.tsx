@@ -5,6 +5,15 @@ import AppLayout from "./layouts/AppLayout";
 import BoothPage from "./routes/Booth";
 import ArtistPage from "./routes/Artist";
 import HomePage from "./routes/Home";
+import SchedulePage from "./routes/Schedule";
+import NoticePage from "./routes/Notice/Notice";
+import NoticeAllPage from "./routes/Notice/NoticeAll";
+import NoticeDetail from "./routes/Notice/NoticeDetail";
+// import NoticeImageDetail from "./routes/Notice/NoticeImageDetail";
+import ContestPage from "./routes/Contest";
+// import ImageDetailPage from "./components/Common/ImageDetail";
+import LiveTalk from "./routes/LiveTalk";
+import Error from "./routes/Error";
 
 function App() {
   return (
@@ -36,7 +45,6 @@ function App() {
             </AppLayout>
           }
         />
-
         <Route
           path="/artist"
           element={
@@ -50,6 +58,97 @@ function App() {
             </AppLayout>
           }
         />
+        <Route
+          path="/schedule"
+          element={
+            <AppLayout
+              title="일정표"
+              subtitle="TIME TABLE"
+              showBackButton={false}
+              showNavBar={true}
+              activeTab="schedule"
+            >
+              <SchedulePage />
+            </AppLayout>
+          }
+        />
+
+        <Route
+          path="/notice"
+          element={
+            <AppLayout
+              title="공지사항"
+              subtitle="NOTICE"
+              showBackButton={false}
+              showNavBar={true}
+              activeTab="notice"
+            >
+              <NoticePage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/notice/all"
+          element={
+            <AppLayout
+              title="공지 전체보기"
+              subtitle="NOTICE"
+              showBackButton={true}
+              showNavBar={true}
+              activeTab="notice"
+            >
+              <NoticeAllPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/notice/:id"
+          element={
+            <AppLayout
+              title="공지 상세보기"
+              subtitle="NOTICE"
+              showBackButton={true}
+              showNavBar={true}
+              activeTab="notice"
+            >
+              <NoticeDetail />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="contest"
+          element={
+            <AppLayout
+              title="청춘 한 컷"
+              subtitle="근화제 사진 콘테스트"
+              showBackButton={true}
+              showNavBar={false}
+              activeTab="notice"
+            >
+              <ContestPage />
+            </AppLayout>
+          }
+        />
+        {/* <Route path="/notice/:id/image" element={<NoticeImageDetail />} /> */}
+        {/* <Route
+          path="/image-detail/:targetType/:targetId"
+          element={<ImageDetailPage />}
+        /> */}
+        <Route
+          path="/livetalk"
+          element={
+            <AppLayout
+              title="라이브톡"
+              subtitle="LIVE TALK"
+              showBackButton={false}
+              showNavBar={true}
+              activeTab="livetalk"
+            >
+              <LiveTalk />
+            </AppLayout>
+          }
+        />
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   );

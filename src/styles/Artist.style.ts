@@ -46,21 +46,19 @@ export const CarouselWrapper = styled.div`
   width: calc(100% + 48px);
   margin-left: -24px;
   overflow: hidden;
-  padding: 30px 58px 10px;
+  padding: 30px 0 10px;
 `;
 
-export const CarouselTrack = styled.div<{ $currentPage: number }>`
+export const CarouselTrack = styled.div`
   display: flex;
   gap: 24px;
+  transform: translate3d(0, 0, 0);
   transition: transform 0.4s ease;
-
-  transform: translateX(
-    ${({ $currentPage }) => `calc(-${$currentPage - 1} * (80% + 16px))`}
-  );
+  will-change: transform;
 `;
 
 export const CardSlide = styled.div`
-  flex: 0 0 74%;
+  flex: 0 0 68%;
 `;
 
 export const PlaylistSection = styled.section`

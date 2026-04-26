@@ -69,7 +69,7 @@ export const LinkBlock = styled.div`
   border: 0.5px solid #0b4112;
   border-radius: 2px;
   display: flex;
-  width: 100px;
+  width: 121px;
   padding: 4px 12px;
   justify-content: center;
   align-items: center;
@@ -106,7 +106,7 @@ export const PageButton = styled.button<{ $active: boolean }>`
   padding: 0;
   border: none;
   border-radius: 100px;
-  background: ${({ $active }) => ($active ? "#2f7d3b" : "#b8b8b8")};
+  background: ${({ $active }) => ($active ? "#277B31" : "#9E9E9E")};
   cursor: pointer;
 `;
 
@@ -209,6 +209,7 @@ export const ArtistPlaylist = styled.section`
 export const PlatlistBlock = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 5px;
 `;
 
 export const PlaylistTitle = styled.h2`
@@ -321,3 +322,104 @@ export const NoticeBubble = styled.img<{
   $top?: string;
   $right?: string;
 }>;
+
+// ArtistModal
+export const ArtistModalOverlay = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  max-width: 402px;
+  height: 100dvh;
+  @media (min-height: 874px) {
+    border: 12px solid ${({ theme }) => theme.colors.olive[50]};
+    height: 874px;
+    border-radius: 24px;
+  }
+
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+`;
+
+export const ArtistModalContainer = styled.div`
+  width: 100%;
+  max-width: 354px;
+  max-height: 90%;
+  background: ${({ theme }) => theme.colors.bg.neutral};
+  border-radius: 4px;
+  position: relative;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+export const ArtistContentArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+export const ArtistModalTitle = styled.h2`
+  text-align: center;
+  margin-bottom: 0px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #277b31;
+`;
+
+export const ArtistModalDivider = styled.div`
+  border: none;
+  border-top: 0.5px solid #064112;
+  margin: 0;
+`;
+
+export const ArtistImageRow = styled.div`
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const ModalImage = styled.img`
+  flex: 0 0 100px;
+  height: 180px;
+  width: 144px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+`;
+
+export const ArtistDescription = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #161716;
+`;
+
+export const ArtistButtonGroup = styled.div`
+  display: flex;
+`;
+
+export const ArtistCloseButton = styled.button`
+  width: 100%;
+  height: 44px;
+  padding: 10px;
+  border-radius: 100px;
+  border: 0.5px solid #9e9e9e;
+  background: #fff;
+  font-weight: 700;
+  cursor: pointer;
+`;

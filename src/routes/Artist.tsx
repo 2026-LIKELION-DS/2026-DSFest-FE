@@ -1,4 +1,6 @@
 import type { Artist } from "../components/Artist/ArtistCard";
+import type { PerformanceStatus } from "../utils/artist";
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,9 +9,10 @@ import ArtistActionButtons from "../components/Artist/ArtistActionButton";
 import ArtistPagination from "../components/Artist/ArtistPagination";
 import PlaylistNotice from "../components/Artist/PlaylistNotice";
 import ArtistPlaylist from "../components/Artist/ArtistPlaylist";
+import ArtistModal from "../components/Artist/ArtistModalComponent";
 
 import { getPerformanceStatus } from "../utils/artist";
-import type { PerformanceStatus } from "../utils/artist";
+import { useArtistCarousel } from "../hooks/Artist/useArtistCarousel";
 
 import * as S from "../styles/Artist.style";
 
@@ -29,6 +32,15 @@ const artistsByDay: Record<"day1" | "day2" | "day3", Artist[]> = {
       name: "앙앙이",
       desc: "덕대최고아웃풋",
       time: "20:40 ~ 21:10",
+      image: "/src/assets/hahyunsang_sample.svg",
+      instaUrl: "https://instagram.com",
+      youtubeUrl: "https://youtube.com",
+    },
+    {
+      id: 6,
+      name: "양양이",
+      desc: "덕대최고아웃풋",
+      time: "21:20 ~ 21:50",
       image: "/src/assets/hahyunsang_sample.svg",
       instaUrl: "https://instagram.com",
       youtubeUrl: "https://youtube.com",
@@ -64,16 +76,40 @@ const artistsByDay: Record<"day1" | "day2" | "day3", Artist[]> = {
       instaUrl: "https://instagram.com",
       youtubeUrl: "https://youtube.com",
     },
-    {
-      id: 6,
-      name: "황황이",
-      desc: "덕대최고아웃풋",
-      time: "20:40 ~ 21:10",
-      image: "/src/assets/hahyunsang_sample.svg",
-      instaUrl: "https://instagram.com",
-      youtubeUrl: "https://youtube.com",
-    },
   ],
+};
+
+const artistPlaylists: Record<
+  number,
+  {
+    playlistUrl: string;
+    thumbnailUrl: string;
+  }
+> = {
+  1: {
+    playlistUrl: "https://youtube.com/playlist?list=하현상플리",
+    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
+  },
+  2: {
+    playlistUrl: "https://youtube.com/playlist?list=앙앙이플리",
+    thumbnailUrl: "https://img.youtube.com/vi/fkUAZMnuNSE/maxresdefault.jpg",
+  },
+  3: {
+    playlistUrl: "https://youtube.com/playlist?list=왕왕이플리",
+    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
+  },
+  4: {
+    playlistUrl: "https://youtube.com/playlist?list=양양이플리",
+    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
+  },
+  5: {
+    playlistUrl: "https://youtube.com/playlist?list=광광이플리",
+    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
+  },
+  6: {
+    playlistUrl: "https://youtube.com/playlist?list=양양이플리",
+    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
+  },
 };
 
 const days = [
@@ -82,18 +118,39 @@ const days = [
   { key: "day3", label: "DAY 3", date: "15일 금" },
 ] as const;
 
+const getPlaylistDesc = (status: PerformanceStatus) => {
+  if (status === "BEFORE") return "무대 보기 전에 예습할까요?";
+  if (status === "LIVE") return "지금 공연 중! 같이 즐겨요!";
+  if (status === "ENDED") return "무대 보고 난 후 복습할까요?";
+  return "";
+};
+
 function ArtistPage() {
   const navigate = useNavigate();
 
   const [currentDay, setCurrentDay] = useState<"day1" | "day2" | "day3">(
     "day1",
   );
-  const [currentPage, setCurrentPage] = useState(1);
-
   const [status, setStatus] = useState<PerformanceStatus>("BEFORE");
   const [statusText, setStatusText] = useState("");
+  const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
 
   const artists = artistsByDay[currentDay];
+
+  const {
+    currentPage,
+    repeatedArtists,
+    wrapperRef,
+    trackRef,
+    firstSlideRef,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+    handlePaginationChange,
+  } = useArtistCarousel(artists);
+
+  const currentArtist = artists[currentPage - 1];
+  const currentPlaylist = artistPlaylists[currentArtist.id];
 
   useEffect(() => {
     const start = new Date("2026-04-24T19:00:00");
@@ -101,7 +158,6 @@ function ArtistPage() {
 
     const updateStatus = () => {
       const result = getPerformanceStatus(start, end);
-
       setStatus(result.status);
       setStatusText(result.text);
     };
@@ -123,22 +179,28 @@ function ArtistPage() {
             key={day.key}
             type="button"
             $active={currentDay === day.key}
-            onClick={() => {
-              setCurrentDay(day.key);
-              setCurrentPage(1);
-            }}
+            onClick={() => setCurrentDay(day.key)}
           >
             {day.label}
             <span>{day.date}</span>
           </S.DayButton>
         ))}
       </S.SubHeader>
+
       <S.ArtistContent>
         <S.ArtistSection>
-          <S.CarouselWrapper>
-            <S.CarouselTrack $currentPage={currentPage}>
-              {artists.map((artist) => (
-                <S.CardSlide key={artist.id}>
+          <S.CarouselWrapper
+            ref={wrapperRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <S.CarouselTrack ref={trackRef}>
+              {repeatedArtists.map((artist, index) => (
+                <S.CardSlide
+                  key={`${artist.id}-${index}`}
+                  ref={index === 0 ? firstSlideRef : null}
+                >
                   <ArtistCard artist={artist} />
                 </S.CardSlide>
               ))}
@@ -148,7 +210,7 @@ function ArtistPage() {
           <ArtistPagination
             currentPage={currentPage}
             totalPages={artists.length}
-            onPageChange={setCurrentPage}
+            onPageChange={handlePaginationChange}
           />
         </S.ArtistSection>
 
@@ -156,17 +218,23 @@ function ArtistPage() {
           status={status}
           statusText={statusText}
           onLiveClick={() => navigate("/live")}
-          onGuideClick={() => navigate("/guide")}
+          onGuideClick={() => setIsGuideModalOpen(true)}
         />
 
         <S.PlaylistSection>
           <ArtistPlaylist
-            playlistUrl="https://youtube.com/playlist?list=..."
-            thumbnailUrl="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+            playlistUrl={currentPlaylist.playlistUrl}
+            thumbnailUrl={currentPlaylist.thumbnailUrl}
+            desc={getPlaylistDesc(status)}
           />
         </S.PlaylistSection>
 
         <PlaylistNotice />
+
+        <ArtistModal
+          isOpen={isGuideModalOpen}
+          onClose={() => setIsGuideModalOpen(false)}
+        />
       </S.ArtistContent>
     </S.ArtistPage>
   );

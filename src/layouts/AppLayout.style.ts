@@ -21,7 +21,5 @@ export const NavWrapper = styled.div`
 export const Main = styled.main<{ $showNavBar: boolean }>`
   flex: 1;
   overflow-y: auto;
-
-  /* padding-bottom: ${({ $showNavBar }) => ($showNavBar ? "30px" : "0")}; */
 `;
   

@@ -1,12 +1,23 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { typography } from "./theme";
+
+const setTypo = (key: keyof typeof typography) => {
+  const typo = typography[key];
+  return css`
+    font-family: ${typo.fontFamily};
+    font-weight: ${typo.fontWeight};
+    font-size: ${typo.fontSize};
+    line-height: ${typo.lineHeight};
+  `;
+};
 
 export type StatusType = "운영 중" | "운영 예정" | "운영 종료";
 
 export const Card = styled.div`
-  border: 0.5px solid #0b4112;
+  border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
   border-radius: 4px;
   padding: 30px 20px;
-  background: white;
+  background: ${({ theme }) => theme.colors.bg.neutral};
   margin: 30px 0;
   position: relative;
 `;
@@ -16,23 +27,30 @@ export const StatusBadge = styled.span<{ $status: StatusType }>`
   top: -20px;
   padding: 8px 15px;
   border-radius: 2px;
-  font-size: 16px;
-  font-weight: 700;
-  border: 0.5px solid;
+  ${setTypo("h3")};
+  border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
 
-  ${({ $status }) => {
+  ${({ $status, theme }) => {
     if ($status === "운영 중")
-      return `background: #E5EBCF; color: #0B4112; border-color: #0B4112;`;
+      return css`
+        background: ${theme.colors.bg.olive};
+        color: ${theme.colors.bg.brand};
+      `;
     if ($status === "운영 예정")
-      return `background: #ffffff; color: #0B4112; border-color: #0B4112;`;
-    return `background: #D6D6D6; color: #828282; border-color: #0B4112;`;
+      return css`
+        background: ${theme.colors.bg.neutral};
+        color: ${theme.colors.bg.brand};
+      `;
+    return css`
+      background: ${theme.colors.bg.disabled};
+      color: ${theme.colors.fg.disabled};
+    `;
   }}
 `;
 
 export const Title = styled.div`
-  font-size: 20px;
-  font-weight: 700;
-  color: #0b4112;
+  ${setTypo("h2")};
+  color: ${({ theme }) => theme.colors.bg.brand};
   margin: 3px 0 10px 0;
 `;
 
@@ -44,24 +62,17 @@ export const InfoRow = styled.div`
 `;
 
 export const CategoryTag = styled.span`
-  background: #e5ebcf;
-  color: #0b4112;
-  font-size: 14px;
+  background: ${({ theme }) => theme.colors.bg.olive};
+  color: ${({ theme }) => theme.colors.bg.brand};
+  ${setTypo("buttonMd")};
   padding: 10px 15px;
   border-radius: 9999px;
-  font-weight: 700;
-`;
-
-export const ImageRow = styled.div`
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
 `;
 
 export const PhotoPlaceholder = styled.div`
   width: 80px;
   height: 80px;
-  background: #eee;
+  background: ${({ theme }) => theme.colors.grey};
   border-radius: 6px;
 `;
 
@@ -71,31 +82,45 @@ export const DescriptionContainer = styled.div`
 `;
 
 export const Description = styled.p<{ $isExpanded: boolean }>`
-  font-size: 14px;
-  color: #161716;
-  line-height: 21px;
+  ${setTypo("bodyMd")};
+  color: ${({ theme }) => theme.colors.grey.black};
   margin: 0;
+  word-break: break-all;
 
   ${({ $isExpanded }) =>
     !$isExpanded &&
-    `
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  `}
+    css`
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      max-height: 42px;
+    `}
 `;
 
 export const MoreButton = styled.span`
   display: block;
-  font-size: 14px;
-  color: #9e9e9e;
+  ${setTypo("bodySm")};
+  color: ${({ theme }) => theme.colors.fg.subtle};
   margin-top: 4px;
-  font-weight: 500;
 `;
 
 export const BoothName = styled.span`
-  font-size: 14px;
-  font-weight: 700;
+  ${setTypo("h4")};
+  color: ${({ theme }) => theme.colors.fg.primary};
+`;
+
+export const ImageRow = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+`;
+
+export const BoothImage = styled.img`
+  width: 80px;
+  height: 80px;
+  background: ${({ theme }) => theme.colors.grey};
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid ${({ theme }) => theme.colors.bg.oliveLight};
 `;
