@@ -13,6 +13,7 @@ import randomIcon from "../assets/Booth/RandomBooth.svg";
 import announceIcon from "../assets/Booth/BoothAnnounce.svg";
 import upIcon from "../assets/Booth/BoothUp.svg";
 import examplePhoto from "../assets/hahyunsang_sample.svg";
+import upWhiteIcon from "../assets/Booth/BoothUpWhite.svg";
 
 const DAYS_DATA = [
   { id: 1, date: "13일", dayOfWeek: "수" },
@@ -72,6 +73,7 @@ const BoothPage: React.FC = () => {
   const [targetBooth, setTargetBooth] = useState<Booth | null>(null);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
+  const [showGuide, setShowGuide] = useState(true);
 
   const noticeData = {
     title: "부스 관련 공지 제목",
@@ -168,6 +170,47 @@ const BoothPage: React.FC = () => {
   };
   return (
     <>
+      {showGuide && (
+        <S.OnboardingOverlay onClick={() => setShowGuide(false)}>
+          <S.GuideContainer onClick={(e) => e.stopPropagation()}>
+            {/* 1. 가짜 버튼 위치 잡기 */}
+            <S.WhiteHighlight>
+              <S.FakeHeaderWrapper>
+                <S.HeaderToggleOverlay
+                  style={{
+                    position: "relative",
+                    top: 0,
+                    left: 0,
+                    transform: "none",
+                    margin: 0,
+                    zIndex: 1,
+                    filter: "none",
+                    boxShadow: "none",
+                  }}
+                >
+                  <S.HeaderTimeOption $active={true}>
+                    <img src={daySelected} alt="낮" />
+                    <span>낮</span>
+                  </S.HeaderTimeOption>
+                  <S.HeaderTimeOption $active={false}>
+                    <img src={nightUnselected} alt="밤" />
+                    <span>밤</span>
+                  </S.HeaderTimeOption>
+                </S.HeaderToggleOverlay>
+              </S.FakeHeaderWrapper>
+            </S.WhiteHighlight>
+
+            <S.GuideText>
+              <img src={upWhiteIcon} alt="arrow" />
+              <span>낮과 밤, 원하는 시간대의{"\n"}부스를 확인해 보세요!</span>
+            </S.GuideText>
+
+            <S.CloseGuideBtn onClick={() => setShowGuide(false)}>
+              닫기
+            </S.CloseGuideBtn>
+          </S.GuideContainer>
+        </S.OnboardingOverlay>
+      )}
       <S.HeaderToggleOverlay>
         <S.HeaderTimeOption
           $active={!isNight}

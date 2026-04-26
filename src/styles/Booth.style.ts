@@ -159,6 +159,9 @@ export const FloatingButtonGroup = styled.div<{ $hasTopBtn: boolean }>`
   @media (min-height: 874px) {
     bottom: calc(50% - 437px + 13px + 12px);
   }
+  @media (max-width: 320px) {
+    transform: translateX(calc(201px - 100% - 60px));
+  }
 `;
 
 export const FloatingCircleBtn = styled.button`
@@ -254,6 +257,9 @@ export const HeaderToggleOverlay = styled.div`
   @media (min-height: 874px) {
     top: calc(50% - 437px + 13px + 12px);
   }
+  @media (max-width: 320px) {
+    transform: translateX(calc(201px - 100% - 60px));
+  }
 `;
 
 export const HeaderTimeOption = styled.button<{ $active: boolean }>`
@@ -306,8 +312,107 @@ export const HeaderTimeOption = styled.button<{ $active: boolean }>`
           saturate(1000%) hue-rotate(80deg);
       `}
   }
+`;
+export const OnboardingOverlay = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  &:hover {
-    opacity: 0.9;
+  width: 100%;
+  max-width: 425px;
+  height: 100dvh;
+
+  @media (min-height: 874px) {
+    border: 12px solid ${({ theme }) => theme.colors.olive[50]};
+    height: 874px;
+    border-radius: 24px;
   }
+
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  overflow: hidden;
+`;
+
+export const GuideContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  left: 50%;
+
+  transform: translateX(calc(-50% + 85px));
+
+  margin-top: 3px;
+
+  @media (max-width: 320px) {
+    transform: translateX(calc(-50% + 50px));
+  }
+`;
+
+export const WhiteHighlight = styled.div`
+  background-color: #ffffff;
+  border-radius: 999px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(calc(201px - 100% - 25px));
+`;
+
+export const FakeHeaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const GuideText = styled.div`
+  margin-top: 20px;
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(calc(50% - 50px));
+
+  img {
+    width: 15px;
+    margin-bottom: 10px;
+  }
+
+  span {
+    ${setTypo("h3")};
+    font-weight: 500;
+    white-space: pre-line;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+  }
+`;
+
+export const CloseGuideBtn = styled.button`
+  margin-top: 15px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: none;
+  ${setTypo("buttonSm")};
+  color: ${({ theme }) => theme.colors.fg.primary};
+  cursor: pointer;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(calc(201px - 100% - 120px));
 `;
