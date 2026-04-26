@@ -36,7 +36,7 @@ export default function ErrorPage() {
           주소가 변경, 삭제되어 현재 찾을 수 없습니다.
         </S.ErrorMessage>
         {/* home route 등록 후 경로 수정 */}
-        <S.HomeButton onClick={() => navigate("/home")}>
+        <S.HomeButton onClick={() => navigate("/")}>
           홈으로 돌아가기
         </S.HomeButton>
       </S.ContentBox>

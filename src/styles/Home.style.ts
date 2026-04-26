@@ -112,50 +112,58 @@ export const StickerContent = styled.div`
     font-size: ${theme.typography.decorationMd.fontSize};
 `
 export const BannerSection = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+  width: 100%;
+  height: 336px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 `;
 
 export const BannerViewport = styled.div`
-    overflow: visible;
-    width: 332px;
+  width: 332px;
+  height: 296px;
+  overflow: visible;
 `;
 
 export const BannerTrack = styled.div<{
-    $currentIndex: number;
-    $isTransition: boolean;
-    }>`
-    display: flex;
-    gap:12px;
-    transform: translateX(
-    calc(-${({ $currentIndex }) => $currentIndex} * (334px + 12px)));
+  $currentIndex: number;
+  $isTransition: boolean;
+}>`
+  display: flex;
+  gap: 12px;
 
-    transition: ${({ $isTransition }) =>
-        $isTransition
-        ? "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)"
-        : "none"};
+  transform: translate3d(
+    calc(-${({ $currentIndex }) => $currentIndex} * (332px + 12px)),
+    0,
+    0
+  );
+
+  transition: ${({ $isTransition }) =>
+    $isTransition
+      ? "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)"
+      : "none"};
+
+  will-change: transform;
+  backface-visibility: hidden;
 `;
 
 export const BannerSlide = styled.div`
-    flex: 0 0 332px;
-    width: 332px;
-    transition: transform 0.8s ease, opacity 0.8s ease;
+  flex: 0 0 332px;
+  width: 332px;
 `;
 
 export const BannerDots = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
 
 export const BannerDot = styled.div<{ $active: boolean }>`
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: ${({ $active, theme }) =>
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: ${({ $active, theme }) =>
     $active ? theme.colors.bg.brandLight : theme.colors.fg.subtle};
 `;
 
@@ -190,19 +198,201 @@ export const UrgentNoticeContent= styled.p`
 `
 
 export const UrgentNoticeIcon= styled.img`
-
+    width: 20px;
+    height: 20px;
 `
 
 export const SideClick= styled.img`
-
+    width: 16px;
+    height: 16px;
 `
 
 export const ContentBox= styled.div`
-
+    display: flex;
+    position: relative;
+    width: 354px;
+    height: 500px;
 `
 
-export const StudentCouncilBox= styled.div`
+export const PolaroidBtn= styled.a`
+    display: flex;
+    padding: 12px 12px 24px 12px;
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.bg.offWhite};
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.20);
+    position: absolute;
+`
+export const PolaroidBtnImg= styled.img`
+    
+`
 
+export const ArtistBtn = styled(PolaroidBtn)`
+    top:20px;
+    left: 12.59px;
+    z-index: 1;
+`
+
+export const FoodtruckBtn = styled(PolaroidBtn)`
+    top:161.68px;
+    right: 12.59px;
+    z-index: 4;
+`
+
+export const BoothBtn = styled(PolaroidBtn)`
+    bottom:20px;
+    left:32.32px;
+    z-index: 5;
+`
+
+export const NameTag = styled.div`
+    display: flex;
+    padding: 6px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
+    background-color: ${({ theme }) => theme.colors.bg.olive};
+    position: absolute;
+`
+
+export const NameTagTitle = styled.p`
+    color: ${({ theme }) => theme.colors.bg.brand};
+    font-family: ${theme.typography.h2.fontFamily};
+    font-weight: ${theme.typography.h2.fontWeight};
+    font-size: ${theme.typography.h2.fontSize};
+    line-height: 30px;
+    margin: 0;
+`
+
+export const NameTagTitleEng = styled.p`
+    color: ${({ theme }) => theme.colors.bg.brand};
+    font-family: ${theme.typography.bodyMd.fontFamily};
+    font-weight: ${theme.typography.bodyMd.fontWeight};
+    font-size: ${theme.typography.bodyMd.fontSize};
+    line-height: 21px;
+    margin: 0;
+`
+
+export const ArtistNameTag = styled(NameTag)`
+    left: -2.7px;
+    top: 14.43px;
+    z-index: 3;
+`
+
+export const FoodtruckNameTag = styled(NameTag)`
+    top:166.3px;
+    right: -9.51px;
+    z-index: 5;
+`
+
+export const BoothNameTag = styled(NameTag)`
+    bottom:145.31px;
+    left: 13.32px;
+    z-index: 6;
+`
+
+export const BgImg1 = styled.img`
+    position: absolute;
+    top:7.9px;
+    left: 25.49px;
+    z-index: 0;
+`
+
+export const BgImg2 = styled.img`
+    position: absolute;
+    top: 182.26px;
+    right: 0.16px;
+    z-index: 0;
+`
+
+export const BgImg3 = styled.img`
+    position: absolute;
+    left: 2.58px;
+    bottom: 4.83px;
+    z-index: 0;
+`
+
+export const Camera = styled.img`
+    position: absolute;
+    top:86.09px;
+    left: 75.4px;
+    z-index: 3;
+`
+
+export const FlowerBtn1 = styled.img`
+    position: absolute;
+    left: 159.27px;
+    bottom: 40.86px;
+`
+
+export const FlowerBtn2 = styled.img`
+    position: absolute;
+    left: 65.47px;
+    bottom: 188.84px;
+`
+
+export const Icecream1 = styled.img`
+    position: absolute;
+    right: -9.51px;
+    bottom: 113.88px;
+    z-index: 4;
+`
+
+export const Icecream2 = styled.img`
+    position: absolute;
+    right: -6.74px;
+    bottom: 169.26px;
+    z-index: 4;
+`
+
+export const Churros= styled.img`
+    position: absolute;
+    bottom: 85.08px;
+    right: 70.37px;
+    z-index: 4;
+`
+
+export const Keyring = styled.img`
+    position: absolute;
+    left: -24.19px;
+    bottom: 24.3px;
+    z-index: 6;
+`
+
+export const Bracelet = styled.img`
+    position: absolute;
+    bottom: 4.8px;
+    left: 129.27px;
+    z-index: 6;
+`
+
+
+export const StudentCouncilBox= styled.div`
+    display: flex;
+    align-items: center;
+    gap: 12px;
+`
+
+export const StudentBtn= styled.a`
+    display:flex;
+    height: 44px;
+    padding: 2px 24px;
+    align-items: center;
+    gap: 12px;
+    border-radius: 22px;
+    background-color: ${({ theme }) => theme.colors.bg.brand};
+`
+
+export const BtnIcon= styled.img`
+    width: 24px;
+    height: 24px;
+`
+
+export const BtnTitle= styled.p`
+    font-family: ${theme.typography.buttonMd.fontFamily};
+    font-weight: ${theme.typography.buttonMd.fontWeight};
+    font-size: ${theme.typography.buttonMd.fontSize};
+    color: ${({ theme }) => theme.colors.fg.primaryInverted};
 `
 
 export const Footer= styled.div`

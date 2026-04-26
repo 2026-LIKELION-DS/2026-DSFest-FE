@@ -14,7 +14,7 @@ const banners: BannerItem[] = [
         title: "아티스트",
         stickerText: "아티스트",
         image: "/images/banner1.png",
-        link: "/@",
+        link: "/artist",
     },
     {
         title: "근화제 청춘 유형 테스트",
@@ -49,20 +49,26 @@ export default function Banner() {
     }, []);
 
     useEffect(() => {
+        let timeoutId: number | undefined;
+
         if (currentIndex === extendedBanners.length - 1) {
-        setTimeout(() => {
+            timeoutId = window.setTimeout(() => {
             setIsTransition(false);
             setCurrentIndex(1);
-        }, 800);
+            }, 400);
         }
 
         if (currentIndex === 0) {
-        setTimeout(() => {
+            timeoutId = window.setTimeout(() => {
             setIsTransition(false);
             setCurrentIndex(banners.length);
-        }, 800);
+            }, 400);
         }
-    }, [currentIndex]);
+
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+        };
+        }, [currentIndex]);
 
     useEffect(() => {
         if (!isTransition) {
