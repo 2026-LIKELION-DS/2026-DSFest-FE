@@ -146,27 +146,31 @@ export const TimeButtonGroup = styled.div`
 `;
 
 export const FloatingButtonGroup = styled.div<{ $hasTopBtn: boolean }>`
-  bottom: 13px;
+  position: fixed;
   z-index: 100;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
-  gap: 3px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(calc(-10%), calc(35%));
+
+  gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "8px" : "0px")};
 
   width: 100%;
-  height: 100dvh;
+  left: 50%;
+  transform: translateX(calc(-10%));
+
+  bottom: 13px;
   @media (min-width: 768px) or (max-height: 973px) {
-    height: 874px;
-    border-radius: 24px;
+    bottom: calc(50% - 437px + 13px + 12px);
     max-width: 402px;
   }
+  @media (max-height: 910px) {
+    bottom: 10px;
+  }
+
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
-export const FloatingCircleBtn = styled.button`
+export const FloatingCircleBtn = styled.button<{ $isVisible?: boolean }>`
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -176,7 +180,20 @@ export const FloatingCircleBtn = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  ${({ $isVisible }) =>
+    $isVisible === false &&
+    css`
+      height: 0;
+      width: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0);
+      pointer-events: none;
+    `}
 
   &:active {
     transform: scale(0.9);
@@ -247,7 +264,6 @@ export const TimeTextContainer = styled.div`
 
 export const HeaderToggleOverlay = styled.div`
   position: fixed;
-  top: 13px;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -255,12 +271,12 @@ export const HeaderToggleOverlay = styled.div`
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.1));
 
   left: 50%;
-  transform: translateX(calc(201px - 100% - 25px));
-  @media (min-height: 874px) {
-    top: calc(50% - 437px + 13px + 12px);
-  }
-  @media (max-width: 320px) {
-    transform: translateX(calc(201px - 100% - 60px));
+  width: 100%;
+  transform: translate(calc(30%), calc(-50% - 30px));
+
+  @media (min-width: 768px) or (max-height: 973px) {
+    transform: translate(calc(10%), calc(-50% - 30px));
+    max-width: 402px;
   }
 `;
 
@@ -322,13 +338,17 @@ export const OnboardingOverlay = styled.div`
   transform: translate(-50%, -50%);
 
   width: 100%;
-  max-width: 425px;
-  height: 100dvh;
+  max-height: 100dvh;
 
-  @media (min-height: 874px) {
+  @media (min-width: 768px) or (max-height: 973px) {
     border: 12px solid ${({ theme }) => theme.colors.olive[50]};
     height: 874px;
     border-radius: 24px;
+    max-width: 402px;
+  }
+  @media (max-height: 910px) {
+    border-radius: 0;
+    border: none;
   }
 
   background: rgba(0, 0, 0, 0.5);
@@ -346,15 +366,20 @@ export const GuideContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-
+  height: 100dvh;
+  top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
 
   transform: translateX(calc(-50% + 85px));
+  margin-top: 4px;
+  transform: translateX(calc(-15%));
 
-  margin-top: 3px;
-
-  @media (max-width: 320px) {
-    transform: translateX(calc(-50% + 50px));
+  @media (min-width: 768px) or (max-height: 973px) {
+    transform: translateX(calc(-50% + 80px));
+  }
+  @media (max-height: 910px) {
+    transform: translate(-30%, 0%);
   }
 `;
 
