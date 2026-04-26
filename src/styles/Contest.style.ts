@@ -19,7 +19,6 @@ export const ContestPage = styled.div`
 `;
 
 export const VoteButtonWrapper = styled.div`
-  position: fixed;
-  bottom: calc(50% - 400px);
-  transform: translateX(85px);
+  margin-top: auto;
+  padding-top: 50%;
 `;
