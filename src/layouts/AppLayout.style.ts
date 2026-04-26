@@ -24,3 +24,4 @@ export const Main = styled.main<{ $showNavBar: boolean }>`
 
   /* padding-bottom: ${({ $showNavBar }) => ($showNavBar ? "30px" : "0")}; */
 `;
+  

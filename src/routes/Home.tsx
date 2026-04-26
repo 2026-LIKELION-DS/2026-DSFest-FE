@@ -4,29 +4,37 @@ import InstaIcon from "../assets/home/Home_Icon_InstagramLogo.svg"
 import ThumbIcon from "../assets/home/Home_Icon_ThumbsUp.svg"
 import NetworkIcon from "../assets/home/Home_Icon_ShareNetwork.svg"
 
+import Banner from "../components/Home/Banner"
+
 
 export default function Home() {
   return (
-    <S.Wapper>
-        <S.BackgroundBubble/>
-        <S.Background>
-            
-        </S.Background>
+    <S.Wrapper>
+        <S.BackgroundBubble>
+            <S.Background>
+                <S.BannerBox>
+                    <Banner></Banner>
+                </S.BannerBox>
+                <S.UrgentNoticeBox></S.UrgentNoticeBox>
+                <S.ContentBox></S.ContentBox>
+                <S.StudentCouncilBox></S.StudentCouncilBox>
+            </S.Background>
+        </S.BackgroundBubble>
         <S.Footer>
             <S.AllLinkBox>
-                <S.LinkBox>
+                <S.LinkBox href="@" target="_blank">
                     <S.LinkIcon src={NetworkIcon}></S.LinkIcon>
                     <S.Link>웹사이트 공유하기</S.Link>
                 </S.LinkBox>
-                <S.LinkBox>
+                <S.LinkBox href="https://www.instagram.com/dswu_stdcouncil42?igsh=MW96dXJtaDhiMG16NQ==" target="_blank">
                     <S.LinkIcon src={InstaIcon}></S.LinkIcon>
                     <S.Link>총학생회 인스타그램</S.Link>
                 </S.LinkBox>
-                <S.LinkBox>
+                <S.LinkBox href="https://www.instagram.com/likelion_ds?igsh=ZDBiYjBzZ2h3bW96" target="_blank">
                     <S.LinkIcon src={InstaIcon}></S.LinkIcon>
                     <S.Link>덕성멋사 인스타그램</S.Link>
                 </S.LinkBox>
-                <S.LinkBox>
+                <S.LinkBox href="@" target="_blank">
                     <S.LinkIcon src={ThumbIcon}></S.LinkIcon>
                     <S.Link>웹사이트 의견 남기기</S.Link>
                 </S.LinkBox>
@@ -68,6 +76,6 @@ export default function Home() {
                 </S.LikeLionMemberBox>
             </S.LikeLion>
         </S.Footer>
-    </S.Wapper>
+    </S.Wrapper>
   )
 }
