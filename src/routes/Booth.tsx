@@ -63,7 +63,6 @@ const BOOTH_DATA: Booth[] = [
 
 const BoothPage: React.FC = () => {
   const mapSectionRef = useRef<HTMLDivElement>(null);
-  const listSectionRef = useRef<HTMLDivElement>(null);
 
   const [activeDay, setActiveDay] = useState(1);
   const [isOperatingOnly, setIsOperatingOnly] = useState(false);
@@ -79,7 +78,7 @@ const BoothPage: React.FC = () => {
     content: `공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 
     
     공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게`,
-    images: [examplePhoto, examplePhoto], // 공지사항용 이미지가 있다면 여기에 추가
+    images: [examplePhoto, examplePhoto],
   };
 
   useEffect(() => {
@@ -133,42 +132,30 @@ const BoothPage: React.FC = () => {
     }, 10);
   };
 
-  const currentPeriodBooths = useMemo(() => {
-    return BOOTH_DATA;
-  }, []);
+  // 리스트 표시용 부스 데이터 (클릭 여부와 상관없이 유지되도록 수정)
+  const displayBooths = useMemo(() => {
+    const baseList = BOOTH_DATA;
+    return isOperatingOnly
+      ? baseList.filter((b) => b.status === "운영 중")
+      : baseList;
+  }, [isOperatingOnly]);
 
   const operatingBooths = useMemo(() => {
-    return currentPeriodBooths.filter((b) => b.status === "운영 중");
-  }, [currentPeriodBooths]);
-
-  const displayBooths = useMemo(() => {
-    if (selectedId) {
-      return BOOTH_DATA.filter((b) => b.id === selectedId);
-    }
-    const baseList = isOperatingOnly
-      ? BOOTH_DATA.filter((b) => b.status === "운영 중")
-      : BOOTH_DATA;
-    return baseList;
-  }, [selectedId, isOperatingOnly]);
+    return BOOTH_DATA.filter((b) => b.status === "운영 중");
+  }, []);
 
   const isOffHours = useMemo(() => {
     return (
       operatingBooths.length === 0 &&
-      currentPeriodBooths.some((b) => b.status === "운영 예정")
+      BOOTH_DATA.some((b) => b.status === "운영 예정")
     );
-  }, [operatingBooths, currentPeriodBooths]);
+  }, [operatingBooths]);
 
   const handleBoothClick = (id: number) => {
-    if (selectedId === id) {
-      setSelectedId(null);
-    } else {
-      setSelectedId(id);
-      setTimeout(() => {
-        listSectionRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 100);
+    setSelectedId(id);
+    const clickedBooth = BOOTH_DATA.find((b) => b.id === id);
+    if (clickedBooth) {
+      handleOpenModal(clickedBooth);
     }
   };
 
@@ -236,20 +223,16 @@ const BoothPage: React.FC = () => {
         />
       </S.MapHugger>
       <S.ListSection>
-        <S.BoothList>
-          {selectedId ? "선택한 부스 정보" : "부스 리스트"}
-        </S.BoothList>
+        <S.BoothList>부스 리스트</S.BoothList>
         <S.BoothCur>
           <S.BoothAmount>총 {displayBooths.length}개</S.BoothAmount>의 부스
         </S.BoothCur>
-        {!selectedId && (
-          <S.FilterButton
-            $active={isOperatingOnly}
-            onClick={() => setIsOperatingOnly(!isOperatingOnly)}
-          >
-            운영 중
-          </S.FilterButton>
-        )}
+        <S.FilterButton
+          $active={isOperatingOnly}
+          onClick={() => setIsOperatingOnly(!isOperatingOnly)}
+        >
+          운영 중
+        </S.FilterButton>
         {displayBooths.length > 0 ? (
           displayBooths.map((booth) => (
             <BoothInfoComponent

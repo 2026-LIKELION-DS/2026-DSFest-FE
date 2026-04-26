@@ -184,7 +184,13 @@ const BoothMapComponent: React.FC<MapProps> = ({
             <S.BoothNameText>{boothName}</S.BoothNameText>
           </S.BoothNameBubble>
         )}
-        <S.BoothSlot $isActive={isActive} onClick={() => onBoothClick?.(id)}>
+        <S.BoothSlot
+          $isActive={isActive}
+          onClick={(e) => {
+            e.stopPropagation();
+            onBoothClick?.(id);
+          }}
+        >
           {id}
         </S.BoothSlot>
       </S.BoothContainer>
