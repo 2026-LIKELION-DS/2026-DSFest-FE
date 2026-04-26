@@ -7,12 +7,12 @@ export const ImageDetailPage = styled.div`
   transform: translate(-50%, -50%);
 
   width: 100%;
-  max-width: 402px;
   height: 100dvh;
-  @media (min-height: 874px) {
+  @media (min-width: 768px) {
     border: 12px solid ${({ theme }) => theme.colors.olive[50]};
     height: 874px;
     border-radius: 24px;
+    max-width: 402px;
   }
 
   background: ${({ theme }) => theme.colors.fg.primary};
