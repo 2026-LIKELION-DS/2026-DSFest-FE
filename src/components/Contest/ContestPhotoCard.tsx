@@ -1,21 +1,30 @@
 import * as S from "../../styles/ContestPhotoCard.style";
 
 import VoteOff from "../../assets/Contest/VoteOff.svg";
-// import VoteOn from "../../assets/Contest/VoteON.svg";
+import VoteOn from "../../assets/Contest/VoteON.svg";
 import Zoom from "../../assets/Contest/ZoomIcon.svg";
-import examplePhoto from "../../assets/hahyunsang_sample.svg";
 
-export default function ContestPhotoCard() {
+interface ContestPhotoCardProps {
+  photo: { id: number; title: string; src: string };
+  isSelected: boolean;
+  onSelect: () => void;
+}
+
+export default function ContestPhotoCard({
+  photo,
+  isSelected,
+  onSelect,
+}: ContestPhotoCardProps) {
   return (
     <S.PhotoCardWrapper>
       <S.PhotoCard>
         <S.PhotoImgWrapper>
-          <S.Photo src={examplePhoto} />
+          <S.Photo src={photo.src} />
           <S.ZoomIcon src={Zoom} />
         </S.PhotoImgWrapper>
-        <S.PhotoTitle>사진 제목</S.PhotoTitle>
+        <S.PhotoTitle>{photo.title}</S.PhotoTitle>
       </S.PhotoCard>
-      <S.VoteIcon src={VoteOff}></S.VoteIcon>
+      <S.VoteIcon src={isSelected ? VoteOn : VoteOff} onClick={onSelect} />
     </S.PhotoCardWrapper>
   );
 }

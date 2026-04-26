@@ -1,12 +1,40 @@
 import * as S from "../styles/ContestVote.style";
 import { useState } from "react";
 import PhotoCard from "../components/Contest/ContestPhotoCard";
+import examplePhoto from "../assets/hahyunsang_sample.svg";
 
 // 임시 데이터
 const TOPICS = [
-  { id: 1, title: "주제 텍스트 주제 텍스트" },
-  { id: 2, title: "주제 텍스트 주제 텍스트" },
-  { id: 3, title: "주제 텍스트 주제 텍스트" },
+  {
+    id: 1,
+    title: "주제 텍스트 주제 텍스트",
+    photos: [
+      { id: 1, title: "사진제목", src: examplePhoto },
+      { id: 2, title: "사진제목", src: examplePhoto },
+      { id: 3, title: "사진제목", src: examplePhoto },
+      { id: 4, title: "사진제목", src: examplePhoto },
+    ],
+  },
+  {
+    id: 2,
+    title: "주제 텍스트 주제 텍스트",
+    photos: [
+      { id: 5, title: "사진제목", src: examplePhoto },
+      { id: 6, title: "사진제목", src: examplePhoto },
+      { id: 7, title: "사진제목", src: examplePhoto },
+      { id: 8, title: "사진제목", src: examplePhoto },
+    ],
+  },
+  {
+    id: 3,
+    title: "주제 텍스트 주제 텍스트",
+    photos: [
+      { id: 9, title: "사진제목", src: examplePhoto },
+      { id: 10, title: "사진제목", src: examplePhoto },
+      { id: 11, title: "사진제목", src: examplePhoto },
+      { id: 12, title: "사진제목", src: examplePhoto },
+    ],
+  },
 ];
 
 export default function ContestVotePage() {
@@ -40,14 +68,24 @@ export default function ContestVotePage() {
       </S.VoteHeader>
 
       <S.PhotoGrid>
-        <PhotoCard />
-        <PhotoCard />
-        <PhotoCard />
-        <PhotoCard />
+        {topic.photos.map((photo) => (
+          <PhotoCard
+            key={photo.id}
+            photo={photo}
+            isSelected={selectedPhotos[topic.id] === photo.id}
+            onSelect={() =>
+              setSelectedPhotos((prev) => ({
+                ...prev,
+                [topic.id]:
+                  selectedPhotos[topic.id] === photo.id ? null : photo.id,
+              }))
+            }
+          />
+        ))}
       </S.PhotoGrid>
 
       <S.ActionButton
-        // disabled={!isSelected} //테스트용 임시 주석
+        disabled={!isSelected}
         onClick={isLastPage ? handleSubmit : handleNext}
       >
         {isLastPage ? "인적사항 입력" : "다음으로"}
