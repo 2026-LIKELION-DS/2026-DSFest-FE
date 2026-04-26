@@ -1,5 +1,6 @@
 import * as S from "../styles/ContestVote.style";
 import { useState } from "react";
+import PhotoCard from "../components/Contest/ContestPhotoCard";
 
 // 임시 데이터
 const TOPICS = [
@@ -38,7 +39,12 @@ export default function ContestVotePage() {
         <S.SubText>주제 별 한 장의 사진만 투표할 수 있습니다.</S.SubText>
       </S.VoteHeader>
 
-      {/* 여기에 나중에 PhotoCard 컴포넌트 들어올 자리 */}
+      <S.PhotoGrid>
+        <PhotoCard />
+        <PhotoCard />
+        <PhotoCard />
+        <PhotoCard />
+      </S.PhotoGrid>
 
       <S.ActionButton
         // disabled={!isSelected} //테스트용 임시 주석

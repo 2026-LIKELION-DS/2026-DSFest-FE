@@ -35,4 +35,11 @@ export const ActionButton = styled.button`
     disabled ? theme.colors.bg.disabled : theme.colors.bg.brand};
   color: ${({ disabled }) => (disabled ? theme.colors.fg.disabled : "#fff")};
   cursor: pointer;
+  margin: 24px 0;
+`;
+
+export const PhotoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 `;
