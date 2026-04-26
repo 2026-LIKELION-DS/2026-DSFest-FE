@@ -234,15 +234,16 @@ const BoothPage: React.FC = () => {
         </S.HeaderTimeOption>
       </S.HeaderToggleOverlay>
       <S.FloatingButtonGroup $hasTopBtn={showTopBtn}>
+        <S.FloatingCircleBtn
+          onClick={handleScrollToTop}
+          $isVisible={showTopBtn}
+        >
+          <img src={upIcon} alt="scroll to top" />
+        </S.FloatingCircleBtn>
+
         <S.FloatingCircleBtn onClick={() => setIsNoticeOpen(true)}>
           <img src={announceIcon} alt="announce" />
         </S.FloatingCircleBtn>
-
-        {showTopBtn && (
-          <S.FloatingCircleBtn onClick={handleScrollToTop}>
-            <img src={upIcon} alt="scroll to top" />
-          </S.FloatingCircleBtn>
-        )}
       </S.FloatingButtonGroup>
       <S.PageWrapper ref={mapSectionRef} onScroll={handleScroll}>
         <S.DayNav>
