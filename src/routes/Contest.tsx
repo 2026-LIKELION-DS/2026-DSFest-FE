@@ -13,7 +13,7 @@ export default function ContestPag() {
           // phase="before"
           phase="vote"
           remainingTime="23:59:59"
-          kakaoLink="https://open.kakao.com/..." //총학 카카오톡 링크
+          kakaoLink="https://pf.kakao.com/_gUyQn"
         />
       </S.VoteButtonWrapper>
     </S.ContestPage>
