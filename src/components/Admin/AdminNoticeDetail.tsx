@@ -1,0 +1,44 @@
+import * as S from "../../styles/AdminNoticeDetail.styles";
+
+const mockNotice = {
+  title: "공지 제목 공지 제목공지 제목공지 제목공지 제목",
+  images: [null, null, null],
+  content: `공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게 공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게 공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게
+
+공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게
+
+공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게 긴 공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게`,
+};
+
+export default function AdminNoticeDetail() {
+
+
+  return (
+    <S.Page>
+      <S.Content>
+        <S.FixedTopArea>
+          <S.Title>{mockNotice.title}</S.Title>
+
+          <S.ImageScrollArea>
+            <S.AddImageBox>
+              사진
+              <br />
+              추가하기
+            </S.AddImageBox>
+
+            {mockNotice.images.map((_, index) => (
+              <S.ImageBox key={index} />
+            ))}
+          </S.ImageScrollArea>
+        </S.FixedTopArea>
+
+        <S.BodyText>{mockNotice.content}</S.BodyText>
+      </S.Content>
+
+      <S.BottomButtonArea>
+        <S.EditButton type="button">수정</S.EditButton>
+        <S.DeleteButton type="button">삭제</S.DeleteButton>
+      </S.BottomButtonArea>
+    </S.Page>
+  );
+}

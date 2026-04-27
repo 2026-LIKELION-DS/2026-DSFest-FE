@@ -1,3 +1,5 @@
+import AdminNoticeDetail from "../../components/Admin/AdminNoticeDetail";
+
 export default function AdminNoticeDetailPage() {
-    return <div>Admin Notice Detail Page</div>;
-  }
+  return <AdminNoticeDetail />;
+}
