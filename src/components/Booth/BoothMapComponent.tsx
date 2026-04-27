@@ -12,7 +12,7 @@ interface MapProps {
   day: number;
   time?: "day" | "night";
   selectedId?: number | null;
-  onBoothClick?: (id: number) => void;
+  onBoothClick?: (id: number | null) => void;
   booths: Booth[];
 }
 
@@ -128,32 +128,33 @@ const BoothMapComponent: React.FC<MapProps> = ({
       30: { x: 1345, y: 892 },
     };
 
-    if (selectedId && pinchZoomRef.current && mapRef.current) {
-      const targetPos = BOOTH_POSITIONS_13KH[selectedId];
+    if (pinchZoomRef.current && mapRef.current) {
+      const container = mapRef.current.parentElement;
+      if (!container) return;
 
-      if (targetPos) {
-        const container = mapRef.current.parentElement;
-        if (!container) return;
+      const cw = container.clientWidth;
+      const ch = container.clientHeight;
 
-        const containerWidth = container.clientWidth;
-        const containerHeight = container.clientHeight;
+      if (selectedId && BOOTH_POSITIONS_13KH[selectedId]) {
+        const targetPos = BOOTH_POSITIONS_13KH[selectedId];
+        const focusScale = (ch / 700) * 7;
 
-        const focusScale = (containerHeight / 700) * 7;
-
-        const x =
-          ((targetPos.x * focusScale) / 2 - containerWidth) /
-          (focusScale - 1) /
-          2;
-
-        const y =
-          ((targetPos.y * focusScale) / 2 - containerHeight) /
-          (focusScale - 1) /
-          2;
+        const x = ((targetPos.x * focusScale) / 2 - cw) / (focusScale - 1) / 2;
+        const y = ((targetPos.y * focusScale) / 2 - ch) / (focusScale - 1) / 2;
 
         pinchZoomRef.current.scaleTo({
           x,
           y,
           scale: focusScale,
+          animated: true,
+        });
+      } else if (selectedId === null) {
+        const initialScale = (ch / 700) * 5;
+
+        pinchZoomRef.current.scaleTo({
+          x: 210,
+          y: 150,
+          scale: initialScale,
           animated: true,
         });
       }
@@ -174,6 +175,12 @@ const BoothMapComponent: React.FC<MapProps> = ({
     }
   }, [day, time]);
 
+  const handleMapBackgroundClick = () => {
+    if (selectedId !== null) {
+      onBoothClick?.(null);
+    }
+  };
+
   const renderBooth = (id: number) => {
     const isActive = selectedId === id;
     const boothName = booths?.find((b) => b.id === id)?.name || `부스 ${id}`;
@@ -189,7 +196,11 @@ const BoothMapComponent: React.FC<MapProps> = ({
           $isActive={isActive}
           onClick={(e) => {
             e.stopPropagation();
-            onBoothClick?.(id);
+            if (isActive) {
+              onBoothClick?.(null);
+            } else {
+              onBoothClick?.(id);
+            }
           }}
         >
           {id}
@@ -213,7 +224,11 @@ const BoothMapComponent: React.FC<MapProps> = ({
           },
         }}
       >
-        <S.MapCanvas ref={mapRef} $isNight={time === "night"}>
+        <S.MapCanvas
+          ref={mapRef}
+          $isNight={time === "night"}
+          onClick={handleMapBackgroundClick}
+        >
           {/* 1. 학생회관 구역 */}
           <S.Section $top="131px" $left="115px" $width="242px" $height="119px">
             <S.BuildingLabel>학생회관</S.BuildingLabel>
