@@ -15,10 +15,10 @@ export const ContestPage = styled.div`
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 68.5vh;
+  min-height: 55.5vh;
 `;
 
 export const VoteButtonWrapper = styled.div`
   margin-top: auto;
-  padding-top: 50%;
+  padding-top: 40%;
 `;
