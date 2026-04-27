@@ -17,6 +17,7 @@ export const TimeLine = styled.div`
   font-family: ${theme.typography.h4};
   margin-bottom: 5px;
   gap: 4px;
+  height: 48px;
 `;
 export const voteButton = styled.button<{
   $phase: ContestPhase;

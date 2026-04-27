@@ -35,6 +35,7 @@ export const VoteToastWrapper = styled.div<{ $hiding: boolean }>`
   margin-bottom: 10px;
   animation: ${({ $hiding }) => ($hiding ? slideDown : slideUp)} 0.4s ease
     forwards;
+  height: 48px;
 `;
 
 export const GoodIcon = styled.img`
