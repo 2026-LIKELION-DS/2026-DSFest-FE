@@ -6,8 +6,8 @@ export const Container = styled.nav`
   justify-content: center;
   gap: 4px;
   align-items: center;
-  border-top: 0.5px solid #e5ebcf;
-  background: #fffefb;
+  border-top: 0.5px solid ${({ theme }) => theme.colors.stroke.oliveLight};
+  background: ${({ theme }) => theme.colors.bg.neutral};
 `;
 
 export const Item = styled.button<{ active: boolean }>`
@@ -21,7 +21,8 @@ export const Item = styled.button<{ active: boolean }>`
   background: transparent;
   cursor: pointer;
 
-  color: ${({ active }) => (active ? "#0B4112" : "#9E9E9E")};
+  color: ${({ theme, active }) =>
+    active ? theme.colors.bg.brand : theme.colors.fg.subtle};
 `;
 
 export const Icon = styled.img`

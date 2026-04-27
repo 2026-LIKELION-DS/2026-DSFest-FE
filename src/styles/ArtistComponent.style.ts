@@ -8,7 +8,7 @@ export const ArtistCard = styled.article`
   margin: 0 auto;
   padding: 24px;
   border-radius: 4px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.bg.offWhite};
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 `;
 
@@ -24,10 +24,10 @@ export const TimeBlock = styled.div`
   top: -1px;
   right: 25px;
   padding: 6px 12px;
-  border: 0.5px solid #0b4112;
+  border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
   border-radius: 2px;
-  background: #f5f7ed;
-  color: #0b4112;
+  background: ${({ theme }) => theme.colors.bg.oliveLight};
+  color: ${({ theme }) => theme.colors.bg.brand};
   transform: rotate(10deg);
 `;
 
@@ -53,7 +53,7 @@ export const ArtistName = styled.h3`
   font-size: 24px;
   font-weight: 700;
   line-height: 1.5;
-  color: #161716;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const ArtistDesc = styled.p`
@@ -61,12 +61,12 @@ export const ArtistDesc = styled.p`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
-  color: #161716;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const LinkBlock = styled.div`
-  background: #f5f7ed;
-  border: 0.5px solid #0b4112;
+  background: ${({ theme }) => theme.colors.bg.oliveLight};
+  border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
   border-radius: 2px;
   display: flex;
   width: 121px;
@@ -86,7 +86,7 @@ export const ArtistLink = styled.div`
   gap: 6px;
 
   a {
-    color: #0b4112;
+    color: ${({ theme }) => theme.colors.bg.brand};
     font-size: 14px;
     font-family: "OwnglyphSeaBreeze", sans-serif;
   }
@@ -106,7 +106,8 @@ export const PageButton = styled.button<{ $active: boolean }>`
   padding: 0;
   border: none;
   border-radius: 100px;
-  background: ${({ $active }) => ($active ? "#277B31" : "#9E9E9E")};
+  background: ${({ theme, $active }) =>
+    $active ? theme.colors.bg.brandLight : theme.colors.fg.subtle};
   cursor: pointer;
 `;
 
@@ -138,24 +139,16 @@ export const CountdownButton = styled.button<{
   justify-content: flex-start;
   padding: 0 24px;
 
-  background: ${({ $status }) =>
-    $status === "LIVE"
-      ? "#0B4112"
-      : $status === "ENDED"
-        ? "#D6D6D6"
-        : "#D6D6D6"};
+  background: ${({ theme, $status }) =>
+    $status === "LIVE" ? theme.colors.bg.brand : theme.colors.bg.disabled};
 
-  color: ${({ $status }) => ($status === "LIVE" ? "#F2F2F2" : "#828282")};
+  color: ${({ theme, $status }) =>
+    $status === "LIVE"
+      ? theme.colors.fg.primaryInverted
+      : theme.colors.fg.disabled};
 
   cursor: ${({ $status }) => ($status === "ENDED" ? "not-allowed" : "pointer")};
 `;
-
-// export const CountdownButtonBlock = styled.div`
-//   display: flex;
-//   align-items: center;
-//   width: 100%;
-//   justify-content: space-between;
-// `;
 
 export const CountdownButtonBlock = styled.div<{
   $status: "BEFORE" | "LIVE" | "ENDED";
@@ -178,8 +171,8 @@ export const EntranceButton = styled.button`
   height: 44px;
   border-radius: 100px;
   border: none;
-  background: #0b4112;
-  color: #f2f2f2;
+  background: ${({ theme }) => theme.colors.bg.brand};
+  color: ${({ theme }) => theme.colors.fg.primaryInverted};
   font-size: 14px;
   font-weight: 700;
   display: flex;
@@ -194,7 +187,7 @@ export const EntranceButtonBlock = styled.div`
 `;
 
 export const NoticeText = styled.p`
-  color: #9e9e9e;
+  color: ${({ theme }) => theme.colors.fg.subtle};
   font-size: 12px;
   font-weight: 500;
   text-align: center;
@@ -216,7 +209,7 @@ export const PlaylistTitle = styled.h2`
   margin: 0;
   font-size: 24px;
   font-weight: 700;
-  color: #111;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const PlaylistDesc = styled.p`
@@ -224,7 +217,7 @@ export const PlaylistDesc = styled.p`
   padding-bottom: 12px;
   font-size: 14px;
   font-weight: 500;
-  color: #9b9b9b;
+  color: ${({ theme }) => theme.colors.fg.subtle};
 `;
 
 export const ThumbnailLink = styled.a`
@@ -245,8 +238,8 @@ export const PlaylistAddButton = styled.a`
   height: 42px;
   margin-top: 24px;
   border-radius: 100px;
-  background: #064b13;
-  color: #f2f2f2;
+  background: ${({ theme }) => theme.colors.bg.brand};
+  color: ${({ theme }) => theme.colors.fg.primaryInverted};
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
@@ -259,9 +252,9 @@ export const PlaylistNotice = styled.article`
 
   margin-top: 22px;
   padding: 16px;
-  border: 1px solid #e5ebcf;
+  border: 1px solid ${({ theme }) => theme.colors.stroke.oliveLight};
   border-radius: 4px;
-  background: #f5f7ed;
+  background: ${({ theme }) => theme.colors.bg.oliveLight};
 
   .bubble {
     position: absolute;
@@ -292,7 +285,7 @@ export const PlaylistNotice = styled.article`
 
 export const NoticeTitle = styled.span`
   display: block;
-  color: #277b31;
+  color: ${({ theme }) => theme.colors.bg.brandLight};
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
@@ -304,7 +297,7 @@ export const NoticeList = styled.ol`
 
   li {
     margin-bottom: 10px;
-    color: #222;
+    color: ${({ theme }) => theme.colors.fg.primary};
     font-size: 13px;
     line-height: 1.5;
     font-weight: 500;
@@ -313,7 +306,7 @@ export const NoticeList = styled.ol`
 
 export const NoticeCaption = styled.p`
   margin: 10px 0 0;
-  color: #9a9a9a;
+  color: ${({ theme }) => theme.colors.fg.subtle};
   font-size: 13px;
   font-weight: 500;
 `;
@@ -374,12 +367,12 @@ export const ArtistModalTitle = styled.h2`
   margin-bottom: 0px;
   font-size: 24px;
   font-weight: 700;
-  color: #277b31;
+  color: ${({ theme }) => theme.colors.bg.brandLight};
 `;
 
 export const ArtistModalDivider = styled.div`
   border: none;
-  border-top: 0.5px solid #064112;
+  border-top: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
   margin: 0;
 `;
 
@@ -407,7 +400,7 @@ export const ArtistDescription = styled.div`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
-  color: #161716;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const ArtistButtonGroup = styled.div`
@@ -419,8 +412,8 @@ export const ArtistCloseButton = styled.button`
   height: 44px;
   padding: 10px;
   border-radius: 100px;
-  border: 0.5px solid #9e9e9e;
-  background: #fff;
+  border: 0.5px solid ${({ theme }) => theme.colors.fg.subtle};
+  background: ${({ theme }) => theme.colors.bg.offWhite};
   font-weight: 700;
   cursor: pointer;
 `;

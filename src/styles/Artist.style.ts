@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ArtistPage = styled.div`
   margin: 0 auto;
   padding: 0 24px 24px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.bg.offWhite};
   overflow-x: hidden;
 `;
 
@@ -23,7 +23,8 @@ export const DayButton = styled.button<{ $active: boolean }>`
   flex: 1;
   border: none;
   background: transparent;
-  color: ${({ $active }) => ($active ? "#277B31" : "#9E9E9E")};
+  color: ${({ theme, $active }) =>
+    $active ? theme.colors.bg.brandLight : theme.colors.fg.subtle};
   font-size: 24px;
   font-weight: 700;
   cursor: pointer;
@@ -31,7 +32,8 @@ export const DayButton = styled.button<{ $active: boolean }>`
   span {
     display: block;
     margin-top: 6px;
-    color: ${({ $active }) => ($active ? "#277B31" : "#9E9E9E")};
+    color: ${({ theme, $active }) =>
+      $active ? theme.colors.bg.brandLight : theme.colors.fg.subtle};
     font-size: 14px;
     font-weight: 500;
   }
