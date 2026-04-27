@@ -91,41 +91,41 @@ const BoothMapComponent: React.FC<MapProps> = ({
 
   useEffect(() => {
     const BOOTH_POSITIONS_13KH: Record<number, { x: number; y: number }> = {
-      1: { x: 529, y: 432 },
+      1: { x: 410, y: 342 },
 
-      2: { x: 805, y: 350 },
-      3: { x: 805, y: 418 },
-      4: { x: 805, y: 486 },
+      2: { x: 765, y: 198 },
+      3: { x: 765, y: 248 },
+      4: { x: 765, y: 298 },
 
-      5: { x: 711, y: 544 },
-      6: { x: 711, y: 592 },
-      7: { x: 711, y: 640 },
-      8: { x: 711, y: 688 },
-      9: { x: 711, y: 736 },
-      10: { x: 711, y: 784 },
-      11: { x: 711, y: 832 },
-      12: { x: 711, y: 880 },
-      13: { x: 711, y: 928 },
+      5: { x: 645, y: 430 },
+      6: { x: 645, y: 480 },
+      7: { x: 645, y: 530 },
+      8: { x: 645, y: 580 },
+      9: { x: 645, y: 630 },
+      10: { x: 645, y: 680 },
+      11: { x: 645, y: 730 },
+      12: { x: 645, y: 780 },
+      13: { x: 645, y: 830 },
 
-      14: { x: 1269, y: 541 },
-      15: { x: 1221, y: 541 },
-      16: { x: 1173, y: 541 },
-      17: { x: 1125, y: 541 },
-      18: { x: 1077, y: 541 },
+      14: { x: 1345, y: 440 },
+      15: { x: 1275, y: 440 },
+      16: { x: 1205, y: 440 },
+      17: { x: 1135, y: 440 },
+      18: { x: 1065, y: 440 },
 
-      19: { x: 913, y: 607 },
-      20: { x: 913, y: 655 },
-      21: { x: 913, y: 703 },
-      22: { x: 913, y: 751 },
-      23: { x: 913, y: 799 },
-      24: { x: 913, y: 847 },
-      25: { x: 913, y: 895 },
+      19: { x: 910, y: 500 },
+      20: { x: 910, y: 550 },
+      21: { x: 910, y: 600 },
+      22: { x: 910, y: 650 },
+      23: { x: 910, y: 700 },
+      24: { x: 910, y: 750 },
+      25: { x: 910, y: 800 },
 
-      30: { x: 1269, y: 942 },
-      29: { x: 1221, y: 942 },
-      28: { x: 1173, y: 942 },
-      27: { x: 1125, y: 942 },
-      26: { x: 1077, y: 942 },
+      26: { x: 1065, y: 892 },
+      27: { x: 1135, y: 892 },
+      28: { x: 1205, y: 892 },
+      29: { x: 1275, y: 892 },
+      30: { x: 1345, y: 892 },
     };
 
     if (selectedId && pinchZoomRef.current && mapRef.current) {
@@ -138,12 +138,13 @@ const BoothMapComponent: React.FC<MapProps> = ({
         const containerWidth = container.clientWidth;
         const containerHeight = container.clientHeight;
 
-        const focusScale = (containerHeight / 700) * 5;
+        const focusScale = (containerHeight / 700) * 7;
 
         const x =
           ((targetPos.x * focusScale) / 2 - containerWidth) /
           (focusScale - 1) /
           2;
+
         const y =
           ((targetPos.y * focusScale) / 2 - containerHeight) /
           (focusScale - 1) /
