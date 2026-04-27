@@ -4,6 +4,7 @@ import AppLayout from "./layouts/AppLayout";
 
 import BoothPage from "./routes/Booth";
 import ArtistPage from "./routes/Artist";
+import HomePage from "./routes/Home";
 import SchedulePage from "./routes/Schedule";
 import NoticePage from "./routes/Notice/Notice";
 import NoticeAllPage from "./routes/Notice/NoticeAll";
@@ -20,6 +21,19 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route
+          path="/"
+          element={
+            <AppLayout
+              title="청춘"
+              subtitle="2026 근화제"
+              showBackButton={false}
+              showNavBar={true}
+            >
+              <HomePage />
+            </AppLayout>
+          }
+        />
         <Route
           path="/booth"
           element={

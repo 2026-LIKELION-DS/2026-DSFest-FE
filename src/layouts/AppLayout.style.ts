@@ -22,3 +22,4 @@ export const Main = styled.main<{ $showNavBar: boolean }>`
   flex: 1;
   overflow-y: auto;
 `;
+  
