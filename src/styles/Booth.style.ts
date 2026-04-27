@@ -337,7 +337,7 @@ export const OnboardingOverlay = styled.div<{ $isVisible: boolean }>`
     visibility 0.5s;
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   visibility: ${({ $isVisible }) => ($isVisible ? "visible" : "hidden")};
-  pointer-events: ${({ $isVisible }) => ($isVisible ? "auto" : "none")};
+  pointer-events: none;
   position: fixed;
   top: 50%;
   left: 50%;
