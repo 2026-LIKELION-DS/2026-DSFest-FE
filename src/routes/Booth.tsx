@@ -159,14 +159,12 @@ const BoothPage: React.FC = () => {
   }, [currentPeriodBooths]);
 
   const displayBooths = useMemo(() => {
-    if (selectedId) {
-      return BOOTH_DATA.filter((b) => b.id === selectedId);
-    }
     const baseList = isOperatingOnly
       ? BOOTH_DATA.filter((b) => b.status === "운영 중")
       : BOOTH_DATA;
+
     return baseList;
-  }, [selectedId, isOperatingOnly]);
+  }, [isOperatingOnly]);
 
   const isOffHours = useMemo(() => {
     return (
@@ -261,20 +259,16 @@ const BoothPage: React.FC = () => {
           />
         </S.MapHugger>
         <S.ListSection>
-          <S.BoothList>
-            {selectedId ? "선택한 부스 정보" : "부스 리스트"}
-          </S.BoothList>
+          <S.BoothList>부스 리스트</S.BoothList>
           <S.BoothCur>
             <S.BoothAmount>총 {displayBooths.length}개</S.BoothAmount>의 부스
           </S.BoothCur>
-          {!selectedId && (
-            <S.FilterButton
-              $active={isOperatingOnly}
-              onClick={() => setIsOperatingOnly(!isOperatingOnly)}
-            >
-              운영 중
-            </S.FilterButton>
-          )}
+          <S.FilterButton
+            $active={isOperatingOnly}
+            onClick={() => setIsOperatingOnly(!isOperatingOnly)}
+          >
+            운영 중
+          </S.FilterButton>
           {displayBooths.length > 0 ? (
             displayBooths.map((booth) => (
               <BoothInfoComponent
