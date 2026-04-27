@@ -215,18 +215,20 @@ const BoothMapComponent: React.FC<MapProps> = ({
       >
         <S.MapCanvas ref={mapRef} $isNight={time === "night"}>
           {/* 1. 학생회관 구역 */}
-          <S.Section $top="131px" $left="115px" $width="242px" $height="118px">
+          <S.Section $top="131px" $left="115px" $width="242px" $height="119px">
             <S.BuildingLabel>학생회관</S.BuildingLabel>
             <S.AbsoluteBooth
               $top="10px"
-              $left="-52px"
-              $width="50px"
+              $left="-60px"
+              $width="60px"
               $height="40px"
             >
-              <S.SubLabel>손목띠 배부</S.SubLabel>
+              <S.SubLabel>
+                손목띠<br></br> 배부
+              </S.SubLabel>
             </S.AbsoluteBooth>
             <S.AbsoluteBooth
-              $bottom="-42px"
+              $bottom="-40px"
               $left="50px"
               $width="60px"
               $height="40px"
@@ -239,7 +241,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
           </S.Section>
 
           {/* 2. 소영근터 구역 */}
-          <S.Section $top="131px" $left="420px" $width="242px" $height="118px">
+          <S.Section $top="131px" $left="420px" $width="242px" $height="119px">
             <S.BuildingLabel>
               <S.SmallParkVoid>소영근터</S.SmallParkVoid>
             </S.BuildingLabel>
@@ -249,11 +251,13 @@ const BoothMapComponent: React.FC<MapProps> = ({
               $width="60px"
               $height="40px"
             >
-              <S.SubLabel>포토월& 에어덕새</S.SubLabel>
+              <S.SubLabel>
+                포토월& <br></br>에어덕새
+              </S.SubLabel>
             </S.AbsoluteBooth>
             <S.AbsoluteBooth
-              $bottom="-42px"
-              $right="-25px"
+              $bottom="-40px"
+              $right="-20px"
               $width="82px"
               $height="40px"
             >
@@ -265,19 +269,21 @@ const BoothMapComponent: React.FC<MapProps> = ({
           </S.Section>
 
           {/* 3. 예술대학 구역 */}
-          <S.Section $top="131px" $left="716px" $width="307px" $height="118px">
+          <S.Section $top="131px" $left="716px" $width="307px" $height="119px">
             <S.BuildingLabel>예술대학</S.BuildingLabel>
             <S.AbsoluteBooth
-              $bottom="-42px"
-              $left="-0.5px"
+              $bottom="-40px"
+              $left="-1px"
               $width="60px"
               $height="40px"
             >
-              <S.SubLabel>협찬품 배부</S.SubLabel>
+              <S.SubLabel>
+                협찬품<br></br>배부
+              </S.SubLabel>
             </S.AbsoluteBooth>
             <S.AbsoluteBooth
-              $bottom="-42px"
-              $left="60px"
+              $bottom="-40px"
+              $left="58px"
               $width="60px"
               $height="40px"
             >
@@ -298,16 +304,18 @@ const BoothMapComponent: React.FC<MapProps> = ({
           {/* 5. 민주동산 구역 */}
           <S.Section $top="325px" $left="297px" $width="182px" $height="350px">
             <S.BuildingLabel>민주동산</S.BuildingLabel>
-            <S.BoothList $top="-1px" $right="-57px" $direction="column">
+            <S.BoothList $top="-1px" $right="-55px" $direction="column">
               {currentLayout.minju?.map(renderBooth)}
             </S.BoothList>
             <S.AbsoluteBooth
-              $bottom="-41px"
-              $left="58px"
+              $bottom="-40px"
+              $left="60px"
               $width="121px"
               $height="40px"
             >
-              <S.SubLabel>손목띠 배부</S.SubLabel>
+              <S.SubLabel>
+                손목띠 <br></br>배부
+              </S.SubLabel>
             </S.AbsoluteBooth>
           </S.Section>
 
@@ -322,7 +330,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
             </S.BoothList>
             <S.InnerBlock
               $top="140px"
-              $right="-1px"
+              $right="-2px"
               $width="124px"
               $height="111px"
             >
@@ -332,7 +340,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
               </S.FlexRow>
               <S.UnitStage>무대</S.UnitStage>
             </S.InnerBlock>
-            <S.BoothList $bottom="3.5px" $right="50px" $direction="row">
+            <S.BoothList $bottom="3px" $right="50px" $direction="row">
               {currentLayout.youngBottom?.map(renderBooth)}
             </S.BoothList>
           </S.Section>
