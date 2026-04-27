@@ -331,7 +331,13 @@ export const HeaderTimeOption = styled.button<{ $active: boolean }>`
       `}
   }
 `;
-export const OnboardingOverlay = styled.div`
+export const OnboardingOverlay = styled.div<{ $isVisible: boolean }>`
+  transition:
+    opacity 0.5s ease-in-out,
+    visibility 0.5s;
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  visibility: ${({ $isVisible }) => ($isVisible ? "visible" : "hidden")};
+  pointer-events: ${({ $isVisible }) => ($isVisible ? "auto" : "none")};
   position: fixed;
   top: 50%;
   left: 50%;
@@ -351,9 +357,6 @@ export const OnboardingOverlay = styled.div`
     border: none;
   }
 
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -362,6 +365,9 @@ export const OnboardingOverlay = styled.div`
 `;
 
 export const GuideContainer = styled.div`
+  transition:
+    opacity 0.5s ease-in-out,
+    visibility 0.5s;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -383,27 +389,8 @@ export const GuideContainer = styled.div`
   }
 `;
 
-export const WhiteHighlight = styled.div`
-  background-color: #ffffff;
-  border-radius: 999px;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
-  left: 50%;
-  transform: translateX(calc(201px - 100% - 25px));
-`;
-
-export const FakeHeaderWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const GuideText = styled.div`
-  margin-top: 20px;
+  margin-top: 50px;
   color: #ffffff;
   text-align: center;
   display: flex;
@@ -413,19 +400,47 @@ export const GuideText = styled.div`
 
   position: relative;
   left: 50%;
-  transform: translateX(calc(50% - 50px));
-
-  img {
-    width: 15px;
-    margin-bottom: 10px;
-  }
+  transform: translateX(calc(50% - 40px));
 
   span {
-    ${setTypo("h3")};
+    ${setTypo("buttonSm")};
     font-weight: 500;
     white-space: pre-line;
     line-height: 1.4;
     letter-spacing: -0.02em;
+  }
+
+  background-color: ${({ theme }) => theme.colors.bg.brand};
+  color: ${({ theme }) => theme.colors.fg.primaryInverted};
+
+  padding: 3px 12px 5px 12px;
+  border: 1.5px solid ${({ theme }) => theme.colors.fg.primaryInverted};
+  border-radius: 9999px;
+
+  width: max-content;
+
+  text-align: center;
+  line-height: 1.2;
+  z-index: 21;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+
+  &::after {
+    z-index: 22;
+    content: "";
+    position: absolute;
+    top: calc(100% - 54px);
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    width: 10px;
+    height: 10px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 16 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10L1 1H15L8 10Z' fill='%23064112'/%3E%3Cpath d='M1 1L8 10L15 1' stroke='%23F2F2F2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
 `;
 
