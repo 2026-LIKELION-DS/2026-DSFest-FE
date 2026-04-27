@@ -49,7 +49,7 @@ export default function Modal({
                   <S.Content>
                     <S.NumTitle>이름</S.NumTitle>
                     <S.NumBox>
-                      <S.Name placeholder="이소라"></S.Name>
+                      <S.Name placeholder="김덕우"></S.Name>
                     </S.NumBox>
                   </S.Content>
                   <S.NoticeContent>
