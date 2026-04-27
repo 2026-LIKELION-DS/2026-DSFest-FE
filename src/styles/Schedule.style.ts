@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "./theme";
 import ScheduleBackGround from "../assets/Schedule/Scheduleback.svg";
 
@@ -13,6 +13,13 @@ export const SchedulePage = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
+  height: 100vh;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 export const Bubble = styled.img`
@@ -60,7 +67,7 @@ export const DecoLayer = styled.div`
   height: 100%;
   pointer-events: none;
   z-index: 2;
-  overflow: hidden;
+  /* overflow: hidden; */
 `;
 
 export const Leafs = styled.img`
@@ -102,6 +109,14 @@ export const Leafs1 = styled.img`
   right: 32%;
   z-index: 2;
   pointer-events: none;
+
+  /* @media (min-width: 768px) {
+    top: 870px;
+    right: 32%;
+  }
+  @media (max-height: 910px) {
+    top: 870px;
+  } */
 `;
 
 export const CamLeaf = styled.img`
@@ -129,4 +144,66 @@ export const CamFlower2 = styled.img`
   right: -12px;
   z-index: 2;
   pointer-events: none;
+`;
+
+export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "8px" : "0px")};
+
+  width: 100%;
+  left: 50%;
+  transform: translateX(calc(-10%));
+
+  bottom: 13px;
+  @media (min-width: 768px) or (max-height: 973px) {
+    bottom: calc(50% - 437px + 13px + 12px);
+    max-width: 402px;
+  }
+  @media (max-height: 910px) {
+    bottom: 10px;
+  }
+
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+`;
+
+export const FloatingIcon = styled.button<{ $isVisible?: boolean }>`
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  margin-bottom: 75px;
+  background: ${({ theme }) => theme.colors.bg.brand};
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+
+  ${({ $isVisible }) =>
+    $isVisible === false &&
+    css`
+      height: 0;
+      width: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0);
+      pointer-events: none;
+    `}
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  img {
+    width: 26px;
+    height: 26px;
+  }
 `;

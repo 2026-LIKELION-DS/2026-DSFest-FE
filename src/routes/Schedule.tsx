@@ -8,6 +8,7 @@ import Leaf from "../assets/Schedule/leaf.svg";
 import Leaf1 from "../assets/Schedule/leaf1.svg";
 import Flower from "../assets/Schedule/flower.svg";
 import Flowers2 from "../assets/Schedule/flowers2.svg";
+import upIcon from "../assets/Booth/BoothUp.svg";
 
 import { useState, useRef, useEffect } from "react";
 
@@ -159,28 +160,54 @@ export default function SchedulePage() {
     day3: useRef<HTMLDivElement>(null),
   };
 
-  // 현재 day에 진행중 아이템 있는지 확인
   const currentSchedule = scheduleData.find((d) => d.key === currentDay);
   const hasActive =
     currentSchedule?.data.some((item) => item.isActive) ?? false;
 
   // 스크롤 위치에 따라 방향 변경
   useEffect(() => {
+    const el = pageRef.current;
+    if (!el) return;
+
     const handleScroll = () => {
       if (!activeRef.current) return;
       const rect = activeRef.current.getBoundingClientRect();
       setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    el.addEventListener("scroll", handleScroll);
+    return () => el.removeEventListener("scroll", handleScroll);
   }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (!activeRef.current) return;
+  //     const rect = activeRef.current.getBoundingClientRect();
+  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const handleClick = () => {
     activeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
+  const pageRef = useRef<HTMLDivElement>(null);
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const scrollTop = e.currentTarget.scrollTop;
+    setShowTopBtn(scrollTop > 0);
+  };
+
+  const handleScrollToTop = () => {
+    if (pageRef.current) {
+      pageRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
-    <S.SchedulePage>
+    <S.SchedulePage ref={pageRef} onScroll={handleScroll}>
       <S.DecoLayer>
         <S.Leafs src={Leaf} />
         <S.Flower src={Flower} />
@@ -198,7 +225,6 @@ export default function SchedulePage() {
             $active={currentDay === day.key}
             onClick={() => {
               setCurrentDay(day.key);
-
               dayRefs[day.key].current?.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
@@ -215,6 +241,11 @@ export default function SchedulePage() {
           <TimeTable day={item.day} schedule={item.data} />
         </S.DaySection>
       ))}
+      <S.FloatingButton $hasTopBtn={showTopBtn}>
+        <S.FloatingIcon onClick={handleScrollToTop} $isVisible={showTopBtn}>
+          <img src={upIcon} alt="scroll to top" />
+        </S.FloatingIcon>
+      </S.FloatingButton>
       {/* 진행 중 버튼 위치 */}
       {hasActive && (
         <ScheduleButton direction={direction} onClick={handleClick} />
