@@ -3,6 +3,7 @@ import { useState } from "react";
 import PhotoCard from "../components/Contest/ContestPhotoCard";
 import examplePhoto from "../assets/hahyunsang_sample.svg";
 import { useNavigate } from "react-router-dom";
+import ContestInfoModal from "../components/Contest/ContestInformation";
 
 // 임시 데이터
 const TOPICS = [
@@ -39,6 +40,7 @@ const TOPICS = [
 ];
 
 export default function ContestVotePage() {
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
   const [selectedPhotos, setSelectedPhotos] = useState<
@@ -55,20 +57,18 @@ export default function ContestVotePage() {
     }
   };
 
-  // const handleSubmit = () => {
-  //   // 인적사항 입력 페이지로 이동
-  // };
-
   // const handleVoteDone = () => {
-  //   navigate("/contest", { state: { voted: true } }); // state로 전달
+  //   navigate("/contest", { state: { voted: true } });
   // };
-  const handleVoteDone = () => {
-    navigate("/contest", { state: { voted: true } });
-  };
 
   const handleSubmit = () => {
-    // TODO: 인적사항 입력 페이지 완성 후 navigate("/contest/vote/info")로 교체
-    handleVoteDone();
+    setIsInfoModalOpen(true);
+    // handleVoteDone();
+  };
+
+  const handleInfoSubmit = () => {
+    setIsInfoModalOpen(false);
+    navigate("/contest", { state: { voted: true } }); // 모달에서 제출 시 이동
   };
 
   return (
@@ -104,6 +104,11 @@ export default function ContestVotePage() {
       >
         {isLastPage ? "인적사항 입력" : "다음으로"}
       </S.ActionButton>
+      <ContestInfoModal
+        isOpen={isInfoModalOpen}
+        onClose={() => setIsInfoModalOpen(false)}
+        onSubmit={handleInfoSubmit} // 모달 내부 제출 버튼에 연결
+      />
     </S.ContestVotePage>
   );
 }
