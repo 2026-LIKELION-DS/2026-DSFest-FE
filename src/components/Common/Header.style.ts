@@ -5,7 +5,7 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   padding: 0 16px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.bg.offWhite};
 `;
 
 export const Left = styled.div<{ $show: boolean }>`
@@ -23,10 +23,11 @@ export const Title = styled.h1`
   font-size: 20px;
   font-weight: 700;
   margin: 0;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const Subtitle = styled.span`
   font-size: 14px;
-  color: #9e9e9e;
+  color: ${({ theme }) => theme.colors.fg.subtle};
   font-weight: 700;
 `;
