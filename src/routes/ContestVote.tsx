@@ -11,7 +11,7 @@ const TOPICS = [
     id: 1,
     title: "주제 텍스트 주제 텍스트",
     photos: [
-      { id: 1, title: "사진제목 자리", src: examplePhoto },
+      { id: 1, title: "사진제목 제목제목제목개긴제목 자리", src: examplePhoto },
       { id: 2, title: "사진제목", src: examplePhoto },
       { id: 3, title: "사진제목", src: examplePhoto },
       { id: 4, title: "사진제목", src: examplePhoto },

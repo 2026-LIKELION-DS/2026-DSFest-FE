@@ -37,7 +37,7 @@ export const voteButton = styled.button<{
   ${({ $voted }) =>
     $voted &&
     `
-    background-color: ${theme.colors.bg.disabled};  // 회색으로
+    background-color: ${theme.colors.bg.disabled};
     color: ${theme.colors.fg.disabled};
     cursor: not-allowed;
   `}

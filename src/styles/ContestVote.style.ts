@@ -9,7 +9,9 @@ export const ContestVotePage = styled.div`
   margin-top: 16px;
 `;
 
-export const VoteHeader = styled.div``;
+export const VoteHeader = styled.div`
+  padding: 16px 0;
+`;
 export const PhotoPage = styled.div`
   font-family: ${theme.typography.h2};
   color: ${theme.colors.bg.brandLight};
