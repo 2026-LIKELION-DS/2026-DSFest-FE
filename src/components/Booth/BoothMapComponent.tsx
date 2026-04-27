@@ -12,7 +12,7 @@ interface MapProps {
   day: number;
   time?: "day" | "night";
   selectedId?: number | null;
-  onBoothClick?: (id: number) => void;
+  onBoothClick?: (id: number | null) => void;
   booths: Booth[];
 }
 
@@ -91,68 +91,70 @@ const BoothMapComponent: React.FC<MapProps> = ({
 
   useEffect(() => {
     const BOOTH_POSITIONS_13KH: Record<number, { x: number; y: number }> = {
-      1: { x: 529, y: 432 },
+      1: { x: 410, y: 342 },
 
-      2: { x: 805, y: 350 },
-      3: { x: 805, y: 418 },
-      4: { x: 805, y: 486 },
+      2: { x: 765, y: 198 },
+      3: { x: 765, y: 248 },
+      4: { x: 765, y: 298 },
 
-      5: { x: 711, y: 544 },
-      6: { x: 711, y: 592 },
-      7: { x: 711, y: 640 },
-      8: { x: 711, y: 688 },
-      9: { x: 711, y: 736 },
-      10: { x: 711, y: 784 },
-      11: { x: 711, y: 832 },
-      12: { x: 711, y: 880 },
-      13: { x: 711, y: 928 },
+      5: { x: 645, y: 430 },
+      6: { x: 645, y: 480 },
+      7: { x: 645, y: 530 },
+      8: { x: 645, y: 580 },
+      9: { x: 645, y: 630 },
+      10: { x: 645, y: 680 },
+      11: { x: 645, y: 730 },
+      12: { x: 645, y: 780 },
+      13: { x: 645, y: 830 },
 
-      14: { x: 1269, y: 541 },
-      15: { x: 1221, y: 541 },
-      16: { x: 1173, y: 541 },
-      17: { x: 1125, y: 541 },
-      18: { x: 1077, y: 541 },
+      14: { x: 1345, y: 440 },
+      15: { x: 1275, y: 440 },
+      16: { x: 1205, y: 440 },
+      17: { x: 1135, y: 440 },
+      18: { x: 1065, y: 440 },
 
-      19: { x: 913, y: 607 },
-      20: { x: 913, y: 655 },
-      21: { x: 913, y: 703 },
-      22: { x: 913, y: 751 },
-      23: { x: 913, y: 799 },
-      24: { x: 913, y: 847 },
-      25: { x: 913, y: 895 },
+      19: { x: 910, y: 500 },
+      20: { x: 910, y: 550 },
+      21: { x: 910, y: 600 },
+      22: { x: 910, y: 650 },
+      23: { x: 910, y: 700 },
+      24: { x: 910, y: 750 },
+      25: { x: 910, y: 800 },
 
-      30: { x: 1269, y: 942 },
-      29: { x: 1221, y: 942 },
-      28: { x: 1173, y: 942 },
-      27: { x: 1125, y: 942 },
-      26: { x: 1077, y: 942 },
+      26: { x: 1065, y: 892 },
+      27: { x: 1135, y: 892 },
+      28: { x: 1205, y: 892 },
+      29: { x: 1275, y: 892 },
+      30: { x: 1345, y: 892 },
     };
 
-    if (selectedId && pinchZoomRef.current && mapRef.current) {
-      const targetPos = BOOTH_POSITIONS_13KH[selectedId];
+    if (pinchZoomRef.current && mapRef.current) {
+      const container = mapRef.current.parentElement;
+      if (!container) return;
 
-      if (targetPos) {
-        const container = mapRef.current.parentElement;
-        if (!container) return;
+      const cw = container.clientWidth;
+      const ch = container.clientHeight;
 
-        const containerWidth = container.clientWidth;
-        const containerHeight = container.clientHeight;
+      if (selectedId && BOOTH_POSITIONS_13KH[selectedId]) {
+        const targetPos = BOOTH_POSITIONS_13KH[selectedId];
+        const focusScale = (ch / 700) * 7;
 
-        const focusScale = (containerHeight / 700) * 5;
-
-        const x =
-          ((targetPos.x * focusScale) / 2 - containerWidth) /
-          (focusScale - 1) /
-          2;
-        const y =
-          ((targetPos.y * focusScale) / 2 - containerHeight) /
-          (focusScale - 1) /
-          2;
+        const x = ((targetPos.x * focusScale) / 2 - cw) / (focusScale - 1) / 2;
+        const y = ((targetPos.y * focusScale) / 2 - ch) / (focusScale - 1) / 2;
 
         pinchZoomRef.current.scaleTo({
           x,
           y,
           scale: focusScale,
+          animated: true,
+        });
+      } else if (selectedId === null) {
+        const initialScale = (ch / 700) * 5;
+
+        pinchZoomRef.current.scaleTo({
+          x: 210,
+          y: 150,
+          scale: initialScale,
           animated: true,
         });
       }
@@ -173,6 +175,12 @@ const BoothMapComponent: React.FC<MapProps> = ({
     }
   }, [day, time]);
 
+  const handleMapBackgroundClick = () => {
+    if (selectedId !== null) {
+      onBoothClick?.(null);
+    }
+  };
+
   const renderBooth = (id: number) => {
     const isActive = selectedId === id;
     const boothName = booths?.find((b) => b.id === id)?.name || `부스 ${id}`;
@@ -188,7 +196,11 @@ const BoothMapComponent: React.FC<MapProps> = ({
           $isActive={isActive}
           onClick={(e) => {
             e.stopPropagation();
-            onBoothClick?.(id);
+            if (isActive) {
+              onBoothClick?.(null);
+            } else {
+              onBoothClick?.(id);
+            }
           }}
         >
           {id}
@@ -212,20 +224,26 @@ const BoothMapComponent: React.FC<MapProps> = ({
           },
         }}
       >
-        <S.MapCanvas ref={mapRef} $isNight={time === "night"}>
+        <S.MapCanvas
+          ref={mapRef}
+          $isNight={time === "night"}
+          onClick={handleMapBackgroundClick}
+        >
           {/* 1. 학생회관 구역 */}
-          <S.Section $top="131px" $left="115px" $width="242px" $height="118px">
+          <S.Section $top="131px" $left="115px" $width="242px" $height="119px">
             <S.BuildingLabel>학생회관</S.BuildingLabel>
             <S.AbsoluteBooth
               $top="10px"
-              $left="-52px"
-              $width="50px"
+              $left="-60px"
+              $width="60px"
               $height="40px"
             >
-              <S.SubLabel>손목띠 배부</S.SubLabel>
+              <S.SubLabel>
+                손목띠<br></br> 배부
+              </S.SubLabel>
             </S.AbsoluteBooth>
             <S.AbsoluteBooth
-              $bottom="-42px"
+              $bottom="-40px"
               $left="50px"
               $width="60px"
               $height="40px"
@@ -238,7 +256,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
           </S.Section>
 
           {/* 2. 소영근터 구역 */}
-          <S.Section $top="131px" $left="420px" $width="242px" $height="118px">
+          <S.Section $top="131px" $left="420px" $width="242px" $height="119px">
             <S.BuildingLabel>
               <S.SmallParkVoid>소영근터</S.SmallParkVoid>
             </S.BuildingLabel>
@@ -248,11 +266,13 @@ const BoothMapComponent: React.FC<MapProps> = ({
               $width="60px"
               $height="40px"
             >
-              <S.SubLabel>포토월& 에어덕새</S.SubLabel>
+              <S.SubLabel>
+                포토월& <br></br>에어덕새
+              </S.SubLabel>
             </S.AbsoluteBooth>
             <S.AbsoluteBooth
-              $bottom="-42px"
-              $right="-25px"
+              $bottom="-40px"
+              $right="-20px"
               $width="82px"
               $height="40px"
             >
@@ -264,19 +284,21 @@ const BoothMapComponent: React.FC<MapProps> = ({
           </S.Section>
 
           {/* 3. 예술대학 구역 */}
-          <S.Section $top="131px" $left="716px" $width="307px" $height="118px">
+          <S.Section $top="131px" $left="716px" $width="307px" $height="119px">
             <S.BuildingLabel>예술대학</S.BuildingLabel>
             <S.AbsoluteBooth
-              $bottom="-42px"
-              $left="-0.5px"
+              $bottom="-40px"
+              $left="-1px"
               $width="60px"
               $height="40px"
             >
-              <S.SubLabel>협찬품 배부</S.SubLabel>
+              <S.SubLabel>
+                협찬품<br></br>배부
+              </S.SubLabel>
             </S.AbsoluteBooth>
             <S.AbsoluteBooth
-              $bottom="-42px"
-              $left="60px"
+              $bottom="-40px"
+              $left="58px"
               $width="60px"
               $height="40px"
             >
@@ -297,16 +319,18 @@ const BoothMapComponent: React.FC<MapProps> = ({
           {/* 5. 민주동산 구역 */}
           <S.Section $top="325px" $left="297px" $width="182px" $height="350px">
             <S.BuildingLabel>민주동산</S.BuildingLabel>
-            <S.BoothList $top="-1px" $right="-57px" $direction="column">
+            <S.BoothList $top="-1px" $right="-55px" $direction="column">
               {currentLayout.minju?.map(renderBooth)}
             </S.BoothList>
             <S.AbsoluteBooth
-              $bottom="-41px"
-              $left="58px"
+              $bottom="-40px"
+              $left="60px"
               $width="121px"
               $height="40px"
             >
-              <S.SubLabel>손목띠 배부</S.SubLabel>
+              <S.SubLabel>
+                손목띠 <br></br>배부
+              </S.SubLabel>
             </S.AbsoluteBooth>
           </S.Section>
 
@@ -321,7 +345,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
             </S.BoothList>
             <S.InnerBlock
               $top="140px"
-              $right="-1px"
+              $right="-2px"
               $width="124px"
               $height="111px"
             >
@@ -331,7 +355,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
               </S.FlexRow>
               <S.UnitStage>무대</S.UnitStage>
             </S.InnerBlock>
-            <S.BoothList $bottom="3.5px" $right="50px" $direction="row">
+            <S.BoothList $bottom="3px" $right="50px" $direction="row">
               {currentLayout.youngBottom?.map(renderBooth)}
             </S.BoothList>
           </S.Section>

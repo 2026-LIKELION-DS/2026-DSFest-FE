@@ -59,7 +59,7 @@ export const Section = styled.div<{
 
 export const BoothSlot = styled.div<{ $isActive: boolean }>`
   width: 60px;
-  height: 40px;
+  height: 41.5px;
   border: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
   display: flex;
   align-items: center;
@@ -70,7 +70,7 @@ export const BoothSlot = styled.div<{ $isActive: boolean }>`
   color: ${({ $isActive, theme }) =>
     $isActive ? theme.colors.fg.primaryInverted : theme.colors.bg.brandLight};
   cursor: pointer;
-  margin-bottom: -4.5px;
+  margin-bottom: -4px;
   margin-right: -4.5px;
   z-index: ${({ $isActive }) => ($isActive ? 10 : 1)};
 `;
@@ -85,7 +85,7 @@ export const AbsoluteBooth = styled.div<{
 }>`
   background-color: ${({ theme }) => theme.colors.bg.olive};
   color: ${({ theme }) => theme.colors.bg.brandLight};
-  ${setTypo("bodySm")};
+  ${setTypo("buttonSm")};
   font-weight: 500;
   border: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
   position: absolute;
@@ -112,7 +112,7 @@ export const AbsoluteFoodTruck = styled.div<{
 }>`
   background-color: ${({ theme }) => theme.colors.bg.neutralDeep};
   color: ${({ theme }) => theme.colors.bg.brandLight};
-  ${setTypo("bodySm")};
+  ${setTypo("bodyMd")};
   font-weight: 500;
   border: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
   position: absolute;

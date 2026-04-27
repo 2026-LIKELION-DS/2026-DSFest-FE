@@ -74,6 +74,23 @@ const BoothPage: React.FC = () => {
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
   const [showGuide, setShowGuide] = useState(true);
 
+  useEffect(() => {
+    if (!showGuide) return;
+
+    const handleGlobalClick = () => {
+      setShowGuide(false);
+    };
+
+    window.addEventListener("click", handleGlobalClick, {
+      once: true,
+      capture: true,
+    });
+
+    return () => {
+      window.removeEventListener("click", handleGlobalClick, { capture: true });
+    };
+  }, [showGuide]);
+
   const noticeData = {
     title: "부스 관련 공지 제목",
     content: `공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 
@@ -142,14 +159,12 @@ const BoothPage: React.FC = () => {
   }, [currentPeriodBooths]);
 
   const displayBooths = useMemo(() => {
-    if (selectedId) {
-      return BOOTH_DATA.filter((b) => b.id === selectedId);
-    }
     const baseList = isOperatingOnly
       ? BOOTH_DATA.filter((b) => b.status === "운영 중")
       : BOOTH_DATA;
+
     return baseList;
-  }, [selectedId, isOperatingOnly]);
+  }, [isOperatingOnly]);
 
   const isOffHours = useMemo(() => {
     return (
@@ -169,10 +184,7 @@ const BoothPage: React.FC = () => {
   };
   return (
     <>
-      <S.OnboardingOverlay
-        $isVisible={showGuide}
-        onClick={() => setShowGuide(false)}
-      >
+      <S.OnboardingOverlay $isVisible={showGuide}>
         <S.GuideContainer onClick={() => setShowGuide(false)}>
           <S.GuideText>
             <span>원하는 시간대의{"\n"}부스를 확인해 보세요!</span>
@@ -247,20 +259,16 @@ const BoothPage: React.FC = () => {
           />
         </S.MapHugger>
         <S.ListSection>
-          <S.BoothList>
-            {selectedId ? "선택한 부스 정보" : "부스 리스트"}
-          </S.BoothList>
+          <S.BoothList>부스 리스트</S.BoothList>
           <S.BoothCur>
             <S.BoothAmount>총 {displayBooths.length}개</S.BoothAmount>의 부스
           </S.BoothCur>
-          {!selectedId && (
-            <S.FilterButton
-              $active={isOperatingOnly}
-              onClick={() => setIsOperatingOnly(!isOperatingOnly)}
-            >
-              운영 중
-            </S.FilterButton>
-          )}
+          <S.FilterButton
+            $active={isOperatingOnly}
+            onClick={() => setIsOperatingOnly(!isOperatingOnly)}
+          >
+            운영 중
+          </S.FilterButton>
           {displayBooths.length > 0 ? (
             displayBooths.map((booth) => (
               <BoothInfoComponent
