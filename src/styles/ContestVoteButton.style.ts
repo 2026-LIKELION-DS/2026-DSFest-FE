@@ -18,7 +18,10 @@ export const TimeLine = styled.div`
   margin-bottom: 5px;
   gap: 4px;
 `;
-export const voteButton = styled.button<{ $phase: ContestPhase }>`
+export const voteButton = styled.button<{
+  $phase: ContestPhase;
+  $voted: boolean;
+}>`
   background: ${({ $phase, theme }) =>
     $phase === "before" ? theme.colors.bg.disabled : theme.colors.bg.brand};
   color: ${({ $phase, theme }) =>
@@ -29,6 +32,14 @@ export const voteButton = styled.button<{ $phase: ContestPhase }>`
   padding: 0 24px;
   border-radius: 100px;
   cursor: ${({ $phase }) => ($phase === "before" ? "default" : "pointer")};
+
+  ${({ $voted }) =>
+    $voted &&
+    `
+    background-color: ${theme.colors.bg.disabled};  // 회색으로
+    color: ${theme.colors.fg.disabled};
+    cursor: not-allowed;
+  `}
 `;
 
 export const span = styled.div`

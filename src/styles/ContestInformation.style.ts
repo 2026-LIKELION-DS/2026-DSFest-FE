@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { theme } from "./theme";
-// import { span } from "./ContestVoteButton.style";
 
 export const Overlay = styled.div`
   position: absolute;

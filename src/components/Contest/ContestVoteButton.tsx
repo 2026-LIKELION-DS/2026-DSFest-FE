@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-// import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as S from "../../styles/ContestVoteButton.style";
 import VoteToast from "./VoteToast";
 
@@ -30,9 +30,28 @@ export default function ContestVoteButton({
 }: Props) {
   const navigate = useNavigate();
   const location = useLocation();
-  // const [voted, setVoted] = useState(false);
   const voted = location.state?.voted ?? false;
-  // const [voted, setVoted] = useState(location.state?.voted ?? false);
+
+  const [showToast, setShowToast] = useState(false);
+  const [hiding, setHiding] = useState(false);
+
+  useEffect(() => {
+    if (voted) {
+      setShowToast(true);
+    }
+  }, [voted]);
+
+  useEffect(() => {
+    if (showToast) {
+      setHiding(false);
+      const hideTimer = setTimeout(() => setHiding(true), 3000);
+      const removeTimer = setTimeout(() => setShowToast(false), 3400);
+      return () => {
+        clearTimeout(hideTimer);
+        clearTimeout(removeTimer);
+      };
+    }
+  }, [showToast]);
 
   const handleClick = () => {
     if (phase === "before") return;
@@ -48,8 +67,8 @@ export default function ContestVoteButton({
   return (
     <S.ContestVoteButtonPage>
       <S.ContestTab>
-        {voted ? (
-          <VoteToast />
+        {showToast ? (
+          <VoteToast $hiding={hiding} />
         ) : (
           <S.TimeLine>
             <S.span>{TIMER_LABEL[phase]}</S.span>
@@ -59,6 +78,7 @@ export default function ContestVoteButton({
         )}
         <S.voteButton
           $phase={phase}
+          $voted={voted}
           onClick={handleClick}
           disabled={phase === "before" || voted}
         >

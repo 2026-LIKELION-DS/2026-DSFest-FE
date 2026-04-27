@@ -1,24 +1,4 @@
-// import styled from "styled-components";
-// import { theme } from "./theme";
-
-// export const VoteToastWrapper = styled.div`
-//   display: flex;
-//   height: 48px;
-//   padding: 12px 24px;
-//   gap: 10px;
-//   border-radius: 4px;
-//   background-color: ${theme.colors.bg.neutral};
-//   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-// `;
-
-// export const GoodIcon = styled.img`
-//   width: 24px;
-// `;
-// export const ToastText = styled.div`
-//   color: ${theme.colors.fg.primary};
-//   font-family: ${theme.typography.bodyMd};
-// `;
-
+import { theme } from "./theme";
 import styled, { keyframes } from "styled-components";
 
 const slideUp = keyframes`
@@ -32,18 +12,36 @@ const slideUp = keyframes`
   }
 `;
 
-export const VoteToastWrapper = styled.div`
+const slideDown = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+`;
+
+export const VoteToastWrapper = styled.div<{ $hiding: boolean }>`
   display: flex;
   align-items: center;
-  gap: 8px;
-  animation: ${slideUp} 0.4s ease forwards;
+  height: 48px;
+  padding: 12px 24px;
+  gap: 10px;
+  border-radius: 4px;
+  background-color: ${theme.colors.bg.neutral};
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  animation: ${({ $hiding }) => ($hiding ? slideDown : slideUp)} 0.4s ease
+    forwards;
 `;
 
 export const GoodIcon = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 24px;
 `;
 
 export const ToastText = styled.span`
-  font-size: 14px;
+  color: ${theme.colors.fg.primary};
+  font-family: ${theme.typography.bodyMd};
 `;

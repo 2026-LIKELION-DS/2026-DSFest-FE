@@ -57,10 +57,6 @@ export default function ContestVotePage() {
     }
   };
 
-  // const handleVoteDone = () => {
-  //   navigate("/contest", { state: { voted: true } });
-  // };
-
   const handleSubmit = () => {
     setIsInfoModalOpen(true);
     // handleVoteDone();
