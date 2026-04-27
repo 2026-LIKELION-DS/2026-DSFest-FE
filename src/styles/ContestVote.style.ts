@@ -7,6 +7,10 @@ export const ContestVotePage = styled.div`
   background: #fff;
   overflow-x: hidden;
   margin-top: 16px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
 export const VoteHeader = styled.div`

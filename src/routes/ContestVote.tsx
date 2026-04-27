@@ -76,7 +76,7 @@ export default function ContestVotePage() {
         <S.SubjectText>{topic.title}</S.SubjectText>
         <S.SubText>주제 별 한 장의 사진만 투표할 수 있습니다.</S.SubText>
       </S.VoteHeader>
-
+      {/* <S.Wa> */}
       <S.PhotoGrid>
         {topic.photos.map((photo) => (
           <PhotoCard
@@ -100,6 +100,7 @@ export default function ContestVotePage() {
       >
         {isLastPage ? "인적사항 입력" : "다음으로"}
       </S.ActionButton>
+      {/* </S.Wa> */}
       <ContestInfoModal
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
