@@ -5,9 +5,7 @@ import ScheduleBackGround from "../assets/Schedule/Scheduleback.svg";
 export const SchedulePage = styled.div`
   padding: 0 24px 24px;
   width: 100%;
-
   position: relative;
-  /* margin: 0 auto; */
   background-color: ${({ theme }) => theme.colors.bg.neutral};
   overflow-x: hidden;
   min-height: 100vh;

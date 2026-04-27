@@ -15,16 +15,20 @@ const TOPICS = [
       { id: 2, title: "사진제목", src: examplePhoto },
       { id: 3, title: "사진제목", src: examplePhoto },
       { id: 4, title: "사진제목", src: examplePhoto },
+      { id: 5, title: "사진제목", src: examplePhoto },
+      { id: 6, title: "사진제목", src: examplePhoto },
     ],
   },
   {
     id: 2,
     title: "주제 텍스트 주제 텍스트",
     photos: [
-      { id: 5, title: "사진제목", src: examplePhoto },
-      { id: 6, title: "사진제목", src: examplePhoto },
       { id: 7, title: "사진제목", src: examplePhoto },
       { id: 8, title: "사진제목", src: examplePhoto },
+      { id: 9, title: "사진제목", src: examplePhoto },
+      { id: 10, title: "사진제목", src: examplePhoto },
+      { id: 11, title: "사진제목", src: examplePhoto },
+      { id: 12, title: "사진제목", src: examplePhoto },
     ],
   },
   {
@@ -35,6 +39,8 @@ const TOPICS = [
       { id: 10, title: "사진제목", src: examplePhoto },
       { id: 11, title: "사진제목", src: examplePhoto },
       { id: 12, title: "사진제목", src: examplePhoto },
+      { id: 13, title: "사진제목", src: examplePhoto },
+      { id: 14, title: "사진제목", src: examplePhoto },
     ],
   },
 ];
