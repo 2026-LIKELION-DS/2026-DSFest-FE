@@ -104,7 +104,7 @@ function App() {
           }
         />
         <Route
-          path="contest"
+          path="/contest"
           element={
             <AppLayout
               title="청춘 한 컷"
@@ -151,7 +151,7 @@ function App() {
           }
         />
         <Route
-          path="/vote"
+          path="/contest/vote"
           element={
             <AppLayout
               title="투표하기"

@@ -20,5 +20,5 @@ export const ContestPage = styled.div`
 
 export const VoteButtonWrapper = styled.div`
   margin-top: auto;
-  padding-top: 50%;
+  padding-top: 40%;
 `;

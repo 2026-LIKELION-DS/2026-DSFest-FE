@@ -2,6 +2,7 @@ import * as S from "../styles/ContestVote.style";
 import { useState } from "react";
 import PhotoCard from "../components/Contest/ContestPhotoCard";
 import examplePhoto from "../assets/hahyunsang_sample.svg";
+import { useNavigate } from "react-router-dom";
 
 // 임시 데이터
 const TOPICS = [
@@ -39,6 +40,7 @@ const TOPICS = [
 
 export default function ContestVotePage() {
   const [currentPage, setCurrentPage] = useState(0);
+  const navigate = useNavigate();
   const [selectedPhotos, setSelectedPhotos] = useState<
     Record<number, number | null>
   >({});
@@ -53,8 +55,20 @@ export default function ContestVotePage() {
     }
   };
 
+  // const handleSubmit = () => {
+  //   // 인적사항 입력 페이지로 이동
+  // };
+
+  // const handleVoteDone = () => {
+  //   navigate("/contest", { state: { voted: true } }); // state로 전달
+  // };
+  const handleVoteDone = () => {
+    navigate("/contest", { state: { voted: true } });
+  };
+
   const handleSubmit = () => {
-    // 인적사항 입력 페이지로 이동
+    // TODO: 인적사항 입력 페이지 완성 후 navigate("/contest/vote/info")로 교체
+    handleVoteDone();
   };
 
   return (

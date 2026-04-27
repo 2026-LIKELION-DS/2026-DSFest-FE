@@ -1,5 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+// import { useState } from "react";
 import * as S from "../../styles/ContestVoteButton.style";
+import VoteToast from "./VoteToast";
 
 type ContestPhase = "before" | "entry" | "vote";
 
@@ -27,6 +29,10 @@ export default function ContestVoteButton({
   kakaoLink,
 }: Props) {
   const navigate = useNavigate();
+  const location = useLocation();
+  // const [voted, setVoted] = useState(false);
+  const voted = location.state?.voted ?? false;
+  // const [voted, setVoted] = useState(location.state?.voted ?? false);
 
   const handleClick = () => {
     if (phase === "before") return;
@@ -35,23 +41,28 @@ export default function ContestVoteButton({
     }
     if (phase === "vote") {
       navigate("/contest/vote"); //투표페이지 이동
+      // setVoted(true);
     }
   };
 
   return (
     <S.ContestVoteButtonPage>
       <S.ContestTab>
-        <S.TimeLine>
-          <S.span>{TIMER_LABEL[phase]}</S.span>
-          <S.span>{remainingTime}</S.span>
-          <S.span>남음</S.span>
-        </S.TimeLine>
+        {voted ? (
+          <VoteToast />
+        ) : (
+          <S.TimeLine>
+            <S.span>{TIMER_LABEL[phase]}</S.span>
+            <S.span>{remainingTime}</S.span>
+            <S.span>남음</S.span>
+          </S.TimeLine>
+        )}
         <S.voteButton
           $phase={phase}
           onClick={handleClick}
-          disabled={phase === "before"}
+          disabled={phase === "before" || voted}
         >
-          {BUTTON_LABEL[phase]}
+          {voted ? "투표 완료!" : BUTTON_LABEL[phase]}
         </S.voteButton>
       </S.ContestTab>
     </S.ContestVoteButtonPage>

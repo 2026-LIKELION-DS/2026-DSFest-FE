@@ -10,7 +10,8 @@ export default function ContestPag() {
       <ContestNotice />
       <S.VoteButtonWrapper>
         <ContestVoteButton
-          phase="before"
+          // phase="before"
+          phase="vote"
           remainingTime="23:59:59"
           kakaoLink="https://open.kakao.com/..." //총학 카카오톡 링크
         />
