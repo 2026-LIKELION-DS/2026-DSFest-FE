@@ -1,3 +1,5 @@
+import { trackEvent } from "../../utils/analytics";
+
 import * as S from "../../styles/ArtistComponent.style";
 
 type ArtistPlaylistProps = {
@@ -18,11 +20,21 @@ function ArtistPlaylist({
         <S.PlaylistDesc>{desc}</S.PlaylistDesc>
       </S.PlatlistBlock>
 
-      <S.ThumbnailLink href={playlistUrl} target="_blank" rel="noreferrer">
+      <S.ThumbnailLink
+        href={playlistUrl}
+        target="_blank"
+        rel="noreferrer"
+        onClick={() => trackEvent("playlist_play")}
+      >
         <S.PlaylistThumbnail src={thumbnailUrl} alt="유튜브 플레이리스트" />
       </S.ThumbnailLink>
 
-      <S.PlaylistAddButton href={playlistUrl} target="_blank" rel="noreferrer">
+      <S.PlaylistAddButton
+        href={playlistUrl}
+        target="_blank"
+        rel="noreferrer"
+        onClick={() => trackEvent("playlist_add")}
+      >
         플레이리스트 추가하기
       </S.PlaylistAddButton>
     </S.ArtistPlaylist>

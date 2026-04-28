@@ -1,4 +1,6 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
+import { trackEvent } from "../utils/analytics";
+
 import * as S from "../styles/Booth.style";
 import BoothMapComponent from "../components/Booth/BoothMapComponent";
 import BoothInfoComponent from "../components/Booth/BoothInfoComponent";
@@ -73,6 +75,19 @@ const BoothPage: React.FC = () => {
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
   const [showGuide, setShowGuide] = useState(true);
+
+  // GA 부스 지도 -> 체류 시간 계산용
+  useEffect(() => {
+    const startTime = Date.now();
+
+    return () => {
+      const duration = Math.floor((Date.now() - startTime) / 1000);
+
+      trackEvent("time_on_booth_page", {
+        duration_seconds: duration,
+      });
+    };
+  }, []);
 
   useEffect(() => {
     if (!showGuide) return;
@@ -173,7 +188,12 @@ const BoothPage: React.FC = () => {
     );
   }, [operatingBooths, currentPeriodBooths]);
 
-  const handleBoothClick = (id: number) => {
+  const handleBoothClick = (id: number | null) => {
+    if (id == null) return;
+
+    trackEvent("booth_numbering_used");
+    trackEvent("booth_detail_view");
+
     setSelectedId(id);
 
     const clickedBooth = BOOTH_DATA.find((b) => b.id === id);
@@ -195,6 +215,7 @@ const BoothPage: React.FC = () => {
         <S.HeaderTimeOption
           $active={!isNight}
           onClick={() => {
+            trackEvent("booth_filter_used");
             setIsNight(false);
             setSelectedId(null);
           }}
@@ -205,6 +226,7 @@ const BoothPage: React.FC = () => {
         <S.HeaderTimeOption
           $active={isNight}
           onClick={() => {
+            trackEvent("booth_filter_used");
             setIsNight(true);
             setSelectedId(null);
           }}
@@ -245,7 +267,11 @@ const BoothPage: React.FC = () => {
           ))}
         </S.DayNav>
         <S.MapHugger>
-          <S.RandomFloatBtn onClick={() => {}}>
+          <S.RandomFloatBtn
+            onClick={() => {
+              trackEvent("booth_random_navigate");
+            }}
+          >
             <img src={randomIcon} alt="random" />
             <span>랜덤 추천</span>
           </S.RandomFloatBtn>
@@ -274,7 +300,10 @@ const BoothPage: React.FC = () => {
               <BoothInfoComponent
                 key={booth.id}
                 booth={booth}
-                onDetailClick={() => handleOpenModal(booth)}
+                onDetailClick={() => {
+                  trackEvent("booth_detail_view");
+                  handleOpenModal(booth);
+                }}
               />
             ))
           ) : (

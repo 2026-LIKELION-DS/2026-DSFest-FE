@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { trackEvent } from "../../utils/analytics";
 
 // @ts-expect-error: Swiper CSS modules are not recognized by TS
 import "swiper/css";
@@ -89,7 +90,10 @@ const BoothModalComponent: React.FC<ModalProps> = ({
                 <S.BoothImage
                   key={idx}
                   src={src}
-                  onClick={() => openImageDetail(idx)}
+                  onClick={() => {
+                    trackEvent("booth_image_view");
+                    openImageDetail(idx);
+                  }}
                   alt={`부스 이미지 ${idx + 1}`}
                 />
               ))}

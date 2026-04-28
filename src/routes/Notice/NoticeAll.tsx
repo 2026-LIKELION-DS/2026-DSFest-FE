@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { trackEvent } from "../../utils/analytics";
 
 import SearchInput from "../../components/Notice/SearchInput";
 import NoticeListItem from "../../components/Notice/NoticeListItem";
@@ -65,7 +66,12 @@ export default function NoticeAll() {
             key={category}
             type="button"
             $isActive={selectedCategory === category}
-            onClick={() => setSelectedCategory(category)}
+            onClick={() => {
+              trackEvent("notice_category_filter", {
+                category_name: category,
+              });
+              setSelectedCategory(category);
+            }}
           >
             {category}
           </S.CategoryButton>
