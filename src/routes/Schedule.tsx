@@ -9,8 +9,8 @@ import Leaf1 from "../assets/Schedule/leaf1.svg";
 import Flower from "../assets/Schedule/flower.svg";
 import Flowers2 from "../assets/Schedule/flowers2.svg";
 import upIcon from "../assets/Booth/BoothUp.svg";
-
 import { useState, useRef, useEffect } from "react";
+
 type DayKey = "day1" | "day2" | "day3";
 
 const scheduleData = [
@@ -150,11 +150,13 @@ const days = [
 ] as const;
 
 export default function SchedulePage() {
+  const pageRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef<HTMLDivElement>(null);
+
   const [currentDay, setCurrentDay] = useState<"day1" | "day2" | "day3">(
     "day1",
   );
   const [direction, setDirection] = useState<"up" | "down">("down");
-  const activeRef = useRef<HTMLDivElement>(null);
   const dayRefs = {
     day1: useRef<HTMLDivElement>(null),
     day2: useRef<HTMLDivElement>(null),
@@ -179,21 +181,11 @@ export default function SchedulePage() {
     el.addEventListener("scroll", handleScroll);
     return () => el.removeEventListener("scroll", handleScroll);
   }, []);
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (!activeRef.current) return;
-  //     const rect = activeRef.current.getBoundingClientRect();
-  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
 
   const handleClick = () => {
     activeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
-  const pageRef = useRef<HTMLDivElement>(null);
   const [showTopBtn, setShowTopBtn] = useState(false);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
@@ -243,14 +235,16 @@ export default function SchedulePage() {
         </S.DaySection>
       ))}
       <S.FloatingButton $hasTopBtn={showTopBtn}>
+        <S.FloatingCircleBtn>
+          {hasActive && (
+            <ScheduleButton direction={direction} onClick={handleClick} />
+          )}
+          {/* <ScheduleButton direction={direction} onClick={handleClick} /> */}
+        </S.FloatingCircleBtn>
         <S.FloatingIcon onClick={handleScrollToTop} $isVisible={showTopBtn}>
           <img src={upIcon} alt="scroll to top" />
         </S.FloatingIcon>
       </S.FloatingButton>
-      {/* 진행 중 버튼 위치 */}
-      {hasActive && (
-        <ScheduleButton direction={direction} onClick={handleClick} />
-      )}
     </S.SchedulePage>
   );
 }
