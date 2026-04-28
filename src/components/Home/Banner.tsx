@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import * as S from "../../styles/Home.style";
-import BannerPolaroid from "../../components/Home/BannerPolaroid"
+import { useEffect, useState, useRef, type MouseEvent, type TouchEvent } from "react";
+import * as S from "../../styles/HomeBanner.style";
+import BannerPolaroid from "../../components/Home/BannerPolaroid";
 
 interface BannerItem {
   title: string;
@@ -10,99 +10,161 @@ interface BannerItem {
 }
 
 const banners: BannerItem[] = [
-    {
-        title: "아티스트",
-        stickerText: "아티스트",
-        image: "/images/banner1.png",
-        link: "/artist",
-    },
-    {
-        title: "근화제 청춘 유형 테스트",
-        stickerText: "나의 청춘 유형은?",
-        image: "/images/banner2.png",
-        link: "/@",
-    },
-    {
-        title: "사진 컨테스트",
-        stickerText: "사진 컨테스트",
-        image: "/images/banner3.png",
-        link: "/@",
-    },
-    ];
+  {
+    title: "오늘의 아티스트",
+    stickerText: "플레이리스트 예습하기🎧",
+    image: "/images/banner1.png",
+    link: "/artist",
+  },
+  {
+    title: "근화제 청춘 유형 테스트",
+    stickerText: "나의 청춘 유형은?🫧",
+    image: "/images/banner2.png",
+    link: "/@",
+  },
+  {
+    title: "청춘 한 컷 컨테스트",
+    stickerText: "오늘의 청춘을 사진으로!📸",
+    image: "/images/banner3.png",
+    link: "/@",
+  },
+];
 
-    const extendedBanners: BannerItem[] = [
-    banners[banners.length - 1],
-    ...banners,
-    banners[0],
-    ];
+const extendedBanners: BannerItem[] = [
+  banners[banners.length - 1],
+  ...banners,
+  banners[0],
+];
 
 export default function Banner() {
-    const [currentIndex, setCurrentIndex] = useState(1);
-    const [isTransition, setIsTransition] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [isTransition, setIsTransition] = useState(true);
+  
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-        setCurrentIndex((prev) => prev + 1);
-        }, 4000);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [moved, setMoved] = useState(false);
 
-        return () => clearInterval(timer);
-    }, []);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-    const handleTransitionEnd = () => {
-        if (currentIndex === extendedBanners.length - 1) {
-            setIsTransition(false);
-            setCurrentIndex(1); 
-        } else if (currentIndex === 0) {
-            setIsTransition(false);
-            setCurrentIndex(banners.length);
-        }
-    };
+  const startTimer = () => {
+    stopTimer();
+    timerRef.current = setInterval(() => {
+      setIsTransition(true);
+      setCurrentIndex((prev) => prev + 1);
+    }, 4000);
+  };
 
-    useEffect(() => {
-        if (!isTransition) {
-            const raf = requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    setIsTransition(true);
-                });
-            });
-            return () => cancelAnimationFrame(raf);
-        }
-    }, [isTransition]);
+  const stopTimer = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  };
 
-    const activeDotIndex = (currentIndex - 1 + banners.length) % banners.length;
+  useEffect(() => {
+    startTimer();
+    return () => stopTimer();
+  }, []);
+
+  const handleTransitionEnd = () => {
+    if (currentIndex === extendedBanners.length - 1) {
+      setIsTransition(false);
+      setCurrentIndex(1);
+    } else if (currentIndex === 0) {
+      setIsTransition(false);
+      setCurrentIndex(banners.length);
+    }
+  };
+
+  useEffect(() => {
+    if (!isTransition) {
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsTransition(true);
+        });
+      });
+      return () => cancelAnimationFrame(raf);
+    }
+  }, [isTransition]);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    stopTimer();
+    setIsTransition(false);
+    setTouchStartX(e.touches[0].clientX);
+    setIsDragging(true);
+    setMoved(false);
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - touchStartX;
+
+    if (Math.abs(diff) > 5) setMoved(true);
+    setDragOffset(diff);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+
+    setIsDragging(false);
+    setIsTransition(true);
+
+    if (dragOffset < -50) {
+      setCurrentIndex((prev) => prev + 1);
+    } else if (dragOffset > 50) {
+      setCurrentIndex((prev) => prev - 1);
+    }
+
+    setDragOffset(0);
+    startTimer();
+  };
+
+  const handleLinkClick = (e: MouseEvent) => {
+    if (moved) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
+  const activeDotIndex = (currentIndex - 1 + banners.length) % banners.length;
 
   return (
     <S.BannerSection>
-        <S.BannerViewport>
-            <S.BannerTrack
-            $currentIndex={currentIndex}
-            $isTransition={isTransition}
-            onTransitionEnd={handleTransitionEnd}
+      <S.BannerViewport>
+        <S.BannerTrack
+          $currentIndex={currentIndex}
+          $isTransition={isTransition}
+          $dragOffset={dragOffset}
+          onTransitionEnd={handleTransitionEnd}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {extendedBanners.map((banner, index) => (
+            <S.BannerSlide
+              key={`${banner.title}-${index}`}
+              onClickCapture={handleLinkClick}
             >
-            {extendedBanners.map((banner, index) => (
-                <S.BannerSlide key={`${banner.title}-${index}`}>
-                <BannerPolaroid
-                    title={banner.title}
-                    stickerText={banner.stickerText}
-                    image={banner.image}
-                    link={banner.link}
-                />
-                </S.BannerSlide>
-            ))}
-            </S.BannerTrack>
-        </S.BannerViewport>
-        <S.BannerDots>
-            {banners.map((_, index) => (
-            <S.BannerDot
-                key={index}
-                $active={activeDotIndex === index}
-                onClick={() => {
-                setIsTransition(true);
-                setCurrentIndex(index + 1);
-                }}
-            />
-            ))}
-        </S.BannerDots>
+              <BannerPolaroid {...banner} />
+            </S.BannerSlide>
+          ))}
+        </S.BannerTrack>
+      </S.BannerViewport>
+      <S.BannerDots>
+        {banners.map((_, index) => (
+          <S.BannerDot
+            key={index}
+            $active={activeDotIndex === index}
+            onClick={() => {
+              setIsTransition(true);
+              setCurrentIndex(index + 1);
+            }}
+          />
+        ))}
+      </S.BannerDots>
     </S.BannerSection>
-)
+  );
 }
