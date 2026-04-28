@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { trackEvent } from "../../utils/analytics";
 import * as S from "../../styles/FoodTruckCard.styles";
 
 import greenLeaf from "../../assets/Food/Greenleaf.svg";
@@ -67,6 +68,12 @@ export default function FoodTruckCard({ truck, onImageClick }: Props) {
   const isOperating = isOperatingNow();
 
   const handleLike = () => {
+    if (!isLiked) {
+      trackEvent("foodtruck_like", {
+        foodtruck_name: truck.name,
+      });
+    }
+
     setIsLiked((prev) => !prev);
 
     setLikeCount((prev) => {
