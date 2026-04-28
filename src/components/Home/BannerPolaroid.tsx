@@ -5,6 +5,7 @@ interface BannerPolaroidProps {
   stickerText: string;
   image: string;
   link?: string;
+  onClick?: () => void;
 }
 
 export default function BannerPolaroid({
@@ -12,13 +13,14 @@ export default function BannerPolaroid({
   stickerText,
   image,
   link,
+  onClick,
 }: BannerPolaroidProps) {
   return (
-    <S.BannerWrapper href={link}>
+    <S.BannerWrapper href={link} onClick={onClick}>
       <S.Tape />
       <S.Polaroid>
         <S.PolaroidContents>
-          <S.PolaroidImg src={image} alt={title}/>
+          <S.PolaroidImg src={image} alt={title} />
           <S.PolaroidTitle>{title}</S.PolaroidTitle>
         </S.PolaroidContents>
 

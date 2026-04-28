@@ -1,4 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import ReactGA from "react-ga4";
 
 import AppLayout from "./layouts/AppLayout";
 
@@ -17,9 +24,27 @@ import Error from "./routes/Error";
 import Food from "./routes/Food";
 import ContestVote from "./routes/ContestVote";
 
+function GAListener() {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: location.pathname,
+    });
+  }, [location.pathname]);
+
+  return null;
+}
+
 function App() {
+  useEffect(() => {
+    ReactGA.initialize("G-M12VCHRWYB");
+  }, []);
+
   return (
     <Router>
+      <GAListener />
       <Routes>
         <Route
           path="/"
