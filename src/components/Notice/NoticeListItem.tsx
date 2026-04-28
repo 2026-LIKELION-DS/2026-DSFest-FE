@@ -2,12 +2,14 @@ import * as S from "../../styles/Notice.style";
 import chevronRight from "../../assets/Notice/ChevronRight_black.svg";
 
 interface NoticeListItemProps {
+  id: number;
   category: string;
   title: string;
   onClick?: () => void;
 }
 
 export default function NoticeListItem({
+  id,
   category,
   title,
   onClick,
@@ -19,7 +21,7 @@ export default function NoticeListItem({
         <S.NoticeTitle>{title}</S.NoticeTitle>
       </S.NoticeTextBox>
 
-      <img src={chevronRight} alt="상세보기" />
+      <img src={chevronRight} alt={`${id}번 공지 상세보기`} />
     </S.NoticeItem>
   );
 }
