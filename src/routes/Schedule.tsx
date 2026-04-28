@@ -11,6 +11,7 @@ import Flowers2 from "../assets/Schedule/flowers2.svg";
 import upIcon from "../assets/Booth/BoothUp.svg";
 
 import { useState, useRef, useEffect } from "react";
+type DayKey = "day1" | "day2" | "day3";
 
 const scheduleData = [
   {
@@ -237,7 +238,7 @@ export default function SchedulePage() {
         ))}
       </S.SubHeader>
       {scheduleData.map((item) => (
-        <S.DaySection key={item.key} ref={dayRefs[item.key]}>
+        <S.DaySection key={item.key} ref={dayRefs[item.key as DayKey]}>
           <TimeTable day={item.day} schedule={item.data} />
         </S.DaySection>
       ))}
