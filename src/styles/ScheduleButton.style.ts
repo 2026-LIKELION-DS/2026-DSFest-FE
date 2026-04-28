@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "./theme";
 
 export const ScheduleButton = styled.div`
-  /* position: sticky; */
+  position: sticky;
   display: flex;
   justify-content: center;
   z-index: 100;
