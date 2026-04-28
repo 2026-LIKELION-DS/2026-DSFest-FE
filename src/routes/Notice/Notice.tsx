@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { trackEvent } from "../../utils/analytics";
 
 import NoticeListItem from "../../components/Notice/NoticeListItem";
 import FAQCard from "../../components/Notice/FAQCard";
@@ -60,6 +61,18 @@ export default function Notice() {
         title.includes(trimmedKeyword)
       );
     });
+  }, [trimmedKeyword]);
+
+  useEffect(() => {
+    if (!trimmedKeyword) return;
+
+    const timerId = window.setTimeout(() => {
+      trackEvent("notice_search_used", {
+        search_term: trimmedKeyword,
+      });
+    }, 500);
+
+    return () => window.clearTimeout(timerId);
   }, [trimmedKeyword]);
 
   const isSearching = trimmedKeyword.length > 0;

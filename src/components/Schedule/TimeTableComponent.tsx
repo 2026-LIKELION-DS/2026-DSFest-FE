@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { trackEvent } from "../../utils/analytics";
+
 import * as S from "../../styles/TimeTable.style";
 
 import CircleIcon from "../../assets/Schedule/CircleDefault.svg";
@@ -35,7 +37,15 @@ export default function TimeTable({
             <S.Row
               key={item.id}
               ref={item.isActive ? activeRef : null}
-              onClick={() => item.link && navigate(item.link)}
+              onClick={() => {
+                if (!item.link) return;
+
+                if (item.link === "/artist") {
+                  trackEvent("schedule_artist_click");
+                }
+
+                navigate(item.link);
+              }}
               style={{ cursor: item.link ? "pointer" : "default" }}
             >
               <S.DotWrapper>
