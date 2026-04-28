@@ -1,4 +1,4 @@
-import * as S from "../../styles/Home.style";
+import * as S from "../../styles/HomeBannerPolaroid.style";
 
 interface BannerPolaroidProps {
   title: string;
