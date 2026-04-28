@@ -5,7 +5,7 @@ export const Row = styled.div<{ $isMine: boolean }>`
   display: flex;
   justify-content: ${({ $isMine }) => ($isMine ? "flex-end" : "flex-start")};
   margin-bottom: 12px;
-`;
+`; 
 
 export const MessageWrapper = styled.div`
   display: flex;
