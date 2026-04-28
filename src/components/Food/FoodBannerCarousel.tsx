@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import * as S from "../../styles/FoodBanner.styles";
 
 import pizza from "../../assets/Food/Pizza.svg";
@@ -58,12 +59,7 @@ const trucks = [
     image: Sushi,
     images: [Sushi],
   },
-  {
-    name: "KogiBBQ",
-    banner: "바베큐 어때요?",
-    image: Meat,
-    images: [Meat],
-  },
+  { name: "KogiBBQ", banner: "바베큐 어때요?", image: Meat, images: [Meat] },
   {
     name: "짱가곱창",
     banner: "곱창·막창 어때요?",
@@ -76,12 +72,7 @@ const trucks = [
     image: Takeout,
     images: [Takeout],
   },
-  {
-    name: "골드키즈",
-    banner: "피자 어때요?",
-    image: pizza,
-    images: [pizza],
-  },
+  { name: "골드키즈", banner: "피자 어때요?", image: pizza, images: [pizza] },
   {
     name: "썬플라워",
     banner: "크림새우 어때요?",
@@ -97,16 +88,114 @@ const trucks = [
 ];
 
 export default function FoodBannerCarousel({ onImageClick }: Props) {
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const animationRef = useRef<number | null>(null);
+
+  const positionRef = useRef(0);
+  const startXRef = useRef(0);
+  const startPositionRef = useRef(0);
+  const isDraggingRef = useRef(false);
+  const draggedRef = useRef(false);
+
+  const [position, setPosition] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const getHalfWidth = () => {
+    if (!trackRef.current) return 0;
+    return trackRef.current.scrollWidth / 2;
+  };
+
+  const normalizePosition = (value: number) => {
+    const halfWidth = getHalfWidth();
+
+    if (halfWidth === 0) return value;
+
+    if (value <= -halfWidth) {
+      return value + halfWidth;
+    }
+
+    if (value >= 0) {
+      return value - halfWidth;
+    }
+
+    return value;
+  };
+
+  useEffect(() => {
+    const speed = 0.5;
+
+    const animate = () => {
+      if (!isDraggingRef.current) {
+        positionRef.current = normalizePosition(positionRef.current - speed);
+        setPosition(positionRef.current);
+      }
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    isDraggingRef.current = true;
+    draggedRef.current = false;
+
+    setIsDragging(true);
+
+    startXRef.current = e.clientX;
+    startPositionRef.current = positionRef.current;
+
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+
+    const diff = e.clientX - startXRef.current;
+
+    if (Math.abs(diff) > 5) {
+      draggedRef.current = true;
+    }
+
+    positionRef.current = normalizePosition(startPositionRef.current + diff);
+    setPosition(positionRef.current);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    isDraggingRef.current = false;
+    setIsDragging(false);
+
+    e.currentTarget.releasePointerCapture(e.pointerId);
+  };
+
   return (
     <S.BannerWrapper>
-      <S.Track>
+      <S.Track
+        ref={trackRef}
+        $position={position}
+        $isDragging={isDragging}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onPointerLeave={handlePointerUp}
+      >
         {[...trucks, ...trucks].map((truck, index) => (
           <S.Card key={`${truck.name}-${index}`}>
             <S.Sticker>{truck.banner}</S.Sticker>
 
             <S.ImageBox
               type="button"
-              onClick={() => onImageClick(truck.images)}
+              onClick={() => {
+                if (draggedRef.current) return;
+                onImageClick(truck.images);
+              }}
             />
 
             <S.PizzaImage src={truck.image} alt={truck.name} />

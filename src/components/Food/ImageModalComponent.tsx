@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import * as S from "../../styles/ImageModalComponent.styles";
 
 interface Props {
@@ -14,6 +14,9 @@ export default function ImageModalComponent({
 }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const startXRef = useRef(0);
+  const isDraggingRef = useRef(false);
+
   const handleClose = () => {
     setCurrentIndex(0);
     onClose();
@@ -21,9 +24,36 @@ export default function ImageModalComponent({
 
   if (!isOpen || images.length === 0) return null;
 
-  const handleNextImage = () => {
-    if (images.length <= 1) return;
+  const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    isDraggingRef.current = true;
+    startXRef.current = e.clientX;
+
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+
+    const diff = e.clientX - startXRef.current;
+
+    if (Math.abs(diff) > 50) {
+      if (diff < 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+
+    isDraggingRef.current = false;
+    e.currentTarget.releasePointerCapture(e.pointerId);
   };
 
   return (
@@ -34,10 +64,9 @@ export default function ImageModalComponent({
 
       <S.ImageBox
         type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          handleNextImage();
-        }}
+        onClick={(e) => e.stopPropagation()}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
       >
         <S.Image src={images[currentIndex]} alt="가게 이미지" />
       </S.ImageBox>

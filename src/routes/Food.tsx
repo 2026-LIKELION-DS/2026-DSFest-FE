@@ -10,7 +10,7 @@ import ImageModalComponent from "../components/Food/ImageModalComponent";
 import pizzaImg from "../assets/Food/Pizza.svg";
 
 import * as S from "../styles/Food.styles";
-
+ 
 export default function Food() {
   const [isVeganSelected, setIsVeganSelected] = useState(false);
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);

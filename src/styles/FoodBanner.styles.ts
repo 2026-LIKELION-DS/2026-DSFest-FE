@@ -88,18 +88,18 @@ export const PizzaImage = styled.img`
   height: 44px;
 `;
 
-export const Track = styled.div`
+export const Track = styled.div<{
+  $position: number;
+  $isDragging: boolean;
+}>`
   display: flex;
   gap: 16px;
 
-  animation: scroll 60s linear infinite;
+  transform: ${({ $position }) => `translateX(${$position}px)`};
 
-  @keyframes scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
+  cursor: ${({ $isDragging }) => ($isDragging ? "grabbing" : "grab")};
+  user-select: none;
+  touch-action: pan-y;
+
+  will-change: transform;
 `;

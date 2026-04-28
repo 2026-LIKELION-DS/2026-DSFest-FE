@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "./theme";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -20,9 +21,11 @@ export const Overlay = styled.div`
 
   @media (min-width: 768px) and (min-height: 874px),
     (hover: hover) and (pointer: fine) and (min-height: 874px) {
-    top: calc((100dvh - 874px) / 2);
+    top: calc((100dvh - 874px) / 2 + 12px);
     bottom: auto;
-    height: 874px;
+
+    width: calc(402px - 22px);
+    height: calc(874px - 24px);
 
     border-radius: 12px;
     overflow: hidden;
@@ -36,14 +39,18 @@ export const Counter = styled.div`
   right: 0;
 
   text-align: center;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
+
+  font-family: ${theme.typography.h1.fontFamily};
+  font-weight: ${theme.typography.h1.fontWeight};
+  font-size: ${theme.typography.h1.fontSize};
+  line-height: ${theme.typography.h1.lineHeight};
+
+  color: ${({ theme }) => theme.colors.fg.primaryInverted};
 `;
 
 export const ImageBox = styled.button`
   width: 100%;
-  height: 232px;
+  height: 431px;
 
   padding: 0;
   background: #d9d9d9;
@@ -51,6 +58,8 @@ export const ImageBox = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  touch-action: pan-y;
 `;
 
 export const Image = styled.img`
@@ -65,11 +74,15 @@ export const CloseButton = styled.button`
   right: 14px;
   bottom: 24px;
 
-  height: 36px;
+  height: 44px;
   border-radius: 999px;
-  background: #ffffff;
 
-  color: #000000;
-  font-size: 12px;
-  font-weight: 500;
+  background: ${({ theme }) => theme.colors.bg.neutral};
+
+  font-family: ${theme.typography.buttonMd.fontFamily};
+  font-weight: ${theme.typography.buttonMd.fontWeight};
+  font-size: ${theme.typography.buttonMd.fontSize};
+  line-height: ${theme.typography.buttonMd.lineHeight};
+
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
