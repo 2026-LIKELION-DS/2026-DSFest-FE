@@ -4,9 +4,7 @@ import * as S from "../../styles/ContestInformation.style";
 interface ContestInfoModalProps {
   isOpen: boolean;
   onClose: () => void;
-  title: string;
   images?: string[];
-  content: string;
   onSubmit: () => void; // 제출 함수
 }
 

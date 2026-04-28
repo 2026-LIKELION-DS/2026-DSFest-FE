@@ -32,25 +32,21 @@ export default function ContestVoteButton({
   const location = useLocation();
   const voted = location.state?.voted ?? false;
 
-  const [showToast, setShowToast] = useState(false);
+  const [showToast, setShowToast] = useState(voted);
   const [hiding, setHiding] = useState(false);
 
   useEffect(() => {
-    if (voted) {
-      setShowToast(true);
-    }
-  }, [voted]);
+    if (!showToast) return;
 
-  useEffect(() => {
-    if (showToast) {
-      setHiding(false);
-      const hideTimer = setTimeout(() => setHiding(true), 3000);
-      const removeTimer = setTimeout(() => setShowToast(false), 3400);
-      return () => {
-        clearTimeout(hideTimer);
-        clearTimeout(removeTimer);
-      };
-    }
+    const resetHiding = setTimeout(() => setHiding(false), 0);
+    const hideTimer = setTimeout(() => setHiding(true), 3000);
+    const removeTimer = setTimeout(() => setShowToast(false), 3400);
+
+    return () => {
+      clearTimeout(resetHiding);
+      clearTimeout(hideTimer);
+      clearTimeout(removeTimer);
+    };
   }, [showToast]);
 
   const handleClick = () => {
