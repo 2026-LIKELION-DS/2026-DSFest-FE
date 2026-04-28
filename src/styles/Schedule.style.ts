@@ -151,7 +151,7 @@ export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
   align-items: center;
 
   gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "8px" : "0px")};
-
+  left: 24px;
   width: 100%;
   left: 48%;
   transform: translateX(calc(-15%));
@@ -165,8 +165,6 @@ export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
     bottom: 10px;
     left: 46%;
   }
-
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const FloatingIcon = styled.button<{ $isVisible?: boolean }>`
@@ -213,6 +211,7 @@ export const FloatingCircleBtn = styled.div<{ $isVisible?: boolean }>`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  pointer-events: auto;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   ${({ $isVisible }) =>
@@ -231,9 +230,36 @@ export const FloatingCircleBtn = styled.div<{ $isVisible?: boolean }>`
   &:active {
     transform: scale(0.9);
   }
+`;
 
-  img {
-    width: 26px;
-    height: 26px;
+export const ScheduleButtonWrapper = styled.div`
+  pointer-events: none;
+  z-index: 10;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  width: 100%;
+  left: 49%;
+  transform: translateX(calc(-15%));
+
+  bottom: 13px;
+  @media (min-width: 768px) or (max-height: 973px) {
+    bottom: calc(50% - 437px + 13px + 12px);
+    max-width: 402px;
   }
+  @media (max-height: 910px) {
+    bottom: 10px;
+    left: 46%;
+  }
+`;
+
+export const SNone = styled.div`
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  pointer-events: none;
 `;

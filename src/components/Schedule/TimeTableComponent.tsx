@@ -17,7 +17,7 @@ interface ScheduleItem {
 interface TimeTableProps {
   day: string;
   schedule: ScheduleItem[];
-  activeRef?: React.RefObject<HTMLDivElement>;
+  activeRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 export default function TimeTable({
