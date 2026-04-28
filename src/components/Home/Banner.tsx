@@ -50,44 +50,30 @@ export default function Banner() {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    let timeoutId: number | undefined;
-
+  // ✅ transition 끝났을 때 처리 (develop 코드 유지)
+  const handleTransitionEnd = () => {
     if (currentIndex === extendedBanners.length - 1) {
-      timeoutId = window.setTimeout(() => {
-        setIsTransition(false);
-        setCurrentIndex(1);
-      }, 400);
+      setIsTransition(false);
+      setCurrentIndex(1);
+    } else if (currentIndex === 0) {
+      setIsTransition(false);
+      setCurrentIndex(banners.length);
     }
-
-    if (currentIndex === 0) {
-      timeoutId = window.setTimeout(() => {
-        setIsTransition(false);
-        setCurrentIndex(banners.length);
-      }, 400);
-    }
-
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, [currentIndex]);
+  };
 
   useEffect(() => {
     if (!isTransition) {
-      requestAnimationFrame(() => {
+      const raf = requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           setIsTransition(true);
         });
       });
+      return () => cancelAnimationFrame(raf);
     }
   }, [isTransition]);
 
   const activeDotIndex =
-    currentIndex === 0
-      ? banners.length - 1
-      : currentIndex === extendedBanners.length - 1
-        ? 0
-        : currentIndex - 1;
+    (currentIndex - 1 + banners.length) % banners.length;
 
   return (
     <S.BannerSection>
@@ -95,6 +81,7 @@ export default function Banner() {
         <S.BannerTrack
           $currentIndex={currentIndex}
           $isTransition={isTransition}
+          onTransitionEnd={handleTransitionEnd}
         >
           {extendedBanners.map((banner, index) => (
             <S.BannerSlide key={`${banner.title}-${index}`}>
@@ -104,13 +91,16 @@ export default function Banner() {
                 image={banner.image}
                 link={banner.link}
                 onClick={() =>
-                  trackEvent("home_banner_click", { banner_type: banner.title })
+                  trackEvent("home_banner_click", {
+                    banner_type: banner.title,
+                  })
                 }
               />
             </S.BannerSlide>
           ))}
         </S.BannerTrack>
       </S.BannerViewport>
+
       <S.BannerDots>
         {banners.map((_, index) => (
           <S.BannerDot
