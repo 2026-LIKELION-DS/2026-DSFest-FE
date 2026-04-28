@@ -48,44 +48,28 @@ export default function Banner() {
         return () => clearInterval(timer);
     }, []);
 
-    useEffect(() => {
-        let timeoutId: number | undefined;
-
+    const handleTransitionEnd = () => {
         if (currentIndex === extendedBanners.length - 1) {
-            timeoutId = window.setTimeout(() => {
             setIsTransition(false);
-            setCurrentIndex(1);
-            }, 400);
-        }
-
-        if (currentIndex === 0) {
-            timeoutId = window.setTimeout(() => {
+            setCurrentIndex(1); 
+        } else if (currentIndex === 0) {
             setIsTransition(false);
             setCurrentIndex(banners.length);
-            }, 400);
         }
-
-        return () => {
-            if (timeoutId) clearTimeout(timeoutId);
-        };
-        }, [currentIndex]);
+    };
 
     useEffect(() => {
         if (!isTransition) {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-            setIsTransition(true);
+            const raf = requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    setIsTransition(true);
+                });
             });
-        });
+            return () => cancelAnimationFrame(raf);
         }
     }, [isTransition]);
 
-    const activeDotIndex =
-    currentIndex === 0
-      ? banners.length - 1
-      : currentIndex === extendedBanners.length - 1
-      ? 0
-      : currentIndex - 1;
+    const activeDotIndex = (currentIndex - 1 + banners.length) % banners.length;
 
   return (
     <S.BannerSection>
@@ -93,6 +77,7 @@ export default function Banner() {
             <S.BannerTrack
             $currentIndex={currentIndex}
             $isTransition={isTransition}
+            onTransitionEnd={handleTransitionEnd}
             >
             {extendedBanners.map((banner, index) => (
                 <S.BannerSlide key={`${banner.title}-${index}`}>
