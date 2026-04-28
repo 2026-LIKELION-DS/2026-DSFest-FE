@@ -6,10 +6,13 @@ export const ContestVotePage = styled.div`
   padding: 0 24px 24px;
   background: #fff;
   overflow-x: hidden;
-  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
 `;
 
-export const VoteHeader = styled.div``;
+export const VoteHeader = styled.div`
+  padding: 14px 0;
+`;
 export const PhotoPage = styled.div`
   font-family: ${theme.typography.h2};
   color: ${theme.colors.bg.brandLight};
@@ -35,7 +38,7 @@ export const ActionButton = styled.button`
     disabled ? theme.colors.bg.disabled : theme.colors.bg.brand};
   color: ${({ disabled }) => (disabled ? theme.colors.fg.disabled : "#fff")};
   cursor: pointer;
-  margin: 24px 0;
+  margin-top: 24px 0;
 `;
 
 export const PhotoGrid = styled.div`

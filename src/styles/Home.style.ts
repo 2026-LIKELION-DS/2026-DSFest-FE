@@ -9,6 +9,9 @@ export const Wrapper= styled.div`
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 `
 
 export const BackgroundBubble= styled.div`
@@ -27,10 +30,14 @@ export const Background= styled.div`
     align-items: center;
     padding: 24px;
     gap: 32px;
+
+    transform: translateZ(0);
+    will-change: transform;
 `
 
 export const BannerBox= styled.div`
-
+    isolation: isolate; 
+    contain: layout;
 `
 
 export const BannerWrapper= styled.a`
@@ -88,6 +95,9 @@ export const PolaroidTitle = styled.p`
     line-height: 36px;
     color: ${({ theme }) => theme.colors.grey.black};
     margin: 0;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
 `
 
 export const Sticker = styled.div`
@@ -110,20 +120,22 @@ export const StickerContent = styled.div`
     font-family: ${theme.typography.decorationMd.fontFamily};
     font-weight: ${theme.typography.decorationMd.fontWeight};
     font-size: ${theme.typography.decorationMd.fontSize};
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
 `
 export const BannerSection = styled.section`
-  width: 100%;
-  height: 336px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+    width: 100%;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 `;
 
 export const BannerViewport = styled.div`
-  width: 332px;
-  height: 296px;
-  overflow: visible;
+    width: 332px;
+    overflow: visible;
 `;
 
 export const BannerTrack = styled.div<{
@@ -133,30 +145,25 @@ export const BannerTrack = styled.div<{
   display: flex;
   gap: 12px;
 
-  transform: translate3d(
-    calc(-${({ $currentIndex }) => $currentIndex} * (332px + 12px)),
-    0,
-    0
+  transform: translateX(
+    calc(-${({ $currentIndex }) => $currentIndex} * (332px + 12px))
   );
 
   transition: ${({ $isTransition }) =>
     $isTransition
       ? "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)"
       : "none"};
-
-  will-change: transform;
-  backface-visibility: hidden;
 `;
 
 export const BannerSlide = styled.div`
-  flex: 0 0 332px;
-  width: 332px;
+    flex: 0 0 332px;
+    width: 332px;
 `;
 
 export const BannerDots = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 `;
 
 export const BannerDot = styled.div<{ $active: boolean }>`
