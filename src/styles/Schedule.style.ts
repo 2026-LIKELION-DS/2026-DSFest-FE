@@ -4,6 +4,7 @@ import ScheduleBackGround from "../assets/Schedule/Scheduleback.svg";
 
 export const SchedulePage = styled.div`
   padding: 0 24px 24px;
+  /* margin-bottom: 65px; */
   width: 100%;
   position: relative;
   background-color: ${({ theme }) => theme.colors.bg.neutral};
@@ -67,14 +68,12 @@ export const DecoLayer = styled.div`
   height: 100%;
   pointer-events: none;
   z-index: 2;
-  /* overflow: hidden; */
 `;
 
 export const Leafs = styled.img`
   position: absolute;
   width: 85px;
   height: 88px;
-
   top: 178px;
   left: 6px;
   z-index: 2;
@@ -85,7 +84,6 @@ export const Flower = styled.img`
   position: absolute;
   width: 78px;
   height: 74px;
-
   top: 758px;
   left: 5px;
   z-index: 2;
@@ -150,14 +148,13 @@ export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
   position: fixed;
   z-index: 100;
   display: flex;
-  flex-direction: column-reverse;
   align-items: center;
 
   gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "8px" : "0px")};
-
+  left: 24px;
   width: 100%;
-  left: 50%;
-  transform: translateX(calc(-10%));
+  left: 48%;
+  transform: translateX(calc(-15%));
 
   bottom: 13px;
   @media (min-width: 768px) or (max-height: 973px) {
@@ -166,16 +163,15 @@ export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
   }
   @media (max-height: 910px) {
     bottom: 10px;
+    left: 46%;
   }
-
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const FloatingIcon = styled.button<{ $isVisible?: boolean }>`
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  margin-bottom: 75px;
+  margin-bottom: 70px;
   background: ${({ theme }) => theme.colors.bg.brand};
   border: none;
   display: flex;
@@ -184,6 +180,7 @@ export const FloatingIcon = styled.button<{ $isVisible?: boolean }>`
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  box-shadow: 0 0 4px 0 rgba(113, 122, 114, 0.4);
 
   ${({ $isVisible }) =>
     $isVisible === false &&
@@ -206,4 +203,63 @@ export const FloatingIcon = styled.button<{ $isVisible?: boolean }>`
     width: 26px;
     height: 26px;
   }
+`;
+
+export const FloatingCircleBtn = styled.div<{ $isVisible?: boolean }>`
+  display: flex;
+  margin-bottom: 70px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  ${({ $isVisible }) =>
+    $isVisible === false &&
+    css`
+      height: 0;
+      width: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0);
+      pointer-events: none;
+    `}
+
+  &:active {
+    transform: scale(0.9);
+  }
+`;
+
+export const ScheduleButtonWrapper = styled.div`
+  pointer-events: none;
+  z-index: 10;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  width: 100%;
+  left: 49%;
+  transform: translateX(calc(-15%));
+
+  bottom: 13px;
+  @media (min-width: 768px) or (max-height: 973px) {
+    bottom: calc(50% - 437px + 13px + 12px);
+    max-width: 402px;
+  }
+  @media (max-height: 910px) {
+    bottom: 10px;
+    left: 46%;
+  }
+`;
+
+export const SNone = styled.div`
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  pointer-events: none;
 `;
