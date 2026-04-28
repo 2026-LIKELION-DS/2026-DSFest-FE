@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChatList from "./ChatList";
 import ChatInput from "./ChatInput";
 import * as S from "../../styles/LiveTalk.style";
@@ -15,7 +15,9 @@ export type ChatMessage = {
 type BannerMode = "default" | "artist" | "collapsed";
 
 export default function LiveTalkComponent() {
-  const [bannerMode] = useState<BannerMode>("collapsed");
+  const [bannerMode, setBannerMode] = useState<BannerMode>("default");
+  const chatAreaRef = useRef<HTMLDivElement | null>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -44,6 +46,13 @@ export default function LiveTalkComponent() {
     },
   ]);
 
+  useEffect(() => {
+    const chatArea = chatAreaRef.current;
+    if (!chatArea) return;
+
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }, [messages]);
+
   const sendMessage = (text: string) => {
     const newMessage: ChatMessage = {
       id: Date.now(),
@@ -55,11 +64,39 @@ export default function LiveTalkComponent() {
     setMessages((prev) => [...prev, newMessage]);
   };
 
+  const handleBannerTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleBannerTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const diffX = touchStartX.current - touchEndX;
+
+    if (diffX > 50) {
+      setBannerMode("collapsed");
+    }
+
+    touchStartX.current = null;
+  };
+
+  const handleBannerClick = () => {
+    if (bannerMode === "collapsed") {
+      setBannerMode("default");
+    }
+  };
+
   const isCollapsed = bannerMode === "collapsed";
 
   return (
     <S.Container>
-      <S.TopBanner $isCollapsed={isCollapsed}>
+      <S.TopBanner
+        $isCollapsed={isCollapsed}
+        onTouchStart={handleBannerTouchStart}
+        onTouchEnd={handleBannerTouchEnd}
+        onClick={handleBannerClick}
+      >
         <S.BannerIcon src={MegaphoneIcon} alt="확성기 아이콘" />
 
         {!isCollapsed && (
@@ -83,7 +120,7 @@ export default function LiveTalkComponent() {
         )}
       </S.TopBanner>
 
-      <S.ChatArea>
+      <S.ChatArea ref={chatAreaRef}>
         <S.DateText>5월 13일 수요일</S.DateText>
         <ChatList messages={messages} />
       </S.ChatArea>

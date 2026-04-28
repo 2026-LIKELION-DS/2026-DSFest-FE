@@ -16,3 +16,4 @@ export default function ChatItem({ message }: { message: ChatMessage }) {
     </S.Row>
   );
 }
+ 

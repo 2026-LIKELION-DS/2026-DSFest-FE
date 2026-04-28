@@ -23,7 +23,7 @@ export const Card = styled.div`
   border-radius: 4px;
   box-shadow: 0px 4px 8px #d9d9d9;
 
-  width: 140px; /* 임시 */
+  width: 140px;
 `;
 
 // 가게 이미지 자리 (회색 박스)

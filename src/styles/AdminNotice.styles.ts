@@ -10,7 +10,7 @@ export const Page = styled.div`
   flex-direction: column;
   padding: 16px 18px 18px;
 
-  overflow: hidden; /* 중요 */
+  overflow: hidden;
 `;
 
 export const TopArea = styled.div`
@@ -40,7 +40,7 @@ export const ClearButton = styled.button`
 
 export const NoticeList = styled.div`
   flex: 1;
-  min-height: 0; /* 중요 */
+  min-height: 0;
   overflow-y: auto;
 
   -ms-overflow-style: none;

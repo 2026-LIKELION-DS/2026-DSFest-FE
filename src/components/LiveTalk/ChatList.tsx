@@ -14,3 +14,4 @@ export default function ChatList({ messages }: Props) {
     </>
   );
 }
+ 
