@@ -23,6 +23,10 @@ import LiveTalk from "./routes/LiveTalk";
 import Error from "./routes/Error";
 import Food from "./routes/Food";
 import ContestVote from "./routes/ContestVote";
+import AdminLoginPage from "./routes/Admin/AdminLoginPage";
+import AdminNoticePage from "./routes/Admin/AdminNoticePage";
+import AdminNoticeDetailPage from "./routes/Admin/AdminNoticeDetailPage";
+import AdminNoticeWritePage from "./routes/Admin/AdminNoticeWritePage";
 
 function GAListener() {
   const location = useLocation();
@@ -199,6 +203,28 @@ function App() {
               showNavBar={false}
             >
               <ContestVote />
+            </AppLayout>
+          }
+        />
+        <Route path="/AdminLogin" element={<AdminLoginPage />} />
+        <Route path="/AdminNotice" element={<AdminNoticePage />} />
+        <Route
+          path="/AdminNoticeDetail"
+          element={
+            <AppLayout
+              title="공지 상세보기"
+              showBackButton={true}
+              showNavBar={false}
+            >
+              <AdminNoticeDetailPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/AdminNoticeWrite"
+          element={
+            <AppLayout title="공지" showBackButton={true} showNavBar={false}>
+              <AdminNoticeWritePage />
             </AppLayout>
           }
         />
