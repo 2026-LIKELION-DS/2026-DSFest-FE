@@ -189,6 +189,7 @@ const BoothPage: React.FC = () => {
   }, [operatingBooths, currentPeriodBooths]);
 
   const handleBoothClick = (id: number | null) => {
+    setSelectedId(id);
     if (id == null) return;
 
     trackEvent("booth_numbering_used");
