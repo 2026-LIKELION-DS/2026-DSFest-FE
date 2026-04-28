@@ -1,3 +1,5 @@
+import AdminNoticeWrite from "../../components/Admin/AdminNoticeWrite";
+
 export default function AdminNoticeWritePage() {
-    return <div>Admin Notice Write Page</div>;
-  }
+  return <AdminNoticeWrite />;
+}
