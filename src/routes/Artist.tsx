@@ -1,8 +1,9 @@
-import type { Artist } from "../components/Artist/ArtistCard";
-import type { PerformanceStatus } from "../utils/artist";
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import type { Artist } from "../components/Artist/ArtistCard";
+import type { PerformanceStatus } from "../utils/artist";
+import { trackEvent } from "../utils/analytics";
 
 import ArtistCard from "../components/Artist/ArtistCard";
 import ArtistActionButtons from "../components/Artist/ArtistActionButton";
@@ -217,7 +218,10 @@ function ArtistPage() {
         <ArtistActionButtons
           status={status}
           statusText={statusText}
-          onLiveClick={() => navigate("/live")}
+          onLiveClick={() => {
+            trackEvent("livetalk_from_artist");
+            navigate("/live");
+          }}
           onGuideClick={() => setIsGuideModalOpen(true)}
         />
 
