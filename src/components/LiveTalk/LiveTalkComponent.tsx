@@ -16,8 +16,15 @@ type BannerMode = "default" | "artist" | "collapsed";
 
 export default function LiveTalkComponent() {
   const [bannerMode, setBannerMode] = useState<BannerMode>("default");
+  const [showBannerText, setShowBannerText] = useState(true);
+
+  const previousBannerModeRef =
+    useRef<Exclude<BannerMode, "collapsed">>("default");
+
   const chatAreaRef = useRef<HTMLDivElement | null>(null);
-  const touchStartX = useRef<number | null>(null);
+  const dragStartXRef = useRef<number | null>(null);
+  const isDraggingRef = useRef(false);
+  const bannerTextTimerRef = useRef<number | null>(null);
 
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -53,6 +60,32 @@ export default function LiveTalkComponent() {
     chatArea.scrollTop = chatArea.scrollHeight;
   }, [messages]);
 
+  useEffect(() => {
+    return () => {
+      if (bannerTextTimerRef.current) {
+        window.clearTimeout(bannerTextTimerRef.current);
+      }
+    };
+  }, []);
+
+  const hideBannerText = () => {
+    if (bannerTextTimerRef.current) {
+      window.clearTimeout(bannerTextTimerRef.current);
+    }
+
+    setShowBannerText(false);
+  };
+
+  const showBannerTextAfterTransition = () => {
+    if (bannerTextTimerRef.current) {
+      window.clearTimeout(bannerTextTimerRef.current);
+    }
+
+    bannerTextTimerRef.current = window.setTimeout(() => {
+      setShowBannerText(true);
+    }, 220);
+  };
+
   const sendMessage = (text: string) => {
     const newMessage: ChatMessage = {
       id: Date.now(),
@@ -64,26 +97,55 @@ export default function LiveTalkComponent() {
     setMessages((prev) => [...prev, newMessage]);
   };
 
-  const handleBannerTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    touchStartX.current = e.touches[0].clientX;
+  const handleBannerPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    dragStartXRef.current = e.clientX;
+    isDraggingRef.current = false;
+
+    e.currentTarget.setPointerCapture(e.pointerId);
   };
 
-  const handleBannerTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (touchStartX.current === null) return;
+  const handleBannerPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (dragStartXRef.current === null) return;
 
-    const touchEndX = e.changedTouches[0].clientX;
-    const diffX = touchStartX.current - touchEndX;
+    const diffX = dragStartXRef.current - e.clientX;
 
-    if (diffX > 50) {
+    if (Math.abs(diffX) > 10) {
+      isDraggingRef.current = true;
+    }
+  };
+
+  const handleBannerPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (dragStartXRef.current === null) return;
+
+    const diffX = dragStartXRef.current - e.clientX;
+
+    if (diffX > 50 && bannerMode !== "collapsed") {
+      previousBannerModeRef.current =
+        bannerMode === "artist" ? "artist" : "default";
+
+      hideBannerText();
       setBannerMode("collapsed");
     }
 
-    touchStartX.current = null;
+    dragStartXRef.current = null;
+
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      // pointer capture가 이미 해제된 경우 무시
+    }
   };
 
   const handleBannerClick = () => {
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+      return;
+    }
+
     if (bannerMode === "collapsed") {
-      setBannerMode("default");
+      hideBannerText();
+      setBannerMode(previousBannerModeRef.current);
+      showBannerTextAfterTransition();
     }
   };
 
@@ -93,13 +155,14 @@ export default function LiveTalkComponent() {
     <S.Container>
       <S.TopBanner
         $isCollapsed={isCollapsed}
-        onTouchStart={handleBannerTouchStart}
-        onTouchEnd={handleBannerTouchEnd}
+        onPointerDown={handleBannerPointerDown}
+        onPointerMove={handleBannerPointerMove}
+        onPointerUp={handleBannerPointerUp}
         onClick={handleBannerClick}
       >
         <S.BannerIcon src={MegaphoneIcon} alt="확성기 아이콘" />
 
-        {!isCollapsed && (
+        {!isCollapsed && showBannerText && (
           <>
             <S.BannerTextBox>
               <S.BannerSubText>
