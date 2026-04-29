@@ -1,4 +1,5 @@
 import { trackEvent } from "../utils/analytics";
+import { useState } from "react";
 
 import * as S from "../styles/Home.style";
 
@@ -27,15 +28,29 @@ import Keyring from "../assets/home/Home_Deco_Keyring.svg";
 import Bracelet from "../assets/home/Home_Deco_Bracelet.svg";
 
 import Banner from "../components/Home/Banner";
+import OnBoarding from "../components/Home/OnBoarding";
 
 export default function Home() {
   const urgentNotice = "(긴급) 하현상 무대 시간 지연 공지";
+
+  const [showOnBoarding, setShowOnBoarding] = useState<boolean>(() => {
+    return localStorage.getItem("hasSeenOnboarding") === null;
+  });
+
+  const handleCloseOnBoarding = () => {
+    localStorage.setItem("hasSeenOnboarding", "true");
+    setShowOnBoarding(false);
+  };
+
   return (
     <S.Wrapper>
       <S.BackgroundBubble>
+        {showOnBoarding && (
+            <OnBoarding onClose={handleCloseOnBoarding} />
+        )}
         <S.Background>
           <S.BannerBox>
-            <Banner></Banner>
+            <Banner isPaused={showOnBoarding}></Banner>
           </S.BannerBox>
           {urgentNotice && (
             <S.UrgentNoticeBox href="@">

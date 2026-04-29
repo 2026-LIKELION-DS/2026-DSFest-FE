@@ -9,6 +9,10 @@ interface BannerItem {
   link: string;
 }
 
+interface BannerProps {
+  isPaused?: boolean;
+}
+
 const banners: BannerItem[] = [
   {
     title: "오늘의 아티스트",
@@ -36,7 +40,7 @@ const extendedBanners: BannerItem[] = [
   banners[0],
 ];
 
-export default function Banner() {
+export default function Banner({ isPaused = false }: BannerProps) {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransition, setIsTransition] = useState(true);
   
@@ -128,6 +132,16 @@ export default function Banner() {
       e.stopPropagation();
     }
   };
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => prev + 1);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [isPaused]);
 
   const activeDotIndex = (currentIndex - 1 + banners.length) % banners.length;
 
