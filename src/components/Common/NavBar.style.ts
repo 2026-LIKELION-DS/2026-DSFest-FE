@@ -10,7 +10,7 @@ export const Container = styled.nav`
   background: ${({ theme }) => theme.colors.bg.neutral};
 `;
 
-export const Item = styled.button<{ active: boolean }>`
+export const Item = styled.button<{ $active: boolean }>`
   width: 90px;
   display: flex;
   flex-direction: column;
@@ -21,8 +21,8 @@ export const Item = styled.button<{ active: boolean }>`
   background: transparent;
   cursor: pointer;
 
-  color: ${({ theme, active }) =>
-    active ? theme.colors.bg.brand : theme.colors.fg.subtle};
+  color: ${({ theme, $active }) =>
+    $active ? theme.colors.bg.brand : theme.colors.fg.subtle};
 `;
 
 export const Icon = styled.img`
