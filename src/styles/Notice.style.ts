@@ -212,13 +212,22 @@ export const DetailImageScroll = styled.div`
     display: none;
   }
 `;
-
 export const DetailImageBox = styled.button`
-  flex: 0 0 auto;
-  height: 180px;
+  all: unset;
+  flex: 0 0 144px;
   width: 144px;
+  height: 180px;
   border-radius: 4px;
   background-color: #d9d9d9;
+  overflow: hidden;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 `;
 
 export const DetailContent = styled.p`

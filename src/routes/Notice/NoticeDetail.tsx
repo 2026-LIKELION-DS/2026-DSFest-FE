@@ -21,7 +21,6 @@ const noticeDetailList: NoticeDetailData[] = [
     imageCount: 3,
     images: [examplePhoto, examplePhoto, examplePhoto],
   },
-  // ... 생략
 ];
 
 export default function NoticeDetail() {
@@ -48,16 +47,12 @@ export default function NoticeDetail() {
         {displayImages.map((src, index) => (
           <S.DetailImageBox
             key={index}
-            as="button" // 버튼 스타일로 활용
+            as="button"
             onClick={() =>
               setModalConfig({ isOpen: true, initialIndex: index })
             }
           >
-            <img
-              src={src}
-              alt=""
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
+            <img src={src} alt="" />
           </S.DetailImageBox>
         ))}
       </S.DetailImageScroll>
