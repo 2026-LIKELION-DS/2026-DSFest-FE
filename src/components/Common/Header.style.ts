@@ -23,6 +23,7 @@ export const Left = styled.div<{ $show: boolean }>`
   width: ${({ $show }) => ($show ? "40px" : "8px")};
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const TitleWrapper = styled.div`
