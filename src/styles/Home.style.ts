@@ -9,6 +9,7 @@ export const Wrapper= styled.div`
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    position: relative;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
