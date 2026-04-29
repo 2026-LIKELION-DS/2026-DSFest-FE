@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { trackEvent } from "../../utils/analytics";
 import * as S from "../../styles/FoodBanner.styles";
 
 import pizza from "../../assets/Food/Pizza.svg";
@@ -121,12 +122,17 @@ export default function FoodBannerCarousel({ onImageClick }: Props) {
     return value;
   };
 
+  // useEffect 의존성 문제 해결 방지 코드
+  const normalizePositionRef = useRef(normalizePosition);
+
   useEffect(() => {
     const speed = 0.5;
 
     const animate = () => {
       if (!isDraggingRef.current) {
-        positionRef.current = normalizePosition(positionRef.current - speed);
+        positionRef.current = normalizePositionRef.current(
+          positionRef.current - speed,
+        );
         setPosition(positionRef.current);
       }
 
@@ -143,6 +149,8 @@ export default function FoodBannerCarousel({ onImageClick }: Props) {
   }, []);
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    trackEvent("foodtruck_banner_scroll");
+
     isDraggingRef.current = true;
     draggedRef.current = false;
 
