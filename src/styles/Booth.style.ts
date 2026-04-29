@@ -145,31 +145,6 @@ export const TimeButtonGroup = styled.div`
   gap: 3px;
 `;
 
-export const FloatingButtonGroup = styled.div<{ $hasTopBtn: boolean }>`
-  position: fixed;
-  z-index: 100;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-
-  gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "8px" : "0px")};
-
-  width: 100%;
-  left: 50%;
-  transform: translateX(calc(-10%));
-
-  bottom: 13px;
-  @media (min-width: 768px) or (max-height: 973px) {
-    bottom: calc(50% - 437px + 13px + 12px);
-    max-width: 402px;
-  }
-  @media (max-height: 910px) {
-    bottom: 10px;
-  }
-
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-`;
-
 export const FloatingCircleBtn = styled.button<{ $isVisible?: boolean }>`
   width: 52px;
   height: 52px;
@@ -242,7 +217,7 @@ export const FilterButton = styled.button<{ $active: boolean }>`
 
   padding: 8px 15px;
 
-  border-radius: 9999px;
+  border-radius: 999px;
 
   cursor: pointer;
 
@@ -263,21 +238,52 @@ export const TimeTextContainer = styled.div`
 `;
 
 export const HeaderToggleOverlay = styled.div`
-  position: fixed;
-  z-index: 100;
-  display: flex;
-  align-items: center;
   gap: 3px;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.1));
 
-  left: 50%;
-  width: 100%;
-  transform: translate(calc(30%), calc(-50% - 30px));
+  position: fixed;
+  right: 10px;
+  top: 20px;
 
-  @media (min-width: 768px) or (max-height: 973px) {
-    transform: translate(calc(10%), calc(-50% - 30px));
-    max-width: 402px;
+  display: flex;
+
+  z-index: 999;
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    right: calc((100vw - 402px) / 2 + 10px);
+    top: 15px;
   }
+
+  @media (min-width: 768px) and (min-height: 874px),
+    (hover: hover) and (pointer: fine) and (min-height: 874px) {
+    right: calc((100vw - 402px) / 2 + 20px);
+    top: calc((100dvh - 898px) / 2 + 36px);
+  }
+`;
+
+export const FloatingButtonGroup = styled.div<{ $hasTopBtn: boolean }>`
+  gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "8px" : "0px")};
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+
+  z-index: 999;
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    right: calc((100vw - 402px) / 2 + 10px);
+    bottom: 20px;
+  }
+
+  @media (min-width: 768px) and (min-height: 874px),
+    (hover: hover) and (pointer: fine) and (min-height: 874px) {
+    right: calc((100vw - 402px) / 2 + 20px);
+    bottom: calc((100dvh - 898px) / 2 + 32px);
+  }
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const HeaderTimeOption = styled.button<{ $active: boolean }>`
@@ -339,29 +345,23 @@ export const OnboardingOverlay = styled.div<{ $isVisible: boolean }>`
   visibility: ${({ $isVisible }) => ($isVisible ? "visible" : "hidden")};
   pointer-events: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 100%;
-  max-height: 100dvh;
-
-  @media (min-width: 768px) or (max-height: 973px) {
-    border: 12px solid ${({ theme }) => theme.colors.olive[50]};
-    height: 874px;
-    border-radius: 24px;
-    max-width: 402px;
-  }
-  @media (max-height: 910px) {
-    border-radius: 0;
-    border: none;
-  }
+  right: 10px;
+  top: 20px;
 
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  z-index: 1000;
-  overflow: hidden;
+
+  z-index: 999;
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    right: calc((100vw - 402px) / 2 + 10px);
+    top: 15px;
+  }
+
+  @media (min-width: 768px) and (min-height: 874px),
+    (hover: hover) and (pointer: fine) and (min-height: 874px) {
+    right: calc((100vw - 402px) / 2 + 20px);
+    top: calc((100dvh - 898px) / 2 + 36px);
+  }
 `;
 
 export const GuideContainer = styled.div`
@@ -371,36 +371,17 @@ export const GuideContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100dvh;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  transform: translateX(calc(-50% + 85px));
-  margin-top: 4px;
-  transform: translateX(calc(-15%));
-
-  @media (min-width: 768px) or (max-height: 973px) {
-    transform: translateX(calc(-50% + 80px));
-  }
-  @media (max-height: 910px) {
-    transform: translate(-30%, 0%);
-  }
 `;
 
 export const GuideText = styled.div`
-  margin-top: 50px;
+  margin-top: 45px;
   color: #ffffff;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
 
   position: relative;
-  left: 50%;
-  transform: translateX(calc(50% - 40px));
 
   span {
     ${setTypo("buttonSm")};
@@ -413,9 +394,9 @@ export const GuideText = styled.div`
   background-color: ${({ theme }) => theme.colors.bg.brand};
   color: ${({ theme }) => theme.colors.fg.primaryInverted};
 
-  padding: 3px 12px 5px 12px;
+  padding: 3px 16px 5px 16px;
   border: 1.5px solid ${({ theme }) => theme.colors.fg.primaryInverted};
-  border-radius: 9999px;
+  border-radius: 999px;
 
   width: max-content;
 
