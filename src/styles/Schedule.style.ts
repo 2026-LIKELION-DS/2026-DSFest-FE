@@ -153,7 +153,7 @@ export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
   gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "8px" : "0px")};
   left: 24px;
   width: 100%;
-  left: 50%;
+  left: 50.4%;
   transform: translateX(calc(-15%));
 
   bottom: 13px;
@@ -171,7 +171,7 @@ export const FloatingIcon = styled.button<{ $isVisible?: boolean }>`
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  margin-bottom: 70px;
+  margin-bottom: 55px;
   background: ${({ theme }) => theme.colors.bg.brand};
   border: none;
   display: flex;
@@ -207,7 +207,7 @@ export const FloatingIcon = styled.button<{ $isVisible?: boolean }>`
 
 export const FloatingCircleBtn = styled.div<{ $isVisible?: boolean }>`
   display: flex;
-  margin-bottom: 70px;
+  margin-bottom: 55px;
   align-items: center;
   justify-content: center;
   cursor: pointer;

@@ -11,9 +11,6 @@ export const PhotoCard = styled.div`
   border-radius: 4px;
   padding: 12px;
   height: 140px;
-
-  /* max-width: 171px; */
-  /* max-height: 140px; */
   width: 100%;
   gap: 12px;
   display: flex;
