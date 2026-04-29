@@ -11,6 +11,9 @@ export const Wrapper= styled.div`
     overflow: hidden;
     position: relative;
 
+    overflow-y: auto;
+  overflow-x: hidden;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 `
@@ -117,7 +120,7 @@ export const BoothBtn = styled(PolaroidBtn)`
     z-index: 5;
 `
 
-export const NameTag = styled.div`
+export const NameTag = styled.a`
     display: flex;
     padding: 6px 12px;
     flex-direction: column;
@@ -190,18 +193,23 @@ export const Camera = styled.img`
     top:86.09px;
     left: 75.4px;
     z-index: 3;
+    cursor: pointer;
 `
 
 export const FlowerBtn1 = styled.img`
     position: absolute;
     left: 159.27px;
     bottom: 40.86px;
+    cursor: pointer;
+    z-index: 7;
 `
 
 export const FlowerBtn2 = styled.img`
     position: absolute;
     left: 65.47px;
     bottom: 188.84px;
+    cursor: pointer;
+    z-index: 7;
 `
 
 export const Icecream1 = styled.img`
@@ -209,6 +217,7 @@ export const Icecream1 = styled.img`
     right: -9.51px;
     bottom: 113.88px;
     z-index: 4;
+    cursor: pointer;
 `
 
 export const Icecream2 = styled.img`
@@ -216,6 +225,7 @@ export const Icecream2 = styled.img`
     right: -6.74px;
     bottom: 169.26px;
     z-index: 4;
+    cursor: pointer;
 `
 
 export const Churros= styled.img`
@@ -223,6 +233,7 @@ export const Churros= styled.img`
     bottom: 85.08px;
     right: 70.37px;
     z-index: 4;
+    cursor: pointer;
 `
 
 export const Keyring = styled.img`
@@ -230,6 +241,7 @@ export const Keyring = styled.img`
     left: -24.19px;
     bottom: 24.3px;
     z-index: 6;
+    cursor: pointer;
 `
 
 export const Bracelet = styled.img`
@@ -237,6 +249,7 @@ export const Bracelet = styled.img`
     bottom: 4.8px;
     left: 129.27px;
     z-index: 6;
+    cursor: pointer;
 `
 
 

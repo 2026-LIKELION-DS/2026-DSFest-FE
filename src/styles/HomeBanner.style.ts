@@ -22,6 +22,7 @@ interface BannerTrackProps {
   $currentIndex: number;
   $isTransition: boolean;
   $dragOffset: number;
+  $duration: number;
 }
 
 export const BannerTrack = styled.div<BannerTrackProps>`
@@ -34,9 +35,9 @@ export const BannerTrack = styled.div<BannerTrackProps>`
     0
   );
 
-  transition: ${({ $isTransition }) =>
+  transition: ${({ $isTransition, $duration }) =>
     $isTransition
-      ? "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)"
+      ? `transform ${$duration}s cubic-bezier(0.22, 1, 0.36, 1)`
       : "none"};
 
   will-change: transform;
