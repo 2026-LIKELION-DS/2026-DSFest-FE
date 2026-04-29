@@ -146,14 +146,14 @@ export const CamFlower2 = styled.img`
 
 export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
   position: fixed;
-  z-index: 100;
+  z-index: 9;
   display: flex;
   align-items: center;
 
   gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "8px" : "0px")};
   left: 24px;
   width: 100%;
-  left: 48%;
+  left: 50%;
   transform: translateX(calc(-15%));
 
   bottom: 13px;
