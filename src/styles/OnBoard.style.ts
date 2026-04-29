@@ -14,9 +14,19 @@ export const OnBoardWrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 19.9px;
+    
+`;
 
-    background: rgba(0, 0, 0, 0.5);
+export const OnBoardBlurArea = styled.div`
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-width: 402px; 
+    height: 100%;
+    
     backdrop-filter: blur(5px);
+        background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
 `;
 
 export const OnBoardImg = styled.img`

@@ -9,6 +9,7 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
     const navigate = useNavigate();
   return (
     <S.OnBoardWrapper>
+        <S.OnBoardBlurArea />
       <S.OnBoardImg />
 
       <S.OnBoardBtnBox>
