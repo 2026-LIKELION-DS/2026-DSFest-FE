@@ -144,67 +144,6 @@ export const CamFlower2 = styled.img`
   pointer-events: none;
 `;
 
-export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
-  position: fixed;
-  z-index: 9;
-  display: flex;
-  align-items: center;
-
-  gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "8px" : "0px")};
-  left: 24px;
-  width: 100%;
-  left: 50.4%;
-  transform: translateX(calc(-15%));
-
-  bottom: 13px;
-  @media (min-width: 768px) or (max-height: 973px) {
-    bottom: calc(50% - 437px + 13px + 12px);
-    max-width: 402px;
-  }
-  @media (max-height: 910px) {
-    bottom: 10px;
-    left: 46%;
-  }
-`;
-
-export const FloatingIcon = styled.button<{ $isVisible?: boolean }>`
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  margin-bottom: 55px;
-  background: ${({ theme }) => theme.colors.bg.brand};
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  box-shadow: 0 0 4px 0 rgba(113, 122, 114, 0.4);
-
-  ${({ $isVisible }) =>
-    $isVisible === false &&
-    css`
-      height: 0;
-      width: 0;
-      margin: 0;
-      padding: 0;
-      opacity: 0;
-      visibility: hidden;
-      transform: scale(0);
-      pointer-events: none;
-    `}
-
-  &:active {
-    transform: scale(0.9);
-  }
-
-  img {
-    width: 26px;
-    height: 26px;
-  }
-`;
-
 export const FloatingCircleBtn = styled.div<{ $isVisible?: boolean }>`
   display: flex;
   margin-bottom: 55px;
@@ -243,6 +182,7 @@ export const ScheduleButtonWrapper = styled.div`
   width: 100%;
   left: 49%;
   transform: translateX(calc(-15%));
+  bottom: 20px;
 
   bottom: 13px;
   @media (min-width: 768px) or (max-height: 973px) {
@@ -250,16 +190,69 @@ export const ScheduleButtonWrapper = styled.div`
     max-width: 402px;
   }
   @media (max-height: 910px) {
-    bottom: 10px;
-    left: 46%;
+    bottom: 20px;
+    left: 48%;
   }
 `;
 
-export const SNone = styled.div`
-  width: 180px;
+export const FloatingIcon = styled.button<{ $isVisible?: boolean }>`
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.bg.brand};
+  border: none;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 44px;
-  pointer-events: none;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  ${({ $isVisible }) =>
+    $isVisible === false &&
+    css`
+      height: 0;
+      width: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0);
+      pointer-events: none;
+    `}
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  img {
+    width: 26px;
+    height: 26px;
+  }
+`;
+
+export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
+  gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "8px" : "0px")};
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+
+  z-index: 999;
+  margin-bottom: 55px;
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    right: calc((100vw - 402px) / 2 + 10px);
+    bottom: 20px;
+    margin-bottom: 55px;
+  }
+
+  @media (min-width: 768px) and (min-height: 874px),
+    (hover: hover) and (pointer: fine) and (min-height: 874px) {
+    right: calc((100vw - 402px) / 2 + 20px);
+    bottom: calc((100dvh - 898px) / 2 + 32px);
+  }
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
