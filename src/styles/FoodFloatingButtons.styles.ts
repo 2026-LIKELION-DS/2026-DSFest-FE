@@ -9,7 +9,7 @@ export const ButtonWrapper = styled.div<{ $hasTopBtn: boolean }>`
   flex-direction: column;
   gap: ${({ $hasTopBtn }) => ($hasTopBtn ? "10px" : "0px")};
 
-  z-index: 9999;
+  z-index: 999;
 
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 

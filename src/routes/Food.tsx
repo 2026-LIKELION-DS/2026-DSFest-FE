@@ -68,6 +68,8 @@ export default function Food() {
     setIsImageModalOpen(true);
   };
 
+  const isAnyModalOpen = isNoticeOpen || isImageModalOpen;
+
   return (
     <S.FoodPage ref={pageRef}>
       <S.FixedTopArea>
@@ -86,11 +88,13 @@ export default function Food() {
         />
       </S.ListArea>
 
-      <FoodFloatingButtons
-        onNotice={() => setIsNoticeOpen(true)}
-        onTop={handleTop}
-        showTopBtn={showTopBtn}
-      />
+      {!isAnyModalOpen && (
+        <FoodFloatingButtons
+          onNotice={() => setIsNoticeOpen(true)}
+          onTop={handleTop}
+          showTopBtn={showTopBtn}
+        />
+      )}
 
       <Modal
         isOpen={isNoticeOpen}
