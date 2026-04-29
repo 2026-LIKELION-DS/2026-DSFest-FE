@@ -8,7 +8,7 @@ export const ImageDetailPage = styled.div`
 
   width: 100%;
   height: 100dvh;
-  @media (min-width: 768px) or (max-height: 973px) {
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     border: 12px solid ${({ theme }) => theme.colors.olive[50]};
     max-height: 874px;
     border-radius: 24px;

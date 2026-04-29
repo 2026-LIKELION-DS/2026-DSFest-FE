@@ -20,7 +20,7 @@ export const ModalOverlay = styled.div`
   width: 100%;
   max-width: 768px;
   height: 100dvh;
-  @media (min-width: 768px) or (max-height: 973px) {
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     border: 12px solid ${({ theme }) => theme.colors.olive[50]};
     max-height: 874px;
     border-radius: 24px;
