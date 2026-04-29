@@ -1,6 +1,6 @@
 import FoodTruckCard from "./FoodTruckCard";
 
-import pizza from "../../assets/Food/Pizza.svg";
+import pizza from "../../assets/home/Home_Artist.svg";
 import chicken from "../../assets/Food/Chicken.svg";
 import burrito from "../../assets/Food/Burrito.svg";
 
@@ -56,12 +56,16 @@ const foodTrucks = [
       {
         name: "소프트 아이스크림 + 츄러스(소프트 아츄)",
         price: "30,000원",
-        isVegan: false },
+        isVegan: false,
+      },
     ],
   },
 ];
 
-export default function FoodTruckList({ isVeganSelected, onImageClick }: Props) {
+export default function FoodTruckList({
+  isVeganSelected,
+  onImageClick,
+}: Props) {
   const filtered = isVeganSelected
     ? foodTrucks.filter((truck) => truck.tags.includes("비건"))
     : foodTrucks;
