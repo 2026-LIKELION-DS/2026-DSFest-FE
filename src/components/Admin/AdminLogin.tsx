@@ -1,6 +1,13 @@
 import * as S from "../../styles/AdminLogin.styles";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminLogin() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/AdminNotice");
+  };
+
   return (
     <S.Container>
       <S.Title>축제 관계자 페이지</S.Title>
@@ -11,7 +18,7 @@ export default function AdminLogin() {
       <S.Label>비밀번호</S.Label>
       <S.Input type="password" placeholder="비밀번호를 입력해 주세요" />
 
-      <S.Button>로그인</S.Button>
+      <S.Button onClick={handleLogin}>로그인</S.Button>
     </S.Container>
   );
 }

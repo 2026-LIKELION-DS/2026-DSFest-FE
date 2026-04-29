@@ -20,12 +20,10 @@ export default function AdminNoticeDetail() {
   const handleConfirm = () => {
     if (modalType === "edit") {
       console.log("공지 수정");
-      // TODO: 수정 페이지 이동 또는 수정 API 연결
     }
 
     if (modalType === "delete") {
       console.log("공지 삭제");
-      // TODO: 삭제 API 연결
     }
 
     setModalType(null);

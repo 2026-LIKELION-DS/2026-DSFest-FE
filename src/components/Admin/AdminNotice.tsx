@@ -1,5 +1,6 @@
 import * as S from "../../styles/AdminNotice.styles";
 import chevronRight from "../../assets/Admin/ChevronRight.svg";
+import { useNavigate } from "react-router-dom";
 
 interface Notice {
   id: number;
@@ -40,67 +41,67 @@ const mockNotices: Notice[] = [
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 6,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 7,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 8,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 9,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 10,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 11,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 12,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 13,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 14,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 15,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
   },
   {
-    id: 5,
+    id: 16,
     category: "무대",
     title: "공지 제목이 들어가는 자리",
     isEmergency: false,
@@ -108,19 +109,23 @@ const mockNotices: Notice[] = [
 ];
 
 export default function AdminNotice() {
+  const navigate = useNavigate();
+
   const handleClearEmergency = () => {
-    // TODO: 백엔드 API 연결 후 긴급공지 전체 해제 처리
+    // TODO: 백엔드 API 연결
     console.log("모든 긴급공지 해제");
   };
 
   const handleNoticeClick = (noticeId: number) => {
-    // TODO: 공지 상세 페이지 이동
+    // 👉 공지 상세 페이지 이동
     console.log("공지 상세 이동:", noticeId);
+    navigate("/AdminNoticeDetail");
   };
 
   const handleWriteClick = () => {
-    // TODO: 공지 작성 페이지 이동
+    // 👉 공지 작성 페이지 이동
     console.log("공지 작성 이동");
+    navigate("/AdminNoticeWrite");
   };
 
   return (
