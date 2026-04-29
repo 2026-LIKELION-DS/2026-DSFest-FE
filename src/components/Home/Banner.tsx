@@ -1,11 +1,16 @@
-import { useEffect, useState, useRef, type MouseEvent, type TouchEvent } from "react";
+import { useEffect, useState, useRef, useCallback, type MouseEvent, type TouchEvent } from "react";
 import * as S from "../../styles/HomeBanner.style";
 import BannerPolaroid from "../../components/Home/BannerPolaroid";
+
+
+import Day1Artist1 from "../../assets/home/Day1-CherryFilter-home.png"
+import Day1Artist2 from "../../assets/home/Day1-Izna-home.png"
+import Day1Artist3 from "../../assets/home/Day1-LeeChaeyeon-home.png"
 
 interface BannerItem {
   title: string;
   stickerText: string;
-  image: string;
+  images: string[];
   link: string;
 }
 
@@ -17,32 +22,35 @@ const banners: BannerItem[] = [
   {
     title: "오늘의 아티스트",
     stickerText: "플레이리스트 예습하기🎧",
-    image: "/images/banner1.png",
+    images: [Day1Artist1, Day1Artist2, Day1Artist3],
     link: "/artist",
   },
   {
     title: "근화제 청춘 유형 테스트",
     stickerText: "나의 청춘 유형은?🫧",
-    image: "/images/banner2.png",
-    link: "/@",
+    images: ["/images/banner2.png"],
+    link: "https://smore.im/quiz/wPemq6eFFH",
   },
   {
     title: "청춘 한 컷 컨테스트",
     stickerText: "오늘의 청춘을 사진으로!📸",
-    image: "/images/banner3.png",
-    link: "/@",
+    images: ["/images/banner3.png"],
+    link: "/contest",
   },
 ];
 
-const extendedBanners: BannerItem[] = [
+const extendedBanners = [
+  banners[banners.length - 2],
   banners[banners.length - 1],
   ...banners,
   banners[0],
+  banners[1],
 ];
 
 export default function Banner({ isPaused = false }: BannerProps) {
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(2);
   const [isTransition, setIsTransition] = useState(true);
+  const [duration, setDuration] = useState(0.8);
   
 
   const [touchStartX, setTouchStartX] = useState(0);
@@ -52,35 +60,38 @@ export default function Banner({ isPaused = false }: BannerProps) {
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const startTimer = () => {
+const stopTimer = useCallback(() => {
+  if (timerRef.current) {
+    clearInterval(timerRef.current);
+    timerRef.current = null;
+  }
+}, []);
+
+const startTimer = useCallback(() => {
     stopTimer();
-    timerRef.current = setInterval(() => {
+    timerRef.current = window.setInterval(() => {
+      setDuration(0.8);
       setIsTransition(true);
       setCurrentIndex((prev) => prev + 1);
     }, 4000);
-  };
+  }, [stopTimer]);
 
-  const stopTimer = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-  };
+useEffect(() => {
+  startTimer();
 
-  useEffect(() => {
-    startTimer();
-    return () => stopTimer();
-  }, []);
+  return () => stopTimer();
+}, [startTimer, stopTimer]);
 
   const handleTransitionEnd = () => {
-    if (currentIndex === extendedBanners.length - 1) {
-      setIsTransition(false);
-      setCurrentIndex(1);
-    } else if (currentIndex === 0) {
-      setIsTransition(false);
-      setCurrentIndex(banners.length);
+    if (currentIndex >= extendedBanners.length - 2) {
+        setIsTransition(false);
+        setCurrentIndex(2);
     }
-  };
+    else if (currentIndex <= 1) {
+        setIsTransition(false);
+        setCurrentIndex(banners.length + 1);
+    }
+};
 
   useEffect(() => {
     if (!isTransition) {
@@ -112,19 +123,22 @@ export default function Banner({ isPaused = false }: BannerProps) {
 
   const handleTouchEnd = () => {
     if (!isDragging) return;
-
     setIsDragging(false);
+    setDuration(0.1);
     setIsTransition(true);
 
+    let nextIndex = currentIndex;
+
     if (dragOffset < -50) {
-      setCurrentIndex((prev) => prev + 1);
+        nextIndex += 1;
     } else if (dragOffset > 50) {
-      setCurrentIndex((prev) => prev - 1);
+        nextIndex -= 1;
     }
 
+    setCurrentIndex(nextIndex);
     setDragOffset(0);
     startTimer();
-  };
+};
 
   const handleLinkClick = (e: MouseEvent) => {
     if (moved) {
@@ -133,18 +147,19 @@ export default function Banner({ isPaused = false }: BannerProps) {
     }
   };
 
-  useEffect(() => {
-    if (isPaused) return;
+    useEffect(() => {
+    if (isPaused) {
+        stopTimer();
+        return;
+    }
 
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => prev + 1);
-    }, 4000);
+    startTimer();
 
-    return () => clearInterval(timer);
-  }, [isPaused]);
+    return () => stopTimer();
+    }, [isPaused, startTimer, stopTimer]);
 
-  const activeDotIndex = (currentIndex - 1 + banners.length) % banners.length;
-
+  const activeDotIndex = (currentIndex - 2 + banners.length) % banners.length;
+  
   return (
     <S.BannerSection>
       <S.BannerViewport>
@@ -152,6 +167,7 @@ export default function Banner({ isPaused = false }: BannerProps) {
           $currentIndex={currentIndex}
           $isTransition={isTransition}
           $dragOffset={dragOffset}
+          $duration={duration}
           onTransitionEnd={handleTransitionEnd}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
@@ -159,12 +175,17 @@ export default function Banner({ isPaused = false }: BannerProps) {
         >
           {extendedBanners.map((banner, index) => (
             <S.BannerSlide
-              key={`${banner.title}-${index}`}
-              onClickCapture={handleLinkClick}
+                key={`${banner.title}-${index}`}
+                onClickCapture={handleLinkClick}
             >
-              <BannerPolaroid {...banner} />
+                <BannerPolaroid
+                title={banner.title}
+                stickerText={banner.stickerText}
+                images={banner.images} // images로 전달
+                link={banner.link}
+                />
             </S.BannerSlide>
-          ))}
+            ))}
         </S.BannerTrack>
       </S.BannerViewport>
       <S.BannerDots>
@@ -174,7 +195,7 @@ export default function Banner({ isPaused = false }: BannerProps) {
             $active={activeDotIndex === index}
             onClick={() => {
               setIsTransition(true);
-              setCurrentIndex(index + 1);
+              setCurrentIndex(index + 2);
             }}
           />
         ))}

@@ -1,5 +1,6 @@
 import { trackEvent } from "../utils/analytics";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import * as S from "../styles/Home.style";
 
@@ -27,6 +28,7 @@ import Churros from "../assets/home/Home_Deco_Churros.svg";
 import Keyring from "../assets/home/Home_Deco_Keyring.svg";
 import Bracelet from "../assets/home/Home_Deco_Bracelet.svg";
 
+
 import Banner from "../components/Home/Banner";
 import OnBoarding from "../components/Home/OnBoarding";
 
@@ -42,12 +44,14 @@ export default function Home() {
     setShowOnBoarding(false);
   };
 
+  const navigate = useNavigate();
+
   return (
     <S.Wrapper>
-      <S.BackgroundBubble>
         {showOnBoarding && (
             <OnBoarding onClose={handleCloseOnBoarding} />
         )}
+      <S.BackgroundBubble>
         <S.Background>
           <S.BannerBox>
             <Banner isPaused={showOnBoarding}></Banner>
@@ -62,7 +66,11 @@ export default function Home() {
             </S.UrgentNoticeBox>
           )}
           <S.ContentBox>
-            <S.ArtistNameTag>
+            <S.ArtistNameTag
+                href="/artist"
+                onClick={() =>
+                trackEvent("home_section_click", { section_name: "artist" })
+              }>
               <S.NameTagTitle>아티스트</S.NameTagTitle>
               <S.NameTagTitleEng>Artist</S.NameTagTitleEng>
             </S.ArtistNameTag>
@@ -75,7 +83,11 @@ export default function Home() {
               <S.PolaroidBtnImg src={Artist}></S.PolaroidBtnImg>
             </S.ArtistBtn>
             <S.BgImg1 src={Bg1} />
-            <S.FoodtruckNameTag>
+            <S.FoodtruckNameTag
+                href="/foodtruck"
+                onClick={() =>
+                trackEvent("home_section_click", { section_name: "foodtruck" })
+              }>
               <S.NameTagTitle>푸드트럭</S.NameTagTitle>
               <S.NameTagTitleEng>Food Truck</S.NameTagTitleEng>
             </S.FoodtruckNameTag>
@@ -88,7 +100,11 @@ export default function Home() {
               <S.PolaroidBtnImg src={Foodtruck}></S.PolaroidBtnImg>
             </S.FoodtruckBtn>
             <S.BgImg2 src={Bg2} />
-            <S.BoothNameTag>
+            <S.BoothNameTag
+                href="/booth"
+                onClick={() =>
+                trackEvent("home_section_click", { section_name: "booth" })
+              }>
               <S.NameTagTitle>부스</S.NameTagTitle>
               <S.NameTagTitleEng>Booth</S.NameTagTitleEng>
             </S.BoothNameTag>
@@ -101,14 +117,46 @@ export default function Home() {
               <S.PolaroidBtnImg src={Booth}></S.PolaroidBtnImg>
             </S.BoothBtn>
             <S.BgImg3 src={Bg3} />
-            <S.Camera src={Camera} />
-            <S.FlowerBtn1 src={FlowerBtn1} />
-            <S.FlowerBtn2 src={FlowerBtn2} />
-            <S.Icecream1 src={Icecream1} />
-            <S.Icecream2 src={Icecream2} />
-            <S.Churros src={Churros} />
-            <S.Keyring src={Keyring} />
-            <S.Bracelet src={Bracelet} />
+            <S.Camera src={Camera} 
+                onClick={() => {
+                    trackEvent("home_section_click", { section_name: "artist" });
+                    navigate("/artist");
+                }}/>
+            <S.FlowerBtn1 src={FlowerBtn1} 
+                onClick={() => {
+                    trackEvent("home_section_click", { section_name: "booth" });
+                    navigate("/booth");
+                }}/>
+            <S.FlowerBtn2 src={FlowerBtn2} 
+                onClick={() => {
+                    trackEvent("home_section_click", { section_name: "booth" });
+                    navigate("/booth");
+                }}/>
+            <S.Icecream1 src={Icecream1} 
+                onClick={() => {
+                        trackEvent("home_section_click", { section_name: "foodtruck" });
+                        navigate("/foodtruck");
+                    }}/>
+            <S.Icecream2 src={Icecream2} 
+                onClick={() => {
+                        trackEvent("home_section_click", { section_name: "foodtruck" });
+                        navigate("/foodtruck");
+                    }}/>
+            <S.Churros src={Churros} 
+                onClick={() => {
+                    trackEvent("home_section_click", { section_name: "foodtruck" });
+                    navigate("/foodtruck");
+                }}/>
+            <S.Keyring src={Keyring} 
+                onClick={() => {
+                    trackEvent("home_section_click", { section_name: "booth" });
+                    navigate("/booth");
+                }}/>
+            <S.Bracelet src={Bracelet} 
+                onClick={() => {
+                        trackEvent("home_section_click", { section_name: "booth" });
+                        navigate("/booth");
+                }}/>
           </S.ContentBox>
           <S.StudentCouncilBox>
             <S.StudentBtn href="@">
