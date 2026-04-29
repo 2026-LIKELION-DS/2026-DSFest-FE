@@ -2,6 +2,8 @@ import { useState } from "react";
 import { trackEvent } from "../../utils/analytics";
 import * as S from "../../styles/FoodTruckCard.styles";
 
+import ImageDetailComponent from "../Common/ImageDetail";
+
 import greenLeaf from "../../assets/Food/Greenleaf.svg";
 import clock from "../../assets/Food/clock.svg";
 import thumbsUp from "../../assets/Food/ThumbsUp.svg";
@@ -28,7 +30,7 @@ interface Truck {
 
 interface Props {
   truck: Truck;
-  onImageClick: (images: string[]) => void;
+  onImageClick?: (images: string[]) => void;
 }
 
 const isOperatingNow = () => {
@@ -60,10 +62,12 @@ const getFestivalOperatingText = (operatingTime: string) => {
   return `${date}(${dayMap[date]}) ${operatingTime}`;
 };
 
-export default function FoodTruckCard({ truck, onImageClick }: Props) {
+export default function FoodTruckCard({ truck }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLiked, setIsLiked] = useState(truck.isLiked);
   const [likeCount, setLikeCount] = useState(truck.likeCount);
+
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const isOperating = isOperatingNow();
 
@@ -82,67 +86,85 @@ export default function FoodTruckCard({ truck, onImageClick }: Props) {
     });
   };
 
+  const handleImageClick = () => {
+    setIsImageModalOpen(true);
+  };
+
   const operatingText = getFestivalOperatingText(truck.operatingTime);
 
   return (
-    <S.Card>
-      <S.TopArea>
-        <S.StoreImageButton onClick={() => onImageClick(truck.images)}>
-          <S.ImageWrapper>
-            <S.StoreImage
-              src={truck.images[0]}
-              alt={truck.name}
-              $isOperating={isOperating}
-            />
+    <>
+      <S.Card>
+        <S.TopArea>
+          <S.StoreImageButton type="button" onClick={handleImageClick}>
+            <S.ImageWrapper>
+              <S.StoreImage
+                src={truck.images[0]}
+                alt={truck.name}
+                $isOperating={isOperating}
+              />
 
-            {!isOperating && <S.PreparingText>준비중</S.PreparingText>}
-          </S.ImageWrapper>
-        </S.StoreImageButton>
+              {!isOperating && <S.PreparingText>준비중</S.PreparingText>}
+            </S.ImageWrapper>
+          </S.StoreImageButton>
 
-        <S.InfoArea>
-          <S.StoreName>{truck.name}</S.StoreName>
+          <S.InfoArea>
+            <S.StoreName>{truck.name}</S.StoreName>
 
-          <S.TagList>
-            {truck.tags.map((tag) => (
-              <S.Tag key={tag}>#{tag}</S.Tag>
+            <S.TagList>
+              {truck.tags.map((tag) => (
+                <S.Tag key={tag}>#{tag}</S.Tag>
+              ))}
+            </S.TagList>
+          </S.InfoArea>
+
+          <S.LikeArea $isLiked={isLiked} onClick={handleLike}>
+            <S.LikeIcon src={isLiked ? thumbsUpFill : thumbsUp} alt="좋아요" />
+            <S.LikeCount>{likeCount >= 999 ? "999+" : likeCount}</S.LikeCount>
+          </S.LikeArea>
+        </S.TopArea>
+
+        {isOpen && (
+          <S.DetailArea>
+            <S.SectionTitle>운영 시간</S.SectionTitle>
+
+            <S.TimeRow>
+              <S.ClockIcon src={clock} alt="시간" />
+              <S.TimeText>{operatingText}</S.TimeText>
+            </S.TimeRow>
+
+            <S.SectionTitle>메뉴</S.SectionTitle>
+
+            {truck.menus.map((menu) => (
+              <S.MenuRow key={menu.name}>
+                <S.MenuNameBox>
+                  {menu.isVegan && (
+                    <S.MenuLeafIcon src={greenLeaf} alt="비건" />
+                  )}
+                  <S.MenuName>{menu.name}</S.MenuName>
+                </S.MenuNameBox>
+
+                <S.DotLine />
+                <S.MenuPrice>{menu.price}</S.MenuPrice>
+              </S.MenuRow>
             ))}
-          </S.TagList>
-        </S.InfoArea>
+          </S.DetailArea>
+        )}
 
-        <S.LikeArea $isLiked={isLiked} onClick={handleLike}>
-          <S.LikeIcon src={isLiked ? thumbsUpFill : thumbsUp} alt="좋아요" />
-          <S.LikeCount>{likeCount >= 999 ? "999+" : likeCount}</S.LikeCount>
-        </S.LikeArea>
-      </S.TopArea>
+        <S.ChevronButton
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          <S.ChevronIcon src={isOpen ? chevronUp : chevronDown} alt="토글" />
+        </S.ChevronButton>
+      </S.Card>
 
-      {isOpen && (
-        <S.DetailArea>
-          <S.SectionTitle>운영 시간</S.SectionTitle>
-
-          <S.TimeRow>
-            <S.ClockIcon src={clock} alt="시간" />
-            <S.TimeText>{operatingText}</S.TimeText>
-          </S.TimeRow>
-
-          <S.SectionTitle>메뉴</S.SectionTitle>
-
-          {truck.menus.map((menu) => (
-            <S.MenuRow key={menu.name}>
-              <S.MenuNameBox>
-                {menu.isVegan && <S.MenuLeafIcon src={greenLeaf} alt="비건" />}
-                <S.MenuName>{menu.name}</S.MenuName>
-              </S.MenuNameBox>
-
-              <S.DotLine />
-              <S.MenuPrice>{menu.price}</S.MenuPrice>
-            </S.MenuRow>
-          ))}
-        </S.DetailArea>
-      )}
-
-      <S.ChevronButton onClick={() => setIsOpen((prev) => !prev)}>
-        <S.ChevronIcon src={isOpen ? chevronUp : chevronDown} alt="토글" />
-      </S.ChevronButton>
-    </S.Card>
+      <ImageDetailComponent
+        isOpen={isImageModalOpen}
+        initialIndex={0}
+        images={truck.images}
+        onClose={() => setIsImageModalOpen(false)}
+      />
+    </>
   );
 }
