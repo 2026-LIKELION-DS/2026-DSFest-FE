@@ -45,6 +45,9 @@ export const TopBanner = styled.div<{ $isCollapsed: boolean }>`
   cursor: pointer;
   touch-action: pan-y;
 
+  overflow: hidden;
+  white-space: nowrap;
+
   transition: width 0.2s ease, height 0.2s ease, border-radius 0.2s ease,
     padding 0.2s ease;
 `;
