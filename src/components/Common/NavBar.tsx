@@ -69,7 +69,7 @@ export default function NavBar({ activeTab, onTabChange }: NavBarProps) {
           <S.Item
             key={item.key}
             type="button"
-            active={isActive}
+            $active={isActive}
             onClick={() => {
               navigate(item.path);
               onTabChange?.(item.key);
