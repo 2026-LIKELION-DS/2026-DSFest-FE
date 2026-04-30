@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { typography } from "./theme";
 
 const setTypo = (key: keyof typeof typography) => {
@@ -246,6 +246,18 @@ export const BoothContainer = styled.div`
   align-items: center;
 `;
 
+const jumpIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 export const BoothNameBubble = styled.div`
   position: absolute;
   bottom: calc(100% - 4px);
@@ -260,6 +272,9 @@ export const BoothNameBubble = styled.div`
   border-radius: 9999px;
 
   width: max-content;
+
+  animation: ${jumpIn} 0.1s forwards;
+  opacity: 0;
 
   text-align: center;
   ${setTypo("buttonSm")};

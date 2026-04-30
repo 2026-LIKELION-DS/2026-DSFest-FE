@@ -26,12 +26,16 @@ interface Booth {
   images?: string[];
   everytimeUrl?: string;
   instagramUrl?: string;
+  openKakaoUrl?: string;
+  operatingTimes?: string[];
+  boothNumber?: number;
 }
 
 interface ModalProps {
   booth: Booth;
   onClose: () => void;
   onNavigateToMap: (id: number) => void;
+  isNight: boolean;
 }
 
 const BoothModalComponent: React.FC<ModalProps> = ({
@@ -58,11 +62,20 @@ const BoothModalComponent: React.FC<ModalProps> = ({
   const closeImageDetail = () => {
     setDetailConfig({ ...detailConfig, isOpen: false });
   };
+
+  const getDisplayStatus = () => {
+    if (booth.status === "운영 중") return `운영 중`;
+    if (booth.status === "운영 예정") return `운영 예정`;
+    return `운영 종료`;
+  };
+
   return (
     <>
       <S.ModalOverlay onClick={onClose}>
         <S.ModalContainer onClick={(e) => e.stopPropagation()}>
-          <S.StatusBadge $status={booth.status}>{booth.status}</S.StatusBadge>
+          <S.StatusBadge $status={booth.status}>
+            {getDisplayStatus()}
+          </S.StatusBadge>
 
           <S.ContentArea>
             <S.Title>
@@ -75,13 +88,22 @@ const BoothModalComponent: React.FC<ModalProps> = ({
                 <S.Icons src={Users} /> {booth.operator || "운영진"}
               </S.InfoItem>
               <S.InfoItem>
-                <S.Icons src={Clock} /> 13일(수) 13:00 - 20:00
+                <S.Icons src={Clock} />{" "}
+                {booth.operatingTimes?.[0] || "운영 시간 정보 없음"}
               </S.InfoItem>
               <S.InfoItem>
                 <S.Icons src={Store} /> {booth.category || "판매"} 부스
               </S.InfoItem>
               <S.InfoItem>
-                <S.Icons src={Phone} /> open.kakao.com
+                <S.Icons src={Phone} />
+                <a
+                  href={booth.openKakaoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
+                  {booth.openKakaoUrl ? "오픈채팅 연결하기" : "연락처 없음"}
+                </a>
               </S.InfoItem>
             </S.InfoList>
 

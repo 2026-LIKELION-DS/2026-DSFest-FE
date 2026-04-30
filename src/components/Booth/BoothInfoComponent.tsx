@@ -4,6 +4,7 @@ import examplePhoto from "../../assets/hahyunsang_sample.svg";
 
 export interface Booth {
   id: number;
+  boothNumber: number;
   name: string;
   category: string;
   operator: string;
@@ -43,7 +44,7 @@ const BoothInfoComponent: React.FC<BoothInfoProps> = ({
       <S.StatusBadge $status={booth.status}>{booth.status}</S.StatusBadge>
 
       <S.Title>
-        {booth.id}. {booth.name}
+        {booth.boothNumber}. {booth.name}
       </S.Title>
 
       <S.InfoRow>
