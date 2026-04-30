@@ -1,24 +1,31 @@
-import type { PerformanceStatus } from "../../utils/artist";
-
 import chat from "../../assets/ChatCircleFill.svg";
 import megaphone from "../../assets/MegaphoneFill.svg";
 import chevronRight from "../../assets/ChevronRight.svg";
 
 import * as S from "../../styles/ArtistComponent.style";
 
+export type CountdownStatus = "MORE_THAN_24H" | "WITHIN_24H" | "LIVE" | "ENDED";
+
 type ArtistActionButtonsProps = {
-  status: PerformanceStatus;
-  statusText: string;
+  status: CountdownStatus;
   onLiveClick: () => void;
   onGuideClick: () => void;
 };
 
+const getStatusText = (status: CountdownStatus) => {
+  if (status === "LIVE") return "라이브톡 참여하기";
+  if (status === "ENDED") return "공연 종료";
+  if (status === "WITHIN_24H") return "곧 공연 시작!";
+  return "공연 예정";
+};
+
 function ArtistActionButtons({
   status,
-  statusText,
   onGuideClick,
   onLiveClick,
 }: ArtistActionButtonsProps) {
+  const statusText = getStatusText(status);
+
   return (
     <S.ActionSection>
       <S.ButtonSet>

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+type CountdownStatus = "MORE_THAN_24H" | "WITHIN_24H" | "LIVE" | "ENDED";
+
 // ArtistCard
 export const ArtistCard = styled.article`
   position: relative;
@@ -126,7 +128,7 @@ export const ButtonSet = styled.div`
 `;
 
 export const CountdownButton = styled.button<{
-  $status: "BEFORE" | "LIVE" | "ENDED";
+  $status: CountdownStatus;
 }>`
   width: 294px;
   height: 44px;
@@ -151,7 +153,7 @@ export const CountdownButton = styled.button<{
 `;
 
 export const CountdownButtonBlock = styled.div<{
-  $status: "BEFORE" | "LIVE" | "ENDED";
+  $status: CountdownStatus;
 }>`
   display: flex;
   align-items: center;

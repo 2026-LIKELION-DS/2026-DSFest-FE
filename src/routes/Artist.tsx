@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import type { Artist } from "../components/Artist/ArtistCard";
-import type { PerformanceStatus } from "../utils/artist";
 import { trackEvent } from "../utils/analytics";
+import { useArtistCarousel } from "../hooks/Artist/useArtistCarousel";
 
 import ArtistCard from "../components/Artist/ArtistCard";
 import ArtistActionButtons from "../components/Artist/ArtistActionButton";
@@ -12,131 +13,84 @@ import PlaylistNotice from "../components/Artist/PlaylistNotice";
 import ArtistPlaylist from "../components/Artist/ArtistPlaylist";
 import ArtistModal from "../components/Artist/ArtistModalComponent";
 
-import { getPerformanceStatus } from "../utils/artist";
-import { useArtistCarousel } from "../hooks/Artist/useArtistCarousel";
-
 import * as S from "../styles/Artist.style";
 
-const artistsByDay: Record<"day1" | "day2" | "day3", Artist[]> = {
-  day1: [
-    {
-      id: 1,
-      name: "하현상",
-      desc: "푸른 청춘을 닮은 감성 밴드 라이브",
-      time: "20:00 ~ 20:30",
-      image: "/src/assets/hahyunsang_sample.svg",
-      instaUrl: "https://instagram.com",
-      youtubeUrl: "https://youtube.com",
-    },
-    {
-      id: 2,
-      name: "앙앙이",
-      desc: "덕대최고아웃풋",
-      time: "20:40 ~ 21:10",
-      image: "/src/assets/hahyunsang_sample.svg",
-      instaUrl: "https://instagram.com",
-      youtubeUrl: "https://youtube.com",
-    },
-    {
-      id: 6,
-      name: "양양이",
-      desc: "덕대최고아웃풋",
-      time: "21:20 ~ 21:50",
-      image: "/src/assets/hahyunsang_sample.svg",
-      instaUrl: "https://instagram.com",
-      youtubeUrl: "https://youtube.com",
-    },
-  ],
-  day2: [
-    {
-      id: 3,
-      name: "왕왕이",
-      desc: "푸른 청춘을 닮은 감성 밴드 라이브",
-      time: "20:00 ~ 20:30",
-      image: "/src/assets/hahyunsang_sample.svg",
-      instaUrl: "https://instagram.com",
-      youtubeUrl: "https://youtube.com",
-    },
-    {
-      id: 4,
-      name: "양양이",
-      desc: "덕대최고아웃풋",
-      time: "20:40 ~ 21:10",
-      image: "/src/assets/hahyunsang_sample.svg",
-      instaUrl: "https://instagram.com",
-      youtubeUrl: "https://youtube.com",
-    },
-  ],
-  day3: [
-    {
-      id: 5,
-      name: "광광이",
-      desc: "푸른 청춘을 닮은 감성 밴드 라이브",
-      time: "20:00 ~ 20:30",
-      image: "/src/assets/hahyunsang_sample.svg",
-      instaUrl: "https://instagram.com",
-      youtubeUrl: "https://youtube.com",
-    },
-  ],
+type DayKey = "day1" | "day2" | "day3";
+
+type CountdownStatus = "MORE_THAN_24H" | "WITHIN_24H" | "LIVE" | "ENDED";
+
+type ArtistApiItem = {
+  id: number;
+  name: string;
+  shortBio: string;
+  festivalDay: number;
+  performanceDate: string;
+  startTime: string;
+  endTime: string;
+  imageUrl: string;
+  instagramUrl: string;
+  youtubeUrl: string;
+  countdownStatus: CountdownStatus;
 };
 
-const artistPlaylists: Record<
-  number,
-  {
-    playlistUrl: string;
-    thumbnailUrl: string;
-  }
-> = {
-  1: {
-    playlistUrl: "https://youtube.com/playlist?list=하현상플리",
-    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
-  },
-  2: {
-    playlistUrl: "https://youtube.com/playlist?list=앙앙이플리",
-    thumbnailUrl: "https://img.youtube.com/vi/fkUAZMnuNSE/maxresdefault.jpg",
-  },
-  3: {
-    playlistUrl: "https://youtube.com/playlist?list=왕왕이플리",
-    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
-  },
-  4: {
-    playlistUrl: "https://youtube.com/playlist?list=양양이플리",
-    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
-  },
-  5: {
-    playlistUrl: "https://youtube.com/playlist?list=광광이플리",
-    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
-  },
-  6: {
-    playlistUrl: "https://youtube.com/playlist?list=양양이플리",
-    thumbnailUrl: "https://img.youtube.com/vi/9T4PDNsClvQ/maxresdefault.jpg",
-  },
+type ArtistApiResponse = {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: ArtistApiItem[];
 };
+
+type PlaylistApiResponse = {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: {
+    artistId: number;
+    artistName: string;
+    youtubeUrl: string;
+  };
+};
+
+const API = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
 
 const days = [
-  { key: "day1", label: "DAY 1", date: "13일 수" },
-  { key: "day2", label: "DAY 2", date: "14일 목" },
-  { key: "day3", label: "DAY 3", date: "15일 금" },
+  { key: "day1", label: "DAY 1", date: "13일 수", value: 1 },
+  { key: "day2", label: "DAY 2", date: "14일 목", value: 2 },
+  { key: "day3", label: "DAY 3", date: "15일 금", value: 3 },
 ] as const;
 
-const getPlaylistDesc = (status: PerformanceStatus) => {
-  if (status === "BEFORE") return "무대 보기 전에 예습할까요?";
+const getGuestUuid = () => localStorage.getItem("guestUuid") ?? "";
+
+const mapArtist = (artist: ArtistApiItem): Artist => ({
+  id: artist.id,
+  name: artist.name,
+  desc: artist.shortBio,
+  time: `${artist.startTime.slice(0, 5)} ~ ${artist.endTime.slice(0, 5)}`,
+  image: artist.imageUrl,
+  instaUrl: artist.instagramUrl,
+  youtubeUrl: artist.youtubeUrl,
+});
+
+const getPlaylistDesc = (status?: CountdownStatus) => {
   if (status === "LIVE") return "지금 공연 중! 같이 즐겨요!";
   if (status === "ENDED") return "무대 보고 난 후 복습할까요?";
-  return "";
+  return "무대 보기 전에 예습할까요?";
 };
 
 function ArtistPage() {
   const navigate = useNavigate();
 
-  const [currentDay, setCurrentDay] = useState<"day1" | "day2" | "day3">(
-    "day1",
-  );
-  const [status, setStatus] = useState<PerformanceStatus>("BEFORE");
-  const [statusText, setStatusText] = useState("");
+  const [currentDay, setCurrentDay] = useState<DayKey>("day1");
+  const [artists, setArtists] = useState<Artist[]>([]);
+  const [artistStatuses, setArtistStatuses] = useState<
+    Record<number, CountdownStatus>
+  >({});
+  const [playlist, setPlaylist] = useState<
+    PlaylistApiResponse["result"] | null
+  >(null);
   const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
-
-  const artists = artistsByDay[currentDay];
 
   const {
     currentPage,
@@ -151,26 +105,95 @@ function ArtistPage() {
   } = useArtistCarousel(artists);
 
   const currentArtist = artists[currentPage - 1];
-  const currentPlaylist = artistPlaylists[currentArtist.id];
+
+  const currentCountdownStatus = currentArtist
+    ? artistStatuses[currentArtist.id]
+    : undefined;
+
+  const setArtistData = (apiArtists: ArtistApiItem[]) => {
+    setArtists(apiArtists.map(mapArtist));
+
+    setArtistStatuses(
+      Object.fromEntries(
+        apiArtists.map((artist) => [artist.id, artist.countdownStatus]),
+      ),
+    );
+  };
+
+  const fetchArtistsByDay = async (dayKey: DayKey) => {
+    const selectedDay = days.find((day) => day.key === dayKey);
+
+    if (!selectedDay) return;
+
+    try {
+      const res = await API.get<ArtistApiResponse>("/api/artists", {
+        params: {
+          day: selectedDay.value,
+        },
+        headers: {
+          guestUuid: getGuestUuid(),
+        },
+      });
+
+      setArtistData(res.data.result);
+    } catch (error) {
+      console.error("day별 아티스트 조회 실패:", error);
+    }
+  };
+
+  const handleDayClick = (dayKey: DayKey) => {
+    setCurrentDay(dayKey);
+    setPlaylist(null);
+    fetchArtistsByDay(dayKey);
+  };
 
   useEffect(() => {
-    const start = new Date("2026-04-24T19:00:00");
-    const end = new Date("2026-04-24T23:30:00");
+    const fetchTodayArtists = async () => {
+      try {
+        const res = await API.get<ArtistApiResponse>("/api/artists/today", {
+          headers: {
+            guestUuid: getGuestUuid(),
+          },
+        });
 
-    const updateStatus = () => {
-      const result = getPerformanceStatus(start, end);
-      setStatus(result.status);
-      setStatusText(result.text);
+        const apiArtists = res.data.result;
+
+        setArtistData(apiArtists);
+
+        if (apiArtists[0]) {
+          setCurrentDay(`day${apiArtists[0].festivalDay}` as DayKey);
+        }
+      } catch (error) {
+        console.error("오늘 아티스트 조회 실패:", error);
+      }
     };
 
-    updateStatus();
-
-    const timerId = window.setInterval(updateStatus, 1000);
-
-    return () => {
-      window.clearInterval(timerId);
-    };
+    fetchTodayArtists();
   }, []);
+
+  useEffect(() => {
+    if (!currentArtist) return;
+
+    const fetchPlaylist = async () => {
+      try {
+        const res = await API.get<PlaylistApiResponse>(
+          `/api/artists/${currentArtist.id}/playlist`,
+          {
+            headers: {
+              guestUuid: getGuestUuid(),
+            },
+          },
+        );
+
+        setPlaylist(res.data.result);
+      } catch (error) {
+        console.error("아티스트 플레이리스트 조회 실패:", error);
+        setPlaylist(null);
+      }
+    };
+
+    fetchPlaylist();
+  }, [currentArtist]);
 
   return (
     <S.ArtistPage>
@@ -180,7 +203,7 @@ function ArtistPage() {
             key={day.key}
             type="button"
             $active={currentDay === day.key}
-            onClick={() => setCurrentDay(day.key)}
+            onClick={() => handleDayClick(day.key)}
           >
             {day.label}
             <span>{day.date}</span>
@@ -216,8 +239,7 @@ function ArtistPage() {
         </S.ArtistSection>
 
         <ArtistActionButtons
-          status={status}
-          statusText={statusText}
+          status={currentCountdownStatus ?? "MORE_THAN_24H"}
           onLiveClick={() => {
             trackEvent("livetalk_from_artist");
             navigate("/live");
@@ -225,13 +247,15 @@ function ArtistPage() {
           onGuideClick={() => setIsGuideModalOpen(true)}
         />
 
-        <S.PlaylistSection>
-          <ArtistPlaylist
-            playlistUrl={currentPlaylist.playlistUrl}
-            thumbnailUrl={currentPlaylist.thumbnailUrl}
-            desc={getPlaylistDesc(status)}
-          />
-        </S.PlaylistSection>
+        {playlist && currentArtist && (
+          <S.PlaylistSection>
+            <ArtistPlaylist
+              playlistUrl={playlist.youtubeUrl}
+              thumbnailUrl={currentArtist.image}
+              desc={getPlaylistDesc(currentCountdownStatus)}
+            />
+          </S.PlaylistSection>
+        )}
 
         <PlaylistNotice />
 
