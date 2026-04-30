@@ -61,6 +61,7 @@ export const DotWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 24px;
+  margin-top: 10px;
 `;
 
 export const DotIcon = styled.img`
@@ -74,6 +75,7 @@ export const Line = styled.div`
   flex: 1;
   min-height: 24px;
   background-color: ${({ theme }) => theme.colors.bg.brand};
+  margin-bottom: -10px;
 `;
 
 export const Card = styled.div<{ $isActive: boolean }>`
