@@ -198,8 +198,7 @@ export const EmptyMessage = styled.div`
 
 export const NextTimeText = styled.div`
   ${setTypo("bodyMd")};
-  font-size: 14px;
-  color: #c0c0c0;
+  color: ${({ theme }) => theme.colors.fg.subtle};
 `;
 
 export const FilterButton = styled.button<{ $active: boolean }>`

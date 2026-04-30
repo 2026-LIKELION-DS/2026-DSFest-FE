@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
+import axios from "axios";
 import { trackEvent } from "../utils/analytics";
 
 import * as S from "../styles/Booth.style";
@@ -22,51 +23,57 @@ const DAYS_DATA = [
   { id: 3, date: "15일", dayOfWeek: "금" },
 ];
 
-type BoothStatus = "운영 중" | "운영 예정" | "운영 종료";
-
 interface Booth {
   id: number;
+  boothNumber: number;
   name: string;
-  category: string;
-  operator: string;
-  description: string;
-  status: BoothStatus;
+  boothTypes: string[];
+  operatingSubject: string;
+  thumbnailUrl: string;
+  tags: string[];
+  operatingTimes: string[];
+  description?: string;
+  imageUrls?: string[];
+  openKakaoUrl?: string;
+  everytimeUrl?: string;
+  instagramUrl?: string;
+  status?: "운영 중" | "운영 예정" | "운영 종료";
 }
 
-const BOOTH_DATA: Booth[] = [
-  {
-    id: 1,
-    name: "오세요 잡화점오세요 잡화점오세요 잡화점오세요 잡화점",
-    category: "판매",
-    operator: "운영진",
-    description:
-      "부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게",
-    status: "운영 예정" as const,
-  },
-  {
-    id: 2,
-    name: "가세요 잡화점",
-    category: "판매",
-    operator: "운영진",
-    description:
-      "부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게",
-    status: "운영 예정" as const,
-  },
-  {
-    id: 3,
-    name: "다시오세요 잡화점",
-    category: "판매",
-    operator: "운영진",
-    description:
-      "부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게 부스에 관한 설명이 들어가는 텍스트 자리입니다 텍스트가 이렇게",
-    status: "운영 종료" as const,
-  },
-];
+const calculateBoothStatus = (
+  day: number,
+  nightMode: boolean,
+): "운영 중" | "운영 예정" | "운영 종료" => {
+  const now = new Date();
+  // 테스트 시 아래 줄 주석 해제하여 확인
+  // const now = new Date("2026-05-14T12:00:00");
+  const festivalDates: { [key: number]: string } = {
+    1: "2026-05-13",
+    2: "2026-05-14",
+    3: "2026-05-15",
+  };
+
+  const currentDateStr = festivalDates[day];
+  if (!currentDateStr) return "운영 종료";
+
+  const startTimeStr = nightMode ? "16:00" : "11:00";
+  const endTimeStr = nightMode ? "19:30" : "14:30";
+
+  const startTime = new Date(`${currentDateStr}T${startTimeStr}:00`);
+  const endTime = new Date(`${currentDateStr}T${endTimeStr}:00`);
+
+  if (now < startTime) return "운영 예정";
+  if (now >= startTime && now <= endTime) return "운영 중";
+  return "운영 종료";
+};
 
 const BoothPage: React.FC = () => {
+  const baseUrl = import.meta.env.VITE_API_URL;
   const mapSectionRef = useRef<HTMLDivElement>(null);
 
   const [activeDay, setActiveDay] = useState(1);
+  const [booths, setBooths] = useState<Booth[]>([]);
+  const [loading, setLoading] = useState(false);
   const [isOperatingOnly, setIsOperatingOnly] = useState(false);
   const [isNight, setIsNight] = useState(false);
   const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -76,133 +83,147 @@ const BoothPage: React.FC = () => {
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
   const [showGuide, setShowGuide] = useState(true);
 
-  // GA 부스 지도 -> 체류 시간 계산용
   useEffect(() => {
-    const startTime = Date.now();
+    const now = new Date();
+    // 테스트 시 아래 줄 주석 해제하여 확인
+    // const now = new Date("2026-05-14T18:00:00");
 
-    return () => {
-      const duration = Math.floor((Date.now() - startTime) / 1000);
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const date = now.getDate();
+    const hours = now.getHours();
 
-      trackEvent("time_on_booth_page", {
-        duration_seconds: duration,
-      });
-    };
+    if (year === 2026 && month === 5) {
+      if (date <= 13) setActiveDay(1);
+      else if (date === 14) setActiveDay(2);
+      else setActiveDay(3);
+    } else if (year >= 2026 && month >= 5 && date > 15) {
+      setActiveDay(3);
+    }
+
+    if (hours >= 16) {
+      setIsNight(true);
+    } else {
+      setIsNight(false);
+    }
   }, []);
 
   useEffect(() => {
-    if (!showGuide) return;
-
-    const handleGlobalClick = () => {
-      setShowGuide(false);
-    };
-
-    window.addEventListener("click", handleGlobalClick, {
-      once: true,
-      capture: true,
-    });
-
-    return () => {
-      window.removeEventListener("click", handleGlobalClick, { capture: true });
-    };
-  }, [showGuide]);
-
-  const noticeData = {
-    title: "부스 관련 공지 제목",
-    content: `공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 
-    
-    공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게`,
-    images: [examplePhoto, examplePhoto], // 공지사항용 이미지가 있다면 여기에 추가
-  };
-
-  useEffect(() => {
-    const handleShowButton = () => {
-      if (window.scrollY > 0) {
-        setShowTopBtn(true);
-      } else {
-        setShowTopBtn(false);
+    const fetchBooths = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`${baseUrl}/api/booths/by-time`, {
+          params: {
+            day: activeDay,
+            type: isNight ? "NIGHT" : "DAY",
+          },
+        });
+        if (response.data.isSuccess) {
+          setBooths(response.data.result);
+        }
+      } catch (error) {
+        console.error("목록 로드 실패", error);
+      } finally {
+        setLoading(false);
       }
     };
+    fetchBooths();
+  }, [activeDay, isNight, baseUrl]);
 
-    window.addEventListener("scroll", handleShowButton);
-    return () => {
-      window.removeEventListener("scroll", handleShowButton);
-    };
-  }, []);
-
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const scrollTop = e.currentTarget.scrollTop;
-    if (scrollTop > 0) {
-      setShowTopBtn(true);
-    } else {
-      setShowTopBtn(false);
-    }
-  };
-
-  const handleScrollToTop = () => {
-    if (mapSectionRef.current) {
-      mapSectionRef.current.scrollTo({
-        top: 0,
-        behavior: "smooth",
+  const displayBooths = useMemo(() => {
+    let list = [...booths];
+    if (isOperatingOnly) {
+      list = list.filter(() => {
+        const status = calculateBoothStatus(activeDay, isNight);
+        return status === "운영 중";
       });
     }
-  };
+    return list;
+  }, [booths, isOperatingOnly, activeDay, isNight]);
 
-  const handleOpenModal = (booth: Booth) => {
-    setTargetBooth(booth);
-    setIsModalOpen(true);
+  const boothCounts = useMemo(() => {
+    const counts = { 예정: 0, 운영중: 0, 종료: 0 };
+    booths.forEach(() => {
+      const status = calculateBoothStatus(activeDay, isNight);
+      if (status === "운영 예정") counts.예정++;
+      else if (status === "운영 중") counts.운영중++;
+      else counts.종료++;
+    });
+    return counts;
+  }, [booths, activeDay, isNight]);
+
+  const handleOpenModal = async (boothId: number) => {
+    try {
+      const response = await axios.get(`${baseUrl}/api/booths/${boothId}`);
+      if (response.data.isSuccess) {
+        const detailData = response.data.result;
+        const currentStatus = calculateBoothStatus(activeDay, isNight);
+
+        setTargetBooth({
+          ...detailData,
+          status: currentStatus,
+          category: detailData.boothTypes?.join(", "),
+          operator: detailData.operatingSubject,
+          images: detailData.imageUrls,
+        });
+        setIsModalOpen(true);
+      }
+    } catch (error) {
+      console.error("상세 정보 로드 실패", error);
+    }
   };
 
   const handleNavigateToMap = (id: number) => {
     setIsModalOpen(false);
     setSelectedId(id);
     setTimeout(() => {
-      if (mapSectionRef.current) {
-        mapSectionRef.current.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }
+      mapSectionRef.current?.scrollTo({ top: 0, behavior: "smooth" });
     }, 10);
   };
 
-  const currentPeriodBooths = useMemo(() => {
-    return BOOTH_DATA;
-  }, []);
-
-  const operatingBooths = useMemo(() => {
-    return currentPeriodBooths.filter((b) => b.status === "운영 중");
-  }, [currentPeriodBooths]);
-
-  const displayBooths = useMemo(() => {
-    const baseList = isOperatingOnly
-      ? BOOTH_DATA.filter((b) => b.status === "운영 중")
-      : BOOTH_DATA;
-
-    return baseList;
-  }, [isOperatingOnly]);
-
-  const isOffHours = useMemo(() => {
-    return (
-      operatingBooths.length === 0 &&
-      currentPeriodBooths.some((b) => b.status === "운영 예정")
-    );
-  }, [operatingBooths, currentPeriodBooths]);
-
   const handleBoothClick = (id: number | null) => {
     setSelectedId(id);
-    if (id == null) return;
-
+    if (id === null) return;
     trackEvent("booth_numbering_used");
-    trackEvent("booth_detail_view");
+    handleOpenModal(id);
+  };
 
-    setSelectedId(id);
+  const handleRandomRecommend = async () => {
+    trackEvent("booth_random_recommend_click");
 
-    const clickedBooth = BOOTH_DATA.find((b) => b.id === id);
+    try {
+      const response = await axios.get(`${baseUrl}/api/booths/random`, {
+        params: { day: activeDay },
+      });
 
-    if (clickedBooth) {
-      handleOpenModal(clickedBooth);
+      if (response.data.isSuccess && response.data.result) {
+        const randomBooth = response.data.result;
+
+        setSelectedId(randomBooth.id);
+
+        handleOpenModal(randomBooth.id);
+
+        if (mapSectionRef.current) {
+          mapSectionRef.current.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }
+      } else {
+        alert("현재 운영 중인 추천 부스가 없습니다.");
+      }
+    } catch (error) {
+      console.error("랜덤 부스 추천 로드 실패", error);
+      alert("추천 정보를 가져오는 중 오류가 발생했습니다.");
     }
   };
+
+  const handleScrollToTop = () => {
+    if (mapSectionRef.current) {
+      mapSectionRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <S.OnboardingOverlay $isVisible={showGuide}>
@@ -212,13 +233,14 @@ const BoothPage: React.FC = () => {
           </S.GuideText>
         </S.GuideContainer>
       </S.OnboardingOverlay>
+
       <S.HeaderToggleOverlay>
         <S.HeaderTimeOption
           $active={!isNight}
           onClick={() => {
-            trackEvent("booth_filter_used");
             setIsNight(false);
             setSelectedId(null);
+            trackEvent("booth_filter_used", { type: "DAY" });
           }}
         >
           <img src={!isNight ? daySelected : dayUnselected} alt="낮" />
@@ -227,15 +249,16 @@ const BoothPage: React.FC = () => {
         <S.HeaderTimeOption
           $active={isNight}
           onClick={() => {
-            trackEvent("booth_filter_used");
             setIsNight(true);
             setSelectedId(null);
+            trackEvent("booth_filter_used", { type: "NIGHT" });
           }}
         >
           <img src={isNight ? nightSelected : nightUnselected} alt="밤" />
           <span>밤</span>
         </S.HeaderTimeOption>
       </S.HeaderToggleOverlay>
+
       <S.FloatingButtonGroup $hasTopBtn={showTopBtn}>
         <S.FloatingCircleBtn
           onClick={handleScrollToTop}
@@ -243,12 +266,15 @@ const BoothPage: React.FC = () => {
         >
           <img src={upIcon} alt="scroll to top" />
         </S.FloatingCircleBtn>
-
         <S.FloatingCircleBtn onClick={() => setIsNoticeOpen(true)}>
           <img src={announceIcon} alt="announce" />
         </S.FloatingCircleBtn>
       </S.FloatingButtonGroup>
-      <S.PageWrapper ref={mapSectionRef} onScroll={handleScroll}>
+
+      <S.PageWrapper
+        ref={mapSectionRef}
+        onScroll={(e) => setShowTopBtn(e.currentTarget.scrollTop > 0)}
+      >
         <S.DayNav>
           {DAYS_DATA.map((d) => (
             <S.DayTab
@@ -267,12 +293,9 @@ const BoothPage: React.FC = () => {
             </S.DayTab>
           ))}
         </S.DayNav>
+
         <S.MapHugger>
-          <S.RandomFloatBtn
-            onClick={() => {
-              trackEvent("booth_random_navigate");
-            }}
-          >
+          <S.RandomFloatBtn onClick={handleRandomRecommend}>
             <img src={randomIcon} alt="random" />
             <span>랜덤 추천</span>
           </S.RandomFloatBtn>
@@ -282,63 +305,89 @@ const BoothPage: React.FC = () => {
             time={isNight ? "night" : "day"}
             selectedId={selectedId}
             onBoothClick={handleBoothClick}
-            booths={BOOTH_DATA}
+            booths={booths}
           />
         </S.MapHugger>
+
         <S.ListSection>
           <S.BoothList>부스 리스트</S.BoothList>
           <S.BoothCur>
             <S.BoothAmount>총 {displayBooths.length}개</S.BoothAmount>의 부스
           </S.BoothCur>
+
           <S.FilterButton
             $active={isOperatingOnly}
             onClick={() => setIsOperatingOnly(!isOperatingOnly)}
           >
             운영 중
           </S.FilterButton>
-          {displayBooths.length > 0 ? (
-            displayBooths.map((booth) => (
-              <BoothInfoComponent
-                key={booth.id}
-                booth={booth}
-                onDetailClick={() => {
-                  trackEvent("booth_detail_view");
-                  handleOpenModal(booth);
-                }}
-              />
-            ))
+
+          {loading ? (
+            <S.EmptyMessage>로딩 중...</S.EmptyMessage>
+          ) : displayBooths.length > 0 ? (
+            displayBooths.map((booth) => {
+              const currentStatus = calculateBoothStatus(activeDay, isNight);
+              const mappedBooth = {
+                id: booth.id,
+                boothNumber: booth.boothNumber,
+                name: booth.name,
+                category: booth.boothTypes?.[0] || "기타",
+                operator: booth.operatingSubject,
+                status: currentStatus,
+                description: booth.tags?.join(" ") || "부스 소개",
+                images: [booth.thumbnailUrl],
+              };
+
+              return (
+                <BoothInfoComponent
+                  key={booth.id}
+                  booth={mappedBooth}
+                  onDetailClick={() => handleOpenModal(booth.id)}
+                />
+              );
+            })
           ) : (
             <S.EmptyStateWrapper>
-              {isOffHours ? (
+              {boothCounts.예정 > 0 ? (
                 <>
                   <S.EmptyMessage>
                     지금은 부스 운영시간이 아닙니다
                   </S.EmptyMessage>
                   <S.NextTimeText>
-                    다음 부스 시간 : {isNight ? "11:00~14:30" : "11:00~14:30"}
+                    다음 부스 시간 : {isNight ? "16:00~19:30" : "11:00~14:30"}
                   </S.NextTimeText>
                 </>
               ) : (
                 <S.EmptyMessage>
-                  DAY {activeDay}의 부스가 모두 종료되었습니다
+                  DAY {activeDay}의 {isNight ? "밤" : "낮"} 부스가 모두
+                  종료되었습니다
                 </S.EmptyMessage>
               )}
             </S.EmptyStateWrapper>
           )}
         </S.ListSection>
+
         {isModalOpen && targetBooth && (
           <BoothModalComponent
-            booth={targetBooth}
+            isNight={isNight}
+            booth={{
+              ...targetBooth,
+              category: targetBooth.boothTypes?.join(", ") || "기타",
+              operator: targetBooth.operatingSubject || "운영진",
+              images: targetBooth.imageUrls || [],
+              status: calculateBoothStatus(activeDay, isNight) || "운영 종료",
+            }}
             onClose={() => setIsModalOpen(false)}
             onNavigateToMap={handleNavigateToMap}
           />
         )}
+
         <Modal
           isOpen={isNoticeOpen}
           onClose={() => setIsNoticeOpen(false)}
-          title={noticeData.title}
-          content={noticeData.content}
-          images={noticeData.images}
+          title="부스 공지사항"
+          content="공지사항 내용이 들어갑니다."
+          images={[examplePhoto]}
         />
       </S.PageWrapper>
     </>
