@@ -76,9 +76,8 @@ export const LinkBlock = styled.a`
   justify-content: center;
   align-items: center;
   gap: 4px;
-
-  text-decoration: none; /* 밑줄 제거 */
-  color: inherit; /* 기존 색 유지 */
+  text-decoration: none;
+  color: inherit;
 `;
 
 export const ArtistLink = styled.div`
