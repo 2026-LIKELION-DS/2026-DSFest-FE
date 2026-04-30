@@ -1,4 +1,5 @@
 import * as S from "../styles/Schedule.style";
+import axios from "axios";
 import TimeTable from "../components/Schedule/TimeTableComponent";
 import ScheduleButton from "../components/Schedule/ScheduleButton";
 import CamFlower from "../assets/Schedule/camFlower.svg";
@@ -12,6 +13,21 @@ import upIcon from "../assets/Booth/BoothUp.svg";
 import { useState, useRef, useEffect } from "react";
 
 type DayKey = "day1" | "day2" | "day3";
+
+// API 타입 정의
+interface ApiSchedule {
+  id: number;
+  title: string;
+  startTime: string;
+  endTime: string;
+  scheduleType: "BOOTH" | "ARTIST" | "EVENT";
+}
+
+interface NowStatus {
+  status: "IN_PROGRESS" | "UPCOMING" | "ENDED";
+  current: ApiSchedule[];
+  next: ApiSchedule | null;
+}
 
 const scheduleData = [
   {
@@ -64,41 +80,41 @@ const scheduleData = [
     day: "DAY 2",
     data: [
       {
-        id: 1,
+        id: 8,
         title: "낮부스",
         time: "11:00~14:30",
         isActive: false,
         link: "/booth",
       },
       {
-        id: 2,
+        id: 9,
         title: "Quiz! 덕쏭달쏭",
         time: "11:00~11:30",
         isActive: true,
       },
       {
-        id: 3,
+        id: 10,
         title: "밤부스",
         time: "16:00~19:30",
         isActive: true,
         link: "/booth",
       },
       {
-        id: 4,
+        id: 11,
         title: "덕우존 입장 대기",
         time: "16:00~17:00",
         isActive: false,
       },
-      { id: 5, title: "덕우존 입장", time: "17:00~~18:00", isActive: false },
+      { id: 12, title: "덕우존 입장", time: "17:00~~18:00", isActive: false },
       {
-        id: 6,
+        id: 13,
         title: "운현가요제",
         time: "18:00~20:30",
         isActive: false,
         link: "/artist",
       },
       {
-        id: 7,
+        id: 14,
         title: "아티스트 공연",
         time: "20:30~21:00",
         isActive: false,
@@ -111,36 +127,41 @@ const scheduleData = [
     day: "DAY 3",
     data: [
       {
-        id: 1,
+        id: 15,
         title: "낮부스",
         time: "11:00~14:30",
         isActive: false,
         link: "/booth",
       },
       {
-        id: 2,
+        id: 16,
         title: "밤부스",
         time: "16:00~19:30",
         isActive: true,
         link: "/booth",
       },
       {
-        id: 3,
+        id: 17,
         title: "재학생 및 동아리 공연",
         time: "16:00~18:30",
         isActive: true,
         link: "/booth",
       },
-      { id: 4, title: "총학생회 콘텐츠", time: "18:30~19:30", isActive: false },
       {
-        id: 5,
+        id: 18,
+        title: "총학생회 콘텐츠",
+        time: "18:30~19:30",
+        isActive: false,
+      },
+      {
+        id: 19,
         title: "아티스트 공연",
         time: "18:30~20:00",
         isActive: false,
         link: "/artist",
       },
       {
-        id: 6,
+        id: 20,
         title: "불꽃놀이",
         time: "21:00~",
         isActive: false,
@@ -156,6 +177,31 @@ const days = [
 ] as const;
 
 export default function SchedulePage() {
+  const baseUrl = import.meta.env.VITE_API_URL;
+
+  // /api/schedules/now 호출
+  const [nowStatus, setNowStatus] = useState<NowStatus | null>(null);
+  console.log(baseUrl);
+
+  useEffect(() => {
+    if (!baseUrl) return;
+
+    axios
+      .get(`${baseUrl}/api/schedules/now`)
+      .then((res) => {
+        if (res.data.isSuccess) {
+          console.log("백엔드 실시간 데이터:", res.data.result);
+          setNowStatus(res.data.result);
+        }
+      })
+      .catch((err) => console.error("연동 에러:", err));
+  }, [baseUrl]);
+
+  const activeIds = new Set([
+    ...(nowStatus?.current ?? []).map((s) => s.id),
+    ...(nowStatus?.next ? [nowStatus.next.id] : []),
+  ]);
+
   const pageRef = useRef<HTMLDivElement>(null);
   const activeRef = useRef<HTMLDivElement>(null);
   const [isAtActive, setIsAtActive] = useState(false);
@@ -256,7 +302,11 @@ export default function SchedulePage() {
         <S.DaySection key={item.key} ref={dayRefs[item.key as DayKey]}>
           <TimeTable
             day={item.day}
-            schedule={item.data}
+            // schedule={item.data}
+            schedule={item.data.map((s) => ({
+              ...s,
+              isActive: activeIds.has(s.id),
+            }))}
             activeRef={item.key === currentDay ? activeRef : undefined}
           />
         </S.DaySection>

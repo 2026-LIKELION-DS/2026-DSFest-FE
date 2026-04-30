@@ -23,4 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 .env
-VITE_API_URL=https://youth-of-duksung.site
