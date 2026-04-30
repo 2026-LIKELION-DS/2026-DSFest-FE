@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { trackEvent } from "../../utils/analytics";
 
 import SearchInput from "../../components/Notice/SearchInput";
@@ -7,83 +8,146 @@ import NoticeListItem from "../../components/Notice/NoticeListItem";
 
 import * as S from "../../styles/Notice.style";
 
-type NoticeCategory = "전체보기" | "공연" | "이벤트" | "안내" | "기타";
+type NoticeCategory = "EVENT" | "PERFORMANCE" | "INFO" | "ETC";
+type CategoryFilter = "ALL" | NoticeCategory;
 
 interface NoticeItem {
   id: number;
-  category: NoticeCategory;
   title: string;
+  category: NoticeCategory;
+  urgent: boolean;
+  createdAt: string;
+  viewCount: number;
 }
 
-const categories: NoticeCategory[] = [
-  "전체보기",
-  "공연",
-  "이벤트",
-  "안내",
-  "기타",
+interface SearchNoticeResponse {
+  results: NoticeItem[];
+  recommended: NoticeItem[];
+}
+
+interface ApiResponse<T> {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: T;
+}
+
+interface CategoryOption {
+  label: string;
+  value: CategoryFilter;
+}
+
+const BASE_URL = import.meta.env.VITE_API_URL;
+
+const categories: CategoryOption[] = [
+  { label: "전체보기", value: "ALL" },
+  { label: "공연", value: "PERFORMANCE" },
+  { label: "이벤트", value: "EVENT" },
+  { label: "안내", value: "INFO" },
+  { label: "기타", value: "ETC" },
 ];
 
-const noticeList: NoticeItem[] = [
-  { id: 1, category: "공연", title: "공지 제목이 들어가는 자리" },
-  { id: 2, category: "이벤트", title: "공지 제목이 들어가는 자리" },
-  { id: 3, category: "안내", title: "공지 제목이 들어가는 자리" },
-  { id: 4, category: "기타", title: "공지 제목이 들어가는 자리" },
-  { id: 5, category: "공연", title: "공지 제목이 들어가는 자리" },
-];
+const CATEGORY_LABEL: Record<NoticeCategory, string> = {
+  EVENT: "이벤트",
+  PERFORMANCE: "공연",
+  INFO: "안내",
+  ETC: "기타",
+};
 
 export default function NoticeAll() {
   const navigate = useNavigate();
 
   const [keyword, setKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] =
-    useState<NoticeCategory>("전체보기");
+    useState<CategoryFilter>("ALL");
+  const [noticeList, setNoticeList] = useState<NoticeItem[]>([]);
 
   const trimmedKeyword = keyword.trim();
 
-  const filteredList = noticeList.filter((item) => {
-    const isCategoryMatched =
-      selectedCategory === "전체보기" || item.category === selectedCategory;
+  useEffect(() => {
+    const fetchNoticeList = async () => {
+      try {
+        if (trimmedKeyword) {
+          const response = await axios.get<ApiResponse<SearchNoticeResponse>>(
+            `${BASE_URL}/api/notices/search`,
+            {
+              params: {
+                keyword: trimmedKeyword,
+              },
+            },
+          );
 
-    const isKeywordMatched =
-      trimmedKeyword.length === 0 ||
-      item.category.includes(trimmedKeyword) ||
-      item.title.includes(trimmedKeyword);
+          setNoticeList(response.data.result.results);
+          return;
+        }
 
-    return isCategoryMatched && isKeywordMatched;
-  });
+        if (selectedCategory === "ALL") {
+          const response = await axios.get<ApiResponse<NoticeItem[]>>(
+            `${BASE_URL}/api/notices`,
+          );
+
+          setNoticeList(response.data.result);
+          return;
+        }
+
+        const response = await axios.get<ApiResponse<NoticeItem[]>>(
+          `${BASE_URL}/api/notices/category`,
+          {
+            params: {
+              category: selectedCategory,
+            },
+          },
+        );
+
+        setNoticeList(response.data.result);
+      } catch (error) {
+        console.error("공지 목록 조회 실패:", error);
+      }
+    };
+
+    fetchNoticeList();
+  }, [trimmedKeyword, selectedCategory]);
+
+  const handleChangeKeyword = (value: string) => {
+    setKeyword(value);
+  };
+
+  const handleClickCategory = (category: CategoryFilter) => {
+    trackEvent("notice_category_filter", {
+      category_name: category,
+    });
+
+    setSelectedCategory(category);
+  };
 
   return (
     <S.NoticePage>
       <SearchInput
         value={keyword}
-        onChange={setKeyword}
+        onChange={handleChangeKeyword}
         placeholder="궁금한 것을 검색해 보세요"
       />
 
       <S.CategoryList>
         {categories.map((category) => (
           <S.CategoryButton
-            key={category}
+            key={category.value}
             type="button"
-            $isActive={selectedCategory === category}
-            onClick={() => {
-              trackEvent("notice_category_filter", {
-                category_name: category,
-              });
-              setSelectedCategory(category);
-            }}
+            $isActive={selectedCategory === category.value}
+            onClick={() => handleClickCategory(category.value)}
           >
-            {category}
+            {category.label}
           </S.CategoryButton>
         ))}
       </S.CategoryList>
 
-      {filteredList.length > 0 ? (
+      {noticeList.length > 0 ? (
         <S.NoticeList>
-          {filteredList.map((notice) => (
+          {noticeList.map((notice) => (
             <NoticeListItem
               key={notice.id}
-              category={notice.category}
+              id={notice.id}
+              category={CATEGORY_LABEL[notice.category]}
               title={notice.title}
               onClick={() => navigate(`/notice/${notice.id}`)}
             />
@@ -91,7 +155,9 @@ export default function NoticeAll() {
         </S.NoticeList>
       ) : (
         <S.SearchEmpty>
-          “{trimmedKeyword}”에 해당하는
+          {trimmedKeyword
+            ? `“${trimmedKeyword}”에 해당하는`
+            : "해당 카테고리에"}
           <br />
           공지가 없어요
         </S.SearchEmpty>
