@@ -66,7 +66,7 @@ export const ArtistDesc = styled.p`
   color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
-export const LinkBlock = styled.div`
+export const LinkBlock = styled.a`
   background: ${({ theme }) => theme.colors.bg.oliveLight};
   border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
   border-radius: 2px;
@@ -76,6 +76,9 @@ export const LinkBlock = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4px;
+
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 기존 색 유지 */
 `;
 
 export const ArtistLink = styled.div`
