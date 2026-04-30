@@ -224,10 +224,31 @@ const BoothPage: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    if (showGuide) {
+      const handleFirstClick = () => {
+        setShowGuide(false);
+        window.removeEventListener("click", handleFirstClick);
+        window.removeEventListener("touchstart", handleFirstClick);
+      };
+
+      window.addEventListener("click", handleFirstClick, true);
+      window.addEventListener("touchstart", handleFirstClick, true);
+
+      return () => {
+        window.removeEventListener("click", handleFirstClick);
+        window.removeEventListener("touchstart", handleFirstClick);
+      };
+    }
+  }, [showGuide]);
+
   return (
     <>
-      <S.OnboardingOverlay $isVisible={showGuide}>
-        <S.GuideContainer onClick={() => setShowGuide(false)}>
+      <S.OnboardingOverlay
+        $isVisible={showGuide}
+        onClick={() => setShowGuide(false)}
+      >
+        <S.GuideContainer>
           <S.GuideText>
             <span>원하는 시간대의{"\n"}부스를 확인해 보세요!</span>
           </S.GuideText>
