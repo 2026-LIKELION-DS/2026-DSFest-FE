@@ -1,5 +1,5 @@
 import { trackEvent } from "../utils/analytics";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as S from "../styles/Home.style";
@@ -44,7 +44,44 @@ export default function Home() {
     setShowOnBoarding(false);
   };
 
+  const [toastOpen, setToastOpen] = useState(false);
+  const timeoutRef = useRef<number | null>(null);
+
+  const showToast = () => {
+    setToastOpen(true);
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = window.setTimeout(() => {
+      setToastOpen(false);
+    }, 2000); // 2초
+  };
+
+  const handleShare = async () => {
+    const url = window.location.href;
+
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: "2026 덕성여대 근화제",
+          text: "근화제 사이트 확인해보세요!",
+          url,
+        });
+      } else {
+        await navigator.clipboard.writeText(url);
+        showToast();
+      }
+    } catch {
+      console.log("공유 취소 또는 실패");
+    }
+  };
+
+
   const navigate = useNavigate();
+
+  
 
   return (
     <S.Wrapper>
@@ -173,9 +210,8 @@ export default function Home() {
       <S.Footer>
         <S.AllLinkBox>
           <S.LinkBox
-            href="@"
             target="_blank"
-            onClick={() => trackEvent("share_button_click")}
+            onClick={handleShare}
           >
             <S.LinkIcon src={NetworkIcon}></S.LinkIcon>
             <S.Link>웹사이트 공유하기</S.Link>
@@ -236,6 +272,9 @@ export default function Home() {
           </S.LikeLionMemberBox>
         </S.LikeLion>
       </S.Footer>
+      {toastOpen && (
+      <S.Toast>링크가 복사되었습니다!</S.Toast>
+    )}
     </S.Wrapper>
   );
 }
