@@ -75,41 +75,41 @@ const BoothMapComponent: React.FC<MapProps> = ({
 
   useEffect(() => {
     const BOOTH_POSITIONS: Record<number, { x: number; y: number }> = {
-      1: { x: 410, y: 342 },
+      1: { x: 30, y: 5 },
 
-      2: { x: 765, y: 198 },
-      3: { x: 765, y: 248 },
-      4: { x: 765, y: 298 },
+      2: { x: 145, y: -55 },
+      3: { x: 145, y: -40 },
+      4: { x: 145, y: -25 },
 
-      5: { x: 645, y: 430 },
-      6: { x: 645, y: 480 },
-      7: { x: 645, y: 530 },
-      8: { x: 645, y: 580 },
-      9: { x: 645, y: 630 },
-      10: { x: 645, y: 680 },
-      11: { x: 645, y: 730 },
-      12: { x: 645, y: 780 },
-      13: { x: 645, y: 830 },
+      5: { x: 102, y: 25 },
+      6: { x: 102, y: 42 },
+      7: { x: 102, y: 59 },
+      8: { x: 102, y: 76 },
+      9: { x: 102, y: 93 },
+      10: { x: 102, y: 110 },
+      11: { x: 102, y: 127 },
+      12: { x: 102, y: 144 },
+      13: { x: 102, y: 161 },
 
-      14: { x: 1345, y: 440 },
-      15: { x: 1275, y: 440 },
-      16: { x: 1205, y: 440 },
-      17: { x: 1135, y: 440 },
-      18: { x: 1065, y: 440 },
+      14: { x: 500, y: 25 },
+      15: { x: 315, y: 25 },
+      16: { x: 290, y: 25 },
+      17: { x: 265, y: 25 },
+      18: { x: 240, y: 25 },
 
-      19: { x: 910, y: 500 },
-      20: { x: 910, y: 550 },
-      21: { x: 910, y: 600 },
-      22: { x: 910, y: 650 },
-      23: { x: 910, y: 700 },
-      24: { x: 910, y: 750 },
-      25: { x: 910, y: 800 },
+      19: { x: 190, y: 50 },
+      20: { x: 190, y: 68 },
+      21: { x: 190, y: 86 },
+      22: { x: 190, y: 104 },
+      23: { x: 190, y: 122 },
+      24: { x: 190, y: 140 },
+      25: { x: 190, y: 158 },
 
-      26: { x: 1065, y: 892 },
-      27: { x: 1135, y: 892 },
-      28: { x: 1205, y: 892 },
-      29: { x: 1275, y: 892 },
-      30: { x: 1345, y: 892 },
+      26: { x: 240, y: 175 },
+      27: { x: 265, y: 175 },
+      28: { x: 290, y: 175 },
+      29: { x: 315, y: 175 },
+      30: { x: 500, y: 175 },
     };
 
     if (pinchZoomRef.current && mapRef.current) {
@@ -119,19 +119,16 @@ const BoothMapComponent: React.FC<MapProps> = ({
 
       if (selectedId && posNum && BOOTH_POSITIONS[posNum]) {
         const targetPos = BOOTH_POSITIONS[posNum];
-        const focusScale = (container.clientHeight / 700) * 7;
-        const x =
-          ((targetPos.x * focusScale) / 2 - container.clientWidth) /
-          (focusScale - 1) /
-          2;
-        const y =
-          ((targetPos.y * focusScale) / 2 - container.clientHeight) /
-          (focusScale - 1) /
-          2;
+        const focusScale = 4;
+        const centerX = container.clientWidth / 2 / focusScale;
+        const centerY = container.clientHeight / 2 / focusScale;
+
+        const finalX = centerX + targetPos.x;
+        const finalY = centerY + targetPos.y;
 
         pinchZoomRef.current.scaleTo({
-          x,
-          y,
+          x: finalX,
+          y: finalY,
           scale: focusScale,
           animated: true,
         });
@@ -245,7 +242,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
             >
               <S.SubLabel>포토부스</S.SubLabel>
             </S.AbsoluteBooth>
-            <S.BoothList $bottom="-37px" $right="3px" $direction="row">
+            <S.BoothList $bottom="-37px" $right="4px" $direction="row">
               {currentLayout.studentHall?.map(renderBooth)}
             </S.BoothList>
           </S.Section>

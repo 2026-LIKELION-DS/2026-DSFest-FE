@@ -15,7 +15,6 @@ import nightUnselected from "../assets/Booth/NightUnselected.svg";
 import randomIcon from "../assets/Booth/RandomBooth.svg";
 import announceIcon from "../assets/Booth/BoothAnnounce.svg";
 import upIcon from "../assets/Booth/BoothUp.svg";
-import examplePhoto from "../assets/hahyunsang_sample.svg";
 
 const DAYS_DATA = [
   { id: 1, date: "13일", dayOfWeek: "수" },
@@ -46,6 +45,13 @@ interface Booth {
 interface MapBoothResponse {
   boothId: number;
   positionNumber: number;
+}
+
+interface Notice {
+  id: number;
+  title: string;
+  content: string;
+  imageUrls: string[];
 }
 
 const calculateBoothStatus = (
@@ -88,7 +94,22 @@ const BoothPage: React.FC = () => {
   const [targetBooth, setTargetBooth] = useState<Booth | null>(null);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
+  const [noticeData, setNoticeData] = useState<Notice | null>(null);
   const [showGuide, setShowGuide] = useState(true);
+
+  const handleOpenNotice = async () => {
+    try {
+      // 부스 관련 공지인 ID 5번을 기본으로 호출합니다.
+      const response = await axios.get(`${baseUrl}/api/notices/5`);
+      if (response.data.isSuccess) {
+        setNoticeData(response.data.result);
+        setIsNoticeOpen(true);
+      }
+    } catch (error) {
+      console.error("공지사항 로드 실패", error);
+      alert("공지사항을 불러오는 중 오류가 발생했습니다.");
+    }
+  };
 
   useEffect(() => {
     const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
@@ -318,7 +339,7 @@ const BoothPage: React.FC = () => {
         >
           <img src={upIcon} alt="scroll to top" />
         </S.FloatingCircleBtn>
-        <S.FloatingCircleBtn onClick={() => setIsNoticeOpen(true)}>
+        <S.FloatingCircleBtn onClick={handleOpenNotice}>
           <img src={announceIcon} alt="announce" />
         </S.FloatingCircleBtn>
       </S.FloatingButtonGroup>
@@ -450,9 +471,9 @@ const BoothPage: React.FC = () => {
         <Modal
           isOpen={isNoticeOpen}
           onClose={() => setIsNoticeOpen(false)}
-          title="부스 공지사항"
-          content="공지사항 내용이 들어갑니다."
-          images={[examplePhoto]}
+          title={noticeData?.title || "부스 공지사항"}
+          content={noticeData?.content || "공지사항 내용을 불러오는 중입니다."}
+          images={noticeData?.imageUrls || []}
         />
       </S.PageWrapper>
     </>
