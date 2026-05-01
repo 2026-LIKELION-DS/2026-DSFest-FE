@@ -22,13 +22,19 @@ interface Booth {
   status: string;
   operator?: string;
   category?: string;
+  categories?: string[];
+  boothTypes?: string[];
   description?: string;
   images?: string[];
+  imageUrls?: string[];
   everytimeUrl?: string;
   instagramUrl?: string;
+  collabInstagramUrl?: string;
+  youtubeUrl?: string;
   openKakaoUrl?: string;
   operatingTimes?: string[];
   boothNumber?: number;
+  positionNumber: number;
 }
 
 interface ModalProps {
@@ -51,9 +57,11 @@ const BoothModalComponent: React.FC<ModalProps> = ({
   if (!booth) return null;
 
   const images =
-    booth.images && booth.images.length > 0
-      ? booth.images
-      : [examplePhoto, examplePhoto, examplePhoto];
+    booth.imageUrls && booth.imageUrls.length > 0
+      ? booth.imageUrls
+      : booth.images && booth.images.length > 0
+        ? booth.images
+        : [];
 
   const openImageDetail = (idx: number) => {
     setDetailConfig({ isOpen: true, initialIndex: idx });
@@ -69,6 +77,29 @@ const BoothModalComponent: React.FC<ModalProps> = ({
     return `운영 종료`;
   };
 
+  const getCleanCategory = () => {
+    if (booth.categories && booth.categories.length > 0) {
+      const cat = booth.categories.find((c) => c !== "DAY" && c !== "NIGHT");
+      if (cat) return cat;
+    }
+
+    if (booth.boothTypes && booth.boothTypes.length > 0) {
+      const type = booth.boothTypes.find((t) => t !== "DAY" && t !== "NIGHT");
+      if (type) return type;
+    }
+
+    if (
+      booth.category &&
+      booth.category !== "DAY" &&
+      booth.category !== "NIGHT"
+    ) {
+      const firstCat = booth.category.split(",")[0].trim();
+      if (firstCat !== "DAY" && firstCat !== "NIGHT") return firstCat;
+    }
+
+    return "체험";
+  };
+
   return (
     <>
       <S.ModalOverlay onClick={onClose}>
@@ -79,7 +110,7 @@ const BoothModalComponent: React.FC<ModalProps> = ({
 
           <S.ContentArea>
             <S.Title>
-              {booth.id}. {booth.name}
+              {booth.positionNumber}. {booth.name}
             </S.Title>
             <S.Divider />
 
@@ -88,60 +119,92 @@ const BoothModalComponent: React.FC<ModalProps> = ({
                 <S.Icons src={Users} /> {booth.operator || "운영진"}
               </S.InfoItem>
               <S.InfoItem>
-                <S.Icons src={Clock} />{" "}
+                <S.Icons src={Clock} />
                 {booth.operatingTimes?.[0] || "운영 시간 정보 없음"}
               </S.InfoItem>
               <S.InfoItem>
-                <S.Icons src={Store} /> {booth.category || "판매"} 부스
+                <S.Icons src={Store} /> {getCleanCategory()} 부스
               </S.InfoItem>
-              <S.InfoItem>
-                <S.Icons src={Phone} />
-                <a
-                  href={booth.openKakaoUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
-                  {booth.openKakaoUrl ? "오픈채팅 연결하기" : "연락처 없음"}
-                </a>
-              </S.InfoItem>
+              {booth.openKakaoUrl && (
+                <S.InfoItem>
+                  <S.Icons src={Phone} />
+                  <a
+                    href={booth.openKakaoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    오픈채팅 연결하기
+                  </a>
+                </S.InfoItem>
+              )}
             </S.InfoList>
 
-            <S.ImageRow>
-              {images.map((src: string, idx: number) => (
-                <S.BoothImage
-                  key={idx}
-                  src={src}
-                  onClick={() => {
-                    trackEvent("booth_image_view");
-                    openImageDetail(idx);
-                  }}
-                  alt={`부스 이미지 ${idx + 1}`}
-                />
-              ))}
-            </S.ImageRow>
+            {images.length > 0 && (
+              <S.ImageRow>
+                {images.map((src, idx) => (
+                  <S.BoothImage
+                    key={idx}
+                    src={src}
+                    onClick={() => {
+                      trackEvent("booth_image_view");
+                      openImageDetail(idx);
+                    }}
+                    alt={`부스 이미지 ${idx + 1}`}
+                    onError={(e) => (e.currentTarget.src = examplePhoto)}
+                  />
+                ))}
+              </S.ImageRow>
+            )}
 
             <S.Description>{booth.description}</S.Description>
 
-            <S.LinkSection>
-              <S.LinkIcon src={Link} />
-              <S.LinkTagGroup>
-                <S.LinkTag
-                  href={booth.everytimeUrl || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  에브리타임 게시글
-                </S.LinkTag>
-                <S.LinkTag
-                  href={booth.instagramUrl || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  인스타그램
-                </S.LinkTag>
-              </S.LinkTagGroup>
-            </S.LinkSection>
+            {(booth.everytimeUrl ||
+              booth.instagramUrl ||
+              booth.collabInstagramUrl ||
+              booth.youtubeUrl) && (
+              <S.LinkSection>
+                <S.LinkIcon src={Link} />
+                <S.LinkTagGroup>
+                  {booth.everytimeUrl && (
+                    <S.LinkTag
+                      href={booth.everytimeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      에브리타임
+                    </S.LinkTag>
+                  )}
+                  {booth.instagramUrl && (
+                    <S.LinkTag
+                      href={booth.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      인스타그램
+                    </S.LinkTag>
+                  )}
+                  {booth.collabInstagramUrl && (
+                    <S.LinkTag
+                      href={booth.collabInstagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      공동 인스타
+                    </S.LinkTag>
+                  )}
+                  {booth.youtubeUrl && (
+                    <S.LinkTag
+                      href={booth.youtubeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      유튜브
+                    </S.LinkTag>
+                  )}
+                </S.LinkTagGroup>
+              </S.LinkSection>
+            )}
           </S.ContentArea>
 
           <S.ButtonGroup>

@@ -1,63 +1,34 @@
-import React, { useRef, useCallback, useLayoutEffect, useEffect } from "react";
+import React, {
+  useRef,
+  useCallback,
+  useLayoutEffect,
+  useEffect,
+  useState,
+} from "react";
 import type { ElementRef } from "react";
 import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
+import axios from "axios";
 import * as S from "../../styles/BoothMapComponent.styles";
 
-interface Booth {
-  id: number;
+interface MapBooth {
+  boothId: number;
+  boothNumber: number;
   name: string;
+  positionNumber: number;
+  operatingSubject: string;
+  thumbnailUrl: string;
+  boothTypes: string[];
 }
 
 interface MapProps {
   day: number;
   time?: "day" | "night";
   selectedId?: number | null;
-  onBoothClick?: (id: number | null) => void;
-  booths: Booth[];
+  onBoothClick?: (id: number | null, posNum?: number) => void;
 }
 
 const BOOTH_LAYOUTS: Record<string, Record<string, number[]>> = {
-  "1_day": {
-    studentHall: [1],
-    soyoung: [2, 3, 4],
-    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
-    youngTop: [18, 17, 16, 15, 14],
-    youngLeft: [19, 20, 21, 22, 23, 24, 25],
-    youngBottom: [26, 27, 28, 29, 30],
-  },
-  "1_night": {
-    studentHall: [1],
-    soyoung: [2, 3, 4],
-    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
-    youngTop: [18, 17, 16, 15, 14],
-    youngLeft: [19, 20, 21, 22, 23, 24, 25],
-    youngBottom: [26, 27, 28, 29, 30],
-  },
-  "2_day": {
-    studentHall: [1],
-    soyoung: [2, 3, 4],
-    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
-    youngTop: [18, 17, 16, 15, 14],
-    youngLeft: [19, 20, 21, 22, 23, 24, 25],
-    youngBottom: [26, 27, 28, 29, 30],
-  },
-  "2_night": {
-    studentHall: [1],
-    soyoung: [2, 3, 4],
-    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
-    youngTop: [18, 17, 16, 15, 14],
-    youngLeft: [19, 20, 21, 22, 23, 24, 25],
-    youngBottom: [26, 27, 28, 29, 30],
-  },
-  "3_day": {
-    studentHall: [1],
-    soyoung: [2, 3, 4],
-    minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
-    youngTop: [18, 17, 16, 15, 14],
-    youngLeft: [19, 20, 21, 22, 23, 24, 25],
-    youngBottom: [26, 27, 28, 29, 30],
-  },
-  "3_night": {
+  common: {
     studentHall: [1],
     soyoung: [2, 3, 4],
     minju: [5, 6, 7, 8, 9, 10, 11, 12, 13],
@@ -72,12 +43,25 @@ const BoothMapComponent: React.FC<MapProps> = ({
   time = "day",
   selectedId,
   onBoothClick,
-  booths,
 }) => {
-  const currentKey = `${day}_${time}`;
-  const currentLayout = BOOTH_LAYOUTS[currentKey] || {};
+  const baseUrl = import.meta.env.VITE_API_URL;
+  const [mapData, setMapData] = useState<MapBooth[]>([]);
   const mapRef = useRef<HTMLDivElement>(null);
   const pinchZoomRef = useRef<ElementRef<typeof QuickPinchZoom>>(null);
+
+  useEffect(() => {
+    const fetchMapData = async () => {
+      try {
+        const res = await axios.get(`${baseUrl}/api/booths/map`, {
+          params: { day, type: time.toUpperCase() },
+        });
+        if (res.data.isSuccess) setMapData(res.data.result);
+      } catch (e) {
+        console.error("지도 로드 실패", e);
+      }
+    };
+    fetchMapData();
+  }, [day, time, baseUrl]);
 
   const onUpdate = useCallback(
     ({ x, y, scale }: { x: number; y: number; scale: number }) => {
@@ -90,66 +74,66 @@ const BoothMapComponent: React.FC<MapProps> = ({
   );
 
   useEffect(() => {
-    const BOOTH_POSITIONS_13KH: Record<number, { x: number; y: number }> = {
-      1: { x: 410, y: 342 },
+    const BOOTH_POSITIONS: Record<number, { x: number; y: number }> = {
+      1: { x: 30, y: 5 },
 
-      2: { x: 765, y: 198 },
-      3: { x: 765, y: 248 },
-      4: { x: 765, y: 298 },
+      2: { x: 145, y: -55 },
+      3: { x: 145, y: -40 },
+      4: { x: 145, y: -25 },
 
-      5: { x: 645, y: 430 },
-      6: { x: 645, y: 480 },
-      7: { x: 645, y: 530 },
-      8: { x: 645, y: 580 },
-      9: { x: 645, y: 630 },
-      10: { x: 645, y: 680 },
-      11: { x: 645, y: 730 },
-      12: { x: 645, y: 780 },
-      13: { x: 645, y: 830 },
+      5: { x: 102, y: 25 },
+      6: { x: 102, y: 42 },
+      7: { x: 102, y: 59 },
+      8: { x: 102, y: 76 },
+      9: { x: 102, y: 93 },
+      10: { x: 102, y: 110 },
+      11: { x: 102, y: 127 },
+      12: { x: 102, y: 144 },
+      13: { x: 102, y: 161 },
 
-      14: { x: 1345, y: 440 },
-      15: { x: 1275, y: 440 },
-      16: { x: 1205, y: 440 },
-      17: { x: 1135, y: 440 },
-      18: { x: 1065, y: 440 },
+      14: { x: 500, y: 25 },
+      15: { x: 315, y: 25 },
+      16: { x: 290, y: 25 },
+      17: { x: 265, y: 25 },
+      18: { x: 240, y: 25 },
 
-      19: { x: 910, y: 500 },
-      20: { x: 910, y: 550 },
-      21: { x: 910, y: 600 },
-      22: { x: 910, y: 650 },
-      23: { x: 910, y: 700 },
-      24: { x: 910, y: 750 },
-      25: { x: 910, y: 800 },
+      19: { x: 190, y: 50 },
+      20: { x: 190, y: 68 },
+      21: { x: 190, y: 86 },
+      22: { x: 190, y: 104 },
+      23: { x: 190, y: 122 },
+      24: { x: 190, y: 140 },
+      25: { x: 190, y: 158 },
 
-      26: { x: 1065, y: 892 },
-      27: { x: 1135, y: 892 },
-      28: { x: 1205, y: 892 },
-      29: { x: 1275, y: 892 },
-      30: { x: 1345, y: 892 },
+      26: { x: 240, y: 175 },
+      27: { x: 265, y: 175 },
+      28: { x: 290, y: 175 },
+      29: { x: 315, y: 175 },
+      30: { x: 500, y: 175 },
     };
 
     if (pinchZoomRef.current && mapRef.current) {
-      const container = mapRef.current.parentElement;
-      if (!container) return;
+      const container = mapRef.current.parentElement!;
+      const selectedBooth = mapData.find((b) => b.boothId === selectedId);
+      const posNum = selectedBooth?.positionNumber;
 
-      const cw = container.clientWidth;
-      const ch = container.clientHeight;
+      if (selectedId && posNum && BOOTH_POSITIONS[posNum]) {
+        const targetPos = BOOTH_POSITIONS[posNum];
+        const focusScale = 4;
+        const centerX = container.clientWidth / 2 / focusScale;
+        const centerY = container.clientHeight / 2 / focusScale;
 
-      if (selectedId && BOOTH_POSITIONS_13KH[selectedId]) {
-        const targetPos = BOOTH_POSITIONS_13KH[selectedId];
-        const focusScale = (ch / 700) * 7;
-
-        const x = ((targetPos.x * focusScale) / 2 - cw) / (focusScale - 1) / 2;
-        const y = ((targetPos.y * focusScale) / 2 - ch) / (focusScale - 1) / 2;
+        const finalX = centerX + targetPos.x;
+        const finalY = centerY + targetPos.y;
 
         pinchZoomRef.current.scaleTo({
-          x,
-          y,
+          x: finalX,
+          y: finalY,
           scale: focusScale,
           animated: true,
         });
       } else if (selectedId === null) {
-        const initialScale = (ch / 700) * 5;
+        const initialScale = (container.clientHeight / 700) * 5;
 
         pinchZoomRef.current.scaleTo({
           x: 210,
@@ -159,7 +143,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
         });
       }
     }
-  }, [selectedId, currentKey]);
+  }, [selectedId, mapData]);
 
   useLayoutEffect(() => {
     if (pinchZoomRef.current && mapRef.current) {
@@ -181,33 +165,41 @@ const BoothMapComponent: React.FC<MapProps> = ({
     }
   };
 
-  const renderBooth = (id: number) => {
-    const isActive = selectedId === id;
-    const boothName = booths?.find((b) => b.id === id)?.name || `부스 ${id}`;
+  const renderBooth = (pos: number) => {
+    const booth = mapData.find((b) => b.positionNumber === pos);
+    if (!booth) return null;
+
+    const isActive = selectedId === booth.boothId;
+
+    const allSlots = mapData
+      .filter((b) => b.boothId === booth.boothId)
+      .map((b) => b.positionNumber);
+    const isFirstSlot = Math.min(...allSlots) === pos;
 
     return (
-      <S.BoothContainer key={id}>
-        {isActive && (
+      <S.BoothContainer key={pos}>
+        {isActive && isFirstSlot && (
           <S.BoothNameBubble>
-            <S.BoothNameText>{boothName}</S.BoothNameText>
+            <S.BoothNameText>{booth.name}</S.BoothNameText>
           </S.BoothNameBubble>
         )}
         <S.BoothSlot
           $isActive={isActive}
           onClick={(e) => {
             e.stopPropagation();
-            if (isActive) {
-              onBoothClick?.(null);
-            } else {
-              onBoothClick?.(id);
-            }
+            onBoothClick?.(
+              isActive ? null : booth.boothId,
+              booth.positionNumber,
+            );
           }}
         >
-          {id}
+          {booth.positionNumber}
         </S.BoothSlot>
       </S.BoothContainer>
     );
   };
+
+  const currentLayout = BOOTH_LAYOUTS.common;
 
   return (
     <S.MapWrapper>
@@ -250,7 +242,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
             >
               <S.SubLabel>포토부스</S.SubLabel>
             </S.AbsoluteBooth>
-            <S.BoothList $bottom="-37px" $right="3px" $direction="row">
+            <S.BoothList $bottom="-37px" $right="4px" $direction="row">
               {currentLayout.studentHall?.map(renderBooth)}
             </S.BoothList>
           </S.Section>
