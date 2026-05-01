@@ -1,10 +1,10 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import * as S from "../../styles/BoothInfoComponent.style";
-import examplePhoto from "../../assets/hahyunsang_sample.svg";
 
 export interface Booth {
   id: number;
   boothNumber: number;
+  positionNumber: number;
   name: string;
   category: string;
   operator: string;
@@ -44,7 +44,7 @@ const BoothInfoComponent: React.FC<BoothInfoProps> = ({
       <S.StatusBadge $status={booth.status}>{booth.status}</S.StatusBadge>
 
       <S.Title>
-        {booth.boothNumber}. {booth.name}
+        {booth.positionNumber}. {booth.name}
       </S.Title>
 
       <S.InfoRow>
@@ -52,19 +52,22 @@ const BoothInfoComponent: React.FC<BoothInfoProps> = ({
         <S.BoothName>{booth.operator}</S.BoothName>
       </S.InfoRow>
 
-      <S.ImageRow>
-        {[1, 2, 3].map((idx) => (
-          <S.BoothImage
-            key={idx}
-            src={booth.images?.[idx] || examplePhoto}
-            alt={`${booth.name} 사진 ${idx + 1}`}
-          />
-        ))}
-      </S.ImageRow>
+      {booth.images && booth.images.length > 0 && (
+        <S.ImageRow>
+          {booth.images.slice(0, 3).map((imgUrl, idx) => (
+            <S.BoothImage
+              key={idx}
+              src={imgUrl}
+              alt={`${booth.name} 사진 ${idx + 1}`}
+              referrerPolicy="no-referrer"
+            />
+          ))}
+        </S.ImageRow>
+      )}
 
       <S.DescriptionContainer>
         <S.Description ref={descriptionRef} $isExpanded={false}>
-          {booth.description}
+          {booth.description || "부스 상세 설명이 없습니다."}
         </S.Description>
 
         {showMoreBtn && <S.MoreButton>자세히 보기</S.MoreButton>}
