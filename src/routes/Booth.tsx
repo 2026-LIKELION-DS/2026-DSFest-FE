@@ -99,7 +99,6 @@ const BoothPage: React.FC = () => {
 
   const handleOpenNotice = async () => {
     try {
-      // 부스 관련 공지인 ID 5번을 기본으로 호출합니다.
       const response = await axios.get(`${baseUrl}/api/notices/5`);
       if (response.data.isSuccess) {
         setNoticeData(response.data.result);
