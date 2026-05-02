@@ -137,8 +137,7 @@ export const Flowers2 = styled.img`
 export const CamFlower2 = styled.img`
   position: absolute;
   width: 115px;
-  height: 149px;
-  top: 2130px;
+  top: 2020px;
   right: -12px;
   z-index: 2;
   pointer-events: none;
