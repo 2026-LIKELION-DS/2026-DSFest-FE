@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as S from "../../styles/ContestDetail.style";
+import ImageDetailComponent from "../../components/Common/ImageDetail";
 
 interface ModalProps {
   isOpen: boolean;
@@ -71,6 +72,12 @@ export default function Modal({
           </S.CommonModalContainer>
         </S.CommonModalOverlay>
       )}
+      <ImageDetailComponent
+        isOpen={imageDetail.isOpen}
+        initialIndex={imageDetail.initialIndex}
+        images={images ?? []}
+        onClose={() => setImageDetail((prev) => ({ ...prev, isOpen: false }))}
+      />
     </>
   );
 }
