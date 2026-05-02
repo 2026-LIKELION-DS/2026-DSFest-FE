@@ -1,7 +1,6 @@
 import * as S from "../styles/ContestVote.style";
 import { useState, useEffect } from "react";
 import PhotoCard from "../components/Contest/ContestPhotoCard";
-// import examplePhoto from "../assets/hahyunsang_sample.svg";
 import { useNavigate } from "react-router-dom";
 import ContestInfoModal from "../components/Contest/ContestInformation";
 import axios from "axios";
@@ -24,46 +23,6 @@ const TOPIC_LABELS = [
   "축제 현장을 가장 잘 담은 사진",
   "드레스코드를 가장 잘 살려 입은 사진",
 ];
-
-// 임시 데이터
-// const TOPICS = [
-//   {
-//     id: 1,
-//     title: "주제 텍스트 주제 텍스트",
-//     photos: [
-//       { id: 1, title: "사진제목 제목제목제목개긴제목 자리", src: examplePhoto },
-//       { id: 2, title: "사진제목", src: examplePhoto },
-//       { id: 3, title: "사진제목", src: examplePhoto },
-//       { id: 4, title: "사진제목", src: examplePhoto },
-//       { id: 5, title: "사진제목", src: examplePhoto },
-//       { id: 6, title: "사진제목", src: examplePhoto },
-//     ],
-//   },
-//   {
-//     id: 2,
-//     title: "주제 텍스트 주제 텍스트",
-//     photos: [
-//       { id: 7, title: "사진제목", src: examplePhoto },
-//       { id: 8, title: "사진제목", src: examplePhoto },
-//       { id: 9, title: "사진제목", src: examplePhoto },
-//       { id: 10, title: "사진제목", src: examplePhoto },
-//       { id: 11, title: "사진제목", src: examplePhoto },
-//       { id: 12, title: "사진제목", src: examplePhoto },
-//     ],
-//   },
-//   {
-//     id: 3,
-//     title: "주제 텍스트 주제 텍스트",
-//     photos: [
-//       { id: 9, title: "사진제목", src: examplePhoto },
-//       { id: 10, title: "사진제목", src: examplePhoto },
-//       { id: 11, title: "사진제목", src: examplePhoto },
-//       { id: 12, title: "사진제목", src: examplePhoto },
-//       { id: 13, title: "사진제목", src: examplePhoto },
-//       { id: 14, title: "사진제목", src: examplePhoto },
-//     ],
-//   },
-// ];
 
 export default function ContestVotePage() {
   const baseUrl = import.meta.env.VITE_API_URL;
@@ -98,7 +57,6 @@ export default function ContestVotePage() {
 
   const topic = TOPICS[currentPage];
   const isLastPage = currentPage === TOPICS.length - 1;
-  // const isSelected = selectedPhotos[topic.id] != null;
   const isSelected = topic ? selectedPhotos[topic.id] != null : false;
 
   const handleNext = () => {
@@ -110,19 +68,10 @@ export default function ContestVotePage() {
     setIsInfoModalOpen(true);
   };
 
-  // const handleSubmit = () => {
-  //   setIsInfoModalOpen(true);
-  //   // handleVoteDone();
-  // };
   const handleInfoSubmit = () => {
     setIsInfoModalOpen(false);
     navigate("/contest", { state: { voted: true } });
   };
-
-  // const handleInfoSubmit = () => {
-  //   setIsInfoModalOpen(false);
-  //   navigate("/contest", { state: { voted: true } }); // 모달에서 제출 시 이동
-  // };
 
   if (!photoList || !topic) return null; // 로딩 중
 
