@@ -61,7 +61,7 @@ export const DaySection = styled.div`
   scroll-margin-top: 80px;
   position: relative;
   &:last-child {
-    padding-bottom: 80px;
+    padding-bottom: 85px;
   }
 `;
 
@@ -126,7 +126,7 @@ export const CamLeaf = styled.img`
   position: absolute;
   width: 118px;
   height: 103px;
-  top: 1470px;
+  top: 1450px;
   z-index: 2;
   pointer-events: none;
 `;
@@ -134,7 +134,7 @@ export const CamLeaf = styled.img`
 export const Flowers2 = styled.img`
   position: absolute;
   height: 126px;
-  top: 1560px;
+  top: 1540px;
   left: -10px;
   z-index: 2;
   pointer-events: none;
