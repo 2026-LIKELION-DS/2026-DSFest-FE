@@ -1,51 +1,32 @@
 import * as S from "../styles/ContestVote.style";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PhotoCard from "../components/Contest/ContestPhotoCard";
-import examplePhoto from "../assets/hahyunsang_sample.svg";
 import { useNavigate } from "react-router-dom";
 import ContestInfoModal from "../components/Contest/ContestInformation";
+import axios from "axios";
 
-// 임시 데이터
-const TOPICS = [
-  {
-    id: 1,
-    title: "주제 텍스트 주제 텍스트",
-    photos: [
-      { id: 1, title: "사진제목 제목제목제목개긴제목 자리", src: examplePhoto },
-      { id: 2, title: "사진제목", src: examplePhoto },
-      { id: 3, title: "사진제목", src: examplePhoto },
-      { id: 4, title: "사진제목", src: examplePhoto },
-      { id: 5, title: "사진제목", src: examplePhoto },
-      { id: 6, title: "사진제목", src: examplePhoto },
-    ],
-  },
-  {
-    id: 2,
-    title: "주제 텍스트 주제 텍스트",
-    photos: [
-      { id: 7, title: "사진제목", src: examplePhoto },
-      { id: 8, title: "사진제목", src: examplePhoto },
-      { id: 9, title: "사진제목", src: examplePhoto },
-      { id: 10, title: "사진제목", src: examplePhoto },
-      { id: 11, title: "사진제목", src: examplePhoto },
-      { id: 12, title: "사진제목", src: examplePhoto },
-    ],
-  },
-  {
-    id: 3,
-    title: "주제 텍스트 주제 텍스트",
-    photos: [
-      { id: 9, title: "사진제목", src: examplePhoto },
-      { id: 10, title: "사진제목", src: examplePhoto },
-      { id: 11, title: "사진제목", src: examplePhoto },
-      { id: 12, title: "사진제목", src: examplePhoto },
-      { id: 13, title: "사진제목", src: examplePhoto },
-      { id: 14, title: "사진제목", src: examplePhoto },
-    ],
-  },
+interface PhotoItem {
+  photoEntryId: number;
+  title: string;
+  authorName: string;
+  imageUrl: string;
+}
+
+interface PhotoListResult {
+  youthPhotos: PhotoItem[];
+  festivalPhotos: PhotoItem[];
+  dressCodePhotos: PhotoItem[];
+}
+
+const TOPIC_LABELS = [
+  "자신의 청춘을 가장 잘 담은 사진",
+  "축제 현장을 가장 잘 담은 사진",
+  "드레스코드를 가장 잘 살려 입은 사진",
 ];
 
 export default function ContestVotePage() {
+  const baseUrl = import.meta.env.VITE_API_URL;
+  const [photoList, setPhotoList] = useState<PhotoListResult | null>(null);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
@@ -53,25 +34,50 @@ export default function ContestVotePage() {
     Record<number, number | null>
   >({});
 
+  useEffect(() => {
+    if (!baseUrl) return;
+    axios
+      .get(`${baseUrl}/api/photo-contest`)
+      .then((res) => {
+        if (res.data.isSuccess) {
+          setPhotoList(res.data.result);
+        }
+      })
+      .catch((err) => console.error("목록 조회 에러:", err));
+  }, [baseUrl]);
+
+  // API 데이터를 TOPICS 형태로 변환
+  const TOPICS = photoList
+    ? [
+        { id: 0, title: TOPIC_LABELS[0], photos: photoList.youthPhotos },
+        { id: 1, title: TOPIC_LABELS[1], photos: photoList.festivalPhotos },
+        { id: 2, title: TOPIC_LABELS[2], photos: photoList.dressCodePhotos },
+      ]
+    : [];
+
   const topic = TOPICS[currentPage];
   const isLastPage = currentPage === TOPICS.length - 1;
-  const isSelected = selectedPhotos[topic.id] != null;
+  const isSelected = topic ? selectedPhotos[topic.id] != null : false;
+
+  const photoEntryIds = Object.values(selectedPhotos).filter(
+    (id): id is number => id !== null,
+  );
 
   const handleNext = () => {
     if (currentPage < TOPICS.length - 1) {
       setCurrentPage((prev) => prev + 1);
     }
   };
-
   const handleSubmit = () => {
     setIsInfoModalOpen(true);
-    // handleVoteDone();
   };
 
   const handleInfoSubmit = () => {
     setIsInfoModalOpen(false);
-    navigate("/contest", { state: { voted: true } }); // 모달에서 제출 시 이동
+    navigate("/contest", { state: { voted: true } });
   };
+
+  if (!photoList || !topic) return null; // 로딩 중
 
   return (
     <S.ContestVotePage>
@@ -86,14 +92,20 @@ export default function ContestVotePage() {
       <S.PhotoGrid>
         {topic.photos.map((photo) => (
           <PhotoCard
-            key={photo.id}
-            photo={photo}
-            isSelected={selectedPhotos[topic.id] === photo.id}
+            key={photo.photoEntryId}
+            photo={{
+              id: photo.photoEntryId,
+              title: photo.title,
+              src: photo.imageUrl,
+            }}
+            isSelected={selectedPhotos[topic.id] === photo.photoEntryId}
             onSelect={() =>
               setSelectedPhotos((prev) => ({
                 ...prev,
                 [topic.id]:
-                  selectedPhotos[topic.id] === photo.id ? null : photo.id,
+                  selectedPhotos[topic.id] === photo.photoEntryId
+                    ? null
+                    : photo.photoEntryId,
               }))
             }
           />
@@ -106,11 +118,11 @@ export default function ContestVotePage() {
       >
         {isLastPage ? "인적사항 입력" : "다음으로"}
       </S.ActionButton>
-      {/* </S.Wa> */}
       <ContestInfoModal
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
-        onSubmit={handleInfoSubmit} // 모달 내부 제출 버튼에 연결
+        onSubmit={handleInfoSubmit}
+        photoEntryIds={photoEntryIds}
       />
     </S.ContestVotePage>
   );
