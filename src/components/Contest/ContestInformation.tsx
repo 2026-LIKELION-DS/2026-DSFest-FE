@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as S from "../../styles/ContestInformation.style";
 import axios from "axios";
 
@@ -98,12 +98,16 @@ export default function Modal({
                       </a>
                       에 문의해주세요
                     </S.Notice>
-                    <S.NoticeDupl>이미 제출된 학번 및 이름입니다</S.NoticeDupl>
+                    {isDuplicate && (
+                      <S.NoticeDupl>
+                        이미 제출된 학번 및 이름입니다
+                      </S.NoticeDupl>
+                    )}
                   </S.NoticeContent>
                 </S.ContentBox>
                 <S.Sub>
                   <S.CloseButton onClick={onClose}>닫기</S.CloseButton>
-                  <S.SubButton onClick={onSubmit}>투표완료</S.SubButton>
+                  <S.SubButton onClick={handleSubmit}>투표완료</S.SubButton>
                 </S.Sub>
               </S.Container>
             </S.Overlay>
