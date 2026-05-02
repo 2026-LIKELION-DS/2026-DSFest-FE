@@ -4,7 +4,9 @@ import ScheduleBackGround from "../assets/Schedule/Scheduleback.svg";
 
 export const SchedulePage = styled.div`
   padding: 0 24px 24px;
-  /* margin-bottom: 65px; */
+  /* margin-bottom: 56px; */
+  /* padding: 0 24px 80px; */
+  padding-bottom: 80px;
   width: 100%;
   position: relative;
   background-color: ${({ theme }) => theme.colors.bg.neutral};
@@ -58,6 +60,9 @@ export const DayButton = styled.button<{ $active: boolean }>`
 export const DaySection = styled.div`
   scroll-margin-top: 80px;
   position: relative;
+  &:last-child {
+    padding-bottom: 80px;
+  }
 `;
 
 export const DecoLayer = styled.div`
