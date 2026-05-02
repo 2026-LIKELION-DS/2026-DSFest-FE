@@ -39,38 +39,33 @@ const scheduleData = [
     },
     data: [
       {
-        id: 1,
+        id: 4,
         title: "낮부스",
         time: "11:00~14:30",
-        isActive: false,
         link: "/booth",
-      },
-      {
-        id: 2,
-        title: "영화 상영 <빅토리>",
-        time: "15:30~17:30",
-        isActive: true,
-      },
-      {
-        id: 3,
-        title: "밤부스",
-        time: "16:00~19:30",
-        isActive: true,
-        link: "/booth",
-      },
-      { id: 4, title: "덕우존 입장", time: "17:30~", isActive: false },
-      { id: 5, title: "총장님 인사", time: "18:00~18:30", isActive: false },
-      {
-        id: 6,
-        title: "재학생 및 동아리 공연",
-        time: "18:30~20:00",
-        isActive: false,
       },
       {
         id: 7,
+        title: "영화 상영 <빅토리>",
+        time: "15:30~17:30",
+      },
+      {
+        id: 8,
+        title: "밤부스",
+        time: "16:00~19:30",
+        link: "/booth",
+      },
+      { id: 9, title: "덕우존 입장", time: "17:30~", isActive: false },
+      { id: 10, title: "총장님 인사", time: "18:00~18:30", isActive: false },
+      {
+        id: 11,
+        title: "재학생 및 동아리 공연",
+        time: "18:30~20:00",
+      },
+      {
+        id: 13,
         title: "아티스트 공연",
         time: "20:30~22:00",
-        isActive: false,
         link: "/artist",
       },
     ],
@@ -80,44 +75,38 @@ const scheduleData = [
     day: "DAY 2",
     data: [
       {
-        id: 8,
+        id: 19,
         title: "낮부스",
         time: "11:00~14:30",
-        isActive: false,
         link: "/booth",
       },
       {
-        id: 9,
+        id: 20,
         title: "Quiz! 덕쏭달쏭",
         time: "11:00~11:30",
-        isActive: true,
       },
       {
-        id: 10,
+        id: 24,
         title: "밤부스",
         time: "16:00~19:30",
-        isActive: true,
         link: "/booth",
       },
       {
-        id: 11,
+        id: 25,
         title: "덕우존 입장 대기",
         time: "16:00~17:00",
-        isActive: false,
       },
-      { id: 12, title: "덕우존 입장", time: "17:00~~18:00", isActive: false },
+      { id: 26, title: "덕우존 입장", time: "17:00~~18:00" },
       {
-        id: 13,
+        id: 27,
         title: "운현가요제",
         time: "18:00~20:30",
-        isActive: false,
         link: "/artist",
       },
       {
-        id: 14,
+        id: 29,
         title: "아티스트 공연",
         time: "20:30~21:00",
-        isActive: false,
         link: "/artist",
       },
     ],
@@ -127,44 +116,38 @@ const scheduleData = [
     day: "DAY 3",
     data: [
       {
-        id: 15,
+        id: 34,
         title: "낮부스",
         time: "11:00~14:30",
-        isActive: false,
         link: "/booth",
       },
       {
-        id: 16,
+        id: 40,
         title: "밤부스",
         time: "16:00~19:30",
-        isActive: true,
         link: "/booth",
       },
       {
-        id: 17,
+        id: 41,
         title: "재학생 및 동아리 공연",
         time: "16:00~18:30",
-        isActive: true,
         link: "/booth",
       },
       {
-        id: 18,
+        id: 42,
         title: "총학생회 콘텐츠",
         time: "18:30~19:30",
-        isActive: false,
       },
       {
-        id: 19,
+        id: 44,
         title: "아티스트 공연",
         time: "18:30~20:00",
-        isActive: false,
         link: "/artist",
       },
       {
-        id: 20,
+        id: 47,
         title: "불꽃놀이",
         time: "21:00~",
-        isActive: false,
       },
     ],
   },
@@ -197,10 +180,7 @@ export default function SchedulePage() {
       .catch((err) => console.error("연동 에러:", err));
   }, [baseUrl]);
 
-  const activeIds = new Set([
-    ...(nowStatus?.current ?? []).map((s) => s.id),
-    ...(nowStatus?.next ? [nowStatus.next.id] : []),
-  ]);
+  const activeIds = new Set([...(nowStatus?.current ?? []).map((s) => s.id)]);
 
   const pageRef = useRef<HTMLDivElement>(null);
   const activeRef = useRef<HTMLDivElement>(null);
@@ -218,7 +198,7 @@ export default function SchedulePage() {
 
   const currentSchedule = scheduleData.find((d) => d.key === currentDay);
   const hasActive =
-    currentSchedule?.data.some((item) => item.isActive) ?? false;
+    currentSchedule?.data.some((item) => activeIds.has(item.id)) ?? false;
 
   // 스크롤 위치에 따라 방향 변경
   useEffect(() => {
