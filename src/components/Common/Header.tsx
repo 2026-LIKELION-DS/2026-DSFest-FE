@@ -38,17 +38,6 @@ export default function Header({
     return null;
   };
 
-  // const getContestStatusBubble = () => {
-  //   const now = new Date();
-  //   const month = now.getMonth() + 1;
-  //   const date = now.getDate();
-  //   // const time = now.getHours() * 100 + now.getMinutes();
-  //   //응모 기간
-  //   if (month === 4 && date >= 28) return "사진 응모 중!";
-  //   // 투표 기간
-  //   if (month === 5 && date >= 1 && date <= 15) return "사진 투표 중!";
-  // };
-
   return (
     <S.Container>
       <S.Left $show={showBackButton}>
