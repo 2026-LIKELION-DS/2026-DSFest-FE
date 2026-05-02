@@ -217,19 +217,6 @@ export default function SchedulePage() {
     el.addEventListener("scroll", handleScroll);
     return () => el.removeEventListener("scroll", handleScroll);
   }, []);
-  // useEffect(() => {
-  //   const el = pageRef.current;
-  //   if (!el) return;
-
-  //   const handleScroll = () => {
-  //     if (!activeRef.current) return;
-  //     const rect = activeRef.current.getBoundingClientRect();
-  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
-  //   };
-
-  //   el.addEventListener("scroll", handleScroll);
-  //   return () => el.removeEventListener("scroll", handleScroll);
-  // }, []);
 
   const handleClick = () => {
     activeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
