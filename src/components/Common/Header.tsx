@@ -1,8 +1,8 @@
 import * as S from "./Header.style";
 import chevronLeft from "../../assets/ChevronLeft.svg";
 
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   title: string;
