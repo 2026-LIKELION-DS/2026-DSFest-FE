@@ -59,6 +59,10 @@ export default function ContestVotePage() {
   const isLastPage = currentPage === TOPICS.length - 1;
   const isSelected = topic ? selectedPhotos[topic.id] != null : false;
 
+  const photoEntryIds = Object.values(selectedPhotos).filter(
+    (id): id is number => id !== null,
+  );
+
   const handleNext = () => {
     if (currentPage < TOPICS.length - 1) {
       setCurrentPage((prev) => prev + 1);
@@ -117,7 +121,8 @@ export default function ContestVotePage() {
       <ContestInfoModal
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
-        onSubmit={handleInfoSubmit} // 모달 내부 제출 버튼에 연결
+        onSubmit={handleInfoSubmit}
+        photoEntryIds={photoEntryIds}
       />
     </S.ContestVotePage>
   );
