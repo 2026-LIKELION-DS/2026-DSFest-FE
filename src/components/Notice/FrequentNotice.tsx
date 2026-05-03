@@ -5,7 +5,21 @@ import * as S from "../../styles/Notice.style";
 
 import chevronRight from "../../assets/Notice/ChevronRight.svg";
 
+type NoticeCategory = "EVENT" | "PERFORMANCE" | "NOTICE" | "ETC";
+
+const CATEGORY_LABEL: Record<NoticeCategory, string> = {
+  EVENT: "이벤트",
+  PERFORMANCE: "공연",
+  NOTICE: "안내",
+  ETC: "기타",
+};
+
+const getCategoryLabel = (category: string) => {
+  return CATEGORY_LABEL[category as NoticeCategory] ?? category;
+};
+
 interface FrequentNotice {
+  id: number;
   category: string;
   title: string;
 }
@@ -29,12 +43,17 @@ export default function FrequentNotice({ noticeCards }: FrequentNoticeProps) {
 
       <S.ScrollWrapper>
         <S.CardScrollArea>
-          {noticeCards.map((card, index) => (
-            <NoticeCard
-              key={`${card.category}-${card.title}-${index}`}
-              category={card.category}
-              title={card.title}
-            />
+          {noticeCards.map((card) => (
+            <div
+              key={card.id}
+              onClick={() => navigate(`/notice/${card.id}`)}
+              style={{ cursor: "pointer" }}
+            >
+              <NoticeCard
+                category={getCategoryLabel(card.category)}
+                title={card.title}
+              />
+            </div>
           ))}
         </S.CardScrollArea>
       </S.ScrollWrapper>
