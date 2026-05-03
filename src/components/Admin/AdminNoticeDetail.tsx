@@ -1,55 +1,155 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import * as S from "../../styles/AdminNoticeDetail.styles";
 import AdminConfirmModal from "./AdminConfirmModal";
+import { getAdminToken } from "../../utils/Admin";
 
 type ModalType = "edit" | "delete" | null;
 
-const mockNotice = {
-  title: "공지 제목 공지 제목공지 제목공지 제목공지 제목",
-  images: [null, null, null],
-  content: `공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게 공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게 공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게
-
-공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게
-
-공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게 긴 공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게공지 본문이 들어가는 자리입니다. 공지 텍스트가 들어가고 이렇게`,
-};
+interface NoticeDetail {
+  id: number;
+  title: string;
+  category: "NOTICE" | "PERFORMANCE" | "EVENT" | "ETC";
+  urgent: boolean;
+  content: string;
+  imageUrls: string[];
+  createdAt: string;
+  updatedAt: string;
+  viewCount: number;
+}
 
 export default function AdminNoticeDetail() {
+  const navigate = useNavigate();
+  const { noticeId } = useParams();
+
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  const [notice, setNotice] = useState<NoticeDetail | null>(null);
   const [modalType, setModalType] = useState<ModalType>(null);
+
+  useEffect(() => {
+    const fetchNoticeDetail = async () => {
+      try {
+        const token = getAdminToken();
+
+        if (!token) {
+          alert("로그인이 필요합니다.");
+          navigate("/AdminLogin");
+          return;
+        }
+
+        if (!noticeId) {
+          alert("공지 ID가 없습니다.");
+          navigate("/AdminNotice");
+          return;
+        }
+
+        const response = await fetch(
+          `${API_URL}/api/admin/notices/${noticeId}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.isSuccess) {
+          alert(data.message || "공지 상세 정보를 불러오지 못했습니다.");
+          navigate("/AdminNotice");
+          return;
+        }
+
+        setNotice(data.result);
+      } catch (error) {
+        console.error(error);
+        alert("공지 상세 조회 중 오류가 발생했습니다.");
+        navigate("/AdminNotice");
+      }
+    };
+
+    fetchNoticeDetail();
+  }, [API_URL, navigate, noticeId]);
+
+  const handleDeleteNotice = async () => {
+    try {
+      const token = getAdminToken();
+
+      if (!token) {
+        alert("로그인이 필요합니다.");
+        navigate("/AdminLogin");
+        return;
+      }
+
+      if (!noticeId) {
+        alert("공지 ID가 없습니다.");
+        navigate("/AdminNotice");
+        return;
+      }
+
+      const response = await fetch(`${API_URL}/api/admin/notices/${noticeId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.isSuccess) {
+        alert(data.message || "공지 삭제에 실패했습니다.");
+        return;
+      }
+
+      alert("공지사항이 삭제되었습니다.");
+      setModalType(null);
+      navigate("/AdminNotice");
+    } catch (error) {
+      console.error(error);
+      alert("공지 삭제 중 오류가 발생했습니다.");
+    }
+  };
 
   const handleConfirm = () => {
     if (modalType === "edit") {
-      console.log("공지 수정");
+      navigate(`/AdminNoticeEdit/${noticeId}`);
+      setModalType(null);
+      return;
     }
 
     if (modalType === "delete") {
-      console.log("공지 삭제");
+      handleDeleteNotice();
+      return;
     }
-
-    setModalType(null);
   };
+
+  if (!notice) {
+    return null;
+  }
 
   return (
     <>
       <S.Page>
         <S.Content>
           <S.FixedTopArea>
-            <S.Title>{mockNotice.title}</S.Title>
+            <S.Title>{notice.title}</S.Title>
 
             <S.ImageScrollArea>
-              <S.AddImageBox>
-                사진
-                <br />
-                추가하기
-              </S.AddImageBox>
-
-              {mockNotice.images.map((_, index) => (
-                <S.ImageBox key={index} />
-              ))}
+              {notice.imageUrls.length > 0 ? (
+                notice.imageUrls.map((imageUrl, index) => (
+                  <S.ImageBox key={`${imageUrl}-${index}`}>
+                    <img src={imageUrl} alt={`공지 이미지 ${index + 1}`} />
+                  </S.ImageBox>
+                ))
+              ) : (
+                <S.ImageBox />
+              )}
             </S.ImageScrollArea>
           </S.FixedTopArea>
 
-          <S.BodyText>{mockNotice.content}</S.BodyText>
+          <S.BodyText>{notice.content}</S.BodyText>
         </S.Content>
 
         <S.BottomButtonArea>

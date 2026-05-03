@@ -209,7 +209,7 @@ function App() {
         <Route path="/AdminLogin" element={<AdminLoginPage />} />
         <Route path="/AdminNotice" element={<AdminNoticePage />} />
         <Route
-          path="/AdminNoticeDetail"
+          path="/AdminNoticeDetail/:noticeId"
           element={
             <AppLayout
               title="공지 상세보기"
@@ -224,6 +224,18 @@ function App() {
           path="/AdminNoticeWrite"
           element={
             <AppLayout title="공지" showBackButton={true} showNavBar={false}>
+              <AdminNoticeWritePage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/AdminNoticeEdit/:noticeId"
+          element={
+            <AppLayout
+              title="공지 수정"
+              showBackButton={true}
+              showNavBar={false}
+            >
               <AdminNoticeWritePage />
             </AppLayout>
           }

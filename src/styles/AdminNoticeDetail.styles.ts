@@ -51,7 +51,10 @@ export const ImageScrollArea = styled.div`
   display: flex;
   gap: 12px;
 
+  width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
+
   margin-bottom: 20px;
   padding-bottom: 4px;
 
@@ -86,10 +89,21 @@ export const AddImageBox = styled.button`
 
 export const ImageBox = styled.div`
   flex: 0 0 144px;
+  min-width: 144px;
+  width: 144px;
   height: 180px;
+  flex-shrink: 0;
 
   border-radius: 4px;
+  overflow: hidden;
   background: ${({ theme }) => theme.colors.grey[100]};
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 `;
 
 export const BodyText = styled.div`
