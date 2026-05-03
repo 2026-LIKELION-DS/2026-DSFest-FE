@@ -5,7 +5,6 @@ import axios from "axios";
 interface ContestInfoModalProps {
   isOpen: boolean;
   onClose: () => void;
-  // images?: string[];
   onSubmit: () => void;
   photoEntryIds: number[];
 }
@@ -20,6 +19,7 @@ export default function Modal({
   const [studentId, setStudentId] = useState("");
   const [studentName, setStudentName] = useState("");
   const [isDuplicate, setIsDuplicate] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -32,6 +32,12 @@ export default function Modal({
     };
   }, [isOpen]);
 
+  const getStatus = (value: string) => {
+    if (isDuplicate || hasError) return "error";
+    if (value) return "active";
+    return "default";
+  };
+
   const handleSubmit = () => {
     axios
       .post(`${baseUrl}/api/photo-contest/vote`, {
@@ -42,13 +48,32 @@ export default function Modal({
       .then((res) => {
         if (res.data.isSuccess) {
           setIsDuplicate(false);
+          setHasError(false);
           onSubmit();
         }
       })
       .catch((err) => {
         console.error("투표 에러:", err);
-        setIsDuplicate(true);
+        if (err.response?.status === 409) {
+          setIsDuplicate(true);
+          setHasError(false);
+        } else {
+          setIsDuplicate(false);
+          setHasError(true);
+        }
       });
+  };
+
+  const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setStudentId(e.target.value);
+    setIsDuplicate(false);
+    setHasError(false);
+  };
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setStudentName(e.target.value);
+    setIsDuplicate(false);
+    setHasError(false);
   };
 
   if (!isOpen) return null;
@@ -67,37 +92,45 @@ export default function Modal({
                 <S.ContentBox>
                   <S.Content>
                     <S.NumTitle>학번</S.NumTitle>
-                    <S.NumBox>
+                    <S.NumBox status={getStatus(studentId)}>
                       <S.Num
                         placeholder="20260000"
                         value={studentId}
-                        onChange={(e) => setStudentId(e.target.value)}
+                        onChange={handleIdChange}
+                        // placeholder="20260000"
+                        // value={studentId}
+                        // onChange={(e) => setStudentId(e.target.value)}
                       ></S.Num>
                     </S.NumBox>
                   </S.Content>
                   <S.Content>
                     <S.NumTitle>이름</S.NumTitle>
-                    <S.NumBox>
+                    <S.NumBox status={getStatus(studentName)}>
                       <S.Name
                         placeholder="김덕우"
                         value={studentName}
-                        onChange={(e) => setStudentName(e.target.value)}
+                        onChange={handleNameChange}
+                        // placeholder="김덕우"
+                        // value={studentName}
+                        // onChange={(e) => setStudentName(e.target.value)}
                       ></S.Name>
                     </S.NumBox>
                   </S.Content>
                   <S.NoticeContent>
-                    <S.Notice>
-                      학번 혹은 이름이 바르게 적혔는지 확인하고<br></br> 이상이
-                      있는 경우
-                      <a
-                        href="https://pf.kakao.com/_gUyQn"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        이곳
-                      </a>
-                      에 문의해주세요
-                    </S.Notice>
+                    {hasError && (
+                      <S.Notice>
+                        학번 혹은 이름이 바르게 적혔는지 확인하고<br></br>{" "}
+                        이상이 있는 경우
+                        <a
+                          href="https://pf.kakao.com/_gUyQn"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          이곳
+                        </a>
+                        에 문의해주세요
+                      </S.Notice>
+                    )}
                     {isDuplicate && (
                       <S.NoticeDupl>
                         이미 제출된 학번 및 이름입니다
