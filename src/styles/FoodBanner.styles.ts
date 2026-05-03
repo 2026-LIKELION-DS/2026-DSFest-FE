@@ -19,15 +19,19 @@ export const BannerWrapper = styled.div`
 export const Card = styled.div`
   position: relative;
   background: ${({ theme }) => theme.colors.bg.offWhite};
-  padding: 16px;
+  padding: 16px 16px 5px;
   border-radius: 4px;
   box-shadow: 0px 4px 8px #d9d9d9;
 
   width: 140px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 // 가게 이미지 자리 (회색 박스)
-export const ImageBox = styled.button`
+export const ImageBox = styled.div`
   width: 100%;
   height: 80px;
 
@@ -36,15 +40,19 @@ export const ImageBox = styled.button`
   background: #d9d9d9;
   border-radius: 4px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  overflow: hidden;
+`;
+
+export const BannerImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 `;
 
 // 상호명
 export const StoreName = styled.div`
-  margin-top: 8px;
-
   font-family: ${theme.typography.h3.fontFamily};
   font-weight: ${theme.typography.h3.fontWeight};
   font-size: ${theme.typography.h3.fontSize};

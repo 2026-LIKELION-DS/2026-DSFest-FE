@@ -14,81 +14,34 @@ import Sushi from "../../assets/Food/Sushi.svg";
 import Takeout from "../../assets/Food/TakeoutBox.svg";
 
 interface Props {
-  onImageClick: (images: string[]) => void;
+  onImageClick?: (images: string[]) => void;
+}
+
+interface FoodTruckBanner {
+  id: number;
+  imageUrl: string;
+  title: string;
 }
 
 const trucks = [
-  {
-    name: "Take one",
-    banner: "직화 닭꼬치 어때요?",
-    image: chicken,
-    images: [chicken],
-  },
-  {
-    name: "타우라푸드",
-    banner: "닭강정 어때요?",
-    image: chicken,
-    images: [chicken, pizza],
-  },
-  {
-    name: "얌얌츄러스",
-    banner: "츄러스 어때요?",
-    image: IceCream,
-    images: [IceCream],
-  },
-  {
-    name: "이태원케밥",
-    banner: "케밥 어때요?",
-    image: Burrito,
-    images: [Burrito],
-  },
-  {
-    name: "순대써는남자",
-    banner: "철판버터오징어 어때요?",
-    image: Squid,
-    images: [Squid],
-  },
-  {
-    name: "모디",
-    banner: "스테이크 덮밥 어때요?",
-    image: Meat,
-    images: [Meat],
-  },
-  {
-    name: "야미",
-    banner: "소고기불초밥 어때요?",
-    image: Sushi,
-    images: [Sushi],
-  },
-  { name: "KogiBBQ", banner: "바베큐 어때요?", image: Meat, images: [Meat] },
-  {
-    name: "짱가곱창",
-    banner: "곱창·막창 어때요?",
-    image: Meat,
-    images: [Meat],
-  },
-  {
-    name: "오야붕",
-    banner: "야끼소바 어때요?",
-    image: Takeout,
-    images: [Takeout],
-  },
-  { name: "골드키즈", banner: "피자 어때요?", image: pizza, images: [pizza] },
-  {
-    name: "썬플라워",
-    banner: "크림새우 어때요?",
-    image: FriedShrimp,
-    images: [FriedShrimp],
-  },
-  {
-    name: "스위트퍼플",
-    banner: "밀크쉐이크 어때요?",
-    image: Cup,
-    images: [Cup],
-  },
+  { image: chicken, images: [chicken] },
+  { image: chicken, images: [chicken, pizza] },
+  { image: IceCream, images: [IceCream] },
+  { image: Burrito, images: [Burrito] },
+  { image: Squid, images: [Squid] },
+  { image: Meat, images: [Meat] },
+  { image: Sushi, images: [Sushi] },
+  { image: Meat, images: [Meat] },
+  { image: Meat, images: [Meat] },
+  { image: Takeout, images: [Takeout] },
+  { image: pizza, images: [pizza] },
+  { image: FriedShrimp, images: [FriedShrimp] },
+  { image: Cup, images: [Cup] },
 ];
 
-export default function FoodBannerCarousel({ onImageClick }: Props) {
+export default function FoodBannerCarousel() {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const trackRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<number | null>(null);
 
@@ -96,10 +49,31 @@ export default function FoodBannerCarousel({ onImageClick }: Props) {
   const startXRef = useRef(0);
   const startPositionRef = useRef(0);
   const isDraggingRef = useRef(false);
-  const draggedRef = useRef(false);
 
+  const [banners, setBanners] = useState<FoodTruckBanner[]>([]);
   const [position, setPosition] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+
+  useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const response = await fetch(`${API_URL}/api/food-trucks/banners`);
+        const data = await response.json();
+
+        if (!response.ok || !data.isSuccess) {
+          alert(data.message || "푸드트럭 배너를 불러오지 못했습니다.");
+          return;
+        }
+
+        setBanners(data.result);
+      } catch (error) {
+        console.error(error);
+        alert("푸드트럭 배너 조회 중 오류가 발생했습니다.");
+      }
+    };
+
+    fetchBanners();
+  }, [API_URL]);
 
   const getHalfWidth = () => {
     if (!trackRef.current) return 0;
@@ -122,8 +96,11 @@ export default function FoodBannerCarousel({ onImageClick }: Props) {
     return value;
   };
 
-  // useEffect 의존성 문제 해결 방지 코드
   const normalizePositionRef = useRef(normalizePosition);
+
+  useEffect(() => {
+    normalizePositionRef.current = normalizePosition;
+  });
 
   useEffect(() => {
     const speed = 0.5;
@@ -131,7 +108,7 @@ export default function FoodBannerCarousel({ onImageClick }: Props) {
     const animate = () => {
       if (!isDraggingRef.current) {
         positionRef.current = normalizePositionRef.current(
-          positionRef.current - speed,
+          positionRef.current - speed
         );
         setPosition(positionRef.current);
       }
@@ -152,8 +129,6 @@ export default function FoodBannerCarousel({ onImageClick }: Props) {
     trackEvent("foodtruck_banner_scroll");
 
     isDraggingRef.current = true;
-    draggedRef.current = false;
-
     setIsDragging(true);
 
     startXRef.current = e.clientX;
@@ -167,10 +142,6 @@ export default function FoodBannerCarousel({ onImageClick }: Props) {
 
     const diff = e.clientX - startXRef.current;
 
-    if (Math.abs(diff) > 5) {
-      draggedRef.current = true;
-    }
-
     positionRef.current = normalizePosition(startPositionRef.current + diff);
     setPosition(positionRef.current);
   };
@@ -181,6 +152,11 @@ export default function FoodBannerCarousel({ onImageClick }: Props) {
 
     e.currentTarget.releasePointerCapture(e.pointerId);
   };
+
+  const mergedBanners = banners.map((banner, index) => ({
+    ...banner,
+    iconImage: trucks[index % trucks.length].image,
+  }));
 
   return (
     <S.BannerWrapper>
@@ -194,21 +170,17 @@ export default function FoodBannerCarousel({ onImageClick }: Props) {
         onPointerCancel={handlePointerUp}
         onPointerLeave={handlePointerUp}
       >
-        {[...trucks, ...trucks].map((truck, index) => (
-          <S.Card key={`${truck.name}-${index}`}>
-            <S.Sticker>{truck.banner}</S.Sticker>
+        {[...mergedBanners, ...mergedBanners].map((banner, index) => (
+          <S.Card key={`${banner.id}-${index}`}>
+            <S.Sticker>{banner.title}</S.Sticker>
 
-            <S.ImageBox
-              type="button"
-              onClick={() => {
-                if (draggedRef.current) return;
-                onImageClick(truck.images);
-              }}
-            />
+            <S.ImageBox>
+              <S.BannerImage src={banner.imageUrl} alt={banner.title} />
+            </S.ImageBox>
 
-            <S.PizzaImage src={truck.image} alt={truck.name} />
+            <S.PizzaImage src={banner.iconImage} alt="" />
 
-            <S.StoreName>{truck.name}</S.StoreName>
+            <S.StoreName>{banner.title}</S.StoreName>
           </S.Card>
         ))}
       </S.Track>
