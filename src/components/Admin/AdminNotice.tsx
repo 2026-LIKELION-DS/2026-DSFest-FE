@@ -62,9 +62,45 @@ export default function AdminNotice() {
     fetchNotices();
   }, [API_URL, navigate]);
 
-  const handleClearEmergency = () => {
-    // TODO: 백엔드 API 연결
-    console.log("모든 긴급공지 해제");
+  const handleClearEmergency = async () => {
+    try {
+      const token = getAdminToken();
+
+      if (!token) {
+        alert("로그인이 필요합니다.");
+        navigate("/AdminLogin");
+        return;
+      }
+
+      const response = await fetch(
+        `${API_URL}/api/admin/notices/urgent/clear`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok || !data.isSuccess) {
+        alert(data.message || "긴급공지 해제에 실패했습니다.");
+        return;
+      }
+
+      alert("모든 긴급공지가 해제되었습니다.");
+
+      setNotices((prev) =>
+        prev.map((notice) => ({
+          ...notice,
+          urgent: false,
+        }))
+      );
+    } catch (error) {
+      console.error(error);
+      alert("긴급공지 해제 중 오류가 발생했습니다.");
+    }
   };
 
   const handleNoticeClick = (noticeId: number) => {
