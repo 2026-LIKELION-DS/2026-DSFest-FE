@@ -253,8 +253,6 @@ export const PlaylistAddButton = styled.a`
 export const PlaylistNotice = styled.article`
   position: relative;
   overflow: hidden;
-
-  margin-top: 22px;
   padding: 16px;
   border: 1px solid ${({ theme }) => theme.colors.stroke.oliveLight};
   border-radius: 4px;
