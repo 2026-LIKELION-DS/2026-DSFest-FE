@@ -10,7 +10,7 @@ import FrequentNotice from "../../components/Notice/FrequentNotice";
 
 import * as S from "../../styles/Notice.style";
 
-type NoticeCategory = "EVENT" | "PERFORMANCE" | "INFO" | "ETC";
+type NoticeCategory = "EVENT" | "PERFORMANCE" | "NOTICE" | "ETC";
 
 interface NoticeListResponse {
   id: number;
@@ -43,7 +43,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 const CATEGORY_LABEL: Record<NoticeCategory, string> = {
   EVENT: "이벤트",
   PERFORMANCE: "공연",
-  INFO: "안내",
+  NOTICE: "안내",
   ETC: "기타",
 };
 
@@ -158,7 +158,7 @@ export default function Notice() {
               <NoticeListItem
                 key={notice.id}
                 id={notice.id}
-                category={CATEGORY_LABEL[notice.category]}
+                category={CATEGORY_LABEL[notice.category] ?? notice.category}
                 title={notice.title}
                 onClick={() => navigate(`/notice/${notice.id}`)}
               />
