@@ -242,7 +242,7 @@ function ArtistPage() {
           status={currentCountdownStatus ?? "MORE_THAN_24H"}
           onLiveClick={() => {
             trackEvent("livetalk_from_artist");
-            navigate("/live");
+            navigate("/livetalk");
           }}
           onGuideClick={() => setIsGuideModalOpen(true)}
         />
