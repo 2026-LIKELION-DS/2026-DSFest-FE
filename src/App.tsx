@@ -228,6 +228,18 @@ function App() {
             </AppLayout>
           }
         />
+        <Route
+          path="/AdminNoticeEdit/:noticeId"
+          element={
+            <AppLayout
+              title="공지 수정"
+              showBackButton={true}
+              showNavBar={false}
+            >
+              <AdminNoticeWritePage />
+            </AppLayout>
+          }
+        />
       </Routes>
     </Router>
   );
