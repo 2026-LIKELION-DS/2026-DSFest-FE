@@ -30,7 +30,7 @@ function ArtistCard({ artist }: ArtistCardProps) {
 
       <S.ArtistInfo>
         <S.ArtistName>{artist.name}</S.ArtistName>
-        <S.ArtistDesc>{artist.desc}</S.ArtistDesc>
+        {/* <S.ArtistDesc>{artist.desc}</S.ArtistDesc> */}
       </S.ArtistInfo>
 
       <S.ArtistLink>
