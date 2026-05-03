@@ -19,7 +19,7 @@ export const BannerWrapper = styled.div`
 export const Card = styled.div`
   position: relative;
   background: ${({ theme }) => theme.colors.bg.offWhite};
-  padding: 16px 16px 5px;
+  padding: 16px;
   border-radius: 4px;
   box-shadow: 0px 4px 8px #d9d9d9;
 

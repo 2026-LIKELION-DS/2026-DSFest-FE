@@ -13,10 +13,6 @@ import Squid from "../../assets/Food/Squid.svg";
 import Sushi from "../../assets/Food/Sushi.svg";
 import Takeout from "../../assets/Food/TakeoutBox.svg";
 
-interface Props {
-  onImageClick?: (images: string[]) => void;
-}
-
 interface FoodTruckBanner {
   id: number;
   imageUrl: string;
@@ -38,7 +34,21 @@ const trucks = [
   { image: FriedShrimp, images: [FriedShrimp] },
   { image: Cup, images: [Cup] },
 ];
-
+const STORE_NAMES = [
+  "Take one",
+  "타우라푸드",
+  "얌얌츄러스",
+  "이태원케밥",
+  "순대써는남자",
+  "모디",
+  "야미",
+  "KogiBBQ",
+  "짱가곱창",
+  "오야붕",
+  "골드키즈",
+  "썬플라워",
+  "스위트퍼플",
+];
 export default function FoodBannerCarousel() {
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -180,7 +190,7 @@ export default function FoodBannerCarousel() {
 
             <S.PizzaImage src={banner.iconImage} alt="" />
 
-            <S.StoreName>{banner.title}</S.StoreName>
+            <S.StoreName>{STORE_NAMES[index % STORE_NAMES.length]}</S.StoreName>
           </S.Card>
         ))}
       </S.Track>
