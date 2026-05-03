@@ -11,6 +11,7 @@ export const colors = {
 
   yellow: {
     50: "#FDF7E7",
+    100:"#FCEFD1",
   },
 
   olive: {
@@ -46,7 +47,7 @@ export const colors = {
   bg: {
     disabled: "#D6D6D6",
     neutralDeep: "#F2F2F2",
-    neutral: "#FFFFFF",
+    neutral: "#FFFEFB",
     critical: "#F22128",
     criticalLight: "#F4C0C0",
     offWhite: "#FFFFFF",

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+type CountdownStatus = "MORE_THAN_24H" | "WITHIN_24H" | "LIVE" | "ENDED";
+
 // ArtistCard
 export const ArtistCard = styled.article`
   position: relative;
@@ -8,7 +10,7 @@ export const ArtistCard = styled.article`
   margin: 0 auto;
   padding: 24px;
   border-radius: 4px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.bg.offWhite};
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 `;
 
@@ -24,16 +26,16 @@ export const TimeBlock = styled.div`
   top: -1px;
   right: 25px;
   padding: 6px 12px;
-  border: 1px solid #0b4112;
+  border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
   border-radius: 2px;
-  background: #f5f7ed;
-  color: #0b4112;
+  background: ${({ theme }) => theme.colors.bg.oliveLight};
+  color: ${({ theme }) => theme.colors.bg.brand};
   transform: rotate(10deg);
 `;
 
 export const ArtistTime = styled.div`
   font-size: 18px;
-  font-weight: 400;
+  font-family: "OwnglyphSeaBreeze", sans-serif;
 `;
 
 export const ArtistImage = styled.img`
@@ -53,7 +55,7 @@ export const ArtistName = styled.h3`
   font-size: 24px;
   font-weight: 700;
   line-height: 1.5;
-  color: #161716;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const ArtistDesc = styled.p`
@@ -61,20 +63,21 @@ export const ArtistDesc = styled.p`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
-  color: #161716;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
-export const LinkBlock = styled.div`
-  display: flex;
-  background: #f5f7ed;
-  border: 1px solid #0b4112;
+export const LinkBlock = styled.a`
+  background: ${({ theme }) => theme.colors.bg.oliveLight};
+  border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
   border-radius: 2px;
   display: flex;
-  width: 120px;
+  width: 121px;
   padding: 4px 12px;
   justify-content: center;
   align-items: center;
   gap: 4px;
+  text-decoration: none;
+  color: inherit;
 `;
 
 export const ArtistLink = styled.div`
@@ -87,9 +90,9 @@ export const ArtistLink = styled.div`
   gap: 6px;
 
   a {
-    color: #0b4112;
+    color: ${({ theme }) => theme.colors.bg.brand};
     font-size: 14px;
-    font-weight: 400;
+    font-family: "OwnglyphSeaBreeze", sans-serif;
   }
 `;
 
@@ -107,7 +110,8 @@ export const PageButton = styled.button<{ $active: boolean }>`
   padding: 0;
   border: none;
   border-radius: 100px;
-  background: ${({ $active }) => ($active ? "#2f7d3b" : "#b8b8b8")};
+  background: ${({ theme, $active }) =>
+    $active ? theme.colors.bg.brandLight : theme.colors.fg.subtle};
   cursor: pointer;
 `;
 
@@ -126,7 +130,7 @@ export const ButtonSet = styled.div`
 `;
 
 export const CountdownButton = styled.button<{
-  $status: "BEFORE" | "LIVE" | "ENDED";
+  $status: CountdownStatus;
 }>`
   width: 294px;
   height: 44px;
@@ -139,27 +143,19 @@ export const CountdownButton = styled.button<{
   justify-content: flex-start;
   padding: 0 24px;
 
-  background: ${({ $status }) =>
-    $status === "LIVE"
-      ? "#0B4112"
-      : $status === "ENDED"
-        ? "#D6D6D6"
-        : "#D6D6D6"};
+  background: ${({ theme, $status }) =>
+    $status === "LIVE" ? theme.colors.bg.brand : theme.colors.bg.disabled};
 
-  color: ${({ $status }) => ($status === "LIVE" ? "#F2F2F2" : "#828282")};
+  color: ${({ theme, $status }) =>
+    $status === "LIVE"
+      ? theme.colors.fg.primaryInverted
+      : theme.colors.fg.disabled};
 
   cursor: ${({ $status }) => ($status === "ENDED" ? "not-allowed" : "pointer")};
 `;
 
-// export const CountdownButtonBlock = styled.div`
-//   display: flex;
-//   align-items: center;
-//   width: 100%;
-//   justify-content: space-between;
-// `;
-
 export const CountdownButtonBlock = styled.div<{
-  $status: "BEFORE" | "LIVE" | "ENDED";
+  $status: CountdownStatus;
 }>`
   display: flex;
   align-items: center;
@@ -179,8 +175,8 @@ export const EntranceButton = styled.button`
   height: 44px;
   border-radius: 100px;
   border: none;
-  background: #0b4112;
-  color: #f2f2f2;
+  background: ${({ theme }) => theme.colors.bg.brand};
+  color: ${({ theme }) => theme.colors.fg.primaryInverted};
   font-size: 14px;
   font-weight: 700;
   display: flex;
@@ -195,7 +191,7 @@ export const EntranceButtonBlock = styled.div`
 `;
 
 export const NoticeText = styled.p`
-  color: #9e9e9e;
+  color: ${({ theme }) => theme.colors.fg.subtle};
   font-size: 12px;
   font-weight: 500;
   text-align: center;
@@ -210,13 +206,14 @@ export const ArtistPlaylist = styled.section`
 export const PlatlistBlock = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 5px;
 `;
 
 export const PlaylistTitle = styled.h2`
   margin: 0;
   font-size: 24px;
   font-weight: 700;
-  color: #111;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const PlaylistDesc = styled.p`
@@ -224,7 +221,7 @@ export const PlaylistDesc = styled.p`
   padding-bottom: 12px;
   font-size: 14px;
   font-weight: 500;
-  color: #9b9b9b;
+  color: ${({ theme }) => theme.colors.fg.subtle};
 `;
 
 export const ThumbnailLink = styled.a`
@@ -245,8 +242,8 @@ export const PlaylistAddButton = styled.a`
   height: 42px;
   margin-top: 24px;
   border-radius: 100px;
-  background: #064b13;
-  color: #f2f2f2;
+  background: ${({ theme }) => theme.colors.bg.brand};
+  color: ${({ theme }) => theme.colors.fg.primaryInverted};
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
@@ -256,12 +253,10 @@ export const PlaylistAddButton = styled.a`
 export const PlaylistNotice = styled.article`
   position: relative;
   overflow: hidden;
-
-  margin-top: 22px;
   padding: 16px;
-  border: 1px solid #e5ebcf;
+  border: 1px solid ${({ theme }) => theme.colors.stroke.oliveLight};
   border-radius: 4px;
-  background: #f5f7ed;
+  background: ${({ theme }) => theme.colors.bg.oliveLight};
 
   .bubble {
     position: absolute;
@@ -292,7 +287,7 @@ export const PlaylistNotice = styled.article`
 
 export const NoticeTitle = styled.span`
   display: block;
-  color: #277b31;
+  color: ${({ theme }) => theme.colors.bg.brandLight};
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
@@ -304,7 +299,7 @@ export const NoticeList = styled.ol`
 
   li {
     margin-bottom: 10px;
-    color: #222;
+    color: ${({ theme }) => theme.colors.fg.primary};
     font-size: 13px;
     line-height: 1.5;
     font-weight: 500;
@@ -313,7 +308,7 @@ export const NoticeList = styled.ol`
 
 export const NoticeCaption = styled.p`
   margin: 10px 0 0;
-  color: #9a9a9a;
+  color: ${({ theme }) => theme.colors.fg.subtle};
   font-size: 13px;
   font-weight: 500;
 `;
@@ -322,3 +317,105 @@ export const NoticeBubble = styled.img<{
   $top?: string;
   $right?: string;
 }>;
+
+// ArtistModal
+export const ArtistModalOverlay = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  max-width: 768px;
+  height: 100dvh;
+  @media (min-width: 768px) {
+    border: 12px solid ${({ theme }) => theme.colors.olive[50]};
+    height: 874px;
+    border-radius: 24px;
+    max-width: 402px;
+  }
+
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+`;
+
+export const ArtistModalContainer = styled.div`
+  width: 100%;
+  max-width: 354px;
+  max-height: 90%;
+  background: ${({ theme }) => theme.colors.bg.neutral};
+  border-radius: 4px;
+  position: relative;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+export const ArtistContentArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+export const ArtistModalTitle = styled.h2`
+  text-align: center;
+  margin-bottom: 0px;
+  font-size: 24px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.bg.brandLight};
+`;
+
+export const ArtistModalDivider = styled.div`
+  border: none;
+  border-top: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
+  margin: 0;
+`;
+
+export const ArtistImageRow = styled.div`
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const ModalImage = styled.img`
+  flex: 0 0 100px;
+  height: 180px;
+  width: 144px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+`;
+
+export const ArtistDescription = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: ${({ theme }) => theme.colors.fg.primary};
+`;
+
+export const ArtistButtonGroup = styled.div`
+  display: flex;
+`;
+
+export const ArtistCloseButton = styled.button`
+  width: 100%;
+  height: 44px;
+  padding: 10px;
+  border-radius: 100px;
+  border: 0.5px solid ${({ theme }) => theme.colors.fg.subtle};
+  background: ${({ theme }) => theme.colors.bg.offWhite};
+  font-weight: 700;
+  cursor: pointer;
+`;

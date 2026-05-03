@@ -30,17 +30,26 @@ function ArtistCard({ artist }: ArtistCardProps) {
 
       <S.ArtistInfo>
         <S.ArtistName>{artist.name}</S.ArtistName>
-        <S.ArtistDesc>{artist.desc}</S.ArtistDesc>
+        {/* <S.ArtistDesc>{artist.desc}</S.ArtistDesc> */}
       </S.ArtistInfo>
 
       <S.ArtistLink>
-        <S.LinkBlock>
+        <S.LinkBlock
+          href={artist.instaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={instagramIcon} alt="Instagram" />
-          <a href={artist.instaUrl}>공식 인스타그램</a>
+          <span>공식 인스타그램</span>
         </S.LinkBlock>
-        <S.LinkBlock>
+
+        <S.LinkBlock
+          href={artist.youtubeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={youtubeIcon} alt="YouTube" />
-          <a href={artist.youtubeUrl}>공식 유튜브 채널</a>
+          <span>공식 유튜브 채널</span>
         </S.LinkBlock>
       </S.ArtistLink>
     </S.ArtistCard>

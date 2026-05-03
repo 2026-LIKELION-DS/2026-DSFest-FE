@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ArtistPage = styled.div`
   margin: 0 auto;
-  padding: 0 24px;
-  background: #fff;
+  padding: 0 24px 24px;
+  background: ${({ theme }) => theme.colors.bg.offWhite};
   overflow-x: hidden;
 `;
 
@@ -23,7 +23,8 @@ export const DayButton = styled.button<{ $active: boolean }>`
   flex: 1;
   border: none;
   background: transparent;
-  color: ${({ $active }) => ($active ? "#277B31" : "#9E9E9E")};
+  color: ${({ theme, $active }) =>
+    $active ? theme.colors.bg.brandLight : theme.colors.fg.subtle};
   font-size: 24px;
   font-weight: 700;
   cursor: pointer;
@@ -31,7 +32,8 @@ export const DayButton = styled.button<{ $active: boolean }>`
   span {
     display: block;
     margin-top: 6px;
-    color: ${({ $active }) => ($active ? "#277B31" : "#9E9E9E")};
+    color: ${({ theme, $active }) =>
+      $active ? theme.colors.bg.brandLight : theme.colors.fg.subtle};
     font-size: 14px;
     font-weight: 500;
   }
@@ -46,21 +48,19 @@ export const CarouselWrapper = styled.div`
   width: calc(100% + 48px);
   margin-left: -24px;
   overflow: hidden;
-  padding: 30px 58px 10px;
+  padding: 30px 0 10px;
 `;
 
-export const CarouselTrack = styled.div<{ $currentPage: number }>`
+export const CarouselTrack = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 24px;
+  transform: translate3d(0, 0, 0);
   transition: transform 0.4s ease;
-
-  transform: translateX(
-    ${({ $currentPage }) => `calc(-${$currentPage - 1} * (80% + 16px))`}
-  );
+  will-change: transform;
 `;
 
 export const CardSlide = styled.div`
-  flex: 0 0 74%;
+  flex: 0 0 68%;
 `;
 
 export const PlaylistSection = styled.section`
