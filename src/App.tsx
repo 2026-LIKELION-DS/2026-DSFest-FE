@@ -209,7 +209,7 @@ function App() {
         <Route path="/AdminLogin" element={<AdminLoginPage />} />
         <Route path="/AdminNotice" element={<AdminNoticePage />} />
         <Route
-          path="/AdminNoticeDetail"
+          path="/AdminNoticeDetail/:noticeId"
           element={
             <AppLayout
               title="공지 상세보기"

@@ -1,115 +1,66 @@
+import { useEffect, useState } from "react";
 import * as S from "../../styles/AdminNotice.styles";
 import chevronRight from "../../assets/Admin/ChevronRight.svg";
 import { useNavigate } from "react-router-dom";
+import { getAdminToken } from "../../utils/Admin";
+
+type NoticeCategory = "NOTICE" | "PERFORMANCE" | "EVENT" | "ETC";
 
 interface Notice {
   id: number;
-  category: string;
+  category: NoticeCategory;
   title: string;
-  isEmergency: boolean;
+  urgent: boolean;
+  createdAt: string;
 }
 
-const mockNotices: Notice[] = [
-  {
-    id: 1,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 2,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 3,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 4,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 5,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 6,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 7,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 8,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 9,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 10,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 11,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 12,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 13,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 14,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 15,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-  {
-    id: 16,
-    category: "무대",
-    title: "공지 제목이 들어가는 자리",
-    isEmergency: false,
-  },
-];
+const CATEGORY_LABEL: Record<NoticeCategory, string> = {
+  NOTICE: "안내",
+  PERFORMANCE: "공연",
+  EVENT: "이벤트",
+  ETC: "기타",
+};
 
 export default function AdminNotice() {
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  const [notices, setNotices] = useState<Notice[]>([]);
+
+  useEffect(() => {
+    const fetchNotices = async () => {
+      try {
+        const token = getAdminToken();
+
+        if (!token) {
+          alert("로그인이 필요합니다.");
+          navigate("/AdminLogin");
+          return;
+        }
+
+        const response = await fetch(`${API_URL}/api/admin/notices`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.isSuccess) {
+          alert(data.message || "공지사항을 불러오지 못했습니다.");
+          return;
+        }
+
+        setNotices(data.result);
+      } catch (error) {
+        console.error(error);
+        alert("공지사항 조회 중 오류가 발생했습니다.");
+      }
+    };
+
+    fetchNotices();
+  }, [API_URL, navigate]);
 
   const handleClearEmergency = () => {
     // TODO: 백엔드 API 연결
@@ -117,14 +68,10 @@ export default function AdminNotice() {
   };
 
   const handleNoticeClick = (noticeId: number) => {
-    // 👉 공지 상세 페이지 이동
-    console.log("공지 상세 이동:", noticeId);
-    navigate("/AdminNoticeDetail");
+    navigate(`/AdminNoticeDetail/${noticeId}`);
   };
 
   const handleWriteClick = () => {
-    // 👉 공지 작성 페이지 이동
-    console.log("공지 작성 이동");
     navigate("/AdminNoticeWrite");
   };
 
@@ -137,14 +84,17 @@ export default function AdminNotice() {
       </S.TopArea>
 
       <S.NoticeList>
-        {mockNotices.map((notice) => (
+        {notices.map((notice) => (
           <S.NoticeItem
             key={notice.id}
             type="button"
             onClick={() => handleNoticeClick(notice.id)}
           >
             <S.TextArea>
-              <S.Category>{notice.category}</S.Category>
+              <S.Category>
+                {notice.urgent ? "[긴급] " : ""}
+                {CATEGORY_LABEL[notice.category]}
+              </S.Category>
               <S.Title>{notice.title}</S.Title>
             </S.TextArea>
 
