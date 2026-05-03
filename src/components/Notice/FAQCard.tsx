@@ -19,8 +19,11 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
   return (
     <S.Item>
       <S.QuestionButton type="button" onClick={handleToggle}>
-        <S.QuestionText>Q. {question}</S.QuestionText>
-        <img src={isOpen ? chevronUp : chevronDown} alt="arrow" />{" "}
+        <S.QuestionText>
+          <S.QuestionPrefix>Q.</S.QuestionPrefix>
+          <S.QuestionContent>{question}</S.QuestionContent>
+        </S.QuestionText>
+        <img src={isOpen ? chevronUp : chevronDown} alt="arrow" />
       </S.QuestionButton>
 
       {isOpen && (
