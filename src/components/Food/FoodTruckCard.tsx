@@ -26,12 +26,42 @@ interface Truck {
   operatingTime: string;
   images: string[];
   menus: Menu[];
+  isOpen: boolean;
 }
 
 interface Props {
   truck: Truck;
   onImageClick?: (images: string[]) => void;
 }
+
+interface FoodTruckDetailMenu {
+  menuName: string;
+  price: number;
+  isVegan: boolean;
+}
+
+interface FoodTruckDetailResponse {
+  id: number;
+  imageUrls: string[];
+  name: string;
+  description: string;
+  operatingString: string;
+  menus: FoodTruckDetailMenu[];
+  likeCount: number;
+  isLiked: boolean;
+}
+
+const getGuestUuid = () => {
+  const key = "guestUuid";
+  const savedUuid = localStorage.getItem(key);
+
+  if (savedUuid) return savedUuid;
+
+  const newUuid = crypto.randomUUID();
+  localStorage.setItem(key, newUuid);
+
+  return newUuid;
+};
 
 const isOperatingNow = () => {
   const now = new Date();
@@ -42,34 +72,64 @@ const isOperatingNow = () => {
   return now >= start && now <= end;
 };
 
-const getFestivalOperatingText = (operatingTime: string) => {
-  const today = new Date();
-
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
-  const date = today.getDate();
-
-  if (year !== 2026 || month !== 5 || date < 13 || date > 15) {
-    return "축제기간이 아닙니다";
-  }
-
-  const dayMap: Record<number, string> = {
-    13: "수",
-    14: "목",
-    15: "금",
-  };
-
-  return `${date}(${dayMap[date]}) ${operatingTime}`;
-};
-
 export default function FoodTruckCard({ truck }: Props) {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [isOpen, setIsOpen] = useState(false);
   const [isLiked, setIsLiked] = useState(truck.isLiked);
   const [likeCount, setLikeCount] = useState(truck.likeCount);
+  const [images, setImages] = useState(truck.images);
+  const [menus, setMenus] = useState<Menu[]>(truck.menus);
+  const [operatingTime, setOperatingTime] = useState(truck.operatingTime);
+  const [isDetailLoaded, setIsDetailLoaded] = useState(false);
 
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const isOperating = isOperatingNow();
+
+  const fetchFoodTruckDetail = async () => {
+    try {
+      const response = await fetch(`${API_URL}/api/food-trucks/${truck.id}`, {
+        method: "GET",
+        headers: {
+          guestUuid: getGuestUuid(),
+        },
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.isSuccess) {
+        alert(data.message || "푸드트럭 상세 정보를 불러오지 못했습니다.");
+        return;
+      }
+
+      const detail: FoodTruckDetailResponse = data.result;
+
+      setImages(detail.imageUrls);
+      setMenus(
+        detail.menus.map((menu) => ({
+          name: menu.menuName,
+          price: `${menu.price.toLocaleString()}원`,
+          isVegan: menu.isVegan,
+        }))
+      );
+      setOperatingTime(detail.operatingString);
+      setLikeCount(detail.likeCount);
+      setIsLiked(detail.isLiked);
+      setIsDetailLoaded(true);
+    } catch (error) {
+      console.error(error);
+      alert("푸드트럭 상세 조회 중 오류가 발생했습니다.");
+    }
+  };
+
+  const handleToggleOpen = async () => {
+    if (!isOpen && !isDetailLoaded) {
+      await fetchFoodTruckDetail();
+    }
+
+    setIsOpen((prev) => !prev);
+  };
 
   const handleLike = () => {
     if (!isLiked) {
@@ -90,8 +150,6 @@ export default function FoodTruckCard({ truck }: Props) {
     setIsImageModalOpen(true);
   };
 
-  const operatingText = getFestivalOperatingText(truck.operatingTime);
-
   return (
     <>
       <S.Card>
@@ -99,7 +157,7 @@ export default function FoodTruckCard({ truck }: Props) {
           <S.StoreImageButton type="button" onClick={handleImageClick}>
             <S.ImageWrapper>
               <S.StoreImage
-                src={truck.images[0]}
+                src={images[0]}
                 alt={truck.name}
                 $isOperating={isOperating}
               />
@@ -130,12 +188,12 @@ export default function FoodTruckCard({ truck }: Props) {
 
             <S.TimeRow>
               <S.ClockIcon src={clock} alt="시간" />
-              <S.TimeText>{operatingText}</S.TimeText>
+              <S.TimeText>{operatingTime}</S.TimeText>
             </S.TimeRow>
 
             <S.SectionTitle>메뉴</S.SectionTitle>
 
-            {truck.menus.map((menu) => (
+            {menus.map((menu) => (
               <S.MenuRow key={menu.name}>
                 <S.MenuNameBox>
                   {menu.isVegan && (
@@ -151,10 +209,7 @@ export default function FoodTruckCard({ truck }: Props) {
           </S.DetailArea>
         )}
 
-        <S.ChevronButton
-          type="button"
-          onClick={() => setIsOpen((prev) => !prev)}
-        >
+        <S.ChevronButton type="button" onClick={handleToggleOpen}>
           <S.ChevronIcon src={isOpen ? chevronUp : chevronDown} alt="토글" />
         </S.ChevronButton>
       </S.Card>
@@ -162,7 +217,7 @@ export default function FoodTruckCard({ truck }: Props) {
       <ImageDetailComponent
         isOpen={isImageModalOpen}
         initialIndex={0}
-        images={truck.images}
+        images={images}
         onClose={() => setIsImageModalOpen(false)}
       />
     </>
