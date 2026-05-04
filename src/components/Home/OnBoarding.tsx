@@ -14,28 +14,28 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
     const initGuestUser = async () => {
       const savedUuid = localStorage.getItem("guest_uuid");
 
-      if (savedUuid) return;
+      if (savedUuid) {
+        console.log("기존 게스트 접속:", savedUuid);
+        return;
+      }
 
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/users/guest`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        console.log("신규 게스트 UUID 발급 요청...");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/guest`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
 
         const data = await response.json();
 
         if (data.isSuccess && data.result?.uuid) {
           localStorage.setItem("guest_uuid", data.result.uuid);
+          console.log("신규 UUID 저장 완료:", data.result.uuid);
         } else {
-          console.error("게스트 UUID 발급 실패:", data.message);
+          console.error("발급 실패:", data.message);
         }
       } catch (error) {
-        console.error("게스트 사용자 생성 요청 실패:", error);
+        console.error("서버 통신 에러:", error);
       }
     };
 
