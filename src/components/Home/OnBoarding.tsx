@@ -8,10 +8,16 @@ interface OnBoardingProps {
 
 export default function OnBoarding({ onClose }: OnBoardingProps) {
   const navigate = useNavigate();
-  
+
+  console.log("컴포넌트 외부 실행됨");
 
   useEffect(() => {
+    console.log("useEffect 실행됨");
     const initGuestUser = async () => {
+      const BaseUrl = import.meta.env.VITE_API_URL;
+
+      console.log("API URL:", BaseUrl);
+
       const savedUuid = localStorage.getItem("guest_uuid");
 
       if (savedUuid) {
@@ -21,7 +27,7 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
 
       try {
         console.log("신규 게스트 UUID 발급 요청...");
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/guest`, {
+        const response = await fetch(`${BaseUrl}/api/users/guest`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
         });
