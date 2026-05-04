@@ -375,11 +375,11 @@ export const Toast = styled.div`
 position: fixed;
 left: 50%;
 bottom: 90px;
-  transform: translateX(-50%);
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.75);
-  color: white;
-  font-size: 14px;
-  z-index: 9999;
+transform: translateX(-50%);
+padding: 12px 18px;
+border-radius: 999px;
+background: rgba(0, 0, 0, 0.75);
+color: white;
+font-size: 14px;
+z-index: 9999;
 `

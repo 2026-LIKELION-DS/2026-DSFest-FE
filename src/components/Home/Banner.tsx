@@ -6,6 +6,13 @@ import BannerPolaroid from "../../components/Home/BannerPolaroid";
 import Day1Artist1 from "../../assets/home/Day1-CherryFilter-home.png"
 import Day1Artist2 from "../../assets/home/Day1-Izna-home.png"
 import Day1Artist3 from "../../assets/home/Day1-LeeChaeyeon-home.png"
+import Day2Artist1 from "../../assets/home/Day2-ChoiYuRee-home.png"
+import Day2Artist2 from "../../assets/home/Day2-Cosmosy-home.png"
+import Day3Artist1 from "../../assets/home/Day3-AtHeart-home.png"
+import Day3Artist2 from "../../assets/home/Day3-KiiKii-home.png"
+import Day3Artist3 from "../../assets/home/Day3-Seori-home.png"
+import Day3Artist4 from "../../assets/home/Day3-Sunmi-home.png"
+
 
 interface BannerItem {
   title: string;
@@ -18,11 +25,36 @@ interface BannerProps {
   isPaused?: boolean;
 }
 
+const artistImagesByDay = {
+  day1: [Day1Artist1, Day1Artist2, Day1Artist3],
+  day2: [Day2Artist1, Day2Artist2,],
+  day3: [Day3Artist1, Day3Artist2, Day3Artist3, Day3Artist4],
+};
+
+// const currentDay: keyof typeof artistImagesByDay = "day1";
+// 개발 테스트용 코드
+// 날짜별로 아티스트 잘 바뀌는지 확인하고 싶으면 38~51번째 줄까지 주석처리 후에 이 코드 살려주세요!
+
+const getCurrentFestivalDay = (): keyof typeof artistImagesByDay => {
+  const today = new Date();
+
+  const month = today.getMonth() + 1;
+  const date = today.getDate();
+
+  if (month === 5 && date === 13) return "day1";
+  if (month === 5 && date === 14) return "day2";
+  if (month === 5 && date === 15) return "day3";
+
+  return "day1";
+};
+
+const currentDay = getCurrentFestivalDay();
+
 const banners: BannerItem[] = [
   {
     title: "오늘의 아티스트",
     stickerText: "플레이리스트 예습하기🎧",
-    images: [Day1Artist1, Day1Artist2, Day1Artist3],
+    images: artistImagesByDay[currentDay],
     link: "/artist",
   },
   {
