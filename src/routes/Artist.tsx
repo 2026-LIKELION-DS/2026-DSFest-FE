@@ -61,8 +61,6 @@ const days = [
   { key: "day3", label: "DAY 3", date: "15일 금", value: 3 },
 ] as const;
 
-const getGuestUuid = () => localStorage.getItem("guestUuid") ?? "";
-
 const mapArtist = (artist: ArtistApiItem): Artist => ({
   id: artist.id,
   name: artist.name,
@@ -130,9 +128,6 @@ function ArtistPage() {
         params: {
           day: selectedDay.value,
         },
-        headers: {
-          guestUuid: getGuestUuid(),
-        },
       });
 
       setArtistData(res.data.result);
@@ -150,11 +145,7 @@ function ArtistPage() {
   useEffect(() => {
     const fetchTodayArtists = async () => {
       try {
-        const res = await API.get<ArtistApiResponse>("/api/artists/today", {
-          headers: {
-            guestUuid: getGuestUuid(),
-          },
-        });
+        const res = await API.get<ArtistApiResponse>("/api/artists/today");
 
         const apiArtists = res.data.result;
 
@@ -178,11 +169,6 @@ function ArtistPage() {
       try {
         const res = await API.get<PlaylistApiResponse>(
           `/api/artists/${currentArtist.id}/playlist`,
-          {
-            headers: {
-              guestUuid: getGuestUuid(),
-            },
-          },
         );
 
         setPlaylist(res.data.result);
