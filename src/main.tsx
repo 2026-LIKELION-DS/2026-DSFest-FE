@@ -1,4 +1,5 @@
-import "./index.css";import { StrictMode } from "react";
+import "./index.css";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import * as C from "./styles/CommonStyle";
@@ -16,5 +17,5 @@ createRoot(document.getElementById("root")!).render(
         </C.Phone>
       </C.Page>
     </ThemeProvider>
-  </StrictMode>,
+  </StrictMode>
 );
