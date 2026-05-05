@@ -1,5 +1,5 @@
 import { trackEvent } from "../utils/analytics";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as S from "../styles/Home.style";
@@ -34,7 +34,11 @@ import Banner from "../components/Home/Banner";
 import OnBoarding from "../components/Home/OnBoarding";
 
 export default function Home() {
-  const urgentNotice = "(긴급) 하현상 무대 시간 지연 공지";
+  // const urgentNotice = "(긴급) 하현상 무대 시간 지연 공지";
+  // 개발용 테스트 코드 입니다.
+
+  const [urgentNotice, setUrgentNotice] = useState<string | null>(null);
+  const [urgentId, setUrgentId] = useState<number | null>(null);
 
   const [showOnBoarding, setShowOnBoarding] = useState<boolean>(() => {
     return localStorage.getItem("hasSeenOnboarding") === null;
@@ -79,6 +83,38 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    const fetchUrgentNotice = async () => {
+
+      const BaseUrl = import.meta.env.VITE_API_URL;
+
+      try {
+        const response = await fetch(
+          `${BaseUrl}/api/notices/urgent`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (data.isSuccess && data.result) {
+          setUrgentNotice(data.result.title);
+          setUrgentId(data.result.id);
+        } else {
+          setUrgentNotice(null); // 긴급공지 없음
+        }
+      } catch (error) {
+        console.error("긴급공지 조회 실패:", error);
+      }
+    };
+
+    fetchUrgentNotice();
+  }, []);
+
   const navigate = useNavigate();
 
   return (
@@ -89,15 +125,17 @@ export default function Home() {
           <S.BannerBox>
             <Banner isPaused={showOnBoarding}></Banner>
           </S.BannerBox>
-          {urgentNotice && (
-            <S.UrgentNoticeBox href="@">
-              <S.UrgentNotice>
-                <S.UrgentNoticeIcon src={Megaphone} />
-                <S.UrgentNoticeContent>{urgentNotice}</S.UrgentNoticeContent>
-              </S.UrgentNotice>
-              <S.SideClick src={SideClick} />
-            </S.UrgentNoticeBox>
-          )}
+          {urgentNotice && urgentId && (
+              <S.UrgentNoticeBox href={`/notice/${urgentId}`}>
+                <S.UrgentNotice>
+                  <S.UrgentNoticeIcon src={Megaphone} />
+                  <S.UrgentNoticeContent>
+                    {urgentNotice}
+                  </S.UrgentNoticeContent>
+                </S.UrgentNotice>
+                <S.SideClick src={SideClick} />
+              </S.UrgentNoticeBox>
+            )}
           <S.ContentBox>
             <S.ArtistNameTag
               href="/artist"
@@ -211,11 +249,11 @@ export default function Home() {
             />
           </S.ContentBox>
           <S.StudentCouncilBox>
-            <S.StudentBtn href="@">
+            <S.StudentBtn href="/notice/1">
               <S.BtnIcon src={DresscodeIcon}></S.BtnIcon>
               <S.BtnTitle>드레스코드</S.BtnTitle>
             </S.StudentBtn>
-            <S.StudentBtn href="@">
+            <S.StudentBtn href="/notice/2">
               <S.BtnIcon src={GoodsIcon}></S.BtnIcon>
               <S.BtnTitle>총학 굿즈</S.BtnTitle>
             </S.StudentBtn>
@@ -242,7 +280,7 @@ export default function Home() {
             <S.LinkIcon src={InstaIcon}></S.LinkIcon>
             <S.Link>덕성멋사 인스타그램</S.Link>
           </S.LinkBox>
-          <S.LinkBox href="@" target="_blank">
+          <S.LinkBox href="https://forms.gle/dtNFvpZDCngbTxA47" target="_blank">
             <S.LinkIcon src={ThumbIcon}></S.LinkIcon>
             <S.Link>웹사이트 의견 남기기</S.Link>
           </S.LinkBox>
