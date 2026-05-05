@@ -24,6 +24,7 @@ type LiveTalkApiMessage = {
   content: string;
   createdAt: string;
 };
+
 type TopicType = "GENERAL" | "ARTIST";
 
 type LiveTalkTopic = {
@@ -49,7 +50,7 @@ type StompClientLike = {
   subscribe: (
     destination: string,
     callback: (message: { body: string }) => void
-  ) => void;
+  ) => { unsubscribe: () => void };
 };
 
 export default function LiveTalkComponent() {
@@ -62,6 +63,8 @@ export default function LiveTalkComponent() {
   const [isLoadingPrevious, setIsLoadingPrevious] = useState(false);
   const [hasMorePreviousMessages, setHasMorePreviousMessages] = useState(true);
   const [unreadCount, setUnreadCount] = useState<number>(0);
+  const [isSocketConnected, setIsSocketConnected] = useState(false);
+
   const stompClientRef = useRef<StompClientLike | null>(null);
   const chatAreaRef = useRef<HTMLDivElement | null>(null);
   const previousBannerModeRef =
@@ -70,6 +73,7 @@ export default function LiveTalkComponent() {
   const dragStartXRef = useRef<number | null>(null);
   const isDraggingRef = useRef(false);
   const bannerTextTimerRef = useRef<number | null>(null);
+  const shouldScrollToBottomRef = useRef(true);
 
   const guestUuidRef = useRef(getGuestUuid());
 
@@ -83,6 +87,35 @@ export default function LiveTalkComponent() {
 
     return newUuid;
   }
+
+  const getApiUrl = (path: string) => {
+    return `${API_URL.replace(/\/$/, "")}${path}`;
+  };
+
+  const scrollToBottom = () => {
+    requestAnimationFrame(() => {
+      const chatArea = chatAreaRef.current;
+      if (!chatArea) return;
+
+      chatArea.scrollTop = chatArea.scrollHeight;
+    });
+  };
+
+  const markAsRead = async () => {
+    try {
+      await fetch(
+        getApiUrl(`/api/livetalk/read?guestUuid=${guestUuidRef.current}`),
+        {
+          method: "PATCH",
+        }
+      );
+
+      setUnreadCount(0);
+    } catch (error) {
+      console.error("읽음 처리 실패:", error);
+    }
+  };
+
   const fetchUnreadCount = async () => {
     try {
       const response = await fetch(
@@ -99,11 +132,8 @@ export default function LiveTalkComponent() {
         setUnreadCount(data.result);
       }
     } catch (error) {
-      console.error("안읽은 개수 조회 실패:", error);
+      console.error("안 읽은 개수 조회 실패:", error);
     }
-  };
-  const getApiUrl = (path: string) => {
-    return `${API_URL.replace(/\/$/, "")}${path}`;
   };
 
   const getValidDate = (dateString?: string) => {
@@ -204,6 +234,7 @@ export default function LiveTalkComponent() {
 
     try {
       setIsLoadingPrevious(true);
+      shouldScrollToBottomRef.current = false;
 
       const response = await fetch(
         getApiUrl(
@@ -252,26 +283,16 @@ export default function LiveTalkComponent() {
     const chatArea = chatAreaRef.current;
     if (!chatArea) return;
 
+    const distanceFromBottom =
+      chatArea.scrollHeight - chatArea.scrollTop - chatArea.clientHeight;
+
+    shouldScrollToBottomRef.current = distanceFromBottom < 80;
+
     if (chatArea.scrollTop <= 20) {
       fetchPreviousMessages();
     }
   };
-  useEffect(() => {
-    const markAsRead = async () => {
-      try {
-        await fetch(
-          getApiUrl(`/api/livetalk/read?guestUuid=${guestUuidRef.current}`),
-          {
-            method: "PATCH",
-          }
-        );
-      } catch (error) {
-        console.error("읽음 처리 실패:", error);
-      }
-    };
 
-    markAsRead();
-  }, [API_URL]);
   useEffect(() => {
     const fetchCurrentTopic = async () => {
       try {
@@ -320,9 +341,7 @@ export default function LiveTalkComponent() {
 
     fetchCurrentTopic();
   }, [API_URL]);
-  useEffect(() => {
-    fetchUnreadCount();
-  }, [API_URL]);
+
   useEffect(() => {
     const fetchInitialMessages = async () => {
       try {
@@ -336,16 +355,20 @@ export default function LiveTalkComponent() {
         const messageList = getMessageListFromResponse(data);
 
         setMessages(messageList.map(convertMessage));
+        shouldScrollToBottomRef.current = true;
       } catch (error) {
         console.error("초기 채팅 로딩 실패:", error);
       }
     };
 
     fetchInitialMessages();
+    fetchUnreadCount();
+    markAsRead();
   }, [API_URL]);
 
   useEffect(() => {
     let client: StompClientLike | null = null;
+    let subscription: { unsubscribe: () => void } | null = null;
     let isUnmounted = false;
 
     const connectWebSocket = async () => {
@@ -363,59 +386,73 @@ export default function LiveTalkComponent() {
           reconnectDelay: 5000,
 
           onConnect: () => {
-            console.log("🔥 WebSocket 연결 성공");
+            console.log("WebSocket 연결 성공");
+            setIsSocketConnected(true);
 
-            client?.subscribe(
-              "/topic/livetalk",
-              (message: { body: string }) => {
-                const receivedMessage: LiveTalkApiMessage = JSON.parse(
-                  message.body
-                );
-                const convertedMessage = convertMessage(receivedMessage);
+            subscription?.unsubscribe();
 
-                setMessages((prev) => {
-                  if (prev.some((msg) => msg.id === convertedMessage.id)) {
-                    return prev;
-                  }
+            subscription =
+              client?.subscribe(
+                "/topic/livetalk",
+                (message: { body: string }) => {
+                  const receivedMessage: LiveTalkApiMessage = JSON.parse(
+                    message.body
+                  );
+                  const convertedMessage = convertMessage(receivedMessage);
+
+                  setMessages((prev) => {
+                    if (prev.some((msg) => msg.id === convertedMessage.id)) {
+                      return prev;
+                    }
+
+                    if (convertedMessage.sender === "me") {
+                      const tempIndex = prev.findIndex(
+                        (msg) =>
+                          msg.isTemp &&
+                          msg.sender === "me" &&
+                          msg.text === convertedMessage.text
+                      );
+
+                      if (tempIndex !== -1) {
+                        const nextMessages = [...prev];
+                        nextMessages[tempIndex] = convertedMessage;
+                        return nextMessages;
+                      }
+                    }
+
+                    return [...prev, convertedMessage];
+                  });
 
                   if (convertedMessage.sender === "me") {
-                    const tempIndex = prev.findIndex(
-                      (msg) =>
-                        msg.isTemp &&
-                        msg.sender === "me" &&
-                        msg.text === convertedMessage.text
-                    );
+                    shouldScrollToBottomRef.current = true;
+                    markAsRead();
+                  } else {
+                    const chatArea = chatAreaRef.current;
+                    const isNearBottom = chatArea
+                      ? chatArea.scrollHeight -
+                          chatArea.scrollTop -
+                          chatArea.clientHeight <
+                        80
+                      : true;
 
-                    if (tempIndex !== -1) {
-                      const nextMessages = [...prev];
-                      nextMessages[tempIndex] = convertedMessage;
-                      return nextMessages;
+                    if (isNearBottom) {
+                      shouldScrollToBottomRef.current = true;
+                      markAsRead();
+                    } else {
+                      fetchUnreadCount();
                     }
                   }
-
-                  return [...prev, convertedMessage];
-                });
-
-                fetch(
-                  getApiUrl(
-                    `/api/livetalk/read?guestUuid=${guestUuidRef.current}`
-                  ),
-                  {
-                    method: "PATCH",
-                  }
-                ).catch((error) => {
-                  console.error("읽음 처리 실패:", error);
-                });
-              }
-            );
+                }
+              ) ?? null;
           },
 
           onWebSocketError: (error: Event) => {
-            console.error("❌ WebSocket 에러:", error);
+            console.error("WebSocket 에러:", error);
           },
 
           onWebSocketClose: () => {
-            console.log("❗ WebSocket 닫힘");
+            console.log("WebSocket 닫힘");
+            setIsSocketConnected(false);
           },
 
           onStompError: (frame: unknown) => {
@@ -434,6 +471,9 @@ export default function LiveTalkComponent() {
 
     return () => {
       isUnmounted = true;
+      setIsSocketConnected(false);
+
+      subscription?.unsubscribe();
 
       if (client) {
         client.deactivate();
@@ -444,11 +484,12 @@ export default function LiveTalkComponent() {
   }, [API_URL]);
 
   useEffect(() => {
-    const chatArea = chatAreaRef.current;
-    if (!chatArea) return;
+    if (messages.length === 0) return;
 
-    chatArea.scrollTop = chatArea.scrollHeight;
-  }, []);
+    if (shouldScrollToBottomRef.current) {
+      scrollToBottom();
+    }
+  }, [messages]);
 
   useEffect(() => {
     return () => {
@@ -469,6 +510,8 @@ export default function LiveTalkComponent() {
       return;
     }
 
+    shouldScrollToBottomRef.current = true;
+
     setMessages((prev) => [...prev, createTempMessage(trimmedText)]);
 
     client.publish({
@@ -477,12 +520,6 @@ export default function LiveTalkComponent() {
         guestUuid: guestUuidRef.current,
         content: trimmedText,
       }),
-    });
-
-    requestAnimationFrame(() => {
-      const chatArea = chatAreaRef.current;
-      if (!chatArea) return;
-      chatArea.scrollTop = chatArea.scrollHeight;
     });
   };
 
