@@ -50,7 +50,7 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
 
   return (
     <S.OnBoardWrapper>
-        <S.OnBoardBlurArea />
+      <S.OnBoardBlurArea />
       <S.OnBoardImg />
 
       <S.OnBoardBtnBox>
@@ -58,9 +58,11 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
         <S.ShowMore
           onClick={() => {
             localStorage.setItem("hasSeenOnboarding", "true");
-            navigate("/@");
+            navigate("/");
           }}
-        >더 알아보기</S.ShowMore>
+        >
+          더 알아보기
+        </S.ShowMore>
       </S.OnBoardBtnBox>
     </S.OnBoardWrapper>
   );

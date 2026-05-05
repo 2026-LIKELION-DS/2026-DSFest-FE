@@ -27,6 +27,7 @@ import AdminLoginPage from "./routes/Admin/AdminLoginPage";
 import AdminNoticePage from "./routes/Admin/AdminNoticePage";
 import AdminNoticeDetailPage from "./routes/Admin/AdminNoticeDetailPage";
 import AdminNoticeWritePage from "./routes/Admin/AdminNoticeWritePage";
+import OnBoardingPage from "./routes/Onboarding";
 
 function GAListener() {
   const location = useLocation();
@@ -240,6 +241,7 @@ function App() {
             </AppLayout>
           }
         />
+        <Route path="/onboarding" element={<OnBoardingPage />} />
       </Routes>
     </Router>
   );

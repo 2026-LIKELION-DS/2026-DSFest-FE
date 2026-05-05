@@ -5,17 +5,41 @@ import FoodFilterSection from "../components/Food/FoodFilterSection";
 import FoodTruckList from "../components/Food/FoodTruckList";
 import FoodFloatingButtons from "../components/Food/FoodFloatingButtons";
 import Modal from "../components/Common/ModalComponent";
-import ImageModalComponent from "../components/Food/ImageModalComponent";
-
-import pizzaImg from "../assets/Food/Pizza.svg";
 
 import * as S from "../styles/Food.styles";
 
+interface FoodNotice {
+  id: number;
+  title: string;
+  category: string;
+  urgent: boolean;
+  content: string;
+  imageUrls: string[];
+  createdAt: string;
+  updatedAt: string;
+  viewCount: number;
+}
+
+const FOOD_NOTICE_ID = 4;
+
+const getGuestUuid = () => {
+  const key = "guest_uuid";
+  const savedUuid = localStorage.getItem(key);
+
+  if (savedUuid) return savedUuid;
+
+  const newUuid = crypto.randomUUID();
+  localStorage.setItem(key, newUuid);
+
+  return newUuid;
+};
+
 export default function Food() {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [isVeganSelected, setIsVeganSelected] = useState(false);
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
-  const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [notice, setNotice] = useState<FoodNotice | null>(null);
   const [showTopBtn, setShowTopBtn] = useState(false);
 
   const pageRef = useRef<HTMLElement | null>(null);
@@ -63,17 +87,34 @@ export default function Food() {
     });
   };
 
-  const handleOpenImageModal = (images: string[]) => {
-    setSelectedImages(images);
-    setIsImageModalOpen(true);
-  };
+  const handleOpenNotice = async () => {
+    try {
+      const response = await fetch(`${API_URL}/api/notices/${FOOD_NOTICE_ID}`, {
+        method: "GET",
+        headers: {
+          "guest-uuid": getGuestUuid(),
+        },
+      });
 
-  const isAnyModalOpen = isNoticeOpen || isImageModalOpen;
+      const data = await response.json();
+
+      if (!response.ok || !data.isSuccess) {
+        alert(data.message || "공지사항을 불러오지 못했습니다.");
+        return;
+      }
+
+      setNotice(data.result);
+      setIsNoticeOpen(true);
+    } catch (error) {
+      console.error(error);
+      alert("공지사항 조회 중 오류가 발생했습니다.");
+    }
+  };
 
   return (
     <S.FoodPage ref={pageRef}>
       <S.FixedTopArea>
-        <FoodBannerCarousel onImageClick={handleOpenImageModal} />
+        <FoodBannerCarousel />
 
         <FoodFilterSection
           isVeganSelected={isVeganSelected}
@@ -82,15 +123,12 @@ export default function Food() {
       </S.FixedTopArea>
 
       <S.ListArea>
-        <FoodTruckList
-          isVeganSelected={isVeganSelected}
-          onImageClick={handleOpenImageModal}
-        />
+        <FoodTruckList isVeganSelected={isVeganSelected} />
       </S.ListArea>
 
-      {!isAnyModalOpen && (
+      {!isNoticeOpen && (
         <FoodFloatingButtons
-          onNotice={() => setIsNoticeOpen(true)}
+          onNotice={handleOpenNotice}
           onTop={handleTop}
           showTopBtn={showTopBtn}
         />
@@ -99,15 +137,9 @@ export default function Food() {
       <Modal
         isOpen={isNoticeOpen}
         onClose={() => setIsNoticeOpen(false)}
-        title="푸드트럭 관련 공지 제목"
-        images={[pizzaImg, pizzaImg]}
-        content="공지 본문이 들어가는 자리입니다."
-      />
-
-      <ImageModalComponent
-        isOpen={isImageModalOpen}
-        onClose={() => setIsImageModalOpen(false)}
-        images={selectedImages}
+        title={notice?.title || ""}
+        images={notice?.imageUrls || []}
+        content={notice?.content || ""}
       />
     </S.FoodPage>
   );
