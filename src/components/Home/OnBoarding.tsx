@@ -16,7 +16,6 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
     const initGuestUser = async () => {
       const BaseUrl = import.meta.env.VITE_API_URL;
 
-      console.log("API URL:", BaseUrl);
 
       const savedUuid = localStorage.getItem("guest_uuid");
 
