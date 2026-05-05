@@ -1,5 +1,3 @@
-// src/components/LiveTalk/LiveTalkComponent.tsx
-
 import { useEffect, useRef, useState } from "react";
 
 import ChatItem from "./ChatItem";
@@ -26,6 +24,33 @@ type LiveTalkApiMessage = {
   content: string;
   createdAt: string;
 };
+type TopicType = "GENERAL" | "ARTIST";
+
+type LiveTalkTopic = {
+  id: number;
+  title: string;
+  subtitle: string;
+  topicType: TopicType;
+  artistId: number | null;
+};
+
+type TopicResponse = {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: LiveTalkTopic | null;
+};
+
+type StompClientLike = {
+  connected: boolean;
+  activate: () => void;
+  deactivate: () => void;
+  publish: (params: { destination: string; body: string }) => void;
+  subscribe: (
+    destination: string,
+    callback: (message: { body: string }) => void
+  ) => void;
+};
 
 export default function LiveTalkComponent() {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -37,7 +62,7 @@ export default function LiveTalkComponent() {
   const [isLoadingPrevious, setIsLoadingPrevious] = useState(false);
   const [hasMorePreviousMessages, setHasMorePreviousMessages] = useState(true);
 
-  const stompClientRef = useRef<any>(null);
+  const stompClientRef = useRef<StompClientLike | null>(null);
   const chatAreaRef = useRef<HTMLDivElement | null>(null);
   const previousBannerModeRef =
     useRef<Exclude<BannerMode, "collapsed">>("default");
@@ -123,10 +148,25 @@ export default function LiveTalkComponent() {
     };
   };
 
-  const getMessageListFromResponse = (data: any): LiveTalkApiMessage[] => {
-    return Array.isArray(data)
-      ? data
-      : data.result ?? data.messages ?? data.data ?? data.content ?? [];
+  const getMessageListFromResponse = (data: unknown): LiveTalkApiMessage[] => {
+    if (Array.isArray(data)) return data as LiveTalkApiMessage[];
+
+    if (typeof data !== "object" || data === null) return [];
+
+    const response = data as {
+      result?: LiveTalkApiMessage[];
+      messages?: LiveTalkApiMessage[];
+      data?: LiveTalkApiMessage[];
+      content?: LiveTalkApiMessage[];
+    };
+
+    return (
+      response.result ??
+      response.messages ??
+      response.data ??
+      response.content ??
+      []
+    );
   };
 
   const fetchPreviousMessages = async () => {
@@ -270,7 +310,7 @@ export default function LiveTalkComponent() {
   }, [API_URL]);
 
   useEffect(() => {
-    let client: any = null;
+    let client: StompClientLike | null = null;
     let isUnmounted = false;
 
     const connectWebSocket = async () => {
