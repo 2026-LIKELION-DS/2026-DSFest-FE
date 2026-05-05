@@ -19,9 +19,9 @@ interface PhotoListResult {
 }
 
 const TOPIC_LABELS = [
-  "자신의 청춘을 가장 잘 담은 사진",
-  "축제 현장을 가장 잘 담은 사진",
-  "드레스코드를 가장 잘 살려 입은 사진",
+  "자신의 '청춘'을 가장 잘 담은 사진",
+  "2026 근화제 현장을 가장 잘 담은 사진",
+  "2026 근화제 드레스코드를 가장 잘 살려 입은 사진",
 ];
 
 export default function ContestVotePage() {

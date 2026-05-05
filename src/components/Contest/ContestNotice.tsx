@@ -11,18 +11,19 @@ function ContestNotice() {
       <img src={bubble2} className="bubble bubble2" />
       <img src={bubble3} className="bubble bubble3" />
 
-      <S.NoticeTitle>사진 콘테스트 방식?</S.NoticeTitle>
+      <S.NoticeTitle>청춘 한 컷</S.NoticeTitle>
 
       <S.NoticeList>
-        <li>
-          플레이리스트 추가하기 버튼을 눌러
+        <div>
+          청춘 한 컷, 당신의 순간을 남겨보세요!
           <br />
-          유튜브 재생목록으로 이동합니다
-        </li>
-        <li>원하는 영상이나 노래를 등록합니다</li>
+          축제와 나의 청춘을 담은 사진으로 콘테스트에 참여하고, 투표로 최고의
+          순간을 함께 만들어보세요.
+        </div>
+        <div>지금 바로 제출하고 무대 위 주인공이 될 기회를 잡으세요!</div>
       </S.NoticeList>
 
-      <S.NoticeCaption>*뭔가 총학의 안내...</S.NoticeCaption>
+      {/* <S.NoticeCaption>*뭔가 총학의 안내...</S.NoticeCaption> */}
     </S.ContestNotice>
   );
 }

@@ -7,9 +7,9 @@ export const Card = styled.article`
   box-sizing: border-box;
   height: 100px;
   padding: 0 16px;
-  border: 1px solid #e5ebcf;
+  border: 1px solid ${({ theme }) => theme.colors.stroke.oliveLight};
   border-radius: 4px;
-  background-color: #fffefb;
+  background-color: ${({ theme }) => theme.colors.bg.neutral};
 `;
 
 export const NoticeContent = styled.div`
@@ -20,7 +20,7 @@ export const NoticeContent = styled.div`
 `;
 
 export const Category = styled.p`
-  color: #277b31;
+  color: ${({ theme }) => theme.colors.bg.brandLight};
   font-size: 14px;
   font-weight: 500;
   margin: 0;
@@ -28,7 +28,7 @@ export const Category = styled.p`
 
 export const CardTitle = styled.h3`
   margin: 0;
-  color: #161716;
+  color: ${({ theme }) => theme.colors.fg.primary};
   font-size: 14px;
   font-weight: 700;
   line-height: 1.5;
@@ -36,36 +36,56 @@ export const CardTitle = styled.h3`
 `;
 
 export const Item = styled.div`
-  border-bottom: 1px solid #e5ebcf;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.stroke.oliveLight};
 `;
 
 export const QuestionButton = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   width: 100%;
   min-height: 64px;
-  padding: 0 20px;
+  padding: 12px 16px;
   border: none;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.bg.offWhite};
   cursor: pointer;
 `;
 
 export const QuestionText = styled.p`
   margin: 0;
-  color: #161716;
+  color: ${({ theme }) => theme.colors.fg.primary};
   font-size: 16px;
   font-weight: 500;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  line-height: 1.5;
+`;
+
+export const QuestionPrefix = styled.span`
+  flex-shrink: 0;
+`;
+
+export const QuestionContent = styled.span`
+  flex: 1;
+  min-width: 0;
+  word-break: keep-all;
+  white-space: pre-line;
 `;
 
 export const AnswerBox = styled.div`
-  padding: 22px 32px;
-  background-color: #f5f7ed;
+  padding: 12px 24px;
+  background-color: ${({ theme }) => theme.colors.bg.oliveLight};
 `;
 
 export const AnswerText = styled.p`
   margin: 0;
-  color: #0b4112;
+  color: ${({ theme }) => theme.colors.bg.brand};
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
@@ -81,7 +101,7 @@ export const ResultRow = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
-  border-bottom: 1px solid #e5ebcf;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.stroke.oliveLight};
   cursor: pointer;
 `;
 
@@ -93,7 +113,7 @@ export const ResultText = styled.div`
 
 export const ResultTitle = styled.p`
   margin: 0;
-  color: #000;
+  color: ${({ theme }) => theme.colors.fg.primary};
   font-size: 16px;
   font-weight: 700;
 `;

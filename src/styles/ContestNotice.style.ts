@@ -45,10 +45,10 @@ export const NoticeTitle = styled.span`
 `;
 
 export const NoticeList = styled.ol`
-  margin: 18px 0 0;
-  padding-left: 20px;
+  margin: 15px 0 15;
+  padding-left: 5px;
 
-  li {
+  div {
     margin-bottom: 10px;
     color: ${({ theme }) => theme.colors.fg.primary};
     line-height: 1.5;
