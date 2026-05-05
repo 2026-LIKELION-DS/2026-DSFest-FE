@@ -61,7 +61,7 @@ export default function LiveTalkComponent() {
   const [topic, setTopic] = useState<LiveTalkTopic | null>(null);
   const [isLoadingPrevious, setIsLoadingPrevious] = useState(false);
   const [hasMorePreviousMessages, setHasMorePreviousMessages] = useState(true);
-
+  const [unreadCount, setUnreadCount] = useState<number>(0);
   const stompClientRef = useRef<StompClientLike | null>(null);
   const chatAreaRef = useRef<HTMLDivElement | null>(null);
   const previousBannerModeRef =
@@ -83,7 +83,25 @@ export default function LiveTalkComponent() {
 
     return newUuid;
   }
+  const fetchUnreadCount = async () => {
+    try {
+      const response = await fetch(
+        getApiUrl(
+          `/api/livetalk/unread-count?guestUuid=${guestUuidRef.current}`
+        )
+      );
 
+      if (!response.ok) return;
+
+      const data = await response.json();
+
+      if (data.isSuccess) {
+        setUnreadCount(data.result);
+      }
+    } catch (error) {
+      console.error("안읽은 개수 조회 실패:", error);
+    }
+  };
   const getApiUrl = (path: string) => {
     return `${API_URL.replace(/\/$/, "")}${path}`;
   };
@@ -238,7 +256,22 @@ export default function LiveTalkComponent() {
       fetchPreviousMessages();
     }
   };
+  useEffect(() => {
+    const markAsRead = async () => {
+      try {
+        await fetch(
+          getApiUrl(`/api/livetalk/read?guestUuid=${guestUuidRef.current}`),
+          {
+            method: "PATCH",
+          }
+        );
+      } catch (error) {
+        console.error("읽음 처리 실패:", error);
+      }
+    };
 
+    markAsRead();
+  }, [API_URL]);
   useEffect(() => {
     const fetchCurrentTopic = async () => {
       try {
@@ -287,7 +320,9 @@ export default function LiveTalkComponent() {
 
     fetchCurrentTopic();
   }, [API_URL]);
-
+  useEffect(() => {
+    fetchUnreadCount();
+  }, [API_URL]);
   useEffect(() => {
     const fetchInitialMessages = async () => {
       try {
@@ -330,36 +365,49 @@ export default function LiveTalkComponent() {
           onConnect: () => {
             console.log("🔥 WebSocket 연결 성공");
 
-            client.subscribe("/topic/livetalk", (message: { body: string }) => {
-              const receivedMessage: LiveTalkApiMessage = JSON.parse(
-                message.body
-              );
+            client?.subscribe(
+              "/topic/livetalk",
+              (message: { body: string }) => {
+                const receivedMessage: LiveTalkApiMessage = JSON.parse(
+                  message.body
+                );
+                const convertedMessage = convertMessage(receivedMessage);
 
-              const convertedMessage = convertMessage(receivedMessage);
-
-              setMessages((prev) => {
-                if (prev.some((msg) => msg.id === convertedMessage.id)) {
-                  return prev;
-                }
-
-                if (convertedMessage.sender === "me") {
-                  const tempIndex = prev.findIndex(
-                    (msg) =>
-                      msg.isTemp &&
-                      msg.sender === "me" &&
-                      msg.text === convertedMessage.text
-                  );
-
-                  if (tempIndex !== -1) {
-                    const nextMessages = [...prev];
-                    nextMessages[tempIndex] = convertedMessage;
-                    return nextMessages;
+                setMessages((prev) => {
+                  if (prev.some((msg) => msg.id === convertedMessage.id)) {
+                    return prev;
                   }
-                }
 
-                return [...prev, convertedMessage];
-              });
-            });
+                  if (convertedMessage.sender === "me") {
+                    const tempIndex = prev.findIndex(
+                      (msg) =>
+                        msg.isTemp &&
+                        msg.sender === "me" &&
+                        msg.text === convertedMessage.text
+                    );
+
+                    if (tempIndex !== -1) {
+                      const nextMessages = [...prev];
+                      nextMessages[tempIndex] = convertedMessage;
+                      return nextMessages;
+                    }
+                  }
+
+                  return [...prev, convertedMessage];
+                });
+
+                fetch(
+                  getApiUrl(
+                    `/api/livetalk/read?guestUuid=${guestUuidRef.current}`
+                  ),
+                  {
+                    method: "PATCH",
+                  }
+                ).catch((error) => {
+                  console.error("읽음 처리 실패:", error);
+                });
+              }
+            );
           },
 
           onWebSocketError: (error: Event) => {
