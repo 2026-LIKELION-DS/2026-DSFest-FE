@@ -5,7 +5,6 @@ import FoodFilterSection from "../components/Food/FoodFilterSection";
 import FoodTruckList from "../components/Food/FoodTruckList";
 import FoodFloatingButtons from "../components/Food/FoodFloatingButtons";
 import Modal from "../components/Common/ModalComponent";
-import ImageModalComponent from "../components/Food/ImageModalComponent";
 
 import * as S from "../styles/Food.styles";
 
@@ -24,7 +23,7 @@ interface FoodNotice {
 const FOOD_NOTICE_ID = 4;
 
 const getGuestUuid = () => {
-  const key = "guestUuid";
+  const key = "guest_uuid";
   const savedUuid = localStorage.getItem(key);
 
   if (savedUuid) return savedUuid;
@@ -41,9 +40,6 @@ export default function Food() {
   const [isVeganSelected, setIsVeganSelected] = useState(false);
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
   const [notice, setNotice] = useState<FoodNotice | null>(null);
-
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
-  const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [showTopBtn, setShowTopBtn] = useState(false);
 
   const pageRef = useRef<HTMLElement | null>(null);
@@ -91,17 +87,12 @@ export default function Food() {
     });
   };
 
-  const handleOpenImageModal = (images: string[]) => {
-    setSelectedImages(images);
-    setIsImageModalOpen(true);
-  };
-
   const handleOpenNotice = async () => {
     try {
       const response = await fetch(`${API_URL}/api/notices/${FOOD_NOTICE_ID}`, {
         method: "GET",
         headers: {
-          guestUuid: getGuestUuid(),
+          "guest-uuid": getGuestUuid(),
         },
       });
 
@@ -120,12 +111,10 @@ export default function Food() {
     }
   };
 
-  const isAnyModalOpen = isNoticeOpen || isImageModalOpen;
-
   return (
     <S.FoodPage ref={pageRef}>
       <S.FixedTopArea>
-        <FoodBannerCarousel onImageClick={handleOpenImageModal} />
+        <FoodBannerCarousel />
 
         <FoodFilterSection
           isVeganSelected={isVeganSelected}
@@ -134,13 +123,10 @@ export default function Food() {
       </S.FixedTopArea>
 
       <S.ListArea>
-        <FoodTruckList
-          isVeganSelected={isVeganSelected}
-          onImageClick={handleOpenImageModal}
-        />
+        <FoodTruckList isVeganSelected={isVeganSelected} />
       </S.ListArea>
 
-      {!isAnyModalOpen && (
+      {!isNoticeOpen && (
         <FoodFloatingButtons
           onNotice={handleOpenNotice}
           onTop={handleTop}
@@ -154,12 +140,6 @@ export default function Food() {
         title={notice?.title || ""}
         images={notice?.imageUrls || []}
         content={notice?.content || ""}
-      />
-
-      <ImageModalComponent
-        isOpen={isImageModalOpen}
-        onClose={() => setIsImageModalOpen(false)}
-        images={selectedImages}
       />
     </S.FoodPage>
   );

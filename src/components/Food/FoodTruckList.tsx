@@ -3,7 +3,6 @@ import FoodTruckCard from "./FoodTruckCard";
 
 interface Props {
   isVeganSelected: boolean;
-  onImageClick: (images: string[]) => void;
 }
 
 interface FoodTruckApiItem {
@@ -11,9 +10,10 @@ interface FoodTruckApiItem {
   imageUrl: string;
   name: string;
   representativeMenu: string;
-  description: string;
-  operatingDays: string;
+  description?: string;
+  operatingDays?: string;
   likeCount: number;
+  isLiked?: boolean;
   isOpen: boolean;
 }
 
@@ -35,12 +35,12 @@ export interface Truck {
   isOpen: boolean;
 }
 
-export default function FoodTruckList({
-  isVeganSelected,
-  onImageClick,
-}: Props) {
-  const API_URL = import.meta.env.VITE_API_URL;
+const getStoredLike = (id: number) => {
+  return localStorage.getItem(`foodtruck_like_${id}`) === "true";
+};
 
+export default function FoodTruckList({ isVeganSelected }: Props) {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [foodTrucks, setFoodTrucks] = useState<Truck[]>([]);
 
   useEffect(() => {
@@ -61,20 +61,20 @@ export default function FoodTruckList({
           (truck: FoodTruckApiItem) => ({
             id: truck.id,
             name: truck.name,
-            tags: truck.description
-              .split("#")
-              .map((tag) => tag.trim())
+            tags: (truck.description ?? "")
+              .split(" ")
+              .map((tag) => tag.replace("#", "").replace(/,/g, "").trim())
               .filter(Boolean),
-            isLiked: false,
+            isLiked: truck.isLiked ?? getStoredLike(truck.id),
             likeCount: truck.likeCount,
-            operatingTime: truck.operatingDays,
-            images: [truck.imageUrl],
+            operatingTime: truck.operatingDays || "운영시간 정보 없음",
+            images: truck.imageUrl ? [truck.imageUrl] : [],
             isOpen: truck.isOpen,
             menus: [
               {
                 name: truck.representativeMenu,
                 price: "",
-                isVegan: isVeganSelected,
+                isVegan: false,
               },
             ],
           })
@@ -93,11 +93,7 @@ export default function FoodTruckList({
   return (
     <>
       {foodTrucks.map((truck) => (
-        <FoodTruckCard
-          key={truck.id}
-          truck={truck}
-          onImageClick={onImageClick}
-        />
+        <FoodTruckCard key={truck.id} truck={truck} />
       ))}
     </>
   );

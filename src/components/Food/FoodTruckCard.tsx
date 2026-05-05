@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { trackEvent } from "../../utils/analytics";
+import { useState } from "react";
 import * as S from "../../styles/FoodTruckCard.styles";
 
 import ImageDetailComponent from "../Common/ImageDetail";
@@ -31,7 +31,6 @@ interface Truck {
 
 interface Props {
   truck: Truck;
-  onImageClick?: (images: string[]) => void;
 }
 
 interface FoodTruckDetailMenu {
@@ -51,48 +50,47 @@ interface FoodTruckDetailResponse {
   isLiked: boolean;
 }
 
-const getGuestUuid = () => {
-  const key = "guestUuid";
-  const savedUuid = localStorage.getItem(key);
+const TEMP_GUEST_UUID = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
 
+const getGuestUuid = () => {
+  const savedUuid = localStorage.getItem("guest_uuid");
   if (savedUuid) return savedUuid;
 
-  const newUuid = crypto.randomUUID();
-  localStorage.setItem(key, newUuid);
-
-  return newUuid;
+  localStorage.setItem("guest_uuid", TEMP_GUEST_UUID);
+  return TEMP_GUEST_UUID;
 };
 
-const isOperatingNow = () => {
-  const now = new Date();
-
-  const start = new Date(2026, 4, 13, 8, 30);
-  const end = new Date(2026, 4, 15, 22, 0);
-
-  return now >= start && now <= end;
-};
+const getLikeKey = (id: number) => `foodtruck_like_${id}`;
 
 export default function FoodTruckCard({ truck }: Props) {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isLiked, setIsLiked] = useState(truck.isLiked);
+  const [isLiked, setIsLiked] = useState(() => {
+    const savedLike = localStorage.getItem(getLikeKey(truck.id));
+
+    if (savedLike !== null) {
+      return savedLike === "true";
+    }
+
+    return truck.isLiked;
+  });
+
   const [likeCount, setLikeCount] = useState(truck.likeCount);
   const [images, setImages] = useState(truck.images);
   const [menus, setMenus] = useState<Menu[]>(truck.menus);
   const [operatingTime, setOperatingTime] = useState(truck.operatingTime);
   const [isDetailLoaded, setIsDetailLoaded] = useState(false);
-
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
-  const isOperating = isOperatingNow();
+  const isOperating = truck.isOpen;
 
   const fetchFoodTruckDetail = async () => {
     try {
       const response = await fetch(`${API_URL}/api/food-trucks/${truck.id}`, {
         method: "GET",
         headers: {
-          guestUuid: getGuestUuid(),
+          "guest-uuid": getGuestUuid(),
         },
       });
 
@@ -113,9 +111,17 @@ export default function FoodTruckCard({ truck }: Props) {
           isVegan: menu.isVegan,
         }))
       );
-      setOperatingTime(detail.operatingString);
+
+      setOperatingTime(
+        detail.operatingString ||
+          truck.operatingTime ||
+          "운영시간 정보가 없습니다."
+      );
+
       setLikeCount(detail.likeCount);
       setIsLiked(detail.isLiked);
+      localStorage.setItem(getLikeKey(truck.id), String(detail.isLiked));
+
       setIsDetailLoaded(true);
     } catch (error) {
       console.error(error);
@@ -131,22 +137,48 @@ export default function FoodTruckCard({ truck }: Props) {
     setIsOpen((prev) => !prev);
   };
 
-  const handleLike = () => {
-    if (!isLiked) {
-      trackEvent("foodtruck_like", {
-        foodtruck_name: truck.name,
-      });
+  const handleLike = async () => {
+    try {
+      const response = await fetch(
+        `${API_URL}/api/food-trucks/${truck.id}/likes`,
+        {
+          method: "POST",
+          headers: {
+            "guest-uuid": getGuestUuid(),
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok || !data.isSuccess) {
+        alert(data.message || "좋아요 처리에 실패했습니다.");
+        return;
+      }
+
+      const nextIsLiked = data.result.isLiked;
+
+      if (nextIsLiked) {
+        trackEvent("foodtruck_like", {
+          foodtruck_name: truck.name,
+        });
+      }
+
+      setIsLiked(nextIsLiked);
+      localStorage.setItem(getLikeKey(truck.id), String(nextIsLiked));
+
+      setLikeCount((prev) => (nextIsLiked ? prev + 1 : Math.max(prev - 1, 0)));
+    } catch (error) {
+      console.error(error);
+      alert("좋아요 처리 중 오류가 발생했습니다.");
     }
-
-    setIsLiked((prev) => !prev);
-
-    setLikeCount((prev) => {
-      if (isLiked) return prev - 1;
-      return prev + 1;
-    });
   };
 
-  const handleImageClick = () => {
+  const handleImageClick = async () => {
+    if (!isDetailLoaded) {
+      await fetchFoodTruckDetail();
+    }
+
     setIsImageModalOpen(true);
   };
 
@@ -177,7 +209,7 @@ export default function FoodTruckCard({ truck }: Props) {
           </S.InfoArea>
 
           <S.LikeArea $isLiked={isLiked} onClick={handleLike}>
-            <S.LikeIcon src={isLiked ? thumbsUpFill : thumbsUp} alt="좋아요" />
+            <S.LikeIcon src={isLiked ? thumbsUpFill : thumbsUp} />
             <S.LikeCount>{likeCount >= 999 ? "999+" : likeCount}</S.LikeCount>
           </S.LikeArea>
         </S.TopArea>
@@ -187,7 +219,7 @@ export default function FoodTruckCard({ truck }: Props) {
             <S.SectionTitle>운영 시간</S.SectionTitle>
 
             <S.TimeRow>
-              <S.ClockIcon src={clock} alt="시간" />
+              <S.ClockIcon src={clock} />
               <S.TimeText>{operatingTime}</S.TimeText>
             </S.TimeRow>
 
@@ -196,9 +228,7 @@ export default function FoodTruckCard({ truck }: Props) {
             {menus.map((menu) => (
               <S.MenuRow key={menu.name}>
                 <S.MenuNameBox>
-                  {menu.isVegan && (
-                    <S.MenuLeafIcon src={greenLeaf} alt="비건" />
-                  )}
+                  {menu.isVegan && <S.MenuLeafIcon src={greenLeaf} />}
                   <S.MenuName>{menu.name}</S.MenuName>
                 </S.MenuNameBox>
 
@@ -210,7 +240,7 @@ export default function FoodTruckCard({ truck }: Props) {
         )}
 
         <S.ChevronButton type="button" onClick={handleToggleOpen}>
-          <S.ChevronIcon src={isOpen ? chevronUp : chevronDown} alt="토글" />
+          <S.ChevronIcon src={isOpen ? chevronUp : chevronDown} />
         </S.ChevronButton>
       </S.Card>
 
