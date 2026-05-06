@@ -112,7 +112,7 @@ const BoothPage: React.FC = () => {
 
   useEffect(() => {
     const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
-    // const now = new Date("2026-05-14T18:00:00");
+    // const now = new Date("2026-05-14T12:00:00");
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
     const date = now.getDate();
@@ -175,19 +175,22 @@ const BoothPage: React.FC = () => {
     fetchBoothsAndPositions();
   }, [activeDay, isNight, baseUrl]);
 
-  const displayBooths = useMemo(() => {
-    let list = booths.filter((booth) => booth.name !== "총학 운영 본부");
-    list = [...list].sort(
+  const { operatingBooths, upcomingBooths, allBoothsForList } = useMemo(() => {
+    let baseList = booths.filter((booth) => booth.name !== "총학 운영 본부");
+    baseList = [...baseList].sort(
       (a, b) => (a.positionNumber || 999) - (b.positionNumber || 999),
     );
-    if (isOperatingOnly) {
-      list = list.filter(() => {
-        const status = calculateBoothStatus(activeDay, isNight);
-        return status === "운영 중";
-      });
-    }
-    return list;
-  }, [booths, isOperatingOnly, activeDay, isNight]);
+
+    const currentStatus = calculateBoothStatus(activeDay, isNight);
+
+    return {
+      operatingBooths: baseList.filter(() => currentStatus === "운영 중"),
+      upcomingBooths: baseList.filter(() => currentStatus === "운영 예정"),
+      allBoothsForList: baseList,
+    };
+  }, [booths, activeDay, isNight]);
+
+  const displayBooths = isOperatingOnly ? operatingBooths : allBoothsForList;
 
   const boothCounts = useMemo(() => {
     const counts = { 예정: 0, 운영중: 0, 종료: 0 };
@@ -294,6 +297,39 @@ const BoothPage: React.FC = () => {
     }
   }, [showGuide]);
 
+  const renderBoothItem = (booth: Booth) => {
+    const currentStatus = calculateBoothStatus(activeDay, isNight);
+    const getCategory = () => {
+      const source = booth.categories?.length
+        ? booth.categories
+        : booth.boothTypes;
+      const cat = source?.find((c) => c !== "DAY" && c !== "NIGHT");
+      return cat || "체험";
+    };
+
+    const mappedBooth = {
+      id: booth.id,
+      boothNumber: booth.boothNumber,
+      positionNumber: booth.positionNumber,
+      name: booth.name,
+      category: getCategory(),
+      operator: booth.operatingSubject,
+      status: currentStatus,
+      description: booth.description || "상세 설명이 없습니다.",
+      images: booth.imageUrls || [booth.thumbnailUrl],
+    };
+
+    return (
+      <BoothInfoComponent
+        key={`${booth.boothId || booth.id}-${booth.positionNumber}`}
+        booth={mappedBooth}
+        onDetailClick={() =>
+          handleOpenModal(booth.boothId || booth.id, booth.positionNumber)
+        }
+      />
+    );
+  };
+
   return (
     <>
       <S.OnboardingOverlay
@@ -387,68 +423,44 @@ const BoothPage: React.FC = () => {
           </S.FilterButton>
           {loading ? (
             <S.EmptyMessage>로딩 중...</S.EmptyMessage>
-          ) : displayBooths.length > 0 ? (
-            displayBooths.map((booth) => {
-              const currentStatus = calculateBoothStatus(activeDay, isNight);
-
-              const getCategory = () => {
-                if (booth.categories && booth.categories.length > 0) {
-                  const cat = booth.categories.find(
-                    (c) => c !== "DAY" && c !== "NIGHT",
-                  );
-                  if (cat) return cat;
-                }
-                if (booth.boothTypes && booth.boothTypes.length > 0) {
-                  const type = booth.boothTypes.find(
-                    (t) => t !== "DAY" && t !== "NIGHT",
-                  );
-                  if (type) return type;
-                }
-                return "체험";
-              };
-              const mappedBooth = {
-                id: booth.id,
-                boothNumber: booth.boothNumber,
-                positionNumber: booth.positionNumber,
-                name: booth.name,
-                category: getCategory(),
-                operator: booth.operatingSubject,
-                status: currentStatus,
-                description: booth.description || "상세 설명이 없습니다.",
-                images: booth.imageUrls || [booth.thumbnailUrl],
-              };
-
-              return (
-                <BoothInfoComponent
-                  key={`${booth.boothId || booth.id}-${booth.positionNumber}`}
-                  booth={mappedBooth}
-                  onDetailClick={() =>
-                    handleOpenModal(
-                      booth.boothId || booth.id,
-                      booth.positionNumber,
-                    )
-                  }
-                />
-              );
-            })
           ) : (
-            <S.EmptyStateWrapper>
-              {boothCounts.예정 > 0 ? (
-                <>
-                  <S.EmptyMessage>
-                    지금은 부스 운영시간이 아닙니다
-                  </S.EmptyMessage>
-                  <S.NextTimeText>
-                    다음 부스 시간 :{isNight ? "16:00~19:30" : "11:00~14:30"}
-                  </S.NextTimeText>
-                </>
+            <>
+              {/* 1. 실제 보여줄 리스트가 있는 경우 (필터 해제 시 혹은 운영 중일 때) */}
+              {displayBooths.length > 0 ? (
+                displayBooths.map(renderBoothItem)
               ) : (
-                <S.EmptyMessage>
-                  DAY {activeDay}의 {isNight ? "밤" : "낮"} 부스가 모두
-                  종료되었습니다
-                </S.EmptyMessage>
+                /* 2. 보여줄 리스트가 없는 경우 (특히 '운영 중' 필터가 켜져있는데 운영 중이 아닐 때) */
+                <S.EmptyStateWrapper>
+                  {boothCounts.예정 > 0 ? (
+                    <>
+                      <S.EmptyMessage>
+                        지금은 부스 운영시간이 아닙니다
+                      </S.EmptyMessage>
+                      <S.NextTimeText>
+                        다음 부스 시간 :{" "}
+                        {isNight ? "16:00~19:30" : "11:00~14:30"}
+                      </S.NextTimeText>
+
+                      {/* 이미지처럼 아래에 운영 예정 부스 섹션 추가 */}
+                      <div
+                        style={{
+                          marginTop: "40px",
+                          textAlign: "left",
+                          width: "100%",
+                        }}
+                      >
+                        <S.WillBoothList>운영 예정 부스</S.WillBoothList>
+                        {upcomingBooths.map(renderBoothItem)}
+                      </div>
+                    </>
+                  ) : (
+                    <S.EmptyMessage>
+                      DAY {activeDay}의 부스가 모두 종료되었습니다
+                    </S.EmptyMessage>
+                  )}
+                </S.EmptyStateWrapper>
               )}
-            </S.EmptyStateWrapper>
+            </>
           )}
         </S.ListSection>
         {isModalOpen && targetBooth && (
