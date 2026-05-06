@@ -3,6 +3,8 @@ import * as S from "../../styles/HomeBanner.style";
 import BannerPolaroid from "../../components/Home/BannerPolaroid";
 
 
+import ContestBanner from "../../assets/home/Contest-home.png"
+import TestBanner from "../../assets/home/Test-home.png"
 import Day1Artist1 from "../../assets/home/Day1-CherryFilter-home.png"
 import Day1Artist2 from "../../assets/home/Day1-Izna-home.png"
 import Day1Artist3 from "../../assets/home/Day1-LeeChaeyeon-home.png"
@@ -60,13 +62,13 @@ const banners: BannerItem[] = [
   {
     title: "근화제 청춘 유형 테스트",
     stickerText: "나의 청춘 유형은?🫧",
-    images: ["/images/banner2.png"],
+    images: [TestBanner],
     link: "https://smore.im/quiz/wPemq6eFFH",
   },
   {
     title: "청춘 한 컷 컨테스트",
     stickerText: "오늘의 청춘을 사진으로!📸",
-    images: ["/images/banner3.png"],
+    images: [ContestBanner],
     link: "/contest",
   },
 ];
