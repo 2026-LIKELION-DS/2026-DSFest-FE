@@ -30,6 +30,7 @@ type ArtistApiItem = {
   imageUrl: string;
   instagramUrl: string;
   youtubeUrl: string;
+  playlistUrl: string;
   countdownStatus: CountdownStatus;
 };
 
@@ -38,17 +39,6 @@ type ArtistApiResponse = {
   code: string;
   message: string;
   result: ArtistApiItem[];
-};
-
-type PlaylistApiResponse = {
-  isSuccess: boolean;
-  code: string;
-  message: string;
-  result: {
-    artistId: number;
-    artistName: string;
-    youtubeUrl: string;
-  };
 };
 
 const API = axios.create({
@@ -61,6 +51,9 @@ const days = [
   { key: "day3", label: "DAY 3", date: "15일 금", value: 3 },
 ] as const;
 
+const DEFAULT_PLAYLIST_THUMBNAIL =
+  "https://img.youtube.com/vi/jKf_WnaeoJU/hqdefault.jpg";
+
 const mapArtist = (artist: ArtistApiItem): Artist => ({
   id: artist.id,
   name: artist.name,
@@ -69,6 +62,7 @@ const mapArtist = (artist: ArtistApiItem): Artist => ({
   image: artist.imageUrl,
   instaUrl: artist.instagramUrl,
   youtubeUrl: artist.youtubeUrl,
+  playlistUrl: artist.playlistUrl,
 });
 
 const getPlaylistDesc = (status?: CountdownStatus) => {
@@ -85,9 +79,6 @@ function ArtistPage() {
   const [artistStatuses, setArtistStatuses] = useState<
     Record<number, CountdownStatus>
   >({});
-  const [playlist, setPlaylist] = useState<
-    PlaylistApiResponse["result"] | null
-  >(null);
   const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
 
   const {
@@ -138,7 +129,6 @@ function ArtistPage() {
 
   const handleDayClick = (dayKey: DayKey) => {
     setCurrentDay(dayKey);
-    setPlaylist(null);
     fetchArtistsByDay(dayKey);
   };
 
@@ -161,25 +151,6 @@ function ArtistPage() {
 
     fetchTodayArtists();
   }, []);
-
-  useEffect(() => {
-    if (!currentArtist) return;
-
-    const fetchPlaylist = async () => {
-      try {
-        const res = await API.get<PlaylistApiResponse>(
-          `/api/artists/${currentArtist.id}/playlist`,
-        );
-
-        setPlaylist(res.data.result);
-      } catch (error) {
-        console.error("아티스트 플레이리스트 조회 실패:", error);
-        setPlaylist(null);
-      }
-    };
-
-    fetchPlaylist();
-  }, [currentArtist]);
 
   return (
     <S.ArtistPage>
@@ -233,11 +204,11 @@ function ArtistPage() {
           onGuideClick={() => setIsGuideModalOpen(true)}
         />
 
-        {playlist && currentArtist && (
+        {currentArtist?.playlistUrl && (
           <S.PlaylistSection>
             <ArtistPlaylist
-              playlistUrl={playlist.youtubeUrl}
-              thumbnailUrl={currentArtist.image}
+              playlistUrl={currentArtist.playlistUrl}
+              thumbnailUrl={DEFAULT_PLAYLIST_THUMBNAIL}
               desc={getPlaylistDesc(currentCountdownStatus)}
             />
           </S.PlaylistSection>
