@@ -92,7 +92,7 @@ export default function Home() {
         const response = await fetch(
           `${BaseUrl}/api/notices/urgent`,
           {
-            method: "POST",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
             },
