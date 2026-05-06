@@ -438,3 +438,9 @@ export const CloseGuideBtn = styled.button`
   left: 50%;
   transform: translateX(calc(201px - 100% - 120px));
 `;
+
+export const WillBoothList = styled.div`
+  ${setTypo("h2")};
+  color: ${({ theme }) => theme.colors.fg.primary};
+  margin: 40px 0;
+`;
