@@ -79,7 +79,7 @@ export default function AdminNotice() {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       const data = await response.json();
@@ -95,7 +95,7 @@ export default function AdminNotice() {
         prev.map((notice) => ({
           ...notice,
           urgent: false,
-        }))
+        })),
       );
     } catch (error) {
       console.error(error);
@@ -111,12 +111,16 @@ export default function AdminNotice() {
     navigate("/AdminNoticeWrite");
   };
 
+  const handleContestResultClick = () => {
+    navigate("/AdminContestResult");
+  };
+
   return (
     <S.Page>
       <S.TopArea>
-        <S.ClearButton type="button" onClick={handleClearEmergency}>
-          모든 긴급공지 해제
-        </S.ClearButton>
+        <S.ContestResultButton type="button" onClick={handleContestResultClick}>
+          청춘 한 컷 현황 보러가기
+        </S.ContestResultButton>
       </S.TopArea>
 
       <S.NoticeList>
@@ -140,6 +144,9 @@ export default function AdminNotice() {
       </S.NoticeList>
 
       <S.BottomArea>
+        <S.ClearButton type="button" onClick={handleClearEmergency}>
+          모든 긴급공지 해제
+        </S.ClearButton>
         <S.WriteButton type="button" onClick={handleWriteClick}>
           공지작성하기
         </S.WriteButton>
