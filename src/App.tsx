@@ -28,6 +28,7 @@ import AdminNoticePage from "./routes/Admin/AdminNoticePage";
 import AdminNoticeDetailPage from "./routes/Admin/AdminNoticeDetailPage";
 import AdminNoticeWritePage from "./routes/Admin/AdminNoticeWritePage";
 import OnBoardingPage from "./routes/Onboarding";
+import AdminContestResultPage from "./routes/Admin/AdminContestResultPage";
 
 function GAListener() {
   const location = useLocation();
@@ -242,6 +243,19 @@ function App() {
           }
         />
         <Route path="/onboarding" element={<OnBoardingPage />} />
+
+        <Route
+          path="/AdminContestResult"
+          element={
+            <AppLayout
+              title="청춘한컷콘테스트"
+              showBackButton={true}
+              showNavBar={false}
+            >
+              <AdminContestResultPage />
+            </AppLayout>
+          }
+        />
       </Routes>
     </Router>
   );
