@@ -27,7 +27,8 @@ export const ClearButton = styled.button`
   background: transparent;
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  width: 100%;
+
   justify-content: center;
   font-family: ${theme.typography.buttonMd.fontFamily};
   font-weight: ${theme.typography.buttonMd.fontWeight};
@@ -101,11 +102,13 @@ export const BottomArea = styled.div`
   flex-shrink: 0;
   width: 100%;
   padding-top: 12px;
+  display: flex;
+  gap: 10px;
 `;
 
 export const WriteButton = styled.button`
   width: 100%;
-  height: 44px;
+  /* height: 44px; */
   border: none;
   border-radius: 999px;
   background: ${({ theme }) => theme.colors.bg.brand};
@@ -116,5 +119,22 @@ export const WriteButton = styled.button`
   line-height: ${theme.typography.buttonMd.lineHeight};
 
   color: ${({ theme }) => theme.colors.fg.primaryInverted};
+  cursor: pointer;
+`;
+
+export const ContestResultButton = styled.button`
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid ${({ theme }) => theme.colors.stroke.subtle};
+  background: transparent;
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+  font-family: ${theme.typography.buttonMd.fontFamily};
+  font-weight: ${theme.typography.buttonMd.fontWeight};
+  font-size: ${theme.typography.buttonMd.fontSize};
+  line-height: ${theme.typography.buttonMd.lineHeight};
+
   cursor: pointer;
 `;
