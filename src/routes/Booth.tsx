@@ -425,11 +425,9 @@ const BoothPage: React.FC = () => {
             <S.EmptyMessage>로딩 중...</S.EmptyMessage>
           ) : (
             <>
-              {/* 1. 실제 보여줄 리스트가 있는 경우 (필터 해제 시 혹은 운영 중일 때) */}
               {displayBooths.length > 0 ? (
                 displayBooths.map(renderBoothItem)
               ) : (
-                /* 2. 보여줄 리스트가 없는 경우 (특히 '운영 중' 필터가 켜져있는데 운영 중이 아닐 때) */
                 <S.EmptyStateWrapper>
                   {boothCounts.예정 > 0 ? (
                     <>
@@ -441,7 +439,6 @@ const BoothPage: React.FC = () => {
                         {isNight ? "16:00~19:30" : "11:00~14:30"}
                       </S.NextTimeText>
 
-                      {/* 이미지처럼 아래에 운영 예정 부스 섹션 추가 */}
                       <div
                         style={{
                           marginTop: "40px",
