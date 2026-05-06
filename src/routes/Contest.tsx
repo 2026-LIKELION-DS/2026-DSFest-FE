@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import * as S from "../styles/Contest.style";
 import ContestNotice from "../components/Contest/ContestNotice";
-import ContestImg from "../assets/Contest/favicon-512w.png";
+// import ContestImg from "../assets/Contest/favicon-512w.png";
+import ContestImg from "../assets/Contest/Contest.png";
 import ContestVoteButton from "../components/Contest/ContestVoteButton";
 import axios from "axios";
 
