@@ -24,14 +24,13 @@ export const Input = styled.input`
 
   font-family: ${theme.typography.bodySm.fontFamily};
   font-weight: ${theme.typography.bodySm.fontWeight};
-  font-size: ${theme.typography.bodySm.fontSize};
+  font-size: 16px;
   line-height: ${theme.typography.bodySm.lineHeight};
 
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     max-width: none;
   }
 `;
-
 export const SendButton = styled.button`
   flex: 0 0 44px;
   width: 44px;
