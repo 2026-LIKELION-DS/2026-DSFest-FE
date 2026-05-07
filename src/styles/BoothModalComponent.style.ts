@@ -60,8 +60,8 @@ export const StatusBadge = styled.div<{ $status?: string }>`
   position: absolute;
   top: -15px;
   left: 24px;
-  padding: 6px 16px;
-  border-radius: 4px;
+  padding: 4px 15px;
+  border-radius: 2px;
   ${setTypo("h3")};
   ${({ $status, theme }) => {
     switch ($status) {
@@ -69,19 +69,19 @@ export const StatusBadge = styled.div<{ $status?: string }>`
         return css`
           background: ${theme.colors.bg.olive};
           color: ${theme.colors.bg.brand};
-          border: 1px solid ${theme.colors.bg.brand};
+          border: 0.5px solid ${theme.colors.bg.brand};
         `;
       case "운영 예정":
         return css`
           background: #fff;
           color: ${theme.colors.bg.brand};
-          border: 1px solid ${theme.colors.bg.brand};
+          border: 0.5px solid ${theme.colors.bg.brand};
         `;
       default:
         return css`
           background: ${theme.colors.bg.disabled};
           color: ${theme.colors.fg.disabled};
-          border: 1px solid ${theme.colors.bg.disabled};
+          border: 0.5px solid ${theme.colors.bg.disabled};
         `;
     }
   }}
