@@ -6,7 +6,9 @@ const INPUT_HEIGHT = "68px";
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+
+  height: calc(100svh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+  max-height: calc(100svh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
 
   display: flex;
   flex-direction: column;
@@ -15,9 +17,15 @@ export const Container = styled.div`
 
   position: relative;
 
+  @supports not (height: 100svh) {
+    height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+    max-height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+  }
+
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     @media (min-height: 874px) {
       height: calc(874px - 24px - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+      max-height: calc(874px - 24px - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
     }
   }
 `;
@@ -95,6 +103,7 @@ export const ChatArea = styled.div`
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
 
   padding: 110px 20px 20px;
   background: ${({ theme }) => theme.colors.bg.olive};
