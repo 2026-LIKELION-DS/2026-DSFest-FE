@@ -17,7 +17,7 @@ export const Card = styled.div`
   border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
   border-radius: 4px;
   padding: 30px 20px;
-  background: ${({ theme }) => theme.colors.bg.neutral};
+  background: ${({ theme }) => theme.colors.bg.offWhite};
   margin: 30px 0;
   position: relative;
 `;
