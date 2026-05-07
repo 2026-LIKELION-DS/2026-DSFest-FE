@@ -33,24 +33,24 @@ const artistImagesByDay = {
   day3: [Day3Artist1, Day3Artist2, Day3Artist3, Day3Artist4],
 };
 
-// const currentDay: keyof typeof artistImagesByDay = "day1";
+const currentDay: keyof typeof artistImagesByDay = "day2";
 // 개발 테스트용 코드
 // 날짜별로 아티스트 잘 바뀌는지 확인하고 싶으면 38~51번째 줄까지 주석처리 후에 이 코드 살려주세요!
 
-const getCurrentFestivalDay = (): keyof typeof artistImagesByDay => {
-  const today = new Date();
+// const getCurrentFestivalDay = (): keyof typeof artistImagesByDay => {
+//   const today = new Date();
 
-  const month = today.getMonth() + 1;
-  const date = today.getDate();
+//   const month = today.getMonth() + 1;
+//   const date = today.getDate();
 
-  if (month === 5 && date === 13) return "day1";
-  if (month === 5 && date === 14) return "day2";
-  if (month === 5 && date === 15) return "day3";
+//   if (month === 5 && date === 13) return "day1";
+//   if (month === 5 && date === 14) return "day2";
+//   if (month === 5 && date === 15) return "day3";
 
-  return "day1";
-};
+//   return "day1";
+// };
 
-const currentDay = getCurrentFestivalDay();
+// const currentDay = getCurrentFestivalDay();
 
 const banners: BannerItem[] = [
   {
