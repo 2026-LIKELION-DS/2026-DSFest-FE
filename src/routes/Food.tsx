@@ -36,7 +36,7 @@ const getGuestUuid = () => {
 
 export default function Food() {
   const API_URL = import.meta.env.VITE_API_URL;
-
+  const [targetStoreName, setTargetStoreName] = useState<string | null>(null);
   const [isVeganSelected, setIsVeganSelected] = useState(false);
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
   const [notice, setNotice] = useState<FoodNotice | null>(null);
@@ -114,7 +114,7 @@ export default function Food() {
   return (
     <S.FoodPage ref={pageRef}>
       <S.FixedTopArea>
-        <FoodBannerCarousel />
+        <FoodBannerCarousel onBannerClick={setTargetStoreName} />
 
         <FoodFilterSection
           isVeganSelected={isVeganSelected}
@@ -123,7 +123,11 @@ export default function Food() {
       </S.FixedTopArea>
 
       <S.ListArea>
-        <FoodTruckList isVeganSelected={isVeganSelected} />
+        <FoodTruckList
+          isVeganSelected={isVeganSelected}
+          targetStoreName={targetStoreName}
+          onScrollDone={() => setTargetStoreName(null)}
+        />
       </S.ListArea>
 
       {!isNoticeOpen && (
