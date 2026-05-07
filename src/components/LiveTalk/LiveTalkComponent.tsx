@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import ChatItem from "./ChatItem";
 import ChatInput from "./ChatInput";
 import * as S from "../../styles/LiveTalk.style";
-
+import { useNavigate } from "react-router-dom";
 import MegaphoneIcon from "../../assets/LiveTalk/MegaphoneFill.svg";
 
 export type ChatMessage = {
@@ -64,7 +64,7 @@ export default function LiveTalkComponent() {
   const [hasMorePreviousMessages, setHasMorePreviousMessages] = useState(true);
   const [unreadCount, setUnreadCount] = useState<number>(0);
   const [isSocketConnected, setIsSocketConnected] = useState(false);
-
+  const navigate = useNavigate();
   const stompClientRef = useRef<StompClientLike | null>(null);
   const chatAreaRef = useRef<HTMLDivElement | null>(null);
   const previousBannerModeRef =
@@ -571,6 +571,14 @@ export default function LiveTalkComponent() {
       setBannerMode("collapsed");
     }
 
+    if (
+      Math.abs(diffX) <= 10 &&
+      bannerMode !== "collapsed" &&
+      topic?.topicType === "ARTIST"
+    ) {
+      navigate("/artist");
+    }
+
     dragStartXRef.current = null;
 
     try {
@@ -590,6 +598,13 @@ export default function LiveTalkComponent() {
       hideBannerText();
       setBannerMode(previousBannerModeRef.current);
       showBannerTextAfterTransition();
+      return;
+    }
+
+    console.log("배너 클릭됨", topic);
+
+    if (topic?.topicType === "ARTIST") {
+      navigate("/artist");
     }
   };
 
