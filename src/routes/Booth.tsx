@@ -58,8 +58,8 @@ const calculateBoothStatus = (
   day: number,
   nightMode: boolean,
 ): "운영 중" | "운영 예정" | "운영 종료" => {
-  const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
-  // const now = new Date("2026-05-14T12:00:00");
+  // const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
+  const now = new Date("2026-05-14T12:00:00");
   const festivalDates: { [key: number]: string } = {
     1: "2026-05-13",
     2: "2026-05-14",
@@ -111,8 +111,8 @@ const BoothPage: React.FC = () => {
   };
 
   useEffect(() => {
-    const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
-    // const now = new Date("2026-05-14T12:00:00");
+    // const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
+    const now = new Date("2026-05-14T12:00:00");
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
     const date = now.getDate();
