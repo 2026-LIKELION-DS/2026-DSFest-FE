@@ -66,7 +66,7 @@ const banners: BannerItem[] = [
     link: "https://smore.im/quiz/wPemq6eFFH",
   },
   {
-    title: "청춘 한 컷 컨테스트",
+    title: "청춘 한 컷 콘테스트",
     stickerText: "오늘의 청춘을 사진으로!📸",
     images: [ContestBanner],
     link: "/contest",
