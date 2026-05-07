@@ -30,6 +30,7 @@ export const ErrorPageContainer = styled.div`
       height: 874px;
       border: 12px solid ${({ theme }) => theme.colors.olive};
       border-radius: 24px;
+      margin: -12px 0 0 -12px;
     }
   }
 `;
