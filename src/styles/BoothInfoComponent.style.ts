@@ -67,6 +67,7 @@ export const CategoryTag = styled.span`
   ${setTypo("buttonMd")};
   padding: 5px 13px;
   border-radius: 9999px;
+  text-wrap: nowrap;
 `;
 
 export const PhotoPlaceholder = styled.div`
