@@ -25,7 +25,7 @@ export const Card = styled.div`
 export const StatusBadge = styled.span<{ $status: StatusType }>`
   position: absolute;
   top: -20px;
-  padding: 8px 15px;
+  padding: 4px 15px;
   border-radius: 2px;
   ${setTypo("h3")};
   border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
@@ -65,7 +65,7 @@ export const CategoryTag = styled.span`
   background: ${({ theme }) => theme.colors.bg.olive};
   color: ${({ theme }) => theme.colors.bg.brand};
   ${setTypo("buttonMd")};
-  padding: 10px 15px;
+  padding: 5px 13px;
   border-radius: 9999px;
 `;
 
