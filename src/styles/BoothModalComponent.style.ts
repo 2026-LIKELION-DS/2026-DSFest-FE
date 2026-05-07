@@ -102,6 +102,7 @@ export const ContentArea = styled.div`
   flex: 1;
   overflow-y: auto;
   display: flex;
+  padding-bottom: 20px;
   flex-direction: column;
   gap: 16px;
   &::-webkit-scrollbar {
