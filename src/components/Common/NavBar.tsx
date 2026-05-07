@@ -109,6 +109,10 @@ export default function NavBar({ activeTab, onTabChange }: NavBarProps) {
             type="button"
             $active={isActive}
             onClick={() => {
+              if (item.key === "livetalk") {
+                setUnreadCount(0);
+              }
+
               navigate(item.path);
               onTabChange?.(item.key);
             }}

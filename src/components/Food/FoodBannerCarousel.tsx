@@ -49,12 +49,17 @@ const STORE_NAMES = [
   "썬플라워",
   "스위트퍼플",
 ];
-export default function FoodBannerCarousel() {
+interface Props {
+  onBannerClick: (storeName: string) => void;
+}
+
+export default function FoodBannerCarousel({ onBannerClick }: Props) {
   const API_URL = import.meta.env.VITE_API_URL;
 
+  const clickedStoreNameRef = useRef("");
   const trackRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<number | null>(null);
-
+  const hasMovedRef = useRef(false);
   const positionRef = useRef(0);
   const startXRef = useRef(0);
   const startPositionRef = useRef(0);
@@ -135,10 +140,16 @@ export default function FoodBannerCarousel() {
     };
   }, []);
 
-  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerDown = (
+    e: React.PointerEvent<HTMLDivElement>,
+    storeName: string
+  ) => {
     trackEvent("foodtruck_banner_scroll");
 
     isDraggingRef.current = true;
+    hasMovedRef.current = false;
+    clickedStoreNameRef.current = storeName;
+
     setIsDragging(true);
 
     startXRef.current = e.clientX;
@@ -152,15 +163,32 @@ export default function FoodBannerCarousel() {
 
     const diff = e.clientX - startXRef.current;
 
+    if (Math.abs(diff) > 8) {
+      hasMovedRef.current = true;
+    }
+
     positionRef.current = normalizePosition(startPositionRef.current + diff);
     setPosition(positionRef.current);
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    const wasClick = !hasMovedRef.current;
+    const storeName = clickedStoreNameRef.current;
+
     isDraggingRef.current = false;
+    hasMovedRef.current = false;
+    clickedStoreNameRef.current = "";
     setIsDragging(false);
 
-    e.currentTarget.releasePointerCapture(e.pointerId);
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      // 이미 해제된 경우 무시
+    }
+
+    if (wasClick && storeName) {
+      onBannerClick(storeName);
+    }
   };
 
   const mergedBanners = banners.map((banner, index) => ({
@@ -170,18 +198,18 @@ export default function FoodBannerCarousel() {
 
   return (
     <S.BannerWrapper>
-      <S.Track
-        ref={trackRef}
-        $position={position}
-        $isDragging={isDragging}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerUp}
-        onPointerLeave={handlePointerUp}
-      >
+      <S.Track ref={trackRef} $position={position} $isDragging={isDragging}>
         {[...mergedBanners, ...mergedBanners].map((banner, index) => (
-          <S.Card key={`${banner.id}-${index}`}>
+          <S.Card
+            key={`${banner.id}-${index}`}
+            onPointerDown={(e) =>
+              handlePointerDown(e, STORE_NAMES[index % STORE_NAMES.length])
+            }
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerUp}
+            onPointerLeave={handlePointerUp}
+          >
             <S.Sticker>{banner.title}</S.Sticker>
 
             <S.ImageBox>

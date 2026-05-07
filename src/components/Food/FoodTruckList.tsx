@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FoodTruckCard from "./FoodTruckCard";
 
 interface Props {
   isVeganSelected: boolean;
+  targetStoreName: string | null;
+  onScrollDone: () => void;
 }
 
 interface FoodTruckApiItem {
@@ -39,10 +41,14 @@ const getStoredLike = (id: number) => {
   return localStorage.getItem(`foodtruck_like_${id}`) === "true";
 };
 
-export default function FoodTruckList({ isVeganSelected }: Props) {
+export default function FoodTruckList({
+  isVeganSelected,
+  targetStoreName,
+  onScrollDone,
+}: Props) {
   const API_URL = import.meta.env.VITE_API_URL;
   const [foodTrucks, setFoodTrucks] = useState<Truck[]>([]);
-
+  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
   useEffect(() => {
     const fetchFoodTrucks = async () => {
       try {
@@ -89,11 +95,32 @@ export default function FoodTruckList({ isVeganSelected }: Props) {
 
     fetchFoodTrucks();
   }, [API_URL, isVeganSelected]);
+  useEffect(() => {
+    if (!targetStoreName) return;
 
+    const targetElement = cardRefs.current[targetStoreName];
+
+    if (!targetElement) return;
+
+    targetElement.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    onScrollDone();
+  }, [targetStoreName, foodTrucks, onScrollDone]);
   return (
     <>
       {foodTrucks.map((truck) => (
-        <FoodTruckCard key={truck.id} truck={truck} />
+        <div
+          key={truck.id}
+          ref={(element) => {
+            cardRefs.current[truck.name] = element;
+          }}
+          style={{ scrollMarginTop: "72px" }}
+        >
+          <FoodTruckCard truck={truck} />
+        </div>
       ))}
     </>
   );
