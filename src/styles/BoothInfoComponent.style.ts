@@ -65,7 +65,7 @@ export const CategoryTag = styled.span`
   background: ${({ theme }) => theme.colors.bg.olive};
   color: ${({ theme }) => theme.colors.bg.brand};
   ${setTypo("buttonMd")};
-  padding: 10px 15px;
+  padding: 5px 13px;
   border-radius: 9999px;
 `;
 
