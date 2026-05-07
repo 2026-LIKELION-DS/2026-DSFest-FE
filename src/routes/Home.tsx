@@ -70,8 +70,8 @@ export default function Home() {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: "2026 덕성여대 근화제",
-          text: "근화제 사이트 확인해보세요!",
+          title: "2026 <청춘>",
+          text: "지금 바로 접속해 청춘을 즐겨보세요!",
           url,
         });
       } else {
