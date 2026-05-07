@@ -90,7 +90,7 @@ export const BannerArrow = styled.span`
   font-size: 24px;
   line-height: 24px;
 `;
-
+//수정함
 export const ChatArea = styled.div`
   flex: 1;
   min-height: 0;
