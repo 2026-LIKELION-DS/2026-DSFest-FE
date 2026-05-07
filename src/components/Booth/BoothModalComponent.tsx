@@ -32,7 +32,7 @@ interface Booth {
   collabInstagramUrl?: string;
   youtubeUrl?: string;
   openKakaoUrl?: string;
-  operatingTimes?: string[];
+  operatingDays?: string[];
   boothNumber?: number;
   positionNumber: number;
 }
@@ -118,9 +118,21 @@ const BoothModalComponent: React.FC<ModalProps> = ({
               <S.InfoItem>
                 <S.Icons src={Users} /> {booth.operator || "운영진"}
               </S.InfoItem>
-              <S.InfoItem>
+              <S.InfoItem style={{ alignItems: "flex-start" }}>
                 <S.Icons src={Clock} />
-                {booth.operatingTimes?.[0] || "운영 시간 정보 없음"}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "4px",
+                  }}
+                >
+                  {booth.operatingDays && booth.operatingDays.length > 0
+                    ? booth.operatingDays.map((time, index) => (
+                        <span key={index}>{time}</span>
+                      ))
+                    : "운영 시간 정보 없음"}
+                </div>
               </S.InfoItem>
               <S.InfoItem>
                 <S.Icons src={Store} /> {getCleanCategory()} 부스
