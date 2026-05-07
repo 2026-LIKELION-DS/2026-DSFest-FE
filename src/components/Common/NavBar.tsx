@@ -95,6 +95,14 @@ export default function NavBar({ activeTab, onTabChange }: NavBarProps) {
     };
 
     fetchUnreadCount();
+
+    const intervalId = window.setInterval(() => {
+      fetchUnreadCount();
+    }, 3000);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
   }, [API_URL]);
 
   return (
