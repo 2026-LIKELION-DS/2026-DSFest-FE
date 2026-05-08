@@ -36,6 +36,7 @@ function ContestNotice() {
         </div>
         <div>3. 투표 완료</div>
         <div>※ 1인 1표만 가능</div>
+        <div>※ 15:00 이후부터는 실시간 순위가 비공개 처리됩니다.</div>
       </S.NoticeList>
       <S.NoticeList>
         <S.ListTitle>🏆 결과 발표</S.ListTitle>
