@@ -8,7 +8,7 @@ import NoticeListItem from "../../components/Notice/NoticeListItem";
 
 import * as S from "../../styles/Notice.style";
 
-type NoticeCategory = "EVENT" | "PERFORMANCE" | "INFO" | "ETC";
+type NoticeCategory = "EVENT" | "PERFORMANCE" | "NOTICE" | "ETC";
 type CategoryFilter = "ALL" | NoticeCategory;
 
 interface NoticeItem {
@@ -43,14 +43,14 @@ const categories: CategoryOption[] = [
   { label: "전체보기", value: "ALL" },
   { label: "공연", value: "PERFORMANCE" },
   { label: "이벤트", value: "EVENT" },
-  { label: "안내", value: "INFO" },
+  { label: "안내", value: "NOTICE" },
   { label: "기타", value: "ETC" },
 ];
 
 const CATEGORY_LABEL: Record<NoticeCategory, string> = {
   EVENT: "이벤트",
   PERFORMANCE: "공연",
-  INFO: "안내",
+  NOTICE: "안내",
   ETC: "기타",
 };
 

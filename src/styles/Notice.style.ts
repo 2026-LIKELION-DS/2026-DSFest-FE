@@ -163,10 +163,10 @@ export const NoticeItem = styled.li`
   border-bottom: 1px solid #e5ebcf;
 `;
 
-export const NoticeTextBox = styled.div`
+export const NoticeTextBox = styled.div<{ hasCategory: boolean }>`
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: ${({ hasCategory }) => (hasCategory ? "12px" : "0")};
 `;
 
 export const NoticeCategory = styled.p`
