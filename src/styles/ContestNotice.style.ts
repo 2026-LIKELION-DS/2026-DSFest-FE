@@ -10,6 +10,7 @@ export const ContestNotice = styled.article`
   border: 1px solid ${({ theme }) => theme.colors.stroke.oliveLight};
   border-radius: 4px;
   background: ${({ theme }) => theme.colors.olive[50]};
+  margin-bottom: 22px;
 
   .bubble {
     position: absolute;
