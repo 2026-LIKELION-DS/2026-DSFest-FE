@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import axios from "axios";
 import { trackEvent } from "../utils/analytics";
+// useSearchParams 추가
+import { useSearchParams } from "react-router-dom";
 
 import * as S from "../styles/Booth.style";
 import BoothMapComponent from "../components/Booth/BoothMapComponent";
@@ -83,12 +85,21 @@ const calculateBoothStatus = (
 const BoothPage: React.FC = () => {
   const baseUrl = import.meta.env.VITE_API_URL;
   const mapSectionRef = useRef<HTMLDivElement>(null);
+  //searchParams 추가
+  const [searchParams] = useSearchParams();
 
   const [activeDay, setActiveDay] = useState(1);
   const [booths, setBooths] = useState<Booth[]>([]);
   const [loading, setLoading] = useState(false);
   const [isOperatingOnly, setIsOperatingOnly] = useState(false);
-  const [isNight, setIsNight] = useState(false);
+  // const [isNight, setIsNight] = useState(false);
+  //isNight 선언 교체
+  const [isNight, setIsNight] = useState(() => {
+    const timeParam = searchParams.get("time");
+    if (timeParam === "day") return false;
+    if (timeParam === "night") return true;
+    return new Date().getHours() >= 16;
+  });
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [targetBooth, setTargetBooth] = useState<Booth | null>(null);
@@ -116,7 +127,7 @@ const BoothPage: React.FC = () => {
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
     const date = now.getDate();
-    const hours = now.getHours();
+    // const hours = now.getHours();
 
     if (year === 2026 && month === 5) {
       if (date <= 13) setActiveDay(1);
@@ -125,12 +136,12 @@ const BoothPage: React.FC = () => {
     } else if (year >= 2026 && month >= 5 && date > 15) {
       setActiveDay(3);
     }
-
-    if (hours >= 16) {
-      setIsNight(true);
-    } else {
-      setIsNight(false);
-    }
+    // isNight 설정 부분 제거
+    // if (hours >= 16) {
+    //   setIsNight(true);
+    // } else {
+    //   setIsNight(false);
+    // }
   }, []);
 
   useEffect(() => {
