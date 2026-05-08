@@ -132,6 +132,7 @@ export const ImageRow = styled.div`
   margin-bottom: 12px;
   overflow-x: auto;
   white-space: nowrap;
+  flex-shrink: 0;
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     display: none;
