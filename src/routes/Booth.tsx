@@ -87,6 +87,12 @@ const BoothPage: React.FC = () => {
   const mapSectionRef = useRef<HTMLDivElement>(null);
   //searchParams 추가
   const [searchParams] = useSearchParams();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (mapSectionRef.current) {
+      mapSectionRef.current.scrollTo(0, 0);
+    }
+  }, []);
 
   const [activeDay, setActiveDay] = useState(1);
   const [booths, setBooths] = useState<Booth[]>([]);
