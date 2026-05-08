@@ -69,11 +69,6 @@ export default function ContestVotePage() {
     (id): id is number => id !== null,
   );
 
-  // const handleNext = () => {
-  //   if (currentPage < TOPICS.length - 1) {
-  //     setCurrentPage((prev) => prev + 1);
-  //   }
-  // };
   const handleNext = () => {
     if (currentPage < TOPICS.length - 1) {
       setCurrentPage(currentPage + 1);
