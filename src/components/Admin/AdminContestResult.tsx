@@ -25,7 +25,8 @@ const THEMES: { key: ThemeKey; label: string }[] = [
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function AdminContestResult() {
-  const [currentTheme, setCurrentTheme] = useState<ThemeKey>("DRESS_CODE");
+  // const [currentTheme, setCurrentTheme] = useState<ThemeKey>("DRESS_CODE");
+  const [currentTheme, setCurrentTheme] = useState<ThemeKey>("YOUTH");
   const [resultData, setResultData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
 
