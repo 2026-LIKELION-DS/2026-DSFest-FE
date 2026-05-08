@@ -16,8 +16,9 @@ export default function NoticeListItem({
 }: NoticeListItemProps) {
   return (
     <S.NoticeItem onClick={onClick}>
-      <S.NoticeTextBox>
-        <S.NoticeCategory>{category}</S.NoticeCategory>
+      <S.NoticeTextBox hasCategory={!!category}>
+        {category && <S.NoticeCategory>{category}</S.NoticeCategory>}
+
         <S.NoticeTitle>{title}</S.NoticeTitle>
       </S.NoticeTextBox>
 
