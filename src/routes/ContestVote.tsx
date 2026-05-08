@@ -1,5 +1,5 @@
 import * as S from "../styles/ContestVote.style";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import PhotoCard from "../components/Contest/ContestPhotoCard";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import ContestInfoModal from "../components/Contest/ContestInformation";
@@ -29,6 +29,7 @@ export default function ContestVotePage() {
   const [photoList, setPhotoList] = useState<PhotoListResult | null>(null);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   // const [currentPage, setCurrentPage] = useState(0);
+  const pageRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const [selectedPhotos, setSelectedPhotos] = useState<
     Record<number, number | null>
@@ -83,16 +84,22 @@ export default function ContestVotePage() {
     navigate("/contest", { state: { voted: true } });
   };
 
+  // useEffect(() => {
+  //   if (currentPage === 0) return;
+  //   const scrollEl = document.querySelector("[data-scroll-container]");
+  //   scrollEl?.scrollTo({ top: 0, behavior: "smooth" });
+  // }, [currentPage]);
   useEffect(() => {
     if (currentPage === 0) return;
-    const scrollEl = document.querySelector(".sc-fpPwQt");
-    scrollEl?.scrollTo({ top: 0, behavior: "smooth" });
+    document
+      .querySelector("[data-app-container]")
+      ?.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
   if (!photoList || !topic) return null; // 로딩 중
 
   return (
-    <S.ContestVotePage>
+    <S.ContestVotePage ref={pageRef}>
       <S.VoteHeader>
         <S.PhotoPage>
           {currentPage + 1}/{TOPICS.length}

@@ -8,6 +8,8 @@ export const ContestVotePage = styled.div`
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
 `;
 
 export const VoteHeader = styled.div`
