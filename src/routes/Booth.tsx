@@ -92,8 +92,6 @@ const BoothPage: React.FC = () => {
   const [booths, setBooths] = useState<Booth[]>([]);
   const [loading, setLoading] = useState(false);
   const [isOperatingOnly, setIsOperatingOnly] = useState(false);
-  // const [isNight, setIsNight] = useState(false);
-  //isNight 선언 교체
   const [isNight, setIsNight] = useState(() => {
     const timeParam = searchParams.get("time");
     if (timeParam === "day") return false;
@@ -128,6 +126,7 @@ const BoothPage: React.FC = () => {
     const month = now.getMonth() + 1;
     const date = now.getDate();
     // const hours = now.getHours();
+    const hours = now.getHours();
 
     if (year === 2026 && month === 5) {
       if (date <= 13) setActiveDay(1);
@@ -142,8 +141,14 @@ const BoothPage: React.FC = () => {
     // } else {
     //   setIsNight(false);
     // }
-  }, []);
-
+    const timeParam = searchParams.get("time");
+    if (!timeParam) {
+      if (hours >= 16) setIsNight(true);
+      else setIsNight(false);
+    } else {
+      setIsNight(timeParam === "night");
+    }
+  }, [searchParams]);
   useEffect(() => {
     const fetchBoothsAndPositions = async () => {
       setLoading(true);
