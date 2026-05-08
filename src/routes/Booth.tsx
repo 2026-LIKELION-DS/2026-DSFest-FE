@@ -143,11 +143,9 @@ const BoothPage: React.FC = () => {
     // }
     const timeParam = searchParams.get("time");
     if (!timeParam) {
-      // 파라미터가 없을 때만 실시간 시간 반영
       if (hours >= 16) setIsNight(true);
       else setIsNight(false);
     } else {
-      // 파라미터가 있다면 그 값에 맞춰 상태를 한 번 더 강제 동기화 (뒤로가기 등 대응)
       setIsNight(timeParam === "night");
     }
   }, [searchParams]);
