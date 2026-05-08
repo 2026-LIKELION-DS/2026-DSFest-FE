@@ -59,7 +59,7 @@ const scheduleData = [
       { id: 10, title: "총장님 인사", time: "18:00~18:30", isActive: false },
       {
         id: 11,
-        title: "재학생 및 동아리 공연",
+        title: "재학생 및\n동아리 공연",
         time: "18:30~20:00",
       },
       {
@@ -129,7 +129,7 @@ const scheduleData = [
       },
       {
         id: 41,
-        title: "재학생 및 동아리 공연",
+        title: "재학생 및\n동아리 공연",
         time: "16:00~18:30",
       },
       {
