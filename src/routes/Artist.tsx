@@ -63,6 +63,8 @@ const mapArtist = (artist: ArtistApiItem): Artist => ({
   instaUrl: artist.instagramUrl,
   youtubeUrl: artist.youtubeUrl,
   playlistUrl: artist.playlistUrl,
+  performanceDate: artist.performanceDate,
+  startTime: artist.startTime,
 });
 
 const getPlaylistDesc = (status?: CountdownStatus) => {
@@ -197,6 +199,8 @@ function ArtistPage() {
 
         <ArtistActionButtons
           status={currentCountdownStatus ?? "MORE_THAN_24H"}
+          performanceDate={currentArtist?.performanceDate ?? ""}
+          startTime={currentArtist?.startTime ?? ""}
           onLiveClick={() => {
             trackEvent("livetalk_from_artist");
             navigate("/livetalk");
