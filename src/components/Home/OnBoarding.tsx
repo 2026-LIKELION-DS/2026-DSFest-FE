@@ -8,7 +8,17 @@ interface OnBoardingProps {
 
 export default function OnBoarding({ onClose }: OnBoardingProps) {
 
-  console.log("컴포넌트 외부 실행됨");
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = onBoarding;
+    document.head.appendChild(link);
+
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
 
   useEffect(() => {
     console.log("useEffect 실행됨");
@@ -49,7 +59,7 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
   return (
     <S.OnBoardWrapper>
       <S.OnBoardBlurArea />
-      <S.OnBoardImg src={onBoarding}/>
+      <S.OnBoardImg src={onBoarding} loading="eager" fetchPriority="high"/>
 
       <S.OnBoardBtnBox>
         <S.Close onClick={onClose}>닫기</S.Close>
