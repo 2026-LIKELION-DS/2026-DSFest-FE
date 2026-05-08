@@ -1,31 +1,41 @@
+// src/styles/ChatInput.style.ts
+
 import styled from "styled-components";
 import { theme } from "../styles/theme";
+// src/styles/ChatInput.style.ts
 
 export const Container = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   gap: 15px;
-
   padding: 12px 15px;
 `;
 
-export const Input = styled.input`
+export const InputBox = styled.div`
   flex: 1;
   min-width: 0;
   height: 44px;
+`;
 
-  border-radius: 22px;
+export const Input = styled.input`
+  width: calc(100% / 0.875);
+  height: calc(44px / 0.875);
+
+  border-radius: calc(22px / 0.875);
   border: 1px solid ${({ theme }) => theme.colors.stroke.subtle};
 
-  padding: 0 16px;
+  padding: 0 calc(16px / 0.875);
   outline: none;
 
   font-family: ${theme.typography.bodySm.fontFamily};
   font-weight: ${theme.typography.bodySm.fontWeight};
 
-  font-size: 14px;
+  font-size: 16px;
   line-height: 16px;
+
+  transform: scale(0.875);
+  transform-origin: left top;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.fg.subtle};
