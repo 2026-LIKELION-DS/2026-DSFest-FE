@@ -61,7 +61,7 @@ const scheduleData = [
         id: 11,
         title: "재학생 및 동아리 공연",
         time: "18:30~20:00",
-        link: "/booth",
+        link: "/booth?time=night",
       },
       {
         id: 13,

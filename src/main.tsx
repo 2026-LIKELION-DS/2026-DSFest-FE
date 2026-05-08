@@ -12,10 +12,10 @@ createRoot(document.getElementById("root")!).render(
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <C.Page>
-        <C.Phone>
+        <C.Phone data-app-container>
           <App />
         </C.Phone>
       </C.Page>
     </ThemeProvider>
-  </StrictMode>
+  </StrictMode>,
 );

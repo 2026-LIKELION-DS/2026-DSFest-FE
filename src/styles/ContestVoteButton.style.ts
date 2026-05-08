@@ -3,7 +3,10 @@ import { theme } from "./theme";
 
 type ContestPhase = "before" | "entry" | "vote";
 
-export const ContestVoteButtonPage = styled.div``;
+export const ContestVoteButtonPage = styled.div`
+  width: 100%;
+  margin: 0 20px;
+`;
 
 export const ContestTab = styled.div`
   margin-top: auto;

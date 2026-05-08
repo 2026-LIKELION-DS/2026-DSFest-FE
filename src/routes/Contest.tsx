@@ -69,8 +69,10 @@ export default function ContestPag() {
 
   return (
     <S.ContestPage>
-      <S.ContestImg src={ContestImg} />
-      <ContestNotice />
+      <S.ChatArea>
+        <S.ContestImg src={ContestImg} />
+        <ContestNotice />
+      </S.ChatArea>
       <S.VoteButtonWrapper>
         <ContestVoteButton
           phase={phase}
