@@ -6,7 +6,7 @@ import chevronRight from "../../assets/ChevronRight.svg";
 
 import * as S from "../../styles/ArtistComponent.style";
 
-export type CountdownStatus = "MORE_THAN_24H" | "WITHIN_24H" | "LIVE" | "ENDED";
+export type CountdownStatus = "MORE_THAN_72H" | "WITHIN_72H" | "LIVE" | "ENDED";
 
 type ArtistActionButtonsProps = {
   status: CountdownStatus;
@@ -19,14 +19,21 @@ type ArtistActionButtonsProps = {
 const formatRemainingTime = (diffMs: number) => {
   if (diffMs <= 0) return "00:00:00";
 
-  const hours = Math.floor(diffMs / (1000 * 60 * 60));
+  const totalHours = Math.floor(diffMs / (1000 * 60 * 60));
+  const days = Math.floor(totalHours / 24);
+  const hours = totalHours % 24;
   const minutes = Math.floor((diffMs / (1000 * 60)) % 60);
   const seconds = Math.floor((diffMs / 1000) % 60);
 
-  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
-    2,
-    "0",
-  )}:${String(seconds).padStart(2, "0")}`;
+  const timeText = `${String(hours).padStart(2, "0")}:${String(
+    minutes,
+  ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+  if (days > 0) {
+    return `${days}일 ${timeText}`;
+  }
+
+  return timeText;
 };
 
 function ArtistActionButtons({
@@ -39,7 +46,7 @@ function ArtistActionButtons({
   const [remainingTime, setRemainingTime] = useState("00:00:00");
 
   useEffect(() => {
-    if (status !== "WITHIN_24H") return;
+    if (status !== "WITHIN_72H") return;
 
     const performanceStartDateTime = `${performanceDate}T${startTime}`;
 
@@ -60,7 +67,7 @@ function ArtistActionButtons({
   const getStatusText = () => {
     if (status === "LIVE") return "라이브톡 참여하기";
     if (status === "ENDED") return "공연 종료";
-    if (status === "WITHIN_24H") return `시작까지 ${remainingTime} 남음`;
+    if (status === "WITHIN_72H") return `시작까지 ${remainingTime} 남음`;
 
     return "공연 예정";
   };
