@@ -63,9 +63,18 @@ export default function ContestVotePage() {
     (id): id is number => id !== null,
   );
 
+  // const handleNext = () => {
+  //   if (currentPage < TOPICS.length - 1) {
+  //     setCurrentPage((prev) => prev + 1);
+  //     // S.Main이 스크롤 컨테이너
+  //     const main = document.querySelector("main");
+  //     main?.scrollTo({ top: 0, behavior: "smooth" });
+  //   }
+  // };
   const handleNext = () => {
     if (currentPage < TOPICS.length - 1) {
       setCurrentPage((prev) => prev + 1);
+      // document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
   const handleSubmit = () => {
@@ -77,6 +86,14 @@ export default function ContestVotePage() {
     navigate("/contest", { state: { voted: true } });
   };
 
+  useEffect(() => {
+    if (currentPage === 0) return;
+    const scrollEl = document.querySelector(".sc-fpPwQt");
+    scrollEl?.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+  // document.querySelectorAll("*").forEach((el) => {
+  //   if (el.scrollTop > 0) console.log(el.tagName, el.className, el.scrollTop);
+  // });
   if (!photoList || !topic) return null; // 로딩 중
 
   return (
