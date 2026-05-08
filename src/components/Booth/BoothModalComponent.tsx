@@ -42,12 +42,14 @@ interface ModalProps {
   onClose: () => void;
   onNavigateToMap: (id: number) => void;
   isNight: boolean;
+  isRandom?: boolean;
 }
 
 const BoothModalComponent: React.FC<ModalProps> = ({
   booth,
   onClose,
   onNavigateToMap,
+  isRandom = false,
 }) => {
   const [detailConfig, setDetailConfig] = useState({
     isOpen: false,
@@ -219,16 +221,18 @@ const BoothModalComponent: React.FC<ModalProps> = ({
             )}
           </S.ContentArea>
 
-          <S.ButtonGroup>
+          <S.ButtonGroup $isRandom={isRandom}>
             <S.CloseButton onClick={onClose}>닫기</S.CloseButton>
-            <S.ActionButton
-              onClick={() => {
-                onNavigateToMap(booth.id);
-                onClose();
-              }}
-            >
-              지도에서 위치보기
-            </S.ActionButton>
+            {!isRandom && (
+              <S.ActionButton
+                onClick={() => {
+                  onNavigateToMap(booth.id);
+                  onClose();
+                }}
+              >
+                지도에서 위치보기
+              </S.ActionButton>
+            )}
           </S.ButtonGroup>
         </S.ModalContainer>
       </S.ModalOverlay>

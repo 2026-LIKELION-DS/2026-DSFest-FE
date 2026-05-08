@@ -174,9 +174,10 @@ export const LinkTag = styled.a`
   ${setTypo("bodySm")};
   cursor: pointer;
 `;
-export const ButtonGroup = styled.div`
+export const ButtonGroup = styled.div<{ $isRandom?: boolean }>`
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: ${({ $isRandom }) =>
+    $isRandom ? "1fr" : "1fr 1.2fr"};
   gap: 10px;
   padding-top: 8px;
 `;
