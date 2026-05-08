@@ -47,8 +47,13 @@ export default function FoodTruckList({
   onScrollDone,
 }: Props) {
   const API_URL = import.meta.env.VITE_API_URL;
+
   const [foodTrucks, setFoodTrucks] = useState<Truck[]>([]);
+  const [openTruckId, setOpenTruckId] = useState<number | null>(null);
+
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const hasAutoScrolledRef = useRef(false);
+
   useEffect(() => {
     const fetchFoodTrucks = async () => {
       try {
@@ -95,7 +100,6 @@ export default function FoodTruckList({
 
     fetchFoodTrucks();
   }, [API_URL, isVeganSelected]);
-  const [openTruckId, setOpenTruckId] = useState<number | null>(null);
 
   useEffect(() => {
     if (!targetStoreName) return;
@@ -105,10 +109,11 @@ export default function FoodTruckList({
     );
     if (!targetTruck) return;
 
-    setOpenTruckId(targetTruck.id);
-
     const targetElement = cardRefs.current[targetStoreName];
     if (!targetElement) return;
+
+    hasAutoScrolledRef.current = false;
+    setOpenTruckId(targetTruck.id);
 
     targetElement.scrollIntoView({
       behavior: "smooth",
@@ -117,6 +122,7 @@ export default function FoodTruckList({
 
     onScrollDone();
   }, [targetStoreName, foodTrucks, onScrollDone]);
+
   return (
     <>
       {foodTrucks.map((truck) => (
@@ -125,9 +131,27 @@ export default function FoodTruckList({
           ref={(element) => {
             cardRefs.current[truck.name] = element;
           }}
-          style={{ scrollMarginTop: "72px" }}
+          style={{ scrollMarginTop: "60px" }}
         >
-          <FoodTruckCard truck={truck} forceOpen={openTruckId === truck.id} />
+          <FoodTruckCard
+            truck={truck}
+            forceOpen={openTruckId === truck.id}
+            onForceOpenDone={() => {
+              if (hasAutoScrolledRef.current) return;
+
+              const targetElement = cardRefs.current[truck.name];
+              if (!targetElement) return;
+
+              hasAutoScrolledRef.current = true;
+
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+
+              setOpenTruckId(null);
+            }}
+          />
         </div>
       ))}
     </>

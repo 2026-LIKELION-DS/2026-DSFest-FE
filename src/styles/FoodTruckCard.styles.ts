@@ -5,7 +5,7 @@ export const Card = styled.article`
   background: ${({ theme }) => theme.colors.bg.offWhite};
   border: 1px solid ${({ theme }) => theme.colors.bg.brand};
   border-radius: 4px;
-
+  cursor: pointer;
   padding: 16px 16px 12px;
   margin: 0 20px 12px;
 `;
@@ -46,13 +46,13 @@ export const StoreImageButton = styled.button`
 
   overflow: hidden;
 
-  position: relative; 
+  position: relative;
 `;
 export const DarkOverlay = styled.div`
   position: absolute;
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.6); 
+  background: rgba(0, 0, 0, 0.6);
 `;
 
 export const StoreImage = styled.img<{ $isOperating: boolean }>`
@@ -65,6 +65,7 @@ export const StoreImage = styled.img<{ $isOperating: boolean }>`
 export const InfoArea = styled.div`
   flex: 1;
   padding-top: 4px;
+  cursor: pointer;
 `;
 
 export const StoreName = styled.h2`
@@ -129,6 +130,7 @@ export const LikeCount = styled.span`
 
 export const DetailArea = styled.div`
   margin-top: 16px;
+  cursor: pointer;
 `;
 
 export const SectionTitle = styled.h3`
