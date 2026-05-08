@@ -23,12 +23,14 @@ export default function ChatInput({ onSend }: Props) {
 
   return (
     <S.Container>
-      <S.Input
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="대화를 나눠보세요"
-      />
+      <S.InputBox>
+        <S.Input
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="대화를 나눠보세요"
+        />
+      </S.InputBox>
 
       <S.SendButton type="button" onClick={handleSend}>
         <img src={SendIcon} width={24} height={24} alt="전송" />
