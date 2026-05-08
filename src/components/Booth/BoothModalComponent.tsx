@@ -237,6 +237,9 @@ const BoothModalComponent: React.FC<ModalProps> = ({
         </S.ModalContainer>
       </S.ModalOverlay>
       <ImageDetailComponent
+        key={
+          detailConfig.isOpen ? `detail-${detailConfig.initialIndex}` : "closed"
+        }
         isOpen={detailConfig.isOpen}
         initialIndex={detailConfig.initialIndex}
         images={images}
