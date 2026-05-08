@@ -90,6 +90,12 @@ export const Card = styled.div<{ $isActive: boolean }>`
     $isActive
       ? "linear-gradient(124deg, rgba(255, 235, 104, 0.30) -11.85%, rgba(213, 237, 74, 0.19) 16.19%, rgba(39, 123, 49, 0.00) 84.88%), var(--brand-light, #277B31);"
       : theme.colors.bg.neutralDeep};
+  img {
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
 `;
 
 export const Title = styled.span<{ $isActive: boolean }>`
@@ -103,4 +109,10 @@ export const Time = styled.span<{ $isActive: boolean }>`
 
   color: ${({ $isActive }) =>
     $isActive ? theme.colors.fg.primaryInverted : theme.colors.fg.subtle};
+`;
+
+export const TitleRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
 `;

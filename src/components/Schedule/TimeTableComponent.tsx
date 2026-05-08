@@ -5,6 +5,8 @@ import * as S from "../../styles/TimeTable.style";
 
 import CircleIcon from "../../assets/Schedule/CircleDefault.svg";
 import CircleSelectedIcon from "../../assets/Schedule/CircleSelected.svg";
+import ChevronB from "../../assets/Schedule/ChevronRight.svg";
+import ChevronW from "../../assets/Schedule/chervW.svg";
 
 interface ScheduleItem {
   id: number;
@@ -55,8 +57,31 @@ export default function TimeTable({
                 />
                 {index < schedule.length - 1 && <S.Line />}
               </S.DotWrapper>
-              <S.Card $isActive={item.isActive}>
+              {/* <S.Card $isActive={item.isActive}>
                 <S.Title $isActive={item.isActive}>{item.title}</S.Title>
+                <S.Time $isActive={item.isActive}>{item.time}</S.Time>
+                {item.link && (
+                  <img
+                    src={item.isActive ? ChevronW : ChevronB}
+                    alt="chevron"
+                  />
+                )}
+              </S.Card> */}
+              <S.Card $isActive={item.isActive}>
+                <S.TitleRow>
+                  <S.Title $isActive={item.isActive}>{item.title}</S.Title>
+                  {item.link && (
+                    <img
+                      src={item.isActive ? ChevronW : ChevronB}
+                      alt="chevron"
+                      style={
+                        item.isActive
+                          ? { width: "13px", height: "13px" }
+                          : undefined
+                      }
+                    />
+                  )}
+                </S.TitleRow>
                 <S.Time $isActive={item.isActive}>{item.time}</S.Time>
               </S.Card>
             </S.Row>

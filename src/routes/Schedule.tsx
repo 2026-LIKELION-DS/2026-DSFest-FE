@@ -6,7 +6,7 @@ import CamFlower from "../assets/Schedule/camFlower.svg";
 import CamFlower2 from "../assets/Schedule/camFlower2.svg";
 import CamLeaf from "../assets/Schedule/camLeaf.svg";
 import Leaf from "../assets/Schedule/leaf.svg";
-import Leaf1 from "../assets/Schedule/leaf1.svg";
+// import Leaf1 from "../assets/Schedule/leaf1.svg";
 import Flower from "../assets/Schedule/flower.svg";
 import Flowers2 from "../assets/Schedule/flowers2.svg";
 import upIcon from "../assets/Booth/BoothUp.svg";
@@ -61,6 +61,7 @@ const scheduleData = [
         id: 11,
         title: "재학생 및 동아리 공연",
         time: "18:30~20:00",
+        link: "/booth",
       },
       {
         id: 13,
@@ -96,7 +97,7 @@ const scheduleData = [
         title: "덕우존 입장 대기",
         time: "16:00~17:00",
       },
-      { id: 26, title: "덕우존 입장", time: "17:00~~18:00" },
+      { id: 26, title: "덕우존 입장", time: "17:00~18:00" },
       {
         id: 27,
         title: "운현가요제",
@@ -162,23 +163,52 @@ const days = [
 export default function SchedulePage() {
   const baseUrl = import.meta.env.VITE_API_URL;
 
-  // /api/schedules/now 호출
-  const [nowStatus, setNowStatus] = useState<NowStatus | null>(null);
-  console.log(baseUrl);
-
+  //임시 시간 설정 데이2 낮 12시
+  const [nowStatus, setNowStatus] = useState<NowStatus | null>({
+    status: "IN_PROGRESS",
+    current: [
+      {
+        id: 19,
+        title: "낮부스",
+        startTime: "11:00",
+        endTime: "14:30",
+        scheduleType: "BOOTH",
+      },
+    ],
+    next: null,
+  });
   useEffect(() => {
-    if (!baseUrl) return;
-
-    axios
-      .get(`${baseUrl}/api/schedules/now`)
-      .then((res) => {
-        if (res.data.isSuccess) {
-          console.log("백엔드 실시간 데이터:", res.data.result);
-          setNowStatus(res.data.result);
-        }
-      })
-      .catch((err) => console.error("연동 에러:", err));
+    setNowStatus({
+      status: "IN_PROGRESS",
+      current: [
+        {
+          id: 19,
+          title: "낮부스",
+          startTime: "11:00",
+          endTime: "14:30",
+          scheduleType: "BOOTH",
+        },
+      ],
+      next: null,
+    });
   }, [baseUrl]);
+  // /api/schedules/now 호출 실제 데이 데이터
+  // const [nowStatus, setNowStatus] = useState<NowStatus | null>(null);
+  // console.log(baseUrl);
+
+  // useEffect(() => {
+  //   if (!baseUrl) return;
+
+  //   axios
+  //     .get(`${baseUrl}/api/schedules/now`)
+  //     .then((res) => {
+  //       if (res.data.isSuccess) {
+  //         console.log("백엔드 실시간 데이터:", res.data.result);
+  //         setNowStatus(res.data.result);
+  //       }
+  //     })
+  //     .catch((err) => console.error("연동 에러:", err));
+  // }, [baseUrl]);
 
   const activeIds = new Set([...(nowStatus?.current ?? []).map((s) => s.id)]);
 
@@ -186,9 +216,15 @@ export default function SchedulePage() {
   const activeRef = useRef<HTMLDivElement>(null);
   const [isAtActive, setIsAtActive] = useState(false);
 
+  //데이 api
+  // const [currentDay, setCurrentDay] = useState<"day1" | "day2" | "day3">(
+  //   "day1",
+  // );
+  // 테스트용으로 day2로 변경
   const [currentDay, setCurrentDay] = useState<"day1" | "day2" | "day3">(
-    "day1",
+    "day2",
   );
+  //
   const [direction, setDirection] = useState<"up" | "down">("down");
   const dayRefs = {
     day1: useRef<HTMLDivElement>(null),
@@ -218,8 +254,16 @@ export default function SchedulePage() {
     return () => el.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // 일정 기준
+  // const handleClick = () => {
+  //   activeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  // };
+  //day 기준
   const handleClick = () => {
-    activeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    dayRefs[currentDay].current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   const [showTopBtn, setShowTopBtn] = useState(false);
@@ -241,7 +285,7 @@ export default function SchedulePage() {
         <S.Leafs src={Leaf} />
         <S.Flower src={Flower} />
         <S.CamFlower src={CamFlower} />
-        <S.Leafs1 src={Leaf1} />
+        {/* <S.Leafs1 src={Leaf1} /> */}
         <S.CamLeaf src={CamLeaf} />
         <S.Flowers2 src={Flowers2} />
         <S.CamFlower2 src={CamFlower2} />

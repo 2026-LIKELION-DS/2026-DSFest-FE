@@ -1,6 +1,9 @@
 import styled, { css } from "styled-components";
 import { theme } from "./theme";
 import ScheduleBackGround from "../assets/Schedule/Scheduleback.svg";
+const HEADER_HEIGHT = "60px";
+const NAV_HEIGHT = "60px";
+// const INPUT_HEIGHT = "68px";
 
 export const SchedulePage = styled.div`
   padding: 0 24px 24px;
@@ -23,6 +26,11 @@ export const SchedulePage = styled.div`
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    @media (min-height: 874px) {
+      height: calc(874px - 24px - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+    }
+  }
 `;
 
 export const Bubble = styled.img`
@@ -112,14 +120,6 @@ export const Leafs1 = styled.img`
   right: 32%;
   z-index: 2;
   pointer-events: none;
-
-  /* @media (min-width: 768px) {
-    top: 870px;
-    right: 32%;
-  }
-  @media (max-height: 910px) {
-    top: 870px;
-  } */
 `;
 
 export const CamLeaf = styled.img`
