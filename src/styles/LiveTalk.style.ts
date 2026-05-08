@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import { theme } from "../styles/theme";
+
 const HEADER_HEIGHT = "60px";
 const NAV_HEIGHT = "60px";
 const INPUT_HEIGHT = "68px";
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+  box-sizing: border-box;
+  height: calc(100svh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+  max-height: calc(100svh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+  min-height: 0;
 
   display: flex;
   flex-direction: column;
@@ -15,7 +19,15 @@ export const Container = styled.div`
 
   position: relative;
 
+  @supports not (height: 100svh) {
+    height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+    max-height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+  }
+
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+    max-height: none;
+
     @media (min-height: 874px) {
       height: calc(874px - 24px - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
     }
@@ -61,6 +73,7 @@ export const BannerIcon = styled.img`
 export const BannerTextBox = styled.div`
   flex: 1;
   padding-left: 10px;
+  min-width: 0;
 `;
 
 export const BannerSubText = styled.p`
@@ -72,6 +85,10 @@ export const BannerSubText = styled.p`
   line-height: ${theme.typography.bodySm.lineHeight};
 
   color: ${({ theme }) => theme.colors.fg.subtle};
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const BannerTitle = styled.p`
@@ -83,6 +100,10 @@ export const BannerTitle = styled.p`
   line-height: ${theme.typography.h3.lineHeight};
 
   color: ${({ theme }) => theme.colors.bg.brand};
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const BannerArrow = styled.span`
@@ -90,7 +111,7 @@ export const BannerArrow = styled.span`
   font-size: 24px;
   line-height: 24px;
 `;
-//수정함
+
 export const ChatArea = styled.div`
   flex: 1;
   min-height: 0;
@@ -102,11 +123,28 @@ export const ChatArea = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
 
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+
   &::-webkit-scrollbar {
     display: none;
   }
 `;
+export const InputWrapper = styled.div`
+  flex-shrink: 0;
+  height: calc(${INPUT_HEIGHT} + env(safe-area-inset-bottom));
+  min-height: calc(${INPUT_HEIGHT} + env(safe-area-inset-bottom));
 
+  width: 100%;
+
+  padding-bottom: env(safe-area-inset-bottom);
+
+  background: ${({ theme }) => theme.colors.bg.neutral};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 export const DateText = styled.p`
   margin: 0 0 20px;
   text-align: center;
@@ -117,17 +155,4 @@ export const DateText = styled.p`
   line-height: ${theme.typography.h4.lineHeight};
 
   color: ${({ theme }) => theme.colors.bg.brand};
-`;
-
-export const InputWrapper = styled.div`
-  flex-shrink: 0;
-  height: ${INPUT_HEIGHT};
-
-  width: 100%;
-
-  background: ${({ theme }) => theme.colors.bg.neutral};
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
