@@ -23,13 +23,13 @@ export const ContestNotice = styled.article`
   }
 
   .bubble2 {
-    top: 48px;
+    top: 58px;
     right: 5px;
   }
 
   .bubble3 {
-    bottom: 0;
-    right: 0;
+    top: 112px;
+    right: 0px;
   }
 
   > *:not(img) {
@@ -47,17 +47,15 @@ export const NoticeTitle = styled.span`
 export const NoticeList = styled.ol`
   margin: 15px 0 15;
   padding-left: 5px;
-
+  display: flex;
+  flex-direction: column;
   div {
-    margin-bottom: 10px;
-    color: ${({ theme }) => theme.colors.fg.primary};
-    line-height: 1.5;
     font-family: ${theme.typography.bodyMd};
   }
 `;
 
 export const NoticeCaption = styled.p`
-  margin: 10px 0 0;
+  margin: 10px 0 18px;
   color: ${({ theme }) => theme.colors.fg.subtle};
   font-family: ${theme.typography.bodyMd};
 `;
@@ -66,3 +64,9 @@ export const NoticeBubble = styled.img<{
   $top?: string;
   $right?: string;
 }>;
+
+export const ListTitle = styled.div`
+  font-family: ${theme.typography.h3};
+  color: ${({ theme }) => theme.colors.fg.primary};
+  margin-bottom: 4px;
+`;

@@ -10,7 +10,6 @@ export const ContestVoteButtonPage = styled.div`
 
 export const ContestTab = styled.div`
   margin-top: auto;
-  padding-top: 16px;
 `;
 
 export const TimeLine = styled.div`
@@ -18,7 +17,6 @@ export const TimeLine = styled.div`
   justify-content: center;
   align-items: center;
   font-family: ${theme.typography.h4};
-  margin-bottom: 5px;
   gap: 4px;
   height: 48px;
 `;
@@ -33,7 +31,7 @@ export const voteButton = styled.button<{
   font-family: ${theme.typography.buttonMd};
   width: 100%;
   height: 44px;
-  padding: 0 24px;
+  /* padding: 24px; */
   border-radius: 100px;
   cursor: ${({ $phase }) => ($phase === "before" ? "default" : "pointer")};
 
