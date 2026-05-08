@@ -1,7 +1,7 @@
 import * as S from "../styles/ContestVote.style";
 import { useState, useEffect } from "react";
 import PhotoCard from "../components/Contest/ContestPhotoCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import ContestInfoModal from "../components/Contest/ContestInformation";
 import axios from "axios";
 
@@ -28,11 +28,17 @@ export default function ContestVotePage() {
   const baseUrl = import.meta.env.VITE_API_URL;
   const [photoList, setPhotoList] = useState<PhotoListResult | null>(null);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
+  // const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
   const [selectedPhotos, setSelectedPhotos] = useState<
     Record<number, number | null>
   >({});
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = Number(searchParams.get("page") ?? "0");
+
+  const setCurrentPage = (page: number) => {
+    setSearchParams({ page: String(page) });
+  };
 
   useEffect(() => {
     if (!baseUrl) return;
@@ -63,9 +69,14 @@ export default function ContestVotePage() {
     (id): id is number => id !== null,
   );
 
+  // const handleNext = () => {
+  //   if (currentPage < TOPICS.length - 1) {
+  //     setCurrentPage((prev) => prev + 1);
+  //   }
+  // };
   const handleNext = () => {
     if (currentPage < TOPICS.length - 1) {
-      setCurrentPage((prev) => prev + 1);
+      setCurrentPage(currentPage + 1);
     }
   };
   const handleSubmit = () => {
