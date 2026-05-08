@@ -3,12 +3,9 @@ import { theme } from "./theme";
 import ScheduleBackGround from "../assets/Schedule/Scheduleback.svg";
 const HEADER_HEIGHT = "60px";
 const NAV_HEIGHT = "60px";
-// const INPUT_HEIGHT = "68px";
 
 export const SchedulePage = styled.div`
   padding: 0 24px 24px;
-  /* margin-bottom: 56px; */
-  /* padding: 0 24px 80px; */
   padding-bottom: 80px;
   width: 100%;
   position: relative;
@@ -45,7 +42,7 @@ export const Bubble = styled.img`
 export const SubHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 24px 24px;
+  /* padding: 0 24px 24px; */
   margin: 24px 0 0;
 `;
 
