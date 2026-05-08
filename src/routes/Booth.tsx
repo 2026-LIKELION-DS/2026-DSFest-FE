@@ -60,8 +60,8 @@ const calculateBoothStatus = (
   day: number,
   nightMode: boolean,
 ): "운영 중" | "운영 예정" | "운영 종료" => {
-  const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
-  // const now = new Date("2026-05-14T12:00:00");
+  // const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
+  const now = new Date("2026-05-14T17:00:00");
   const festivalDates: { [key: number]: string } = {
     1: "2026-05-13",
     2: "2026-05-14",
@@ -92,8 +92,6 @@ const BoothPage: React.FC = () => {
   const [booths, setBooths] = useState<Booth[]>([]);
   const [loading, setLoading] = useState(false);
   const [isOperatingOnly, setIsOperatingOnly] = useState(false);
-  // const [isNight, setIsNight] = useState(false);
-  //isNight 선언 교체
   const [isNight, setIsNight] = useState(() => {
     const timeParam = searchParams.get("time");
     if (timeParam === "day") return false;
@@ -122,12 +120,13 @@ const BoothPage: React.FC = () => {
   };
 
   useEffect(() => {
-    const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
-    // const now = new Date("2026-05-14T12:00:00");
+    // const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
+    const now = new Date("2026-05-14T17:00:00");
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
     const date = now.getDate();
     // const hours = now.getHours();
+    const hours = now.getHours();
 
     if (year === 2026 && month === 5) {
       if (date <= 13) setActiveDay(1);
@@ -142,8 +141,16 @@ const BoothPage: React.FC = () => {
     // } else {
     //   setIsNight(false);
     // }
-  }, []);
-
+    const timeParam = searchParams.get("time");
+    if (!timeParam) {
+      // 파라미터가 없을 때만 실시간 시간 반영
+      if (hours >= 16) setIsNight(true);
+      else setIsNight(false);
+    } else {
+      // 파라미터가 있다면 그 값에 맞춰 상태를 한 번 더 강제 동기화 (뒤로가기 등 대응)
+      setIsNight(timeParam === "night");
+    }
+  }, [searchParams]);
   useEffect(() => {
     const fetchBoothsAndPositions = async () => {
       setLoading(true);
