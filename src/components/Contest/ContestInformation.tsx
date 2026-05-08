@@ -122,7 +122,7 @@ export default function Modal({
                         학번 혹은 이름이 바르게 적혔는지 확인하고<br></br>{" "}
                         이상이 있는 경우
                         <a
-                          href="https://pf.kakao.com/_gUyQn"
+                          href="https://open.kakao.com/o/sruBFWei"
                           target="_blank"
                           rel="noreferrer"
                         >
