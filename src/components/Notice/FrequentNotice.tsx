@@ -155,7 +155,7 @@ export default function FrequentNotice({ noticeCards }: FrequentNoticeProps) {
       <S.SectionHeader>
         <S.SectionTitle>자주 찾는 공지</S.SectionTitle>
         <S.ViewAll onClick={() => navigate("/notice/all")}>
-          <p>전체보기</p>
+          <p>공지 전체보기</p>
           <img src={chevronRight} alt="Chevron Right" />
         </S.ViewAll>
       </S.SectionHeader>
