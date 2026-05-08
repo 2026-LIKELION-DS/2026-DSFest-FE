@@ -84,11 +84,6 @@ export default function ContestVotePage() {
     navigate("/contest", { state: { voted: true } });
   };
 
-  // useEffect(() => {
-  //   if (currentPage === 0) return;
-  //   const scrollEl = document.querySelector("[data-scroll-container]");
-  //   scrollEl?.scrollTo({ top: 0, behavior: "smooth" });
-  // }, [currentPage]);
   useEffect(() => {
     if (currentPage === 0) return;
     document
