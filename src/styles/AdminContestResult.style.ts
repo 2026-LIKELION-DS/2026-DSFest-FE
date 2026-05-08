@@ -77,7 +77,7 @@ export const Rank = styled.div`
   font-family: ${theme.typography.h3};
 `;
 
-export const Thumbnail = styled.div`
+export const Thumbnail = styled.img`
   width: 147px;
   height: 83px;
   border-radius: 6px;
