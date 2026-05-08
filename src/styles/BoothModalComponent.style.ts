@@ -130,10 +130,19 @@ export const ImageRow = styled.div`
   display: flex;
   gap: 8px;
   margin-bottom: 12px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 `;
 export const BoothImage = styled.img`
   width: 80px;
   height: 80px;
+  flex-shrink: 0;
   border-radius: 6px;
   object-fit: cover;
   border: 1px solid ${({ theme }) => theme.colors.bg.oliveLight};
