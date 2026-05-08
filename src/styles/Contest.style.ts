@@ -42,9 +42,7 @@ export const ContestPage = styled.div`
 export const VoteButtonWrapper = styled.div`
   flex-shrink: 0;
   width: 100%;
-
   background: ${({ theme }) => theme.colors.bg.neutral};
-
   display: flex;
   align-items: center;
   justify-content: center;
