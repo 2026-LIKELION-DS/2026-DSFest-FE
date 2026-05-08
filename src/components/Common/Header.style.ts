@@ -16,7 +16,7 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   padding: 0 16px;
-  background: ${({ theme }) => theme.colors.bg.offWhite};
+  background: ${({ theme }) => theme.colors.bg.neutral};
 `;
 
 export const Left = styled.div<{ $show: boolean }>`
