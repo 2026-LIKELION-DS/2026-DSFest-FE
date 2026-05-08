@@ -45,7 +45,7 @@ export const ModalContainer = styled.div`
   width: 100%;
   max-width: 340px;
   max-height: 90%;
-  background: ${({ theme }) => theme.colors.bg.neutral};
+  background: ${({ theme }) => theme.colors.bg.offWhite};
   border-radius: 4px;
   position: relative;
 
@@ -73,7 +73,7 @@ export const StatusBadge = styled.div<{ $status?: string }>`
         `;
       case "운영 예정":
         return css`
-          background: #fff;
+          background: ${({ theme }) => theme.colors.bg.neutral};
           color: ${theme.colors.bg.brand};
           border: 0.5px solid ${theme.colors.bg.brand};
         `;
