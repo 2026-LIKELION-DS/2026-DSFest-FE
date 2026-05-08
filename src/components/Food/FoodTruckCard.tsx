@@ -229,13 +229,6 @@ export default function FoodTruckCard({ truck, forceOpen }: Props) {
 
         {isOpen && (
           <S.DetailArea>
-            <S.SectionTitle>운영 시간</S.SectionTitle>
-
-            <S.TimeRow>
-              <S.ClockIcon src={clock} />
-              <S.TimeText>{operatingTime}</S.TimeText>
-            </S.TimeRow>
-
             <S.SectionTitle>메뉴</S.SectionTitle>
 
             {menus.map((menu) => (
