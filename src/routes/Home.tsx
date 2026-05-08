@@ -115,6 +115,19 @@ export default function Home() {
     fetchUrgentNotice();
   }, []);
 
+  useEffect(() => {
+    const container = document.querySelector(
+      "[data-app-container]"
+    ) as HTMLElement;
+
+    if (container) {
+      container.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    }
+  }, []);
+
   const navigate = useNavigate();
 
   return (
