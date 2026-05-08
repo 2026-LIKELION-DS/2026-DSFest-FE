@@ -12,9 +12,8 @@ export const Container = styled.div`
 `;
 
 export const Input = styled.input`
-  flex: 1;
+  flex: 0 0 calc(100vw * 298 / 402);
   min-width: 0;
-  max-width: 298px;
   height: 44px;
 
   border-radius: 22px;
@@ -32,16 +31,14 @@ export const Input = styled.input`
   transform: scale(0.875);
   transform-origin: left center;
 
-  width: calc(100% / 0.875);
-
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
-    max-width: none;
-    transform: none;
+    flex: 1;
     width: 100%;
+    transform: none;
     font-size: 14px;
   }
 `;
-//모바일에서 포커스 안 되게 끔
+
 export const SendButton = styled.button`
   flex: 0 0 44px;
   width: 44px;
