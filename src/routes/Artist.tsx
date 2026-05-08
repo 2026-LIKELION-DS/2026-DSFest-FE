@@ -51,8 +51,17 @@ const days = [
   { key: "day3", label: "DAY 3", date: "15일 금", value: 3 },
 ] as const;
 
-const DEFAULT_PLAYLIST_THUMBNAIL =
-  "https://img.youtube.com/vi/jKf_WnaeoJU/hqdefault.jpg";
+const playlistThumbnails: Record<number, string> = {
+  1: "https://img.youtube.com/vi/3bnjH5jXxJc/hqdefault.jpg",
+  2: "https://img.youtube.com/vi/2fyFx2u5fbU/hqdefault.jpg",
+  3: "https://img.youtube.com/vi/5hMWfXmTHIQ/hqdefault.jpg",
+  4: "https://img.youtube.com/vi/xLHHGrDFXrI/hqdefault.jpg",
+  5: "https://img.youtube.com/vi/7ihLv8_Vd-4/hqdefault.jpg",
+  6: "https://img.youtube.com/vi/e2Tdtw9RRyw/hqdefault.jpg",
+  7: "https://img.youtube.com/vi/ioK78YucIjc/hqdefault.jpg",
+  8: "https://img.youtube.com/vi/zhHB4dZTChw/hqdefault.jpg",
+  9: "https://img.youtube.com/vi/Is7glC9Jp7Q/hqdefault.jpg",
+};
 
 const mapArtist = (artist: ArtistApiItem): Artist => ({
   id: artist.id,
@@ -212,7 +221,7 @@ function ArtistPage() {
           <S.PlaylistSection>
             <ArtistPlaylist
               playlistUrl={currentArtist.playlistUrl}
-              thumbnailUrl={DEFAULT_PLAYLIST_THUMBNAIL}
+              thumbnailUrl={playlistThumbnails[currentArtist.id]}
               desc={getPlaylistDesc(currentCountdownStatus)}
             />
           </S.PlaylistSection>
