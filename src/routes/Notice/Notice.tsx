@@ -21,11 +21,6 @@ interface NoticeListResponse {
   viewCount: number;
 }
 
-interface UrgentNoticeResponse {
-  id: number;
-  title: string;
-}
-
 interface SearchNoticeResponse {
   results: NoticeListResponse[];
   recommended: NoticeListResponse[];
@@ -83,9 +78,6 @@ export default function Notice() {
   const [frequentNotices, setFrequentNotices] = useState<NoticeListResponse[]>(
     [],
   );
-  const [urgentNotice, setUrgentNotice] = useState<UrgentNoticeResponse | null>(
-    null,
-  );
   const [searchResults, setSearchResults] = useState<NoticeListResponse[]>([]);
   const [recommendedNotices, setRecommendedNotices] = useState<
     NoticeListResponse[]
@@ -98,17 +90,11 @@ export default function Notice() {
   useEffect(() => {
     const fetchInitialNotices = async () => {
       try {
-        const [frequentResponse, urgentResponse] = await Promise.all([
-          axios.get<ApiResponse<NoticeListResponse[]>>(
-            `${BASE_URL}/api/notices/frequent`,
-          ),
-          axios.get<ApiResponse<UrgentNoticeResponse | null>>(
-            `${BASE_URL}/api/notices/urgent`,
-          ),
-        ]);
+        const frequentResponse = await axios.get<
+          ApiResponse<NoticeListResponse[]>
+        >(`${BASE_URL}/api/notices/frequent`);
 
         setFrequentNotices(frequentResponse.data.result);
-        setUrgentNotice(urgentResponse.data.result);
       } catch (error) {
         console.error("공지 메인 데이터 조회 실패:", error);
       }
@@ -190,15 +176,6 @@ export default function Notice() {
         )
       ) : (
         <>
-          {urgentNotice && (
-            <NoticeListItem
-              id={urgentNotice.id}
-              category="긴급"
-              title={urgentNotice.title}
-              onClick={() => navigate(`/notice/${urgentNotice.id}`)}
-            />
-          )}
-
           <FrequentNotice noticeCards={frequentNotices} />
 
           <S.FAQSection>
