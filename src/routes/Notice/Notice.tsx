@@ -74,6 +74,19 @@ const faqList = [
 export default function Notice() {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const container = document.querySelector(
+      "[data-app-container]",
+    ) as HTMLElement;
+
+    if (container) {
+      container.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    }
+  }, []);
+
   const [keyword, setKeyword] = useState("");
   const [frequentNotices, setFrequentNotices] = useState<NoticeListResponse[]>(
     [],

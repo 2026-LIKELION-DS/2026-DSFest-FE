@@ -63,6 +63,18 @@ const playlistThumbnails: Record<number, string> = {
   9: "https://img.youtube.com/vi/Is7glC9Jp7Q/hqdefault.jpg",
 };
 
+const playlistVideoIds: Record<number, string> = {
+  1: "3bnjH5jXxJc",
+  2: "2fyFx2u5fbU",
+  3: "5hMWfXmTHIQ",
+  4: "xLHHGrDFXrI",
+  5: "7ihLv8_Vd-4",
+  6: "e2Tdtw9RRyw",
+  7: "ioK78YucIjc",
+  8: "zhHB4dZTChw",
+  9: "Is7glC9Jp7Q",
+};
+
 const mapArtist = (artist: ArtistApiItem): Artist => ({
   id: artist.id,
   name: artist.name,
@@ -84,6 +96,19 @@ const getPlaylistDesc = (status?: CountdownStatus) => {
 
 function ArtistPage() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const container = document.querySelector(
+      "[data-app-container]",
+    ) as HTMLElement;
+
+    if (container) {
+      container.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    }
+  }, []);
 
   const [currentDay, setCurrentDay] = useState<DayKey>("day1");
   const [artists, setArtists] = useState<Artist[]>([]);
@@ -222,8 +247,10 @@ function ArtistPage() {
         {currentArtist?.playlistUrl && (
           <S.PlaylistSection>
             <ArtistPlaylist
+              key={currentArtist.id}
               playlistUrl={currentArtist.playlistUrl}
               thumbnailUrl={playlistThumbnails[currentArtist.id]}
+              videoId={playlistVideoIds[currentArtist.id]}
               desc={getPlaylistDesc(currentCountdownStatus)}
             />
           </S.PlaylistSection>
