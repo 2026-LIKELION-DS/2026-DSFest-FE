@@ -99,6 +99,7 @@ export const Card = styled.div<{ $isActive: boolean }>`
 `;
 
 export const Title = styled.span<{ $isActive: boolean }>`
+  white-space: pre-line;
   font-family: ${theme.typography.h3};
   color: ${({ $isActive }) =>
     $isActive ? theme.colors.fg.primaryInverted : theme.colors.fg.primary};

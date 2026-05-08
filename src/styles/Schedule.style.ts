@@ -3,12 +3,9 @@ import { theme } from "./theme";
 import ScheduleBackGround from "../assets/Schedule/Scheduleback.svg";
 const HEADER_HEIGHT = "60px";
 const NAV_HEIGHT = "60px";
-// const INPUT_HEIGHT = "68px";
 
 export const SchedulePage = styled.div`
   padding: 0 24px 24px;
-  /* margin-bottom: 56px; */
-  /* padding: 0 24px 80px; */
   padding-bottom: 80px;
   width: 100%;
   position: relative;
@@ -45,8 +42,8 @@ export const Bubble = styled.img`
 export const SubHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 24px 24px;
   margin: 24px 0 0;
+  margin-bottom: -18px;
 `;
 
 export const DayButton = styled.button<{ $active: boolean }>`
@@ -87,7 +84,7 @@ export const Leafs = styled.img`
   position: absolute;
   width: 85px;
   height: 88px;
-  top: 178px;
+  top: 135px;
   left: 6px;
   z-index: 2;
   pointer-events: none;
@@ -97,7 +94,7 @@ export const Flower = styled.img`
   position: absolute;
   width: 78px;
   height: 74px;
-  top: 758px;
+  top: 715px;
   left: 5px;
   z-index: 2;
   pointer-events: none;
@@ -108,16 +105,8 @@ export const CamFlower = styled.img`
   width: 105px;
   height: 92px;
 
-  top: 758px;
+  top: 715px;
   right: 2px;
-  z-index: 2;
-  pointer-events: none;
-`;
-
-export const Leafs1 = styled.img`
-  position: absolute;
-  top: 900px;
-  right: 32%;
   z-index: 2;
   pointer-events: none;
 `;
@@ -126,7 +115,7 @@ export const CamLeaf = styled.img`
   position: absolute;
   width: 118px;
   height: 103px;
-  top: 1450px;
+  top: 1407px;
   z-index: 2;
   pointer-events: none;
 `;
@@ -134,7 +123,7 @@ export const CamLeaf = styled.img`
 export const Flowers2 = styled.img`
   position: absolute;
   height: 126px;
-  top: 1540px;
+  top: 1497px;
   left: -10px;
   z-index: 2;
   pointer-events: none;
@@ -142,7 +131,7 @@ export const Flowers2 = styled.img`
 export const CamFlower2 = styled.img`
   position: absolute;
   width: 115px;
-  top: 2020px;
+  top: 1977px;
   right: -12px;
   z-index: 2;
   pointer-events: none;
