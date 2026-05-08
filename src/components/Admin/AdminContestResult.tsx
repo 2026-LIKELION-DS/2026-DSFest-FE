@@ -11,14 +11,15 @@ interface PhotoEntry {
   authorName: string;
   theme: ThemeKey;
   voteCount: number;
+  imageUrl: string;
 }
 
 type ResultData = Record<ThemeKey, PhotoEntry[]>;
 
 const THEMES: { key: ThemeKey; label: string }[] = [
-  { key: "DRESS_CODE", label: "주제 1" },
-  { key: "YOUTH", label: "주제 2" },
-  { key: "FESTIVAL", label: "주제 3" },
+  { key: "YOUTH", label: "주제 1" },
+  { key: "FESTIVAL", label: "주제 2" },
+  { key: "DRESS_CODE", label: "주제 3" },
 ];
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -44,6 +45,7 @@ export default function AdminContestResult() {
         );
         const data = await response.json();
         if (data.isSuccess) {
+          console.log("result:", data.result);
           setResultData(data.result);
         }
       } catch (error) {
@@ -86,6 +88,7 @@ export default function AdminContestResult() {
               title={entry.title}
               authorName={entry.authorName}
               voteCount={entry.voteCount}
+              imageUrl={entry.imageUrl}
             />
           ))}
         </S.List>

@@ -5,6 +5,7 @@ interface ContestResultCardProps {
   title: string;
   authorName: string;
   voteCount: number;
+  imageUrl: string;
 }
 
 export default function AdminContestResultCard({
@@ -12,12 +13,13 @@ export default function AdminContestResultCard({
   title,
   authorName,
   voteCount,
+  imageUrl,
 }: ContestResultCardProps) {
   return (
     <S.Card>
       <S.Rank>{rank}위</S.Rank>
       <S.RinkCard>
-        <S.Thumbnail />
+        <S.Thumbnail src={imageUrl} />
         <S.Info>
           <S.InfoRow>
             <span>제목</span>
