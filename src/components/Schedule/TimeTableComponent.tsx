@@ -57,16 +57,7 @@ export default function TimeTable({
                 />
                 {index < schedule.length - 1 && <S.Line />}
               </S.DotWrapper>
-              {/* <S.Card $isActive={item.isActive}>
-                <S.Title $isActive={item.isActive}>{item.title}</S.Title>
-                <S.Time $isActive={item.isActive}>{item.time}</S.Time>
-                {item.link && (
-                  <img
-                    src={item.isActive ? ChevronW : ChevronB}
-                    alt="chevron"
-                  />
-                )}
-              </S.Card> */}
+
               <S.Card $isActive={item.isActive}>
                 <S.TitleRow>
                   <S.Title $isActive={item.isActive}>{item.title}</S.Title>
