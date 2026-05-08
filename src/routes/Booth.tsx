@@ -105,6 +105,7 @@ const BoothPage: React.FC = () => {
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
   const [noticeData, setNoticeData] = useState<Notice | null>(null);
   const [showGuide, setShowGuide] = useState(true);
+  const [isRandomSelection, setIsRandomSelection] = useState(false);
 
   const handleOpenNotice = async () => {
     try {
@@ -143,7 +144,7 @@ const BoothPage: React.FC = () => {
     // }
     const timeParam = searchParams.get("time");
     if (!timeParam) {
-      if (hours >= 16) setIsNight(true);
+      if (hours >= 15) setIsNight(true);
       else setIsNight(false);
     } else {
       setIsNight(timeParam === "night");
@@ -253,6 +254,7 @@ const BoothPage: React.FC = () => {
   };
 
   const handleBoothClick = (id: number | null) => {
+    setIsRandomSelection(false);
     setSelectedId(id);
     if (id === null) return;
     trackEvent("booth_numbering_used");
@@ -271,15 +273,11 @@ const BoothPage: React.FC = () => {
       if (response.data.isSuccess && response.data.result) {
         const randomBooth = response.data.result;
 
-        setSelectedId(randomBooth.id);
-        handleOpenModal(randomBooth.id, randomBooth.positionNumber);
+        setSelectedId(null);
 
-        if (mapSectionRef.current) {
-          mapSectionRef.current.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        }
+        setIsRandomSelection(true);
+
+        handleOpenModal(randomBooth.id, randomBooth.positionNumber);
       } else {
         alert("현재 운영 중인 추천 부스가 없습니다.");
       }
@@ -339,9 +337,10 @@ const BoothPage: React.FC = () => {
       <BoothInfoComponent
         key={`${booth.boothId || booth.id}-${booth.positionNumber}`}
         booth={mappedBooth}
-        onDetailClick={() =>
-          handleOpenModal(booth.boothId || booth.id, booth.positionNumber)
-        }
+        onDetailClick={() => {
+          setIsRandomSelection(false);
+          handleOpenModal(booth.boothId || booth.id, booth.positionNumber);
+        }}
       />
     );
   };
@@ -479,6 +478,7 @@ const BoothPage: React.FC = () => {
         {isModalOpen && targetBooth && (
           <BoothModalComponent
             isNight={isNight}
+            isRandom={isRandomSelection}
             booth={{
               ...targetBooth,
               positionNumber: targetBooth.positionNumber,
