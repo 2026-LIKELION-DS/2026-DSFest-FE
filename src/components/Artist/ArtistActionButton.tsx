@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import chat from "../../assets/ChatCircleFill.svg";
 import megaphone from "../../assets/MegaphoneFill.svg";
 import chevronRight from "../../assets/ChevronRight.svg";
@@ -8,23 +10,62 @@ export type CountdownStatus = "MORE_THAN_24H" | "WITHIN_24H" | "LIVE" | "ENDED";
 
 type ArtistActionButtonsProps = {
   status: CountdownStatus;
+  performanceDate: string;
+  startTime: string;
   onLiveClick: () => void;
   onGuideClick: () => void;
 };
 
-const getStatusText = (status: CountdownStatus) => {
-  if (status === "LIVE") return "라이브톡 참여하기";
-  if (status === "ENDED") return "공연 종료";
-  if (status === "WITHIN_24H") return "곧 공연 시작!";
-  return "공연 예정";
+const formatRemainingTime = (diffMs: number) => {
+  if (diffMs <= 0) return "00:00:00";
+
+  const hours = Math.floor(diffMs / (1000 * 60 * 60));
+  const minutes = Math.floor((diffMs / (1000 * 60)) % 60);
+  const seconds = Math.floor((diffMs / 1000) % 60);
+
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
+    2,
+    "0",
+  )}:${String(seconds).padStart(2, "0")}`;
 };
 
 function ArtistActionButtons({
   status,
+  performanceDate,
+  startTime,
   onGuideClick,
   onLiveClick,
 }: ArtistActionButtonsProps) {
-  const statusText = getStatusText(status);
+  const [remainingTime, setRemainingTime] = useState("00:00:00");
+
+  useEffect(() => {
+    if (status !== "WITHIN_24H") return;
+
+    const performanceStartDateTime = `${performanceDate}T${startTime}`;
+
+    const updateRemainingTime = () => {
+      const now = new Date().getTime();
+      const target = new Date(performanceStartDateTime).getTime();
+
+      setRemainingTime(formatRemainingTime(target - now));
+    };
+
+    updateRemainingTime();
+
+    const timer = window.setInterval(updateRemainingTime, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [status, performanceDate, startTime]);
+
+  const getStatusText = () => {
+    if (status === "LIVE") return "라이브톡 참여하기";
+    if (status === "ENDED") return "공연 종료";
+    if (status === "WITHIN_24H") return `시작까지 ${remainingTime} 남음`;
+
+    return "공연 예정";
+  };
+
+  const statusText = getStatusText();
 
   return (
     <S.ActionSection>

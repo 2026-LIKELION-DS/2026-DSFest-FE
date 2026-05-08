@@ -13,6 +13,8 @@ export type Artist = {
   instaUrl: string;
   youtubeUrl: string;
   playlistUrl: string;
+  performanceDate: string;
+  startTime: string;
 };
 
 export type ArtistCardProps = {

@@ -23,16 +23,16 @@ function ArtistPlaylist({
       <S.ThumbnailLink
         href={playlistUrl}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         onClick={() => trackEvent("playlist_play")}
       >
-        <S.PlaylistThumbnail src={thumbnailUrl} alt="유튜브 플레이리스트" />
+        <S.PlaylistThumbnail src={thumbnailUrl} alt="플레이리스트 썸네일" />
       </S.ThumbnailLink>
 
       <S.PlaylistAddButton
         href={playlistUrl}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         onClick={() => trackEvent("playlist_add")}
       >
         플레이리스트 추가하기
