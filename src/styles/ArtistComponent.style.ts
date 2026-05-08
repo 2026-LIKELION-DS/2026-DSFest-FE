@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-type CountdownStatus = "MORE_THAN_24H" | "WITHIN_24H" | "LIVE" | "ENDED";
+type CountdownStatus = "MORE_THAN_72H" | "WITHIN_72H" | "LIVE" | "ENDED";
 
 // ArtistCard
 export const ArtistCard = styled.article`

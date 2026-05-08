@@ -17,7 +17,7 @@ import * as S from "../styles/Artist.style";
 
 type DayKey = "day1" | "day2" | "day3";
 
-type CountdownStatus = "MORE_THAN_24H" | "WITHIN_24H" | "LIVE" | "ENDED";
+type CountdownStatus = "MORE_THAN_72H" | "WITHIN_72H" | "LIVE" | "ENDED";
 
 type ArtistApiItem = {
   id: number;
@@ -206,16 +206,18 @@ function ArtistPage() {
           />
         </S.ArtistSection>
 
-        <ArtistActionButtons
-          status={currentCountdownStatus ?? "MORE_THAN_24H"}
-          performanceDate={currentArtist?.performanceDate ?? ""}
-          startTime={currentArtist?.startTime ?? ""}
-          onLiveClick={() => {
-            trackEvent("livetalk_from_artist");
-            navigate("/livetalk");
-          }}
-          onGuideClick={() => setIsGuideModalOpen(true)}
-        />
+        {currentArtist && (
+          <ArtistActionButtons
+            status={currentCountdownStatus ?? "MORE_THAN_72H"}
+            performanceDate={currentArtist.performanceDate}
+            startTime={currentArtist.startTime}
+            onLiveClick={() => {
+              trackEvent("livetalk_from_artist");
+              navigate("/livetalk");
+            }}
+            onGuideClick={() => setIsGuideModalOpen(true)}
+          />
+        )}
 
         {currentArtist?.playlistUrl && (
           <S.PlaylistSection>
