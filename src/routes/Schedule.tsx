@@ -42,7 +42,7 @@ const scheduleData = [
         id: 4,
         title: "낮부스",
         time: "11:00~14:30",
-        link: "/booth",
+        link: "/booth?time=day",
       },
       {
         id: 7,
@@ -53,7 +53,7 @@ const scheduleData = [
         id: 8,
         title: "밤부스",
         time: "16:00~19:30",
-        link: "/booth",
+        link: "/booth?time=night",
       },
       { id: 9, title: "덕우존 입장", time: "17:30~", isActive: false },
       { id: 10, title: "총장님 인사", time: "18:00~18:30", isActive: false },
@@ -79,7 +79,7 @@ const scheduleData = [
         id: 19,
         title: "낮부스",
         time: "11:00~14:30",
-        link: "/booth",
+        link: "/booth?time=day",
       },
       {
         id: 20,
@@ -90,7 +90,7 @@ const scheduleData = [
         id: 24,
         title: "밤부스",
         time: "16:00~19:30",
-        link: "/booth",
+        link: "/booth?time=night",
       },
       {
         id: 25,
@@ -120,19 +120,19 @@ const scheduleData = [
         id: 34,
         title: "낮부스",
         time: "11:00~14:30",
-        link: "/booth",
+        link: "/booth?time=day",
       },
       {
         id: 40,
         title: "밤부스",
         time: "16:00~19:30",
-        link: "/booth",
+        link: "/booth?time=night",
       },
       {
         id: 41,
         title: "재학생 및 동아리 공연",
         time: "16:00~18:30",
-        link: "/booth",
+        link: "/booth?time=night",
       },
       {
         id: 42,
