@@ -115,12 +115,14 @@ export const BannerArrow = styled.span`
   line-height: 24px;
 `;
 
-export const ChatArea = styled.div`
+export const ChatArea = styled.div<{ $hasBanner: boolean }>`
   flex: 1;
   min-height: 0;
   overflow-y: auto;
 
-  padding: 110px 20px 20px;
+  padding: ${({ $hasBanner }) =>
+    $hasBanner ? "110px 20px 20px" : "20px 20px 20px"};
+
   background: ${({ theme }) => theme.colors.bg.olive};
 
   -ms-overflow-style: none;
