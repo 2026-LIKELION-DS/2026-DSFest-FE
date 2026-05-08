@@ -1,5 +1,5 @@
 import { trackEvent } from "../../utils/analytics";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "../../styles/FoodTruckCard.styles";
 
 import ImageDetailComponent from "../Common/ImageDetail";
@@ -31,6 +31,7 @@ interface Truck {
 
 interface Props {
   truck: Truck;
+  forceOpen?: boolean;
 }
 
 interface FoodTruckDetailMenu {
@@ -62,7 +63,7 @@ const getGuestUuid = () => {
 
 const getLikeKey = (id: number) => `foodtruck_like_${id}`;
 
-export default function FoodTruckCard({ truck }: Props) {
+export default function FoodTruckCard({ truck, forceOpen }: Props) {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -181,7 +182,19 @@ export default function FoodTruckCard({ truck }: Props) {
 
     setIsImageModalOpen(true);
   };
+  useEffect(() => {
+    if (!forceOpen) return;
 
+    const openCard = async () => {
+      if (!isDetailLoaded) {
+        await fetchFoodTruckDetail();
+      }
+
+      setIsOpen(true);
+    };
+
+    openCard();
+  }, [forceOpen, isDetailLoaded]);
   return (
     <>
       <S.Card>
@@ -216,13 +229,6 @@ export default function FoodTruckCard({ truck }: Props) {
 
         {isOpen && (
           <S.DetailArea>
-            <S.SectionTitle>운영 시간</S.SectionTitle>
-
-            <S.TimeRow>
-              <S.ClockIcon src={clock} />
-              <S.TimeText>{operatingTime}</S.TimeText>
-            </S.TimeRow>
-
             <S.SectionTitle>메뉴</S.SectionTitle>
 
             {menus.map((menu) => (

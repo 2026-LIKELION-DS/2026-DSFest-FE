@@ -95,11 +95,19 @@ export default function FoodTruckList({
 
     fetchFoodTrucks();
   }, [API_URL, isVeganSelected]);
+  const [openTruckId, setOpenTruckId] = useState<number | null>(null);
+
   useEffect(() => {
     if (!targetStoreName) return;
 
-    const targetElement = cardRefs.current[targetStoreName];
+    const targetTruck = foodTrucks.find(
+      (truck) => truck.name === targetStoreName
+    );
+    if (!targetTruck) return;
 
+    setOpenTruckId(targetTruck.id);
+
+    const targetElement = cardRefs.current[targetStoreName];
     if (!targetElement) return;
 
     targetElement.scrollIntoView({
@@ -119,7 +127,7 @@ export default function FoodTruckList({
           }}
           style={{ scrollMarginTop: "72px" }}
         >
-          <FoodTruckCard truck={truck} />
+          <FoodTruckCard truck={truck} forceOpen={openTruckId === truck.id} />
         </div>
       ))}
     </>
