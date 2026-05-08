@@ -118,13 +118,18 @@ export default function FoodBannerCarousel({ onBannerClick }: Props) {
   });
 
   useEffect(() => {
-    const speed = 0.5;
+    const speed = 10;
+    let lastTime = performance.now();
 
-    const animate = () => {
+    const animate = (currentTime: number) => {
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+
       if (!isDraggingRef.current) {
         positionRef.current = normalizePositionRef.current(
-          positionRef.current - speed
+          positionRef.current - speed * (deltaTime / 1000)
         );
+
         setPosition(positionRef.current);
       }
 
