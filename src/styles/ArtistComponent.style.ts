@@ -328,11 +328,15 @@ export const ArtistModalOverlay = styled.div`
   width: 100%;
   max-width: 768px;
   height: 100dvh;
-  @media (min-width: 768px) {
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     border: 12px solid ${({ theme }) => theme.colors.olive[50]};
-    height: 874px;
+    max-height: 874px;
     border-radius: 24px;
     max-width: 402px;
+  }
+  @media (max-height: 910px) {
+    border-radius: 0;
+    border: none;
   }
 
   background: rgba(0, 0, 0, 0.5);
@@ -347,11 +351,12 @@ export const ArtistModalOverlay = styled.div`
 
 export const ArtistModalContainer = styled.div`
   width: 100%;
-  max-width: 354px;
+  max-width: 340px;
   max-height: 90%;
   background: ${({ theme }) => theme.colors.bg.neutral};
   border-radius: 4px;
   position: relative;
+
   padding: 24px;
   display: flex;
   flex-direction: column;
