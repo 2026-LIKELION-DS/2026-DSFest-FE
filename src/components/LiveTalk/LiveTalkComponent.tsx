@@ -49,7 +49,7 @@ type StompClientLike = {
   publish: (params: { destination: string; body: string }) => void;
   subscribe: (
     destination: string,
-    callback: (message: { body: string }) => void,
+    callback: (message: { body: string }) => void
   ) => { unsubscribe: () => void };
 };
 
@@ -107,7 +107,7 @@ export default function LiveTalkComponent() {
         getApiUrl(`/api/livetalk/read?guestUuid=${guestUuidRef.current}`),
         {
           method: "PATCH",
-        },
+        }
       );
 
       setUnreadCount(0);
@@ -120,8 +120,8 @@ export default function LiveTalkComponent() {
     try {
       const response = await fetch(
         getApiUrl(
-          `/api/livetalk/unread-count?guestUuid=${guestUuidRef.current}`,
-        ),
+          `/api/livetalk/unread-count?guestUuid=${guestUuidRef.current}`
+        )
       );
 
       if (!response.ok) return;
@@ -238,8 +238,8 @@ export default function LiveTalkComponent() {
 
       const response = await fetch(
         getApiUrl(
-          `/api/livetalk/messages/before?messageId=${firstRealMessage.id}`,
-        ),
+          `/api/livetalk/messages/before?messageId=${firstRealMessage.id}`
+        )
       );
 
       if (!response.ok) {
@@ -259,7 +259,7 @@ export default function LiveTalkComponent() {
       setMessages((prev) => {
         const existingIds = new Set(prev.map((message) => message.id));
         const filteredPreviousMessages = previousMessages.filter(
-          (message) => !existingIds.has(message.id),
+          (message) => !existingIds.has(message.id)
         );
 
         return [...filteredPreviousMessages, ...prev];
@@ -303,7 +303,7 @@ export default function LiveTalkComponent() {
             headers: {
               Accept: "application/json",
             },
-          },
+          }
         );
 
         if (!response.ok) {
@@ -317,7 +317,7 @@ export default function LiveTalkComponent() {
           setTopic(null);
           previousBannerModeRef.current = "default";
           setBannerMode((prev) =>
-            prev === "collapsed" ? "collapsed" : "default",
+            prev === "collapsed" ? "collapsed" : "default"
           );
           return;
         }
@@ -396,7 +396,7 @@ export default function LiveTalkComponent() {
                 "/topic/livetalk",
                 (message: { body: string }) => {
                   const receivedMessage: LiveTalkApiMessage = JSON.parse(
-                    message.body,
+                    message.body
                   );
                   const convertedMessage = convertMessage(receivedMessage);
 
@@ -410,7 +410,7 @@ export default function LiveTalkComponent() {
                         (msg) =>
                           msg.isTemp &&
                           msg.sender === "me" &&
-                          msg.text === convertedMessage.text,
+                          msg.text === convertedMessage.text
                       );
 
                       if (tempIndex !== -1) {
@@ -442,7 +442,7 @@ export default function LiveTalkComponent() {
                       fetchUnreadCount();
                     }
                   }
-                },
+                }
               ) ?? null;
           },
 
@@ -612,31 +612,34 @@ export default function LiveTalkComponent() {
 
   return (
     <S.Container>
-      <S.TopBanner
-        $isCollapsed={isCollapsed}
-        onPointerDown={handleBannerPointerDown}
-        onPointerMove={handleBannerPointerMove}
-        onPointerUp={handleBannerPointerUp}
-        onClick={handleBannerClick}
+      {topic && (
+        <S.TopBanner
+          $isCollapsed={isCollapsed}
+          onPointerDown={handleBannerPointerDown}
+          onPointerMove={handleBannerPointerMove}
+          onPointerUp={handleBannerPointerUp}
+          onClick={handleBannerClick}
+        >
+          <S.BannerIcon src={MegaphoneIcon} alt="확성기 아이콘" />
+
+          {!isCollapsed && showBannerText && (
+            <>
+              <S.BannerTextBox>
+                <S.BannerSubText>{topic.subtitle}</S.BannerSubText>
+                <S.BannerTitle>{topic.title}</S.BannerTitle>
+              </S.BannerTextBox>
+
+              {bannerMode === "artist" && <S.BannerArrow>›</S.BannerArrow>}
+            </>
+          )}
+        </S.TopBanner>
+      )}
+
+      <S.ChatArea
+        ref={chatAreaRef}
+        onScroll={handleChatAreaScroll}
+        $hasBanner={!!topic}
       >
-        <S.BannerIcon src={MegaphoneIcon} alt="확성기 아이콘" />
-
-        {!isCollapsed && showBannerText && (
-          <>
-            <S.BannerTextBox>
-              <S.BannerSubText>
-                {topic?.subtitle ?? "현재 진행 중인 대화 주제가 없습니다."}
-              </S.BannerSubText>
-
-              <S.BannerTitle>{topic?.title ?? "라이브톡"}</S.BannerTitle>
-            </S.BannerTextBox>
-
-            {bannerMode === "artist" && <S.BannerArrow>›</S.BannerArrow>}
-          </>
-        )}
-      </S.TopBanner>
-
-      <S.ChatArea ref={chatAreaRef} onScroll={handleChatAreaScroll}>
         {isLoadingPrevious && (
           <S.DateText>이전 메시지 불러오는 중...</S.DateText>
         )}
