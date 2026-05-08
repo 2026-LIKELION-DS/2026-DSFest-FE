@@ -5,14 +5,13 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  gap: 15px;
 
-  padding: 12px 20px;
+  padding: 12px 15px;
 `;
 
 export const Input = styled.input`
-  flex: 0 0 calc(100vw * 298 / 402);
+  flex: 1;
   min-width: 0;
   height: 44px;
 
@@ -25,17 +24,11 @@ export const Input = styled.input`
   font-family: ${theme.typography.bodySm.fontFamily};
   font-weight: ${theme.typography.bodySm.fontWeight};
 
-  font-size: 16px;
+  font-size: 14px;
   line-height: 16px;
 
-  transform: scale(0.875);
-  transform-origin: left center;
-
-  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
-    flex: 1;
-    width: 100%;
-    transform: none;
-    font-size: 14px;
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.fg.subtle};
   }
 `;
 
@@ -51,4 +44,6 @@ export const SendButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  padding: 0;
 `;
