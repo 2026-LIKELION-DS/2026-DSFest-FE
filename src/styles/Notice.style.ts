@@ -81,17 +81,26 @@ export const ScrollWrapper = styled.div`
   margin-left: -24px;
   width: calc(100% + 48px);
   background-color: #f5f7ed;
+  overflow: hidden;
 `;
 
-export const CardScrollArea = styled.div`
+export const CardScrollArea = styled.div<{
+  $position: number;
+  $isDragging: boolean;
+}>`
   display: flex;
   gap: 12px;
-  overflow-x: auto;
+  width: max-content;
   padding: 24px;
+  transform: translateX(${({ $position }) => $position}px);
+  cursor: ${({ $isDragging }) => ($isDragging ? "grabbing" : "grab")};
+  user-select: none;
+  touch-action: pan-y;
+`;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+export const NoticeCarouselItem = styled.div`
+  flex: 0 0 auto;
+  cursor: pointer;
 `;
 
 export const FAQSection = styled.section`

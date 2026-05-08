@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import * as S from "../../styles/NoticeComponent.style";
 
 import chevronDown from "../../assets/Notice/ChevronDown.svg";
@@ -11,13 +11,27 @@ interface FAQItemProps {
 
 export default function FAQItem({ question, answer }: FAQItemProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const itemRef = useRef<HTMLDivElement | null>(null);
 
   const handleToggle = () => {
-    setIsOpen((prev) => !prev);
+    setIsOpen((prev) => {
+      const next = !prev;
+
+      if (next) {
+        window.setTimeout(() => {
+          itemRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }, 0);
+      }
+
+      return next;
+    });
   };
 
   return (
-    <S.Item>
+    <S.Item ref={itemRef}>
       <S.QuestionButton type="button" onClick={handleToggle}>
         <S.QuestionText>
           <S.QuestionPrefix>Q.</S.QuestionPrefix>
