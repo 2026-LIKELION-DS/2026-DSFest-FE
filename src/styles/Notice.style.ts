@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const NoticePage = styled.main`
   margin: 0 auto;
   padding: 16px 24px 24px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.bg.neutral};
   overflow-x: hidden;
 `;
 
