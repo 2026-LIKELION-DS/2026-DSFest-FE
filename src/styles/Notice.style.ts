@@ -13,14 +13,21 @@ export const SearchSection = styled.section`
   justify-content: center;
 `;
 
+export const SearchIcon = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
 export const SearchBox = styled.div`
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   width: 354px;
-  padding: 12px 16px;
+  height: 44px;
+  padding: 0 16px;
   border: 1px solid #9e9e9e;
   border-radius: 100px;
+  box-sizing: border-box;
 
   &:hover {
     border: 1px solid #161716;
@@ -31,18 +38,22 @@ export const SearchBox = styled.div`
   }
 `;
 
-export const SearchIcon = styled.img`
-  width: 20px;
-  height: 20px;
-`;
-
 export const SearchInput = styled.input`
   flex: 1;
+  min-width: 0;
+
+  width: calc(100% / 0.75);
+  height: calc(20px / 0.75);
+
   border: none;
   outline: none;
   color: #161716;
-  font-size: 12px;
+
+  font-size: 16px;
   font-weight: 500;
+
+  transform: scale(0.75);
+  transform-origin: left center;
 
   &::placeholder {
     color: #9e9e9e;
@@ -93,6 +104,7 @@ export const CardScrollArea = styled.div<{
   width: max-content;
   padding: 24px;
   transform: translateX(${({ $position }) => $position}px);
+  will-change: transform;
   cursor: ${({ $isDragging }) => ($isDragging ? "grabbing" : "grab")};
   user-select: none;
   touch-action: pan-y;

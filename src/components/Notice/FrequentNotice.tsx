@@ -34,6 +34,7 @@ export default function FrequentNotice({ noticeCards }: FrequentNoticeProps) {
 
   const trackRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<number | null>(null);
+  const lastTimeRef = useRef<number | null>(null);
 
   const positionRef = useRef(0);
   const startXRef = useRef(0);
@@ -76,12 +77,19 @@ export default function FrequentNotice({ noticeCards }: FrequentNoticeProps) {
   useEffect(() => {
     if (noticeCards.length === 0) return;
 
-    const speed = 1;
+    const speed = 30; // px per second
 
-    const animate = () => {
+    const animate = (time: number) => {
+      if (lastTimeRef.current === null) {
+        lastTimeRef.current = time;
+      }
+
+      const deltaTime = time - lastTimeRef.current;
+      lastTimeRef.current = time;
+
       if (!isDraggingRef.current) {
         positionRef.current = normalizePositionRef.current(
-          positionRef.current - speed,
+          positionRef.current - (speed * deltaTime) / 1000,
         );
         setPosition(positionRef.current);
       }
@@ -95,6 +103,8 @@ export default function FrequentNotice({ noticeCards }: FrequentNoticeProps) {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
+
+      lastTimeRef.current = null;
     };
   }, [noticeCards.length]);
 
