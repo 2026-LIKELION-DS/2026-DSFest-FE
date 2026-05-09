@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import * as S from "../../styles/OnBoard.style";
-import onBoarding from "../../assets/home/Onboarding.svg";
+import onBoarding from "../../assets/home/Onboarding3.png";
 
 interface OnBoardingProps {
   onClose: () => void;
 }
 
 export default function OnBoarding({ onClose }: OnBoardingProps) {
-
   useEffect(() => {
     const link = document.createElement("link");
     link.rel = "preload";
@@ -24,7 +23,6 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
     console.log("useEffect 실행됨");
     const initGuestUser = async () => {
       const BaseUrl = import.meta.env.VITE_API_URL;
-
 
       const savedUuid = localStorage.getItem("guest_uuid");
 
@@ -59,7 +57,7 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
   return (
     <S.OnBoardWrapper>
       <S.OnBoardBlurArea />
-      <S.OnBoardImg src={onBoarding} loading="eager" fetchPriority="high"/>
+      <S.OnBoardImg src={onBoarding} loading="eager" fetchPriority="high" />
 
       <S.OnBoardBtnBox>
         <S.Close onClick={onClose}>닫기</S.Close>
