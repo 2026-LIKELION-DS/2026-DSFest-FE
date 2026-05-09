@@ -192,6 +192,13 @@ export function useArtistCarousel(artists: Artist[]) {
     moveToVirtualIndex(virtualIndexRef.current + diff);
   };
 
+  const handleSlideClick = (virtualIndex: number) => {
+    if (artists.length <= 1) return;
+    if (virtualIndex === virtualIndexRef.current) return;
+
+    moveToVirtualIndex(virtualIndex);
+  };
+
   useEffect(() => {
     const frameId = requestAnimationFrame(() => {
       resetToMiddle(1);
@@ -222,5 +229,6 @@ export function useArtistCarousel(artists: Artist[]) {
     handleTouchMove,
     handleTouchEnd,
     handlePaginationChange,
+    handleSlideClick,
   };
 }
