@@ -81,7 +81,7 @@ export const StatusBadge = styled.div<{ $status?: string }>`
         return css`
           background: ${theme.colors.bg.disabled};
           color: ${theme.colors.fg.disabled};
-          border: 0.5px solid ${theme.colors.bg.disabled};
+          border: 0.5px solid ${theme.colors.bg.brand};
         `;
     }
   }}

@@ -6,7 +6,7 @@ export default function OnBoardingPage() {
 
   return (
     <Onboarding
-      onClose={() => navigate("/")} // 닫으면 홈으로
+      onClose={() => navigate("/")}
     />
   );
 }

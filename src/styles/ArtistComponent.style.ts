@@ -224,8 +224,18 @@ export const PlaylistDesc = styled.p`
   color: ${({ theme }) => theme.colors.fg.subtle};
 `;
 
-export const ThumbnailLink = styled.a`
-  display: block;
+export const ThumbnailButton = styled.button`
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+`;
+
+export const PlaylistIframe = styled.iframe`
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
 `;
 
 export const PlaylistThumbnail = styled.img`

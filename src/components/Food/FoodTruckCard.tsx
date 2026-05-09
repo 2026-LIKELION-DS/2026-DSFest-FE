@@ -1,11 +1,10 @@
 import { trackEvent } from "../../utils/analytics";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "../../styles/FoodTruckCard.styles";
 
 import ImageDetailComponent from "../Common/ImageDetail";
 
 import greenLeaf from "../../assets/Food/Greenleaf.svg";
-import clock from "../../assets/Food/clock.svg";
 import thumbsUp from "../../assets/Food/ThumbsUp.svg";
 import thumbsUpFill from "../../assets/Food/ThumbsUpFill.svg";
 import chevronDown from "../../assets/Food/ChevronDown.svg";
@@ -31,6 +30,8 @@ interface Truck {
 
 interface Props {
   truck: Truck;
+  forceOpen?: boolean;
+  onForceOpenDone?: () => void;
 }
 
 interface FoodTruckDetailMenu {
@@ -62,7 +63,11 @@ const getGuestUuid = () => {
 
 const getLikeKey = (id: number) => `foodtruck_like_${id}`;
 
-export default function FoodTruckCard({ truck }: Props) {
+export default function FoodTruckCard({
+  truck,
+  forceOpen,
+  onForceOpenDone,
+}: Props) {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +84,6 @@ export default function FoodTruckCard({ truck }: Props) {
   const [likeCount, setLikeCount] = useState(truck.likeCount);
   const [images, setImages] = useState(truck.images);
   const [menus, setMenus] = useState<Menu[]>(truck.menus);
-  const [operatingTime, setOperatingTime] = useState(truck.operatingTime);
   const [isDetailLoaded, setIsDetailLoaded] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
@@ -110,12 +114,6 @@ export default function FoodTruckCard({ truck }: Props) {
           price: `${menu.price.toLocaleString()}원`,
           isVegan: menu.isVegan,
         }))
-      );
-
-      setOperatingTime(
-        detail.operatingString ||
-          truck.operatingTime ||
-          "운영시간 정보가 없습니다."
       );
 
       setLikeCount(detail.likeCount);
@@ -181,12 +179,34 @@ export default function FoodTruckCard({ truck }: Props) {
 
     setIsImageModalOpen(true);
   };
+  useEffect(() => {
+    if (!forceOpen) return;
 
+    const openCard = async () => {
+      if (!isDetailLoaded) {
+        await fetchFoodTruckDetail();
+      }
+
+      setIsOpen(true);
+
+      setTimeout(() => {
+        onForceOpenDone?.();
+      }, 100);
+    };
+
+    openCard();
+  }, [forceOpen, isDetailLoaded, onForceOpenDone]);
   return (
     <>
-      <S.Card>
+      <S.Card onClick={handleToggleOpen}>
         <S.TopArea>
-          <S.StoreImageButton type="button" onClick={handleImageClick}>
+          <S.StoreImageButton
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              handleImageClick();
+            }}
+          >
             <S.ImageWrapper>
               <S.StoreImage
                 src={images[0]}
@@ -208,7 +228,13 @@ export default function FoodTruckCard({ truck }: Props) {
             </S.TagList>
           </S.InfoArea>
 
-          <S.LikeArea $isLiked={isLiked} onClick={handleLike}>
+          <S.LikeArea
+            $isLiked={isLiked}
+            onClick={(event) => {
+              event.stopPropagation();
+              handleLike();
+            }}
+          >
             <S.LikeIcon src={isLiked ? thumbsUpFill : thumbsUp} />
             <S.LikeCount>{likeCount >= 999 ? "999+" : likeCount}</S.LikeCount>
           </S.LikeArea>
@@ -216,13 +242,6 @@ export default function FoodTruckCard({ truck }: Props) {
 
         {isOpen && (
           <S.DetailArea>
-            <S.SectionTitle>운영 시간</S.SectionTitle>
-
-            <S.TimeRow>
-              <S.ClockIcon src={clock} />
-              <S.TimeText>{operatingTime}</S.TimeText>
-            </S.TimeRow>
-
             <S.SectionTitle>메뉴</S.SectionTitle>
 
             {menus.map((menu) => (
@@ -239,7 +258,13 @@ export default function FoodTruckCard({ truck }: Props) {
           </S.DetailArea>
         )}
 
-        <S.ChevronButton type="button" onClick={handleToggleOpen}>
+        <S.ChevronButton
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            handleToggleOpen();
+          }}
+        >
           <S.ChevronIcon src={isOpen ? chevronUp : chevronDown} />
         </S.ChevronButton>
       </S.Card>

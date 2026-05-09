@@ -46,7 +46,7 @@ export const QuestionButton = styled.button`
   gap: 12px;
   width: 100%;
   min-height: 64px;
-  padding: 12px 16px;
+  padding: 12px 6px;
   border: none;
   background-color: ${({ theme }) => theme.colors.bg.offWhite};
   cursor: pointer;

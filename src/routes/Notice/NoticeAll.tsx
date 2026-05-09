@@ -5,6 +5,7 @@ import { trackEvent } from "../../utils/analytics";
 
 import SearchInput from "../../components/Notice/SearchInput";
 import NoticeListItem from "../../components/Notice/NoticeListItem";
+import FrequentNotice from "../../components/Notice/FrequentNotice";
 
 import * as S from "../../styles/Notice.style";
 
@@ -57,12 +58,30 @@ const CATEGORY_LABEL: Record<NoticeCategory, string> = {
 export default function NoticeAll() {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const container = document.querySelector(
+      "[data-app-container]",
+    ) as HTMLElement;
+
+    if (container) {
+      container.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    }
+  }, []);
+
   const [keyword, setKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryFilter>("ALL");
   const [noticeList, setNoticeList] = useState<NoticeItem[]>([]);
+  const [recommendedNotices, setRecommendedNotices] = useState<NoticeItem[]>(
+    [],
+  );
 
   const trimmedKeyword = keyword.trim();
+  const isSearching = trimmedKeyword.length > 0;
+  const hasNoticeList = noticeList.length > 0;
 
   useEffect(() => {
     const fetchNoticeList = async () => {
@@ -78,8 +97,11 @@ export default function NoticeAll() {
           );
 
           setNoticeList(response.data.result.results);
+          setRecommendedNotices(response.data.result.recommended);
           return;
         }
+
+        setRecommendedNotices([]);
 
         if (selectedCategory === "ALL") {
           const response = await axios.get<ApiResponse<NoticeItem[]>>(
@@ -141,7 +163,7 @@ export default function NoticeAll() {
         ))}
       </S.CategoryList>
 
-      {noticeList.length > 0 ? (
+      {hasNoticeList ? (
         <S.NoticeList>
           {noticeList.map((notice) => (
             <NoticeListItem
@@ -154,13 +176,19 @@ export default function NoticeAll() {
           ))}
         </S.NoticeList>
       ) : (
-        <S.SearchEmpty>
-          {trimmedKeyword
-            ? `“${trimmedKeyword}”에 해당하는`
-            : "해당 카테고리에"}
-          <br />
-          공지가 없어요
-        </S.SearchEmpty>
+        <>
+          <S.SearchEmpty>
+            {isSearching ? `“${trimmedKeyword}”에 해당하는` : "해당 카테고리에"}
+            <br />
+            공지가 없어요
+          </S.SearchEmpty>
+
+          {isSearching && recommendedNotices.length > 0 && (
+            <S.SearchRecommendArea>
+              <FrequentNotice noticeCards={recommendedNotices} />
+            </S.SearchRecommendArea>
+          )}
+        </>
       )}
     </S.NoticePage>
   );

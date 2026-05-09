@@ -1,26 +1,31 @@
+// src/styles/ChatInput.style.ts
+
 import styled from "styled-components";
 import { theme } from "../styles/theme";
+// src/styles/ChatInput.style.ts
 
 export const Container = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  gap: 15px;
+  padding: 12px 15px;
+`;
 
-  padding: 12px 20px;
+export const InputBox = styled.div`
+  flex: 1;
+  min-width: 0;
+  height: 44px;
 `;
 
 export const Input = styled.input`
-  flex: 1;
-  min-width: 0;
-  max-width: 298px;
-  height: 44px;
+  width: calc(100% / 0.875);
+  height: calc(44px / 0.875);
 
-  border-radius: 22px;
+  border-radius: calc(22px / 0.875);
   border: 1px solid ${({ theme }) => theme.colors.stroke.subtle};
 
-  padding: 0 16px;
+  padding: 0 calc(16px / 0.875);
   outline: none;
 
   font-family: ${theme.typography.bodySm.fontFamily};
@@ -30,18 +35,13 @@ export const Input = styled.input`
   line-height: 16px;
 
   transform: scale(0.875);
-  transform-origin: left center;
+  transform-origin: left top;
 
-  width: calc(100% / 0.875);
-
-  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
-    max-width: none;
-    transform: none;
-    width: 100%;
-    font-size: 14px;
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.fg.subtle};
   }
 `;
-//모바일에서 포커스 안 되게 끔
+
 export const SendButton = styled.button`
   flex: 0 0 44px;
   width: 44px;
@@ -54,4 +54,6 @@ export const SendButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  padding: 0;
 `;
