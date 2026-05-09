@@ -83,6 +83,7 @@ export const AbsoluteBooth = styled.div<{
   $width?: string;
   $height?: string;
 }>`
+  cursor: default;
   background-color: ${({ theme }) => theme.colors.bg.olive};
   color: ${({ theme }) => theme.colors.bg.brandLight};
   ${setTypo("buttonSm")};

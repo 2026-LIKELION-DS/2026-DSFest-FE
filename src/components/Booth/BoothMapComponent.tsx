@@ -110,6 +110,8 @@ const BoothMapComponent: React.FC<MapProps> = ({
       28: { x: 290, y: 175 },
       29: { x: 315, y: 175 },
       30: { x: 500, y: 175 },
+
+      33: { x: 160, y: -5 },
     };
 
     if (pinchZoomRef.current && mapRef.current) {
@@ -267,6 +269,21 @@ const BoothMapComponent: React.FC<MapProps> = ({
               $right="-20px"
               $width="82px"
               $height="40px"
+              onClick={(e) => {
+                e.stopPropagation();
+                const headquarter = mapData.find(
+                  (b) => b.positionNumber === 33,
+                );
+                if (headquarter) {
+                  onBoothClick?.(headquarter.boothId, 33);
+                } else {
+                  console.warn("운영 본부 데이터를 찾을 수 없습니다.");
+                }
+              }}
+              style={{
+                cursor: "pointer",
+                pointerEvents: "auto",
+              }}
             >
               <S.SubLabel>운영 본부</S.SubLabel>
             </S.AbsoluteBooth>
