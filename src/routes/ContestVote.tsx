@@ -110,10 +110,12 @@ export default function ContestVotePage() {
         if (!res.data.isSuccess) return;
 
         const map: Record<number, 1 | 2 | 3> = {};
-        Object.values(res.data.result).forEach((themeList: any) => {
-          const sorted = [...(themeList as any[])].sort(
-            (a, b) => b.voteCount - a.voteCount,
-          );
+        Object.values(res.data.result).forEach((themeList) => {
+          const list = themeList as {
+            photoEntryId: number;
+            voteCount: number;
+          }[];
+          const sorted = [...list].sort((a, b) => b.voteCount - a.voteCount);
           sorted.slice(0, 3).forEach((item, index) => {
             map[item.photoEntryId] = (index + 1) as 1 | 2 | 3;
           });
