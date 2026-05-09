@@ -76,6 +76,7 @@ export const BoothSlot = styled.div<{ $isActive: boolean }>`
 `;
 
 export const AbsoluteBooth = styled.div<{
+  $isActive?: boolean;
   $top?: string;
   $bottom?: string;
   $left?: string;
@@ -84,8 +85,6 @@ export const AbsoluteBooth = styled.div<{
   $height?: string;
 }>`
   cursor: default;
-  background-color: ${({ theme }) => theme.colors.bg.olive};
-  color: ${({ theme }) => theme.colors.bg.brandLight};
   ${setTypo("buttonSm")};
   font-weight: 500;
   border: 1px solid ${({ theme }) => theme.colors.bg.brandLight};
@@ -101,6 +100,10 @@ export const AbsoluteBooth = styled.div<{
     width: ${props.$width};
     height: ${props.$height};
   `}
+  background-color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors.bg.brand : theme.colors.bg.olive};
+  color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors.fg.primaryInverted : theme.colors.bg.brandLight};
 `;
 
 export const AbsoluteFoodTruck = styled.div<{
