@@ -161,7 +161,7 @@ const days = [
 export default function SchedulePage() {
   const baseUrl = import.meta.env.VITE_API_URL;
 
-  //임시 시간 설정 데이2 낮 12시
+  //임시 시간 설정 (데이2 낮 12시)
   const [nowStatus, setNowStatus] = useState<NowStatus | null>({
     status: "IN_PROGRESS",
     current: [
@@ -175,55 +175,33 @@ export default function SchedulePage() {
     ],
     next: null,
   });
-  useEffect(() => {
-    setNowStatus({
-      status: "IN_PROGRESS",
-      current: [
-        {
-          id: 19,
-          title: "낮부스",
-          startTime: "11:00",
-          endTime: "14:30",
-          scheduleType: "BOOTH",
-        },
-      ],
-      next: null,
-    });
-  }, [baseUrl]);
+  const [currentDay, setCurrentDay] = useState<DayKey>("day2");
 
-  //api/schedules/now 호출 실제 데이 데이터
+  // 실제 날짜 api
   // const [nowStatus, setNowStatus] = useState<NowStatus | null>(null);
-  // console.log(baseUrl);
-
   // useEffect(() => {
   //   if (!baseUrl) return;
-
   //   axios
   //     .get(`${baseUrl}/api/schedules/now`)
   //     .then((res) => {
-  //       if (res.data.isSuccess) {
-  //         console.log("백엔드 실시간 데이터:", res.data.result);
-  //         setNowStatus(res.data.result);
-  //       }
+  //       if (res.data.isSuccess) setNowStatus(res.data.result);
   //     })
   //     .catch((err) => console.error("연동 에러:", err));
   // }, [baseUrl]);
+  // const getCurrentDay = (): DayKey => {
+  //   const today = new Date().getDate();
+  //   if (today === 13) return "day1";
+  //   if (today === 14) return "day2";
+  //   if (today === 15) return "day3";
+  //   return "day1";
+  // };
+  // const [currentDay, setCurrentDay] = useState<DayKey>(getCurrentDay());
+  //
 
   const activeIds = new Set([...(nowStatus?.current ?? []).map((s) => s.id)]);
-
   const pageRef = useRef<HTMLDivElement>(null);
   const activeRef = useRef<HTMLDivElement>(null);
   const [isAtActive, setIsAtActive] = useState(false);
-
-  //데이 api
-  // const [currentDay, setCurrentDay] = useState<"day1" | "day2" | "day3">(
-  //   "day1",
-  // );
-  // 테스트용으로 day2로 변경
-  const [currentDay, setCurrentDay] = useState<"day1" | "day2" | "day3">(
-    "day2",
-  );
-  //
   const [direction, setDirection] = useState<"up" | "down">("down");
   const dayRefs = {
     day1: useRef<HTMLDivElement>(null),
@@ -245,7 +223,7 @@ export default function SchedulePage() {
       const rect = activeRef.current.getBoundingClientRect();
       const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
 
-      setIsAtActive(inView); // 화면 안에 있으면 버튼 숨김
+      setIsAtActive(inView);
       setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
     };
 
@@ -253,10 +231,16 @@ export default function SchedulePage() {
     return () => el.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 일정 기준
-  // const handleClick = () => {
-  //   activeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-  // };
+  // 페이지 진입 시 스크롤 초기화
+  useEffect(() => {
+    const container = document.querySelector(
+      "[data-app-container]",
+    ) as HTMLElement;
+    if (container) {
+      container.scrollTo({ top: 0, behavior: "auto" });
+    }
+  }, []);
+
   //day 기준
   const handleClick = () => {
     dayRefs[currentDay].current?.scrollIntoView({
