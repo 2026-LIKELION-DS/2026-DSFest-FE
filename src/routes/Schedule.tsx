@@ -213,24 +213,6 @@ export default function SchedulePage() {
   const hasActive =
     currentSchedule?.data.some((item) => activeIds.has(item.id)) ?? false;
 
-  // 스크롤 위치에 따라 방향 변경
-  // useEffect(() => {
-  //   const el = pageRef.current;
-  //   if (!el) return;
-
-  //   const handleScroll = () => {
-  //     if (!activeRef.current) return;
-  //     const rect = activeRef.current.getBoundingClientRect();
-  //     const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-
-  //     setIsAtActive(inView);
-  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
-  //   };
-
-  //   el.addEventListener("scroll", handleScroll);
-  //   return () => el.removeEventListener("scroll", handleScroll);
-  // }, []);
-
   // 페이지 진입 시 스크롤 초기화
   useEffect(() => {
     const container = document.querySelector(
@@ -251,50 +233,7 @@ export default function SchedulePage() {
 
   const [showTopBtn, setShowTopBtn] = useState(false);
 
-  // const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-  //   const scrollTop = e.currentTarget.scrollTop;
-  //   setShowTopBtn(scrollTop > 0);
-  // };
-  // const handleScrollToTop = () => {
-  //   pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-  // };
-
-  // useEffect(() => {
-  //   const container = document.querySelector(
-  //     "[data-app-container]",
-  //   ) as HTMLElement;
-  //   if (!container) return;
-
-  //   const handleContainerScroll = () => {
-  //     setShowTopBtn(container.scrollTop > 0);
-
-  //     if (!activeRef.current) return;
-  //     const rect = activeRef.current.getBoundingClientRect();
-  //     const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-  //     setIsAtActive(inView);
-  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
-  //   };
-
-  //   container.addEventListener("scroll", handleContainerScroll);
-  //   return () => container.removeEventListener("scroll", handleContainerScroll);
-  // }, []);
-
-  // const handleScrollToTop = () => {
-  //   if (pageRef.current) {
-  //     pageRef.current.scrollTo({ top: 0, behavior: "smooth" });
-  //   }
-  // };
-
-  // const handleScrollToTop = () => {
-  //   const container = document.querySelector(
-  //     "[data-app-container]",
-  //   ) as HTMLElement;
-  //   if (container) {
-  //     container.scrollTo({ top: 0, behavior: "smooth" });
-  //   }
-  // };
-
-  // showTopBtn 감지 - data-app-container 기준
+  // 상위로 이동(showTopBtn 감지 - data-app-container 기준)
   useEffect(() => {
     const container = document.querySelector(
       "[data-app-container]",
