@@ -5,6 +5,15 @@ import ContestDetail from "./ContestDetail";
 import VoteOff from "../../assets/Contest/VoteOff.svg";
 import VoteOn from "../../assets/Contest/VoteON.svg";
 import Zoom from "../../assets/Contest/ZoomIcon.svg";
+import Medal1 from "../../assets/Contest/Medal1.svg";
+import Medal2 from "../../assets/Contest/Medal2.svg";
+import Medal3 from "../../assets/Contest/Medal3.svg";
+
+const medalSrcMap = {
+  1: Medal1,
+  2: Medal2,
+  3: Medal3,
+};
 
 interface PhotoDetail {
   id: number;
@@ -18,12 +27,14 @@ interface ContestPhotoCardProps {
   photo: { id: number; title: string; src: string };
   isSelected: boolean;
   onSelect: () => void;
+  rank?: 1 | 2 | 3 | null;
 }
 
 export default function ContestPhotoCard({
   photo,
   isSelected,
   onSelect,
+  rank,
 }: ContestPhotoCardProps) {
   const baseUrl = import.meta.env.VITE_API_URL;
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,8 +55,12 @@ export default function ContestPhotoCard({
   return (
     <>
       <S.PhotoCardWrapper>
+        {/* {rank && <S.MedalImg src={medalSrcMap[rank]} alt={`${rank}위`} />} */}
         <S.PhotoCard onClick={handleCardClick}>
+          {/* {rank && <S.MedalImg src={medalSrcMap[rank]} alt={`${rank}위`} />} */}
           <S.PhotoImgWrapper>
+            {rank && <S.MedalImg src={medalSrcMap[rank]} alt={`${rank}위`} />}
+
             <S.Photo src={photo.src} />
             <S.ZoomIcon src={Zoom} />
           </S.PhotoImgWrapper>
