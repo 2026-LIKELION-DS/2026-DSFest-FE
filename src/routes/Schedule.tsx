@@ -275,22 +275,22 @@ export default function SchedulePage() {
   //   ) as HTMLElement;
   //   container?.scrollTo({ top: 0, behavior: "smooth" });
   // };
-  useEffect(() => {
-    const el = pageRef.current;
-    if (!el) return;
+  // useEffect(() => {
+  //   const el = pageRef.current;
+  //   if (!el) return;
 
-    const handleScroll = () => {
-      setShowTopBtn(el.scrollTop > 0);
-      if (!activeRef.current) return;
-      const rect = activeRef.current.getBoundingClientRect();
-      const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-      setIsAtActive(inView);
-      setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
-    };
+  //   const handleScroll = () => {
+  //     setShowTopBtn(el.scrollTop > 0);
+  //     if (!activeRef.current) return;
+  //     const rect = activeRef.current.getBoundingClientRect();
+  //     const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+  //     setIsAtActive(inView);
+  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
+  //   };
 
-    el.addEventListener("scroll", handleScroll);
-    return () => el.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   el.addEventListener("scroll", handleScroll);
+  //   return () => el.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const handleClick = () => {
     dayRefs[currentDay].current?.scrollIntoView({
@@ -304,7 +304,16 @@ export default function SchedulePage() {
   };
 
   return (
-    <S.SchedulePage ref={pageRef}>
+    <S.SchedulePage
+      ref={pageRef}
+      onScroll={(e) => {
+        setShowTopBtn(e.currentTarget.scrollTop > 0);
+        if (!activeRef.current) return;
+        const rect = activeRef.current.getBoundingClientRect();
+        setIsAtActive(rect.top >= 0 && rect.bottom <= window.innerHeight);
+        setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
+      }}
+    >
       <S.DecoLayer>
         <S.Leafs src={Leaf} />
         <S.Flower src={Flower} />
