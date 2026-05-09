@@ -41,7 +41,7 @@ interface Booth {
   openKakaoUrl?: string;
   everytimeUrl?: string;
   instagramUrl?: string;
-  status?: "운영 중" | "운영 예정" | "운영 종료";
+  status?: "운영 중" | "운영 예정" | "운영 종료" | "상시";
 }
 
 interface MapBoothResponse {
@@ -56,31 +56,31 @@ interface Notice {
   imageUrls: string[];
 }
 
-const calculateBoothStatus = (
-  day: number,
-  nightMode: boolean,
-): "운영 중" | "운영 예정" | "운영 종료" => {
-  // const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
-  const now = new Date("2026-05-14T12:00:00");
-  const festivalDates: { [key: number]: string } = {
-    1: "2026-05-13",
-    2: "2026-05-14",
-    3: "2026-05-15",
-  };
+// const calculateBoothStatus = (
+//   day: number,
+//   nightMode: boolean,
+// ): "운영 중" | "운영 예정" | "운영 종료" => {
+//   // const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
+//   const now = new Date("2026-05-14T12:00:00");
+//   const festivalDates: { [key: number]: string } = {
+//     1: "2026-05-13",
+//     2: "2026-05-14",
+//     3: "2026-05-15",
+//   };
 
-  const currentDateStr = festivalDates[day];
-  if (!currentDateStr) return "운영 종료";
+//   const currentDateStr = festivalDates[day];
+//   if (!currentDateStr) return "운영 종료";
 
-  const startTimeStr = nightMode ? "16:00" : "11:00";
-  const endTimeStr = nightMode ? "19:30" : "14:30";
+//   const startTimeStr = nightMode ? "16:00" : "11:00";
+//   const endTimeStr = nightMode ? "19:30" : "14:30";
 
-  const startTime = new Date(`${currentDateStr}T${startTimeStr}:00`);
-  const endTime = new Date(`${currentDateStr}T${endTimeStr}:00`);
+//   const startTime = new Date(`${currentDateStr}T${startTimeStr}:00`);
+//   const endTime = new Date(`${currentDateStr}T${endTimeStr}:00`);
 
-  if (now < startTime) return "운영 예정";
-  if (now >= startTime && now <= endTime) return "운영 중";
-  return "운영 종료";
-};
+//   if (now < startTime) return "운영 예정";
+//   if (now >= startTime && now <= endTime) return "운영 중";
+//   return "운영 종료";
+// };
 
 const BoothPage: React.FC = () => {
   const baseUrl = import.meta.env.VITE_API_URL;
@@ -133,8 +133,8 @@ const BoothPage: React.FC = () => {
   };
 
   useEffect(() => {
-    // const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
-    const now = new Date("2026-05-14T12:00:00");
+    const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
+    // const now = new Date("2026-05-14T12:00:00");
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
     const date = now.getDate();
@@ -205,44 +205,51 @@ const BoothPage: React.FC = () => {
   }, [activeDay, isNight, baseUrl]);
 
   const { operatingBooths, upcomingBooths, allBoothsForList } = useMemo(() => {
-    let baseList = booths;
-    baseList = [...baseList].sort(
+    const baseList = [...booths].sort(
       (a, b) => (a.positionNumber || 999) - (b.positionNumber || 999),
     );
 
-    const currentStatus = calculateBoothStatus(activeDay, isNight);
-
     return {
-      operatingBooths: baseList.filter(() => currentStatus === "운영 중"),
-      upcomingBooths: baseList.filter(() => currentStatus === "운영 예정"),
+      operatingBooths: baseList.filter(
+        (booth) =>
+          booth.tags?.includes("운영 중") || booth.tags?.includes("상시"),
+      ),
+      upcomingBooths: baseList.filter((booth) =>
+        booth.tags?.includes("운영 예정"),
+      ),
       allBoothsForList: baseList,
     };
-  }, [booths, activeDay, isNight]);
+  }, [booths]);
 
   const displayBooths = isOperatingOnly ? operatingBooths : allBoothsForList;
 
   const boothCounts = useMemo(() => {
     const counts = { 예정: 0, 운영중: 0, 종료: 0 };
-    booths.forEach(() => {
-      const status = calculateBoothStatus(activeDay, isNight);
-      if (status === "운영 예정") counts.예정++;
-      else if (status === "운영 중") counts.운영중++;
+    booths.forEach((booth) => {
+      if (booth.status === "운영 예정") counts.예정++;
+      else if (booth.status === "운영 중") counts.운영중++;
       else counts.종료++;
     });
     return counts;
-  }, [booths, activeDay, isNight]);
+  }, [booths]);
 
   const handleOpenModal = async (boothId: number, posNum: number) => {
     try {
       const response = await axios.get(`${baseUrl}/api/booths/${boothId}`);
       if (response.data.isSuccess) {
         const detailData = response.data.result;
-        const currentStatus = calculateBoothStatus(activeDay, isNight);
+        const statusFromTags = detailData.tags?.includes("운영 중")
+          ? "운영 중"
+          : detailData.tags?.includes("상시")
+            ? "상시"
+            : detailData.tags?.includes("운영 예정")
+              ? "운영 예정"
+              : "운영 종료";
 
         setTargetBooth({
           ...detailData,
           positionNumber: posNum,
-          status: currentStatus,
+          status: statusFromTags,
           category:
             detailData.categories?.join(", ") ||
             detailData.boothTypes?.join(", "),
@@ -327,7 +334,6 @@ const BoothPage: React.FC = () => {
   }, [showGuide]);
 
   const renderBoothItem = (booth: Booth) => {
-    const currentStatus = calculateBoothStatus(activeDay, isNight);
     const getCategory = () => {
       const source = booth.categories?.length
         ? booth.categories
@@ -335,7 +341,13 @@ const BoothPage: React.FC = () => {
       const cat = source?.find((c) => c !== "DAY" && c !== "NIGHT");
       return cat || "체험";
     };
-
+    const getStatusFromTags = (tags?: string[]) => {
+      if (!tags) return "운영 종료";
+      if (tags.includes("운영 중")) return "운영 중";
+      if (tags.includes("상시")) return "상시";
+      if (tags.includes("운영 예정")) return "운영 예정";
+      return "운영 종료";
+    };
     const mappedBooth = {
       id: booth.id,
       boothNumber: booth.boothNumber,
@@ -343,7 +355,11 @@ const BoothPage: React.FC = () => {
       name: booth.name,
       category: getCategory(),
       operator: booth.operatingSubject,
-      status: currentStatus,
+      status: getStatusFromTags(booth.tags) as
+        | "운영 중"
+        | "운영 예정"
+        | "운영 종료"
+        | "상시",
       description: booth.description || "상세 설명이 없습니다.",
       images: booth.imageUrls || [booth.thumbnailUrl],
     };
@@ -464,10 +480,6 @@ const BoothPage: React.FC = () => {
                       <S.EmptyMessage>
                         지금은 부스 운영시간이 아닙니다
                       </S.EmptyMessage>
-                      <S.NextTimeText>
-                        다음 부스 시간 :{" "}
-                        {isNight ? "16:00~19:30" : "11:00~14:30"}
-                      </S.NextTimeText>
 
                       <div
                         style={{
@@ -501,7 +513,7 @@ const BoothPage: React.FC = () => {
               category: targetBooth.boothTypes?.join(", ") || "기타",
               operator: targetBooth.operatingSubject || "운영진",
               images: targetBooth.imageUrls || [],
-              status: calculateBoothStatus(activeDay, isNight) || "운영 종료",
+              status: targetBooth.status || "운영 종료",
             }}
             onClose={() => setIsModalOpen(false)}
             onNavigateToMap={handleNavigateToMap}

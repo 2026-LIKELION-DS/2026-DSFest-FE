@@ -11,7 +11,7 @@ const setTypo = (key: keyof typeof typography) => {
   `;
 };
 
-export type StatusType = "운영 중" | "운영 예정" | "운영 종료";
+export type StatusType = "운영 중" | "운영 예정" | "운영 종료" | "상시";
 
 export const Card = styled.div`
   border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
@@ -31,7 +31,7 @@ export const StatusBadge = styled.span<{ $status: StatusType }>`
   border: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
 
   ${({ $status, theme }) => {
-    if ($status === "운영 중")
+    if ($status === "운영 중" || $status === "상시")
       return css`
         background: ${theme.colors.bg.olive};
         color: ${theme.colors.bg.brand};

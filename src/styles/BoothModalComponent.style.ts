@@ -66,6 +66,7 @@ export const StatusBadge = styled.div<{ $status?: string }>`
   ${({ $status, theme }) => {
     switch ($status) {
       case "운영 중":
+      case "상시":
         return css`
           background: ${theme.colors.bg.olive};
           color: ${theme.colors.bg.brand};
