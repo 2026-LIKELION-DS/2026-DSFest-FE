@@ -25,6 +25,15 @@ export const PageWrapper = styled.div`
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    padding-bottom: 150px;
+  }
+  @media (max-height: 910px) {
+    padding-bottom: 30px;
+  }
 `;
 
 export const DayNav = styled.nav`
@@ -160,6 +169,7 @@ export const FloatingCircleBtn = styled.button<{ $isVisible?: boolean }>`
   ${({ $isVisible }) =>
     $isVisible === false &&
     css`
+      pointer-events: none;
       height: 0;
       width: 0;
       margin: 0;
@@ -271,6 +281,10 @@ export const FloatingButtonGroup = styled.div<{ $hasTopBtn: boolean }>`
   gap: 10px;
 
   z-index: 999;
+  & > * {
+    pointer-events: auto; /* 버튼만 클릭 가능하게 */
+  }
+  cursor: pointer;
 
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     right: calc((100vw - 402px) / 2 + 10px);
