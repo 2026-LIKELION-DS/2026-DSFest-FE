@@ -276,7 +276,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
                   $right="-20px"
                   $width="82px"
                   $height="40px"
-                  $isActive={isHQActive} // 활성화 상태 전달
+                  $isActive={isHQActive}
                   onClick={(e) => {
                     e.stopPropagation();
                     if (headquarter) {
