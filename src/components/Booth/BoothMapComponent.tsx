@@ -264,29 +264,37 @@ const BoothMapComponent: React.FC<MapProps> = ({
                 포토월& <br></br>에어덕새
               </S.SubLabel>
             </S.AbsoluteBooth>
-            <S.AbsoluteBooth
-              $bottom="-40px"
-              $right="-20px"
-              $width="82px"
-              $height="40px"
-              onClick={(e) => {
-                e.stopPropagation();
-                const headquarter = mapData.find(
-                  (b) => b.positionNumber === 33,
-                );
-                if (headquarter) {
-                  onBoothClick?.(headquarter.boothId, 33);
-                } else {
-                  console.warn("운영 본부 데이터를 찾을 수 없습니다.");
-                }
-              }}
-              style={{
-                cursor: "pointer",
-                pointerEvents: "auto",
-              }}
-            >
-              <S.SubLabel>운영 본부</S.SubLabel>
-            </S.AbsoluteBooth>
+            {(() => {
+              const headquarter = mapData.find((b) => b.positionNumber === 33);
+              const isHQActive = headquarter
+                ? selectedId === headquarter.boothId
+                : false;
+
+              return (
+                <S.AbsoluteBooth
+                  $bottom="-40px"
+                  $right="-20px"
+                  $width="82px"
+                  $height="40px"
+                  $isActive={isHQActive}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (headquarter) {
+                      onBoothClick?.(
+                        isHQActive ? null : headquarter.boothId,
+                        33,
+                      );
+                    }
+                  }}
+                  style={{
+                    cursor: "pointer",
+                    pointerEvents: "auto",
+                  }}
+                >
+                  <S.SubLabel>운영 본부</S.SubLabel>
+                </S.AbsoluteBooth>
+              );
+            })()}
             <S.BoothList $top="-1px" $right="32px" $direction="column">
               {currentLayout.soyoung?.map(renderBooth)}
             </S.BoothList>
