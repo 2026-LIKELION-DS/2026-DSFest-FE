@@ -224,26 +224,63 @@ export default function SchedulePage() {
   }, []);
 
   //day 기준
-  const handleClick = () => {
-    dayRefs[currentDay].current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
+  // const handleClick = () => {
+  //   dayRefs[currentDay].current?.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //   });
+  // };
+  // const handleClick = () => {
+  //   const container = document.querySelector(
+  //     "[data-app-container]",
+  //   ) as HTMLElement;
+  //   const target = dayRefs[currentDay].current;
+  //   if (!container || !target) return;
+
+  //   const containerTop = container.getBoundingClientRect().top;
+  //   const targetTop = target.getBoundingClientRect().top;
+  //   const scrollOffset = targetTop - containerTop + container.scrollTop;
+
+  //   container.scrollTo({ top: scrollOffset, behavior: "smooth" });
+  // };
 
   const [showTopBtn, setShowTopBtn] = useState(false);
 
   // 상위로 이동(showTopBtn 감지 - data-app-container 기준)
+  // useEffect(() => {
+  //   const container = document.querySelector(
+  //     "[data-app-container]",
+  //   ) as HTMLElement;
+  //   if (!container) return;
+
+  //   const handleContainerScroll = () => {
+  //     setShowTopBtn(container.scrollTop > 0);
+
+  //     // 방향 감지도 같이
+  //     if (!activeRef.current) return;
+  //     const rect = activeRef.current.getBoundingClientRect();
+  //     const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+  //     setIsAtActive(inView);
+  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
+  //   };
+
+  //   container.addEventListener("scroll", handleContainerScroll);
+  //   return () => container.removeEventListener("scroll", handleContainerScroll);
+  // }, []);
+
+  // // handleScrollToTop
+  // const handleScrollToTop = () => {
+  //   const container = document.querySelector(
+  //     "[data-app-container]",
+  //   ) as HTMLElement;
+  //   container?.scrollTo({ top: 0, behavior: "smooth" });
+  // };
   useEffect(() => {
-    const container = document.querySelector(
-      "[data-app-container]",
-    ) as HTMLElement;
-    if (!container) return;
+    const el = pageRef.current;
+    if (!el) return;
 
-    const handleContainerScroll = () => {
-      setShowTopBtn(container.scrollTop > 0);
-
-      // 방향 감지도 같이
+    const handleScroll = () => {
+      setShowTopBtn(el.scrollTop > 0);
       if (!activeRef.current) return;
       const rect = activeRef.current.getBoundingClientRect();
       const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
@@ -251,16 +288,19 @@ export default function SchedulePage() {
       setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
     };
 
-    container.addEventListener("scroll", handleContainerScroll);
-    return () => container.removeEventListener("scroll", handleContainerScroll);
+    el.addEventListener("scroll", handleScroll);
+    return () => el.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // handleScrollToTop
+  const handleClick = () => {
+    dayRefs[currentDay].current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   const handleScrollToTop = () => {
-    const container = document.querySelector(
-      "[data-app-container]",
-    ) as HTMLElement;
-    container?.scrollTo({ top: 0, behavior: "smooth" });
+    pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -313,7 +353,7 @@ export default function SchedulePage() {
               direction={direction}
               onClick={() => {
                 handleClick();
-                setIsAtActive(true);
+                // setIsAtActive(true);
               }}
             />
           </S.FloatingCircleBtn>
