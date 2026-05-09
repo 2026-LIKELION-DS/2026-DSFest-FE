@@ -127,6 +127,7 @@ function ArtistPage() {
     handleTouchMove,
     handleTouchEnd,
     handlePaginationChange,
+    handleSlideClick,
   } = useArtistCarousel(artists);
 
   const currentArtist = artists[currentPage - 1];
@@ -214,12 +215,13 @@ function ArtistPage() {
           >
             <S.CarouselTrack ref={trackRef}>
               {repeatedArtists.map((artist, index) => (
-                <S.CardSlide
+                <S.Slide
                   key={`${artist.id}-${index}`}
-                  ref={index === 0 ? firstSlideRef : null}
+                  ref={index === 0 ? firstSlideRef : undefined}
+                  onClick={() => handleSlideClick(index)}
                 >
                   <ArtistCard artist={artist} />
-                </S.CardSlide>
+                </S.Slide>
               ))}
             </S.CarouselTrack>
           </S.CarouselWrapper>

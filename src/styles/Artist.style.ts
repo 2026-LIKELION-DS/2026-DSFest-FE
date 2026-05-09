@@ -66,3 +66,9 @@ export const CardSlide = styled.div`
 export const PlaylistSection = styled.section`
   margin-top: 22px;
 `;
+
+export const Slide = styled.div`
+  flex: 0 0 auto;
+  cursor: pointer;
+  pointer-events: auto;
+`;
