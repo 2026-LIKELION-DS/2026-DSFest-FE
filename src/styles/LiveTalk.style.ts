@@ -60,10 +60,7 @@ export const TopBanner = styled.div<{ $isCollapsed: boolean }>`
   overflow: hidden;
   white-space: nowrap;
 
-  transition:
-    width 0.2s ease,
-    height 0.2s ease,
-    border-radius 0.2s ease,
+  transition: width 0.2s ease, height 0.2s ease, border-radius 0.2s ease,
     padding 0.2s ease;
 `;
 
@@ -120,8 +117,7 @@ export const ChatArea = styled.div<{ $hasBanner: boolean }>`
   min-height: 0;
   overflow-y: auto;
 
-  padding: ${({ $hasBanner }) =>
-    $hasBanner ? "110px 20px 20px" : "20px 20px 20px"};
+  padding: ${({ $hasBanner }) => ($hasBanner ? "110px 20px 0" : "20px 20px 0")};
 
   background: ${({ theme }) => theme.colors.bg.olive};
 
