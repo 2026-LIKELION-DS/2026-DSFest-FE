@@ -301,7 +301,10 @@ const BoothPage: React.FC = () => {
 
   const handleScrollToTop = () => {
     if (mapSectionRef.current) {
-      mapSectionRef.current.scrollTo({ top: 0, behavior: "smooth" });
+      mapSectionRef.current.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   };
 
