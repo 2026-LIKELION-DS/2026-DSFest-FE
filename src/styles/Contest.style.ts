@@ -1,6 +1,5 @@
 import styled from "styled-components";
 const HEADER_HEIGHT = "60px";
-// const INPUT_HEIGHT = "68px";
 
 export const ContestImg = styled.img`
   position: relative;

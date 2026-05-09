@@ -319,7 +319,6 @@ export default function SchedulePage() {
         </S.ScheduleButtonWrapper>
       )}
       <S.FloatingButton $hasTopBtn={showTopBtn}>
-        {/* <S.SNone></S.SNone> */}
         <S.FloatingIcon onClick={handleScrollToTop} $isVisible={showTopBtn}>
           <img src={upIcon} alt="scroll to top" />
         </S.FloatingIcon>

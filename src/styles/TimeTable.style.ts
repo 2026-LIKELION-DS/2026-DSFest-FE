@@ -4,8 +4,6 @@ import { theme } from "./theme";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  position: relative;
   margin-top: 80px;
 `;
 
@@ -74,7 +72,7 @@ export const Line = styled.div`
   width: 1px;
   flex: 1;
   min-height: 24px;
-  background-color: ${({ theme }) => theme.colors.bg.brand};
+  background-color: ${({ theme }) => theme.colors.bg.brandLight};
   margin-bottom: -10px;
 `;
 
