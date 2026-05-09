@@ -5,6 +5,17 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import ContestInfoModal from "../components/Contest/ContestInformation";
 import axios from "axios";
 
+// 비공개 시간 체크: 15일 15:00 ~ 19:00
+const isRankHidden = () => {
+  const now = new Date();
+  return (
+    now.getMonth() === 4 &&
+    now.getDate() === 15 &&
+    now.getHours() >= 15 &&
+    now.getHours() < 19
+  );
+};
+
 interface PhotoItem {
   photoEntryId: number;
   title: string;
@@ -40,6 +51,7 @@ export default function ContestVotePage() {
   const setCurrentPage = (page: number) => {
     setSearchParams({ page: String(page) });
   };
+  const [rankMap, setRankMap] = useState<Record<number, 1 | 2 | 3>>({});
 
   useEffect(() => {
     if (!baseUrl) return;
@@ -91,7 +103,30 @@ export default function ContestVotePage() {
       ?.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/api/photo-contest/rank`)
+      .then((res) => {
+        if (!res.data.isSuccess) return;
+
+        const map: Record<number, 1 | 2 | 3> = {};
+        Object.values(res.data.result).forEach((themeList: any) => {
+          const sorted = [...(themeList as any[])].sort(
+            (a, b) => b.voteCount - a.voteCount,
+          );
+          sorted.slice(0, 3).forEach((item, index) => {
+            map[item.photoEntryId] = (index + 1) as 1 | 2 | 3;
+          });
+        });
+
+        setRankMap(map);
+      })
+      .catch((err) => console.error("랭킹 조회 에러:", err));
+  }, [baseUrl]);
+
   if (!photoList || !topic) return null; // 로딩 중
+
+  const hidden = isRankHidden();
 
   return (
     <S.ContestVotePage ref={pageRef}>
@@ -122,6 +157,7 @@ export default function ContestVotePage() {
                     : photo.photoEntryId,
               }))
             }
+            rank={hidden ? null : (rankMap[photo.photoEntryId] ?? null)}
           />
         ))}
       </S.PhotoGrid>

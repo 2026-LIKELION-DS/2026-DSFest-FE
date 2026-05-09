@@ -47,3 +47,13 @@ export const ZoomIcon = styled.img`
   width: 24px;
   cursor: pointer;
 `;
+
+export const MedalImg = styled.img`
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 36px;
+  height: 36px;
+  z-index: 3;
+  pointer-events: none;
+`;
