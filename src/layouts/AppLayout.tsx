@@ -42,7 +42,9 @@ export default function AppLayout({
         />
       </S.HeaderWrapper>
 
-      <S.Main $showNavBar={showNavBar}>{children}</S.Main>
+      <S.Main $showNavBar={showNavBar} data-app-container>
+        {children}
+      </S.Main>
 
       {showNavBar && (
         <S.NavWrapper>

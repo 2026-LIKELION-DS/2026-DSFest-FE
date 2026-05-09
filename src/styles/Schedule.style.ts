@@ -15,8 +15,6 @@ export const SchedulePage = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-  height: 100vh;
-  overflow-y: auto;
   &::-webkit-scrollbar {
     display: none;
   }

@@ -251,13 +251,13 @@ export default function SchedulePage() {
 
   const [showTopBtn, setShowTopBtn] = useState(false);
 
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const scrollTop = e.currentTarget.scrollTop;
-    setShowTopBtn(scrollTop > 0);
-  };
-  const handleScrollToTop = () => {
-    pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  // const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+  //   const scrollTop = e.currentTarget.scrollTop;
+  //   setShowTopBtn(scrollTop > 0);
+  // };
+  // const handleScrollToTop = () => {
+  //   pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  // };
 
   // useEffect(() => {
   //   const container = document.querySelector(
@@ -294,8 +294,38 @@ export default function SchedulePage() {
   //   }
   // };
 
+  // showTopBtn 감지 - data-app-container 기준
+  useEffect(() => {
+    const container = document.querySelector(
+      "[data-app-container]",
+    ) as HTMLElement;
+    if (!container) return;
+
+    const handleContainerScroll = () => {
+      setShowTopBtn(container.scrollTop > 0);
+
+      // 방향 감지도 같이
+      if (!activeRef.current) return;
+      const rect = activeRef.current.getBoundingClientRect();
+      const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+      setIsAtActive(inView);
+      setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
+    };
+
+    container.addEventListener("scroll", handleContainerScroll);
+    return () => container.removeEventListener("scroll", handleContainerScroll);
+  }, []);
+
+  // handleScrollToTop
+  const handleScrollToTop = () => {
+    const container = document.querySelector(
+      "[data-app-container]",
+    ) as HTMLElement;
+    container?.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <S.SchedulePage ref={pageRef} onScroll={handleScroll}>
+    <S.SchedulePage ref={pageRef}>
       <S.DecoLayer>
         <S.Leafs src={Leaf} />
         <S.Flower src={Flower} />
