@@ -299,7 +299,7 @@ export default function Home() {
           </S.LinkBox>
         </S.AllLinkBox>
         <S.LikeLion>
-          <S.LikeLionTitle>2026 근화제 웹사이트 멋사 X 여정</S.LikeLionTitle>
+          <S.LikeLionTitle>2026 근화제 &lt;청춘&gt; 멋쟁이사자처럼 X 여정</S.LikeLionTitle>
           <S.LikeLionMemberBox>
             <S.LikeLionMemberLine>
               <S.LikeLionPart>기획·디자인</S.LikeLionPart>
