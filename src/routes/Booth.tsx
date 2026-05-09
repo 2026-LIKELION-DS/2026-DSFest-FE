@@ -205,7 +205,7 @@ const BoothPage: React.FC = () => {
   }, [activeDay, isNight, baseUrl]);
 
   const { operatingBooths, upcomingBooths, allBoothsForList } = useMemo(() => {
-    let baseList = booths.filter((booth) => booth.name !== "총학 운영 본부");
+    let baseList = booths;
     baseList = [...baseList].sort(
       (a, b) => (a.positionNumber || 999) - (b.positionNumber || 999),
     );
@@ -301,7 +301,10 @@ const BoothPage: React.FC = () => {
 
   const handleScrollToTop = () => {
     if (mapSectionRef.current) {
-      mapSectionRef.current.scrollTo({ top: 0, behavior: "smooth" });
+      mapSectionRef.current.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   };
 
