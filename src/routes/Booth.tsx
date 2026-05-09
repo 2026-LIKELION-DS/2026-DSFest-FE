@@ -92,6 +92,12 @@ const BoothPage: React.FC = () => {
     if (mapSectionRef.current) {
       mapSectionRef.current.scrollTo(0, 0);
     }
+    const appContainer = document.querySelector(
+      "[data-app-container]",
+    ) as HTMLElement;
+    if (appContainer) {
+      appContainer.scrollTo(0, 0);
+    }
   }, []);
 
   const [activeDay, setActiveDay] = useState(1);
