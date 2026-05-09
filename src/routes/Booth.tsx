@@ -205,7 +205,7 @@ const BoothPage: React.FC = () => {
   }, [activeDay, isNight, baseUrl]);
 
   const { operatingBooths, upcomingBooths, allBoothsForList } = useMemo(() => {
-    let baseList = booths.filter((booth) => booth.name !== "총학 운영 본부");
+    let baseList = booths;
     baseList = [...baseList].sort(
       (a, b) => (a.positionNumber || 999) - (b.positionNumber || 999),
     );
