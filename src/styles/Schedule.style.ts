@@ -11,7 +11,6 @@ export const SchedulePage = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.colors.bg.neutral};
   overflow-x: hidden;
-  min-height: 100vh;
   background-image: url(${ScheduleBackGround});
   background-repeat: no-repeat;
   background-size: cover;
