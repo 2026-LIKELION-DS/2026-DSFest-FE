@@ -8,6 +8,7 @@ const INPUT_HEIGHT = "68px";
 export const Container = styled.div`
   width: 100%;
   box-sizing: border-box;
+
   height: calc(100svh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
   max-height: calc(100svh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
   min-height: 0;
@@ -23,13 +24,14 @@ export const Container = styled.div`
     max-height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
   }
 
-  @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-    height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
-    max-height: none;
+  @media (min-width: 768px) and (min-height: 874px) {
+    height: calc(874px - 24px - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+    max-height: calc(874px - 24px - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+  }
 
-    @media (min-height: 874px) {
-      height: calc(874px - 24px - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
-    }
+  @media (min-width: 768px) and (max-height: 873px) {
+    height: calc(100svh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+    max-height: calc(100svh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
   }
 `;
 export const TopBanner = styled.div<{ $isCollapsed: boolean }>`
@@ -115,13 +117,13 @@ export const ChatArea = styled.div<{ $hasBanner: boolean }>`
   min-height: 0;
   overflow-y: auto;
 
-  padding: ${({ $hasBanner }) => ($hasBanner ? "110px 20px 0" : "20px 20px 0")};
+  padding: ${({ $hasBanner }) =>
+    $hasBanner ? "110px 20px 5px" : "20px 20px 5px"};
 
   background: ${({ theme }) => theme.colors.bg.olive};
 
   -ms-overflow-style: none;
   scrollbar-width: none;
-
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 
@@ -131,12 +133,9 @@ export const ChatArea = styled.div<{ $hasBanner: boolean }>`
 `;
 export const InputWrapper = styled.div`
   flex-shrink: 0;
-  height: calc(${INPUT_HEIGHT} + env(safe-area-inset-bottom));
-  min-height: calc(${INPUT_HEIGHT} + env(safe-area-inset-bottom));
-
+  height: ${INPUT_HEIGHT};
+  min-height: ${INPUT_HEIGHT};
   width: 100%;
-
-  padding-bottom: env(safe-area-inset-bottom);
 
   background: ${({ theme }) => theme.colors.bg.neutral};
 
