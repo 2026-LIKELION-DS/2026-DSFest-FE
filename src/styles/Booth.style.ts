@@ -458,7 +458,3 @@ export const WillBoothList = styled.div`
   color: ${({ theme }) => theme.colors.fg.primary};
   margin: 40px 0;
 `;
-
-export const ModalWrapper = styled.div`
-  z-index: 99999;
-`;

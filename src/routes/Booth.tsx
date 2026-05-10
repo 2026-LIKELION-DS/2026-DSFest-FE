@@ -505,33 +505,31 @@ const BoothPage: React.FC = () => {
             </>
           )}
         </S.ListSection>
-        {isModalOpen && targetBooth && (
-          <S.ModalWrapper>
-            <BoothModalComponent
-              isNight={isNight}
-              isRandom={isRandomSelection}
-              booth={{
-                ...targetBooth,
-                positionNumber: targetBooth.positionNumber,
-                boothNumber: targetBooth.boothNumber,
-                category: targetBooth.boothTypes?.join(", ") || "기타",
-                operator: targetBooth.operatingSubject || "운영진",
-                images: targetBooth.imageUrls || [],
-                status: targetBooth.status || "운영 종료",
-              }}
-              onClose={() => setIsModalOpen(false)}
-              onNavigateToMap={handleNavigateToMap}
-            />
-          </S.ModalWrapper>
-        )}
-        <Modal
-          isOpen={isNoticeOpen}
-          onClose={() => setIsNoticeOpen(false)}
-          title={noticeData?.title || "부스 공지사항"}
-          content={noticeData?.content || "공지사항 내용을 불러오는 중입니다."}
-          images={noticeData?.imageUrls || []}
-        />
       </S.PageWrapper>
+      {isModalOpen && targetBooth && (
+        <BoothModalComponent
+          isNight={isNight}
+          isRandom={isRandomSelection}
+          booth={{
+            ...targetBooth,
+            positionNumber: targetBooth.positionNumber,
+            boothNumber: targetBooth.boothNumber,
+            category: targetBooth.boothTypes?.join(", ") || "기타",
+            operator: targetBooth.operatingSubject || "운영진",
+            images: targetBooth.imageUrls || [],
+            status: targetBooth.status || "운영 종료",
+          }}
+          onClose={() => setIsModalOpen(false)}
+          onNavigateToMap={handleNavigateToMap}
+        />
+      )}
+      <Modal
+        isOpen={isNoticeOpen}
+        onClose={() => setIsNoticeOpen(false)}
+        title={noticeData?.title || "부스 공지사항"}
+        content={noticeData?.content || "공지사항 내용을 불러오는 중입니다."}
+        images={noticeData?.imageUrls || []}
+      />
     </>
   );
 };
