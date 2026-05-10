@@ -211,7 +211,7 @@ const BoothPage: React.FC = () => {
 
     return {
       operatingBooths: baseList.filter((booth) =>
-        booth.tags?.includes("운영 중"),
+        booth.tags?.includes("운영중"),
       ),
       upcomingBooths: baseList.filter((booth) =>
         booth.tags?.includes("운영 예정"),
@@ -228,7 +228,7 @@ const BoothPage: React.FC = () => {
     booths.forEach((booth) => {
       const tags = booth.tags || [];
 
-      if (tags.includes("운영 중")) {
+      if (tags.includes("운영중")) {
         counts.운영중++;
       } else if (tags.includes("운영 예정")) {
         counts.예정++;
@@ -245,7 +245,7 @@ const BoothPage: React.FC = () => {
       const response = await axios.get(`${baseUrl}/api/booths/${boothId}`);
       if (response.data.isSuccess) {
         const detailData = response.data.result;
-        const statusFromTags = detailData.tags?.includes("운영 중")
+        const statusFromTags = detailData.tags?.includes("운영중")
           ? "운영 중"
           : detailData.tags?.includes("운영 예정")
             ? "운영 예정"
@@ -348,7 +348,7 @@ const BoothPage: React.FC = () => {
     };
     const getStatusFromTags = (tags?: string[]) => {
       if (!tags) return "운영 종료";
-      if (tags.includes("운영 중")) return "운영 중";
+      if (tags.includes("운영중")) return "운영 중";
       if (tags.includes("운영 예정")) return "운영 예정";
       return "운영 종료";
     };
