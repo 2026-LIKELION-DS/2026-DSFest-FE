@@ -133,8 +133,8 @@ const BoothPage: React.FC = () => {
   };
 
   useEffect(() => {
-    // const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
-    const now = new Date("2026-05-14T15:00:00");
+    const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
+    // const now = new Date("2026-05-14T15:00:00");
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
     const date = now.getDate();
