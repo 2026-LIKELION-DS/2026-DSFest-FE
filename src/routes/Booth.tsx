@@ -225,11 +225,19 @@ const BoothPage: React.FC = () => {
 
   const boothCounts = useMemo(() => {
     const counts = { 예정: 0, 운영중: 0, 종료: 0 };
+
     booths.forEach((booth) => {
-      if (booth.status === "운영 예정") counts.예정++;
-      else if (booth.status === "운영 중") counts.운영중++;
-      else counts.종료++;
+      const tags = booth.tags || [];
+
+      if (tags.includes("운영 중") || tags.includes("상시")) {
+        counts.운영중++;
+      } else if (tags.includes("운영 예정")) {
+        counts.예정++;
+      } else {
+        counts.종료++;
+      }
     });
+
     return counts;
   }, [booths]);
 
