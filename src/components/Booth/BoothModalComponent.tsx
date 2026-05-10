@@ -165,14 +165,20 @@ const BoothModalComponent: React.FC<ModalProps> = ({
               {booth.openKakaoUrl && (
                 <S.InfoItem>
                   <S.Icons src={Phone} />
-                  <a
-                    href={booth.openKakaoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: "inherit", textDecoration: "none" }}
-                  >
-                    오픈채팅 연결하기
-                  </a>
+                  {booth.openKakaoUrl.trim().startsWith("http") ? (
+                    <a
+                      href={booth.openKakaoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {booth.openKakaoUrl}
+                    </a>
+                  ) : (
+                    <span style={{ cursor: "default", opacity: 0.8 }}>
+                      {booth.openKakaoUrl}
+                    </span>
+                  )}
                 </S.InfoItem>
               )}
             </S.InfoList>
