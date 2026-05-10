@@ -41,7 +41,7 @@ interface Booth {
   openKakaoUrl?: string;
   everytimeUrl?: string;
   instagramUrl?: string;
-  status?: "운영 중" | "운영 예정" | "운영 종료" | "상시";
+  status?: "운영 중" | "운영 예정" | "운영 종료";
 }
 
 interface MapBoothResponse {
@@ -210,9 +210,8 @@ const BoothPage: React.FC = () => {
     );
 
     return {
-      operatingBooths: baseList.filter(
-        (booth) =>
-          booth.tags?.includes("운영 중") || booth.tags?.includes("상시"),
+      operatingBooths: baseList.filter((booth) =>
+        booth.tags?.includes("운영 중"),
       ),
       upcomingBooths: baseList.filter((booth) =>
         booth.tags?.includes("운영 예정"),
@@ -229,7 +228,7 @@ const BoothPage: React.FC = () => {
     booths.forEach((booth) => {
       const tags = booth.tags || [];
 
-      if (tags.includes("운영 중") || tags.includes("상시")) {
+      if (tags.includes("운영 중")) {
         counts.운영중++;
       } else if (tags.includes("운영 예정")) {
         counts.예정++;
@@ -248,11 +247,9 @@ const BoothPage: React.FC = () => {
         const detailData = response.data.result;
         const statusFromTags = detailData.tags?.includes("운영 중")
           ? "운영 중"
-          : detailData.tags?.includes("상시")
-            ? "상시"
-            : detailData.tags?.includes("운영 예정")
-              ? "운영 예정"
-              : "운영 종료";
+          : detailData.tags?.includes("운영 예정")
+            ? "운영 예정"
+            : "운영 종료";
 
         setTargetBooth({
           ...detailData,
@@ -352,7 +349,6 @@ const BoothPage: React.FC = () => {
     const getStatusFromTags = (tags?: string[]) => {
       if (!tags) return "운영 종료";
       if (tags.includes("운영 중")) return "운영 중";
-      if (tags.includes("상시")) return "상시";
       if (tags.includes("운영 예정")) return "운영 예정";
       return "운영 종료";
     };
@@ -366,8 +362,7 @@ const BoothPage: React.FC = () => {
       status: getStatusFromTags(booth.tags) as
         | "운영 중"
         | "운영 예정"
-        | "운영 종료"
-        | "상시",
+        | "운영 종료",
       description: booth.description || "상세 설명이 없습니다.",
       images: booth.imageUrls || [booth.thumbnailUrl],
     };

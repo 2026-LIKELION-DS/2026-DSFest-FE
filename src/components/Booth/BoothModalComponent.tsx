@@ -76,7 +76,6 @@ const BoothModalComponent: React.FC<ModalProps> = ({
   const getDisplayStatus = () => {
     if (booth.status === "운영 중") return `운영 중`;
     if (booth.status === "운영 예정") return `운영 예정`;
-    if (booth.status === "상시") return `상시 운영`;
     return `운영 종료`;
   };
 

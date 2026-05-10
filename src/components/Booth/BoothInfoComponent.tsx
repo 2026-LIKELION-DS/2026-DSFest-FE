@@ -9,7 +9,7 @@ export interface Booth {
   category: string;
   operator: string;
   description: string;
-  status: "운영 중" | "운영 예정" | "운영 종료" | "상시";
+  status: "운영 중" | "운영 예정" | "운영 종료";
   images?: string[];
 }
 
