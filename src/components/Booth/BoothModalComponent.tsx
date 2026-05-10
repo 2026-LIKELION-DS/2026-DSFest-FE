@@ -175,7 +175,7 @@ const BoothModalComponent: React.FC<ModalProps> = ({
                       {booth.openKakaoUrl}
                     </a>
                   ) : (
-                    <span style={{ cursor: "default", opacity: 0.8 }}>
+                    <span style={{ cursor: "default" }}>
                       {booth.openKakaoUrl}
                     </span>
                   )}
