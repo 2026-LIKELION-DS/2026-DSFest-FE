@@ -6,9 +6,16 @@ interface PolaroidProps {
   stickerText: string;
   images: string[];
   link: string;
+  isExternal?: boolean;
 }
 
-export default function BannerPolaroid({ title, stickerText, images, link }: PolaroidProps) {
+export default function BannerPolaroid({
+  title,
+  stickerText,
+  images,
+  link,
+  isExternal,
+}: PolaroidProps) {
   const [imgIndex, setImgIndex] = useState(0);
 
   useEffect(() => {
@@ -22,7 +29,11 @@ export default function BannerPolaroid({ title, stickerText, images, link }: Pol
   }, [images]);
 
   return (
-    <S.BannerWrapper href={link}>
+    <S.BannerWrapper
+      href={link}
+      target={isExternal ? "_blank" : "_self"}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+    >
       <S.Tape />
       <S.Polaroid>
         <S.PolaroidContents>
