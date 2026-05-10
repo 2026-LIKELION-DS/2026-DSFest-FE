@@ -103,6 +103,35 @@ const BoothModalComponent: React.FC<ModalProps> = ({
     return "체험";
   };
 
+  const getOperatingTime = () => {
+    const boothName = booth.name.replace(/\s/g, "");
+
+    if (boothName.includes("청춘스토어"))
+      return [
+        "13일(수) 11:00~19:00",
+        "14일(목) 11:00~19:00",
+        "15일(금) 11:00~19:00",
+      ];
+    if (boothName.includes("옐로우링크"))
+      return [
+        "13일(수) 15:00~22:00",
+        "14일(목) 15:00~22:00",
+        "15일(금) 15:00~22:00",
+      ];
+    if (boothName.includes("총학운영본부"))
+      return [
+        "13일(수) 09:00~22:00",
+        "14일(목) 09:00~22:00",
+        "15일(금) 09:00~22:00",
+      ];
+
+    return booth.operatingDays && booth.operatingDays.length > 0
+      ? booth.operatingDays
+      : ["운영 시간 정보 없음"];
+  };
+
+  const displayOperatingTimes = getOperatingTime();
+
   return (
     <>
       <S.ModalOverlay onClick={onClose}>
@@ -130,11 +159,9 @@ const BoothModalComponent: React.FC<ModalProps> = ({
                     gap: "4px",
                   }}
                 >
-                  {booth.operatingDays && booth.operatingDays.length > 0
-                    ? booth.operatingDays.map((time, index) => (
-                        <span key={index}>{time}</span>
-                      ))
-                    : "운영 시간 정보 없음"}
+                  {displayOperatingTimes.map((time, index) => (
+                    <span key={index}>{time}</span>
+                  ))}
                 </div>
               </S.InfoItem>
               <S.InfoItem>
