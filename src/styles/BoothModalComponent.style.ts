@@ -198,6 +198,7 @@ export const CloseButton = styled.button`
   background: ${({ theme }) => theme.colors.bg.neutral};
   ${setTypo("buttonMd")};
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 export const ActionButton = styled.button`
   padding: 12px;
