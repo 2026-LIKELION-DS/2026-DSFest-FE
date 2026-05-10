@@ -112,11 +112,7 @@ const BoothModalComponent: React.FC<ModalProps> = ({
         "15일(금) 11:00~19:00",
       ];
     if (boothName.includes("옐로우링크"))
-      return [
-        "13일(수) 15:00~22:00",
-        "14일(목) 15:00~22:00",
-        "15일(금) 15:00~22:00",
-      ];
+      return ["13일(수) 15:00~22:00", "14일(목) 15:00~22:00"];
     if (boothName.includes("총학운영본부"))
       return [
         "13일(수) 09:00~22:00",
