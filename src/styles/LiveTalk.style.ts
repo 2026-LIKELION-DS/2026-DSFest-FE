@@ -16,7 +16,6 @@ export const Container = styled.div`
   flex-direction: column;
   background: ${({ theme }) => theme.colors.bg.olive};
   overflow: hidden;
-
   position: relative;
 
   @supports not (height: 100svh) {
@@ -24,7 +23,7 @@ export const Container = styled.div`
     max-height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
   }
 
-  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+  @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
     height: calc(100vh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
     max-height: none;
 
@@ -33,7 +32,6 @@ export const Container = styled.div`
     }
   }
 `;
-
 export const TopBanner = styled.div<{ $isCollapsed: boolean }>`
   position: absolute;
   top: 10px;
