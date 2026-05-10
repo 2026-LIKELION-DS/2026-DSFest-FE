@@ -162,40 +162,40 @@ export default function SchedulePage() {
   const baseUrl = import.meta.env.VITE_API_URL;
 
   //임시 시간 설정 (데이2 낮 12시)
-  const [nowStatus, setNowStatus] = useState<NowStatus | null>({
-    status: "IN_PROGRESS",
-    current: [
-      {
-        id: 19,
-        title: "낮부스",
-        startTime: "11:00",
-        endTime: "14:30",
-        scheduleType: "BOOTH",
-      },
-    ],
-    next: null,
-  });
-  const [currentDay, setCurrentDay] = useState<DayKey>("day2");
+  // const [nowStatus, setNowStatus] = useState<NowStatus | null>({
+  //   status: "IN_PROGRESS",
+  //   current: [
+  //     {
+  //       id: 19,
+  //       title: "낮부스",
+  //       startTime: "11:00",
+  //       endTime: "14:30",
+  //       scheduleType: "BOOTH",
+  //     },
+  //   ],
+  //   next: null,
+  // });
+  // const [currentDay, setCurrentDay] = useState<DayKey>("day2");
 
   // 실제 날짜 api
-  // const [nowStatus, setNowStatus] = useState<NowStatus | null>(null);
-  // useEffect(() => {
-  //   if (!baseUrl) return;
-  //   axios
-  //     .get(`${baseUrl}/api/schedules/now`)
-  //     .then((res) => {
-  //       if (res.data.isSuccess) setNowStatus(res.data.result);
-  //     })
-  //     .catch((err) => console.error("연동 에러:", err));
-  // }, [baseUrl]);
-  // const getCurrentDay = (): DayKey => {
-  //   const today = new Date().getDate();
-  //   if (today === 13) return "day1";
-  //   if (today === 14) return "day2";
-  //   if (today === 15) return "day3";
-  //   return "day1";
-  // };
-  // const [currentDay, setCurrentDay] = useState<DayKey>(getCurrentDay());
+  const [nowStatus, setNowStatus] = useState<NowStatus | null>(null);
+  useEffect(() => {
+    if (!baseUrl) return;
+    axios
+      .get(`${baseUrl}/api/schedules/now`)
+      .then((res) => {
+        if (res.data.isSuccess) setNowStatus(res.data.result);
+      })
+      .catch((err) => console.error("연동 에러:", err));
+  }, [baseUrl]);
+  const getCurrentDay = (): DayKey => {
+    const today = new Date().getDate();
+    if (today === 13) return "day1";
+    if (today === 14) return "day2";
+    if (today === 15) return "day3";
+    return "day1";
+  };
+  const [currentDay, setCurrentDay] = useState<DayKey>(getCurrentDay());
   //
 
   const activeIds = new Set([...(nowStatus?.current ?? []).map((s) => s.id)]);
@@ -223,74 +223,7 @@ export default function SchedulePage() {
     }
   }, []);
 
-  //day 기준
-  // const handleClick = () => {
-  //   dayRefs[currentDay].current?.scrollIntoView({
-  //     behavior: "smooth",
-  //     block: "start",
-  //   });
-  // };
-  // const handleClick = () => {
-  //   const container = document.querySelector(
-  //     "[data-app-container]",
-  //   ) as HTMLElement;
-  //   const target = dayRefs[currentDay].current;
-  //   if (!container || !target) return;
-
-  //   const containerTop = container.getBoundingClientRect().top;
-  //   const targetTop = target.getBoundingClientRect().top;
-  //   const scrollOffset = targetTop - containerTop + container.scrollTop;
-
-  //   container.scrollTo({ top: scrollOffset, behavior: "smooth" });
-  // };
-
   const [showTopBtn, setShowTopBtn] = useState(false);
-
-  // 상위로 이동(showTopBtn 감지 - data-app-container 기준)
-  // useEffect(() => {
-  //   const container = document.querySelector(
-  //     "[data-app-container]",
-  //   ) as HTMLElement;
-  //   if (!container) return;
-
-  //   const handleContainerScroll = () => {
-  //     setShowTopBtn(container.scrollTop > 0);
-
-  //     // 방향 감지도 같이
-  //     if (!activeRef.current) return;
-  //     const rect = activeRef.current.getBoundingClientRect();
-  //     const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-  //     setIsAtActive(inView);
-  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
-  //   };
-
-  //   container.addEventListener("scroll", handleContainerScroll);
-  //   return () => container.removeEventListener("scroll", handleContainerScroll);
-  // }, []);
-
-  // // handleScrollToTop
-  // const handleScrollToTop = () => {
-  //   const container = document.querySelector(
-  //     "[data-app-container]",
-  //   ) as HTMLElement;
-  //   container?.scrollTo({ top: 0, behavior: "smooth" });
-  // };
-  // useEffect(() => {
-  //   const el = pageRef.current;
-  //   if (!el) return;
-
-  //   const handleScroll = () => {
-  //     setShowTopBtn(el.scrollTop > 0);
-  //     if (!activeRef.current) return;
-  //     const rect = activeRef.current.getBoundingClientRect();
-  //     const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-  //     setIsAtActive(inView);
-  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
-  //   };
-
-  //   el.addEventListener("scroll", handleScroll);
-  //   return () => el.removeEventListener("scroll", handleScroll);
-  // }, []);
 
   const handleClick = () => {
     dayRefs[currentDay].current?.scrollIntoView({
