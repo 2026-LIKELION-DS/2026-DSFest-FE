@@ -4,7 +4,6 @@ import * as S from "../../styles/ArtistComponent.style";
 
 type ArtistPlaylistProps = {
   playlistUrl: string;
-  // thumbnailUrl: string;
   videoId: string;
   desc: string;
 };
