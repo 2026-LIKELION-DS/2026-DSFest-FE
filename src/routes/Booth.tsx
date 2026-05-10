@@ -506,21 +506,23 @@ const BoothPage: React.FC = () => {
           )}
         </S.ListSection>
         {isModalOpen && targetBooth && (
-          <BoothModalComponent
-            isNight={isNight}
-            isRandom={isRandomSelection}
-            booth={{
-              ...targetBooth,
-              positionNumber: targetBooth.positionNumber,
-              boothNumber: targetBooth.boothNumber,
-              category: targetBooth.boothTypes?.join(", ") || "기타",
-              operator: targetBooth.operatingSubject || "운영진",
-              images: targetBooth.imageUrls || [],
-              status: targetBooth.status || "운영 종료",
-            }}
-            onClose={() => setIsModalOpen(false)}
-            onNavigateToMap={handleNavigateToMap}
-          />
+          <S.ModalWrapper>
+            <BoothModalComponent
+              isNight={isNight}
+              isRandom={isRandomSelection}
+              booth={{
+                ...targetBooth,
+                positionNumber: targetBooth.positionNumber,
+                boothNumber: targetBooth.boothNumber,
+                category: targetBooth.boothTypes?.join(", ") || "기타",
+                operator: targetBooth.operatingSubject || "운영진",
+                images: targetBooth.imageUrls || [],
+                status: targetBooth.status || "운영 종료",
+              }}
+              onClose={() => setIsModalOpen(false)}
+              onNavigateToMap={handleNavigateToMap}
+            />
+          </S.ModalWrapper>
         )}
         <Modal
           isOpen={isNoticeOpen}
