@@ -33,6 +33,11 @@ export const Container = styled.div`
     height: calc(100svh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
     max-height: calc(100svh - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
   }
+
+  @media (max-width: 767px) and (hover: hover) and (pointer: fine) and (min-height: 874px) {
+    height: calc(874px - 24px - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+    max-height: calc(874px - 24px - ${HEADER_HEIGHT} - ${NAV_HEIGHT});
+  }
 `;
 export const TopBanner = styled.div<{ $isCollapsed: boolean }>`
   position: absolute;
