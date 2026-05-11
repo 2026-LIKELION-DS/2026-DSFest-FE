@@ -106,28 +106,64 @@ export const NumBox = styled.div<{ $status?: InputStatus }>`
   justify-content: center;
   align-items: center;
 `;
+// export const Num = styled.input`
+//   font-family: ${theme.typography.bodySm};
+//   width: 90%;
+//   height: 40px;
+//   outline-style: none;
+//   border: none;
+//   background: transparent;
+//   &::placeholder {
+//     color: ${theme.colors.fg.subtle};
+//     font-family: ${theme.typography.bodySm};
+//   }
+// `;
+// export const Name = styled.input`
+//   font-family: ${theme.typography.bodySm};
+//   width: 90%;
+//   height: 40px;
+//   outline-style: none;
+//   border: none;
+//   background: transparent;
+//   &::placeholder {
+//     color: ${theme.colors.fg.subtle};
+//     font-family: ${theme.typography.bodySm};
+//   }
+//
+// `;
 export const Num = styled.input`
   font-family: ${theme.typography.bodySm};
-  width: 90%;
+  font-size: 16px;
+  transform: scale(0.75);
+  transform-origin: left center;
+  width: 120%;
   height: 40px;
+  margin-left: 13px;
   outline-style: none;
   border: none;
   background: transparent;
   &::placeholder {
     color: ${theme.colors.fg.subtle};
     font-family: ${theme.typography.bodySm};
+    font-size: 16px;
   }
 `;
+
 export const Name = styled.input`
   font-family: ${theme.typography.bodySm};
-  width: 90%;
+  font-size: 16px;
+  transform: scale(0.75);
+  transform-origin: left center;
+  width: 120%;
   height: 40px;
   outline-style: none;
   border: none;
+  margin-left: 13px;
   background: transparent;
   &::placeholder {
     color: ${theme.colors.fg.subtle};
     font-family: ${theme.typography.bodySm};
+    font-size: 16px;
   }
 `;
 export const Sub = styled.div`
