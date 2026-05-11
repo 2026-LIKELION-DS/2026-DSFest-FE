@@ -138,8 +138,8 @@ export default function AdminNoticeDetail() {
             <S.Title>{notice.title}</S.Title>
 
             <S.ImageScrollArea>
-              {notice.imageUrls.length > 0 ? (
-                notice.imageUrls.map((imageUrl, index) => (
+              {(notice.imageUrls ?? []).length > 0 ? (
+                (notice.imageUrls ?? []).map((imageUrl, index) => (
                   <S.ImageBox key={`${imageUrl}-${index}`}>
                     <img src={imageUrl} alt={`공지 이미지 ${index + 1}`} />
                   </S.ImageBox>
