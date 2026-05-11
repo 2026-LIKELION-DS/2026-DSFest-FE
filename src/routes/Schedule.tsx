@@ -33,13 +33,26 @@ const scheduleData = [
     key: "day1",
     day: "DAY 1",
     decos: [
-      { src: Leaf, position: "left" as const, top: true, bottomOffset: 0 },
-      { src: Flower, position: "left" as const, top: false, bottomOffset: -40 },
+      {
+        src: Leaf,
+        position: "left" as const,
+        top: true,
+        bottomOffset: 0,
+        width: 85,
+      },
+      {
+        src: Flower,
+        position: "left" as const,
+        top: false,
+        bottomOffset: -40,
+        width: 110,
+      },
       {
         src: CamFlower,
         position: "right" as const,
         top: false,
         bottomOffset: -40,
+        width: 110,
       },
     ],
     data: [
@@ -84,6 +97,7 @@ const scheduleData = [
         position: "left" as const,
         top: false,
         bottomOffset: -40,
+        width: 110,
       },
     ],
     data: [
@@ -131,14 +145,16 @@ const scheduleData = [
       {
         src: Flowers2,
         position: "left" as const,
-        top: false,
-        bottomOffset: -40,
+        top: true,
+        bottomOffset: 0,
+        width: 85,
       },
       {
         src: CamFlower2,
         position: "right" as const,
         top: false,
         bottomOffset: -40,
+        width: 110,
       },
     ],
     data: [
@@ -327,6 +343,7 @@ export default function SchedulePage() {
               $position={deco.position}
               $top={deco.top}
               $bottomOffset={deco.bottomOffset}
+              $width={deco.width}
               alt=""
             />
           ))}

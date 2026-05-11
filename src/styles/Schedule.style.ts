@@ -264,13 +264,14 @@ export const SectionDeco = styled.img<{
   $position: "left" | "right";
   $top: boolean;
   $bottomOffset: number;
+  $width?: number;
 }>`
   position: absolute;
   ${({ $position }) =>
     $position === "right" ? "right: -24px;" : "left: -24px;"}
   ${({ $top, $bottomOffset }) =>
     $top ? "top: 0px;" : `bottom: ${$bottomOffset}px;`}
-  width: 110px;
+  width: ${({ $width }) => ($width ? `${$width}px` : "110px")};
   pointer-events: none;
   z-index: 2;
 `;
