@@ -106,31 +106,7 @@ export const NumBox = styled.div<{ $status?: InputStatus }>`
   justify-content: center;
   align-items: center;
 `;
-// export const Num = styled.input`
-//   font-family: ${theme.typography.bodySm};
-//   width: 90%;
-//   height: 40px;
-//   outline-style: none;
-//   border: none;
-//   background: transparent;
-//   &::placeholder {
-//     color: ${theme.colors.fg.subtle};
-//     font-family: ${theme.typography.bodySm};
-//   }
-// `;
-// export const Name = styled.input`
-//   font-family: ${theme.typography.bodySm};
-//   width: 90%;
-//   height: 40px;
-//   outline-style: none;
-//   border: none;
-//   background: transparent;
-//   &::placeholder {
-//     color: ${theme.colors.fg.subtle};
-//     font-family: ${theme.typography.bodySm};
-//   }
-//
-// `;
+
 export const Num = styled.input`
   font-family: ${theme.typography.bodySm};
   font-size: 16px;
