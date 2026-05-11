@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import * as S from "../styles/Contest.style";
 import ContestNotice from "../components/Contest/ContestNotice";
-// import ContestImg from "../assets/Contest/favicon-512w.png";
 import ContestImg from "../assets/Contest/Contest.png";
 import ContestVoteButton from "../components/Contest/ContestVoteButton";
 import axios from "axios";
@@ -29,12 +28,6 @@ function formatRemaining(targetTime: string): string {
   return `${h}:${m}:${s}`;
 }
 
-const STATUS_TO_PHASE: Record<ContestStatus["status"], ContestPhase> = {
-  ACCEPTING: "entry",
-  VOTING: "vote",
-  ENDED: "before",
-};
-
 export default function ContestPag() {
   const baseUrl = import.meta.env.VITE_API_URL;
   const [contestStatus, setContestStatus] = useState<ContestStatus | null>(
@@ -57,7 +50,6 @@ export default function ContestPag() {
   // 타이머
   useEffect(() => {
     if (!contestStatus) return;
-    // const tick = () => setRemainingTime(formatRemaining(contestStatus.endTime));
     const tick = () => {
       const now = new Date();
       const start = new Date(contestStatus.startTime);
@@ -73,10 +65,6 @@ export default function ContestPag() {
     return () => clearInterval(interval);
   }, [contestStatus]);
 
-  // const phase: ContestPhase = contestStatus
-  //   ? STATUS_TO_PHASE[contestStatus.status]
-  //   : "before";
-
   const phase: ContestPhase = (() => {
     if (!contestStatus) return "before";
 
@@ -84,17 +72,12 @@ export default function ContestPag() {
     const start = new Date(contestStatus.startTime);
     const end = new Date(contestStatus.endTime);
 
-    // 시작 전
     if (now < start) {
       return "before";
     }
-
-    // 응모 진행 중
     if (contestStatus.status === "ACCEPTING" && now >= start && now <= end) {
       return "entry";
     }
-
-    // 투표 진행 중
     if (contestStatus.status === "VOTING") {
       return "vote";
     }
