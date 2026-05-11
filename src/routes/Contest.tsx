@@ -87,25 +87,6 @@ export default function ContestPag() {
     if (now >= voteStart && now < voteEnd) return "vote";
     return "ended";
   })();
-  // const phase: ContestPhase = (() => {
-  //   if (!contestStatus) return "before";
-
-  //   const now = new Date();
-  //   const start = new Date(contestStatus.startTime);
-  //   const end = new Date(contestStatus.endTime);
-
-  //   if (now < start) {
-  //     return "before";
-  //   }
-  //   if (contestStatus.status === "ACCEPTING" && now >= start && now <= end) {
-  //     return "entry";
-  //   }
-  //   if (contestStatus.status === "VOTING") {
-  //     return "vote";
-  //   }
-
-  //   return "before";
-  // })();
 
   return (
     <S.ContestPage>
