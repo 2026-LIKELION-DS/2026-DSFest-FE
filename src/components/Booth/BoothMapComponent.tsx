@@ -169,7 +169,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
 
   const renderBooth = (pos: number) => {
     const booth = mapData.find((b) => b.positionNumber === pos);
-    if (!booth) return null;
+    if (!booth) return <S.EmptySlot key={pos} />;
 
     const isActive = selectedId === booth.boothId;
 
