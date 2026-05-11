@@ -32,11 +32,16 @@ const scheduleData = [
   {
     key: "day1",
     day: "DAY 1",
-    // deco: {
-    //   topLeft: Leaf,
-    //   bottomRight: Flower,
-    // },
-    decos: [{ src: CamFlower, position: "right" as const }],
+    decos: [
+      { src: Leaf, position: "left" as const, top: true, bottomOffset: 0 },
+      { src: Flower, position: "left" as const, top: false, bottomOffset: -40 },
+      {
+        src: CamFlower,
+        position: "right" as const,
+        top: false,
+        bottomOffset: -40,
+      },
+    ],
     data: [
       {
         id: 4,
@@ -74,8 +79,12 @@ const scheduleData = [
     key: "day2",
     day: "DAY 2",
     decos: [
-      { src: CamFlower2, position: "left" as const },
-      { src: CamLeaf, position: "left" as const },
+      {
+        src: CamLeaf,
+        position: "left" as const,
+        top: false,
+        bottomOffset: -40,
+      },
     ],
     data: [
       {
@@ -119,8 +128,18 @@ const scheduleData = [
     key: "day3",
     day: "DAY 3",
     decos: [
-      { src: Flowers2, position: "left" as const },
-      { src: Leaf, position: "right" as const },
+      {
+        src: Flowers2,
+        position: "left" as const,
+        top: false,
+        bottomOffset: -40,
+      },
+      {
+        src: CamFlower2,
+        position: "right" as const,
+        top: false,
+        bottomOffset: -40,
+      },
     ],
     data: [
       {
@@ -272,15 +291,14 @@ export default function SchedulePage() {
         setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
       }}
     >
-      <S.DecoLayer>
+      {/* <S.DecoLayer>
         <S.Leafs src={Leaf} />
         <S.Flower src={Flower} />
         <S.CamFlower src={CamFlower} />
-        {/* <S.Leafs1 src={Leaf1} /> */}
         <S.CamLeaf src={CamLeaf} />
         <S.Flowers2 src={Flowers2} />
         <S.CamFlower2 src={CamFlower2} />
-      </S.DecoLayer>
+      </S.DecoLayer> */}
       <S.SubHeader>
         {days.map((day) => (
           <S.DayButton
@@ -307,6 +325,8 @@ export default function SchedulePage() {
               key={i}
               src={deco.src}
               $position={deco.position}
+              $top={deco.top}
+              $bottomOffset={deco.bottomOffset}
               alt=""
             />
           ))}
