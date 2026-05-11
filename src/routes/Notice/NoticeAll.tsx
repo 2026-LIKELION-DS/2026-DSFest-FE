@@ -96,8 +96,18 @@ export default function NoticeAll() {
             },
           );
 
-          setNoticeList(response.data.result.results);
+          const searchResults = response.data.result.results;
+
+          const filteredResults =
+            selectedCategory === "ALL"
+              ? searchResults
+              : searchResults.filter(
+                  (notice) => notice.category === selectedCategory,
+                );
+
+          setNoticeList(filteredResults);
           setRecommendedNotices(response.data.result.recommended);
+
           return;
         }
 

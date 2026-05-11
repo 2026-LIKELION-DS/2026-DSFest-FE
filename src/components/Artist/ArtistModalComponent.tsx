@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ImageDetailComponent from "../../components/Common/ImageDetail";
 import * as S from "../../styles/ArtistComponent.style";
@@ -8,56 +8,97 @@ interface ArtistModalComponentProps {
   onClose: () => void;
 }
 
-const images = [
-  "/src/assets/hahyunsang_sample.svg",
-  "/src/assets/hahyunsang_sample.svg",
-  "/src/assets/hahyunsang_sample.svg",
-  "/src/assets/hahyunsang_sample.svg",
-];
+interface NoticeDetail {
+  id: number;
+  title: string;
+  category: string;
+  urgent: boolean;
+  content: string;
+  imageUrls: string[];
+  createdAt: string;
+  updatedAt: string;
+  viewCount: number;
+}
+
+interface NoticeResponse {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: NoticeDetail;
+}
+
+const NOTICE_ID = 3;
 
 const ArtistModalComponent: React.FC<ArtistModalComponentProps> = ({
   isOpen,
   onClose,
 }) => {
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  const [notice, setNotice] = useState<NoticeDetail | null>(null);
   const [modalConfig, setModalConfig] = useState({
     isOpen: false,
     initialIndex: 0,
   });
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const fetchNotice = async () => {
+      try {
+        const response = await fetch(`${API_URL}/api/notices/${NOTICE_ID}`);
+        const data: NoticeResponse = await response.json();
+
+        if (!response.ok || !data.isSuccess) {
+          alert(data.message || "공지사항을 불러오지 못했습니다.");
+          return;
+        }
+
+        setNotice(data.result);
+      } catch (error) {
+        console.error(error);
+        alert("공지사항 조회 중 오류가 발생했습니다.");
+      }
+    };
+
+    fetchNotice();
+  }, [API_URL, isOpen]);
+
   if (!isOpen) return null;
 
-  const displayImages = images;
+  const displayImages = notice?.imageUrls ?? [];
 
   return (
     <>
       <S.ArtistModalOverlay onClick={onClose}>
         <S.ArtistModalContainer onClick={(e) => e.stopPropagation()}>
           <S.ArtistContentArea>
-            <S.ArtistModalTitle>스탠딩존 입장 관련 안내</S.ArtistModalTitle>
+            <S.ArtistModalTitle>
+              {notice?.title || "무대 입장 방법 관련 안내"}
+            </S.ArtistModalTitle>
+
             <S.ArtistModalDivider />
 
-            <S.ArtistImageRow>
-              {displayImages.map((src, idx) => (
-                <S.ModalImage
-                  key={`${src}-${idx}`}
-                  src={src}
-                  alt={`안내 이미지 ${idx + 1}`}
-                  onClick={() =>
-                    setModalConfig({
-                      isOpen: true,
-                      initialIndex: idx,
-                    })
-                  }
-                />
-              ))}
-            </S.ArtistImageRow>
+            {displayImages.length > 0 && (
+              <S.ArtistImageRow>
+                {displayImages.map((src, idx) => (
+                  <S.ModalImage
+                    key={`${src}-${idx}`}
+                    src={src}
+                    alt={`안내 이미지 ${idx + 1}`}
+                    onClick={() =>
+                      setModalConfig({
+                        isOpen: true,
+                        initialIndex: idx,
+                      })
+                    }
+                  />
+                ))}
+              </S.ArtistImageRow>
+            )}
 
             <S.ArtistDescription>
-              스탠딩존 입장 관련 안내입니다.
-              <br />
-              공연장 입장 시 현장 스태프의 안내에 따라 이동해주세요.
-              <br />
-              안전을 위해 무리한 이동이나 새치기는 삼가주세요.
+              {notice?.content || "공지 내용을 불러오는 중입니다."}
             </S.ArtistDescription>
           </S.ArtistContentArea>
 

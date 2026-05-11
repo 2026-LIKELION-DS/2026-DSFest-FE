@@ -1,8 +1,5 @@
-// src/styles/ChatInput.style.ts
-
 import styled from "styled-components";
 import { theme } from "../styles/theme";
-// src/styles/ChatInput.style.ts
 
 export const Container = styled.div`
   width: 100%;
@@ -10,6 +7,8 @@ export const Container = styled.div`
   align-items: center;
   gap: 15px;
   padding: 12px 15px;
+
+  background: ${({ theme }) => theme.colors.bg.neutral};
 `;
 
 export const InputBox = styled.div`
@@ -18,12 +17,17 @@ export const InputBox = styled.div`
   height: 44px;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{ $isOverLimit: boolean }>`
   width: calc(100% / 0.875);
   height: calc(44px / 0.875);
 
   border-radius: calc(22px / 0.875);
-  border: 1px solid ${({ theme }) => theme.colors.stroke.subtle};
+
+  border: 1px solid
+    ${({ theme, $isOverLimit }) =>
+      $isOverLimit ? theme.colors.fg.critical : theme.colors.stroke.subtle};
+
+  background: ${({ theme }) => theme.colors.bg.neutral};
 
   padding: 0 calc(16px / 0.875);
   outline: none;
@@ -36,6 +40,11 @@ export const Input = styled.input`
 
   transform: scale(0.875);
   transform-origin: left top;
+
+  &:focus {
+    border-color: ${({ theme, $isOverLimit }) =>
+      $isOverLimit ? theme.colors.fg.critical : theme.colors.bg.brand};
+  }
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.fg.subtle};

@@ -6,12 +6,24 @@ interface Props {
   onSend: (text: string) => void;
 }
 
+const MAX_LENGTH = 200;
+
 export default function ChatInput({ onSend }: Props) {
   const [text, setText] = useState("");
 
+  const isOverLimit = text.length > MAX_LENGTH;
+
   const handleSend = () => {
-    if (!text.trim()) return;
-    onSend(text);
+    const trimmedText = text.trim();
+
+    if (!trimmedText) return;
+
+    if (trimmedText.length > MAX_LENGTH) {
+      alert("입력할 수 있는 최대 글자수는 200자 입니다.");
+      return;
+    }
+
+    onSend(trimmedText);
     setText("");
   };
 
@@ -26,6 +38,7 @@ export default function ChatInput({ onSend }: Props) {
       <S.InputBox>
         <S.Input
           value={text}
+          $isOverLimit={isOverLimit}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="대화를 나눠보세요"

@@ -37,7 +37,7 @@ export const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 99999;
   overflow: hidden;
 `;
 
@@ -198,6 +198,7 @@ export const CloseButton = styled.button`
   background: ${({ theme }) => theme.colors.bg.neutral};
   ${setTypo("buttonMd")};
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 export const ActionButton = styled.button`
   padding: 12px;

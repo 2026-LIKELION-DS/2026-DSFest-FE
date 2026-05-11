@@ -9,7 +9,7 @@ export const Page = styled.div`
   min-height: calc(100vh - ${HEADER_HEIGHT});
 
   background: ${({ theme }) => theme.colors.bg.neutral};
-
+ 
   display: flex;
   flex-direction: column;
   overflow: hidden;
