@@ -21,7 +21,6 @@ interface NoticeDetail {
 export default function AdminNoticeDetail() {
   const navigate = useNavigate();
   const { noticeId } = useParams();
-
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [notice, setNotice] = useState<NoticeDetail | null>(null);
@@ -55,6 +54,9 @@ export default function AdminNoticeDetail() {
         );
 
         const data = await response.json();
+
+        console.log("공지 상세 응답:", data.result);
+        console.log("imageUrls:", data.result?.imageUrls);
 
         if (!response.ok || !data.isSuccess) {
           alert(data.message || "공지 상세 정보를 불러오지 못했습니다.");
@@ -128,6 +130,7 @@ export default function AdminNoticeDetail() {
   if (!notice) {
     return null;
   }
+  const imageUrls = notice.imageUrls ?? [];
 
   return (
     <>
@@ -137,10 +140,16 @@ export default function AdminNoticeDetail() {
             <S.Title>{notice.title}</S.Title>
 
             <S.ImageScrollArea>
-              {notice.imageUrls.length > 0 ? (
-                notice.imageUrls.map((imageUrl, index) => (
+              {imageUrls.length > 0 ? (
+                imageUrls.map((imageUrl, index) => (
                   <S.ImageBox key={`${imageUrl}-${index}`}>
-                    <img src={imageUrl} alt={`공지 이미지 ${index + 1}`} />
+                    <img
+                      src={imageUrl}
+                      alt={`공지 이미지 ${index + 1}`}
+                      onError={() => {
+                        console.log("이미지 로드 실패:", imageUrl);
+                      }}
+                    />
                   </S.ImageBox>
                 ))
               ) : (

@@ -163,7 +163,7 @@ export default function AdminNoticeWrite() {
     );
 
     newImages.forEach((image) => {
-      formData.append("newImages", image, image.name);
+      formData.append("images", image, image.name);
     });
 
     const response = await fetch(`${API_URL}/api/admin/notices`, {
