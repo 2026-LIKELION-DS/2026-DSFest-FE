@@ -43,7 +43,7 @@ export const ModalOverlay = styled.div`
 
 export const ModalContainer = styled.div`
   width: 100%;
-  max-width: 340px;
+  max-width: 353px;
   max-height: 90%;
   background: ${({ theme }) => theme.colors.bg.offWhite};
   border-radius: 4px;
@@ -195,7 +195,7 @@ export const CloseButton = styled.button`
   padding: 12px;
   border-radius: 999px;
   border: 1px solid ${({ theme }) => theme.colors.stroke.subtle};
-  background: ${({ theme }) => theme.colors.bg.neutral};
+  background: ${({ theme }) => theme.colors.bg.offWhite};
   ${setTypo("buttonMd")};
   cursor: pointer;
   color: ${({ theme }) => theme.colors.fg.primary};
