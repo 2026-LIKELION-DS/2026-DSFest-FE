@@ -129,6 +129,7 @@ export const NumBox = styled.div<{ $status?: InputStatus }>`
 //     color: ${theme.colors.fg.subtle};
 //     font-family: ${theme.typography.bodySm};
 //   }
+//
 // `;
 export const Num = styled.input`
   font-family: ${theme.typography.bodySm};
