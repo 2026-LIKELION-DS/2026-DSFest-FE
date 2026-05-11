@@ -465,7 +465,7 @@ export const ArtistCloseButton = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.stroke.subtle};
   background: ${({ theme }) => theme.colors.bg.offWhite};
   color: ${({ theme }) => theme.colors.fg.primary};
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
 `;
