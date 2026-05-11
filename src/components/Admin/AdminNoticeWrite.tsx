@@ -107,13 +107,14 @@ export default function AdminNoticeWrite() {
   };
 
   const handleChangeImages = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
+    const selectedFiles = Array.from(e.target.files ?? []);
 
-    if (!files) return;
+    if (selectedFiles.length === 0) return;
 
-    setNewImages((prev) => [...prev, ...Array.from(files)]);
+    setNewImages((prev) => [...prev, ...selectedFiles]);
+
+    e.target.value = "";
   };
-
   const handleRemoveKeepImage = (targetUrl: string) => {
     setKeepImageUrls((prev) => prev.filter((url) => url !== targetUrl));
   };
@@ -162,7 +163,7 @@ export default function AdminNoticeWrite() {
     );
 
     newImages.forEach((image) => {
-      formData.append("images", image);
+      formData.append("newImages", image, image.name);
     });
 
     const response = await fetch(`${API_URL}/api/admin/notices`, {
@@ -209,7 +210,7 @@ export default function AdminNoticeWrite() {
     );
 
     newImages.forEach((image) => {
-      formData.append("newImages", image);
+      formData.append("newImages", image, image.name);
     });
 
     const response = await fetch(`${API_URL}/api/admin/notices/${noticeId}`, {
