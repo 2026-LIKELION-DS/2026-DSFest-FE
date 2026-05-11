@@ -14,20 +14,8 @@ function ContestNotice() {
       <S.NoticeTitle>
         &lt;청춘 한 컷&gt;
         <br />
-        청춘 한 컷, 당신의 순간을 남겨보세요!
-        <br />
-        축제와 나의 청춘을 담은 사진으로 콘테스트에 참여하고, 투표로 최고의
-        순간을 함께 만들어보세요.
-        <br />
-        지금 바로 제출하고 무대 위 주인공이 될 기회를 잡으세요!
+        근화제의 순간을 담은 사진, 당신의 한 표로 최고의 ‘청춘’을 선택해주세요!
       </S.NoticeTitle>
-      <S.NoticeList>
-        <S.ListTitle>&lt;청춘 한 컷 공지글&gt;</S.ListTitle>
-        <div>
-          근화제의 순간을 담은 사진, 당신의 한 표로 최고의 ‘청춘’을
-          선택해주세요!
-        </div>
-      </S.NoticeList>
 
       <S.NoticeList>
         <S.ListTitle>[사진 주제]</S.ListTitle>
@@ -56,6 +44,12 @@ function ContestNotice() {
         <div>일시: 5월 15일(금) 18:20 ~ 18:50</div>
         <div>장소: 영근터 무대</div>
         <div>여러분의 투표 결과를 바탕으로 최종 수상작이 발표됩니다!</div>
+      </S.NoticeList>
+      <S.NoticeList>
+        <S.ListTitle>🎁 상품 안내</S.ListTitle>
+        <div>1등 l 젠틀몬스터 30만원권</div>
+        <div>2등 l 돌체구스토 캡슐 커피머신 지니오S 플러스팩1004</div>
+        <div>3등 l 코닥 다회용 카메라</div>
       </S.NoticeList>
 
       <S.NoticeCaption>
