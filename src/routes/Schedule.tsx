@@ -232,13 +232,6 @@ export default function SchedulePage() {
     });
   };
 
-  // const handleScrollToTop = () => {
-  //   const container = document.querySelector(
-  //     "[data-app-container]",
-  //   ) as HTMLElement;
-  //   container?.scrollTo({ top: 0, behavior: "smooth" });
-  // };
-
   useEffect(() => {
     const container = document.querySelector(
       "[data-app-container]",
