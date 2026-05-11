@@ -21,6 +21,7 @@ interface PhotoItem {
   title: string;
   authorName: string;
   imageUrl: string;
+  voteCount?: number;
 }
 
 // interface PhotoListResult {
@@ -133,20 +134,31 @@ export default function ContestVotePage() {
     axios
       .get(`${baseUrl}/api/photo-contest/rank`)
       .then((res) => {
-        if (!res.data.isSuccess || !res.data.result) return;
+        if (!res.data.isSuccess || !Array.isArray(res.data.result)) return;
 
         const map: Record<number, 1 | 2 | 3> = {};
-
-        Object.values(res.data.result).forEach((themeList) => {
-          if (Array.isArray(themeList)) {
-            const sorted = [...themeList].sort(
-              (a, b) => b.voteCount - a.voteCount,
-            );
-            sorted.slice(0, 3).forEach((item, index) => {
-              map[item.photoEntryId] = (index + 1) as 1 | 2 | 3;
-            });
-          }
+        const rankList = res.data.result;
+        const sorted = [...rankList].sort((a, b) => {
+          const aCount = a.voteCount ?? 0;
+          const bCount = b.voteCount ?? 0;
+          return bCount - aCount;
         });
+
+        // 2. 존재하는 데이터만큼만 map에 할당
+        sorted.slice(0, 3).forEach((item, index) => {
+          map[item.photoEntryId] = (index + 1) as 1 | 2 | 3;
+        });
+
+        setRankMap(map);
+
+        // // 득표수 기준으로 정렬 후 상위 3개 추출
+        // const sorted = [...rankList].sort(
+        //   (a, b) => (b.voteCount || 0) - (a.voteCount || 0),
+        // );
+
+        // sorted.slice(0, 3).forEach((item, index) => {
+        //   map[item.photoEntryId] = (index + 1) as 1 | 2 | 3;
+        // });
 
         setRankMap(map);
       })
@@ -176,9 +188,7 @@ export default function ContestVotePage() {
   //     .catch((err) => console.error("랭킹 조회 에러:", err));
   // }, [baseUrl]);
 
-  // if (!photoList || !topic) return null;
   const handleSelectPhoto = (id: number) => {
-    // 이미 선택된 사진을 다시 누르면 해제, 아니면 선택
     setSelectedPhotoId((prev) => (prev === id ? null : id));
   };
 

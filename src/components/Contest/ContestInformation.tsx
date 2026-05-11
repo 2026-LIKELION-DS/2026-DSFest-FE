@@ -41,9 +41,9 @@ export default function Modal({
   const handleSubmit = () => {
     axios
       .post(`${baseUrl}/api/photo-contest/vote`, {
-        studentId,
-        studentName,
-        photoEntryIds,
+        studentId: studentId,
+        studentName: studentName,
+        photoEntryId: photoEntryIds[0],
       })
       .then((res) => {
         if (res.data.isSuccess) {
