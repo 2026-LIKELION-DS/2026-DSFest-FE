@@ -90,17 +90,16 @@ export const Content = styled.div``;
 export const NumTitle = styled.div`
   font-family: ${theme.typography.h4};
 `;
-export const NumBox = styled.div<{ status?: InputStatus }>`
+export const NumBox = styled.div<{ $status?: InputStatus }>`
   width: 100%;
   height: 44px;
   border-radius: 100px;
   background-color: ${theme.colors.bg.neutral};
-  /* border: 0.5px solid ${theme.colors.fg.subtle}; */
   border: 1px solid
-    ${({ status }) =>
-      status === "error"
+    ${({ $status }) =>
+      $status === "error"
         ? "var(--Stroke-Critical, #F22128)"
-        : status === "active"
+        : $status === "active"
           ? "var(--Stroke-primary, #161716)"
           : theme.colors.fg.subtle};
   display: flex;
