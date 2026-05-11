@@ -367,7 +367,7 @@ export const ArtistModalContainer = styled.div`
   width: 100%;
   max-width: 354px;
   max-height: 90%;
-  background: ${({ theme }) => theme.colors.bg.neutral};
+  background: ${({ theme }) => theme.colors.bg.offWhite};
   border-radius: 4px;
   position: relative;
 

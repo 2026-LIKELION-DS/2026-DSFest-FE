@@ -17,8 +17,8 @@ export const Container = styled.div`
   background-color: #fff;
   border-radius: 4px;
   padding: 24px;
-  width: 344px;
-  margin: 24px;
+  width: 100%;
+  max-width: 354px;
   max-width: 480px;
   max-height: 610px;
   min-width: 200px;
