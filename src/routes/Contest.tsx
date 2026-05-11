@@ -4,7 +4,6 @@ import ContestNotice from "../components/Contest/ContestNotice";
 import ContestImg from "../assets/Contest/Contest.png";
 import ContestVoteButton from "../components/Contest/ContestVoteButton";
 import axios from "axios";
-import Modal from "../components/Contest/ContestInformation";
 
 const ENTRY_START = new Date("2026-05-13T00:00:00");
 const ENTRY_END = new Date("2026-05-14T20:00:00");
@@ -94,12 +93,6 @@ export default function ContestPag() {
       <S.ChatArea>
         <S.ContestImg src={ContestImg} />
         <ContestNotice />
-        <Modal
-          isOpen={true}
-          onClose={() => {}}
-          onSubmit={() => {}}
-          photoEntryIds={[1]}
-        />
       </S.ChatArea>
       <S.VoteButtonWrapper>
         <ContestVoteButton
