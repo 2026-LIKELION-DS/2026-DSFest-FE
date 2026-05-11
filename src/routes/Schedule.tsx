@@ -6,7 +6,6 @@ import CamFlower from "../assets/Schedule/camFlower.svg";
 import CamFlower2 from "../assets/Schedule/camFlower2.svg";
 import CamLeaf from "../assets/Schedule/camLeaf.svg";
 import Leaf from "../assets/Schedule/leaf.svg";
-// import Leaf1 from "../assets/Schedule/leaf1.svg";
 import Flower from "../assets/Schedule/flower.svg";
 import Flowers2 from "../assets/Schedule/flowers2.svg";
 import upIcon from "../assets/Booth/BoothUp.svg";
@@ -312,7 +311,6 @@ export default function SchedulePage() {
               direction={direction}
               onClick={() => {
                 handleClick();
-                // setIsAtActive(true);
               }}
             />
           </S.FloatingCircleBtn>
