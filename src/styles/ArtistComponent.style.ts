@@ -367,7 +367,7 @@ export const ArtistModalContainer = styled.div`
   width: 100%;
   max-width: 354px;
   max-height: 90%;
-  background: ${({ theme }) => theme.colors.bg.neutral};
+  background: ${({ theme }) => theme.colors.bg.offWhite};
   border-radius: 4px;
   position: relative;
 
@@ -463,8 +463,7 @@ export const ArtistCloseButton = styled.button`
   padding: 12px;
   border-radius: 999px;
   border: 1px solid ${({ theme }) => theme.colors.stroke.subtle};
-  background: ${({ theme }) => theme.colors.bg.neutral};
-  color: ${({ theme }) => theme.colors.fg.primary};
+  background: ${({ theme }) => theme.colors.bg.offWhite};
 
   font-size: 16px;
   font-weight: 700;
