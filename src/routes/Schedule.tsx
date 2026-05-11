@@ -46,7 +46,7 @@ const scheduleData = [
       },
       {
         id: 7,
-        title: "영화 상영 <빅토리>",
+        title: "영화 상영\n<빅토리>",
         time: "15:30~17:30",
       },
       {
