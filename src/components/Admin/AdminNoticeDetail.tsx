@@ -128,6 +128,7 @@ export default function AdminNoticeDetail() {
   if (!notice) {
     return null;
   }
+  // 이미지 여러장 추가 기능 수정함
 
   return (
     <>
