@@ -336,6 +336,30 @@ export default function SchedulePage() {
             }))}
             activeRef={item.key === currentDay ? activeRef : undefined}
           />
+          {/* <TimeTable
+            day={item.day}
+            schedule={item.data.map((s) => ({
+              ...s,
+              isActive: activeIds.has(s.id),
+            }))}
+            activeRef={item.key === currentDay ? activeRef : undefined}
+            decoImage={decoConfig[item.key as DayKey].image}
+            decoPosition={decoConfig[item.key as DayKey].position}
+            // day={item.day}
+            // // schedule={item.data}
+            // schedule={item.data.map((s) => ({
+            //   ...s,
+            //   isActive: activeIds.has(s.id),
+            // }))}
+            // activeRef={item.key === currentDay ? activeRef : undefined}
+            // decoImage={
+            //   item.key === "day1"
+            //     ? Day1Deco
+            //     : item.key === "day2"
+            //       ? Day2Deco
+            //       : Day3Deco
+            // }
+          /> */}
         </S.DaySection>
       ))}
       {hasActive && !isAtActive && (

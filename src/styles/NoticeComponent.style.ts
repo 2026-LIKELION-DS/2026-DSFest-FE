@@ -17,6 +17,9 @@ export const NoticeContent = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   gap: 6px;
+
+  width: 100%;
+  min-width: 0;
   // padding: 15px 0;
 `;
 
@@ -33,7 +36,17 @@ export const CardTitle = styled.h3`
   font-size: 14px;
   font-weight: 700;
   line-height: 1.5;
-  white-space: pre-line;
+
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  word-break: keep-all;
+
+  width: 100%;
+  min-width: 0;
 `;
 
 export const Item = styled.div`
