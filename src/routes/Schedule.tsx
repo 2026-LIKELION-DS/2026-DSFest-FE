@@ -37,7 +37,6 @@ const scheduleData = [
         src: Leaf,
         position: "left" as const,
         top: true,
-        // bottomOffset: 0,
         bottomOffset: -15,
         width: 85,
       },
