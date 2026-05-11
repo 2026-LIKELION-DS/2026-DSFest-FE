@@ -77,7 +77,6 @@ export default function ContestPag() {
 
   const phase: ContestPhase = (() => {
     if (!contestStatus) return "before";
-
     const now = new Date();
     const voteStart = new Date(contestStatus.startTime);
     const voteEnd = new Date(contestStatus.endTime);
