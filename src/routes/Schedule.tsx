@@ -37,7 +37,6 @@ const scheduleData = [
         src: Leaf,
         position: "left" as const,
         top: true,
-        // bottomOffset: 0,
         bottomOffset: -15,
         width: 85,
       },
@@ -61,7 +60,7 @@ const scheduleData = [
         id: 4,
         title: "낮부스",
         time: "11:00~14:30",
-        link: "/booth?time=day",
+        link: "/booth?time=day&day=1",
       },
       {
         id: 7,
@@ -72,14 +71,14 @@ const scheduleData = [
         id: 8,
         title: "밤부스",
         time: "16:00~19:30",
-        link: "/booth?time=night",
+        link: "/booth?time=night&day=1",
       },
       { id: 9, title: "덕우존 입장", time: "17:30~", isActive: false },
-      { id: 10, title: "총장님 인사", time: "18:00~18:30", isActive: false },
+      { id: 10, title: "총장님 인사", time: "17:40~17:50", isActive: false },
       {
         id: 11,
         title: "재학생 및\n동아리 공연",
-        time: "18:30~20:00",
+        time: "17:55~20:00",
       },
       {
         id: 13,
@@ -106,35 +105,35 @@ const scheduleData = [
         id: 19,
         title: "낮부스",
         time: "11:00~14:30",
-        link: "/booth?time=day",
+        link: "/booth?time=day&day=2",
       },
       {
         id: 20,
         title: "Quiz! 덕쏭달쏭",
-        time: "11:00~11:30",
+        time: "11:00~13:00",
       },
       {
         id: 24,
         title: "밤부스",
         time: "16:00~19:30",
-        link: "/booth?time=night",
+        link: "/booth?time=night&day=2",
       },
       {
         id: 25,
-        title: "덕우존 입장 대기",
-        time: "16:00~17:00",
+        title: "덕우존 입장",
+        time: "17:30~",
       },
-      { id: 26, title: "덕우존 입장", time: "17:00~18:00" },
+      { id: 26, title: "덕우존 입장", time: "17:30~" },
       {
         id: 27,
         title: "운현가요제",
-        time: "18:00~20:30",
+        time: "18:00~20:10",
         link: "/artist",
       },
       {
         id: 29,
         title: "아티스트 공연",
-        time: "20:30~21:00",
+        time: "20:10~21:00",
         link: "/artist",
       },
     ],
@@ -163,34 +162,39 @@ const scheduleData = [
         id: 34,
         title: "낮부스",
         time: "11:00~14:30",
-        link: "/booth?time=day",
+        link: "/booth?time=day&day=3",
+      },
+      {
+        id: 39,
+        title: "덕우존 입장",
+        time: "15:30",
       },
       {
         id: 40,
         title: "밤부스",
         time: "16:00~19:30",
-        link: "/booth?time=night",
+        link: "/booth?time=night&day=3",
       },
       {
         id: 41,
         title: "재학생 및\n동아리 공연",
-        time: "16:00~18:30",
+        time: "16:00~18:20",
       },
       {
         id: 42,
-        title: "총학생회 콘텐츠",
-        time: "18:30~19:30",
+        title: "총학생회 프로그램",
+        time: "18:20~19:20",
       },
       {
         id: 44,
         title: "아티스트 공연",
-        time: "18:30~20:00",
+        time: "18:20~20:20",
         link: "/artist",
       },
       {
         id: 47,
         title: "불꽃놀이",
-        time: "21:00~",
+        time: "21:20~21:23",
       },
     ],
   },
@@ -276,23 +280,6 @@ export default function SchedulePage() {
     });
   };
 
-  // useEffect(() => {
-  //   const container = document.querySelector(
-  //     "[data-app-container]",
-  //   ) as HTMLElement;
-  //   if (!container) return;
-
-  //   const handleScroll = () => {
-  //     setShowTopBtn(container.scrollTop > 0);
-  //     if (!activeRef.current) return;
-  //     const rect = activeRef.current.getBoundingClientRect();
-  //     setIsAtActive(rect.top >= 0 && rect.bottom <= window.innerHeight);
-  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
-  //   };
-
-  //   container.addEventListener("scroll", handleScroll);
-  //   return () => container.removeEventListener("scroll", handleScroll);
-  // }, []);
   const handleScrollToTop = () => {
     pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -308,14 +295,6 @@ export default function SchedulePage() {
         setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
       }}
     >
-      {/* <S.DecoLayer>
-        <S.Leafs src={Leaf} />
-        <S.Flower src={Flower} />
-        <S.CamFlower src={CamFlower} />
-        <S.CamLeaf src={CamLeaf} />
-        <S.Flowers2 src={Flowers2} />
-        <S.CamFlower2 src={CamFlower2} />
-      </S.DecoLayer> */}
       <S.SubHeader>
         {days.map((day) => (
           <S.DayButton
