@@ -15,20 +15,7 @@ function ContestNotice() {
         &lt;청춘 한 컷&gt;
         <br />
         근화제의 순간을 담은 사진, 당신의 한 표로 최고의 ‘청춘’을 선택해주세요!
-        {/* 청춘 한 컷, 당신의 순간을 남겨보세요!
-        <br />
-        축제와 나의 청춘을 담은 사진으로 콘테스트에 참여하고, 투표로 최고의
-        순간을 함께 만들어보세요.
-        <br />
-        지금 바로 제출하고 무대 위 주인공이 될 기회를 잡으세요! */}
       </S.NoticeTitle>
-      {/* <S.NoticeList>
-        <S.ListTitle>&lt;청춘 한 컷 공지글&gt;</S.ListTitle>
-        <div>
-          근화제의 순간을 담은 사진, 당신의 한 표로 최고의 ‘청춘’을
-          선택해주세요!
-        </div>
-      </S.NoticeList> */}
 
       <S.NoticeList>
         <S.ListTitle>[사진 주제]</S.ListTitle>
