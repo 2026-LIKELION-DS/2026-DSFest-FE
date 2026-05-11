@@ -107,23 +107,47 @@ export default function ContestVotePage() {
   //     ?.scrollTo({ top: 0, behavior: "smooth" });
   // }, [currentPage]);
 
+  // useEffect(() => {
+  //   if (!baseUrl) return;
+  //   axios
+  //     .get(`${baseUrl}/api/photo-contest/rank`)
+  //     .then((res) => {
+  //       if (!res.data.isSuccess) return;
+  //       const map: Record<number, 1 | 2 | 3> = {};
+  //       Object.values(res.data.result).forEach((themeList) => {
+  //         const list = themeList as {
+  //           photoEntryId: number;
+  //           voteCount: number;
+  //         }[];
+  //         const sorted = [...list].sort((a, b) => b.voteCount - a.voteCount);
+  //         sorted.slice(0, 3).forEach((item, index) => {
+  //           map[item.photoEntryId] = (index + 1) as 1 | 2 | 3;
+  //         });
+  //       });
+  //       setRankMap(map);
+  //     })
+  //     .catch((err) => console.error("랭킹 조회 에러:", err));
+  // }, [baseUrl]);
   useEffect(() => {
     if (!baseUrl) return;
     axios
       .get(`${baseUrl}/api/photo-contest/rank`)
       .then((res) => {
-        if (!res.data.isSuccess) return;
+        if (!res.data.isSuccess || !res.data.result) return;
+
         const map: Record<number, 1 | 2 | 3> = {};
+
         Object.values(res.data.result).forEach((themeList) => {
-          const list = themeList as {
-            photoEntryId: number;
-            voteCount: number;
-          }[];
-          const sorted = [...list].sort((a, b) => b.voteCount - a.voteCount);
-          sorted.slice(0, 3).forEach((item, index) => {
-            map[item.photoEntryId] = (index + 1) as 1 | 2 | 3;
-          });
+          if (Array.isArray(themeList)) {
+            const sorted = [...themeList].sort(
+              (a, b) => b.voteCount - a.voteCount,
+            );
+            sorted.slice(0, 3).forEach((item, index) => {
+              map[item.photoEntryId] = (index + 1) as 1 | 2 | 3;
+            });
+          }
         });
+
         setRankMap(map);
       })
       .catch((err) => console.error("랭킹 조회 에러:", err));
