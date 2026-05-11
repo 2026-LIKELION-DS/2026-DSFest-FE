@@ -208,7 +208,7 @@ export default function AdminNoticeWrite() {
         type: "application/json",
       })
     );
-
+    //이미지 여러장 추가기능 수정
     newImages.forEach((image) => {
       formData.append("newImages", image, image.name);
     });
