@@ -132,44 +132,47 @@ export default function ContestVotePage() {
 
   return (
     <S.ContestVotePage ref={pageRef}>
-      <S.VoteHeader>
-        <S.PhotoPage>
-          {currentPage + 1}/{TOPICS.length}
-        </S.PhotoPage>
-        <S.SubjectText>{topic.title}</S.SubjectText>
-        <S.SubText>주제 별 한 장의 사진만 투표할 수 있습니다.</S.SubText>
-      </S.VoteHeader>
-      {/* <S.Wa> */}
-      <S.PhotoGrid>
-        {topic.photos.map((photo) => (
-          <PhotoCard
-            key={photo.photoEntryId}
-            photo={{
-              id: photo.photoEntryId,
-              title: photo.title,
-              src: photo.imageUrl,
-            }}
-            isSelected={selectedPhotos[topic.id] === photo.photoEntryId}
-            onSelect={() =>
-              setSelectedPhotos((prev) => ({
-                ...prev,
-                [topic.id]:
-                  selectedPhotos[topic.id] === photo.photoEntryId
-                    ? null
-                    : photo.photoEntryId,
-              }))
-            }
-            rank={hidden ? null : (rankMap[photo.photoEntryId] ?? null)}
-          />
-        ))}
-      </S.PhotoGrid>
-
-      <S.ActionButton
-        disabled={!isSelected}
-        onClick={isLastPage ? handleSubmit : handleNext}
-      >
-        {isLastPage ? "인적사항 입력" : "다음으로"}
-      </S.ActionButton>
+      <S.ChatArea>
+        <S.VoteHeader>
+          <S.PhotoPage>
+            {currentPage + 1}/{TOPICS.length}
+          </S.PhotoPage>
+          <S.SubjectText>{topic.title}</S.SubjectText>
+          <S.SubText>주제 별 한 장의 사진만 투표할 수 있습니다.</S.SubText>
+        </S.VoteHeader>
+        {/* <S.Wa> */}
+        <S.PhotoGrid>
+          {topic.photos.map((photo) => (
+            <PhotoCard
+              key={photo.photoEntryId}
+              photo={{
+                id: photo.photoEntryId,
+                title: photo.title,
+                src: photo.imageUrl,
+              }}
+              isSelected={selectedPhotos[topic.id] === photo.photoEntryId}
+              onSelect={() =>
+                setSelectedPhotos((prev) => ({
+                  ...prev,
+                  [topic.id]:
+                    selectedPhotos[topic.id] === photo.photoEntryId
+                      ? null
+                      : photo.photoEntryId,
+                }))
+              }
+              rank={hidden ? null : (rankMap[photo.photoEntryId] ?? null)}
+            />
+          ))}
+        </S.PhotoGrid>
+      </S.ChatArea>
+      <S.VoteButtonWrapper>
+        <S.ActionButton
+          disabled={!isSelected}
+          onClick={isLastPage ? handleSubmit : handleNext}
+        >
+          {isLastPage ? "인적사항 입력" : "다음으로"}
+        </S.ActionButton>
+      </S.VoteButtonWrapper>
       <ContestInfoModal
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
