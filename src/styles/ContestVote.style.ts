@@ -1,15 +1,35 @@
 import styled from "styled-components";
 import { theme } from "./theme";
+const HEADER_HEIGHT = "60px";
 
 export const ContestVotePage = styled.div`
   margin: 0 auto;
-  padding: 0 24px 24px;
-  background: #fff;
-  overflow-x: hidden;
+  display: flex;
+
+  background: ${({ theme }) => theme.colors.bg.neutral};
+  width: 100%;
+  box-sizing: border-box;
+  height: calc(100svh - ${HEADER_HEIGHT});
+  max-height: calc(100svh - ${HEADER_HEIGHT});
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  @supports not (height: 100svh) {
+    height: calc(100vh - ${HEADER_HEIGHT});
+    max-height: calc(100vh - ${HEADER_HEIGHT});
+  }
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    height: calc(100vh - ${HEADER_HEIGHT});
+    max-height: none;
+
+    @media (min-height: 874px) {
+      height: calc(874px - 24px - ${HEADER_HEIGHT});
+    }
+  }
 `;
 
 export const VoteHeader = styled.div`
@@ -41,10 +61,36 @@ export const ActionButton = styled.button`
   color: ${({ disabled }) => (disabled ? theme.colors.fg.disabled : "#fff")};
   cursor: pointer;
   margin-top: 24px 0;
+  margin: 0 20px;
 `;
 
 export const PhotoGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+  margin-bottom: 30px;
+`;
+
+export const ChatArea = styled.div`
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+
+  padding: 0 20px;
+
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const VoteButtonWrapper = styled.div`
+  flex-shrink: 0;
+  width: 100%;
+  background: ${({ theme }) => theme.colors.bg.neutral};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  margin-top: 20px;
 `;
