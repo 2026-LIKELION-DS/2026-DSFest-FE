@@ -57,15 +57,50 @@ export default function ContestPag() {
   // 타이머
   useEffect(() => {
     if (!contestStatus) return;
-    const tick = () => setRemainingTime(formatRemaining(contestStatus.endTime));
+    // const tick = () => setRemainingTime(formatRemaining(contestStatus.endTime));
+    const tick = () => {
+      const now = new Date();
+      const start = new Date(contestStatus.startTime);
+
+      if (now < start) {
+        setRemainingTime(formatRemaining(contestStatus.startTime));
+      } else {
+        setRemainingTime(formatRemaining(contestStatus.endTime));
+      }
+    };
     tick();
     const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, [contestStatus]);
 
-  const phase: ContestPhase = contestStatus
-    ? STATUS_TO_PHASE[contestStatus.status]
-    : "before";
+  // const phase: ContestPhase = contestStatus
+  //   ? STATUS_TO_PHASE[contestStatus.status]
+  //   : "before";
+
+  const phase: ContestPhase = (() => {
+    if (!contestStatus) return "before";
+
+    const now = new Date();
+    const start = new Date(contestStatus.startTime);
+    const end = new Date(contestStatus.endTime);
+
+    // 시작 전
+    if (now < start) {
+      return "before";
+    }
+
+    // 응모 진행 중
+    if (contestStatus.status === "ACCEPTING" && now >= start && now <= end) {
+      return "entry";
+    }
+
+    // 투표 진행 중
+    if (contestStatus.status === "VOTING") {
+      return "vote";
+    }
+
+    return "before";
+  })();
 
   return (
     <S.ContestPage>
@@ -77,7 +112,7 @@ export default function ContestPag() {
         <ContestVoteButton
           phase={phase}
           remainingTime={remainingTime}
-          kakaoLink="https://pf.kakao.com/_gUyQn"
+          kakaoLink="https://open.kakao.com/o/sIiNPesi"
         />
       </S.VoteButtonWrapper>
     </S.ContestPage>
