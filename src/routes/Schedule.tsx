@@ -37,7 +37,8 @@ const scheduleData = [
         src: Leaf,
         position: "left" as const,
         top: true,
-        bottomOffset: 0,
+        // bottomOffset: 0,
+        bottomOffset: -15,
         width: 85,
       },
       {
@@ -146,8 +147,8 @@ const scheduleData = [
         src: Flowers2,
         position: "left" as const,
         top: true,
-        bottomOffset: 0,
-        height: 126,
+        bottomOffset: -45,
+        width: 126,
       },
       {
         src: CamFlower2,

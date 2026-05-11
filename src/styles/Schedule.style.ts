@@ -260,6 +260,22 @@ export const DaySection = styled.div`
 `;
 
 // //추가 블록 전체 삭제 (DaySection 중복, SectionDeco만 남기기)
+// export const SectionDeco = styled.img<{
+//   $position: "left" | "right";
+//   $top: boolean;
+//   $bottomOffset: number;
+//   $width?: number;
+// }>`
+//   position: absolute;
+//   ${({ $position }) =>
+//     $position === "right" ? "right: -24px;" : "left: -24px;"}
+//   ${({ $top, $bottomOffset }) =>
+//     $top ? "top: 0px;" : `bottom: ${$bottomOffset}px;`}
+//   width: ${({ $width }) => ($width ? `${$width}px` : "110px")};
+//   pointer-events: none;
+//   z-index: 2;
+// `;
+// SectionDeco 컴포넌트 수정
 export const SectionDeco = styled.img<{
   $position: "left" | "right";
   $top: boolean;
@@ -267,10 +283,13 @@ export const SectionDeco = styled.img<{
   $width?: number;
 }>`
   position: absolute;
+
   ${({ $position }) =>
-    $position === "right" ? "right: -24px;" : "left: -24px;"}
+    $position === "right" ? "right: -25px;" : "left: -23px;"}
+
   ${({ $top, $bottomOffset }) =>
-    $top ? "top: 0px;" : `bottom: ${$bottomOffset}px;`}
+    $top ? `top: ${$bottomOffset}px;` : `bottom: ${$bottomOffset}px;`}
+
   width: ${({ $width }) => ($width ? `${$width}px` : "110px")};
   pointer-events: none;
   z-index: 2;
