@@ -6,7 +6,6 @@ import CamFlower from "../assets/Schedule/camFlower.svg";
 import CamFlower2 from "../assets/Schedule/camFlower2.svg";
 import CamLeaf from "../assets/Schedule/camLeaf.svg";
 import Leaf from "../assets/Schedule/leaf.svg";
-// import Leaf1 from "../assets/Schedule/leaf1.svg";
 import Flower from "../assets/Schedule/flower.svg";
 import Flowers2 from "../assets/Schedule/flowers2.svg";
 import upIcon from "../assets/Booth/BoothUp.svg";
@@ -33,10 +32,30 @@ const scheduleData = [
   {
     key: "day1",
     day: "DAY 1",
-    deco: {
-      topLeft: Leaf,
-      bottomRight: Flower,
-    },
+    decos: [
+      {
+        src: Leaf,
+        position: "left" as const,
+        top: true,
+        // bottomOffset: 0,
+        bottomOffset: -15,
+        width: 85,
+      },
+      {
+        src: Flower,
+        position: "left" as const,
+        top: false,
+        bottomOffset: -40,
+        width: 78,
+      },
+      {
+        src: CamFlower,
+        position: "right" as const,
+        top: false,
+        bottomOffset: -40,
+        width: 105,
+      },
+    ],
     data: [
       {
         id: 4,
@@ -73,6 +92,15 @@ const scheduleData = [
   {
     key: "day2",
     day: "DAY 2",
+    decos: [
+      {
+        src: CamLeaf,
+        position: "left" as const,
+        top: false,
+        bottomOffset: -40,
+        width: 118,
+      },
+    ],
     data: [
       {
         id: 19,
@@ -114,6 +142,22 @@ const scheduleData = [
   {
     key: "day3",
     day: "DAY 3",
+    decos: [
+      {
+        src: Flowers2,
+        position: "left" as const,
+        top: true,
+        bottomOffset: -45,
+        width: 126,
+      },
+      {
+        src: CamFlower2,
+        position: "right" as const,
+        top: false,
+        bottomOffset: -40,
+        width: 115,
+      },
+    ],
     data: [
       {
         id: 34,
@@ -232,6 +276,23 @@ export default function SchedulePage() {
     });
   };
 
+  // useEffect(() => {
+  //   const container = document.querySelector(
+  //     "[data-app-container]",
+  //   ) as HTMLElement;
+  //   if (!container) return;
+
+  //   const handleScroll = () => {
+  //     setShowTopBtn(container.scrollTop > 0);
+  //     if (!activeRef.current) return;
+  //     const rect = activeRef.current.getBoundingClientRect();
+  //     setIsAtActive(rect.top >= 0 && rect.bottom <= window.innerHeight);
+  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
+  //   };
+
+  //   container.addEventListener("scroll", handleScroll);
+  //   return () => container.removeEventListener("scroll", handleScroll);
+  // }, []);
   const handleScrollToTop = () => {
     pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -247,15 +308,14 @@ export default function SchedulePage() {
         setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
       }}
     >
-      <S.DecoLayer>
+      {/* <S.DecoLayer>
         <S.Leafs src={Leaf} />
         <S.Flower src={Flower} />
         <S.CamFlower src={CamFlower} />
-        {/* <S.Leafs1 src={Leaf1} /> */}
         <S.CamLeaf src={CamLeaf} />
         <S.Flowers2 src={Flowers2} />
         <S.CamFlower2 src={CamFlower2} />
-      </S.DecoLayer>
+      </S.DecoLayer> */}
       <S.SubHeader>
         {days.map((day) => (
           <S.DayButton
@@ -277,15 +337,49 @@ export default function SchedulePage() {
       </S.SubHeader>
       {scheduleData.map((item) => (
         <S.DaySection key={item.key} ref={dayRefs[item.key as DayKey]}>
+          {item.decos?.map((deco, i) => (
+            <S.SectionDeco
+              key={i}
+              src={deco.src}
+              $position={deco.position}
+              $top={deco.top}
+              $bottomOffset={deco.bottomOffset}
+              $width={deco.width}
+              alt=""
+            />
+          ))}
           <TimeTable
             day={item.day}
-            // schedule={item.data}
             schedule={item.data.map((s) => ({
               ...s,
               isActive: activeIds.has(s.id),
             }))}
             activeRef={item.key === currentDay ? activeRef : undefined}
           />
+          {/* <TimeTable
+            day={item.day}
+            schedule={item.data.map((s) => ({
+              ...s,
+              isActive: activeIds.has(s.id),
+            }))}
+            activeRef={item.key === currentDay ? activeRef : undefined}
+            decoImage={decoConfig[item.key as DayKey].image}
+            decoPosition={decoConfig[item.key as DayKey].position}
+            // day={item.day}
+            // // schedule={item.data}
+            // schedule={item.data.map((s) => ({
+            //   ...s,
+            //   isActive: activeIds.has(s.id),
+            // }))}
+            // activeRef={item.key === currentDay ? activeRef : undefined}
+            // decoImage={
+            //   item.key === "day1"
+            //     ? Day1Deco
+            //     : item.key === "day2"
+            //       ? Day2Deco
+            //       : Day3Deco
+            // }
+          /> */}
         </S.DaySection>
       ))}
       {hasActive && !isAtActive && (
@@ -295,7 +389,6 @@ export default function SchedulePage() {
               direction={direction}
               onClick={() => {
                 handleClick();
-                // setIsAtActive(true);
               }}
             />
           </S.FloatingCircleBtn>

@@ -20,12 +20,14 @@ interface TimeTableProps {
   day: string;
   schedule: ScheduleItem[];
   activeRef?: React.RefObject<HTMLDivElement | null>;
+  decoImage?: string;
 }
 
 export default function TimeTable({
   day,
   schedule,
   activeRef,
+  decoImage,
 }: TimeTableProps) {
   const navigate = useNavigate();
 
@@ -33,6 +35,7 @@ export default function TimeTable({
     <S.Wrapper>
       <S.DayHeader>{day}</S.DayHeader>
       <S.Container>
+        {decoImage && <S.DecoImage src={decoImage} alt="" />}
         <S.Guide>클릭하면 관련 페이지로 이동합니다</S.Guide>
         <S.Timeline>
           {schedule.map((item, index) => (
