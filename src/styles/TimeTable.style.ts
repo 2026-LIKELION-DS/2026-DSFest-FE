@@ -115,3 +115,12 @@ export const TitleRow = styled.div`
   align-items: center;
   gap: 4px;
 `;
+
+export const DecoImage = styled.img`
+  position: absolute;
+  right: -12px;
+  bottom: 0px; // 위치는 조정하면 돼요
+  width: 115px;
+  pointer-events: none;
+  z-index: 2;
+`;

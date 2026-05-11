@@ -32,10 +32,11 @@ const scheduleData = [
   {
     key: "day1",
     day: "DAY 1",
-    deco: {
-      topLeft: Leaf,
-      bottomRight: Flower,
-    },
+    // deco: {
+    //   topLeft: Leaf,
+    //   bottomRight: Flower,
+    // },
+    decos: [{ src: CamFlower, position: "right" as const }],
     data: [
       {
         id: 4,
@@ -72,6 +73,10 @@ const scheduleData = [
   {
     key: "day2",
     day: "DAY 2",
+    decos: [
+      { src: CamFlower2, position: "left" as const },
+      { src: CamLeaf, position: "left" as const },
+    ],
     data: [
       {
         id: 19,
@@ -113,6 +118,10 @@ const scheduleData = [
   {
     key: "day3",
     day: "DAY 3",
+    decos: [
+      { src: Flowers2, position: "left" as const },
+      { src: Leaf, position: "right" as const },
+    ],
     data: [
       {
         id: 34,
@@ -231,23 +240,23 @@ export default function SchedulePage() {
     });
   };
 
-  useEffect(() => {
-    const container = document.querySelector(
-      "[data-app-container]",
-    ) as HTMLElement;
-    if (!container) return;
+  // useEffect(() => {
+  //   const container = document.querySelector(
+  //     "[data-app-container]",
+  //   ) as HTMLElement;
+  //   if (!container) return;
 
-    const handleScroll = () => {
-      setShowTopBtn(container.scrollTop > 0);
-      if (!activeRef.current) return;
-      const rect = activeRef.current.getBoundingClientRect();
-      setIsAtActive(rect.top >= 0 && rect.bottom <= window.innerHeight);
-      setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
-    };
+  //   const handleScroll = () => {
+  //     setShowTopBtn(container.scrollTop > 0);
+  //     if (!activeRef.current) return;
+  //     const rect = activeRef.current.getBoundingClientRect();
+  //     setIsAtActive(rect.top >= 0 && rect.bottom <= window.innerHeight);
+  //     setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
+  //   };
 
-    container.addEventListener("scroll", handleScroll);
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   container.addEventListener("scroll", handleScroll);
+  //   return () => container.removeEventListener("scroll", handleScroll);
+  // }, []);
   const handleScrollToTop = () => {
     pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -293,15 +302,46 @@ export default function SchedulePage() {
       </S.SubHeader>
       {scheduleData.map((item) => (
         <S.DaySection key={item.key} ref={dayRefs[item.key as DayKey]}>
+          {item.decos?.map((deco, i) => (
+            <S.SectionDeco
+              key={i}
+              src={deco.src}
+              $position={deco.position}
+              alt=""
+            />
+          ))}
           <TimeTable
             day={item.day}
-            // schedule={item.data}
             schedule={item.data.map((s) => ({
               ...s,
               isActive: activeIds.has(s.id),
             }))}
             activeRef={item.key === currentDay ? activeRef : undefined}
           />
+          {/* <TimeTable
+            day={item.day}
+            schedule={item.data.map((s) => ({
+              ...s,
+              isActive: activeIds.has(s.id),
+            }))}
+            activeRef={item.key === currentDay ? activeRef : undefined}
+            decoImage={decoConfig[item.key as DayKey].image}
+            decoPosition={decoConfig[item.key as DayKey].position}
+            // day={item.day}
+            // // schedule={item.data}
+            // schedule={item.data.map((s) => ({
+            //   ...s,
+            //   isActive: activeIds.has(s.id),
+            // }))}
+            // activeRef={item.key === currentDay ? activeRef : undefined}
+            // decoImage={
+            //   item.key === "day1"
+            //     ? Day1Deco
+            //     : item.key === "day2"
+            //       ? Day2Deco
+            //       : Day3Deco
+            // }
+          /> */}
         </S.DaySection>
       ))}
       {hasActive && !isAtActive && (

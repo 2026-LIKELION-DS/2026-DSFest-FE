@@ -61,13 +61,13 @@ export const DayButton = styled.button<{ $active: boolean }>`
   }
 `;
 
-export const DaySection = styled.div`
-  scroll-margin-top: 80px;
-  position: relative;
-  &:last-child {
-    padding-bottom: 85px;
-  }
-`;
+// export const DaySection = styled.div`
+//   scroll-margin-top: 80px;
+//   position: relative;
+//   &:last-child {
+//     padding-bottom: 85px;
+//   }
+// `;
 
 export const DecoLayer = styled.div`
   position: absolute;
@@ -247,4 +247,25 @@ export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
     bottom: calc((100dvh - 898px) / 2 + 32px);
   }
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+`;
+
+//추가
+// 위에 있는 DaySection 이걸로 교체 (position: relative 이미 있음 ✅)
+export const DaySection = styled.div`
+  scroll-margin-top: 80px;
+  position: relative;
+  &:last-child {
+    padding-bottom: 85px;
+  }
+`;
+
+// //추가 블록 전체 삭제 (DaySection 중복, SectionDeco만 남기기)
+export const SectionDeco = styled.img<{ $position: "left" | "right" }>`
+  position: absolute;
+  ${({ $position }) =>
+    $position === "right" ? "right: -24px;" : "left: -24px;"}
+  bottom: 0px;
+  width: 110px;
+  pointer-events: none;
+  z-index: 2;
 `;
