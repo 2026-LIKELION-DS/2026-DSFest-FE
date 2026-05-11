@@ -88,6 +88,7 @@ export const ContentBox= styled.div`
     position: relative;
     width: 100%;
     max-width: 354px;
+    min-width: 330px;
     height: 500px;
 `
 
@@ -157,8 +158,8 @@ export const ArtistNameTag = styled(NameTag)`
 `
 
 export const FoodtruckNameTag = styled(NameTag)`
-    top:166.3px;
-    right: -9.51px;
+    top:158.3px;
+    right: -6.51px;
     z-index: 5;
 `
 
