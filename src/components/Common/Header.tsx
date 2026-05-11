@@ -18,6 +18,8 @@ export default function Header({
   onBack,
 }: HeaderProps) {
   const baseUrl = import.meta.env.VITE_API_URL;
+  const ENTRY_START = new Date("2026-05-13T00:00:00");
+  const ENTRY_END = new Date("2026-05-14T20:00:00");
 
   const [contestStatus, setContestStatus] = useState<{
     status: "ACCEPTING" | "VOTING" | "ENDED";
@@ -36,18 +38,13 @@ export default function Header({
   }, [title, baseUrl]);
 
   const getContestStatusBubble = () => {
-    if (!contestStatus) return null;
-
     const now = new Date();
-    const start = new Date(contestStatus.startTime);
-    const end = new Date(contestStatus.endTime);
-    if (now < start) return null;
-    if (contestStatus.status === "ACCEPTING" && now >= start && now <= end) {
-      return "사진 응모 중!";
-    }
-    if (contestStatus.status === "VOTING") {
+    const voteStart = contestStatus ? new Date(contestStatus.startTime) : null;
+    const voteEnd = contestStatus ? new Date(contestStatus.endTime) : null;
+
+    if (now >= ENTRY_START && now < ENTRY_END) return "사진 응모 중!";
+    if (voteStart && voteEnd && now >= voteStart && now < voteEnd)
       return "사진 투표 중!";
-    }
     return null;
   };
 

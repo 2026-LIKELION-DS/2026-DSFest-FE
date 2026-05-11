@@ -5,7 +5,10 @@ import ContestImg from "../assets/Contest/Contest.png";
 import ContestVoteButton from "../components/Contest/ContestVoteButton";
 import axios from "axios";
 
-type ContestPhase = "before" | "entry" | "vote";
+const ENTRY_START = new Date("2026-05-13T00:00:00");
+const ENTRY_END = new Date("2026-05-14T20:00:00");
+
+type ContestPhase = "before" | "entry" | "waiting" | "vote" | "ended";
 
 interface ContestStatus {
   status: "ACCEPTING" | "VOTING" | "ENDED";
@@ -52,12 +55,19 @@ export default function ContestPag() {
     if (!contestStatus) return;
     const tick = () => {
       const now = new Date();
-      const start = new Date(contestStatus.startTime);
+      const voteStart = new Date(contestStatus.startTime);
+      const voteEnd = new Date(contestStatus.endTime);
 
-      if (now < start) {
+      if (now < ENTRY_START) {
+        setRemainingTime(formatRemaining(ENTRY_START.toISOString()));
+      } else if (now >= ENTRY_START && now < ENTRY_END) {
+        setRemainingTime(formatRemaining(ENTRY_END.toISOString()));
+      } else if (now >= ENTRY_END && now < voteStart) {
         setRemainingTime(formatRemaining(contestStatus.startTime));
-      } else {
+      } else if (now >= voteStart && now < voteEnd) {
         setRemainingTime(formatRemaining(contestStatus.endTime));
+      } else {
+        setRemainingTime("00:00:00");
       }
     };
     tick();
@@ -69,21 +79,34 @@ export default function ContestPag() {
     if (!contestStatus) return "before";
 
     const now = new Date();
-    const start = new Date(contestStatus.startTime);
-    const end = new Date(contestStatus.endTime);
+    const voteStart = new Date(contestStatus.startTime);
+    const voteEnd = new Date(contestStatus.endTime);
 
-    if (now < start) {
-      return "before";
-    }
-    if (contestStatus.status === "ACCEPTING" && now >= start && now <= end) {
-      return "entry";
-    }
-    if (contestStatus.status === "VOTING") {
-      return "vote";
-    }
-
-    return "before";
+    if (now < ENTRY_START) return "before";
+    if (now >= ENTRY_START && now < ENTRY_END) return "entry";
+    if (now >= ENTRY_END && now < voteStart) return "waiting";
+    if (now >= voteStart && now < voteEnd) return "vote";
+    return "ended";
   })();
+  // const phase: ContestPhase = (() => {
+  //   if (!contestStatus) return "before";
+
+  //   const now = new Date();
+  //   const start = new Date(contestStatus.startTime);
+  //   const end = new Date(contestStatus.endTime);
+
+  //   if (now < start) {
+  //     return "before";
+  //   }
+  //   if (contestStatus.status === "ACCEPTING" && now >= start && now <= end) {
+  //     return "entry";
+  //   }
+  //   if (contestStatus.status === "VOTING") {
+  //     return "vote";
+  //   }
+
+  //   return "before";
+  // })();
 
   return (
     <S.ContestPage>
