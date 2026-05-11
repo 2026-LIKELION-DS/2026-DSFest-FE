@@ -232,6 +232,30 @@ export default function SchedulePage() {
     });
   };
 
+  // const handleScrollToTop = () => {
+  //   const container = document.querySelector(
+  //     "[data-app-container]",
+  //   ) as HTMLElement;
+  //   container?.scrollTo({ top: 0, behavior: "smooth" });
+  // };
+
+  useEffect(() => {
+    const container = document.querySelector(
+      "[data-app-container]",
+    ) as HTMLElement;
+    if (!container) return;
+
+    const handleScroll = () => {
+      setShowTopBtn(container.scrollTop > 0);
+      if (!activeRef.current) return;
+      const rect = activeRef.current.getBoundingClientRect();
+      setIsAtActive(rect.top >= 0 && rect.bottom <= window.innerHeight);
+      setDirection(rect.top > window.innerHeight / 2 ? "down" : "up");
+    };
+
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
   const handleScrollToTop = () => {
     pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
