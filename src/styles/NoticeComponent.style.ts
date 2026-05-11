@@ -6,7 +6,7 @@ export const Card = styled.article`
   width: 120px;
   box-sizing: border-box;
   height: 100px;
-  padding: 0 16px;
+  padding: 15px 16px;
   border: 1px solid ${({ theme }) => theme.colors.stroke.oliveLight};
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.bg.neutral};
@@ -15,8 +15,9 @@ export const Card = styled.article`
 export const NoticeContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 6px;
+  // padding: 15px 0;
 `;
 
 export const Category = styled.p`
