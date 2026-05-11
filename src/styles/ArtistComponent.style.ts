@@ -338,12 +338,14 @@ export const ArtistModalOverlay = styled.div`
   width: 100%;
   max-width: 768px;
   height: 100dvh;
+
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     border: 12px solid ${({ theme }) => theme.colors.olive[50]};
     max-height: 874px;
     border-radius: 24px;
     max-width: 402px;
   }
+
   @media (max-height: 910px) {
     border-radius: 0;
     border: none;
@@ -352,9 +354,11 @@ export const ArtistModalOverlay = styled.div`
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   z-index: 1000;
   overflow: hidden;
 `;
@@ -371,26 +375,45 @@ export const ArtistModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  overflow: hidden;
+  box-sizing: border-box;
 `;
 
 export const ArtistContentArea = styled.div`
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  padding-bottom: 20px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 `;
 
 export const ArtistModalTitle = styled.h2`
   text-align: center;
-  margin-bottom: 0px;
+  margin: 0;
   font-size: 24px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.bg.brandLight};
+  line-height: 1.3;
+  word-break: keep-all;
 `;
 
 export const ArtistModalDivider = styled.div`
   border: none;
   border-top: 0.5px solid ${({ theme }) => theme.colors.bg.brand};
   margin: 0;
+  flex-shrink: 0;
 `;
 
 export const ArtistImageRow = styled.div`
@@ -398,39 +421,52 @@ export const ArtistImageRow = styled.div`
   gap: 12px;
   overflow-x: auto;
   padding-bottom: 4px;
+  flex-shrink: 0;
 
   &::-webkit-scrollbar {
     display: none;
   }
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 `;
 
 export const ModalImage = styled.img`
   flex: 0 0 100px;
+  width: 100px;
   height: 180px;
-  width: 144px;
   object-fit: cover;
   border-radius: 6px;
   cursor: pointer;
 `;
 
 export const ArtistDescription = styled.div`
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
+  margin: 0;
   color: ${({ theme }) => theme.colors.fg.primary};
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+
+  white-space: pre-line;
+  word-break: keep-all;
 `;
 
 export const ArtistButtonGroup = styled.div`
-  display: flex;
+  flex-shrink: 0;
 `;
 
 export const ArtistCloseButton = styled.button`
   width: 100%;
   height: 44px;
-  padding: 10px;
-  border-radius: 100px;
-  border: 0.5px solid ${({ theme }) => theme.colors.fg.subtle};
-  background: ${({ theme }) => theme.colors.bg.offWhite};
+  box-sizing: border-box;
+
+  padding: 12px;
+  border-radius: 999px;
+  border: 1px solid ${({ theme }) => theme.colors.stroke.subtle};
+  background: ${({ theme }) => theme.colors.bg.neutral};
+  color: ${({ theme }) => theme.colors.fg.primary};
+
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
 `;
