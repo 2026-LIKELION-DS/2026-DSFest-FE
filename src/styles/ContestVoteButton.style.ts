@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { theme } from "./theme";
-
-type ContestPhase = "before" | "entry" | "vote";
+type ContestPhase = "before" | "entry" | "waiting" | "vote" | "ended";
 
 export const ContestVoteButtonPage = styled.div`
   width: 100%;
@@ -25,15 +24,21 @@ export const voteButton = styled.button<{
   $voted: boolean;
 }>`
   background: ${({ $phase, theme }) =>
-    $phase === "before" ? theme.colors.bg.disabled : theme.colors.bg.brand};
+    $phase === "before" || $phase === "waiting" || $phase === "ended"
+      ? theme.colors.bg.disabled
+      : theme.colors.bg.brand};
   color: ${({ $phase, theme }) =>
-    $phase === "before" ? theme.colors.fg.disabled : "#fff"};
+    $phase === "before" || $phase === "waiting" || $phase === "ended"
+      ? theme.colors.fg.disabled
+      : "#fff"};
   font-family: ${theme.typography.buttonMd};
   width: 100%;
   height: 44px;
-  /* padding: 24px; */
   border-radius: 100px;
-  cursor: ${({ $phase }) => ($phase === "before" ? "default" : "pointer")};
+  cursor: ${({ $phase }) =>
+    $phase === "before" || $phase === "waiting" || $phase === "ended"
+      ? "default"
+      : "pointer"};
 
   ${({ $voted }) =>
     $voted &&

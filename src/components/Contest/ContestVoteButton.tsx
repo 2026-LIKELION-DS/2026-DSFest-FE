@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import * as S from "../../styles/ContestVoteButton.style";
 import VoteToast from "./VoteToast";
 
-type ContestPhase = "before" | "entry" | "vote";
+type ContestPhase = "before" | "entry" | "waiting" | "vote" | "ended";
 
 interface Props {
   phase: ContestPhase;
@@ -14,13 +14,17 @@ interface Props {
 const TIMER_LABEL: Record<ContestPhase, string> = {
   before: "응모 시작까지",
   entry: "응모 마감까지",
+  waiting: "투표 시작까지",
   vote: "투표 마감까지",
+  ended: "",
 };
 
 const BUTTON_LABEL: Record<ContestPhase, string> = {
   before: "청춘 한 컷 응모하기",
   entry: "청춘 한 컷 응모하기",
+  waiting: "청춘 한 컷 투표하기",
   vote: "청춘 한 컷 투표하기",
+  ended: "청춘 한 컷 종료",
 };
 
 export default function ContestVoteButton({
@@ -50,33 +54,34 @@ export default function ContestVoteButton({
   }, [showToast]);
 
   const handleClick = () => {
-    if (phase === "before") return;
     if (phase === "entry" && kakaoLink) {
       window.open(kakaoLink, "_blank");
     }
     if (phase === "vote") {
-      navigate("/contest/vote"); //투표페이지 이동
-      // setVoted(true);
+      navigate("/contest/vote");
     }
   };
+
+  const isDisabled =
+    phase === "before" || phase === "waiting" || phase === "ended" || voted;
 
   return (
     <S.ContestVoteButtonPage>
       <S.ContestTab>
         {showToast ? (
           <VoteToast $hiding={hiding} />
-        ) : (
+        ) : phase !== "ended" ? (
           <S.TimeLine>
             <S.span>{TIMER_LABEL[phase]}</S.span>
             <S.span>{remainingTime}</S.span>
             <S.span>남음</S.span>
           </S.TimeLine>
-        )}
+        ) : null}
         <S.voteButton
           $phase={phase}
           $voted={voted}
           onClick={handleClick}
-          disabled={phase === "before" || voted}
+          disabled={isDisabled}
         >
           {voted ? "투표 완료!" : BUTTON_LABEL[phase]}
         </S.voteButton>

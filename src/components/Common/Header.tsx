@@ -18,9 +18,9 @@ export default function Header({
   onBack,
 }: HeaderProps) {
   const baseUrl = import.meta.env.VITE_API_URL;
-  // const [contestStatus, setContestStatus] = useState<
-  //   "ACCEPTING" | "VOTING" | "ENDED" | null
-  // >(null);
+  const ENTRY_START = new Date("2026-05-13T00:00:00");
+  const ENTRY_END = new Date("2026-05-14T20:00:00");
+
   const [contestStatus, setContestStatus] = useState<{
     status: "ACCEPTING" | "VOTING" | "ENDED";
     startTime: string;
@@ -32,32 +32,19 @@ export default function Header({
     axios
       .get(`${baseUrl}/api/photo-contest/status`)
       .then((res) => {
-        // if (res.data.isSuccess) setContestStatus(res.data.result.status);
         if (res.data.isSuccess) setContestStatus(res.data.result);
       })
       .catch((err) => console.error("콘테스트 상태 에러:", err));
   }, [title, baseUrl]);
 
   const getContestStatusBubble = () => {
-    if (!contestStatus) return null;
-
     const now = new Date();
-    const start = new Date(contestStatus.startTime);
-    const end = new Date(contestStatus.endTime);
+    const voteStart = contestStatus ? new Date(contestStatus.startTime) : null;
+    const voteEnd = contestStatus ? new Date(contestStatus.endTime) : null;
 
-    // 시작 전
-    if (now < start) return null;
-
-    // 응모 중
-    if (contestStatus.status === "ACCEPTING" && now >= start && now <= end) {
-      return "사진 응모 중!";
-    }
-
-    // 투표 중
-    if (contestStatus.status === "VOTING") {
+    if (now >= ENTRY_START && now < ENTRY_END) return "사진 응모 중!";
+    if (voteStart && voteEnd && now >= voteStart && now < voteEnd)
       return "사진 투표 중!";
-    }
-
     return null;
   };
 
