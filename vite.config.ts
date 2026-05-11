@@ -14,9 +14,9 @@ export default defineConfig({
         "favicons/icon-512x512.png",
       ],
       manifest: {
-        name: "2026 DS Fest",
-        short_name: "DSFest",
-        description: "2026 DS Fest",
+        name: "2026 <청춘>",
+        short_name: "2026 <청춘>",
+        description: "2026 <청춘>",
         theme_color: "#ffffff",
         background_color: "#ffffff",
         display: "standalone",

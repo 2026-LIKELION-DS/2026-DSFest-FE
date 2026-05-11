@@ -86,7 +86,9 @@ export const SideClick= styled.img`
 export const ContentBox= styled.div`
     display: flex;
     position: relative;
-    width: 354px;
+    width: 100%;
+    max-width: 354px;
+    min-width: 330px;
     height: 500px;
 `
 
@@ -156,8 +158,8 @@ export const ArtistNameTag = styled(NameTag)`
 `
 
 export const FoodtruckNameTag = styled(NameTag)`
-    top:166.3px;
-    right: -9.51px;
+    top:158.3px;
+    right: -6.51px;
     z-index: 5;
 `
 
@@ -303,6 +305,7 @@ export const LinkBox= styled.a`
     gap: 12px;
     align-items: center;
     align-self: stretch;
+    
 `
 
 export const LinkIcon=styled.img`
@@ -316,6 +319,7 @@ export const Link=styled.p`
     font-size: ${theme.typography.buttonSm.fontSize};
     color: ${({ theme }) => theme.colors.fg.primary};
     margin: 0;
+    cursor: pointer;
 `
 
 

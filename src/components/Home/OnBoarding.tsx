@@ -56,7 +56,7 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
 
   return (
     <S.OnBoardWrapper>
-      <S.OnBoardBlurArea />
+      <S.OnBoardBlurArea onClick={onClose}/>
       <S.OnBoardImg src={onBoarding} loading="eager" fetchPriority="high" />
 
       <S.OnBoardBtnBox>
