@@ -55,9 +55,7 @@ export default function ContestPhotoCard({
   return (
     <>
       <S.PhotoCardWrapper>
-        {/* {rank && <S.MedalImg src={medalSrcMap[rank]} alt={`${rank}위`} />} */}
         <S.PhotoCard onClick={handleCardClick}>
-          {/* {rank && <S.MedalImg src={medalSrcMap[rank]} alt={`${rank}위`} />} */}
           <S.PhotoImgWrapper>
             {rank && <S.MedalImg src={medalSrcMap[rank]} alt={`${rank}위`} />}
 

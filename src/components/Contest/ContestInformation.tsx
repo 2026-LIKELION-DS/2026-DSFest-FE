@@ -41,9 +41,9 @@ export default function Modal({
   const handleSubmit = () => {
     axios
       .post(`${baseUrl}/api/photo-contest/vote`, {
-        studentId,
-        studentName,
-        photoEntryIds,
+        studentId: studentId,
+        studentName: studentName,
+        photoEntryId: photoEntryIds[0],
       })
       .then((res) => {
         if (res.data.isSuccess) {
@@ -54,8 +54,9 @@ export default function Modal({
       })
       .catch((err) => {
         console.error("투표 에러:", err);
+
         if (err.response?.status === 409) {
-          setIsDuplicate(true);
+          setIsDuplicate(false);
           setHasError(false);
         } else {
           setIsDuplicate(false);
@@ -92,7 +93,7 @@ export default function Modal({
                 <S.ContentBox>
                   <S.Content>
                     <S.NumTitle>학번</S.NumTitle>
-                    <S.NumBox status={getStatus(studentId)}>
+                    <S.NumBox $status={getStatus(studentId)}>
                       <S.Num
                         placeholder="20260000"
                         value={studentId}
@@ -105,7 +106,7 @@ export default function Modal({
                   </S.Content>
                   <S.Content>
                     <S.NumTitle>이름</S.NumTitle>
-                    <S.NumBox status={getStatus(studentName)}>
+                    <S.NumBox $status={getStatus(studentName)}>
                       <S.Name
                         placeholder="김덕우"
                         value={studentName}

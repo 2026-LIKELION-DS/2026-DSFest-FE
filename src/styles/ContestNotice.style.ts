@@ -55,7 +55,7 @@ export const NoticeList = styled.ol`
   }
 `;
 
-export const NoticeCaption = styled.p`
+export const NoticeCaption = styled.div`
   margin: 10px 0 18px;
   color: ${({ theme }) => theme.colors.fg.subtle};
   font-family: ${theme.typography.bodyMd};
