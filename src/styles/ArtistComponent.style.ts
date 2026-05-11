@@ -365,7 +365,7 @@ export const ArtistModalOverlay = styled.div`
 
 export const ArtistModalContainer = styled.div`
   width: 100%;
-  max-width: 340px;
+  max-width: 354px;
   max-height: 90%;
   background: ${({ theme }) => theme.colors.bg.neutral};
   border-radius: 4px;
@@ -433,7 +433,7 @@ export const ArtistImageRow = styled.div`
 
 export const ModalImage = styled.img`
   flex: 0 0 100px;
-  width: 100px;
+  width: 144px;
   height: 180px;
   object-fit: cover;
   border-radius: 6px;
