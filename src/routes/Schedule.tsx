@@ -45,14 +45,14 @@ const scheduleData = [
         position: "left" as const,
         top: false,
         bottomOffset: -40,
-        width: 110,
+        width: 78,
       },
       {
         src: CamFlower,
         position: "right" as const,
         top: false,
         bottomOffset: -40,
-        width: 110,
+        width: 105,
       },
     ],
     data: [
@@ -97,7 +97,7 @@ const scheduleData = [
         position: "left" as const,
         top: false,
         bottomOffset: -40,
-        width: 110,
+        width: 118,
       },
     ],
     data: [
@@ -147,14 +147,14 @@ const scheduleData = [
         position: "left" as const,
         top: true,
         bottomOffset: 0,
-        width: 85,
+        height: 126,
       },
       {
         src: CamFlower2,
         position: "right" as const,
         top: false,
         bottomOffset: -40,
-        width: 110,
+        width: 115,
       },
     ],
     data: [
