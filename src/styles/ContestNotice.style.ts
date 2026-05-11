@@ -71,3 +71,9 @@ export const ListTitle = styled.div`
   color: ${({ theme }) => theme.colors.fg.primary};
   margin-bottom: 4px;
 `;
+export const NoticeListTitle = styled.span`
+  font-family: ${theme.typography.h3};
+  color: ${({ theme }) => theme.colors.fg.primary};
+  margin-bottom: 4px;
+  display: block;
+`;
