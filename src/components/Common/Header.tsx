@@ -18,23 +18,46 @@ export default function Header({
   onBack,
 }: HeaderProps) {
   const baseUrl = import.meta.env.VITE_API_URL;
-  const [contestStatus, setContestStatus] = useState<
-    "ACCEPTING" | "VOTING" | "ENDED" | null
-  >(null);
+  // const [contestStatus, setContestStatus] = useState<
+  //   "ACCEPTING" | "VOTING" | "ENDED" | null
+  // >(null);
+  const [contestStatus, setContestStatus] = useState<{
+    status: "ACCEPTING" | "VOTING" | "ENDED";
+    startTime: string;
+    endTime: string;
+  } | null>(null);
 
   useEffect(() => {
     if (title !== "청춘 한 컷") return;
     axios
       .get(`${baseUrl}/api/photo-contest/status`)
       .then((res) => {
-        if (res.data.isSuccess) setContestStatus(res.data.result.status);
+        // if (res.data.isSuccess) setContestStatus(res.data.result.status);
+        if (res.data.isSuccess) setContestStatus(res.data.result);
       })
       .catch((err) => console.error("콘테스트 상태 에러:", err));
   }, [title, baseUrl]);
 
   const getContestStatusBubble = () => {
-    if (contestStatus === "ACCEPTING") return "사진 응모 중!";
-    if (contestStatus === "VOTING") return "사진 투표 중!";
+    if (!contestStatus) return null;
+
+    const now = new Date();
+    const start = new Date(contestStatus.startTime);
+    const end = new Date(contestStatus.endTime);
+
+    // 시작 전
+    if (now < start) return null;
+
+    // 응모 중
+    if (contestStatus.status === "ACCEPTING" && now >= start && now <= end) {
+      return "사진 응모 중!";
+    }
+
+    // 투표 중
+    if (contestStatus.status === "VOTING") {
+      return "사진 투표 중!";
+    }
+
     return null;
   };
 
