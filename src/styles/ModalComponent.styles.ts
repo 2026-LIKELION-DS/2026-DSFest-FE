@@ -82,6 +82,7 @@ export const CloseButton = styled.button`
   border: 0.5px solid var(--Stroke-subtle, #9e9e9e);
   font-family: ${theme.typography.buttonMd};
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.fg.primary};
 `;
 
 export const CommonModalOverlay = styled.div`
