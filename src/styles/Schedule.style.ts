@@ -61,81 +61,6 @@ export const DayButton = styled.button<{ $active: boolean }>`
   }
 `;
 
-// export const DaySection = styled.div`
-//   scroll-margin-top: 80px;
-//   position: relative;
-//   &:last-child {
-//     padding-bottom: 85px;
-//   }
-// `;
-
-export const DecoLayer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-`;
-
-export const Leafs = styled.img`
-  position: absolute;
-  width: 85px;
-  height: 88px;
-  top: 135px;
-  left: 6px;
-  z-index: 2;
-  pointer-events: none;
-`;
-
-export const Flower = styled.img`
-  position: absolute;
-  width: 78px;
-  height: 74px;
-  top: 715px;
-  left: 5px;
-  z-index: 2;
-  pointer-events: none;
-`;
-
-export const CamFlower = styled.img`
-  position: absolute;
-  width: 105px;
-  height: 92px;
-
-  top: 715px;
-  right: 2px;
-  z-index: 2;
-  pointer-events: none;
-`;
-
-export const CamLeaf = styled.img`
-  position: absolute;
-  width: 118px;
-  height: 103px;
-  top: 1407px;
-  z-index: 2;
-  pointer-events: none;
-`;
-
-export const Flowers2 = styled.img`
-  position: absolute;
-  height: 126px;
-  top: 1497px;
-  left: -10px;
-  z-index: 2;
-  pointer-events: none;
-`;
-export const CamFlower2 = styled.img`
-  position: absolute;
-  width: 115px;
-  top: 1977px;
-  right: -12px;
-  z-index: 2;
-  pointer-events: none;
-`;
-
 export const FloatingCircleBtn = styled.div<{ $isVisible?: boolean }>`
   display: flex;
   margin-bottom: 55px;
@@ -250,7 +175,6 @@ export const FloatingButton = styled.div<{ $hasTopBtn: boolean }>`
 `;
 
 //추가
-// 위에 있는 DaySection 이걸로 교체 (position: relative 이미 있음 ✅)
 export const DaySection = styled.div`
   scroll-margin-top: 80px;
   position: relative;
@@ -259,22 +183,6 @@ export const DaySection = styled.div`
   }
 `;
 
-// //추가 블록 전체 삭제 (DaySection 중복, SectionDeco만 남기기)
-// export const SectionDeco = styled.img<{
-//   $position: "left" | "right";
-//   $top: boolean;
-//   $bottomOffset: number;
-//   $width?: number;
-// }>`
-//   position: absolute;
-//   ${({ $position }) =>
-//     $position === "right" ? "right: -24px;" : "left: -24px;"}
-//   ${({ $top, $bottomOffset }) =>
-//     $top ? "top: 0px;" : `bottom: ${$bottomOffset}px;`}
-//   width: ${({ $width }) => ($width ? `${$width}px` : "110px")};
-//   pointer-events: none;
-//   z-index: 2;
-// `;
 // SectionDeco 컴포넌트 수정
 export const SectionDeco = styled.img<{
   $position: "left" | "right";
