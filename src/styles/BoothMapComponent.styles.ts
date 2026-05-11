@@ -323,3 +323,14 @@ export const BoothNameText = styled.span`
   max-height: 2.4em;
   max-width: 80px;
 `;
+
+export const EmptySlot = styled.div`
+  width: 60px;
+  height: 41.5px;
+  margin-bottom: -4px;
+  margin-right: -4.5px;
+
+  // border: 1px dashed ${({ theme }) => theme.colors.bg.brandLight};
+
+  pointer-events: none;
+`;
