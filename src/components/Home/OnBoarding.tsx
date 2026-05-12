@@ -40,7 +40,7 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
         const data = await response.json();
 
         if (data.isSuccess && data.result?.uuid) {
-          localStorage.setItem("guest_uuid", data.result.uuid);
+          localStorage.setItem("guest_uuid", data.data.uuid);
 
           // 개발 환경에서만 로그 출력
           if (import.meta.env.DEV) {

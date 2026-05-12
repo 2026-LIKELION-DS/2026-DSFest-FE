@@ -62,7 +62,7 @@ export const ThemeButton = styled.button<{ $active: boolean }>`
 export const List = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
+  padding: 0 16px 26px 16px;
   gap: 10px;
 `;
 
