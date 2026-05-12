@@ -20,31 +20,34 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
   }, []);
 
   useEffect(() => {
-    console.log("useEffect 실행됨");
     const initGuestUser = async () => {
       const BaseUrl = import.meta.env.VITE_API_URL;
 
-      const savedUuid = localStorage.getItem("guest_uuid");
-
-      if (savedUuid) {
-        console.log("기존 게스트 접속:", savedUuid);
-        return;
-      }
+      // 기존 UUID 가져오기
+      const savedUuid = localStorage.getItem("guest_uuid") || null;
 
       try {
-        console.log("신규 게스트 UUID 발급 요청...");
         const response = await fetch(`${BaseUrl}/api/users/guest`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            uuid: savedUuid,
+          }),
         });
 
         const data = await response.json();
 
         if (data.isSuccess && data.result?.uuid) {
           localStorage.setItem("guest_uuid", data.result.uuid);
-          console.log("신규 UUID 저장 완료:", data.result.uuid);
+
+          // 개발 환경에서만 로그 출력
+          if (import.meta.env.DEV) {
+            console.log("UUID 업데이트 완료");
+          }
         } else {
-          console.error("발급 실패:", data.message);
+          console.error("게스트 UUID 처리 실패:", data.message);
         }
       } catch (error) {
         console.error("서버 통신 에러:", error);
