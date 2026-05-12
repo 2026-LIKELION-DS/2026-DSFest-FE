@@ -41,11 +41,11 @@ export default function Home() {
   const [urgentId, setUrgentId] = useState<number | null>(null);
 
   const [showOnBoarding, setShowOnBoarding] = useState<boolean>(() => {
-    return localStorage.getItem("hasSeenOnboarding") === null;
+    return localStorage.getItem("hasSeenOnboarding_v2") === null;
   });
 
   const handleCloseOnBoarding = () => {
-    localStorage.setItem("hasSeenOnboarding", "true");
+    localStorage.setItem("hasSeenOnboarding_v2", "true");
     setShowOnBoarding(false);
   };
 
