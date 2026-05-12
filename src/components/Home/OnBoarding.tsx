@@ -39,8 +39,8 @@ export default function OnBoarding({ onClose }: OnBoardingProps) {
 
         const data = await response.json();
 
-        if (data.status === 200 && data.data?.uuid) {
-          localStorage.setItem("guest_uuid", data.data.uuid);
+        if (data.isSuccess && data.result?.uuid) {
+          localStorage.setItem("guest_uuid", data.result.uuid);
 
           if (import.meta.env.DEV) {
             console.log("UUID 업데이트 완료");
