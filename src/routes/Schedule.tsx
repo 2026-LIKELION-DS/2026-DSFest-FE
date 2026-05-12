@@ -111,17 +111,13 @@ const scheduleData = [
         id: 20,
         title: "Quiz! 덕쏭달쏭",
         time: "11:00~13:00",
+        link: "/notice/74",
       },
       {
         id: 24,
         title: "밤부스",
         time: "16:00~19:30",
         link: "/booth?time=night&day=2",
-      },
-      {
-        id: 25,
-        title: "덕우존 입장",
-        time: "17:30~",
       },
       { id: 26, title: "덕우존 입장", time: "17:30~" },
       {
@@ -182,8 +178,9 @@ const scheduleData = [
       },
       {
         id: 42,
-        title: "총학생회 프로그램",
+        title: "총학생회\n프로그램",
         time: "18:20~19:20",
+        link: "/notice/75",
       },
       {
         id: 44,
