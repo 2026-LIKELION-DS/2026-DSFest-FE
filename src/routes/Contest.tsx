@@ -5,7 +5,7 @@ import ContestImg from "../assets/Contest/Contest.png";
 import ContestVoteButton from "../components/Contest/ContestVoteButton";
 import axios from "axios";
 
-const ENTRY_START = new Date("2026-05-13T13:00:00");
+const ENTRY_START = new Date("2026-05-13T10:00:00");
 const ENTRY_END = new Date("2026-05-14T20:00:00");
 
 type ContestPhase = "before" | "entry" | "waiting" | "vote" | "ended";
