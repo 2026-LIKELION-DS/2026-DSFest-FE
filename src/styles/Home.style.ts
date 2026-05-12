@@ -83,6 +83,14 @@ export const SideClick= styled.img`
     height: 16px;
 `
 
+export const ContentBigBox= styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+`
+
 export const ContentBox= styled.div`
     display: flex;
     position: relative;
@@ -254,6 +262,14 @@ export const Bracelet = styled.img`
     cursor: pointer;
 `
 
+export const Contentguide = styled.p`
+    color: ${({ theme }) => theme.colors.fg.subtle};
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    margin: 0;
+`
 
 export const StudentCouncilBox= styled.div`
     display: flex;
