@@ -175,7 +175,7 @@ function ArtistPage() {
         if (dayParam && ["1", "2", "3"].includes(dayParam)) {
           const dayKey = `day${dayParam}` as DayKey;
           setCurrentDay(dayKey);
-          fetchArtistsByDay(dayKey); // 해당 day 아티스트 다시 fetch
+          fetchArtistsByDay(dayKey);
         } else if (apiArtists[0]) {
           setCurrentDay(`day${apiArtists[0].festivalDay}` as DayKey);
         }

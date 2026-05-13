@@ -211,7 +211,7 @@ export const NoticeDetailPage = styled.main`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.bg.neutral};
 `;
 
 export const DetailTitle = styled.h2`
