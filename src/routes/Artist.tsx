@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 import type { Artist } from "../components/Artist/ArtistCard";
@@ -84,6 +84,7 @@ const getPlaylistDesc = (status?: CountdownStatus) => {
 
 function ArtistPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const container = document.querySelector(
@@ -166,7 +167,16 @@ function ArtistPage() {
 
         setArtistData(apiArtists);
 
-        if (apiArtists[0]) {
+        //   if (apiArtists[0]) {
+        //     setCurrentDay(`day${apiArtists[0].festivalDay}` as DayKey);
+        //   }
+        // }
+        const dayParam = searchParams.get("day");
+        if (dayParam && ["1", "2", "3"].includes(dayParam)) {
+          const dayKey = `day${dayParam}` as DayKey;
+          setCurrentDay(dayKey);
+          fetchArtistsByDay(dayKey); // 해당 day 아티스트 다시 fetch
+        } else if (apiArtists[0]) {
           setCurrentDay(`day${apiArtists[0].festivalDay}` as DayKey);
         }
       } catch (error) {
