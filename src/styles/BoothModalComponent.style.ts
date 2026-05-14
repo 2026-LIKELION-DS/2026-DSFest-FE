@@ -154,6 +154,7 @@ export const Description = styled.div`
   color: ${({ theme }) => theme.colors.fg.primary};
   word-break: keep-all;
   line-height: 1.5;
+  white-space: pre-wrap;
 `;
 export const LinkSection = styled.div`
   display: flex;
