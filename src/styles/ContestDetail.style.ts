@@ -133,4 +133,6 @@ export const Name = styled.div`
 export const Description = styled.div`
   font-family: ${theme.typography.bodyMd};
   color: ${theme.colors.fg.primary};
+  white-space: pre-wrap;
+  word-break: break-all;
 `;
