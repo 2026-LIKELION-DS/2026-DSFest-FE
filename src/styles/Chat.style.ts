@@ -17,6 +17,7 @@ export const Bubble = styled.div<{ $isMine: boolean }>`
   max-width: 260px;
   padding: 12px 16px;
   border-radius: 16px;
+  word-wrap: break-word;
 
   background: ${({ $isMine, theme }) =>
     $isMine ? theme.colors.bg.brand : theme.colors.bg.neutral};
