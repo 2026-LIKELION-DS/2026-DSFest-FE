@@ -185,7 +185,7 @@ const scheduleData = [
       {
         id: 44,
         title: "아티스트 공연",
-        time: "18:20~20:20",
+        time: "19:20~20:20",
         link: "/artist?day=3",
       },
       {
