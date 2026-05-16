@@ -141,13 +141,18 @@ const BoothPage: React.FC = () => {
     // const hours = now.getHours();
     const hours = now.getHours();
 
-    if (year === 2026 && month === 5) {
-      if (date <= 13) setActiveDay(1);
-      else if (date === 14) setActiveDay(2);
-      else setActiveDay(3);
-    } else if (year >= 2026 && month >= 5 && date > 15) {
-      setActiveDay(3);
+    if (year >= 2026 && month >= 5 && date > 15) {
+      setActiveDay(1);
+      setIsNight(false);
+      return;
     }
+
+    if (year >= 2026 && month >= 5 && date > 15) {
+      setActiveDay(1);
+      setIsNight(false);
+      return;
+    }
+
     // isNight 설정 부분 제거
     // if (hours >= 16) {
     //   setIsNight(true);
@@ -161,9 +166,7 @@ const BoothPage: React.FC = () => {
       if (year === 2026 && month === 5) {
         if (date <= 13) setActiveDay(1);
         else if (date === 14) setActiveDay(2);
-        else setActiveDay(3);
-      } else if (year >= 2026 && month >= 5 && date > 15) {
-        setActiveDay(3);
+        else if (date === 15) setActiveDay(3);
       }
     }
     const timeParam = searchParams.get("time");
