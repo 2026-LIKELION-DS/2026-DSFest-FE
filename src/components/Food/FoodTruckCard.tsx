@@ -9,7 +9,7 @@ import thumbsUp from "../../assets/Food/ThumbsUp.svg";
 import thumbsUpFill from "../../assets/Food/ThumbsUpFill.svg";
 import chevronDown from "../../assets/Food/ChevronDown.svg";
 import chevronUp from "../../assets/Food/ChevronUp.svg";
-import foodTruckDetailsData from "../../data/foodtruckDetail.json";
+import foodTruckDetailsData from "../../data/FoodJson/foodtruckDetail.json";
 interface Menu {
   name: string;
   price: string;

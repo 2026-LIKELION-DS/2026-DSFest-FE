@@ -6,6 +6,8 @@ import FoodTruckList from "../components/Food/FoodTruckList";
 import FoodFloatingButtons from "../components/Food/FoodFloatingButtons";
 import Modal from "../components/Common/ModalComponent";
 
+import noticesData from "../data/NoticeJson/NoticesDetail.json";
+
 import * as S from "../styles/Food.styles";
 
 interface FoodNotice {
@@ -22,20 +24,7 @@ interface FoodNotice {
 
 const FOOD_NOTICE_ID = 4;
 
-const getGuestUuid = () => {
-  const key = "guest_uuid";
-  const savedUuid = localStorage.getItem(key);
-
-  if (savedUuid) return savedUuid;
-
-  const newUuid = crypto.randomUUID();
-  localStorage.setItem(key, newUuid);
-
-  return newUuid;
-};
-
 export default function Food() {
-  const API_URL = import.meta.env.VITE_API_URL;
   const [targetStoreName, setTargetStoreName] = useState<string | null>(null);
   const [isVeganSelected, setIsVeganSelected] = useState(false);
   const [isNoticeOpen, setIsNoticeOpen] = useState(false);
@@ -87,28 +76,18 @@ export default function Food() {
     });
   };
 
-  const handleOpenNotice = async () => {
-    try {
-      const response = await fetch(`${API_URL}/api/notices/${FOOD_NOTICE_ID}`, {
-        method: "GET",
-        headers: {
-          "guest-uuid": getGuestUuid(),
-        },
-      });
+  const handleOpenNotice = () => {
+    const foundNotice = noticesData.find(
+      (notice) => notice.id === FOOD_NOTICE_ID
+    );
 
-      const data = await response.json();
-
-      if (!response.ok || !data.isSuccess) {
-        alert(data.message || "공지사항을 불러오지 못했습니다.");
-        return;
-      }
-
-      setNotice(data.result);
-      setIsNoticeOpen(true);
-    } catch (error) {
-      console.error(error);
-      alert("공지사항 조회 중 오류가 발생했습니다.");
+    if (!foundNotice) {
+      alert("공지사항을 찾을 수 없습니다.");
+      return;
     }
+
+    setNotice(foundNotice);
+    setIsNoticeOpen(true);
   };
 
   return (

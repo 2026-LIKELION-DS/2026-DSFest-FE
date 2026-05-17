@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import FoodTruckCard from "./FoodTruckCard";
-import foodTruckListData from "../../data/foodtruckList.json";
+import foodTruckListData from "../../data/FoodJson/foodtruckList.json";
 
 interface Props {
   isVeganSelected: boolean;

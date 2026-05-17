@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "../../utils/analytics";
 import * as S from "../../styles/FoodBanner.styles";
 
-import bannerData from "../../data/foodtruckBanners.json";
+import bannerData from "../../data/FoodJson/foodtruckBanners.json";
 
 import pizza from "../../assets/Food/Pizza.svg";
 import chicken from "../../assets/Food/Chicken.svg";
