@@ -1,0 +1,2111 @@
+{
+  "DAY": [
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 1,
+        "boothNumber": 1,
+        "name": "총학 운영 본부",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "affiliation": "총학생회",
+        "description": "스태프 관리를 비롯한 근화제 전반 운영을 총괄합니다. 상시 운영할 예정이니 문의 사항이 있을 시 언제든 방문해 주시기 바랍니다! \n더불어 총학생회비 납부자 대상으로 굿즈 배부도 진행될 예정입니다. 덕성과 근화를 담은 예쁜 카라비너도 준비되어 있으니 많은 관심 부탁드립니다.",
+        "openKakaoUrl": "http://pf.kakao.com/_gUyQn",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/journey_mode_duksung/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": "https://youtube.com/channel/UC2LzUL6q68TM0A449JwlxYg?si=4bHUJx2UEQjhMIez",
+        "tags": ["운영 종료"],
+        "categories": [],
+        "imageUrls": [],
+        "operatingDays": [
+          "13일(수) 09:00~16:00, 16:00~22:00",
+          "14일(목) 09:00~16:00, 16:00~22:00",
+          "15일(금) 09:00~16:00, 16:00~22:00"
+        ],
+        "positions": [
+          "1일차 낮: 33번",
+          "1일차 밤: 33번",
+          "2일차 낮: 33번",
+          "2일차 밤: 33번",
+          "3일차 낮: 33번",
+          "3일차 밤: 33번"
+        ]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 2,
+        "boothNumber": 2,
+        "name": "청춘 스토어",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "affiliation": "총학생회",
+        "description": "더욱 푸르게 기억될 <청춘>을 위해, 2026 근화제 한정판 굿즈를 제작하였습니다.\n유니폼, 슬로건, 안경닦이, 밴드, 스티커 등 다양한 굿즈를 만나보실 수 있습니다.\n또한, ‘낭만 충전소’와 ‘행복 충전소’에서 사용 가능한 돗자리와 테이블은 청춘 스토어에서 유료로 대여하실 수 있습니다.",
+        "openKakaoUrl": "http://pf.kakao.com/_gUyQn",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/journey_mode_duksung/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": "https://youtube.com/channel/UC2LzUL6q68TM0A449JwlxYg?si=4bHUJx2UEQjhMIez",
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/ccstore_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/ccstore_2.jpg"
+        ],
+        "operatingDays": [
+          "13일(수) 11:00~16:00, 16:00~19:00",
+          "14일(목) 11:00~16:00, 16:00~19:00",
+          "15일(금) 11:00~16:00, 16:00~19:00"
+        ],
+        "positions": [
+          "1일차 낮: 4번",
+          "1일차 밤: 4번",
+          "2일차 낮: 4번",
+          "2일차 밤: 4번",
+          "3일차 낮: 4번",
+          "3일차 밤: 4번"
+        ]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 3,
+        "boothNumber": 3,
+        "name": "청춘 매치: 행운을 잡아라",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "affiliation": "총학생회",
+        "description": "<총학을 이겨라!>, <행운의 문장 쓰기>를 체험할 수 있는 총학생회 주관 참여형 부스입니다.\n프로그램 참여 시 야광팔찌를 무료로 제공하며, ‘총학을 이겨라!’에서 승리할 경우 비눗방울을 추가로 드립니다.\n두 프로그램에 모두 참여하시면 럭키드로우 응모 기회가 제공됩니다.\n2026 근화제에서 행운의 주인공이 되어보세요!",
+        "openKakaoUrl": "http://pf.kakao.com/_gUyQn",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/journey_mode_duksung/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": "https://youtube.com/channel/UC2LzUL6q68TM0A449JwlxYg?si=4bHUJx2UEQjhMIez",
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/ccmatch_1.png",
+          "/src/assets/Booth/BoothJsonIMG/ccmatch_2.jpg"
+        ],
+        "operatingDays": [
+          "13일(수) 11:00~14:30, 16:00~19:30",
+          "14일(목) 11:00~14:30, 16:00~19:30",
+          "15일(금) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": [
+          "1일차 낮: 19번",
+          "1일차 밤: 19번",
+          "2일차 낮: 19번",
+          "2일차 밤: 19번",
+          "3일차 낮: 19번",
+          "3일차 밤: 19번"
+        ]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 4,
+        "boothNumber": 4,
+        "name": "추억 충전소(총장네컷)",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "affiliation": "총학생회",
+        "description": "15일 단 하루! 특별한 추억 충전소가 <청춘>을 찾아옵니다. 총장님과 함께 사진을 찍고 추억을 남겨보세요!",
+        "openKakaoUrl": "http://pf.kakao.com/_gUyQn",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/journey_mode_duksung/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": "https://youtube.com/channel/UC2LzUL6q68TM0A449JwlxYg?si=4bHUJx2UEQjhMIez",
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": [],
+        "operatingDays": ["15일(금) 11:00~14:30, 16:00~19:30"],
+        "positions": ["3일차 낮: 5번", "3일차 밤: 5번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 5,
+        "boothNumber": 5,
+        "name": "도봉경찰서",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "경찰청",
+        "affiliation": "경찰청",
+        "description": "도봉경찰서X도봉 중독관리 통합지원센터와 함께하는 중독예방캠페인",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": [],
+        "imageUrls": [],
+        "operatingDays": ["13일(수) 11:00~14:30, 16:00~19:30"],
+        "positions": ["1일차 낮: 1번", "1일차 밤: 1번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 6,
+        "boothNumber": 6,
+        "name": "DIAA(다이아) 외교단 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "국제처",
+        "affiliation": "국제처",
+        "description": "세계 행운 부적 만들기' 체험과 '글로벌 퀴즈 스탬프 미션'을 통해 세계 문화를 체험하며 학우들과 유대감을 쌓을 수있습니다.",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [],
+        "operatingDays": [
+          "14일(목) 11:00~14:30, 16:00~19:30",
+          "15일(금) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": [
+          "2일차 낮: 1번",
+          "2일차 밤: 1번",
+          "3일차 낮: 1번",
+          "3일차 밤: 1번"
+        ]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 7,
+        "boothNumber": 7,
+        "name": "장미원골목시장 캠퍼스 마켓",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "라이즈1",
+        "affiliation": "라이즈1",
+        "description": "장미원골목시장 상점이 참여하는 캠퍼스 팝업 마켓으로 다양한 먹거리와 상품을 소개",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": [],
+        "operatingDays": ["14일(목) 11:00~14:30, 16:00~19:30"],
+        "positions": ["2일차 낮: 8번", "2일차 밤: 8번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 8,
+        "boothNumber": 8,
+        "name": "장미원골목시장과 함께하는\nRISE사업단 지역상생 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "라이즈2",
+        "affiliation": "라이즈2",
+        "description": "RISE 사업단 홍보 이벤트 참여 시 장미원골목시장 인기 간식을 제공하는 참여형 부스",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [],
+        "operatingDays": ["14일(목) 11:00~14:30, 16:00~19:30"],
+        "positions": ["2일차 낮: 9번", "2일차 밤: 9번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 9,
+        "boothNumber": 9,
+        "name": "로컬브랜드 서포터즈 체험부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "라이즈3",
+        "affiliation": "라이즈3",
+        "description": "꽃, 빵, 양말을 조합해 나만의 의미를 담은 커스텀 상품을 만드는 체험형 부스",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험"],
+        "imageUrls": [],
+        "operatingDays": ["14일(목) 11:00~14:30, 16:00~19:30"],
+        "positions": ["2일차 낮: 10번", "2일차 밤: 10번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 10,
+        "boothNumber": 10,
+        "name": "대학일자리본부1",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부1",
+        "affiliation": "대학일자리본부1",
+        "description": "커리어서포터즈와 함께하는 대학일자리본부 홍보 프로그램",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": [],
+        "imageUrls": [],
+        "operatingDays": [
+          "13일(수) 11:00~14:30, 16:00~19:30",
+          "14일(목) 11:00~14:30, 16:00~19:30",
+          "15일(금) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": [
+          "1일차 낮: 6번",
+          "1일차 밤: 6번",
+          "2일차 낮: 6번",
+          "2일차 밤: 6번",
+          "3일차 낮: 8번",
+          "3일차 밤: 8번"
+        ]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 11,
+        "boothNumber": 11,
+        "name": "대학일자리본부2",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부2",
+        "affiliation": "대학일자리본부2",
+        "description": "재학생맞춤형고용서비스 상담 및 가입 부스 운영",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": [],
+        "imageUrls": [],
+        "operatingDays": [
+          "13일(수) 11:00~14:30, 16:00~19:30",
+          "14일(목) 11:00~14:30, 16:00~19:30",
+          "15일(금) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": [
+          "1일차 낮: 7번",
+          "1일차 밤: 7번",
+          "2일차 낮: 7번",
+          "2일차 밤: 7번",
+          "3일차 낮: 8번",
+          "3일차 밤: 9번"
+        ]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 77,
+        "boothNumber": 77,
+        "name": "대학일자리본부 1, 2",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부 1, 2",
+        "affiliation": "대학일자리본부 1, 2",
+        "description": "커리어서포터즈와 함께하는 대학일자리본부 홍보 프로그램\n\n재학생맞춤형고용서비스 상담 및 가입 부스 운영",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": [],
+        "imageUrls": [],
+        "operatingDays": ["15일(금) 11:00~14:30"],
+        "positions": ["3일차 낮: 8번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 12,
+        "boothNumber": 12,
+        "name": "강북청년창업마루 X 강북청년일자리센터",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "강북청년창업마루 X 강북청년일자리센터",
+        "affiliation": "강북청년창업마루 X 강북청년일자리센터",
+        "description": "강북청년창업마루 사업 안내, 청년지원·창업·진로상담·직무교육 안내, 방문학생 갓챠 이벤트 진행",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [],
+        "operatingDays": ["13일(수) 11:00~14:30, 16:00~19:30"],
+        "positions": ["1일차 낮: 5번", "1일차 밤: 5번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 13,
+        "boothNumber": 13,
+        "name": "도봉구 보건소X서울시 자살예방센터",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "도봉구 보건소X서울시 자살예방센터",
+        "affiliation": "도봉구 보건소X\n서울시 자살예방센터",
+        "description": "마음 건강 검진 및 나를 마음을 돌아보는 활동을 통해 자살예방 생명존중문화 조성",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [],
+        "operatingDays": ["15일(금) 11:00~14:30, 16:00~19:30"],
+        "positions": ["3일차 낮: 6번", "3일차 밤: 6번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 14,
+        "boothNumber": 14,
+        "name": "옐로우 링크",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "배리어프리",
+        "affiliation": "배리어프리",
+        "description": "<체험형 부스>\n- 점자 읽기 체험  \n- 물건 맞히기 게임  \n<참여형 부스>\n- 퀴즈 이벤트  \n- 게시판 꾸미기 활동  \n참여자에게는 ‘옐로우블록 특성이 반영된 사은품’이 제공될 예정입니다.",
+        "openKakaoUrl": "https://open.kakao.com/o/sn6AHQqi",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/dswu_yellowblock/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/yellowblock_1.jpeg"],
+        "operatingDays": [
+          "13일(수) 15:00~16:00, 16:00~22:00",
+          "14일(목) 15:00~16:00, 16:00~22:00"
+        ],
+        "positions": [
+          "1일차 낮: 30번",
+          "1일차 밤: 30번",
+          "2일차 낮: 30번",
+          "2일차 밤: 30번"
+        ]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 15,
+        "boothNumber": 15,
+        "name": "강남브랜드안과 놀이와 상담이 공존하는 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "강남브랜드안과",
+        "affiliation": "강남브랜드안과",
+        "description": "찬란하게 빛나는‘청춘’의 시간을 온전히 바라보고 느낄 수 있는 선명한 눈",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [],
+        "operatingDays": [
+          "13일(수) 11:00~14:30, 16:00~19:30",
+          "14일(목) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": [
+          "1일차 낮: 8번",
+          "1일차 밤: 8번",
+          "2일차 낮: 12번",
+          "2일차 밤: 12번"
+        ]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 16,
+        "boothNumber": 16,
+        "name": "서울베스트의료의원",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "서울베스트의료의원",
+        "affiliation": "서울베스트의료의원",
+        "description": "- 국가 무료 검진 안내\n- 대학검진 소개 혜택 안내\n- 종이뽑기 이벤트(무료 검진권, 문화상품권, 비타오백, 단백질 음료, 초코바 등 제공 예정)",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [],
+        "operatingDays": [
+          "13일(수) 11:00~14:30, 16:00~19:30",
+          "14일(목) 11:00~14:30, 16:00~19:30",
+          "15일(금) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": [
+          "1일차 낮: 9번",
+          "1일차 밤: 9번",
+          "2일차 낮: 11번",
+          "2일차 밤: 11번",
+          "3일차 낮: 7번",
+          "3일차 밤: 7번"
+        ]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 17,
+        "boothNumber": 17,
+        "name": "시원스쿨",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "시원스쿨",
+        "affiliation": "시원스쿨",
+        "description": "어학 자격증(토익, 토익스피킹, 오픽) 관련 교육 프로그램 홍보 및 상담 부스 운영과 맞춤형 학습 안내 및 점수 향상 전략 제공",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": [],
+        "imageUrls": [],
+        "operatingDays": ["14일(목) 11:00~14:30, 16:00~19:30"],
+        "positions": ["2일차 낮: 13번", "2일차 밤: 13번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 18,
+        "boothNumber": 18,
+        "name": "올레이디짐",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "올레이디짐",
+        "affiliation": "올레이디짐",
+        "description": "올레이디짐과 함께하는 무료 인바디 & 맞춤 식단 상담 🍽️ 꽝 없는 뽑기 이벤트까지! 지금 바로 부스로 놀러오세요 🎉💪",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [],
+        "operatingDays": ["14일(목) 11:00~14:30, 16:00~19:30"],
+        "positions": ["2일차 낮: 5번", "2일차 밤: 5번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 19,
+        "boothNumber": 19,
+        "name": "팔색미인",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "팔색미인",
+        "affiliation": "팔색미인",
+        "description": "1) 방문 학생 대상 <팔색미인> 미스트 배부\n2) 이벤트 진행을 통한 세럼 제공",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [],
+        "operatingDays": ["15일(금) 11:00~14:30"],
+        "positions": ["3일차 낮: 9번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 20,
+        "boothNumber": 20,
+        "name": "9회말 2아웃",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "9회말 2아웃",
+        "affiliation": "창업동아리/소모임",
+        "description": "야구 유니폼 입고 스냅, 폴라로이드 인생샷 찍기부터, DIY 비즈 키링 만들기 체험과 야구 경기 티켓이 걸린 꽝 없는 럭키드로우까지, 특별한 추억을 배달해 드립니다!",
+        "openKakaoUrl": "@9_th_2_nd",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "DIY/만들기 체험", "판매"],
+        "imageUrls": [],
+        "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 16:00~19:30"],
+        "positions": ["1일차 낮: 13번", "2일차 밤: 28번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 21,
+        "boothNumber": 21,
+        "name": "빠순희 소품샵",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "가상현실융합학과",
+        "affiliation": "전공",
+        "description": "다가올 유행을 가현융이 먼저 선보입니다. '네임택 키링' 판매와 럭키드로우 이벤트를 함께 즐길 수 있는 일일 팝업 소품샵입니다.",
+        "openKakaoUrl": "https://open.kakao.com/o/sykF5fsi",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_vr/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/bsh_1.jpg"],
+        "operatingDays": ["14일(목) 11:00~14:30, 16:00~19:30"],
+        "positions": ["2일차 낮: 17번", "2일차 밤: 18번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 22,
+        "boothNumber": 22,
+        "name": "과기대는 오락오락하지 않다",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "과학기술대학",
+        "affiliation": "단과대학",
+        "description": "🍀700원의 행운🍀 테트리스, 슬롯머신, 학생회를 이겨라까지 한판 하고 가세요! 저희 오락실에는 빈손으로 돌아가는 참가자가 없답니다 👾 동대문 시장 안 부러운 귀여운 부품들로 나만의 키캡 키링도 만들어보세요!",
+        "openKakaoUrl": "http://pf.kakao.com/_xnxexaRX/chat",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "DIY/만들기 체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/science_1.png",
+          "/src/assets/Booth/BoothJsonIMG/science_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/science_3.jpg"
+        ],
+        "operatingDays": [
+          "13일(수) 11:00~14:30",
+          "14일(목) 11:00~14:30",
+          "15일(금) 16:00~19:30"
+        ],
+        "positions": ["1일차 낮: 18번", "2일차 낮: 15번", "3일차 밤: 18번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 23,
+        "boothNumber": 23,
+        "name": "‘국’문방구",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "국어국문학전공",
+        "affiliation": "전공",
+        "description": "세종대왕이 지키는 국문방구에서 뽑기 한 판 👑 \n국문학전공만의 티셔츠까지 챙겨가세요 😎",
+        "openKakaoUrl": "https://open.kakao.com/o/shy4tmni",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": [],
+        "operatingDays": ["15일(금) 11:00~14:30"],
+        "positions": ["3일차 낮: 18번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 24,
+        "boothNumber": 24,
+        "name": "🏴‍☠️ 글로벌융합대학 해적단 🏴‍☠️",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "글로벌융합대학",
+        "affiliation": "단과대학",
+        "description": "⚓️ 세계 선도 반다나 & 직진 글융 카라비너 판매\n🎈 해적의 준비물! 해적 세트 (풍선칼)\n🔮 유리병으로 행운 포션 만들기\n🐊 오늘의 운세를 알려주는 악어",
+        "openKakaoUrl": "https://open.kakao.com/o/sqiswT5h",
+        "everytimeUrl": "https://everytime.kr/551969",
+        "instagramUrl": "https://www.instagram.com/dswu_global/?hl=ko",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/gycrew_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/gycrew_2.png",
+          "/src/assets/Booth/BoothJsonIMG/gycrew_3.jpg",
+          "/src/assets/Booth/BoothJsonIMG/gycrew_4.png"
+        ],
+        "operatingDays": [
+          "13일(수) 11:00~14:30, 16:00~19:30",
+          "14일(목) 16:00~19:30"
+        ],
+        "positions": ["1일차 낮: 29번", "1일차 밤: 28번", "2일차 밤: 21번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 25,
+        "boothNumber": 25,
+        "name": "꽃신을 신고",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "꽃신을 신고",
+        "affiliation": "동아리",
+        "description": "🪢 전통 매듭 키링 만들기 체험\n👛 미니 복주머니 키링/ 전통 매듭 팔찌 판매\n🍵 전통 원단으로 만든 티코스터 판매\n🎲 윷놀이,투호 등 전통놀이 체험\n✨ 참여/구매 시 소소한 이벤트 기회까지! ✨",
+        "openKakaoUrl": "https://open.kakao.com/o/s3Q3lPsh",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/floral_shoes/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/flowershoes_1.png"],
+        "operatingDays": ["15일(금) 11:00~14:30, 16:00~19:30"],
+        "positions": ["3일차 낮: 22번", "3일차 밤: 30번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 26,
+        "boothNumber": 26,
+        "name": "덕냥당",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "덕냥당",
+        "affiliation": "동아리",
+        "description": "이번 근화제에서는 덕냥신을 가까이 두어 평안을 기원하는 굿즈와 오마모리 접기 체험이 준비되어 있습니다.\n추후 디자인 공개 예정인 티셔츠 2종도 선행 판매를 진행하니 기대해 주세요!",
+        "openKakaoUrl": "https://open.kakao.com/o/sSYohfsi",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duknyangdang/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/dnd_1.png",
+          "/src/assets/Booth/BoothJsonIMG/dnd_2.png",
+          "/src/assets/Booth/BoothJsonIMG/dnd_3.png",
+          "/src/assets/Booth/BoothJsonIMG/dnd_4.png",
+          "/src/assets/Booth/BoothJsonIMG/dnd_5.png"
+        ],
+        "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 11:00~14:30"],
+        "positions": ["1일차 밤: 27번", "2일차 낮: 20번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 27,
+        "boothNumber": 27,
+        "name": "그런데 그때 갑자기 검도부가 나타났다 머리잇~!",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "덕성검도부",
+        "affiliation": "동아리",
+        "description": "누구나 가슴속에 줘패고 싶은 무언가가 있다\n\n타격대, 검도 도복 체험/찌라시, 타투스티커 판매\n타격게임 1등에게는 치킨을 드립니다!",
+        "openKakaoUrl": "@duksung_kumdo",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_kumdo/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/sword_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/sword_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/sword_3.jpg"
+        ],
+        "operatingDays": [
+          "13일(수) 16:00~19:30",
+          "14일(목) 16:00~19:30",
+          "15일(금) 16:00~19:30"
+        ],
+        "positions": ["1일차 밤: 13번", "2일차 밤: 26번", "3일차 밤: 24번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 28,
+        "boothNumber": 28,
+        "name": "도담도담",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "도담도담",
+        "affiliation": "동아리",
+        "description": "종이접기, 핀뱃지, 스탬프키링, 매듭팔찌 만들기 체험도 할 수 있고, 여아 권리 캠페인을 참여하여 미션 완료 후 상품까지 받아가세요!",
+        "openKakaoUrl": "https://open.kakao.com/o/sPxt5xhi",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/ds_dodam/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/dodam_1.jpeg"],
+        "operatingDays": [
+          "14일(목) 16:00~19:30",
+          "15일(금) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": ["2일차 밤: 3번", "3일차 낮: 12번", "3일차 밤: 23번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 29,
+        "boothNumber": 29,
+        "name": "언더덕씨",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "동아리 언더덕씨",
+        "affiliation": "동아리",
+        "description": "'심해 빌런' 타겟을 명중시키는 사격 미션 게임!  랜덤 무기로 명중 시 나만의 즉석 포토키링 무료 제작! 단추 머리핀 및 포토키링 Custom 부스 함께 운영합니다!",
+        "openKakaoUrl": "010-7156-0687",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/swim_underduksea/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "DIY/만들기 체험"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/underduksea_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/underduksea_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/underduksea_3.jpg",
+          "/src/assets/Booth/BoothJsonIMG/underduksea_4.jpg",
+          "/src/assets/Booth/BoothJsonIMG/underduksea_5.jpg"
+        ],
+        "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 11:00~14:30"],
+        "positions": ["1일차 낮: 17번", "2일차 낮: 14번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 30,
+        "boothNumber": 30,
+        "name": "우리에서 만난 우리",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "동아리연합회",
+        "affiliation": "동아리연합회",
+        "description": "‘우리’랑 같이 탐험하는 우주 속 동아리 행성🪐\n선착순 이벤트부터 행운 부적 이벤트까지! 다양한 이벤트와 함께 나만의 네임태그 키링도 만들고 퀴즈도 맞춰서 선물도 받아가자!",
+        "openKakaoUrl": "https://tr.ee/u6GH3CMfc_",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_club.union/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매", "체험"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/us_1.png"],
+        "operatingDays": [
+          "13일(수) 16:00~19:30",
+          "15일(금) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": ["1일차 밤: 26번", "3일차 낮: 20번", "3일차 밤: 22번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 31,
+        "boothNumber": 31,
+        "name": "작업중",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "동양화전공",
+        "affiliation": "전공",
+        "description": "키캡제작 및 판매",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험"],
+        "imageUrls": [],
+        "operatingDays": ["15일(금) 11:00~14:30"],
+        "positions": ["3일차 낮: 11번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 32,
+        "boothNumber": 32,
+        "name": "덕컴타자연습",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "디지털소프트웨어공학부",
+        "affiliation": "전공",
+        "description": "낱말 대신 막대가 쏟아지는 산성비 피하기, 튜브가 링이 된 해상구조 SOS? 타자연습이 현실에 나타났다!⌨️\n밤샘 코딩에서 벗어나게 해주는 티셔츠까지 만나보세요!",
+        "openKakaoUrl": "http://pf.kakao.com/_ZxnxexdX",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/dukcom_1.png",
+          "/src/assets/Booth/BoothJsonIMG/dukcom_2.png"
+        ],
+        "operatingDays": [
+          "13일(수) 11:00~14:30",
+          "14일(목) 11:00~14:30",
+          "15일(금) 11:00~14:30"
+        ],
+        "positions": ["1일차 낮: 12번", "2일차 낮: 24번", "3일차 낮: 13번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 33,
+        "boothNumber": 33,
+        "name": "혜연이가 뜨개 그만하래 같이 살 집 뜨고 있었는데",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "뜨개",
+        "affiliation": "창업동아리/소모임",
+        "description": "인형 키링, 스크런치, 티코스터, 파우치 등 손뜨개와 재봉으로 직접 만든 핸드메이드 제품 판매 ✩゛",
+        "openKakaoUrl": "https://open.kakao.com/o/sC9o8uri",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/hyeyeon_1.jpeg"],
+        "operatingDays": ["15일(금) 16:00~19:30"],
+        "positions": ["3일차 밤: 16번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 34,
+        "boothNumber": 34,
+        "name": "꼬물꼬물 반짝이는 모험",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "물꼬",
+        "affiliation": "창업동아리/소모임",
+        "description": "물꼬 부스에\n\n말랑 핀뱃지:있음, 엽서:있음, 럭키드로우:있음, 슬라임 만들기 체험:있음, 키링:있음\n\n그런데, 덕우 너만 없더라..",
+        "openKakaoUrl": "https://open.kakao.com/o/spELt1pi",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/mul_ggo/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/mulggo_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/mulggo_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/mulggo_3.jpeg"
+        ],
+        "operatingDays": ["13일(수) 16:00~19:30", "15일(금) 11:00~14:30"],
+        "positions": ["1일차 밤: 24번", "3일차 낮: 29번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 35,
+        "boothNumber": 35,
+        "name": "PLAGUE BUSTERS",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "바이오공학전공",
+        "affiliation": "전공",
+        "description": "전염병을 물리치는 컨셉의 체험형 부스\n파라필름 늘리기, 리듬게임을 통해 물총을 획득한 후 마지막 단계는 물병 쓰러뜨리기까지!!\n또한, CD 키링과 대학생 공감 문구를 담은 키캡 키링 굿즈로 판매할 예정입니다~",
+        "openKakaoUrl": "http://pf.kakao.com/_xnKeyn",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_biotech/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": [],
+        "operatingDays": ["14일(목) 11:00~14:30", "15일(금) 11:00~14:30"],
+        "positions": ["2일차 낮: 27번", "3일차 낮: 27번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 36,
+        "boothNumber": 36,
+        "name": "비 온 뒤 땅이 굳는다",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "박성은",
+        "affiliation": "개인",
+        "description": "세상에 단 하나뿐인 나만의 부채! 즉석에서 그림, 이름, 문구 커스텀 가능! 덕성의 명물 까치, 왜가리, 너구리(?)까지 전부 그려드립니다!",
+        "openKakaoUrl": "https://open.kakao.com/o/sBLV7isi",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/rain_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/rain_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/rain_3.jpg",
+          "/src/assets/Booth/BoothJsonIMG/rain_4.jpg",
+          "/src/assets/Booth/BoothJsonIMG/rain_5.jpg"
+        ],
+        "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 16:00~19:30"],
+        "positions": ["1일차 낮: 23번", "2일차 밤: 25번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 37,
+        "boothNumber": 37,
+        "name": "청사과 낭만부",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "박예리나",
+        "affiliation": "개인",
+        "description": "청사과 낭만부 콘셉트의 악세사리 부스, 엽서·키링 등의 잡화 판매와 캐리커처 드로잉 및 라벨 프린터 체험 운영",
+        "openKakaoUrl": "https://open.kakao.com/o/syFKKgsi",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/apple_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/apple_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/apple_3.jpeg"
+        ],
+        "operatingDays": ["14일(목) 11:00~14:30"],
+        "positions": ["2일차 낮: 22번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 38,
+        "boothNumber": 38,
+        "name": "행운의 명태입양소",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "박희림",
+        "affiliation": "개인",
+        "description": "나만의 행운 명태를 입양해보세요! 다양한 천으로 만든 귀여운 물고기 인형 겸 키링과 비즈 등과 같은 꾸미기 액세서리를 함께 판매하는 부스입니다.",
+        "openKakaoUrl": "https://open.kakao.com/o/gQcg4csi",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/luckfish_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/luckfish_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/luckfish_3.jpg"
+        ],
+        "operatingDays": ["13일(수) 16:00~19:30", "15일(금) 11:00~14:30"],
+        "positions": ["1일차 밤: 25번", "3일차 낮: 24번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 39,
+        "boothNumber": 39,
+        "name": "비스타",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "비스타",
+        "affiliation": "동아리",
+        "description": "미니게임/뽑기와 상품",
+        "openKakaoUrl": "https://open.kakao.com/o/selFnrsi",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [],
+        "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 11:00~14:30"],
+        "positions": ["1일차 밤: 12번", "2일차 낮: 25번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 40,
+        "boothNumber": 40,
+        "name": "빛내미 공방",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "빛내미",
+        "affiliation": "빛내미",
+        "description": "<빛내미 키캡 공방>\n내 취향대로 키캡 꾸미기! 쉽고 빠르게 완성하는 나만의 키캡 키링\n\n<빛내미 야광봉 공방>\n직접 만든 응원봉으로 축제 무대까지 더 신나게 즐겨봐요!",
+        "openKakaoUrl": "카카오톡 채널: @bitnaemi_dswu",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_bitnaemi/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/bitnaemi_1.png"],
+        "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 16:00~19:30"],
+        "positions": ["1일차 밤: 23번", "2일차 밤: 20번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 41,
+        "boothNumber": 41,
+        "name": "생체 도전장",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "생활체육학전공",
+        "affiliation": "전공",
+        "description": "누구나 쉽게 참여할 수 있는 종목으로 생체 학생회를 이기면!! 상품 증정하며, 덕성여자대학교 유일의 몸을 쓰는 전공답게 부스에서 참여형 다양한 게임⛹️을 진행합니다. 맛있는 음식 먹고 소화시키러 오세요- ♥",
+        "openKakaoUrl": "http://pf.kakao.com/_zxoxgRX",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/dswu_sportsforall/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/sangchae_1.jpeg"],
+        "operatingDays": ["13일(수) 11:00~14:30"],
+        "positions": ["1일차 낮: 14번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 42,
+        "boothNumber": 42,
+        "name": "페이스페인팅, 참 쉽죠?",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "서양화전공",
+        "affiliation": "전공",
+        "description": "밥 아저씨 컨셉 페이스페인팅 부스✨ 얼굴·팔·손 등 원하는 부위에 그려드립니다! 덕새·복단이 페인팅 무료!! 공동 컬러링 작품은 누구나 참여 가능해요 🎨",
+        "openKakaoUrl": "https://open.kakao.com/o/swlKTksi",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/facepaint_1.jpeg"],
+        "operatingDays": ["15일(금) 16:00~19:30"],
+        "positions": ["3일차 밤: 11번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 43,
+        "boothNumber": 43,
+        "name": "수학전공",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "수학전공",
+        "affiliation": "전공",
+        "description": "1. 캐스트 퍼즐 체험\n- 입체 형태의 퍼츨 풀기\n2. 수학 기호 키링 판매\n-직접 디자인한 수학 기호 키링\n3. 계산왕 대결\n-30초 안에 몇 문제를 풀 수 있을까!? (기본 4칙연산)",
+        "openKakaoUrl": "https://open.kakao.com/o/swRD3ksi",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/math_1.png"],
+        "operatingDays": ["13일(수) 16:00~19:30", "15일(금) 11:00~14:30"],
+        "positions": ["1일차 밤: 10번", "3일차 낮: 25번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 44,
+        "boothNumber": 44,
+        "name": "Beautifly 🦋",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "스노우보드 동아리 뷰티플라이",
+        "affiliation": "동아리",
+        "description": "뷰플 부스에서 밸런스 보드에 도전하고 상품도 받아가세요! 이어폰 정리가 가능한 핑거보드도 직접 만들어봐요🛹🦋",
+        "openKakaoUrl": "@beautifly_ds",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/beautifly_ds/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/beautifly_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/beautifly_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/beautifly_3.jpeg"
+        ],
+        "operatingDays": ["15일(금) 11:00~14:30, 16:00~19:30"],
+        "positions": ["3일차 낮: 26번", "3일차 밤: 28번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 45,
+        "boothNumber": 45,
+        "name": "콩식이네 말랑공방",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "식품영양학전공",
+        "affiliation": "전공",
+        "description": "핸드메이드 바이알 키링과 말랑이\n폭신폭신 구황작물 귀여울 말랑이\n콩식이네 말랑공방에서 제작가능",
+        "openKakaoUrl": "https://open.kakao.com/o/slCHzS9h",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_f_n/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/cong_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/cong_2.png",
+          "/src/assets/Booth/BoothJsonIMG/cong_3.png",
+          "/src/assets/Booth/BoothJsonIMG/cong_4.png"
+        ],
+        "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 16:00~19:30"],
+        "positions": ["1일차 밤: 14번", "2일차 밤: 16번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 46,
+        "boothNumber": 46,
+        "name": "뇌랑해 ♥ : 뇌를 말랑하게",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "심리학전공",
+        "affiliation": "전공",
+        "description": "첫째, 스트레스 타파! 나만의 말랑이와 키캡을 만들어 보세요. \n둘째, 심리학도를 이겨라! 뇌를 활용한 게임을 통해 심리학도를 이기면..선물이?",
+        "openKakaoUrl": "http://pf.kakao.com/_XuURd",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_psychology/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/brain_1.png",
+          "/src/assets/Booth/BoothJsonIMG/brain_2.png",
+          "/src/assets/Booth/BoothJsonIMG/brain_3.png",
+          "/src/assets/Booth/BoothJsonIMG/brain_4.png"
+        ],
+        "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 11:00~14:30"],
+        "positions": ["1일차 밤: 20번", "2일차 낮: 21번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 47,
+        "boothNumber": 47,
+        "name": "응답하라 응애!",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "아동가족학전공",
+        "affiliation": "전공",
+        "description": "아동가족학전공 ‘응답하라 응애!’ 부스는 추억의 미니게임 3판을 즐기고 승리 시 뽑기판의 기회를 얻을 수 있으며, 고무줄 팔찌 만들기 체험과 다양한 굿즈 판매로 이루어져 있습니다.",
+        "openKakaoUrl": "https://open.kakao.com/o/s7AuZ27h",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_0r7r?igsh=N2hmaXBkbjNleTdv",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "DIY/만들기 체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/answerbaby_1.png"],
+        "operatingDays": ["13일(수) 11:00~14:30, 16:00~19:30"],
+        "positions": ["1일차 낮: 24번", "1일차 밤: 11번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 48,
+        "boothNumber": 48,
+        "name": "덕성약국",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "약학대학",
+        "affiliation": "단과대학",
+        "description": "청춘낚시 덕성약국 OPEN!\n랜덤 띠부띠부씰 약봉투와💊 꿀잼 알약낚시로🎣 행복 풀세트 처방해드립니다~\n한정판 상품과 흑백사진에 근화제의 청춘을 담아가세요💚",
+        "openKakaoUrl": "https://open.kakao.com/o/gg9eEzgi",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/dswu_pharm/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/medicine_1.jpeg"],
+        "operatingDays": [
+          "13일(수) 11:00~14:30",
+          "14일(목) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": ["1일차 낮: 15번", "2일차 낮: 18번", "2일차 밤: 17번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 49,
+        "boothNumber": 49,
+        "name": "열음",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "열음",
+        "affiliation": "동아리",
+        "description": "캐릭터 스티커 및 엽서 판매 / 탑로더 만들기 체험 / 캐릭터 맞추기 퀴즈",
+        "openKakaoUrl": "https://open.kakao.com/o/sO3UaUri",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/open_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/open_2.jpeg"
+        ],
+        "operatingDays": [
+          "13일(수) 16:00~19:30",
+          "15일(금) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": ["1일차 밤: 18번", "3일차 낮: 15번", "3일차 밤: 15번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 50,
+        "boothNumber": 50,
+        "name": "English Carnival",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "영어영문학전공",
+        "affiliation": "전공",
+        "description": "영어영문학전공이 준비한 다함께 즐길 수 있는 축제! 여러가지 활동을 통해 영문과 함께 즐거운 추억을 쌓아가세요🙂\n\nZone 1 : 영문시네마\n- 영미 영화 3초 명장면 퀴즈\n- 무비 텔레파시\n\nZone 2 : Who's there? 익명입니다!\n- 랜덤 편지 받기\n- 오늘의 한 문장 선정\n\nZone 3 : 영문과 함께 놀자!\n- 명언 소원 쪽지\n- 자이언트 스크래블\n- 운영진을 이겨라, 해적룰렛 게임",
+        "openKakaoUrl": "https://open.kakao.com/o/sbgg1t7h",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_english/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/ec_1.png"],
+        "operatingDays": ["13일(수) 11:00~14:30"],
+        "positions": ["1일차 낮: 25번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 51,
+        "boothNumber": 51,
+        "name": "여름을 그리다",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "예운",
+        "affiliation": "동아리",
+        "description": "🎨 유화 체험·DIY 틴케이스 (사전예약) ※ 잔여 인원 한정 현장 접수 진행\n🖼️ 엽서·스티커 판매\n⭐ 팔로우·스토리 업로드 시 간식 증정",
+        "openKakaoUrl": "https://open.kakao.com/o/s1ojJesi",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/dswu_yewoon/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "DIY/만들기 체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/summer_1.jpg"],
+        "operatingDays": ["14일(목) 16:00~19:30", "15일(금) 16:00~19:30"],
+        "positions": ["2일차 밤: 29번", "3일차 밤: 10번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 52,
+        "boothNumber": 52,
+        "name": "덕우야❗️잡화점💫",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "오다영",
+        "affiliation": "개인",
+        "description": "핸드메이드 상품 (몇몇 제외)\n편하게 오셔서 구경하세요💕\n\n💎비즈 반지/팔찌 0.4~0.6\n🔖끈갈피/키링 0.3~0.6\n🎀타투스티커 0.05~0.2",
+        "openKakaoUrl": "https://open.kakao.com/o/sNXWojsi",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/dukwoo_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/dukwoo_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/dukwoo_3.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/dukwoo_4.jpeg"
+        ],
+        "operatingDays": ["15일(금) 11:00~14:30, 16:00~19:30"],
+        "positions": ["3일차 낮: 23번", "3일차 밤: 25번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 53,
+        "boothNumber": 53,
+        "name": "운명의 서점",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운지문학회",
+        "affiliation": "동아리",
+        "description": "책 한 권과 함께 펼쳐지는 운명의 서점에서 당신의 문학을 만나보세요. 누군가를 만나게 될지도···?",
+        "openKakaoUrl": "https://open.kakao.com/o/slDqPrri",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/clounji_dswu/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/ojliteracy_1.jpeg"],
+        "operatingDays": [
+          "13일(수) 11:00~14:30",
+          "14일(목) 11:00~14:30",
+          "15일(금) 16:00~19:30"
+        ],
+        "positions": ["1일차 낮: 26번", "2일차 낮: 3번", "3일차 밤: 27번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 54,
+        "boothNumber": 54,
+        "name": "운현극락(雲峴極樂)",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현극예술연구회",
+        "affiliation": "동아리",
+        "description": "🎨10초 완성! 스텐실 페이스 페인팅 (바디 스탬프)\n📸폴라로이드 꾸미기\n💍핸드메이드 비즈반지 판매\n🥠선착순 포춘쿠키 증정 이벤트\n✨리뷰 작성 후 올영/배민 상품권 당첨 기회까지!",
+        "openKakaoUrl": "https://open.kakao.com/o/s8TpyVri",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/unhyeon1967/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/ohheaven_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/ohheaven_2.jpeg"
+        ],
+        "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 16:00~19:30"],
+        "positions": ["1일차 낮: 21번", "2일차 밤: 27번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 55,
+        "boothNumber": 55,
+        "name": "운현방송국 Dream-Catcher🌙",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현방송국",
+        "affiliation": "운현방송국",
+        "description": "🔖 비즈 끈갈피\n🍀 네잎클로버\n⌨️ 키캡 키링\n📣 야광 팔찌\n\n🍗운현방송국 1일차 부스 프로그램 '드림캐처: 짝을 찾아라' 후기 이벤트 : 에브리타임이나 인스타그램 스토리로 '#운현방송국 #운현가요제 #드림캐처'를 작성해 후기를 올려주신 분께는 추첨을 통해 원조부안집 할인 쿠폰 증정!\n🍫린트 초콜릿 X 운현가요제 : 근화제 1일 차&3일 차 오전 11시 운현방송국 부스에서 선착순 150명에게 린트 린도볼어쏘티드 증정!\n🍹몬스터에너지 X 운현가요제 : 근화제 1일 차&3일 차 오후 1시 운현방송국 부스에서 선착순 120명에게 몬스터 에너지 오리지널 증정!",
+        "openKakaoUrl": "운현가요제 인스타그램 디엠",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/dswbs1967/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/ohbsk_1.png",
+          "/src/assets/Booth/BoothJsonIMG/ohbsk_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/ohbsk_3.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/ohbsk_4.jpeg"
+        ],
+        "operatingDays": [
+          "13일(수) 11:00~14:30, 16:00~19:30",
+          "15일(금) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": [
+          "1일차 낮: 2번",
+          "1일차 낮: 3번",
+          "1일차 밤: 2번",
+          "1일차 밤: 3번",
+          "3일차 낮: 2번",
+          "3일차 낮: 3번",
+          "3일차 밤: 2번",
+          "3일차 밤: 3번"
+        ]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 56,
+        "boothNumber": 56,
+        "name": "자투리 과일가게",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "위주빈, 박채빈",
+        "affiliation": "개인",
+        "description": "저희는 예대 학생들의 감성이 담긴 핸드메이드 티코스터, 키링, 테이블 매트 등의 다양한 패브릭 소품을 판매하는 자투리 과일가게입니다.",
+        "openKakaoUrl": "010-8217-5315",
+        "everytimeUrl": "https://everytime.kr/255745/v/408661003",
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/fruits_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/fruits_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/fruits_3.jpg",
+          "/src/assets/Booth/BoothJsonIMG/fruits_4.jpg",
+          "/src/assets/Booth/BoothJsonIMG/fruits_5.jpg"
+        ],
+        "operatingDays": ["13일(수) 11:00~14:30", "15일(금) 11:00~14:30"],
+        "positions": ["1일차 낮: 27번", "3일차 낮: 21번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 57,
+        "boothNumber": 57,
+        "name": "아름드리",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "유아교육과",
+        "affiliation": "전공",
+        "description": "수 : 은물놀이, 핸드벨 게임, 폴라로이드 사진 찍기 / 목 : 슬라임 만들기, 폴라로이드 사진 찍기",
+        "openKakaoUrl": "http://pf.kakao.com/_wYxoyn/chat",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_ece/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/ardr_1.png"],
+        "operatingDays": [
+          "13일(수) 11:00~14:30",
+          "14일(목) 11:00~14:30, 16:00~19:30"
+        ],
+        "positions": ["1일차 낮: 22번", "2일차 낮: 26번", "2일차 밤: 24번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 58,
+        "boothNumber": 58,
+        "name": "덕새가 머무는 곳",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "윤다연",
+        "affiliation": "개인",
+        "description": "덕새가 기다리는 따뜻한 굿즈 공간!\n우리 학교 마스코트 덕새·복단이로 만든 다양한 자체 제작 굿즈를 만나보세요~\n3D 프린팅 덕새 펜꽂이, 복단이 키링,\n덕새&복단이 클리커, 모루 무궁화 꽃다발까지!\n손수 칠하고 만든 정성 가득 아이템들로 가득한 부스예요!\n(재료 수급 상황에 따라 판매 품목이 달라질 수 있습니다.)",
+        "openKakaoUrl": "https://open.kakao.com/o/s2vQfdye",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/duksae_1.png"],
+        "operatingDays": ["13일(수) 11:00~14:30"],
+        "positions": ["1일차 낮: 11번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 59,
+        "boothNumber": 59,
+        "name": "isy 이시",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "이서영",
+        "affiliation": "개인",
+        "description": "패브릭으로 만든 귀엽고 쓸모 있는 것들을 팝니다.\n북커버, 키링, 안경 케이스, 이어폰 케이스 —\n매일 쓰는 것들을 귀여운 것들로 바꾸어보아요!",
+        "openKakaoUrl": "instagram dm @isy.iisy",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/isy_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/isy_2.jpg"
+        ],
+        "operatingDays": ["15일(금) 16:00~19:30"],
+        "positions": ["3일차 밤: 20번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 60,
+        "boothNumber": 60,
+        "name": "이오",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "이오",
+        "affiliation": "동아리",
+        "description": "이쪽으로 오세요!\n덕성여대 퀴어네트워크 이오는 모두를 위해 존재합니다.\n성 정체성과 성적 지향에 관계없이 모두가 평등할 수 있는 덕성을 바란다면 이오 부스에 들러주세요. \n다양한 무지개빛 굿즈와 깜짝 이벤트가 당신을 기다리고 있습니다.",
+        "openKakaoUrl": "dsqueernet25@gmail.com",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/dsqueer25/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/io_1.jpg"],
+        "operatingDays": ["14일(목) 16:00~19:30", "15일(금) 16:00~19:30"],
+        "positions": ["2일차 밤: 22번", "3일차 밤: 21번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 61,
+        "boothNumber": 61,
+        "name": "근화마츠리",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "일어일문학전공",
+        "affiliation": "전공",
+        "description": "[근화마츠리: 일본 전통 놀이를 즐기고, 문화를 배울 수 있는 축제]\n오미쿠지, 운세뽑기, 켄다마, 금붕어 건지기, 오마모리",
+        "openKakaoUrl": "gosu574@duksung.ac.kr",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/ghmatsri_1.jpg"],
+        "operatingDays": ["13일(수) 11:00~14:30", "15일(금) 11:00~14:30"],
+        "positions": ["1일차 낮: 28번", "3일차 낮: 10번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 62,
+        "boothNumber": 62,
+        "name": "도봉또봄",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "전진안",
+        "affiliation": "개인",
+        "description": "학교 근처 어디 갈지 고민 끝!📍\n친구도 사귀고 동네 투어도 가자!🙊\n”도봉구 로컬공간 추천, 게더링 투어 모집“",
+        "openKakaoUrl": "https://open.kakao.com/o/sco8Ikri",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/dobongddobom/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/dobong_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/dobong_2.jpeg"
+        ],
+        "operatingDays": ["14일(목) 11:00~14:30", "15일(금) 11:00~14:30"],
+        "positions": ["2일차 낮: 28번", "3일차 낮: 28번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 63,
+        "boothNumber": 63,
+        "name": "정외 PARADISE",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "정치외교학전공",
+        "affiliation": "전공",
+        "description": "여러 종류의 무알콜 칵테일과 타투 스티커, 간단한 게임까지! 더운 여름, 정치외교학전공 부스에서 함께 즐겨요 🌴",
+        "openKakaoUrl": "https://open.kakao.com/o/swXnHkGh",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_psis/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "DIY/만들기 체험", "판매"],
+        "imageUrls": [],
+        "operatingDays": ["15일(금) 11:00~14:30, 16:00~19:30"],
+        "positions": ["3일차 낮: 14번", "3일차 밤: 29번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 64,
+        "boothNumber": 64,
+        "name": "룡하다! 공룡타로",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "천주영",
+        "affiliation": "개인",
+        "description": "오천원만 주면 타로 봐 주는 놈",
+        "openKakaoUrl": "https://open.kakao.com/o/sghFCjbf",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/dino_1.png"],
+        "operatingDays": ["14일(목) 16:00~19:30", "15일(금) 16:00~19:30"],
+        "positions": ["2일차 밤: 2번", "3일차 밤: 26번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 65,
+        "boothNumber": 65,
+        "name": "✿비즈식물원✿",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "초음",
+        "affiliation": "창업동아리/소모임",
+        "description": "안녕하세요, 반짝이는 비즈로 작은 식물원을 만드는 ‘초음‘입니다. 내 취향에 꼭 맞는, 세상에 하나뿐인 비즈 식물을 구경하러 오세요! 🪴🫧🌿",
+        "openKakaoUrl": "@choe.um 디엠",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/choe.um?igsh=MWg3aTc0ZDE3bm4xaw==",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": [],
+        "operatingDays": ["14일(목) 16:00~19:30", "15일(금) 16:00~19:30"],
+        "positions": ["2일차 밤: 14번", "3일차 밤: 17번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 66,
+        "boothNumber": 66,
+        "name": "35mm Archive",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "최은서",
+        "affiliation": "개인",
+        "description": "필름 카메라의 시선으로 아카이빙한 이탈리아 여행의 기록 🎞️ 찰나의 순간을 아날로그 굿즈로 간직해 보세요.ᐟ [ 방명록만 작성해도 필름 매거진 키링 증정💥 ]",
+        "openKakaoUrl": "https://open.kakao.com/o/sN001jsi",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/35archieve_1.png"],
+        "operatingDays": ["13일(수) 16:00~19:30"],
+        "positions": ["1일차 밤: 15번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 67,
+        "boothNumber": 67,
+        "name": "한 코, 한 땀",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "최지현",
+        "affiliation": "개인",
+        "description": "미대 학생들이 직접 한 코 한코 뜬 키링과 한 땀 한땀 만든 줄감개, 파우치 등을 판매 합니다!! 단 하나 뿐인 나만의 소품을 찾아가세요 ♥",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/onenosesweat_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/onenosesweat_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/onenosesweat_3.jpeg"
+        ],
+        "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 11:00~14:30"],
+        "positions": ["1일차 낮: 16번", "2일차 낮: 16번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 68,
+        "boothNumber": 68,
+        "name": "팀복학생",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "팀복학생",
+        "affiliation": "창업동아리/소모임",
+        "description": "복학생 셋이 준비한 감각적인 빈티지 마켓! 빈티지 의류와 잡화, 정성 가득한 도자기를 만나보세요. 가져오신 옷에 팀복학생이 제작한 특별한 도안을 새기는 실크스크린 체험과 전용 의류 판매도 진행하니, 싸게 싸게 가져가세요~!",
+        "openKakaoUrl": "https://open.kakao.com/o/g6CV4jsi",
+        "everytimeUrl": "https://everytime.kr/255745/v/408674625",
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/team_1.png"],
+        "operatingDays": ["13일(수) 16:00~19:30"],
+        "positions": ["1일차 밤: 17번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 69,
+        "boothNumber": 69,
+        "name": "필소굿:필름소피굿즈팝니다.",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "필름소피",
+        "affiliation": "동아리",
+        "description": "영화 동아리 굿즈맛집 필름소피에서 키링, 핀버튼, 밴드, 수건 등 되는 거 다 팝니다! FBTI 테스트로 영화 취향까지 체험해 보세요.",
+        "openKakaoUrl": "https://open.kakao.com/o/snrivOOh",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/filmsophy20/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": "@filmsophy20",
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/filmsophy_1.png"],
+        "operatingDays": ["13일(수) 11:00~14:30", "15일(금) 16:00~19:30"],
+        "positions": ["1일차 낮: 20번", "3일차 밤: 14번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 70,
+        "boothNumber": 70,
+        "name": "한빛 현상소",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "한빛",
+        "affiliation": "동아리",
+        "description": "📸 폴라로이드 촬영 및 폴꾸\n💌 포토부스 촬영 후 미래의 나에게 편지 (1년 후 메일링 서비스, 당일 인화)\n🎲 미니게임\n🛍️ 굿즈 판매",
+        "openKakaoUrl": "https://open.kakao.com/o/srzM6Pii",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/_hanbit_exhibition_/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "DIY/만들기 체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/hanbit_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/hanbit_2.jpeg"
+        ],
+        "operatingDays": [
+          "13일(수) 16:00~19:30",
+          "14일(목) 16:00~19:30",
+          "15일(금) 11:00~14:30"
+        ],
+        "positions": ["1일차 밤: 22번", "2일차 밤: 23번", "3일차 낮: 30번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 71,
+        "boothNumber": 71,
+        "name": "케미케미체인지",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "화학전공",
+        "affiliation": "전공",
+        "description": "귀여운 슈링클스 키링 만들기 체험과 간단한 테스트로 나만의 화학 원소를 찾아보세요! 타투 스티커와 다양한 잡화물까지 준비된 케미케미체인지로 오세요 🪄",
+        "openKakaoUrl": "https://open.kakao.com/o/slid8lki",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/duksung_chem/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/chemi_1.jpeg"],
+        "operatingDays": ["13일(수) 16:00~19:30", "15일(금) 11:00~14:30"],
+        "positions": ["1일차 밤: 16번", "3일차 낮: 17번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 72,
+        "boothNumber": 72,
+        "name": "내 손안의 미니 Lab",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "AI신약학과",
+        "affiliation": "전공",
+        "description": "내손안의 미니 Lab: 마이크로튜브 커스텀 키링 공예 체험\n내가 인공지능이라면? 성격 유형 테스트\n근화제의 추억을 담아줄 폴라로이드 촬영 이벤트",
+        "openKakaoUrl": "https://open.kakao.com/o/sV306aph",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/dswu_ai.drug/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["체험", "DIY/만들기 체험", "판매"],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/lab_1.jpg"],
+        "operatingDays": ["14일(목) 16:00~19:30", "15일(금) 11:00~14:30"],
+        "positions": ["2일차 밤: 15번", "3일차 낮: 16번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 73,
+        "boothNumber": 73,
+        "name": "Fork&Roll",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "F.O.R.K",
+        "affiliation": "동아리",
+        "description": "F.O.R.K가 표현하는 신나는 락 앤 롤을 주제로 한 굿즈 판매 및 음악 체험 이벤트\nㅎ古께 . . RØck ㈛ズl 않을㉣łı..?",
+        "openKakaoUrl": "@forourrock_ds",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": "https://youtube.com/@forourrock_ds?si=MdYbr20cuyf8fWu7",
+        "tags": ["운영 종료"],
+        "categories": ["체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/fork_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/fork_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/fork_3.jpeg"
+        ],
+        "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 11:00~14:30"],
+        "positions": ["1일차 밤: 29번", "2일차 낮: 23번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 74,
+        "boothNumber": 74,
+        "name": "LIFE PROJECT",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "LIFE PROJECT",
+        "affiliation": "창업동아리/소모임",
+        "description": "캔뚜껑 키링 만들기 체험 및 각종 업사이클링 제품을 판매합니다. 줄감개, 오마모리 키링, 비즈머리핀 등 다양한 제품 판매하고 있으니 구경오세요♡",
+        "openKakaoUrl": "https://open.kakao.com/o/sevw9JUg",
+        "everytimeUrl": null,
+        "instagramUrl": "https://www.instagram.com/lpworkspace/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험", "판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/lifeproject_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/lifeproject_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/lifeproject_3.jpg"
+        ],
+        "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 11:00~14:30"],
+        "positions": ["1일차 낮: 10번", "2일차 낮: 2번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 75,
+        "boothNumber": 75,
+        "name": "쿠사싹",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "KUSA",
+        "affiliation": "동아리",
+        "description": "쿠사 부스에서 진행하는 \"실팔찌 만들기\"\n실의 색깔에 따라, 함께하는 사람에 따라 달라지는 팔찌의 의미!\n쿠사 부스에서 만나요:)",
+        "openKakaoUrl": "https://open.kakao.com/o/sTrPCjsi",
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["DIY/만들기 체험"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/cusasak_1.png",
+          "/src/assets/Booth/BoothJsonIMG/cusasak_2.png",
+          "/src/assets/Booth/BoothJsonIMG/cusasak_3.png",
+          "/src/assets/Booth/BoothJsonIMG/cusasak_4.png"
+        ],
+        "operatingDays": ["13일(수) 16:00~19:30"],
+        "positions": ["1일차 밤: 21번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
+        "id": 76,
+        "boothNumber": 76,
+        "name": "해삐즈 HAPPiZ",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "정수연",
+        "affiliation": "개인",
+        "description": "✨[해삐즈 HAPPiZ] 하루가 행복해지는 궁–극의 주얼리✨\n다양한 핸드메이드 비즈 악세사리(팔찌/반지/목걸이/키링)가 덕우들을 기다립니다!😊",
+        "openKakaoUrl": "https://open.kakao.com/me/happiz77",
+        "everytimeUrl": "https://everytime.kr/255745/v/408495712",
+        "instagramUrl": "https://www.instagram.com/happiz77/",
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": ["판매"],
+        "imageUrls": [
+          "/src/assets/Booth/BoothJsonIMG/happiz_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/happiz_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/happiz_3.jpg",
+          "/src/assets/Booth/BoothJsonIMG/happiz_4.jpg"
+        ],
+        "operatingDays": ["14일(목) 11:00~14:30", "15일(금) 16:00~19:30"],
+        "positions": ["2일차 낮: 29번", "3일차 밤: 12번"]
+      }
+    }
+  ]
+}

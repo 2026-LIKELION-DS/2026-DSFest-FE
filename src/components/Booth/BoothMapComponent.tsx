@@ -7,8 +7,16 @@ import React, {
 } from "react";
 import type { ElementRef } from "react";
 import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
-import axios from "axios";
 import * as S from "../../styles/BoothMapComponent.styles";
+
+import boothMapData from "../../data/BoothJson/boothMap.json";
+
+interface BoothMapData {
+  [key: string]: {
+    DAY: MapBooth[];
+    NIGHT: MapBooth[];
+  };
+}
 
 interface MapBooth {
   boothId: number;
@@ -16,7 +24,7 @@ interface MapBooth {
   name: string;
   positionNumber: number;
   operatingSubject: string;
-  thumbnailUrl: string;
+  thumbnailUrl: string | null;
   boothTypes: string[];
 }
 
@@ -44,24 +52,27 @@ const BoothMapComponent: React.FC<MapProps> = ({
   selectedId,
   onBoothClick,
 }) => {
-  const baseUrl = import.meta.env.VITE_API_URL;
   const [mapData, setMapData] = useState<MapBooth[]>([]);
   const mapRef = useRef<HTMLDivElement>(null);
   const pinchZoomRef = useRef<ElementRef<typeof QuickPinchZoom>>(null);
 
   useEffect(() => {
-    const fetchMapData = async () => {
+    const loadData = () => {
       try {
-        const res = await axios.get(`${baseUrl}/api/booths/map`, {
-          params: { day, type: time.toUpperCase() },
-        });
-        if (res.data.isSuccess) setMapData(res.data.result);
+        const timeKey = time.toUpperCase() as "DAY" | "NIGHT";
+        const dayKey = String(day);
+
+        const typedMapData = boothMapData as unknown as BoothMapData;
+        const targetData = typedMapData[dayKey]?.[timeKey] || [];
+
+        setMapData(targetData);
       } catch (e) {
-        console.error("지도 로드 실패", e);
+        console.error("로컬 지도 데이터 로드 실패", e);
       }
     };
-    fetchMapData();
-  }, [day, time, baseUrl]);
+
+    loadData();
+  }, [day, time]);
 
   const onUpdate = useCallback(
     ({ x, y, scale }: { x: number; y: number; scale: number }) => {
@@ -76,11 +87,9 @@ const BoothMapComponent: React.FC<MapProps> = ({
   useEffect(() => {
     const BOOTH_POSITIONS: Record<number, { x: number; y: number }> = {
       1: { x: 30, y: 5 },
-
       2: { x: 145, y: -55 },
       3: { x: 145, y: -40 },
       4: { x: 145, y: -25 },
-
       5: { x: 102, y: 25 },
       6: { x: 102, y: 42 },
       7: { x: 102, y: 59 },
@@ -90,13 +99,11 @@ const BoothMapComponent: React.FC<MapProps> = ({
       11: { x: 102, y: 127 },
       12: { x: 102, y: 144 },
       13: { x: 102, y: 161 },
-
       14: { x: 500, y: 25 },
       15: { x: 315, y: 25 },
       16: { x: 290, y: 25 },
       17: { x: 265, y: 25 },
       18: { x: 240, y: 25 },
-
       19: { x: 190, y: 50 },
       20: { x: 190, y: 68 },
       21: { x: 190, y: 86 },
@@ -104,13 +111,11 @@ const BoothMapComponent: React.FC<MapProps> = ({
       23: { x: 190, y: 122 },
       24: { x: 190, y: 140 },
       25: { x: 190, y: 158 },
-
       26: { x: 240, y: 175 },
       27: { x: 265, y: 175 },
       28: { x: 290, y: 175 },
       29: { x: 315, y: 175 },
       30: { x: 500, y: 175 },
-
       33: { x: 160, y: -5 },
     };
 
@@ -136,7 +141,6 @@ const BoothMapComponent: React.FC<MapProps> = ({
         });
       } else if (selectedId === null) {
         const initialScale = (container.clientHeight / 700) * 5;
-
         pinchZoomRef.current.scaleTo({
           x: 210,
           y: 150,
@@ -150,9 +154,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
   useLayoutEffect(() => {
     if (pinchZoomRef.current && mapRef.current) {
       const containerHeight = mapRef.current.parentElement?.clientHeight || 402;
-
       const initialScale = (containerHeight / 700) * 5;
-
       pinchZoomRef.current.scaleTo({
         x: 210,
         y: 150,
@@ -172,7 +174,6 @@ const BoothMapComponent: React.FC<MapProps> = ({
     if (!booth) return <S.EmptySlot key={pos} />;
 
     const isActive = selectedId === booth.boothId;
-
     const allSlots = mapData
       .filter((b) => b.boothId === booth.boothId)
       .map((b) => b.positionNumber);
@@ -211,12 +212,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
         draggableUnZoomed={true}
         wheelScaleFactor={500}
         tapZoomFactor={0}
-        containerProps={{
-          style: {
-            width: "100%",
-            height: "100%",
-          },
-        }}
+        containerProps={{ style: { width: "100%", height: "100%" } }}
       >
         <S.MapCanvas
           ref={mapRef}
@@ -233,7 +229,8 @@ const BoothMapComponent: React.FC<MapProps> = ({
               $height="40px"
             >
               <S.SubLabel>
-                손목띠<br></br> 배부
+                손목띠
+                <br /> 배부
               </S.SubLabel>
             </S.AbsoluteBooth>
             <S.AbsoluteBooth
@@ -261,7 +258,8 @@ const BoothMapComponent: React.FC<MapProps> = ({
               $height="40px"
             >
               <S.SubLabel>
-                포토월& <br></br>에어덕새
+                포토월& <br />
+                에어덕새
               </S.SubLabel>
             </S.AbsoluteBooth>
             {(() => {
@@ -286,10 +284,7 @@ const BoothMapComponent: React.FC<MapProps> = ({
                       );
                     }
                   }}
-                  style={{
-                    cursor: "pointer",
-                    pointerEvents: "auto",
-                  }}
+                  style={{ cursor: "pointer", pointerEvents: "auto" }}
                 >
                   <S.SubLabel>운영 본부</S.SubLabel>
                 </S.AbsoluteBooth>
@@ -310,7 +305,9 @@ const BoothMapComponent: React.FC<MapProps> = ({
               $height="40px"
             >
               <S.SubLabel>
-                협찬품<br></br>배부
+                협찬품
+                <br />
+                배부
               </S.SubLabel>
             </S.AbsoluteBooth>
             <S.AbsoluteBooth
@@ -346,12 +343,13 @@ const BoothMapComponent: React.FC<MapProps> = ({
               $height="40px"
             >
               <S.SubLabel>
-                손목띠 <br></br>배부
+                손목띠 <br />
+                배부
               </S.SubLabel>
             </S.AbsoluteBooth>
           </S.Section>
 
-          {/* 6. 영근터 구역 (무대/덕우존 포함) */}
+          {/* 6. 영근터 구역 */}
           <S.Section $top="322px" $left="689px" $width="455px" $height="403px">
             <S.BuildingLabel>영근터</S.BuildingLabel>
             <S.BoothList $top="-1px" $right="50px" $direction="row">

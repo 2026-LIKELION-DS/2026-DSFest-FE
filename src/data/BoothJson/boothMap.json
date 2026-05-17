@@ -1,0 +1,1508 @@
+{
+  "1": {
+    "DAY": [
+      {
+        "boothId": 5,
+        "boothNumber": 5,
+        "name": "도봉경찰서",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "경찰청",
+        "positionNumber": 1
+      },
+      {
+        "boothId": 55,
+        "boothNumber": 55,
+        "name": "운현방송국 Dream-Catcher🌙",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현방송국",
+        "positionNumber": 2
+      },
+      {
+        "boothId": 55,
+        "boothNumber": 55,
+        "name": "운현방송국 Dream-Catcher🌙",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현방송국",
+        "positionNumber": 3
+      },
+      {
+        "boothId": 2,
+        "boothNumber": 2,
+        "name": "청춘 스토어",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 4
+      },
+      {
+        "boothId": 12,
+        "boothNumber": 12,
+        "name": "강북청년창업마루 X 강북청년일자리센터",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "강북청년창업마루 X 강북청년일자리센터",
+        "positionNumber": 5
+      },
+      {
+        "boothId": 10,
+        "boothNumber": 10,
+        "name": "대학일자리본부1",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부1",
+        "positionNumber": 6
+      },
+      {
+        "boothId": 11,
+        "boothNumber": 11,
+        "name": "대학일자리본부2",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부2",
+        "positionNumber": 7
+      },
+      {
+        "boothId": 15,
+        "boothNumber": 15,
+        "name": "강남브랜드안과 놀이와 상담이 공존하는 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "강남브랜드안과",
+        "positionNumber": 8
+      },
+      {
+        "boothId": 16,
+        "boothNumber": 16,
+        "name": "서울베스트의료의원",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "서울베스트의료의원",
+        "positionNumber": 9
+      },
+      {
+        "boothId": 74,
+        "boothNumber": 74,
+        "name": "LIFE PROJECT",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "LIFE PROJECT",
+        "positionNumber": 10
+      },
+      {
+        "boothId": 58,
+        "boothNumber": 58,
+        "name": "덕새가 머무는 곳",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "윤다연",
+        "positionNumber": 11
+      },
+      {
+        "boothId": 32,
+        "boothNumber": 32,
+        "name": "덕컴타자연습",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "디지털소프트웨어공학부",
+        "positionNumber": 12
+      },
+      {
+        "boothId": 20,
+        "boothNumber": 20,
+        "name": "9회말 2아웃",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "9회말 2아웃",
+        "positionNumber": 13
+      },
+      {
+        "boothId": 41,
+        "boothNumber": 41,
+        "name": "생체 도전장",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "생활체육학전공",
+        "positionNumber": 14
+      },
+      {
+        "boothId": 48,
+        "boothNumber": 48,
+        "name": "덕성약국",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "약학대학",
+        "positionNumber": 15
+      },
+      {
+        "boothId": 67,
+        "boothNumber": 67,
+        "name": "한 코, 한 땀",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "최지현",
+        "positionNumber": 16
+      },
+      {
+        "boothId": 29,
+        "boothNumber": 29,
+        "name": "언더덕씨",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "동아리 언더덕씨",
+        "positionNumber": 17
+      },
+      {
+        "boothId": 22,
+        "boothNumber": 22,
+        "name": "과기대는 오락오락하지 않다",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "과학기술대학",
+        "positionNumber": 18
+      },
+      {
+        "boothId": 3,
+        "boothNumber": 3,
+        "name": "청춘 매치: 행운을 잡아라",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 19
+      },
+      {
+        "boothId": 69,
+        "boothNumber": 69,
+        "name": "필소굿:필름소피굿즈팝니다.",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "필름소피",
+        "positionNumber": 20
+      },
+      {
+        "boothId": 54,
+        "boothNumber": 54,
+        "name": "운현극락(雲峴極樂)",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현극예술연구회",
+        "positionNumber": 21
+      },
+      {
+        "boothId": 57,
+        "boothNumber": 57,
+        "name": "아름드리",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "유아교육과",
+        "positionNumber": 22
+      },
+      {
+        "boothId": 36,
+        "boothNumber": 36,
+        "name": "비 온 뒤 땅이 굳는다",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "박성은",
+        "positionNumber": 23
+      },
+      {
+        "boothId": 47,
+        "boothNumber": 47,
+        "name": "응답하라 응애!",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "아동가족학전공",
+        "positionNumber": 24
+      },
+      {
+        "boothId": 50,
+        "boothNumber": 50,
+        "name": "English Carnival",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "영어영문학전공",
+        "positionNumber": 25
+      },
+      {
+        "boothId": 53,
+        "boothNumber": 53,
+        "name": "운명의 서점",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운지문학회",
+        "positionNumber": 26
+      },
+      {
+        "boothId": 56,
+        "boothNumber": 56,
+        "name": "자투리 과일가게",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "위주빈, 박채빈",
+        "positionNumber": 27
+      },
+      {
+        "boothId": 61,
+        "boothNumber": 61,
+        "name": "근화마츠리",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "일어일문학전공",
+        "positionNumber": 28
+      },
+      {
+        "boothId": 24,
+        "boothNumber": 24,
+        "name": "🏴‍☠️ 글로벌융합대학 해적단 🏴‍☠️",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "글로벌융합대학",
+        "positionNumber": 29
+      },
+      {
+        "boothId": 14,
+        "boothNumber": 14,
+        "name": "옐로우 링크",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "배리어프리",
+        "positionNumber": 30
+      },
+      {
+        "boothId": 1,
+        "boothNumber": 1,
+        "name": "총학 운영 본부",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 33
+      }
+    ],
+    "NIGHT": [
+      {
+        "boothId": 5,
+        "boothNumber": 5,
+        "name": "도봉경찰서",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "경찰청",
+        "positionNumber": 1
+      },
+      {
+        "boothId": 55,
+        "boothNumber": 55,
+        "name": "운현방송국 Dream-Catcher🌙",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현방송국",
+        "positionNumber": 2
+      },
+      {
+        "boothId": 55,
+        "boothNumber": 55,
+        "name": "운현방송국 Dream-Catcher🌙",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현방송국",
+        "positionNumber": 3
+      },
+      {
+        "boothId": 2,
+        "boothNumber": 2,
+        "name": "청춘 스토어",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 4
+      },
+      {
+        "boothId": 12,
+        "boothNumber": 12,
+        "name": "강북청년창업마루 X 강북청년일자리센터",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "강북청년창업마루 X 강북청년일자리센터",
+        "positionNumber": 5
+      },
+      {
+        "boothId": 10,
+        "boothNumber": 10,
+        "name": "대학일자리본부1",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부1",
+        "positionNumber": 6
+      },
+      {
+        "boothId": 11,
+        "boothNumber": 11,
+        "name": "대학일자리본부2",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부2",
+        "positionNumber": 7
+      },
+      {
+        "boothId": 15,
+        "boothNumber": 15,
+        "name": "강남브랜드안과 놀이와 상담이 공존하는 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "강남브랜드안과",
+        "positionNumber": 8
+      },
+      {
+        "boothId": 16,
+        "boothNumber": 16,
+        "name": "서울베스트의료의원",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "서울베스트의료의원",
+        "positionNumber": 9
+      },
+      {
+        "boothId": 43,
+        "boothNumber": 43,
+        "name": "수학전공",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "수학전공",
+        "positionNumber": 10
+      },
+      {
+        "boothId": 47,
+        "boothNumber": 47,
+        "name": "응답하라 응애!",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "아동가족학전공",
+        "positionNumber": 11
+      },
+      {
+        "boothId": 39,
+        "boothNumber": 39,
+        "name": "비스타",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "비스타",
+        "positionNumber": 12
+      },
+      {
+        "boothId": 27,
+        "boothNumber": 27,
+        "name": "그런데 그때 갑자기 검도부가 나타났다 머리잇~!",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "덕성검도부",
+        "positionNumber": 13
+      },
+      {
+        "boothId": 45,
+        "boothNumber": 45,
+        "name": "콩식이네 말랑공방",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "식품영양학전공",
+        "positionNumber": 14
+      },
+      {
+        "boothId": 66,
+        "boothNumber": 66,
+        "name": "35mm Archive",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "최은서",
+        "positionNumber": 15
+      },
+      {
+        "boothId": 71,
+        "boothNumber": 71,
+        "name": "케미케미체인지",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "화학전공",
+        "positionNumber": 16
+      },
+      {
+        "boothId": 68,
+        "boothNumber": 68,
+        "name": "팀복학생",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "팀복학생",
+        "positionNumber": 17
+      },
+      {
+        "boothId": 49,
+        "boothNumber": 49,
+        "name": "열음",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "열음",
+        "positionNumber": 18
+      },
+      {
+        "boothId": 3,
+        "boothNumber": 3,
+        "name": "청춘 매치: 행운을 잡아라",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 19
+      },
+      {
+        "boothId": 46,
+        "boothNumber": 46,
+        "name": "뇌랑해 ♥ : 뇌를 말랑하게",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "심리학전공",
+        "positionNumber": 20
+      },
+      {
+        "boothId": 75,
+        "boothNumber": 75,
+        "name": "쿠사싹",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "KUSA",
+        "positionNumber": 21
+      },
+      {
+        "boothId": 70,
+        "boothNumber": 70,
+        "name": "한빛 현상소",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "한빛",
+        "positionNumber": 22
+      },
+      {
+        "boothId": 40,
+        "boothNumber": 40,
+        "name": "빛내미 공방",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "빛내미",
+        "positionNumber": 23
+      },
+      {
+        "boothId": 34,
+        "boothNumber": 34,
+        "name": "꼬물꼬물 반짝이는 모험",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "물꼬",
+        "positionNumber": 24
+      },
+      {
+        "boothId": 38,
+        "boothNumber": 38,
+        "name": "행운의 명태입양소",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "박희림",
+        "positionNumber": 25
+      },
+      {
+        "boothId": 30,
+        "boothNumber": 30,
+        "name": "우리에서 만난 우리",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "동아리연합회",
+        "positionNumber": 26
+      },
+      {
+        "boothId": 26,
+        "boothNumber": 26,
+        "name": "덕냥당",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "덕냥당",
+        "positionNumber": 27
+      },
+      {
+        "boothId": 24,
+        "boothNumber": 24,
+        "name": "🏴‍☠️ 글로벌융합대학 해적단 🏴‍☠️",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "글로벌융합대학",
+        "positionNumber": 28
+      },
+      {
+        "boothId": 73,
+        "boothNumber": 73,
+        "name": "Fork&Roll",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "F.O.R.K",
+        "positionNumber": 29
+      },
+      {
+        "boothId": 14,
+        "boothNumber": 14,
+        "name": "옐로우 링크",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "배리어프리",
+        "positionNumber": 30
+      },
+      {
+        "boothId": 1,
+        "boothNumber": 1,
+        "name": "총학 운영 본부",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 33
+      }
+    ]
+  },
+  "2": {
+    "DAY": [
+      {
+        "boothId": 6,
+        "boothNumber": 6,
+        "name": "DIAA(다이아) 외교단 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "국제처",
+        "positionNumber": 1
+      },
+      {
+        "boothId": 74,
+        "boothNumber": 74,
+        "name": "LIFE PROJECT",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "LIFE PROJECT",
+        "positionNumber": 2
+      },
+      {
+        "boothId": 53,
+        "boothNumber": 53,
+        "name": "운명의 서점",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운지문학회",
+        "positionNumber": 3
+      },
+      {
+        "boothId": 2,
+        "boothNumber": 2,
+        "name": "청춘 스토어",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 4
+      },
+      {
+        "boothId": 18,
+        "boothNumber": 18,
+        "name": "올레이디짐",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "올레이디짐",
+        "positionNumber": 5
+      },
+      {
+        "boothId": 10,
+        "boothNumber": 10,
+        "name": "대학일자리본부1",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부1",
+        "positionNumber": 6
+      },
+      {
+        "boothId": 11,
+        "boothNumber": 11,
+        "name": "대학일자리본부2",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부2",
+        "positionNumber": 7
+      },
+      {
+        "boothId": 7,
+        "boothNumber": 7,
+        "name": "장미원골목시장 캠퍼스 마켓",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "라이즈1",
+        "positionNumber": 8
+      },
+      {
+        "boothId": 8,
+        "boothNumber": 8,
+        "name": "장미원골목시장과 함께하는\nRISE사업단 지역상생 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "라이즈2",
+        "positionNumber": 9
+      },
+      {
+        "boothId": 9,
+        "boothNumber": 9,
+        "name": "로컬브랜드 서포터즈 체험부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "라이즈3",
+        "positionNumber": 10
+      },
+      {
+        "boothId": 16,
+        "boothNumber": 16,
+        "name": "서울베스트의료의원",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "서울베스트의료의원",
+        "positionNumber": 11
+      },
+      {
+        "boothId": 15,
+        "boothNumber": 15,
+        "name": "강남브랜드안과 놀이와 상담이 공존하는 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "강남브랜드안과",
+        "positionNumber": 12
+      },
+      {
+        "boothId": 17,
+        "boothNumber": 17,
+        "name": "시원스쿨",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "시원스쿨",
+        "positionNumber": 13
+      },
+      {
+        "boothId": 29,
+        "boothNumber": 29,
+        "name": "언더덕씨",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "동아리 언더덕씨",
+        "positionNumber": 14
+      },
+      {
+        "boothId": 22,
+        "boothNumber": 22,
+        "name": "과기대는 오락오락하지 않다",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "과학기술대학",
+        "positionNumber": 15
+      },
+      {
+        "boothId": 67,
+        "boothNumber": 67,
+        "name": "한 코, 한 땀",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "최지현",
+        "positionNumber": 16
+      },
+      {
+        "boothId": 21,
+        "boothNumber": 21,
+        "name": "빠순희 소품샵",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "가상현실융합학과",
+        "positionNumber": 17
+      },
+      {
+        "boothId": 48,
+        "boothNumber": 48,
+        "name": "덕성약국",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "약학대학",
+        "positionNumber": 18
+      },
+      {
+        "boothId": 3,
+        "boothNumber": 3,
+        "name": "청춘 매치: 행운을 잡아라",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 19
+      },
+      {
+        "boothId": 26,
+        "boothNumber": 26,
+        "name": "덕냥당",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "덕냥당",
+        "positionNumber": 20
+      },
+      {
+        "boothId": 46,
+        "boothNumber": 46,
+        "name": "뇌랑해 ♥ : 뇌를 말랑하게",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "심리학전공",
+        "positionNumber": 21
+      },
+      {
+        "boothId": 37,
+        "boothNumber": 37,
+        "name": "청사과 낭만부",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "박예리나",
+        "positionNumber": 22
+      },
+      {
+        "boothId": 73,
+        "boothNumber": 73,
+        "name": "Fork&Roll",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "F.O.R.K",
+        "positionNumber": 23
+      },
+      {
+        "boothId": 32,
+        "boothNumber": 32,
+        "name": "덕컴타자연습",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "디지털소프트웨어공학부",
+        "positionNumber": 24
+      },
+      {
+        "boothId": 39,
+        "boothNumber": 39,
+        "name": "비스타",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "비스타",
+        "positionNumber": 25
+      },
+      {
+        "boothId": 57,
+        "boothNumber": 57,
+        "name": "아름드리",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "유아교육과",
+        "positionNumber": 26
+      },
+      {
+        "boothId": 35,
+        "boothNumber": 35,
+        "name": "PLAGUE BUSTERS",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "바이오공학전공",
+        "positionNumber": 27
+      },
+      {
+        "boothId": 62,
+        "boothNumber": 62,
+        "name": "도봉또봄",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "전진안",
+        "positionNumber": 28
+      },
+      {
+        "boothId": 76,
+        "boothNumber": 76,
+        "name": "해삐즈 HAPPiZ",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "정수연",
+        "positionNumber": 29
+      },
+      {
+        "boothId": 14,
+        "boothNumber": 14,
+        "name": "옐로우 링크",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "배리어프리",
+        "positionNumber": 30
+      },
+      {
+        "boothId": 1,
+        "boothNumber": 1,
+        "name": "총학 운영 본부",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 33
+      }
+    ],
+    "NIGHT": [
+      {
+        "boothId": 6,
+        "boothNumber": 6,
+        "name": "DIAA(다이아) 외교단 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "국제처",
+        "positionNumber": 1
+      },
+      {
+        "boothId": 64,
+        "boothNumber": 64,
+        "name": "룡하다! 공룡타로",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "천주영",
+        "positionNumber": 2
+      },
+      {
+        "boothId": 28,
+        "boothNumber": 28,
+        "name": "도담도담",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "도담도담",
+        "positionNumber": 3
+      },
+      {
+        "boothId": 2,
+        "boothNumber": 2,
+        "name": "청춘 스토어",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 4
+      },
+      {
+        "boothId": 18,
+        "boothNumber": 18,
+        "name": "올레이디짐",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "올레이디짐",
+        "positionNumber": 5
+      },
+      {
+        "boothId": 10,
+        "boothNumber": 10,
+        "name": "대학일자리본부1",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부1",
+        "positionNumber": 6
+      },
+      {
+        "boothId": 11,
+        "boothNumber": 11,
+        "name": "대학일자리본부2",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부2",
+        "positionNumber": 7
+      },
+      {
+        "boothId": 7,
+        "boothNumber": 7,
+        "name": "장미원골목시장 캠퍼스 마켓",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "라이즈1",
+        "positionNumber": 8
+      },
+      {
+        "boothId": 8,
+        "boothNumber": 8,
+        "name": "장미원골목시장과 함께하는\nRISE사업단 지역상생 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "라이즈2",
+        "positionNumber": 9
+      },
+      {
+        "boothId": 9,
+        "boothNumber": 9,
+        "name": "로컬브랜드 서포터즈 체험부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "라이즈3",
+        "positionNumber": 10
+      },
+      {
+        "boothId": 16,
+        "boothNumber": 16,
+        "name": "서울베스트의료의원",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "서울베스트의료의원",
+        "positionNumber": 11
+      },
+      {
+        "boothId": 15,
+        "boothNumber": 15,
+        "name": "강남브랜드안과 놀이와 상담이 공존하는 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "강남브랜드안과",
+        "positionNumber": 12
+      },
+      {
+        "boothId": 17,
+        "boothNumber": 17,
+        "name": "시원스쿨",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "시원스쿨",
+        "positionNumber": 13
+      },
+      {
+        "boothId": 65,
+        "boothNumber": 65,
+        "name": "✿비즈식물원✿",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "초음",
+        "positionNumber": 14
+      },
+      {
+        "boothId": 72,
+        "boothNumber": 72,
+        "name": "내 손안의 미니 Lab",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "AI신약학과",
+        "positionNumber": 15
+      },
+      {
+        "boothId": 45,
+        "boothNumber": 45,
+        "name": "콩식이네 말랑공방",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "식품영양학전공",
+        "positionNumber": 16
+      },
+      {
+        "boothId": 48,
+        "boothNumber": 48,
+        "name": "덕성약국",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "약학대학",
+        "positionNumber": 17
+      },
+      {
+        "boothId": 21,
+        "boothNumber": 21,
+        "name": "빠순희 소품샵",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "가상현실융합학과",
+        "positionNumber": 18
+      },
+      {
+        "boothId": 3,
+        "boothNumber": 3,
+        "name": "청춘 매치: 행운을 잡아라",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 19
+      },
+      {
+        "boothId": 40,
+        "boothNumber": 40,
+        "name": "빛내미 공방",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "빛내미",
+        "positionNumber": 20
+      },
+      {
+        "boothId": 24,
+        "boothNumber": 24,
+        "name": "🏴‍☠️ 글로벌융합대학 해적단 🏴‍☠️",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "글로벌융합대학",
+        "positionNumber": 21
+      },
+      {
+        "boothId": 60,
+        "boothNumber": 60,
+        "name": "이오",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "이오",
+        "positionNumber": 22
+      },
+      {
+        "boothId": 70,
+        "boothNumber": 70,
+        "name": "한빛 현상소",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "한빛",
+        "positionNumber": 23
+      },
+      {
+        "boothId": 57,
+        "boothNumber": 57,
+        "name": "아름드리",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "유아교육과",
+        "positionNumber": 24
+      },
+      {
+        "boothId": 36,
+        "boothNumber": 36,
+        "name": "비 온 뒤 땅이 굳는다",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "박성은",
+        "positionNumber": 25
+      },
+      {
+        "boothId": 27,
+        "boothNumber": 27,
+        "name": "그런데 그때 갑자기 검도부가 나타났다 머리잇~!",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "덕성검도부",
+        "positionNumber": 26
+      },
+      {
+        "boothId": 54,
+        "boothNumber": 54,
+        "name": "운현극락(雲峴極樂)",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현극예술연구회",
+        "positionNumber": 27
+      },
+      {
+        "boothId": 20,
+        "boothNumber": 20,
+        "name": "9회말 2아웃",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "9회말 2아웃",
+        "positionNumber": 28
+      },
+      {
+        "boothId": 51,
+        "boothNumber": 51,
+        "name": "여름을 그리다",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "예운",
+        "positionNumber": 29
+      },
+      {
+        "boothId": 14,
+        "boothNumber": 14,
+        "name": "옐로우 링크",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "배리어프리",
+        "positionNumber": 30
+      },
+      {
+        "boothId": 1,
+        "boothNumber": 1,
+        "name": "총학 운영 본부",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 33
+      }
+    ]
+  },
+  "3": {
+    "DAY": [
+      {
+        "boothId": 6,
+        "boothNumber": 6,
+        "name": "DIAA(다이아) 외교단 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "국제처",
+        "positionNumber": 1
+      },
+      {
+        "boothId": 55,
+        "boothNumber": 55,
+        "name": "운현방송국 Dream-Catcher🌙",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현방송국",
+        "positionNumber": 2
+      },
+      {
+        "boothId": 55,
+        "boothNumber": 55,
+        "name": "운현방송국 Dream-Catcher🌙",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현방송국",
+        "positionNumber": 3
+      },
+      {
+        "boothId": 2,
+        "boothNumber": 2,
+        "name": "청춘 스토어",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 4
+      },
+      {
+        "boothId": 4,
+        "boothNumber": 4,
+        "name": "추억 충전소(총장네컷)",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 5
+      },
+      {
+        "boothId": 13,
+        "boothNumber": 13,
+        "name": "도봉구 보건소X서울시 자살예방센터",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "도봉구 보건소X서울시 자살예방센터",
+        "positionNumber": 6
+      },
+      {
+        "boothId": 16,
+        "boothNumber": 16,
+        "name": "서울베스트의료의원",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "서울베스트의료의원",
+        "positionNumber": 7
+      },
+      {
+        "boothId": 1011,
+        "boothNumber": 10,
+        "name": "대학일자리본부 1, 2",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "대학일자리본부 1, 2",
+        "positionNumber": 8
+      },
+      {
+        "boothId": 19,
+        "boothNumber": 19,
+        "name": "팔색미인",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "팔색미인",
+        "positionNumber": 9
+      },
+      {
+        "boothId": 61,
+        "boothNumber": 61,
+        "name": "근화마츠리",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "일어일문학전공",
+        "positionNumber": 10
+      },
+      {
+        "boothId": 31,
+        "boothNumber": 31,
+        "name": "작업중",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "동양화전공",
+        "positionNumber": 11
+      },
+      {
+        "boothId": 28,
+        "boothNumber": 28,
+        "name": "도담도담",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "도담도담",
+        "positionNumber": 12
+      },
+      {
+        "boothId": 32,
+        "boothNumber": 32,
+        "name": "덕컴타자연습",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "디지털소프트웨어공학부",
+        "positionNumber": 13
+      },
+      {
+        "boothId": 63,
+        "boothNumber": 63,
+        "name": "정외 PARADISE",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "정치외교학전공",
+        "positionNumber": 14
+      },
+      {
+        "boothId": 49,
+        "boothNumber": 49,
+        "name": "열음",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "열음",
+        "positionNumber": 15
+      },
+      {
+        "boothId": 72,
+        "boothNumber": 72,
+        "name": "내 손안의 미니 Lab",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "AI신약학과",
+        "positionNumber": 16
+      },
+      {
+        "boothId": 71,
+        "boothNumber": 71,
+        "name": "케미케미체인지",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "화학전공",
+        "positionNumber": 17
+      },
+      {
+        "boothId": 23,
+        "boothNumber": 23,
+        "name": "‘국’문방구",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "국어국문학전공",
+        "positionNumber": 18
+      },
+      {
+        "boothId": 3,
+        "boothNumber": 3,
+        "name": "청춘 매치: 행운을 잡아라",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 19
+      },
+      {
+        "boothId": 30,
+        "boothNumber": 30,
+        "name": "우리에서 만난 우리",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "동아리연합회",
+        "positionNumber": 20
+      },
+      {
+        "boothId": 56,
+        "boothNumber": 56,
+        "name": "자투리 과일가게",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "위주빈, 박채빈",
+        "positionNumber": 21
+      },
+      {
+        "boothId": 25,
+        "boothNumber": 25,
+        "name": "꽃신을 신고",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "꽃신을 신고",
+        "positionNumber": 22
+      },
+      {
+        "boothId": 52,
+        "boothNumber": 52,
+        "name": "덕우야❗️잡화점💫",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "오다영",
+        "positionNumber": 23
+      },
+      {
+        "boothId": 38,
+        "boothNumber": 38,
+        "name": "행운의 명태입양소",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "박희림",
+        "positionNumber": 24
+      },
+      {
+        "boothId": 43,
+        "boothNumber": 43,
+        "name": "수학전공",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "수학전공",
+        "positionNumber": 25
+      },
+      {
+        "boothId": 44,
+        "boothNumber": 44,
+        "name": "Beautifly 🦋",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "스노우보드 동아리 뷰티플라이",
+        "positionNumber": 26
+      },
+      {
+        "boothId": 35,
+        "boothNumber": 35,
+        "name": "PLAGUE BUSTERS",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "바이오공학전공",
+        "positionNumber": 27
+      },
+      {
+        "boothId": 62,
+        "boothNumber": 62,
+        "name": "도봉또봄",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "전진안",
+        "positionNumber": 28
+      },
+      {
+        "boothId": 34,
+        "boothNumber": 34,
+        "name": "꼬물꼬물 반짝이는 모험",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "물꼬",
+        "positionNumber": 29
+      },
+      {
+        "boothId": 70,
+        "boothNumber": 70,
+        "name": "한빛 현상소",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "한빛",
+        "positionNumber": 30
+      },
+      {
+        "boothId": 1,
+        "boothNumber": 1,
+        "name": "총학 운영 본부",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 33
+      },
+      {
+        "boothId": 77,
+        "boothNumber": 77,
+        "name": "대학일자리본부 1, 2",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "대학일자리본부 1, 2",
+        "positionNumber": 8
+      }
+    ],
+    "NIGHT": [
+      {
+        "boothId": 6,
+        "boothNumber": 6,
+        "name": "DIAA(다이아) 외교단 부스",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "국제처",
+        "positionNumber": 1
+      },
+      {
+        "boothId": 55,
+        "boothNumber": 55,
+        "name": "운현방송국 Dream-Catcher🌙",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현방송국",
+        "positionNumber": 2
+      },
+      {
+        "boothId": 55,
+        "boothNumber": 55,
+        "name": "운현방송국 Dream-Catcher🌙",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운현방송국",
+        "positionNumber": 3
+      },
+      {
+        "boothId": 2,
+        "boothNumber": 2,
+        "name": "청춘 스토어",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 4
+      },
+      {
+        "boothId": 4,
+        "boothNumber": 4,
+        "name": "추억 충전소(총장네컷)",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 5
+      },
+      {
+        "boothId": 13,
+        "boothNumber": 13,
+        "name": "도봉구 보건소X서울시 자살예방센터",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "도봉구 보건소X서울시 자살예방센터",
+        "positionNumber": 6
+      },
+      {
+        "boothId": 16,
+        "boothNumber": 16,
+        "name": "서울베스트의료의원",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "서울베스트의료의원",
+        "positionNumber": 7
+      },
+      {
+        "boothId": 10,
+        "boothNumber": 10,
+        "name": "대학일자리본부1",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부1",
+        "positionNumber": 8
+      },
+      {
+        "boothId": 11,
+        "boothNumber": 11,
+        "name": "대학일자리본부2",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부2",
+        "positionNumber": 9
+      },
+      {
+        "boothId": 51,
+        "boothNumber": 51,
+        "name": "여름을 그리다",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "예운",
+        "positionNumber": 10
+      },
+      {
+        "boothId": 42,
+        "boothNumber": 42,
+        "name": "페이스페인팅, 참 쉽죠?",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "서양화전공",
+        "positionNumber": 11
+      },
+      {
+        "boothId": 76,
+        "boothNumber": 76,
+        "name": "해삐즈 HAPPiZ",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "정수연",
+        "positionNumber": 12
+      },
+      {
+        "boothId": 69,
+        "boothNumber": 69,
+        "name": "필소굿:필름소피굿즈팝니다.",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "필름소피",
+        "positionNumber": 14
+      },
+      {
+        "boothId": 49,
+        "boothNumber": 49,
+        "name": "열음",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "열음",
+        "positionNumber": 15
+      },
+      {
+        "boothId": 33,
+        "boothNumber": 33,
+        "name": "혜연이가 뜨개 그만하래 같이 살 집 뜨고 있었는데",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "뜨개",
+        "positionNumber": 16
+      },
+      {
+        "boothId": 65,
+        "boothNumber": 65,
+        "name": "✿비즈식물원✿",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "초음",
+        "positionNumber": 17
+      },
+      {
+        "boothId": 22,
+        "boothNumber": 22,
+        "name": "과기대는 오락오락하지 않다",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "과학기술대학",
+        "positionNumber": 18
+      },
+      {
+        "boothId": 3,
+        "boothNumber": 3,
+        "name": "청춘 매치: 행운을 잡아라",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 19
+      },
+      {
+        "boothId": 59,
+        "boothNumber": 59,
+        "name": "isy 이시",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "이서영",
+        "positionNumber": 20
+      },
+      {
+        "boothId": 60,
+        "boothNumber": 60,
+        "name": "이오",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "이오",
+        "positionNumber": 21
+      },
+      {
+        "boothId": 30,
+        "boothNumber": 30,
+        "name": "우리에서 만난 우리",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "동아리연합회",
+        "positionNumber": 22
+      },
+      {
+        "boothId": 28,
+        "boothNumber": 28,
+        "name": "도담도담",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "도담도담",
+        "positionNumber": 23
+      },
+      {
+        "boothId": 27,
+        "boothNumber": 27,
+        "name": "그런데 그때 갑자기 검도부가 나타났다 머리잇~!",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "덕성검도부",
+        "positionNumber": 24
+      },
+      {
+        "boothId": 52,
+        "boothNumber": 52,
+        "name": "덕우야❗️잡화점💫",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "오다영",
+        "positionNumber": 25
+      },
+      {
+        "boothId": 64,
+        "boothNumber": 64,
+        "name": "룡하다! 공룡타로",
+        "boothTypes": ["NIGHT"],
+        "operatingSubject": "천주영",
+        "positionNumber": 26
+      },
+      {
+        "boothId": 53,
+        "boothNumber": 53,
+        "name": "운명의 서점",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "운지문학회",
+        "positionNumber": 27
+      },
+      {
+        "boothId": 44,
+        "boothNumber": 44,
+        "name": "Beautifly 🦋",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "스노우보드 동아리 뷰티플라이",
+        "positionNumber": 28
+      },
+      {
+        "boothId": 63,
+        "boothNumber": 63,
+        "name": "정외 PARADISE",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "정치외교학전공",
+        "positionNumber": 29
+      },
+      {
+        "boothId": 25,
+        "boothNumber": 25,
+        "name": "꽃신을 신고",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "꽃신을 신고",
+        "positionNumber": 30
+      },
+      {
+        "boothId": 1,
+        "boothNumber": 1,
+        "name": "총학 운영 본부",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "총학생회",
+        "positionNumber": 33
+      }
+    ]
+  }
+}
