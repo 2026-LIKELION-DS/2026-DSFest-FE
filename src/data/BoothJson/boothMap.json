@@ -7,7 +7,6 @@
         "name": "도봉경찰서",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "경찰청",
-        "thumbnailUrl": null,
         "positionNumber": 1
       },
       {
@@ -16,7 +15,6 @@
         "name": "운현방송국 Dream-Catcher🌙",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운현방송국",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/18FgLs4w6kwaeqFiqsaezpd25VUDZgeog=w1200",
         "positionNumber": 2
       },
       {
@@ -25,7 +23,6 @@
         "name": "운현방송국 Dream-Catcher🌙",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운현방송국",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/18FgLs4w6kwaeqFiqsaezpd25VUDZgeog=w1200",
         "positionNumber": 3
       },
       {
@@ -34,7 +31,6 @@
         "name": "청춘 스토어",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1MpS-ENygST58N6sxcVlECE7xWgmMZmVm=w1200",
         "positionNumber": 4
       },
       {
@@ -43,7 +39,6 @@
         "name": "강북청년창업마루 X 강북청년일자리센터",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "강북청년창업마루 X 강북청년일자리센터",
-        "thumbnailUrl": null,
         "positionNumber": 5
       },
       {
@@ -52,7 +47,6 @@
         "name": "대학일자리본부1",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "대학일자리본부1",
-        "thumbnailUrl": null,
         "positionNumber": 6
       },
       {
@@ -61,7 +55,6 @@
         "name": "대학일자리본부2",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "대학일자리본부2",
-        "thumbnailUrl": null,
         "positionNumber": 7
       },
       {
@@ -70,7 +63,6 @@
         "name": "강남브랜드안과 놀이와 상담이 공존하는 부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "강남브랜드안과",
-        "thumbnailUrl": null,
         "positionNumber": 8
       },
       {
@@ -79,7 +71,6 @@
         "name": "서울베스트의료의원",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "서울베스트의료의원",
-        "thumbnailUrl": null,
         "positionNumber": 9
       },
       {
@@ -88,7 +79,6 @@
         "name": "LIFE PROJECT",
         "boothTypes": ["DAY"],
         "operatingSubject": "LIFE PROJECT",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1XWON5T3BZJAMWcV4schRi_92gIx12-DS=w1200",
         "positionNumber": 10
       },
       {
@@ -97,7 +87,6 @@
         "name": "덕새가 머무는 곳",
         "boothTypes": ["DAY"],
         "operatingSubject": "윤다연",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1EL8J_5cRQSQ3TgRDm42YC5EjCIdlM6V0=w1200",
         "positionNumber": 11
       },
       {
@@ -106,7 +95,6 @@
         "name": "덕컴타자연습",
         "boothTypes": ["DAY"],
         "operatingSubject": "디지털소프트웨어공학부",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1RRp90GJwZlRP7kxbU31-qK_rFtLpyhYo=w1200",
         "positionNumber": 12
       },
       {
@@ -115,7 +103,6 @@
         "name": "9회말 2아웃",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "9회말 2아웃",
-        "thumbnailUrl": null,
         "positionNumber": 13
       },
       {
@@ -124,7 +111,6 @@
         "name": "생체 도전장",
         "boothTypes": ["DAY"],
         "operatingSubject": "생활체육학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1gvOCaohcfErO0QDJObJVrsfe7dlH1O7H=w1200",
         "positionNumber": 14
       },
       {
@@ -133,7 +119,6 @@
         "name": "덕성약국",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "약학대학",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1NYKL45eDukY918Vytg9LmI1RpcZBaxrA=w1200",
         "positionNumber": 15
       },
       {
@@ -142,7 +127,6 @@
         "name": "한 코, 한 땀",
         "boothTypes": ["DAY"],
         "operatingSubject": "최지현",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1RfqP_1kpy9nnN1cXZdTPmB819BTS6fiE=w1200",
         "positionNumber": 16
       },
       {
@@ -151,7 +135,6 @@
         "name": "언더덕씨",
         "boothTypes": ["DAY"],
         "operatingSubject": "동아리 언더덕씨",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1WJzjRySevA9H-XLAu8VG1kPM77HEoTOx=w1200",
         "positionNumber": 17
       },
       {
@@ -160,7 +143,6 @@
         "name": "과기대는 오락오락하지 않다",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "과학기술대학",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1wCDhs3dUaBuT5qvD8ArVYAXly3GJ7fJu=w1200",
         "positionNumber": 18
       },
       {
@@ -169,7 +151,6 @@
         "name": "청춘 매치: 행운을 잡아라",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/12egTkeaMmlQjCz9f4QpLAWeVNPcGQhE4=w1200",
         "positionNumber": 19
       },
       {
@@ -178,7 +159,6 @@
         "name": "필소굿:필름소피굿즈팝니다.",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "필름소피",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1FtiGdId_BJzbJvmgXHPCaDXrBAVua4TR=w1200",
         "positionNumber": 20
       },
       {
@@ -187,7 +167,6 @@
         "name": "운현극락(雲峴極樂)",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운현극예술연구회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1OMX6K1N8Rt0NPAUVaNm6MdjSl80fQALN=w1200",
         "positionNumber": 21
       },
       {
@@ -196,7 +175,6 @@
         "name": "아름드리",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "유아교육과",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1AR7uEiJeYcRqK4Y-XgeZ5BlFX7CD1fCT=w1200",
         "positionNumber": 22
       },
       {
@@ -205,7 +183,6 @@
         "name": "비 온 뒤 땅이 굳는다",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "박성은",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/13KRB210fZUVquw0wOuoJb5xFGAIZYVKl=w1200",
         "positionNumber": 23
       },
       {
@@ -214,7 +191,6 @@
         "name": "응답하라 응애!",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "아동가족학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1Xp9wC56COOwMK7VxahrE2WSx-EYMILTH=w1200",
         "positionNumber": 24
       },
       {
@@ -223,7 +199,6 @@
         "name": "English Carnival",
         "boothTypes": ["DAY"],
         "operatingSubject": "영어영문학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1jZhOMPcDPZLDf_9D7bFOMNET0DMu5fel=w1200",
         "positionNumber": 25
       },
       {
@@ -232,7 +207,6 @@
         "name": "운명의 서점",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운지문학회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1h9UdVae_56MNVQAbcNu3YRgDx9GtuCO4=w1200",
         "positionNumber": 26
       },
       {
@@ -241,7 +215,6 @@
         "name": "자투리 과일가게",
         "boothTypes": ["DAY"],
         "operatingSubject": "위주빈, 박채빈",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1bBzwuo9Rhsbas9eE554pqcn_eMMY-r8C=w1200",
         "positionNumber": 27
       },
       {
@@ -250,7 +223,6 @@
         "name": "근화마츠리",
         "boothTypes": ["DAY"],
         "operatingSubject": "일어일문학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1V8plbP_cbehWVjman3CQaZM_-0-kA4Qh=w1200",
         "positionNumber": 28
       },
       {
@@ -259,7 +231,6 @@
         "name": "🏴‍☠️ 글로벌융합대학 해적단 🏴‍☠️",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "글로벌융합대학",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/16GTXMLzKAJ63jAVEr52ZHl-LgUZWucJ0=w1200",
         "positionNumber": 29
       },
       {
@@ -268,7 +239,6 @@
         "name": "옐로우 링크",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "배리어프리",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1BG6NYmBQP7AVh6ALAQqh-NphUXXZAw0y=w1200",
         "positionNumber": 30
       },
       {
@@ -277,7 +247,6 @@
         "name": "총학 운영 본부",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": null,
         "positionNumber": 33
       }
     ],
@@ -288,7 +257,6 @@
         "name": "도봉경찰서",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "경찰청",
-        "thumbnailUrl": null,
         "positionNumber": 1
       },
       {
@@ -297,7 +265,6 @@
         "name": "운현방송국 Dream-Catcher🌙",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운현방송국",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/18FgLs4w6kwaeqFiqsaezpd25VUDZgeog=w1200",
         "positionNumber": 2
       },
       {
@@ -306,7 +273,6 @@
         "name": "운현방송국 Dream-Catcher🌙",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운현방송국",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/18FgLs4w6kwaeqFiqsaezpd25VUDZgeog=w1200",
         "positionNumber": 3
       },
       {
@@ -315,7 +281,6 @@
         "name": "청춘 스토어",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1MpS-ENygST58N6sxcVlECE7xWgmMZmVm=w1200",
         "positionNumber": 4
       },
       {
@@ -324,7 +289,6 @@
         "name": "강북청년창업마루 X 강북청년일자리센터",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "강북청년창업마루 X 강북청년일자리센터",
-        "thumbnailUrl": null,
         "positionNumber": 5
       },
       {
@@ -333,7 +297,6 @@
         "name": "대학일자리본부1",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "대학일자리본부1",
-        "thumbnailUrl": null,
         "positionNumber": 6
       },
       {
@@ -342,7 +305,6 @@
         "name": "대학일자리본부2",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "대학일자리본부2",
-        "thumbnailUrl": null,
         "positionNumber": 7
       },
       {
@@ -351,7 +313,6 @@
         "name": "강남브랜드안과 놀이와 상담이 공존하는 부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "강남브랜드안과",
-        "thumbnailUrl": null,
         "positionNumber": 8
       },
       {
@@ -360,7 +321,6 @@
         "name": "서울베스트의료의원",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "서울베스트의료의원",
-        "thumbnailUrl": null,
         "positionNumber": 9
       },
       {
@@ -369,7 +329,6 @@
         "name": "수학전공",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "수학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1T8xfpQNMcQhDPsUnO-8yMupiO2NQqorW=w1200",
         "positionNumber": 10
       },
       {
@@ -378,7 +337,6 @@
         "name": "응답하라 응애!",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "아동가족학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1Xp9wC56COOwMK7VxahrE2WSx-EYMILTH=w1200",
         "positionNumber": 11
       },
       {
@@ -387,7 +345,6 @@
         "name": "비스타",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "비스타",
-        "thumbnailUrl": null,
         "positionNumber": 12
       },
       {
@@ -396,7 +353,6 @@
         "name": "그런데 그때 갑자기 검도부가 나타났다 머리잇~!",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "덕성검도부",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1x4BoqfONxrmSnDWoVfhLdJU1CdTXAhMm=w1200",
         "positionNumber": 13
       },
       {
@@ -405,7 +361,6 @@
         "name": "콩식이네 말랑공방",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "식품영양학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1avQruV6iJRZYMw4DFuEcP8vk9eA0zYYE=w1200",
         "positionNumber": 14
       },
       {
@@ -414,7 +369,6 @@
         "name": "35mm Archive",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "최은서",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1-p47-e5CzouHNy4lE8E5EAPyjId2gHJn=w1200",
         "positionNumber": 15
       },
       {
@@ -423,7 +377,6 @@
         "name": "케미케미체인지",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "화학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1Bu-YrHjkck-hxEtwmzaRehqG4m-sO2T4=w1200",
         "positionNumber": 16
       },
       {
@@ -432,7 +385,6 @@
         "name": "팀복학생",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "팀복학생",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1mCALyj6RyP4E6_HTvToxFJWPTja8NKXu=w1200",
         "positionNumber": 17
       },
       {
@@ -441,7 +393,6 @@
         "name": "열음",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "열음",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1utyU_YLfG2as7XLtKh4n8o-53IlAagNu=w1200",
         "positionNumber": 18
       },
       {
@@ -450,7 +401,6 @@
         "name": "청춘 매치: 행운을 잡아라",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/12egTkeaMmlQjCz9f4QpLAWeVNPcGQhE4=w1200",
         "positionNumber": 19
       },
       {
@@ -459,7 +409,6 @@
         "name": "뇌랑해 ♥ : 뇌를 말랑하게",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "심리학전공",
-        "thumbnailUrl": "https://drive.google.com/thumbnail?id=140vT6LhUghCwZOlq5bmc5tCLG7nBclUR&sz=w1200",
         "positionNumber": 20
       },
       {
@@ -468,7 +417,6 @@
         "name": "쿠사싹",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "KUSA",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1cwUxEZnRhUWf13xA_aw4CJCBZ_Wegdzi=w1200",
         "positionNumber": 21
       },
       {
@@ -477,7 +425,6 @@
         "name": "한빛 현상소",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "한빛",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1A-2hKiyiCBr87ERRWcpW5o6hPJF41bDG=w1200",
         "positionNumber": 22
       },
       {
@@ -486,7 +433,6 @@
         "name": "빛내미 공방",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "빛내미",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1QkMfo7enmAVvu5fhATrT7tXQNnJwhlO_=w1200",
         "positionNumber": 23
       },
       {
@@ -495,7 +441,6 @@
         "name": "꼬물꼬물 반짝이는 모험",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "물꼬",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1eTDN1PmBktlEjBB7UX6R-sMWNqLUtwNS=w1200",
         "positionNumber": 24
       },
       {
@@ -504,7 +449,6 @@
         "name": "행운의 명태입양소",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "박희림",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1RhGzPigc1nSDkyGpWdc2WqzxvFnHgRme=w1200",
         "positionNumber": 25
       },
       {
@@ -513,7 +457,6 @@
         "name": "우리에서 만난 우리",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "동아리연합회",
-        "thumbnailUrl": "https://drive.google.com/thumbnail?id=1rXs93AAzU1tB1QloKPhRWY1xdU-KMnni&sz=w1200",
         "positionNumber": 26
       },
       {
@@ -522,7 +465,6 @@
         "name": "덕냥당",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "덕냥당",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1Eay0zk0PhYxwx58sUfKCIx1TNt2lr5nK=w1200",
         "positionNumber": 27
       },
       {
@@ -531,7 +473,6 @@
         "name": "🏴‍☠️ 글로벌융합대학 해적단 🏴‍☠️",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "글로벌융합대학",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/16GTXMLzKAJ63jAVEr52ZHl-LgUZWucJ0=w1200",
         "positionNumber": 28
       },
       {
@@ -540,7 +481,6 @@
         "name": "Fork&Roll",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "F.O.R.K",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1XAxDyGFsMBw6xiNfJzC8kQ3vfIcoXVTw=w1200",
         "positionNumber": 29
       },
       {
@@ -549,7 +489,6 @@
         "name": "옐로우 링크",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "배리어프리",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1BG6NYmBQP7AVh6ALAQqh-NphUXXZAw0y=w1200",
         "positionNumber": 30
       },
       {
@@ -558,7 +497,6 @@
         "name": "총학 운영 본부",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": null,
         "positionNumber": 33
       }
     ]
@@ -571,7 +509,6 @@
         "name": "DIAA(다이아) 외교단 부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "국제처",
-        "thumbnailUrl": null,
         "positionNumber": 1
       },
       {
@@ -580,7 +517,6 @@
         "name": "LIFE PROJECT",
         "boothTypes": ["DAY"],
         "operatingSubject": "LIFE PROJECT",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1XWON5T3BZJAMWcV4schRi_92gIx12-DS=w1200",
         "positionNumber": 2
       },
       {
@@ -589,7 +525,6 @@
         "name": "운명의 서점",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운지문학회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1h9UdVae_56MNVQAbcNu3YRgDx9GtuCO4=w1200",
         "positionNumber": 3
       },
       {
@@ -598,7 +533,6 @@
         "name": "청춘 스토어",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1MpS-ENygST58N6sxcVlECE7xWgmMZmVm=w1200",
         "positionNumber": 4
       },
       {
@@ -607,7 +541,6 @@
         "name": "올레이디짐",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "올레이디짐",
-        "thumbnailUrl": null,
         "positionNumber": 5
       },
       {
@@ -616,7 +549,6 @@
         "name": "대학일자리본부1",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "대학일자리본부1",
-        "thumbnailUrl": null,
         "positionNumber": 6
       },
       {
@@ -625,7 +557,6 @@
         "name": "대학일자리본부2",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "대학일자리본부2",
-        "thumbnailUrl": null,
         "positionNumber": 7
       },
       {
@@ -634,7 +565,6 @@
         "name": "장미원골목시장 캠퍼스 마켓",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "라이즈1",
-        "thumbnailUrl": null,
         "positionNumber": 8
       },
       {
@@ -643,7 +573,6 @@
         "name": "장미원골목시장과 함께하는\nRISE사업단 지역상생 부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "라이즈2",
-        "thumbnailUrl": null,
         "positionNumber": 9
       },
       {
@@ -652,7 +581,6 @@
         "name": "로컬브랜드 서포터즈 체험부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "라이즈3",
-        "thumbnailUrl": null,
         "positionNumber": 10
       },
       {
@@ -661,7 +589,6 @@
         "name": "서울베스트의료의원",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "서울베스트의료의원",
-        "thumbnailUrl": null,
         "positionNumber": 11
       },
       {
@@ -670,7 +597,6 @@
         "name": "강남브랜드안과 놀이와 상담이 공존하는 부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "강남브랜드안과",
-        "thumbnailUrl": null,
         "positionNumber": 12
       },
       {
@@ -679,7 +605,6 @@
         "name": "시원스쿨",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "시원스쿨",
-        "thumbnailUrl": null,
         "positionNumber": 13
       },
       {
@@ -688,7 +613,6 @@
         "name": "언더덕씨",
         "boothTypes": ["DAY"],
         "operatingSubject": "동아리 언더덕씨",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1WJzjRySevA9H-XLAu8VG1kPM77HEoTOx=w1200",
         "positionNumber": 14
       },
       {
@@ -697,7 +621,6 @@
         "name": "과기대는 오락오락하지 않다",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "과학기술대학",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1wCDhs3dUaBuT5qvD8ArVYAXly3GJ7fJu=w1200",
         "positionNumber": 15
       },
       {
@@ -706,7 +629,6 @@
         "name": "한 코, 한 땀",
         "boothTypes": ["DAY"],
         "operatingSubject": "최지현",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1RfqP_1kpy9nnN1cXZdTPmB819BTS6fiE=w1200",
         "positionNumber": 16
       },
       {
@@ -715,7 +637,6 @@
         "name": "빠순희 소품샵",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "가상현실융합학과",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/14sBkBkFxwE33KxkEdkbr3Mb0USQCTaGn=w1200",
         "positionNumber": 17
       },
       {
@@ -724,7 +645,6 @@
         "name": "덕성약국",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "약학대학",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1NYKL45eDukY918Vytg9LmI1RpcZBaxrA=w1200",
         "positionNumber": 18
       },
       {
@@ -733,7 +653,6 @@
         "name": "청춘 매치: 행운을 잡아라",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/12egTkeaMmlQjCz9f4QpLAWeVNPcGQhE4=w1200",
         "positionNumber": 19
       },
       {
@@ -742,7 +661,6 @@
         "name": "덕냥당",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "덕냥당",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1Eay0zk0PhYxwx58sUfKCIx1TNt2lr5nK=w1200",
         "positionNumber": 20
       },
       {
@@ -751,7 +669,6 @@
         "name": "뇌랑해 ♥ : 뇌를 말랑하게",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "심리학전공",
-        "thumbnailUrl": "https://drive.google.com/thumbnail?id=140vT6LhUghCwZOlq5bmc5tCLG7nBclUR&sz=w1200",
         "positionNumber": 21
       },
       {
@@ -760,7 +677,6 @@
         "name": "청사과 낭만부",
         "boothTypes": ["DAY"],
         "operatingSubject": "박예리나",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1-f7B14cnXe6ahITmlKy78ygBegPYmVPM=w1200",
         "positionNumber": 22
       },
       {
@@ -769,7 +685,6 @@
         "name": "Fork&Roll",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "F.O.R.K",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1XAxDyGFsMBw6xiNfJzC8kQ3vfIcoXVTw=w1200",
         "positionNumber": 23
       },
       {
@@ -778,7 +693,6 @@
         "name": "덕컴타자연습",
         "boothTypes": ["DAY"],
         "operatingSubject": "디지털소프트웨어공학부",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1RRp90GJwZlRP7kxbU31-qK_rFtLpyhYo=w1200",
         "positionNumber": 24
       },
       {
@@ -787,7 +701,6 @@
         "name": "비스타",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "비스타",
-        "thumbnailUrl": null,
         "positionNumber": 25
       },
       {
@@ -796,7 +709,6 @@
         "name": "아름드리",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "유아교육과",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1AR7uEiJeYcRqK4Y-XgeZ5BlFX7CD1fCT=w1200",
         "positionNumber": 26
       },
       {
@@ -805,7 +717,6 @@
         "name": "PLAGUE BUSTERS",
         "boothTypes": ["DAY"],
         "operatingSubject": "바이오공학전공",
-        "thumbnailUrl": null,
         "positionNumber": 27
       },
       {
@@ -814,7 +725,6 @@
         "name": "도봉또봄",
         "boothTypes": ["DAY"],
         "operatingSubject": "전진안",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1GTqO61HGLlzOIEX9MFTbvGYEnsb9VPrs=w1200",
         "positionNumber": 28
       },
       {
@@ -823,7 +733,6 @@
         "name": "해삐즈 HAPPiZ",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "정수연",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1yx1TI50KKyGlpl6pIlYAyNOl62Lw0p9f=w1200",
         "positionNumber": 29
       },
       {
@@ -832,7 +741,6 @@
         "name": "옐로우 링크",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "배리어프리",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1BG6NYmBQP7AVh6ALAQqh-NphUXXZAw0y=w1200",
         "positionNumber": 30
       },
       {
@@ -841,7 +749,6 @@
         "name": "총학 운영 본부",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": null,
         "positionNumber": 33
       }
     ],
@@ -852,7 +759,6 @@
         "name": "DIAA(다이아) 외교단 부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "국제처",
-        "thumbnailUrl": null,
         "positionNumber": 1
       },
       {
@@ -861,7 +767,6 @@
         "name": "룡하다! 공룡타로",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "천주영",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1yrQ3cPGauU49fe5ov-mWlSc4DnF13Gpz=w1200",
         "positionNumber": 2
       },
       {
@@ -870,7 +775,6 @@
         "name": "도담도담",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "도담도담",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1R1c2Q8g7QJBD0UWbfzzKgI3QYgYJlq3D=w1200",
         "positionNumber": 3
       },
       {
@@ -879,7 +783,6 @@
         "name": "청춘 스토어",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1MpS-ENygST58N6sxcVlECE7xWgmMZmVm=w1200",
         "positionNumber": 4
       },
       {
@@ -888,7 +791,6 @@
         "name": "올레이디짐",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "올레이디짐",
-        "thumbnailUrl": null,
         "positionNumber": 5
       },
       {
@@ -897,7 +799,6 @@
         "name": "대학일자리본부1",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "대학일자리본부1",
-        "thumbnailUrl": null,
         "positionNumber": 6
       },
       {
@@ -906,7 +807,6 @@
         "name": "대학일자리본부2",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "대학일자리본부2",
-        "thumbnailUrl": null,
         "positionNumber": 7
       },
       {
@@ -915,7 +815,6 @@
         "name": "장미원골목시장 캠퍼스 마켓",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "라이즈1",
-        "thumbnailUrl": null,
         "positionNumber": 8
       },
       {
@@ -924,7 +823,6 @@
         "name": "장미원골목시장과 함께하는\nRISE사업단 지역상생 부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "라이즈2",
-        "thumbnailUrl": null,
         "positionNumber": 9
       },
       {
@@ -933,7 +831,6 @@
         "name": "로컬브랜드 서포터즈 체험부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "라이즈3",
-        "thumbnailUrl": null,
         "positionNumber": 10
       },
       {
@@ -942,7 +839,6 @@
         "name": "서울베스트의료의원",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "서울베스트의료의원",
-        "thumbnailUrl": null,
         "positionNumber": 11
       },
       {
@@ -951,7 +847,6 @@
         "name": "강남브랜드안과 놀이와 상담이 공존하는 부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "강남브랜드안과",
-        "thumbnailUrl": null,
         "positionNumber": 12
       },
       {
@@ -960,7 +855,6 @@
         "name": "시원스쿨",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "시원스쿨",
-        "thumbnailUrl": null,
         "positionNumber": 13
       },
       {
@@ -969,7 +863,6 @@
         "name": "✿비즈식물원✿",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "초음",
-        "thumbnailUrl": null,
         "positionNumber": 14
       },
       {
@@ -978,7 +871,6 @@
         "name": "내 손안의 미니 Lab",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "AI신약학과",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1LsxwPUem085YQcoTLXjndjzzTReomIws=w1200",
         "positionNumber": 15
       },
       {
@@ -987,7 +879,6 @@
         "name": "콩식이네 말랑공방",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "식품영양학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1avQruV6iJRZYMw4DFuEcP8vk9eA0zYYE=w1200",
         "positionNumber": 16
       },
       {
@@ -996,7 +887,6 @@
         "name": "덕성약국",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "약학대학",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1NYKL45eDukY918Vytg9LmI1RpcZBaxrA=w1200",
         "positionNumber": 17
       },
       {
@@ -1005,7 +895,6 @@
         "name": "빠순희 소품샵",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "가상현실융합학과",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/14sBkBkFxwE33KxkEdkbr3Mb0USQCTaGn=w1200",
         "positionNumber": 18
       },
       {
@@ -1014,7 +903,6 @@
         "name": "청춘 매치: 행운을 잡아라",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/12egTkeaMmlQjCz9f4QpLAWeVNPcGQhE4=w1200",
         "positionNumber": 19
       },
       {
@@ -1023,7 +911,6 @@
         "name": "빛내미 공방",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "빛내미",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1QkMfo7enmAVvu5fhATrT7tXQNnJwhlO_=w1200",
         "positionNumber": 20
       },
       {
@@ -1032,7 +919,6 @@
         "name": "🏴‍☠️ 글로벌융합대학 해적단 🏴‍☠️",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "글로벌융합대학",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/16GTXMLzKAJ63jAVEr52ZHl-LgUZWucJ0=w1200",
         "positionNumber": 21
       },
       {
@@ -1041,7 +927,6 @@
         "name": "이오",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "이오",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1vkN3Xra-M0xNo3QZMVeT717dM0x-jzGd=w1200",
         "positionNumber": 22
       },
       {
@@ -1050,7 +935,6 @@
         "name": "한빛 현상소",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "한빛",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1A-2hKiyiCBr87ERRWcpW5o6hPJF41bDG=w1200",
         "positionNumber": 23
       },
       {
@@ -1059,7 +943,6 @@
         "name": "아름드리",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "유아교육과",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1AR7uEiJeYcRqK4Y-XgeZ5BlFX7CD1fCT=w1200",
         "positionNumber": 24
       },
       {
@@ -1068,7 +951,6 @@
         "name": "비 온 뒤 땅이 굳는다",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "박성은",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/13KRB210fZUVquw0wOuoJb5xFGAIZYVKl=w1200",
         "positionNumber": 25
       },
       {
@@ -1077,7 +959,6 @@
         "name": "그런데 그때 갑자기 검도부가 나타났다 머리잇~!",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "덕성검도부",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1x4BoqfONxrmSnDWoVfhLdJU1CdTXAhMm=w1200",
         "positionNumber": 26
       },
       {
@@ -1086,7 +967,6 @@
         "name": "운현극락(雲峴極樂)",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운현극예술연구회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1OMX6K1N8Rt0NPAUVaNm6MdjSl80fQALN=w1200",
         "positionNumber": 27
       },
       {
@@ -1095,7 +975,6 @@
         "name": "9회말 2아웃",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "9회말 2아웃",
-        "thumbnailUrl": null,
         "positionNumber": 28
       },
       {
@@ -1104,7 +983,6 @@
         "name": "여름을 그리다",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "예운",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1TwoLt-RMoW0kUQRcFCVrWf7m5eZtRzhH=w1200",
         "positionNumber": 29
       },
       {
@@ -1113,7 +991,6 @@
         "name": "옐로우 링크",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "배리어프리",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1BG6NYmBQP7AVh6ALAQqh-NphUXXZAw0y=w1200",
         "positionNumber": 30
       },
       {
@@ -1122,7 +999,6 @@
         "name": "총학 운영 본부",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": null,
         "positionNumber": 33
       }
     ]
@@ -1135,7 +1011,6 @@
         "name": "DIAA(다이아) 외교단 부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "국제처",
-        "thumbnailUrl": null,
         "positionNumber": 1
       },
       {
@@ -1144,7 +1019,6 @@
         "name": "운현방송국 Dream-Catcher🌙",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운현방송국",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/18FgLs4w6kwaeqFiqsaezpd25VUDZgeog=w1200",
         "positionNumber": 2
       },
       {
@@ -1153,7 +1027,6 @@
         "name": "운현방송국 Dream-Catcher🌙",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운현방송국",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/18FgLs4w6kwaeqFiqsaezpd25VUDZgeog=w1200",
         "positionNumber": 3
       },
       {
@@ -1162,7 +1035,6 @@
         "name": "청춘 스토어",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1MpS-ENygST58N6sxcVlECE7xWgmMZmVm=w1200",
         "positionNumber": 4
       },
       {
@@ -1171,7 +1043,6 @@
         "name": "추억 충전소(총장네컷)",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": null,
         "positionNumber": 5
       },
       {
@@ -1180,7 +1051,6 @@
         "name": "도봉구 보건소X서울시 자살예방센터",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "도봉구 보건소X서울시 자살예방센터",
-        "thumbnailUrl": null,
         "positionNumber": 6
       },
       {
@@ -1189,7 +1059,6 @@
         "name": "서울베스트의료의원",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "서울베스트의료의원",
-        "thumbnailUrl": null,
         "positionNumber": 7
       },
       {
@@ -1198,7 +1067,6 @@
         "name": "대학일자리본부 1, 2",
         "boothTypes": ["DAY"],
         "operatingSubject": "대학일자리본부 1, 2",
-        "thumbnailUrl": null,
         "positionNumber": 8
       },
       {
@@ -1207,7 +1075,6 @@
         "name": "팔색미인",
         "boothTypes": ["DAY"],
         "operatingSubject": "팔색미인",
-        "thumbnailUrl": null,
         "positionNumber": 9
       },
       {
@@ -1216,7 +1083,6 @@
         "name": "근화마츠리",
         "boothTypes": ["DAY"],
         "operatingSubject": "일어일문학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1V8plbP_cbehWVjman3CQaZM_-0-kA4Qh=w1200",
         "positionNumber": 10
       },
       {
@@ -1225,7 +1091,6 @@
         "name": "작업중",
         "boothTypes": ["DAY"],
         "operatingSubject": "동양화전공",
-        "thumbnailUrl": null,
         "positionNumber": 11
       },
       {
@@ -1234,7 +1099,6 @@
         "name": "도담도담",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "도담도담",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1R1c2Q8g7QJBD0UWbfzzKgI3QYgYJlq3D=w1200",
         "positionNumber": 12
       },
       {
@@ -1243,7 +1107,6 @@
         "name": "덕컴타자연습",
         "boothTypes": ["DAY"],
         "operatingSubject": "디지털소프트웨어공학부",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1RRp90GJwZlRP7kxbU31-qK_rFtLpyhYo=w1200",
         "positionNumber": 13
       },
       {
@@ -1252,7 +1115,6 @@
         "name": "정외 PARADISE",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "정치외교학전공",
-        "thumbnailUrl": null,
         "positionNumber": 14
       },
       {
@@ -1261,7 +1123,6 @@
         "name": "열음",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "열음",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1utyU_YLfG2as7XLtKh4n8o-53IlAagNu=w1200",
         "positionNumber": 15
       },
       {
@@ -1270,7 +1131,6 @@
         "name": "내 손안의 미니 Lab",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "AI신약학과",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1LsxwPUem085YQcoTLXjndjzzTReomIws=w1200",
         "positionNumber": 16
       },
       {
@@ -1279,7 +1139,6 @@
         "name": "케미케미체인지",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "화학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1Bu-YrHjkck-hxEtwmzaRehqG4m-sO2T4=w1200",
         "positionNumber": 17
       },
       {
@@ -1288,7 +1147,6 @@
         "name": "‘국’문방구",
         "boothTypes": ["DAY"],
         "operatingSubject": "국어국문학전공",
-        "thumbnailUrl": null,
         "positionNumber": 18
       },
       {
@@ -1297,7 +1155,6 @@
         "name": "청춘 매치: 행운을 잡아라",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/12egTkeaMmlQjCz9f4QpLAWeVNPcGQhE4=w1200",
         "positionNumber": 19
       },
       {
@@ -1306,7 +1163,6 @@
         "name": "우리에서 만난 우리",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "동아리연합회",
-        "thumbnailUrl": "https://drive.google.com/thumbnail?id=1rXs93AAzU1tB1QloKPhRWY1xdU-KMnni&sz=w1200",
         "positionNumber": 20
       },
       {
@@ -1315,7 +1171,6 @@
         "name": "자투리 과일가게",
         "boothTypes": ["DAY"],
         "operatingSubject": "위주빈, 박채빈",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1bBzwuo9Rhsbas9eE554pqcn_eMMY-r8C=w1200",
         "positionNumber": 21
       },
       {
@@ -1324,7 +1179,6 @@
         "name": "꽃신을 신고",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "꽃신을 신고",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/11vwd0ubF9bZZG6ITUw7n2bg-Lyi1Bdk7=w1200",
         "positionNumber": 22
       },
       {
@@ -1333,7 +1187,6 @@
         "name": "덕우야❗️잡화점💫",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "오다영",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1vJDSqcBxvXnbFXib4pcu8agaYxnGBhrB=w1200",
         "positionNumber": 23
       },
       {
@@ -1342,7 +1195,6 @@
         "name": "행운의 명태입양소",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "박희림",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1RhGzPigc1nSDkyGpWdc2WqzxvFnHgRme=w1200",
         "positionNumber": 24
       },
       {
@@ -1351,7 +1203,6 @@
         "name": "수학전공",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "수학전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1T8xfpQNMcQhDPsUnO-8yMupiO2NQqorW=w1200",
         "positionNumber": 25
       },
       {
@@ -1360,7 +1211,6 @@
         "name": "Beautifly 🦋",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "스노우보드 동아리 뷰티플라이",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/12eyf0xUhS986_mG1YUZCxRNmE7-A8BGf=w1200",
         "positionNumber": 26
       },
       {
@@ -1369,7 +1219,6 @@
         "name": "PLAGUE BUSTERS",
         "boothTypes": ["DAY"],
         "operatingSubject": "바이오공학전공",
-        "thumbnailUrl": null,
         "positionNumber": 27
       },
       {
@@ -1378,7 +1227,6 @@
         "name": "도봉또봄",
         "boothTypes": ["DAY"],
         "operatingSubject": "전진안",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1GTqO61HGLlzOIEX9MFTbvGYEnsb9VPrs=w1200",
         "positionNumber": 28
       },
       {
@@ -1387,7 +1235,6 @@
         "name": "꼬물꼬물 반짝이는 모험",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "물꼬",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1eTDN1PmBktlEjBB7UX6R-sMWNqLUtwNS=w1200",
         "positionNumber": 29
       },
       {
@@ -1396,7 +1243,6 @@
         "name": "한빛 현상소",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "한빛",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1A-2hKiyiCBr87ERRWcpW5o6hPJF41bDG=w1200",
         "positionNumber": 30
       },
       {
@@ -1405,8 +1251,15 @@
         "name": "총학 운영 본부",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": null,
         "positionNumber": 33
+      },
+      {
+        "boothId": 77,
+        "boothNumber": 77,
+        "name": "대학일자리본부 1, 2",
+        "boothTypes": ["DAY"],
+        "operatingSubject": "대학일자리본부 1, 2",
+        "positionNumber": 8
       }
     ],
     "NIGHT": [
@@ -1416,7 +1269,6 @@
         "name": "DIAA(다이아) 외교단 부스",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "국제처",
-        "thumbnailUrl": null,
         "positionNumber": 1
       },
       {
@@ -1425,7 +1277,6 @@
         "name": "운현방송국 Dream-Catcher🌙",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운현방송국",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/18FgLs4w6kwaeqFiqsaezpd25VUDZgeog=w1200",
         "positionNumber": 2
       },
       {
@@ -1434,7 +1285,6 @@
         "name": "운현방송국 Dream-Catcher🌙",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운현방송국",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/18FgLs4w6kwaeqFiqsaezpd25VUDZgeog=w1200",
         "positionNumber": 3
       },
       {
@@ -1443,7 +1293,6 @@
         "name": "청춘 스토어",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1MpS-ENygST58N6sxcVlECE7xWgmMZmVm=w1200",
         "positionNumber": 4
       },
       {
@@ -1452,7 +1301,6 @@
         "name": "추억 충전소(총장네컷)",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": null,
         "positionNumber": 5
       },
       {
@@ -1461,7 +1309,6 @@
         "name": "도봉구 보건소X서울시 자살예방센터",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "도봉구 보건소X서울시 자살예방센터",
-        "thumbnailUrl": null,
         "positionNumber": 6
       },
       {
@@ -1470,7 +1317,6 @@
         "name": "서울베스트의료의원",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "서울베스트의료의원",
-        "thumbnailUrl": null,
         "positionNumber": 7
       },
       {
@@ -1479,7 +1325,6 @@
         "name": "대학일자리본부1",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "대학일자리본부1",
-        "thumbnailUrl": null,
         "positionNumber": 8
       },
       {
@@ -1488,7 +1333,6 @@
         "name": "대학일자리본부2",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "대학일자리본부2",
-        "thumbnailUrl": null,
         "positionNumber": 9
       },
       {
@@ -1497,7 +1341,6 @@
         "name": "여름을 그리다",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "예운",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1TwoLt-RMoW0kUQRcFCVrWf7m5eZtRzhH=w1200",
         "positionNumber": 10
       },
       {
@@ -1506,7 +1349,6 @@
         "name": "페이스페인팅, 참 쉽죠?",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "서양화전공",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1xhjLdta4JBWPgEVyCDHJWul0vF0qurkj=w1200",
         "positionNumber": 11
       },
       {
@@ -1515,7 +1357,6 @@
         "name": "해삐즈 HAPPiZ",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "정수연",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1yx1TI50KKyGlpl6pIlYAyNOl62Lw0p9f=w1200",
         "positionNumber": 12
       },
       {
@@ -1524,7 +1365,6 @@
         "name": "필소굿:필름소피굿즈팝니다.",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "필름소피",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1FtiGdId_BJzbJvmgXHPCaDXrBAVua4TR=w1200",
         "positionNumber": 14
       },
       {
@@ -1533,7 +1373,6 @@
         "name": "열음",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "열음",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1utyU_YLfG2as7XLtKh4n8o-53IlAagNu=w1200",
         "positionNumber": 15
       },
       {
@@ -1542,7 +1381,6 @@
         "name": "혜연이가 뜨개 그만하래 같이 살 집 뜨고 있었는데",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "뜨개",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1KUuMuGs1YwPeHuza_cFuoEH_GQLUcx-m=w1200",
         "positionNumber": 16
       },
       {
@@ -1551,7 +1389,6 @@
         "name": "✿비즈식물원✿",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "초음",
-        "thumbnailUrl": null,
         "positionNumber": 17
       },
       {
@@ -1560,7 +1397,6 @@
         "name": "과기대는 오락오락하지 않다",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "과학기술대학",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1wCDhs3dUaBuT5qvD8ArVYAXly3GJ7fJu=w1200",
         "positionNumber": 18
       },
       {
@@ -1569,7 +1405,6 @@
         "name": "청춘 매치: 행운을 잡아라",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/12egTkeaMmlQjCz9f4QpLAWeVNPcGQhE4=w1200",
         "positionNumber": 19
       },
       {
@@ -1578,7 +1413,6 @@
         "name": "isy 이시",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "이서영",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1bcdwMxh9-sWXFlN_tW1hyQSd6E4RHTDq=w1200",
         "positionNumber": 20
       },
       {
@@ -1587,7 +1421,6 @@
         "name": "이오",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "이오",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1vkN3Xra-M0xNo3QZMVeT717dM0x-jzGd=w1200",
         "positionNumber": 21
       },
       {
@@ -1596,7 +1429,6 @@
         "name": "우리에서 만난 우리",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "동아리연합회",
-        "thumbnailUrl": "https://drive.google.com/thumbnail?id=1rXs93AAzU1tB1QloKPhRWY1xdU-KMnni&sz=w1200",
         "positionNumber": 22
       },
       {
@@ -1605,7 +1437,6 @@
         "name": "도담도담",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "도담도담",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1R1c2Q8g7QJBD0UWbfzzKgI3QYgYJlq3D=w1200",
         "positionNumber": 23
       },
       {
@@ -1614,7 +1445,6 @@
         "name": "그런데 그때 갑자기 검도부가 나타났다 머리잇~!",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "덕성검도부",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1x4BoqfONxrmSnDWoVfhLdJU1CdTXAhMm=w1200",
         "positionNumber": 24
       },
       {
@@ -1623,7 +1453,6 @@
         "name": "덕우야❗️잡화점💫",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "오다영",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1vJDSqcBxvXnbFXib4pcu8agaYxnGBhrB=w1200",
         "positionNumber": 25
       },
       {
@@ -1632,7 +1461,6 @@
         "name": "룡하다! 공룡타로",
         "boothTypes": ["NIGHT"],
         "operatingSubject": "천주영",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1yrQ3cPGauU49fe5ov-mWlSc4DnF13Gpz=w1200",
         "positionNumber": 26
       },
       {
@@ -1641,7 +1469,6 @@
         "name": "운명의 서점",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "운지문학회",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/1h9UdVae_56MNVQAbcNu3YRgDx9GtuCO4=w1200",
         "positionNumber": 27
       },
       {
@@ -1650,7 +1477,6 @@
         "name": "Beautifly 🦋",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "스노우보드 동아리 뷰티플라이",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/12eyf0xUhS986_mG1YUZCxRNmE7-A8BGf=w1200",
         "positionNumber": 28
       },
       {
@@ -1659,7 +1485,6 @@
         "name": "정외 PARADISE",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "정치외교학전공",
-        "thumbnailUrl": null,
         "positionNumber": 29
       },
       {
@@ -1668,7 +1493,6 @@
         "name": "꽃신을 신고",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "꽃신을 신고",
-        "thumbnailUrl": "https://lh3.googleusercontent.com/d/11vwd0ubF9bZZG6ITUw7n2bg-Lyi1Bdk7=w1200",
         "positionNumber": 30
       },
       {
@@ -1677,7 +1501,6 @@
         "name": "총학 운영 본부",
         "boothTypes": ["DAY", "NIGHT"],
         "operatingSubject": "총학생회",
-        "thumbnailUrl": null,
         "positionNumber": 33
       }
     ]

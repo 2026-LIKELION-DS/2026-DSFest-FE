@@ -55,8 +55,8 @@
         "tags": ["운영 종료"],
         "categories": ["판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1MpS-ENygST58N6sxcVlECE7xWgmMZmVm=w1200",
-          "https://lh3.googleusercontent.com/d/1YRXfTrYeRK3OZ5qPIEwCV3PkxJNN9RkP=w1200"
+          "/src/assets/Booth/BoothJsonIMG/ccstore_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/ccstore_2.jpg"
         ],
         "operatingDays": [
           "13일(수) 11:00~16:00, 16:00~19:00",
@@ -93,8 +93,8 @@
         "tags": ["운영 종료"],
         "categories": ["체험"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/12egTkeaMmlQjCz9f4QpLAWeVNPcGQhE4=w1200",
-          "https://lh3.googleusercontent.com/d/1CPj6UYanmo8oE-M23I4kX3ZgkAStWwto=w1200"
+          "/src/assets/Booth/BoothJsonIMG/ccmatch_1.png",
+          "/src/assets/Booth/BoothJsonIMG/ccmatch_2.jpg"
         ],
         "operatingDays": [
           "13일(수) 11:00~14:30, 16:00~19:30",
@@ -338,6 +338,30 @@
       "code": "COMMON200",
       "message": "요청에 성공하였습니다.",
       "result": {
+        "id": 77,
+        "boothNumber": 77,
+        "name": "대학일자리본부 1, 2",
+        "boothTypes": ["DAY", "NIGHT"],
+        "operatingSubject": "대학일자리본부 1, 2",
+        "affiliation": "대학일자리본부 1, 2",
+        "description": "커리어서포터즈와 함께하는 대학일자리본부 홍보 프로그램\n\n재학생맞춤형고용서비스 상담 및 가입 부스 운영",
+        "openKakaoUrl": null,
+        "everytimeUrl": null,
+        "instagramUrl": null,
+        "collabInstagramUrl": null,
+        "youtubeUrl": null,
+        "tags": ["운영 종료"],
+        "categories": [],
+        "imageUrls": [],
+        "operatingDays": ["15일(금) 11:00~14:30"],
+        "positions": ["3일차 낮: 8번"]
+      }
+    },
+    {
+      "isSuccess": true,
+      "code": "COMMON200",
+      "message": "요청에 성공하였습니다.",
+      "result": {
         "id": 12,
         "boothNumber": 12,
         "name": "강북청년창업마루 X 강북청년일자리센터",
@@ -400,9 +424,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1BG6NYmBQP7AVh6ALAQqh-NphUXXZAw0y=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/yellowblock_1.jpeg"],
         "operatingDays": [
           "13일(수) 15:00~16:00, 16:00~22:00",
           "14일(목) 15:00~16:00, 16:00~22:00"
@@ -597,9 +619,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/14sBkBkFxwE33KxkEdkbr3Mb0USQCTaGn=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/bsh_1.jpg"],
         "operatingDays": ["14일(목) 11:00~14:30, 16:00~19:30"],
         "positions": ["2일차 낮: 17번", "2일차 밤: 18번"]
       }
@@ -624,9 +644,9 @@
         "tags": ["운영 종료"],
         "categories": ["체험", "DIY/만들기 체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1wCDhs3dUaBuT5qvD8ArVYAXly3GJ7fJu=w1200",
-          "https://lh3.googleusercontent.com/d/1Iliq1DCvsnZ6jdaKVHsxB3jPsoDnLn30=w1200",
-          "https://lh3.googleusercontent.com/d/1GA6T-jHHM4Zd-Wu75-cMAiDsDkO0iT-3=w1200"
+          "/src/assets/Booth/BoothJsonIMG/science_1.png",
+          "/src/assets/Booth/BoothJsonIMG/science_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/science_3.jpg"
         ],
         "operatingDays": [
           "13일(수) 11:00~14:30",
@@ -680,10 +700,10 @@
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/16GTXMLzKAJ63jAVEr52ZHl-LgUZWucJ0=w1200",
-          "https://lh3.googleusercontent.com/d/1JuO0ui5uEqPoGVa6LXAEqc1638ZSNpkm=w1200",
-          "https://lh3.googleusercontent.com/d/1W1ktlKmYES8_Faf7DGTZYG8EVdMEZ_Bd=w1200",
-          "https://lh3.googleusercontent.com/d/1bCYV8kYRmCQ4aYVTK6hRW_XkRGWlbGAE=w1200"
+          "/src/assets/Booth/BoothJsonIMG/gycrew_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/gycrew_2.png",
+          "/src/assets/Booth/BoothJsonIMG/gycrew_3.jpg",
+          "/src/assets/Booth/BoothJsonIMG/gycrew_4.png"
         ],
         "operatingDays": [
           "13일(수) 11:00~14:30, 16:00~19:30",
@@ -711,9 +731,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/11vwd0ubF9bZZG6ITUw7n2bg-Lyi1Bdk7=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/flowershoes_1.png"],
         "operatingDays": ["15일(금) 11:00~14:30, 16:00~19:30"],
         "positions": ["3일차 낮: 22번", "3일차 밤: 30번"]
       }
@@ -738,11 +756,11 @@
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1Eay0zk0PhYxwx58sUfKCIx1TNt2lr5nK=w1200",
-          "https://lh3.googleusercontent.com/d/1acIDpuT1NUSsoOXoHkWuRSjyBGJ5VriO=w1200",
-          "https://lh3.googleusercontent.com/d/1PjEp2qeKGYtITk7q8B1Cjz86jSUV1nm1=w1200",
-          "https://lh3.googleusercontent.com/d/191e4Y1i0WHtZRZ_3IuhVKAX7v1rH9xZc=w1200",
-          "https://lh3.googleusercontent.com/d/1HbpGvu2eMZkhiSCCxneQticw6bssJUPj=w1200"
+          "/src/assets/Booth/BoothJsonIMG/dnd_1.png",
+          "/src/assets/Booth/BoothJsonIMG/dnd_2.png",
+          "/src/assets/Booth/BoothJsonIMG/dnd_3.png",
+          "/src/assets/Booth/BoothJsonIMG/dnd_4.png",
+          "/src/assets/Booth/BoothJsonIMG/dnd_5.png"
         ],
         "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 11:00~14:30"],
         "positions": ["1일차 밤: 27번", "2일차 낮: 20번"]
@@ -768,9 +786,9 @@
         "tags": ["운영 종료"],
         "categories": ["체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1x4BoqfONxrmSnDWoVfhLdJU1CdTXAhMm=w1200",
-          "https://lh3.googleusercontent.com/d/1Ly3huIqGZDlnJF4FcmSJptNe9smVtRep=w1200",
-          "https://lh3.googleusercontent.com/d/1ibP6Iz-8ZErPfg_L__dqq6pNYs9ATjvI=w1200"
+          "/src/assets/Booth/BoothJsonIMG/sword_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/sword_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/sword_3.jpg"
         ],
         "operatingDays": [
           "13일(수) 16:00~19:30",
@@ -799,9 +817,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1R1c2Q8g7QJBD0UWbfzzKgI3QYgYJlq3D=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/dodam_1.jpeg"],
         "operatingDays": [
           "14일(목) 16:00~19:30",
           "15일(금) 11:00~14:30, 16:00~19:30"
@@ -829,11 +845,11 @@
         "tags": ["운영 종료"],
         "categories": ["체험", "DIY/만들기 체험"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1WJzjRySevA9H-XLAu8VG1kPM77HEoTOx=w1200",
-          "https://lh3.googleusercontent.com/d/1zI_oxdqMfqWHBdo1b8U4saKnxw2nj1EP=w1200",
-          "https://lh3.googleusercontent.com/d/1j1SLxHATETXYonNNcfRz6g9mYhhtLFdo=w1200",
-          "https://lh3.googleusercontent.com/d/1C9qzvboZfdKshE7F_IpEJWlfT5gxg-sK=w1200",
-          "https://lh3.googleusercontent.com/d/1oua4QWhE7TeSum2gXM5-VDoehNbxtfYW=w1200"
+          "/src/assets/Booth/BoothJsonIMG/underduksea_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/underduksea_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/underduksea_3.jpg",
+          "/src/assets/Booth/BoothJsonIMG/underduksea_4.jpg",
+          "/src/assets/Booth/BoothJsonIMG/underduksea_5.jpg"
         ],
         "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 11:00~14:30"],
         "positions": ["1일차 낮: 17번", "2일차 낮: 14번"]
@@ -858,9 +874,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["판매", "체험"],
-        "imageUrls": [
-          "https://drive.google.com/thumbnail?id=1rXs93AAzU1tB1QloKPhRWY1xdU-KMnni&sz=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/us_1.png"],
         "operatingDays": [
           "13일(수) 16:00~19:30",
           "15일(금) 11:00~14:30, 16:00~19:30"
@@ -912,8 +926,8 @@
         "tags": ["운영 종료"],
         "categories": ["판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1RRp90GJwZlRP7kxbU31-qK_rFtLpyhYo=w1200",
-          "https://lh3.googleusercontent.com/d/1eap9iNcwjhNiC668MkkbMmZCaYXJVh2q=w1200"
+          "/src/assets/Booth/BoothJsonIMG/dukcom_1.png",
+          "/src/assets/Booth/BoothJsonIMG/dukcom_2.png"
         ],
         "operatingDays": [
           "13일(수) 11:00~14:30",
@@ -942,9 +956,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1KUuMuGs1YwPeHuza_cFuoEH_GQLUcx-m=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/hyeyeon_1.jpeg"],
         "operatingDays": ["15일(금) 16:00~19:30"],
         "positions": ["3일차 밤: 16번"]
       }
@@ -969,9 +981,9 @@
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1eTDN1PmBktlEjBB7UX6R-sMWNqLUtwNS=w1200",
-          "https://lh3.googleusercontent.com/d/1W3KgX_SIQjLxQ83I7pIGga2OX5cUjlUl=w1200",
-          "https://lh3.googleusercontent.com/d/1w4lF2U2f9mxEmNF-T2okabEZPhe5mH4w=w1200"
+          "/src/assets/Booth/BoothJsonIMG/mulggo_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/mulggo_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/mulggo_3.jpeg"
         ],
         "operatingDays": ["13일(수) 16:00~19:30", "15일(금) 11:00~14:30"],
         "positions": ["1일차 밤: 24번", "3일차 낮: 29번"]
@@ -1021,11 +1033,11 @@
         "tags": ["운영 종료"],
         "categories": ["판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/13KRB210fZUVquw0wOuoJb5xFGAIZYVKl=w1200",
-          "https://lh3.googleusercontent.com/d/1N2Dmm2_PNTGc04OmNs1lIfCLVIupiKOv=w1200",
-          "https://lh3.googleusercontent.com/d/1jwHRXVjIRUXLvyJsVfhXp8T6mJNjIWzu=w1200",
-          "https://lh3.googleusercontent.com/d/1UWdXXBJZGpSm0mWadLqEKGzSv3DPI5oW=w1200",
-          "https://lh3.googleusercontent.com/d/18a5ROpYYx9qdmkMjNW9Y-ZkO-rzac0q1=w1200"
+          "/src/assets/Booth/BoothJsonIMG/rain_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/rain_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/rain_3.jpg",
+          "/src/assets/Booth/BoothJsonIMG/rain_4.jpg",
+          "/src/assets/Booth/BoothJsonIMG/rain_5.jpg"
         ],
         "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 16:00~19:30"],
         "positions": ["1일차 낮: 23번", "2일차 밤: 25번"]
@@ -1051,9 +1063,9 @@
         "tags": ["운영 종료"],
         "categories": ["판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1-f7B14cnXe6ahITmlKy78ygBegPYmVPM=w1200",
-          "https://lh3.googleusercontent.com/d/1oYWzy-fZ1wZ6OybaNRL3_shuf2TSwSWj=w1200",
-          "https://lh3.googleusercontent.com/d/12OOEEbuDFX9chKIgA6SbZgUgJaN_rZyU=w1200"
+          "/src/assets/Booth/BoothJsonIMG/apple_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/apple_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/apple_3.jpeg"
         ],
         "operatingDays": ["14일(목) 11:00~14:30"],
         "positions": ["2일차 낮: 22번"]
@@ -1079,9 +1091,9 @@
         "tags": ["운영 종료"],
         "categories": ["판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1RhGzPigc1nSDkyGpWdc2WqzxvFnHgRme=w1200",
-          "https://lh3.googleusercontent.com/d/1YsQzYitJBLPMIQM0vKNBpNBtCdV8Ph_f=w1200",
-          "https://lh3.googleusercontent.com/d/17wLuMzYeEOse2rbgJpm4n4p2T5vvIIFX=w1200"
+          "/src/assets/Booth/BoothJsonIMG/luckfish_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/luckfish_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/luckfish_3.jpg"
         ],
         "operatingDays": ["13일(수) 16:00~19:30", "15일(금) 11:00~14:30"],
         "positions": ["1일차 밤: 25번", "3일차 낮: 24번"]
@@ -1130,9 +1142,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1QkMfo7enmAVvu5fhATrT7tXQNnJwhlO_=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/bitnaemi_1.png"],
         "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 16:00~19:30"],
         "positions": ["1일차 밤: 23번", "2일차 밤: 20번"]
       }
@@ -1156,9 +1166,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1gvOCaohcfErO0QDJObJVrsfe7dlH1O7H=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/sangchae_1.jpeg"],
         "operatingDays": ["13일(수) 11:00~14:30"],
         "positions": ["1일차 낮: 14번"]
       }
@@ -1182,9 +1190,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1xhjLdta4JBWPgEVyCDHJWul0vF0qurkj=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/facepaint_1.jpeg"],
         "operatingDays": ["15일(금) 16:00~19:30"],
         "positions": ["3일차 밤: 11번"]
       }
@@ -1208,9 +1214,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1T8xfpQNMcQhDPsUnO-8yMupiO2NQqorW=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/math_1.png"],
         "operatingDays": ["13일(수) 16:00~19:30", "15일(금) 11:00~14:30"],
         "positions": ["1일차 밤: 10번", "3일차 낮: 25번"]
       }
@@ -1235,9 +1239,9 @@
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/12eyf0xUhS986_mG1YUZCxRNmE7-A8BGf=w1200",
-          "https://lh3.googleusercontent.com/d/1JRCG3TiGHY9GWMr1rU1CR7YFK6c01td-=w1200",
-          "https://lh3.googleusercontent.com/d/1_Kk6jBAFLQfKo42849JEU4G0mh6xa8_R=w1200"
+          "/src/assets/Booth/BoothJsonIMG/beautifly_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/beautifly_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/beautifly_3.jpeg"
         ],
         "operatingDays": ["15일(금) 11:00~14:30, 16:00~19:30"],
         "positions": ["3일차 낮: 26번", "3일차 밤: 28번"]
@@ -1263,10 +1267,10 @@
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1avQruV6iJRZYMw4DFuEcP8vk9eA0zYYE=w1200",
-          "https://lh3.googleusercontent.com/d/1fn_otB7AdXP-e-Suqq9YbbzmUIsAstkg=w1200",
-          "https://lh3.googleusercontent.com/d/1vZT6WJOTac8DQHg8tKzmppevVTnK23a8=w1200",
-          "https://lh3.googleusercontent.com/d/1UAXQahD6WekDVuL1OirFXFoSe3MzPXHz=w1200"
+          "/src/assets/Booth/BoothJsonIMG/cong_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/cong_2.png",
+          "/src/assets/Booth/BoothJsonIMG/cong_3.png",
+          "/src/assets/Booth/BoothJsonIMG/cong_4.png"
         ],
         "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 16:00~19:30"],
         "positions": ["1일차 밤: 14번", "2일차 밤: 16번"]
@@ -1292,10 +1296,10 @@
         "tags": ["운영 종료"],
         "categories": ["체험", "판매"],
         "imageUrls": [
-          "https://drive.google.com/thumbnail?id=140vT6LhUghCwZOlq5bmc5tCLG7nBclUR&sz=w1200",
-          "https://drive.google.com/thumbnail?id=1oBDVM2Eq4Q4sFStfGFToVZgHuwJc8Kxb&sz=w1200",
-          "https://drive.google.com/thumbnail?id=1qB0HhVKHS_HJWlj0oXsh0g7LELr5kmFI&sz=w1200",
-          "https://drive.google.com/thumbnail?id=1IYSiO_JGiLX3Q83GOEuZEe1T7k0kPrYM&sz=w1200"
+          "/src/assets/Booth/BoothJsonIMG/brain_1.png",
+          "/src/assets/Booth/BoothJsonIMG/brain_2.png",
+          "/src/assets/Booth/BoothJsonIMG/brain_3.png",
+          "/src/assets/Booth/BoothJsonIMG/brain_4.png"
         ],
         "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 11:00~14:30"],
         "positions": ["1일차 밤: 20번", "2일차 낮: 21번"]
@@ -1320,9 +1324,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험", "DIY/만들기 체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1Xp9wC56COOwMK7VxahrE2WSx-EYMILTH=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/answerbaby_1.png"],
         "operatingDays": ["13일(수) 11:00~14:30, 16:00~19:30"],
         "positions": ["1일차 낮: 24번", "1일차 밤: 11번"]
       }
@@ -1346,9 +1348,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1NYKL45eDukY918Vytg9LmI1RpcZBaxrA=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/medicine_1.jpeg"],
         "operatingDays": [
           "13일(수) 11:00~14:30",
           "14일(목) 11:00~14:30, 16:00~19:30"
@@ -1376,8 +1376,8 @@
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1utyU_YLfG2as7XLtKh4n8o-53IlAagNu=w1200",
-          "https://lh3.googleusercontent.com/d/1iXLMizgbFMDD0zTC1HqaHLYTwGW3Gmds=w1200"
+          "/src/assets/Booth/BoothJsonIMG/open_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/open_2.jpeg"
         ],
         "operatingDays": [
           "13일(수) 16:00~19:30",
@@ -1405,9 +1405,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1jZhOMPcDPZLDf_9D7bFOMNET0DMu5fel=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/ec_1.png"],
         "operatingDays": ["13일(수) 11:00~14:30"],
         "positions": ["1일차 낮: 25번"]
       }
@@ -1431,9 +1429,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험", "DIY/만들기 체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1TwoLt-RMoW0kUQRcFCVrWf7m5eZtRzhH=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/summer_1.jpg"],
         "operatingDays": ["14일(목) 16:00~19:30", "15일(금) 16:00~19:30"],
         "positions": ["2일차 밤: 29번", "3일차 밤: 10번"]
       }
@@ -1458,10 +1454,10 @@
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1vJDSqcBxvXnbFXib4pcu8agaYxnGBhrB=w1200",
-          "https://lh3.googleusercontent.com/d/1o2UOQZWq6a8jbo7E-JB4zNEUyuAZT-ZZ=w1200",
-          "https://lh3.googleusercontent.com/d/1bEYtbJCkDp84wHKY2o18H9oe0wva_yq3=w1200",
-          "https://lh3.googleusercontent.com/d/1Sl2bHVdu1Ggrmzbq9T2ROKrPB5PaK2Z8=w1200"
+          "/src/assets/Booth/BoothJsonIMG/dukwoo_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/dukwoo_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/dukwoo_3.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/dukwoo_4.jpeg"
         ],
         "operatingDays": ["15일(금) 11:00~14:30, 16:00~19:30"],
         "positions": ["3일차 낮: 23번", "3일차 밤: 25번"]
@@ -1486,9 +1482,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1h9UdVae_56MNVQAbcNu3YRgDx9GtuCO4=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/ojliteracy_1.jpeg"],
         "operatingDays": [
           "13일(수) 11:00~14:30",
           "14일(목) 11:00~14:30",
@@ -1517,8 +1511,8 @@
         "tags": ["운영 종료"],
         "categories": ["체험"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1OMX6K1N8Rt0NPAUVaNm6MdjSl80fQALN=w1200",
-          "https://lh3.googleusercontent.com/d/1up5cJMbUNFFYnG9zR3R1WZZ-4Lf_KWN3=w1200"
+          "/src/assets/Booth/BoothJsonIMG/ohheaven_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/ohheaven_2.jpeg"
         ],
         "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 16:00~19:30"],
         "positions": ["1일차 낮: 21번", "2일차 밤: 27번"]
@@ -1585,11 +1579,11 @@
         "tags": ["운영 종료"],
         "categories": ["판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1bBzwuo9Rhsbas9eE554pqcn_eMMY-r8C=w1200",
-          "https://lh3.googleusercontent.com/d/1PE1d3U3JAUStnFjT1SPKDwxsrLeZBqAN=w1200",
-          "https://lh3.googleusercontent.com/d/1u-LXaZFlE8r-K8ZErq87KG3IR3X8mDpp=w1200",
-          "https://lh3.googleusercontent.com/d/1_j8Lp8cBqyF_p2B23f3EvweYSmpsT7In=w1200",
-          "https://lh3.googleusercontent.com/d/1EKRZ9nGjdhgTocD9JbMmVV7EJnXTO4RC=w1200"
+          "/src/assets/Booth/BoothJsonIMG/fruits_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/fruits_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/fruits_3.jpg",
+          "/src/assets/Booth/BoothJsonIMG/fruits_4.jpg",
+          "/src/assets/Booth/BoothJsonIMG/fruits_5.jpg"
         ],
         "operatingDays": ["13일(수) 11:00~14:30", "15일(금) 11:00~14:30"],
         "positions": ["1일차 낮: 27번", "3일차 낮: 21번"]
@@ -1614,9 +1608,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1AR7uEiJeYcRqK4Y-XgeZ5BlFX7CD1fCT=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/ardr_1.png"],
         "operatingDays": [
           "13일(수) 11:00~14:30",
           "14일(목) 11:00~14:30, 16:00~19:30"
@@ -1643,9 +1635,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1EL8J_5cRQSQ3TgRDm42YC5EjCIdlM6V0=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/duksae_1.png"],
         "operatingDays": ["13일(수) 11:00~14:30"],
         "positions": ["1일차 낮: 11번"]
       }
@@ -1670,8 +1660,8 @@
         "tags": ["운영 종료"],
         "categories": ["판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1bcdwMxh9-sWXFlN_tW1hyQSd6E4RHTDq=w1200",
-          "https://lh3.googleusercontent.com/d/1N-h8MMSjXmsUyvAMn6wkP7BH8LxoWy-f=w1200"
+          "/src/assets/Booth/BoothJsonIMG/isy_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/isy_2.jpg"
         ],
         "operatingDays": ["15일(금) 16:00~19:30"],
         "positions": ["3일차 밤: 20번"]
@@ -1696,9 +1686,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1vkN3Xra-M0xNo3QZMVeT717dM0x-jzGd=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/io_1.jpg"],
         "operatingDays": ["14일(목) 16:00~19:30", "15일(금) 16:00~19:30"],
         "positions": ["2일차 밤: 22번", "3일차 밤: 21번"]
       }
@@ -1722,9 +1710,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1V8plbP_cbehWVjman3CQaZM_-0-kA4Qh=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/ghmatsri_1.jpg"],
         "operatingDays": ["13일(수) 11:00~14:30", "15일(금) 11:00~14:30"],
         "positions": ["1일차 낮: 28번", "3일차 낮: 10번"]
       }
@@ -1749,8 +1735,8 @@
         "tags": ["운영 종료"],
         "categories": ["체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1GTqO61HGLlzOIEX9MFTbvGYEnsb9VPrs=w1200",
-          "https://lh3.googleusercontent.com/d/1hMUw5WC2zyNcZEqGDzvvnUuoJbAxR1Y7=w1200"
+          "/src/assets/Booth/BoothJsonIMG/dobong_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/dobong_2.jpeg"
         ],
         "operatingDays": ["14일(목) 11:00~14:30", "15일(금) 11:00~14:30"],
         "positions": ["2일차 낮: 28번", "3일차 낮: 28번"]
@@ -1799,9 +1785,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1yrQ3cPGauU49fe5ov-mWlSc4DnF13Gpz=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/dino_1.png"],
         "operatingDays": ["14일(목) 16:00~19:30", "15일(금) 16:00~19:30"],
         "positions": ["2일차 밤: 2번", "3일차 밤: 26번"]
       }
@@ -1849,9 +1833,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1-p47-e5CzouHNy4lE8E5EAPyjId2gHJn=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/35archieve_1.png"],
         "operatingDays": ["13일(수) 16:00~19:30"],
         "positions": ["1일차 밤: 15번"]
       }
@@ -1876,9 +1858,9 @@
         "tags": ["운영 종료"],
         "categories": ["판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1RfqP_1kpy9nnN1cXZdTPmB819BTS6fiE=w1200",
-          "https://lh3.googleusercontent.com/d/1YWRiwkgurs9WrHkT9VSqAhzuB7hZZAFy=w1200",
-          "https://lh3.googleusercontent.com/d/1Rp8OyZiulUoCiMcntCjxcsDere6SmYed=w1200"
+          "/src/assets/Booth/BoothJsonIMG/onenosesweat_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/onenosesweat_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/onenosesweat_3.jpeg"
         ],
         "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 11:00~14:30"],
         "positions": ["1일차 낮: 16번", "2일차 낮: 16번"]
@@ -1903,9 +1885,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1mCALyj6RyP4E6_HTvToxFJWPTja8NKXu=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/team_1.png"],
         "operatingDays": ["13일(수) 16:00~19:30"],
         "positions": ["1일차 밤: 17번"]
       }
@@ -1929,9 +1909,7 @@
         "youtubeUrl": "@filmsophy20",
         "tags": ["운영 종료"],
         "categories": ["판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1FtiGdId_BJzbJvmgXHPCaDXrBAVua4TR=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/filmsophy_1.png"],
         "operatingDays": ["13일(수) 11:00~14:30", "15일(금) 16:00~19:30"],
         "positions": ["1일차 낮: 20번", "3일차 밤: 14번"]
       }
@@ -1956,8 +1934,8 @@
         "tags": ["운영 종료"],
         "categories": ["체험", "DIY/만들기 체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1A-2hKiyiCBr87ERRWcpW5o6hPJF41bDG=w1200",
-          "https://lh3.googleusercontent.com/d/1UvB5-W3D9_S3AIjmANzS5v4405Cl-XiW=w1200"
+          "/src/assets/Booth/BoothJsonIMG/hanbit_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/hanbit_2.jpeg"
         ],
         "operatingDays": [
           "13일(수) 16:00~19:30",
@@ -1986,9 +1964,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1Bu-YrHjkck-hxEtwmzaRehqG4m-sO2T4=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/chemi_1.jpeg"],
         "operatingDays": ["13일(수) 16:00~19:30", "15일(금) 11:00~14:30"],
         "positions": ["1일차 밤: 16번", "3일차 낮: 17번"]
       }
@@ -2012,9 +1988,7 @@
         "youtubeUrl": null,
         "tags": ["운영 종료"],
         "categories": ["체험", "DIY/만들기 체험", "판매"],
-        "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1LsxwPUem085YQcoTLXjndjzzTReomIws=w1200"
-        ],
+        "imageUrls": ["/src/assets/Booth/BoothJsonIMG/lab_1.jpg"],
         "operatingDays": ["14일(목) 16:00~19:30", "15일(금) 11:00~14:30"],
         "positions": ["2일차 밤: 15번", "3일차 낮: 16번"]
       }
@@ -2039,9 +2013,9 @@
         "tags": ["운영 종료"],
         "categories": ["체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1XAxDyGFsMBw6xiNfJzC8kQ3vfIcoXVTw=w1200",
-          "https://lh3.googleusercontent.com/d/1yUO1P9OLUWYYnxrgmJcMeuSbgFzDHIa4=w1200",
-          "https://lh3.googleusercontent.com/d/1Q3TZ6RKs0d8kncBLX0HOG5xetIhn08bU=w1200"
+          "/src/assets/Booth/BoothJsonIMG/fork_1.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/fork_2.jpeg",
+          "/src/assets/Booth/BoothJsonIMG/fork_3.jpeg"
         ],
         "operatingDays": ["13일(수) 16:00~19:30", "14일(목) 11:00~14:30"],
         "positions": ["1일차 밤: 29번", "2일차 낮: 23번"]
@@ -2067,9 +2041,9 @@
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험", "판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1XWON5T3BZJAMWcV4schRi_92gIx12-DS=w1200",
-          "https://lh3.googleusercontent.com/d/1a5WRHw6wv0-PD9rAh5qMRSwOq_le9d4o=w1200",
-          "https://lh3.googleusercontent.com/d/1k_ySmHZMLKAZhiqMHcR5yz5Si1ueFYaJ=w1200"
+          "/src/assets/Booth/BoothJsonIMG/lifeproject_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/lifeproject_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/lifeproject_3.jpg"
         ],
         "operatingDays": ["13일(수) 11:00~14:30", "14일(목) 11:00~14:30"],
         "positions": ["1일차 낮: 10번", "2일차 낮: 2번"]
@@ -2095,10 +2069,10 @@
         "tags": ["운영 종료"],
         "categories": ["DIY/만들기 체험"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1cwUxEZnRhUWf13xA_aw4CJCBZ_Wegdzi=w1200",
-          "https://lh3.googleusercontent.com/d/1yK6EHM895-QOYIgbM_wqgF8KkpAQCwGB=w1200",
-          "https://lh3.googleusercontent.com/d/1740ii87Tp0QDYNPKTEdK46llK6iYYzv4=w1200",
-          "https://lh3.googleusercontent.com/d/1lwLM1KHLXE9mgYQoVuWdzndV-cVscz-q=w1200"
+          "/src/assets/Booth/BoothJsonIMG/cusasak_1.png",
+          "/src/assets/Booth/BoothJsonIMG/cusasak_2.png",
+          "/src/assets/Booth/BoothJsonIMG/cusasak_3.png",
+          "/src/assets/Booth/BoothJsonIMG/cusasak_4.png"
         ],
         "operatingDays": ["13일(수) 16:00~19:30"],
         "positions": ["1일차 밤: 21번"]
@@ -2124,10 +2098,10 @@
         "tags": ["운영 종료"],
         "categories": ["판매"],
         "imageUrls": [
-          "https://lh3.googleusercontent.com/d/1yx1TI50KKyGlpl6pIlYAyNOl62Lw0p9f=w1200",
-          "https://lh3.googleusercontent.com/d/1cyFTQYgwH3isG01XSuNX-grPpoSK9QFh=w1200",
-          "https://lh3.googleusercontent.com/d/1wjakW3H4TTTKEisMq4zbwdgUm935I95n=w1200",
-          "https://lh3.googleusercontent.com/d/1oZ8sQ2OmRJa37hmE03pAnS8PrL4kOCJZ=w1200"
+          "/src/assets/Booth/BoothJsonIMG/happiz_1.jpg",
+          "/src/assets/Booth/BoothJsonIMG/happiz_2.jpg",
+          "/src/assets/Booth/BoothJsonIMG/happiz_3.jpg",
+          "/src/assets/Booth/BoothJsonIMG/happiz_4.jpg"
         ],
         "operatingDays": ["14일(목) 11:00~14:30", "15일(금) 16:00~19:30"],
         "positions": ["2일차 낮: 29번", "3일차 밤: 12번"]
