@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "title": "드레스코드 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "🌿2026 근화제 <청춘> 드레스코드 안내🌿\n\n2026 근화제 <청춘>의 드레스코드를 공개합니다!\n\nDAY 1 - 베이지\nDAY 2 - 노랑\nDAY 3 - 초록\n\nEVERYDAY - 청바지\n드레스코드는 총학생회 프로그램에서도 활용되니 많은 참여 부탁드립니다.\n*드레스코드는 필수가 아닌, 축제를 더 즐기기 위한 선택사항입니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/aa4dbd68-9153-4208-87bd-fac80273affe_IMG_6709.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/41fce55e-7f17-46f1-8caa-24fc0ff6ea82_IMG_6710.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/5865d14b-0549-444e-9020-b54916d30bb7_IMG_6711.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/0013932b-e4fd-40d2-80de-41467efa509e_IMG_6712.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/ff307fdf-84b7-41e1-a06e-119af348b212_IMG_6708.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/cee65d87-1485-4057-afc1-d850b2aab3b9_IMG_6714.png"
+    ],
+    "createdAt": "2026-05-01T01:10:22.38233",
+    "updatedAt": "2026-05-11T23:39:54.558116",
+    "viewCount": 1003
+  },
+  {
+    "id": 2,
+    "title": "굿즈 판매 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "🌿2026 근화제 <청춘> 굿즈 판매 안내🌿\n\n2026 근화제 <청춘> 에서 판매하는 굿즈를 안내드립니다!\n\n🌿 판매 기간: 05.13.(수)~05.15.(금) 11:00~19:00\n🌿 판매 장소: 소영근터 내 “총학 굿즈 판매” 부스\n🌿 판매 대상: 덕성여자대학교 학부생, 대학원생, 교직원생\n🌿 판매 물품\n리무버블 스티커 세트 1,500\n안경닦이 2,000\n밴드 2,500\n민주덕성 타월 6,000\n농구 유니폼 30,000\n하키 유니폼 39,000\n\n자세한 사항은 카드뉴스를 참고해 주세요!\n\n많은 관심과 구매 부탁드립니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/2eb6b2bd-ac8e-4800-b9e2-803312ecaf48_KakaoTalk_20260511_172158112.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/a29538ba-c087-48fe-810c-2f3d4dbaaf4f_KakaoTalk_20260511_172158112_01.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/1f28d423-00a1-45d1-94a7-042e2b2a6e6a_KakaoTalk_20260511_172158112_02.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/be650ee4-a411-40c7-9497-2661f8730fdd_KakaoTalk_20260511_172158112_03.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/ea03a8ac-4c6f-4515-b713-7f9fb1a1d4db_KakaoTalk_20260511_172158112_04.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/5a47188c-b38b-4f8b-9ab3-d9c8aa6d0f22_KakaoTalk_20260511_172158112_05.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/35811ee0-cb50-4606-9221-0918008b7584_KakaoTalk_20260511_172158112_06.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/c5f85266-f9b0-4729-85b7-5ca4514ac4b5_KakaoTalk_20260511_172158112_07.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/54d9b4b9-4f9f-4a01-868d-85dcfe672250_KakaoTalk_20260511_172158112_08.png"
+    ],
+    "createdAt": "2026-05-01T01:11:01.723512",
+    "updatedAt": "2026-05-11T23:40:04.214206",
+    "viewCount": 841
+  },
+  {
+    "id": 3,
+    "title": "무대 안내",
+    "category": "PERFORMANCE",
+    "urgent": false,
+    "content": "🌿2026 근화제 <청춘> 무대 안내🌿\n\n근화제의 중심! 청춘의 열기를 가장 잘 느낄 수 있는 공간을 만나보세요\n\n📌무대 안내\n운영 기간: 5월 13일(수)~5월 15일(금)\n*무대 프로그램은 일자별로 상이하오니, 상세 일정은 타임테이블을 확인해주시기 바랍니다.\n위치: 영근터 무대\n프로그램, 동아리•재학생 공연, 아티스트 공연 등\n\n📢관람 안내\n- 일부 프로그램은 사전 신청을 통해 진행될 수 있습니다.\n- 열정 충전소(덕우존)는 스탠딩 존으로, 입장 시간에 맞추어 입장 가능합니다.\n- 낭만 충전소(영근터)는 돗자리 존으로, 자유롭게 돗자리를 펼쳐 무대를 관람할 수 있는 공간입니다.\n\n⚠️유의사항\n- 안전한 관람을 위해 질서 유지 및 스태프 안내에 협조해주시기 바랍니다.\n- 열정 충전소(덕우존) 및 낭만 충전소(영근터) 이용의 자세한 내용은 카드뉴스를 확인해주시기 바랍니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/6671fb1e-e249-4455-b4dc-b1c98a46d4b8_KakaoTalk_20260511_214053345.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/9d916d19-f540-47bd-ae07-15d930ba16b5_KakaoTalk_20260511_214053345_01.png",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/notices/d24d8ad7-d32d-4b59-b663-f556844b08f4_KakaoTalk_20260511_214053345_02.png"
+    ],
+    "createdAt": "2026-05-01T01:11:25.333987",
+    "updatedAt": "2026-05-11T23:40:12.153463",
+    "viewCount": 750
+  },
+  {
+    "id": 4,
+    "title": "활력 충전소(푸드트럭) 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "🌿2026 근화제 <청춘> 활력 충전소(푸드트럭) 안내🌿\n\n축제의 활력을 채우는 공간, 푸드트럭을 만나보세요!\n\n🕖운영 시간: 08:30~22:00\n\n📢이용 안내\n- 푸드트럭은 운영 시간 내 자유롭게 이용 가능합니다.\n- 일부 메뉴는 조기 소진될 수 있으니 양해 부탁드립니다.\n- 결제 방식은 현금, 카드, 계좌이체 가능합니다.\n\n⚠️유의 사항\n- 원활한 운영을 위해 질서를 지켜 줄서기해주시기 바랍니다.\n- 쓰레기는 지정된 분리수거함에 배출해주시기 바랍니다.\n- 안전 사고 예방을 위해 뛰거나 밀치는 행위를 삼가주시기 바랍니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [],
+    "createdAt": "2026-05-01T01:11:52.45335",
+    "updatedAt": "2026-05-11T23:40:21.017983",
+    "viewCount": 188
+  },
+  {
+    "id": 5,
+    "title": "부스 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "🌿2026 근화제 <청춘> 부스🌿\n\n보고, 즐기고, 체험할 수 있는 다양한 부스를 만나보세요!\n\n📌부스 안내\n운영 기간: 5월 13일(수)~5월 15일(금)\n낮 부스 운영 시간: 11:00~14:30\n밤 부스 운영 시간: 16:00~19:30\n*부스 배치의 경우 일자별로 상이하오니 상세한 부스 배치도를 참고해주시기 바랍니다.\n\n📢이용 안내\n- 각 부스는 자율 참여 형태로 운영됩니다.\n- 체험형 부스의 경우 사전 접수 또는 선착순으로 진행될 수 있습니다.\n\n⚠️유의사항\n- 일부 부스는 대기 시간이 발생할 수 있습니다.\n- 부스 내 물품의 시설 및 비품은 소중히 이용해주시기 바랍니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [],
+    "createdAt": "2026-05-01T01:12:15.115727",
+    "updatedAt": "2026-05-11T23:40:28.590733",
+    "viewCount": 314
+  }
+]

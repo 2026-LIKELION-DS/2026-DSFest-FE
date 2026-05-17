@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import FoodTruckCard from "./FoodTruckCard";
+import foodTruckListData from "../../data/FoodJson/foodtruckList.json";
 
 interface Props {
   isVeganSelected: boolean;
@@ -46,8 +47,6 @@ export default function FoodTruckList({
   targetStoreName,
   onScrollDone,
 }: Props) {
-  const API_URL = import.meta.env.VITE_API_URL;
-
   const [foodTrucks, setFoodTrucks] = useState<Truck[]>([]);
   const [openTruckId, setOpenTruckId] = useState<number | null>(null);
 
@@ -55,51 +54,37 @@ export default function FoodTruckList({
   const hasAutoScrolledRef = useRef(false);
 
   useEffect(() => {
-    const fetchFoodTrucks = async () => {
-      try {
-        const response = await fetch(
-          `${API_URL}/api/food-trucks?is-vegan=${isVeganSelected}`
-        );
+    const filteredResult = isVeganSelected
+      ? foodTruckListData.result.filter((truck: FoodTruckApiItem) =>
+          truck.description?.includes("비건")
+        )
+      : foodTruckListData.result;
 
-        const data = await response.json();
+    const mappedTrucks: Truck[] = filteredResult.map(
+      (truck: FoodTruckApiItem) => ({
+        id: truck.id,
+        name: truck.name,
+        tags: (truck.description ?? "")
+          .split(" ")
+          .map((tag) => tag.replace("#", "").replace(/,/g, "").trim())
+          .filter(Boolean),
+        isLiked: truck.isLiked ?? getStoredLike(truck.id),
+        likeCount: truck.likeCount,
+        operatingTime: truck.operatingDays || "운영시간 정보 없음",
+        images: truck.imageUrl ? [truck.imageUrl] : [],
+        isOpen: truck.isOpen,
+        menus: [
+          {
+            name: truck.representativeMenu,
+            price: "",
+            isVegan: false,
+          },
+        ],
+      })
+    );
 
-        if (!response.ok || !data.isSuccess) {
-          alert(data.message || "푸드트럭 목록을 불러오지 못했습니다.");
-          return;
-        }
-
-        const mappedTrucks: Truck[] = data.result.map(
-          (truck: FoodTruckApiItem) => ({
-            id: truck.id,
-            name: truck.name,
-            tags: (truck.description ?? "")
-              .split(" ")
-              .map((tag) => tag.replace("#", "").replace(/,/g, "").trim())
-              .filter(Boolean),
-            isLiked: truck.isLiked ?? getStoredLike(truck.id),
-            likeCount: truck.likeCount,
-            operatingTime: truck.operatingDays || "운영시간 정보 없음",
-            images: truck.imageUrl ? [truck.imageUrl] : [],
-            isOpen: truck.isOpen,
-            menus: [
-              {
-                name: truck.representativeMenu,
-                price: "",
-                isVegan: false,
-              },
-            ],
-          })
-        );
-
-        setFoodTrucks(mappedTrucks);
-      } catch (error) {
-        console.error(error);
-        alert("푸드트럭 목록 조회 중 오류가 발생했습니다.");
-      }
-    };
-
-    fetchFoodTrucks();
-  }, [API_URL, isVeganSelected]);
+    setFoodTrucks(mappedTrucks);
+  }, [isVeganSelected]);
 
   useEffect(() => {
     if (!targetStoreName) return;

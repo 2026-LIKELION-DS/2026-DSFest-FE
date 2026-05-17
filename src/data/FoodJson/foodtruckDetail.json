@@ -1,0 +1,436 @@
+[
+  {
+    "id": 1,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/1.+Takeone+%EB%8B%AD%EA%BC%AC%EC%B9%98.jpeg"
+    ],
+    "name": "Take one",
+    "description": "간편식, 고기/BBQ",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "프리미엄 수제 닭다리살 직화구이 꼬치",
+        "price": 6000,
+        "isVegan": false
+      }
+    ],
+    "likeCount": 5,
+    "isLiked": false
+  },
+  {
+    "id": 2,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/2.+%E1%84%90%E1%85%A1%E1%84%8B%E1%85%AE%E1%84%85%E1%85%A1%E1%84%91%E1%85%AE%E1%84%83%E1%85%B3+%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC.jpeg"
+    ],
+    "name": "타우라푸드",
+    "description": "고기/BBQ, 비건",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "수제 닭강정/수제 후라이드(350g)",
+        "price": 10000,
+        "isVegan": false
+      },
+      {
+        "menuName": "수제 닭강정/수제 후라이드(550g)",
+        "price": 15000,
+        "isVegan": false
+      },
+      {
+        "menuName": "떡꼬치",
+        "price": 3000,
+        "isVegan": true
+      }
+    ],
+    "likeCount": 4,
+    "isLiked": false
+  },
+  {
+    "id": 3,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/3.+%EC%96%8C%EC%96%8C%EC%B8%84%EB%9F%AC%EC%8A%A4+%EC%88%98%EC%A0%9C+%EC%B0%B9%EC%8C%80%EC%B8%84%EB%9F%AC%EC%8A%A4.jpeg",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/3.+%EC%96%8C%EC%96%8C%EC%B8%84%EB%9F%AC%EC%8A%A4+%EC%86%8C%ED%94%84%ED%8A%B8+%EC%95%84%EC%B8%84.jpeg",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/3.+%EC%96%8C%EC%96%8C%EC%B8%84%EB%9F%AC%EC%8A%A4+%EC%A0%A4%EB%9D%BC%EB%98%90+%EC%95%84%EC%B8%84.jpeg"
+    ],
+    "name": "얌얌츄러스",
+    "description": "간편식, 디저트",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "수제 찹쌀츄러스",
+        "price": 4000,
+        "isVegan": false
+      },
+      {
+        "menuName": "소프트 아이스크림",
+        "price": 4000,
+        "isVegan": false
+      },
+      {
+        "menuName": "젤라또 아이스크림",
+        "price": 4000,
+        "isVegan": false
+      },
+      {
+        "menuName": "소프트 아이스크림+츄러스(소프트 아츄)",
+        "price": 6000,
+        "isVegan": false
+      },
+      {
+        "menuName": "젤라또 아이스크림+츄러스(젤라또 아츄)",
+        "price": 7000,
+        "isVegan": false
+      }
+    ],
+    "likeCount": 16,
+    "isLiked": false
+  },
+  {
+    "id": 4,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/4.+%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%8F%E1%85%A6%E1%84%87%E1%85%A1%E1%86%B8.jpeg"
+    ],
+    "name": "이태원케밥",
+    "description": "간편식, 디저트, 고기/BBQ",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "닭고기 케밥",
+        "price": 7000,
+        "isVegan": false
+      },
+      {
+        "menuName": "양고기 케밥",
+        "price": 8000,
+        "isVegan": false
+      },
+      {
+        "menuName": "MIX 케밥",
+        "price": 9000,
+        "isVegan": false
+      },
+      {
+        "menuName": "터키 아이스크림",
+        "price": 4000,
+        "isVegan": false
+      }
+    ],
+    "likeCount": 6,
+    "isLiked": false
+  },
+  {
+    "id": 5,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/5.+%E1%84%89%E1%85%AE%E1%86%AB%E1%84%83%E1%85%A2%E1%84%8A%E1%85%A5%E1%84%82%E1%85%B3%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A1.jpeg"
+    ],
+    "name": "순대써는남자",
+    "description": "간편식, 비건",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "철판버터오징어/문어구이(100g)",
+        "price": 6000,
+        "isVegan": false
+      },
+      {
+        "menuName": "철판버터오징어/문어구이(150g)",
+        "price": 10000,
+        "isVegan": false
+      },
+      {
+        "menuName": "콩고기 스테이크(2pc)",
+        "price": 7000,
+        "isVegan": true
+      }
+    ],
+    "likeCount": 1,
+    "isLiked": false
+  },
+  {
+    "id": 6,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/6.+%E1%84%86%E1%85%A9%E1%84%83%E1%85%B5+%E1%84%90%E1%85%A9%E1%84%89%E1%85%B5%E1%84%89%E1%85%A1%E1%86%AF%E1%84%89%E1%85%B3%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%B3%E1%84%83%E1%85%A5%E1%87%81%E1%84%87%E1%85%A1%E1%86%B8.jpeg",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/6.+%E1%84%86%E1%85%A9%E1%84%83%E1%85%B5+%E1%84%87%E1%85%A6%E1%86%AF%E1%84%80%E1%85%B5%E1%84%8B%E1%85%A6+%E1%84%80%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A1%E1%84%90%E1%85%B1%E1%84%80%E1%85%B5%E1%86%B7.jpeg"
+    ],
+    "name": "모디",
+    "description": "고기/BBQ, 면/식사류, 간편식",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "토시살스테이크덮밥",
+        "price": 13000,
+        "isVegan": false
+      },
+      {
+        "menuName": "벨기에감자튀김(케찹)",
+        "price": 5000,
+        "isVegan": true
+      },
+      {
+        "menuName": "벨기에감자튀김(다른 소스)",
+        "price": 6000,
+        "isVegan": true
+      }
+    ],
+    "likeCount": 3,
+    "isLiked": false
+  },
+  {
+    "id": 7,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/7.+%E1%84%8B%E1%85%A3%E1%84%86%E1%85%B5+%E1%84%89%E1%85%A9%E1%84%80%E1%85%A9%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%86%AF%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A1%E1%86%B8.jpeg"
+    ],
+    "name": "야미",
+    "description": "고기/BBQ, 면/식사류, 해산물, 비건",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "소고기불초밥(8pc)",
+        "price": 10000,
+        "isVegan": false
+      },
+      {
+        "menuName": "갈릭새우초밥(8pc)",
+        "price": 10000,
+        "isVegan": false
+      },
+      {
+        "menuName": "유부초밥(5pc)",
+        "price": 6000,
+        "isVegan": true
+      }
+    ],
+    "likeCount": 11,
+    "isLiked": false
+  },
+  {
+    "id": 8,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/8.+KogiBBQ+%EB%8F%BC%EC%A7%80%EB%AA%A9%EC%82%B4%EB%B0%94%EB%B2%A0%ED%81%90.jpeg"
+    ],
+    "name": "KogiBBQ",
+    "description": "고기/BBQ, 면/식사류, 간편식, 비건",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "돼지목살/오리훈제 바베큐(200g)",
+        "price": 11000,
+        "isVegan": false
+      },
+      {
+        "menuName": "돼지목살/오리훈제 바베큐(400g)",
+        "price": 20000,
+        "isVegan": false
+      },
+      {
+        "menuName": "비건소세지",
+        "price": 3000,
+        "isVegan": true
+      }
+    ],
+    "likeCount": 6,
+    "isLiked": false
+  },
+  {
+    "id": 9,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/9.+%EC%A7%B1%EA%B0%80%EA%B3%B1%EC%B0%BD+%EC%95%BC%EC%B1%84%EA%B3%B1%EC%B0%BD.jpeg",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/9.+%EC%A7%B1%EA%B0%80%EA%B3%B1%EC%B0%BD+%EB%A7%89%EC%B0%BD%EC%86%8C%EA%B8%88%EA%B5%AC%EC%9D%B4.jpeg"
+    ],
+    "name": "짱가곱창",
+    "description": "곱창/막창, 면/식사류, 비건",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "야채곱창(소)",
+        "price": 13000,
+        "isVegan": false
+      },
+      {
+        "menuName": "야채곱창(중)",
+        "price": 24000,
+        "isVegan": false
+      },
+      {
+        "menuName": "야채곱창(대)",
+        "price": 35000,
+        "isVegan": false
+      },
+      {
+        "menuName": "양념막창(소)",
+        "price": 17000,
+        "isVegan": false
+      },
+      {
+        "menuName": "양념막창(중)",
+        "price": 32000,
+        "isVegan": false
+      },
+      {
+        "menuName": "양념막창(대)",
+        "price": 43000,
+        "isVegan": false
+      },
+      {
+        "menuName": "막창소금구이(소)",
+        "price": 17000,
+        "isVegan": false
+      },
+      {
+        "menuName": "막창소금구이(중)",
+        "price": 32000,
+        "isVegan": false
+      },
+      {
+        "menuName": "막창소금구이(대)",
+        "price": 43000,
+        "isVegan": false
+      },
+      {
+        "menuName": "양배추샐러드",
+        "price": 3000,
+        "isVegan": true
+      }
+    ],
+    "likeCount": 5,
+    "isLiked": false
+  },
+  {
+    "id": 10,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/10.+%EC%98%A4%EC%95%BC%EB%B6%95+%EB%B6%88%EC%95%BC%EB%81%BC%EC%86%8C%EB%B0%94.jpeg",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/10.+%EC%98%A4%EC%95%BC%EB%B6%95+%EC%86%8C%EA%B3%A0%EA%B8%B0%EC%95%BC%EB%81%BC%EC%86%8C%EB%B0%94.jpeg",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/10.+%EC%98%A4%EC%95%BC%EB%B6%95+%EC%98%A4%EA%BC%AC%EB%85%B8%EB%AF%B8%EC%95%BC%EB%81%BC.jpeg"
+    ],
+    "name": "오야붕",
+    "description": "면/식사류, 해산물, 비건",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "辛불야끼소바",
+        "price": 10000,
+        "isVegan": false
+      },
+      {
+        "menuName": "소고기야끼소바",
+        "price": 10000,
+        "isVegan": false
+      },
+      {
+        "menuName": "오코노미야끼",
+        "price": 10000,
+        "isVegan": false
+      },
+      {
+        "menuName": "야채야끼소바",
+        "price": 8000,
+        "isVegan": true
+      }
+    ],
+    "likeCount": 6,
+    "isLiked": false
+  },
+  {
+    "id": 11,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/11.+%EA%B3%A8%EB%93%9C%ED%82%A4%EC%A6%88+%ED%94%BC%EC%9E%90(1).jpeg",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/11.+%EA%B3%A8%EB%93%9C%ED%82%A4%EC%A6%88+%ED%94%BC%EC%9E%90(2).jpeg",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/11.+%EA%B3%A8%EB%93%9C%ED%82%A4%EC%A6%88+%ED%94%BC%EC%9E%90(3).jpeg"
+    ],
+    "name": "골드키즈",
+    "description": "면/식사류, 비건",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "피자 3종(S)",
+        "price": 10000,
+        "isVegan": false
+      },
+      {
+        "menuName": "피자 3종(M)",
+        "price": 15000,
+        "isVegan": false
+      },
+      {
+        "menuName": "피자 3종(L)",
+        "price": 20000,
+        "isVegan": false
+      },
+      {
+        "menuName": "Vegan-치즈피자(S)",
+        "price": 10000,
+        "isVegan": true
+      },
+      {
+        "menuName": "Vegan-치즈피자(M)",
+        "price": 15000,
+        "isVegan": true
+      },
+      {
+        "menuName": "Vegan-치즈피자(L)",
+        "price": 20000,
+        "isVegan": true
+      }
+    ],
+    "likeCount": 3,
+    "isLiked": false
+  },
+  {
+    "id": 12,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/12.+%EC%8D%AC%ED%94%8C%EB%9D%BC%EC%9B%8C+%EB%B0%98%EB%B0%98%EC%83%88%EC%9A%B0.jpeg",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/12.+%EC%8D%AC%ED%94%8C%EB%9D%BC%EC%9B%8C+%EC%B9%A0%EB%A6%AC%EC%83%88%EC%9A%B0.jpeg",
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/12.+%EC%8D%AC%ED%94%8C%EB%9D%BC%EC%9B%8C+%ED%81%AC%EB%A6%BC%EC%83%88%EC%9A%B0.jpeg"
+    ],
+    "name": "썬플라워",
+    "description": "면/식사류, 해산물, 간편식, 비건",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "칠리/크림새우(300g)",
+        "price": 10000,
+        "isVegan": false
+      },
+      {
+        "menuName": "칠리/크림새우(450g)",
+        "price": 15000,
+        "isVegan": false
+      },
+      {
+        "menuName": "반반새우(450g)",
+        "price": 15000,
+        "isVegan": false
+      },
+      {
+        "menuName": "빅치즈스틱(2개)",
+        "price": 5000,
+        "isVegan": true
+      }
+    ],
+    "likeCount": 14,
+    "isLiked": false
+  },
+  {
+    "id": 13,
+    "imageUrls": [
+      "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/13.+%EC%8A%A4%EC%9C%84%ED%8A%B8%ED%8D%BC%ED%94%8C+.jpg"
+    ],
+    "name": "스위트퍼플",
+    "description": "간편식, 디저트",
+    "operatingString": "운영 정보 없음",
+    "menus": [
+      {
+        "menuName": "밀크쉐이크(음료별상이)",
+        "price": 6000,
+        "isVegan": false
+      },
+      {
+        "menuName": "커피음료류(음료별상이)",
+        "price": 5000,
+        "isVegan": false
+      }
+    ],
+    "likeCount": 1,
+    "isLiked": false
+  }
+]

@@ -1,0 +1,137 @@
+{
+  "isSuccess": true,
+  "code": "COMMON200",
+  "message": "요청에 성공하였습니다.",
+  "result": [
+    {
+      "id": 3,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/3.+%EC%96%8C%EC%96%8C%EC%B8%84%EB%9F%AC%EC%8A%A4+%EC%88%98%EC%A0%9C+%EC%B0%B9%EC%8C%80%EC%B8%84%EB%9F%AC%EC%8A%A4.jpeg",
+      "name": "얌얌츄러스",
+      "representativeMenu": "수제 찹쌀츄러스",
+      "description": "간편식, 디저트",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 16,
+      "isOpen": false
+    },
+    {
+      "id": 13,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/13.+%EC%8A%A4%EC%9C%84%ED%8A%B8%ED%8D%BC%ED%94%8C+.jpg",
+      "name": "스위트퍼플",
+      "representativeMenu": "밀크쉐이크",
+      "description": "간편식, 디저트",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 1,
+      "isOpen": false
+    },
+    {
+      "id": 5,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/5.+%E1%84%89%E1%85%AE%E1%86%AB%E1%84%83%E1%85%A2%E1%84%8A%E1%85%A5%E1%84%82%E1%85%B3%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A1.jpeg",
+      "name": "순대써는남자",
+      "representativeMenu": "철판버터오징어구이",
+      "description": "간편식, 비건",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 1,
+      "isOpen": false
+    },
+    {
+      "id": 6,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/6.+%E1%84%86%E1%85%A9%E1%84%83%E1%85%B5+%E1%84%90%E1%85%A9%E1%84%89%E1%85%B5%E1%84%89%E1%85%A1%E1%86%AF%E1%84%89%E1%85%B3%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%B3%E1%84%83%E1%85%A5%E1%87%81%E1%84%87%E1%85%A1%E1%86%B8.jpeg",
+      "name": "모디",
+      "representativeMenu": "토시살스테이크덮밥",
+      "description": "고기/BBQ, 면/식사류, 간편식",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 3,
+      "isOpen": false
+    },
+    {
+      "id": 11,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/11.+%EA%B3%A8%EB%93%9C%ED%82%A4%EC%A6%88+%ED%94%BC%EC%9E%90(1).jpeg",
+      "name": "골드키즈",
+      "representativeMenu": "피자 3종",
+      "description": "면/식사류, 비건",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 3,
+      "isOpen": false
+    },
+    {
+      "id": 4,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/4.+%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%8F%E1%85%A6%E1%84%87%E1%85%A1%E1%86%B8.jpeg",
+      "name": "이태원케밥",
+      "representativeMenu": "닭고기 케밥",
+      "description": "간편식, 디저트, 고기/BBQ",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 6,
+      "isOpen": false
+    },
+    {
+      "id": 7,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/7.+%E1%84%8B%E1%85%A3%E1%84%86%E1%85%B5+%E1%84%89%E1%85%A9%E1%84%80%E1%85%A9%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%86%AF%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A1%E1%86%B8.jpeg",
+      "name": "야미",
+      "representativeMenu": "소고기불초밥",
+      "description": "고기/BBQ, 면/식사류, 해산물, 비건",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 11,
+      "isOpen": false
+    },
+    {
+      "id": 12,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/12.+%EC%8D%AC%ED%94%8C%EB%9D%BC%EC%9B%8C+%EB%B0%98%EB%B0%98%EC%83%88%EC%9A%B0.jpeg",
+      "name": "썬플라워",
+      "representativeMenu": "칠리새우/크림새우",
+      "description": "면/식사류, 해산물, 간편식, 비건",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 14,
+      "isOpen": false
+    },
+    {
+      "id": 10,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/10.+%EC%98%A4%EC%95%BC%EB%B6%95+%EB%B6%88%EC%95%BC%EB%81%BC%EC%86%8C%EB%B0%94.jpeg",
+      "name": "오야붕",
+      "representativeMenu": "辛불야끼소바",
+      "description": "면/식사류, 해산물, 비건",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 6,
+      "isOpen": false
+    },
+    {
+      "id": 9,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/9.+%EC%A7%B1%EA%B0%80%EA%B3%B1%EC%B0%BD+%EC%95%BC%EC%B1%84%EA%B3%B1%EC%B0%BD.jpeg",
+      "name": "짱가곱창",
+      "representativeMenu": "야채곱창",
+      "description": "곱창/막창, 면/식사류, 비건",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 5,
+      "isOpen": false
+    },
+    {
+      "id": 1,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/1.+Takeone+%EB%8B%AD%EA%BC%AC%EC%B9%98.jpeg",
+      "name": "Take one",
+      "representativeMenu": "프리미엄 수제 닭다리살 직화구이 꼬치",
+      "description": "간편식, 고기/BBQ",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 5,
+      "isOpen": false
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/2.+%E1%84%90%E1%85%A1%E1%84%8B%E1%85%AE%E1%84%85%E1%85%A1%E1%84%91%E1%85%AE%E1%84%83%E1%85%B3+%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC.jpeg",
+      "name": "타우라푸드",
+      "representativeMenu": "수제 닭강정/수제 후라이드",
+      "description": "고기/BBQ, 비건",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 4,
+      "isOpen": false
+    },
+    {
+      "id": 8,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/8.+KogiBBQ+%EB%8F%BC%EC%A7%80%EB%AA%A9%EC%82%B4%EB%B0%94%EB%B2%A0%ED%81%90.jpeg",
+      "name": "KogiBBQ",
+      "representativeMenu": "돼지목살바베큐",
+      "description": "고기/BBQ, 면/식사류, 간편식, 비건",
+      "operatingDays": "운영 정보 없음",
+      "likeCount": 6,
+      "isOpen": false
+    }
+  ]
+}
