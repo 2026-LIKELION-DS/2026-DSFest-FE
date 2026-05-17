@@ -9,7 +9,7 @@ import thumbsUp from "../../assets/Food/ThumbsUp.svg";
 import thumbsUpFill from "../../assets/Food/ThumbsUpFill.svg";
 import chevronDown from "../../assets/Food/ChevronDown.svg";
 import chevronUp from "../../assets/Food/ChevronUp.svg";
-
+import foodTruckDetailsData from "../../data/foodtruckDetail.json";
 interface Menu {
   name: string;
   price: string;
@@ -68,8 +68,6 @@ export default function FoodTruckCard({
   forceOpen,
   onForceOpenDone,
 }: Props) {
-  const API_URL = import.meta.env.VITE_API_URL;
-
   const [isOpen, setIsOpen] = useState(false);
   const [isLiked, setIsLiked] = useState(() => {
     const savedLike = localStorage.getItem(getLikeKey(truck.id));
@@ -90,41 +88,30 @@ export default function FoodTruckCard({
   const isOperating = truck.isOpen;
 
   const fetchFoodTruckDetail = async () => {
-    try {
-      const response = await fetch(`${API_URL}/api/food-trucks/${truck.id}`, {
-        method: "GET",
-        headers: {
-          "guest-uuid": getGuestUuid(),
-        },
-      });
+    const detail = foodTruckDetailsData.find((item) => item.id === truck.id);
 
-      const data = await response.json();
-
-      if (!response.ok || !data.isSuccess) {
-        alert(data.message || "푸드트럭 상세 정보를 불러오지 못했습니다.");
-        return;
-      }
-
-      const detail: FoodTruckDetailResponse = data.result;
-
-      setImages(detail.imageUrls);
-      setMenus(
-        detail.menus.map((menu) => ({
-          name: menu.menuName,
-          price: `${menu.price.toLocaleString()}원`,
-          isVegan: menu.isVegan,
-        }))
-      );
-
-      setLikeCount(detail.likeCount);
-      setIsLiked(detail.isLiked);
-      localStorage.setItem(getLikeKey(truck.id), String(detail.isLiked));
-
-      setIsDetailLoaded(true);
-    } catch (error) {
-      console.error(error);
-      alert("푸드트럭 상세 조회 중 오류가 발생했습니다.");
+    if (!detail) {
+      alert("푸드트럭 상세 정보를 찾을 수 없습니다.");
+      return;
     }
+
+    setImages(detail.imageUrls);
+
+    setMenus(
+      detail.menus.map((menu) => ({
+        name: menu.menuName,
+        price: `${menu.price.toLocaleString()}원`,
+        isVegan: menu.isVegan,
+      }))
+    );
+
+    setLikeCount(detail.likeCount);
+
+    setIsLiked(detail.isLiked);
+
+    localStorage.setItem(getLikeKey(truck.id), String(detail.isLiked));
+
+    setIsDetailLoaded(true);
   };
 
   const handleToggleOpen = async () => {
@@ -136,40 +123,19 @@ export default function FoodTruckCard({
   };
 
   const handleLike = async () => {
-    try {
-      const response = await fetch(
-        `${API_URL}/api/food-trucks/${truck.id}/likes`,
-        {
-          method: "POST",
-          headers: {
-            "guest-uuid": getGuestUuid(),
-          },
-        }
-      );
+    const nextIsLiked = !isLiked;
 
-      const data = await response.json();
-
-      if (!response.ok || !data.isSuccess) {
-        alert(data.message || "좋아요 처리에 실패했습니다.");
-        return;
-      }
-
-      const nextIsLiked = data.result.isLiked;
-
-      if (nextIsLiked) {
-        trackEvent("foodtruck_like", {
-          foodtruck_name: truck.name,
-        });
-      }
-
-      setIsLiked(nextIsLiked);
-      localStorage.setItem(getLikeKey(truck.id), String(nextIsLiked));
-
-      setLikeCount((prev) => (nextIsLiked ? prev + 1 : Math.max(prev - 1, 0)));
-    } catch (error) {
-      console.error(error);
-      alert("좋아요 처리 중 오류가 발생했습니다.");
+    if (nextIsLiked) {
+      trackEvent("foodtruck_like", {
+        foodtruck_name: truck.name,
+      });
     }
+
+    setIsLiked(nextIsLiked);
+
+    localStorage.setItem(getLikeKey(truck.id), String(nextIsLiked));
+
+    setLikeCount((prev) => (nextIsLiked ? prev + 1 : Math.max(prev - 1, 0)));
   };
 
   const handleImageClick = async () => {

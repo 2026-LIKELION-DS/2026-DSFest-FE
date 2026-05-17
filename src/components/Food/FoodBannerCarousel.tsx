@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "../../utils/analytics";
 import * as S from "../../styles/FoodBanner.styles";
 
+import bannerData from "../../data/foodtruckBanners.json";
+
 import pizza from "../../assets/Food/Pizza.svg";
 import chicken from "../../assets/Food/Chicken.svg";
 import Burrito from "../../assets/Food/Burrito.svg";
@@ -34,6 +36,7 @@ const trucks = [
   { image: FriedShrimp, images: [FriedShrimp] },
   { image: Cup, images: [Cup] },
 ];
+
 const STORE_NAMES = [
   "Take one",
   "타우라푸드",
@@ -49,13 +52,12 @@ const STORE_NAMES = [
   "썬플라워",
   "스위트퍼플",
 ];
+
 interface Props {
   onBannerClick: (storeName: string) => void;
 }
 
 export default function FoodBannerCarousel({ onBannerClick }: Props) {
-  const API_URL = import.meta.env.VITE_API_URL;
-
   const clickedStoreNameRef = useRef("");
   const trackRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<number | null>(null);
@@ -70,25 +72,8 @@ export default function FoodBannerCarousel({ onBannerClick }: Props) {
   const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
-    const fetchBanners = async () => {
-      try {
-        const response = await fetch(`${API_URL}/api/food-trucks/banners`);
-        const data = await response.json();
-
-        if (!response.ok || !data.isSuccess) {
-          alert(data.message || "푸드트럭 배너를 불러오지 못했습니다.");
-          return;
-        }
-
-        setBanners(data.result);
-      } catch (error) {
-        console.error(error);
-        alert("푸드트럭 배너 조회 중 오류가 발생했습니다.");
-      }
-    };
-
-    fetchBanners();
-  }, [API_URL]);
+    setBanners(bannerData.result);
+  }, []);
 
   const getHalfWidth = () => {
     if (!trackRef.current) return 0;

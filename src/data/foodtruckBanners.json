@@ -1,0 +1,72 @@
+{
+  "isSuccess": true,
+  "code": "COMMON200",
+  "message": "요청에 성공하였습니다.",
+  "result": [
+    {
+      "id": 1,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/1.+Takeone+%EB%8B%AD%EA%BC%AC%EC%B9%98.jpeg",
+      "title": "직화 닭꼬치 어때요?"
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/2.+%E1%84%90%E1%85%A1%E1%84%8B%E1%85%AE%E1%84%85%E1%85%A1%E1%84%91%E1%85%AE%E1%84%83%E1%85%B3+%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC.jpeg",
+      "title": "닭강정 어때요?"
+    },
+    {
+      "id": 3,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/3.+%EC%96%8C%EC%96%8C%EC%B8%84%EB%9F%AC%EC%8A%A4+%EC%86%8C%ED%94%84%ED%8A%B8+%EC%95%84%EC%B8%84.jpeg",
+      "title": "츄러스 어때요?"
+    },
+    {
+      "id": 4,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/4.+%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%8F%E1%85%A6%E1%84%87%E1%85%A1%E1%86%B8.jpeg",
+      "title": "케밥 어때요?"
+    },
+    {
+      "id": 5,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/5.+%E1%84%89%E1%85%AE%E1%86%AB%E1%84%83%E1%85%A2%E1%84%8A%E1%85%A5%E1%84%82%E1%85%B3%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A1.jpeg",
+      "title": "철판버터오징어 어때요?"
+    },
+    {
+      "id": 6,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/6.+%E1%84%86%E1%85%A9%E1%84%83%E1%85%B5+%E1%84%90%E1%85%A9%E1%84%89%E1%85%B5%E1%84%89%E1%85%A1%E1%86%AF%E1%84%89%E1%85%B3%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%B3%E1%84%83%E1%85%A5%E1%87%81%E1%84%87%E1%85%A1%E1%86%B8.jpeg",
+      "title": "스테이크 덮밥 어때요?"
+    },
+    {
+      "id": 7,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/7.+%E1%84%8B%E1%85%A3%E1%84%86%E1%85%B5+%E1%84%89%E1%85%A9%E1%84%80%E1%85%A9%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%86%AF%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A1%E1%86%B8.jpeg",
+      "title": "소고기불초밥 어때요?"
+    },
+    {
+      "id": 8,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/8.+KogiBBQ+%EB%8F%BC%EC%A7%80%EB%AA%A9%EC%82%B4%EB%B0%94%EB%B2%A0%ED%81%90.jpeg",
+      "title": "바베큐 어때요?"
+    },
+    {
+      "id": 9,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/9.+%EC%A7%B1%EA%B0%80%EA%B3%B1%EC%B0%BD+%EC%95%BC%EC%B1%84%EA%B3%B1%EC%B0%BD.jpeg",
+      "title": "곱창·막창 어때요?"
+    },
+    {
+      "id": 10,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/10.+%EC%98%A4%EC%95%BC%EB%B6%95+%EB%B6%88%EC%95%BC%EB%81%BC%EC%86%8C%EB%B0%94.jpeg",
+      "title": "야끼소바 어때요?"
+    },
+    {
+      "id": 11,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/11.+%EA%B3%A8%EB%93%9C%ED%82%A4%EC%A6%88+%ED%94%BC%EC%9E%90(1).jpeg",
+      "title": "피자 어때요?"
+    },
+    {
+      "id": 12,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/12.+%EC%8D%AC%ED%94%8C%EB%9D%BC%EC%9B%8C+%EB%B0%98%EB%B0%98%EC%83%88%EC%9A%B0.jpeg",
+      "title": "크림새우 어때요?"
+    },
+    {
+      "id": 13,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/food-truck/13.+%EC%8A%A4%EC%9C%84%ED%8A%B8%ED%8D%BC%ED%94%8C+.jpg",
+      "title": "밀크쉐이크 어때요?"
+    }
+  ]
+}
