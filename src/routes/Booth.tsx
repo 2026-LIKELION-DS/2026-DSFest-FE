@@ -1,7 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
-import axios from "axios";
 import { trackEvent } from "../utils/analytics";
-// useSearchParams 추가
 import { useSearchParams } from "react-router-dom";
 
 import * as S from "../styles/Booth.style";
@@ -9,6 +7,10 @@ import BoothMapComponent from "../components/Booth/BoothMapComponent";
 import BoothInfoComponent from "../components/Booth/BoothInfoComponent";
 import BoothModalComponent from "../components/Booth/BoothModalComponent";
 import Modal from "../components/Common/ModalComponent";
+
+import noticeListData from "../data/NoticeJson/NoticesDetail.json";
+import boothMapData from "../data/BoothJson/boothMap.json";
+import boothsDetailData from "../data/BoothJson/boothsDetail.json";
 
 import daySelected from "../assets/Booth/DaySelected.svg";
 import dayUnselected from "../assets/Booth/DayUnselected.svg";
@@ -24,6 +26,23 @@ const DAYS_DATA = [
   { id: 3, date: "15일", dayOfWeek: "금" },
 ];
 
+interface MapBoothItem {
+  boothId: number;
+  boothNumber: number;
+  name: string;
+  positionNumber: number;
+  operatingSubject: string;
+  thumbnailUrl: string | null;
+  boothTypes: string[];
+}
+
+interface BoothMapData {
+  [key: string]: {
+    DAY: MapBoothItem[];
+    NIGHT: MapBoothItem[];
+  };
+}
+
 interface Booth {
   id: number;
   boothId?: number;
@@ -32,21 +51,20 @@ interface Booth {
   name: string;
   boothTypes: string[];
   operatingSubject: string;
-  thumbnailUrl: string;
+  thumbnailUrl?: string | null;
   tags: string[];
-  operatingTimes: string[];
+  operatingTimes?: string[];
   description: string;
   categories?: string[];
-  imageUrls?: string[];
-  openKakaoUrl?: string;
-  everytimeUrl?: string;
-  instagramUrl?: string;
+  imageUrls?: (string | null)[];
+  openKakaoUrl?: string | null;
+  everytimeUrl?: string | null;
+  instagramUrl?: string | null;
   status?: "운영 중" | "운영 예정" | "운영 종료";
-}
 
-interface MapBoothResponse {
-  boothId: number;
-  positionNumber: number;
+  category?: string;
+  operator?: string;
+  images?: (string | null)[];
 }
 
 interface Notice {
@@ -56,37 +74,10 @@ interface Notice {
   imageUrls: string[];
 }
 
-// const calculateBoothStatus = (
-//   day: number,
-//   nightMode: boolean,
-// ): "운영 중" | "운영 예정" | "운영 종료" => {
-//   // const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
-//   const now = new Date("2026-05-14T12:00:00");
-//   const festivalDates: { [key: number]: string } = {
-//     1: "2026-05-13",
-//     2: "2026-05-14",
-//     3: "2026-05-15",
-//   };
-
-//   const currentDateStr = festivalDates[day];
-//   if (!currentDateStr) return "운영 종료";
-
-//   const startTimeStr = nightMode ? "16:00" : "11:00";
-//   const endTimeStr = nightMode ? "19:30" : "14:30";
-
-//   const startTime = new Date(`${currentDateStr}T${startTimeStr}:00`);
-//   const endTime = new Date(`${currentDateStr}T${endTimeStr}:00`);
-
-//   if (now < startTime) return "운영 예정";
-//   if (now >= startTime && now <= endTime) return "운영 중";
-//   return "운영 종료";
-// };
-
 const BoothPage: React.FC = () => {
-  const baseUrl = import.meta.env.VITE_API_URL;
   const mapSectionRef = useRef<HTMLDivElement>(null);
-  //searchParams 추가
   const [searchParams] = useSearchParams();
+
   useEffect(() => {
     window.scrollTo(0, 0);
     if (mapSectionRef.current) {
@@ -119,26 +110,31 @@ const BoothPage: React.FC = () => {
   const [showGuide, setShowGuide] = useState(true);
   const [isRandomSelection, setIsRandomSelection] = useState(false);
 
-  const handleOpenNotice = async () => {
+  const handleOpenNotice = () => {
     try {
-      const response = await axios.get(`${baseUrl}/api/notices/5`);
-      if (response.data.isSuccess) {
-        setNoticeData(response.data.result);
+      const targetNotice = noticeListData.find((n) => n.id === 5);
+
+      if (targetNotice) {
+        setNoticeData({
+          id: targetNotice.id,
+          title: targetNotice.title,
+          content: targetNotice.content,
+          imageUrls: targetNotice.imageUrls,
+        });
         setIsNoticeOpen(true);
+      } else {
+        console.error("5번 공지사항을 찾을 수 없습니다.");
       }
     } catch (error) {
       console.error("공지사항 로드 실패", error);
-      alert("공지사항을 불러오는 중 오류가 발생했습니다.");
     }
   };
 
   useEffect(() => {
-    const now = new Date(); // 테스트 시 아래 줄 주석 해제하여 확인
-    // const now = new Date("2026-05-14T15:00:00");
+    const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
     const date = now.getDate();
-    // const hours = now.getHours();
     const hours = now.getHours();
 
     if (year >= 2026 && month >= 5 && date > 15) {
@@ -147,18 +143,6 @@ const BoothPage: React.FC = () => {
       return;
     }
 
-    if (year >= 2026 && month >= 5 && date > 15) {
-      setActiveDay(1);
-      setIsNight(false);
-      return;
-    }
-
-    // isNight 설정 부분 제거
-    // if (hours >= 16) {
-    //   setIsNight(true);
-    // } else {
-    //   setIsNight(false);
-    // }
     const dayParam = searchParams.get("day");
     if (dayParam) {
       setActiveDay(Number(dayParam));
@@ -177,47 +161,41 @@ const BoothPage: React.FC = () => {
       setIsNight(timeParam === "night");
     }
   }, [searchParams]);
+
   useEffect(() => {
-    const fetchBoothsAndPositions = async () => {
-      setLoading(true);
-      try {
-        const mapRes = await axios.get(`${baseUrl}/api/booths/map`, {
-          params: { day: activeDay, type: isNight ? "NIGHT" : "DAY" },
-        });
+    setLoading(true);
+    try {
+      const timeKey = isNight ? "NIGHT" : "DAY";
+      const dayKey = String(activeDay) as "1" | "2" | "3";
 
-        if (mapRes.data.isSuccess) {
-          const mapData = mapRes.data.result;
+      const typedMapData = boothMapData as unknown as BoothMapData;
+      const currentMapList = typedMapData[dayKey]?.[timeKey] || [];
+      const detailPool = boothsDetailData.DAY || [];
 
-          const detailedBooths = await Promise.all(
-            mapData.map(async (m: MapBoothResponse) => {
-              try {
-                const detailRes = await axios.get(
-                  `${baseUrl}/api/booths/${m.boothId}`,
-                );
-                if (detailRes.data.isSuccess) {
-                  return {
-                    ...detailRes.data.result,
-                    positionNumber: m.positionNumber,
-                  };
-                }
-                return null;
-              } catch {
-                return null;
-              }
-            }),
+      const integratedBooths = currentMapList
+        .map((mapBooth) => {
+          const detailItem = detailPool.find(
+            (d) => d.result.id === mapBooth.boothId,
           );
+          if (!detailItem) return null;
 
-          setBooths(detailedBooths.filter((b) => b !== null));
-        }
-      } catch (error) {
-        console.error("데이터 통합 로드 실패", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+          const res = detailItem.result;
+          return {
+            ...res,
+            id: res.id,
+            positionNumber: mapBooth.positionNumber,
+            status: res.tags?.includes("운영중") ? "운영 중" : "운영 종료",
+          } as Booth;
+        })
+        .filter((b): b is Booth => b !== null);
 
-    fetchBoothsAndPositions();
-  }, [activeDay, isNight, baseUrl]);
+      setBooths(integratedBooths);
+    } catch (error) {
+      console.error("로컬 데이터 로드 실패", error);
+    } finally {
+      setLoading(false);
+    }
+  }, [activeDay, isNight]);
 
   const { operatingBooths, upcomingBooths, allBoothsForList } = useMemo(() => {
     const baseList = [...booths].sort(
@@ -239,48 +217,44 @@ const BoothPage: React.FC = () => {
 
   const boothCounts = useMemo(() => {
     const counts = { 예정: 0, 운영중: 0, 종료: 0 };
-
     booths.forEach((booth) => {
       const tags = booth.tags || [];
-
-      if (tags.includes("운영중")) {
-        counts.운영중++;
-      } else if (tags.includes("운영 예정")) {
-        counts.예정++;
-      } else {
-        counts.종료++;
-      }
+      if (tags.includes("운영중")) counts.운영중++;
+      else if (tags.includes("운영 예정")) counts.예정++;
+      else counts.종료++;
     });
-
     return counts;
   }, [booths]);
 
-  const handleOpenModal = async (boothId: number, posNum: number) => {
-    try {
-      const response = await axios.get(`${baseUrl}/api/booths/${boothId}`);
-      if (response.data.isSuccess) {
-        const detailData = response.data.result;
-        const statusFromTags = detailData.tags?.includes("운영중")
-          ? "운영 중"
-          : detailData.tags?.includes("운영 예정")
-            ? "운영 예정"
-            : "운영 종료";
+  const handleOpenModal = (boothId: number, posNum: number) => {
+    const detailPool = boothsDetailData.DAY || [];
+    const detailItem = detailPool.find((d) => d.result.id === boothId);
 
-        setTargetBooth({
-          ...detailData,
-          positionNumber: posNum,
-          status: statusFromTags,
-          category:
-            detailData.categories?.join(", ") ||
-            detailData.boothTypes?.join(", "),
-          operator: detailData.operatingSubject,
-          images: detailData.imageUrls,
-          description: detailData.description,
-        });
-        setIsModalOpen(true);
-      }
-    } catch (error) {
-      console.error("상세 정보 로드 실패", error);
+    if (detailItem) {
+      const detailData = detailItem.result;
+      const statusFromTags = detailData.tags?.includes("운영중")
+        ? "운영 중"
+        : detailData.tags?.includes("운영 예정")
+          ? "운영 예정"
+          : "운영 종료";
+
+      const updatedBooth: Booth = {
+        ...detailData,
+        positionNumber: posNum,
+        status: statusFromTags as "운영 중" | "운영 예정" | "운영 종료",
+        category:
+          detailData.categories?.join(", ") ||
+          detailData.boothTypes?.join(", "),
+        operator: detailData.operatingSubject,
+        images: detailData.imageUrls,
+        description: detailData.description,
+        thumbnailUrl: detailData.imageUrls?.[0] || null,
+      };
+
+      setTargetBooth(updatedBooth);
+      setIsModalOpen(true);
+    } else {
+      console.error("해당 부스의 상세 정보 정보를 찾을 수 없습니다.");
     }
   };
 
@@ -301,37 +275,13 @@ const BoothPage: React.FC = () => {
     handleOpenModal(id, target?.positionNumber || 0);
   };
 
-  const handleRandomRecommend = async () => {
-    trackEvent("booth_random_recommend_click");
-
-    try {
-      const response = await axios.get(`${baseUrl}/api/booths/random`, {
-        params: { day: activeDay },
-      });
-
-      if (response.data.isSuccess && response.data.result) {
-        const randomBooth = response.data.result;
-
-        setSelectedId(null);
-
-        setIsRandomSelection(true);
-
-        handleOpenModal(randomBooth.id, randomBooth.positionNumber);
-      } else {
-        alert("현재 운영 중인 추천 부스가 없습니다.");
-      }
-    } catch (error) {
-      console.error("랜덤 부스 추천 로드 실패", error);
-      alert("추천 정보를 가져오는 중 오류가 발생했습니다.");
-    }
+  const handleRandomRecommend = () => {
+    alert("현재 운영 중인 추천 부스가 없습니다.");
   };
 
   const handleScrollToTop = () => {
     if (mapSectionRef.current) {
-      mapSectionRef.current.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      mapSectionRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -342,10 +292,8 @@ const BoothPage: React.FC = () => {
         window.removeEventListener("click", handleFirstClick);
         window.removeEventListener("touchstart", handleFirstClick);
       };
-
       window.addEventListener("click", handleFirstClick, true);
       window.addEventListener("touchstart", handleFirstClick, true);
-
       return () => {
         window.removeEventListener("click", handleFirstClick);
         window.removeEventListener("touchstart", handleFirstClick);
@@ -361,12 +309,14 @@ const BoothPage: React.FC = () => {
       const cat = source?.find((c) => c !== "DAY" && c !== "NIGHT");
       return cat || "체험";
     };
+
     const getStatusFromTags = (tags?: string[]) => {
       if (!tags) return "운영 종료";
       if (tags.includes("운영중")) return "운영 중";
       if (tags.includes("운영 예정")) return "운영 예정";
       return "운영 종료";
     };
+
     const mappedBooth = {
       id: booth.id,
       boothNumber: booth.boothNumber,
@@ -379,7 +329,9 @@ const BoothPage: React.FC = () => {
         | "운영 예정"
         | "운영 종료",
       description: booth.description || "상세 설명이 없습니다.",
-      images: booth.imageUrls || [booth.thumbnailUrl],
+      images: (booth.imageUrls || []).filter(
+        (img): img is string => img !== null,
+      ),
     };
 
     return (
@@ -498,7 +450,6 @@ const BoothPage: React.FC = () => {
                       <S.EmptyMessage>
                         지금은 부스 운영시간이 아닙니다
                       </S.EmptyMessage>
-
                       <div
                         style={{
                           marginTop: "40px",
@@ -529,10 +480,18 @@ const BoothPage: React.FC = () => {
             ...targetBooth,
             positionNumber: targetBooth.positionNumber,
             boothNumber: targetBooth.boothNumber,
-            category: targetBooth.boothTypes?.join(", ") || "기타",
-            operator: targetBooth.operatingSubject || "운영진",
-            images: targetBooth.imageUrls || [],
+            category: targetBooth.category || "기타",
+            operator: targetBooth.operator || "운영진",
             status: targetBooth.status || "운영 종료",
+            everytimeUrl: targetBooth.everytimeUrl ?? undefined,
+            instagramUrl: targetBooth.instagramUrl ?? undefined,
+            openKakaoUrl: targetBooth.openKakaoUrl ?? undefined,
+            images: (targetBooth.imageUrls || []).filter(
+              (img): img is string => img !== null,
+            ),
+            imageUrls: (targetBooth.imageUrls || []).filter(
+              (img): img is string => img !== null,
+            ),
           }}
           onClose={() => setIsModalOpen(false)}
           onNavigateToMap={handleNavigateToMap}
