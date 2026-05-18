@@ -137,28 +137,25 @@ const BoothPage: React.FC = () => {
     const date = now.getDate();
     const hours = now.getHours();
 
-    if (year >= 2026 && month >= 5 && date > 15) {
-      setActiveDay(1);
-      setIsNight(false);
-      return;
-    }
-
     const dayParam = searchParams.get("day");
     if (dayParam) {
       setActiveDay(Number(dayParam));
     } else {
-      if (year === 2026 && month === 5) {
+      if (year >= 2026 && month >= 5 && date > 15) {
+        setActiveDay(1);
+      } else if (year === 2026 && month === 5) {
         if (date <= 13) setActiveDay(1);
         else if (date === 14) setActiveDay(2);
         else if (date === 15) setActiveDay(3);
       }
     }
+
     const timeParam = searchParams.get("time");
-    if (!timeParam) {
-      if (hours >= 15) setIsNight(true);
-      else setIsNight(false);
-    } else {
+    if (timeParam) {
       setIsNight(timeParam === "night");
+    } else {
+      if (hours >= 16) setIsNight(true);
+      else setIsNight(false);
     }
   }, [searchParams]);
 
