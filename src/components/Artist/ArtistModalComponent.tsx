@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import ImageDetailComponent from "../../components/Common/ImageDetail";
 import * as S from "../../styles/ArtistComponent.style";
+
+import noticeData from "../../data/NoticeJson/NoticesDetail.json";
 
 interface ArtistModalComponentProps {
   isOpen: boolean;
@@ -20,12 +22,14 @@ interface NoticeDetail {
   viewCount: number;
 }
 
-interface NoticeResponse {
-  isSuccess: boolean;
-  code: string;
-  message: string;
-  result: NoticeDetail;
-}
+// interface NoticeResponse {
+//   isSuccess: boolean;
+//   code: string;
+//   message: string;
+//   result: NoticeDetail;
+// }
+
+// const API_URL = import.meta.env.VITE_API_URL;
 
 const NOTICE_ID = 3;
 
@@ -33,36 +37,42 @@ const ArtistModalComponent: React.FC<ArtistModalComponentProps> = ({
   isOpen,
   onClose,
 }) => {
-  const API_URL = import.meta.env.VITE_API_URL;
+  // const [notice, setNotice] = useState<NoticeDetail | null>(null);
 
-  const [notice, setNotice] = useState<NoticeDetail | null>(null);
   const [modalConfig, setModalConfig] = useState({
     isOpen: false,
     initialIndex: 0,
   });
 
-  useEffect(() => {
-    if (!isOpen) return;
+  const notice = useMemo(() => {
+    return (
+      (noticeData as NoticeDetail[]).find((item) => item.id === NOTICE_ID) ??
+      null
+    );
+  }, []);
 
-    const fetchNotice = async () => {
-      try {
-        const response = await fetch(`${API_URL}/api/notices/${NOTICE_ID}`);
-        const data: NoticeResponse = await response.json();
+  // useEffect(() => {
+  //   if (!isOpen) return;
 
-        if (!response.ok || !data.isSuccess) {
-          alert(data.message || "공지사항을 불러오지 못했습니다.");
-          return;
-        }
+  //   const fetchNotice = async () => {
+  //     try {
+  //       const response = await fetch(`${API_URL}/api/notices/${NOTICE_ID}`);
+  //       const data: NoticeResponse = await response.json();
 
-        setNotice(data.result);
-      } catch (error) {
-        console.error(error);
-        alert("공지사항 조회 중 오류가 발생했습니다.");
-      }
-    };
+  //       if (!response.ok || !data.isSuccess) {
+  //         alert(data.message || "공지사항을 불러오지 못했습니다.");
+  //         return;
+  //       }
 
-    fetchNotice();
-  }, [API_URL, isOpen]);
+  //       setNotice(data.result);
+  //     } catch (error) {
+  //       console.error(error);
+  //       alert("공지사항 조회 중 오류가 발생했습니다.");
+  //     }
+  //   };
+
+  //   fetchNotice();
+  // }, [API_URL, isOpen]);
 
   if (!isOpen) return null;
 

@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { trackEvent } from "../../utils/analytics";
 
 import NoticeListItem from "../../components/Notice/NoticeListItem";
 import FAQCard from "../../components/Notice/FAQCard";
 import SearchInput from "../../components/Notice/SearchInput";
 import FrequentNotice from "../../components/Notice/FrequentNotice";
+
+import noticeData from "../../data/NoticeJson/NoticesDetail.json";
 
 import * as S from "../../styles/Notice.style";
 
@@ -21,19 +23,19 @@ interface NoticeListResponse {
   viewCount: number;
 }
 
-interface SearchNoticeResponse {
-  results: NoticeListResponse[];
-  recommended: NoticeListResponse[];
-}
+// interface SearchNoticeResponse {
+//   results: NoticeListResponse[];
+//   recommended: NoticeListResponse[];
+// }
 
-interface ApiResponse<T> {
-  isSuccess: boolean;
-  code: string;
-  message: string;
-  result: T;
-}
+// interface ApiResponse<T> {
+//   isSuccess: boolean;
+//   code: string;
+//   message: string;
+//   result: T;
+// }
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+// const BASE_URL = import.meta.env.VITE_API_URL;
 
 const CATEGORY_LABEL: Record<NoticeCategory, string> = {
   EVENT: "이벤트",
@@ -88,70 +90,100 @@ export default function Notice() {
   }, []);
 
   const [keyword, setKeyword] = useState("");
-  const [frequentNotices, setFrequentNotices] = useState<NoticeListResponse[]>(
-    [],
-  );
-  const [searchResults, setSearchResults] = useState<NoticeListResponse[]>([]);
-  const [recommendedNotices, setRecommendedNotices] = useState<
-    NoticeListResponse[]
-  >([]);
+
+  // const [frequentNotices, setFrequentNotices] = useState<
+  //   NoticeListResponse[]
+  // >([]);
+
+  // const [searchResults, setSearchResults] = useState<NoticeListResponse[]>([]);
+
+  // const [recommendedNotices, setRecommendedNotices] = useState<
+  //   NoticeListResponse[]
+  // >([]);
 
   const trimmedKeyword = keyword.trim();
   const isSearching = trimmedKeyword.length > 0;
+
+  const allNotices = noticeData as NoticeListResponse[];
+
+  const frequentNotices = useMemo(() => {
+    return [...allNotices]
+      .sort((a, b) => b.viewCount - a.viewCount)
+      .slice(0, 5);
+  }, [allNotices]);
+
+  const searchResults = useMemo(() => {
+    if (!trimmedKeyword) return [];
+
+    return allNotices.filter((notice) => notice.title.includes(trimmedKeyword));
+  }, [allNotices, trimmedKeyword]);
+
+  const recommendedNotices = useMemo(() => {
+    return frequentNotices;
+  }, [frequentNotices]);
+
   const hasSearchResult = searchResults.length > 0;
 
-  useEffect(() => {
-    const fetchInitialNotices = async () => {
-      try {
-        const frequentResponse = await axios.get<
-          ApiResponse<NoticeListResponse[]>
-        >(`${BASE_URL}/api/notices/frequent`);
+  // useEffect(() => {
+  //   const fetchInitialNotices = async () => {
+  //     try {
+  //       const frequentResponse = await axios.get<
+  //         ApiResponse<NoticeListResponse[]>
+  //       >(`${BASE_URL}/api/notices/frequent`);
 
-        setFrequentNotices(frequentResponse.data.result);
-      } catch (error) {
-        console.error("공지 메인 데이터 조회 실패:", error);
-      }
-    };
+  //       setFrequentNotices(frequentResponse.data.result);
+  //     } catch (error) {
+  //       console.error("공지 메인 데이터 조회 실패:", error);
+  //     }
+  //   };
 
-    fetchInitialNotices();
-  }, []);
+  //   fetchInitialNotices();
+  // }, []);
 
-  useEffect(() => {
-    if (!trimmedKeyword) return;
+  // useEffect(() => {
+  //   if (!trimmedKeyword) return;
 
-    const timerId = window.setTimeout(async () => {
-      try {
-        trackEvent("notice_search_used", {
-          search_term: trimmedKeyword,
-        });
+  //   const timerId = window.setTimeout(async () => {
+  //     try {
+  //       trackEvent("notice_search_used", {
+  //         search_term: trimmedKeyword,
+  //       });
 
-        const response = await axios.get<ApiResponse<SearchNoticeResponse>>(
-          `${BASE_URL}/api/notices/search`,
-          {
-            params: {
-              keyword: trimmedKeyword,
-            },
-          },
-        );
+  //       const response = await axios.get<ApiResponse<SearchNoticeResponse>>(
+  //         `${BASE_URL}/api/notices/search`,
+  //         {
+  //           params: {
+  //             keyword: trimmedKeyword,
+  //           },
+  //         },
+  //       );
 
-        setSearchResults(response.data.result.results);
-        setRecommendedNotices(response.data.result.recommended);
-      } catch (error) {
-        console.error("공지 검색 실패:", error);
-      }
-    }, 500);
+  //       setSearchResults(response.data.result.results);
+  //       setRecommendedNotices(response.data.result.recommended);
+  //     } catch (error) {
+  //       console.error("공지 검색 실패:", error);
+  //     }
+  //   }, 500);
 
-    return () => window.clearTimeout(timerId);
-  }, [trimmedKeyword]);
+  //   return () => window.clearTimeout(timerId);
+  // }, [trimmedKeyword]);
 
   const handleChangeKeyword = (value: string) => {
     setKeyword(value);
 
-    if (value.trim() === "") {
-      setSearchResults([]);
-      setRecommendedNotices([]);
-    }
+    // if (value.trim() === "") {
+    //   setSearchResults([]);
+    //   setRecommendedNotices([]);
+    // }
   };
+
+  useEffect(() => {
+    if (!trimmedKeyword) return;
+
+    trackEvent("notice_search_used", {
+      search_term: trimmedKeyword,
+    });
+  }, [trimmedKeyword]);
 
   return (
     <S.NoticePage>

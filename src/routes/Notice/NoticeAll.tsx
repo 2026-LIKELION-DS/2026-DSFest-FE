@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { trackEvent } from "../../utils/analytics";
 
 import SearchInput from "../../components/Notice/SearchInput";
 import NoticeListItem from "../../components/Notice/NoticeListItem";
-import FrequentNotice from "../../components/Notice/FrequentNotice";
+// import FrequentNotice from "../../components/Notice/FrequentNotice";
+
+import noticeData from "../../data/NoticeJson/NoticesDetail.json";
 
 import * as S from "../../styles/Notice.style";
 
@@ -21,24 +23,24 @@ interface NoticeItem {
   viewCount: number;
 }
 
-interface SearchNoticeResponse {
-  results: NoticeItem[];
-  recommended: NoticeItem[];
-}
+// interface SearchNoticeResponse {
+//   results: NoticeItem[];
+//   recommended: NoticeItem[];
+// }
 
-interface ApiResponse<T> {
-  isSuccess: boolean;
-  code: string;
-  message: string;
-  result: T;
-}
+// interface ApiResponse<T> {
+//   isSuccess: boolean;
+//   code: string;
+//   message: string;
+//   result: T;
+// }
 
 interface CategoryOption {
   label: string;
   value: CategoryFilter;
 }
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+// const BASE_URL = import.meta.env.VITE_API_URL;
 
 const categories: CategoryOption[] = [
   { label: "전체보기", value: "ALL" },
@@ -74,71 +76,93 @@ export default function NoticeAll() {
   const [keyword, setKeyword] = useState("");
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryFilter>("ALL");
-  const [noticeList, setNoticeList] = useState<NoticeItem[]>([]);
-  const [recommendedNotices, setRecommendedNotices] = useState<NoticeItem[]>(
-    [],
-  );
+
+  // const [noticeList, setNoticeList] = useState<NoticeItem[]>([]);
+
+  // const [recommendedNotices, setRecommendedNotices] = useState<
+  //   NoticeItem[]
+  // >([]);
 
   const trimmedKeyword = keyword.trim();
+
+  const noticeList = useMemo(() => {
+    let filteredNotices = [...noticeData] as NoticeItem[];
+
+    // 검색 필터
+    if (trimmedKeyword) {
+      filteredNotices = filteredNotices.filter((notice) =>
+        notice.title.includes(trimmedKeyword),
+      );
+    }
+
+    // 카테고리 필터
+    if (selectedCategory !== "ALL") {
+      filteredNotices = filteredNotices.filter(
+        (notice) => notice.category === selectedCategory,
+      );
+    }
+
+    return filteredNotices;
+  }, [trimmedKeyword, selectedCategory]);
+
   const isSearching = trimmedKeyword.length > 0;
   const hasNoticeList = noticeList.length > 0;
 
-  useEffect(() => {
-    const fetchNoticeList = async () => {
-      try {
-        if (trimmedKeyword) {
-          const response = await axios.get<ApiResponse<SearchNoticeResponse>>(
-            `${BASE_URL}/api/notices/search`,
-            {
-              params: {
-                keyword: trimmedKeyword,
-              },
-            },
-          );
+  // useEffect(() => {
+  //   const fetchNoticeList = async () => {
+  //     try {
+  //       if (trimmedKeyword) {
+  //         const response = await axios.get<
+  //           ApiResponse<SearchNoticeResponse>
+  //         >(`${BASE_URL}/api/notices/search`, {
+  //           params: {
+  //             keyword: trimmedKeyword,
+  //           },
+  //         });
 
-          const searchResults = response.data.result.results;
+  //         const searchResults = response.data.result.results;
 
-          const filteredResults =
-            selectedCategory === "ALL"
-              ? searchResults
-              : searchResults.filter(
-                  (notice) => notice.category === selectedCategory,
-                );
+  //         const filteredResults =
+  //           selectedCategory === "ALL"
+  //             ? searchResults
+  //             : searchResults.filter(
+  //                 (notice) => notice.category === selectedCategory,
+  //               );
 
-          setNoticeList(filteredResults);
-          setRecommendedNotices(response.data.result.recommended);
+  //         setNoticeList(filteredResults);
+  //         setRecommendedNotices(response.data.result.recommended);
 
-          return;
-        }
+  //         return;
+  //       }
 
-        setRecommendedNotices([]);
+  //       setRecommendedNotices([]);
 
-        if (selectedCategory === "ALL") {
-          const response = await axios.get<ApiResponse<NoticeItem[]>>(
-            `${BASE_URL}/api/notices`,
-          );
+  //       if (selectedCategory === "ALL") {
+  //         const response = await axios.get<ApiResponse<NoticeItem[]>>(
+  //           `${BASE_URL}/api/notices`,
+  //         );
 
-          setNoticeList(response.data.result);
-          return;
-        }
+  //         setNoticeList(response.data.result);
+  //         return;
+  //       }
 
-        const response = await axios.get<ApiResponse<NoticeItem[]>>(
-          `${BASE_URL}/api/notices/category`,
-          {
-            params: {
-              category: selectedCategory,
-            },
-          },
-        );
+  //       const response = await axios.get<ApiResponse<NoticeItem[]>>(
+  //         `${BASE_URL}/api/notices/category`,
+  //         {
+  //           params: {
+  //             category: selectedCategory,
+  //           },
+  //         },
+  //       );
 
-        setNoticeList(response.data.result);
-      } catch (error) {
-        console.error("공지 목록 조회 실패:", error);
-      }
-    };
+  //       setNoticeList(response.data.result);
+  //     } catch (error) {
+  //       console.error("공지 목록 조회 실패:", error);
+  //     }
+  //   };
 
-    fetchNoticeList();
-  }, [trimmedKeyword, selectedCategory]);
+  //   fetchNoticeList();
+  // }, [trimmedKeyword, selectedCategory]);
 
   const handleChangeKeyword = (value: string) => {
     setKeyword(value);
@@ -193,11 +217,11 @@ export default function NoticeAll() {
             공지가 없어요
           </S.SearchEmpty>
 
-          {isSearching && recommendedNotices.length > 0 && (
+          {/* {isSearching && recommendedNotices.length > 0 && (
             <S.SearchRecommendArea>
               <FrequentNotice noticeCards={recommendedNotices} />
             </S.SearchRecommendArea>
-          )}
+          )} */}
         </>
       )}
     </S.NoticePage>

@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 import * as S from "../../styles/Notice.style";
 import ImageDetailComponent from "../../components/Common/ImageDetail";
 
-type NoticeCategory = "EVENT" | "PERFORMANCE" | "INFO" | "ETC";
+import noticeData from "../../data/NoticeJson/NoticesDetail.json";
+
+type NoticeCategory = "EVENT" | "PERFORMANCE" | "NOTICE" | "ETC";
 
 interface NoticeDetailData {
   id: number;
@@ -19,41 +21,52 @@ interface NoticeDetailData {
   viewCount: number;
 }
 
-interface ApiResponse<T> {
-  isSuccess: boolean;
-  code: string;
-  message: string;
-  result: T;
-}
+// interface ApiResponse<T> {
+//   isSuccess: boolean;
+//   code: string;
+//   message: string;
+//   result: T;
+// }
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+// const BASE_URL = import.meta.env.VITE_API_URL;
 
 export default function NoticeDetail() {
   const { id } = useParams<{ id: string }>();
 
-  const [notice, setNotice] = useState<NoticeDetailData | null>(null);
+  // const [notice, setNotice] = useState<NoticeDetailData | null>(null);
+
   const [modalConfig, setModalConfig] = useState({
     isOpen: false,
     initialIndex: 0,
   });
 
-  useEffect(() => {
-    if (!id) return;
+  const notice = useMemo(() => {
+    if (!id) return null;
 
-    const fetchNoticeDetail = async () => {
-      try {
-        const response = await axios.get<ApiResponse<NoticeDetailData>>(
-          `${BASE_URL}/api/notices/${id}`,
-        );
-
-        setNotice(response.data.result);
-      } catch (error) {
-        console.error("공지 상세 조회 실패:", error);
-      }
-    };
-
-    fetchNoticeDetail();
+    return (
+      (noticeData as NoticeDetailData[]).find(
+        (item) => item.id === Number(id),
+      ) ?? null
+    );
   }, [id]);
+
+  // useEffect(() => {
+  //   if (!id) return;
+
+  //   const fetchNoticeDetail = async () => {
+  //     try {
+  //       const response = await axios.get<ApiResponse<NoticeDetailData>>(
+  //         `${BASE_URL}/api/notices/${id}`,
+  //       );
+
+  //       setNotice(response.data.result);
+  //     } catch (error) {
+  //       console.error("공지 상세 조회 실패:", error);
+  //     }
+  //   };
+
+  //   fetchNoticeDetail();
+  // }, [id]);
 
   if (!notice) return null;
 

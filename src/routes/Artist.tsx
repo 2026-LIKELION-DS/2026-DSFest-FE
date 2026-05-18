@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 import type { Artist } from "../components/Artist/ArtistCard";
 import { trackEvent } from "../utils/analytics";
@@ -12,6 +12,8 @@ import ArtistPagination from "../components/Artist/ArtistPagination";
 import PlaylistNotice from "../components/Artist/PlaylistNotice";
 import ArtistPlaylist from "../components/Artist/ArtistPlaylist";
 import ArtistModal from "../components/Artist/ArtistModalComponent";
+
+import artistData from "../data/ArtistJson/ArtistList.json";
 
 import * as S from "../styles/Artist.style";
 
@@ -27,23 +29,23 @@ type ArtistApiItem = {
   performanceDate: string;
   startTime: string;
   endTime: string;
-  imageUrl: string;
+  imageUrl: string[];
   instagramUrl: string;
   youtubeUrl: string;
   playlistUrl: string;
   countdownStatus: CountdownStatus;
 };
 
-type ArtistApiResponse = {
-  isSuccess: boolean;
-  code: string;
-  message: string;
-  result: ArtistApiItem[];
-};
+// type ArtistApiResponse = {
+//   isSuccess: boolean;
+//   code: string;
+//   message: string;
+//   result: ArtistApiItem[];
+// };
 
-const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-});
+// const API = axios.create({
+//   baseURL: import.meta.env.VITE_API_URL,
+// });
 
 const days = [
   { key: "day1", label: "DAY 1", date: "13일 수", value: 1 },
@@ -68,7 +70,7 @@ const mapArtist = (artist: ArtistApiItem): Artist => ({
   name: artist.name,
   desc: artist.shortBio,
   time: `${artist.startTime.slice(0, 5)} ~ ${artist.endTime.slice(0, 5)}`,
-  image: artist.imageUrl,
+  image: artist.imageUrl[0],
   instaUrl: artist.instagramUrl,
   youtubeUrl: artist.youtubeUrl,
   playlistUrl: artist.playlistUrl,
@@ -81,6 +83,8 @@ const getPlaylistDesc = (status?: CountdownStatus) => {
   if (status === "ENDED") return "무대 보고 난 후 복습할까요?";
   return "무대 보기 전에 예습할까요?";
 };
+
+const staticArtists = artistData as ArtistApiItem[];
 
 function ArtistPage() {
   const navigate = useNavigate();
@@ -135,57 +139,87 @@ function ArtistPage() {
     );
   };
 
-  const fetchArtistsByDay = async (dayKey: DayKey) => {
+  const getArtistsByDay = (dayKey: DayKey) => {
     const selectedDay = days.find((day) => day.key === dayKey);
 
-    if (!selectedDay) return;
+    if (!selectedDay) return [];
 
-    try {
-      const res = await API.get<ArtistApiResponse>("/api/artists", {
-        params: {
-          day: selectedDay.value,
-        },
-      });
-
-      setArtistData(res.data.result);
-    } catch (error) {
-      console.error("day별 아티스트 조회 실패:", error);
-    }
+    return staticArtists.filter(
+      (artist) => artist.festivalDay === selectedDay.value,
+    );
   };
+
+  // const fetchArtistsByDay = async (dayKey: DayKey) => {
+  //   const selectedDay = days.find((day) => day.key === dayKey);
+
+  //   if (!selectedDay) return;
+
+  //   try {
+  //     const res = await API.get<ArtistApiResponse>("/api/artists", {
+  //       params: {
+  //         day: selectedDay.value,
+  //       },
+  //     });
+
+  //     setArtistData(res.data.result);
+  //   } catch (error) {
+  //     console.error("day별 아티스트 조회 실패:", error);
+  //   }
+  // };
 
   const handleDayClick = (dayKey: DayKey) => {
     setCurrentDay(dayKey);
-    fetchArtistsByDay(dayKey);
+    setArtistData(getArtistsByDay(dayKey));
+
+    // fetchArtistsByDay(dayKey);
   };
 
   useEffect(() => {
-    const fetchTodayArtists = async () => {
-      try {
-        const res = await API.get<ArtistApiResponse>("/api/artists/today");
+    const dayParam = searchParams.get("day");
 
-        const apiArtists = res.data.result;
+    if (dayParam && ["1", "2", "3"].includes(dayParam)) {
+      const dayKey = `day${dayParam}` as DayKey;
 
-        setArtistData(apiArtists);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setCurrentDay(dayKey);
 
-        //   if (apiArtists[0]) {
-        //     setCurrentDay(`day${apiArtists[0].festivalDay}` as DayKey);
-        //   }
-        // }
-        const dayParam = searchParams.get("day");
-        if (dayParam && ["1", "2", "3"].includes(dayParam)) {
-          const dayKey = `day${dayParam}` as DayKey;
-          setCurrentDay(dayKey);
-          fetchArtistsByDay(dayKey);
-        } else if (apiArtists[0]) {
-          setCurrentDay(`day${apiArtists[0].festivalDay}` as DayKey);
-        }
-      } catch (error) {
-        console.error("오늘 아티스트 조회 실패:", error);
-      }
-    };
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setArtistData(getArtistsByDay(dayKey));
 
-    fetchTodayArtists();
-  }, []);
+      return;
+    }
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCurrentDay("day1");
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setArtistData(getArtistsByDay("day1"));
+  }, [searchParams]);
+
+  // useEffect(() => {
+  //   const fetchTodayArtists = async () => {
+  //     try {
+  //       const res = await API.get<ArtistApiResponse>("/api/artists/today");
+
+  //       const apiArtists = res.data.result;
+
+  //       setArtistData(apiArtists);
+
+  //       const dayParam = searchParams.get("day");
+  //       if (dayParam && ["1", "2", "3"].includes(dayParam)) {
+  //         const dayKey = `day${dayParam}` as DayKey;
+  //         setCurrentDay(dayKey);
+  //         fetchArtistsByDay(dayKey);
+  //       } else if (apiArtists[0]) {
+  //         setCurrentDay(`day${apiArtists[0].festivalDay}` as DayKey);
+  //       }
+  //     } catch (error) {
+  //       console.error("오늘 아티스트 조회 실패:", error);
+  //     }
+  //   };
+
+  //   fetchTodayArtists();
+  // }, []);
 
   return (
     <S.ArtistPage>
