@@ -1,0 +1,10 @@
+{
+  "isSuccess": true,
+  "code": "COMMON200",
+  "message": "요청에 성공하였습니다.",
+  "result": {
+    "status": "ENDED",
+    "current": [],
+    "next": null
+  }
+}
