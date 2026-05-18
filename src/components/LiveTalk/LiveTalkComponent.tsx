@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import liveTalkJson from "../../data/LiveTalkJson/Message.json";
 import ChatItem from "./ChatItem";
 import ChatInput from "./ChatInput";
 import * as S from "../../styles/LiveTalk.style";
@@ -62,8 +62,6 @@ export default function LiveTalkComponent() {
   const [topic, setTopic] = useState<LiveTalkTopic | null>(null);
   const [isLoadingPrevious, setIsLoadingPrevious] = useState(false);
   const [hasMorePreviousMessages, setHasMorePreviousMessages] = useState(true);
-  const [unreadCount, setUnreadCount] = useState<number>(0);
-  const [isSocketConnected, setIsSocketConnected] = useState(false);
   const navigate = useNavigate();
   const stompClientRef = useRef<StompClientLike | null>(null);
   const chatAreaRef = useRef<HTMLDivElement | null>(null);
@@ -343,145 +341,12 @@ export default function LiveTalkComponent() {
   }, [API_URL]);
 
   useEffect(() => {
-    const fetchInitialMessages = async () => {
-      try {
-        const response = await fetch(getApiUrl("/api/livetalk/messages"));
+    const messageList = liveTalkJson.messages;
 
-        if (!response.ok) {
-          throw new Error("초기 채팅 목록을 불러오지 못했습니다.");
-        }
-
-        const data = await response.json();
-        const messageList = getMessageListFromResponse(data);
-
-        setMessages(messageList.map(convertMessage));
-        shouldScrollToBottomRef.current = true;
-      } catch (error) {
-        console.error("초기 채팅 로딩 실패:", error);
-      }
-    };
-
-    fetchInitialMessages();
-    fetchUnreadCount();
-    markAsRead();
-  }, [API_URL]);
-
-  useEffect(() => {
-    let client: StompClientLike | null = null;
-    let subscription: { unsubscribe: () => void } | null = null;
-    let isUnmounted = false;
-
-    const connectWebSocket = async () => {
-      try {
-        const stompModule = await import("@stomp/stompjs");
-        const sockJsModule = await import("sockjs-client");
-
-        if (isUnmounted) return;
-
-        const { Client } = stompModule;
-        const SockJS = sockJsModule.default;
-
-        client = new Client({
-          webSocketFactory: () => new SockJS(getApiUrl("/ws")),
-          reconnectDelay: 5000,
-
-          onConnect: () => {
-            console.log("WebSocket 연결 성공");
-            setIsSocketConnected(true);
-
-            subscription?.unsubscribe();
-
-            subscription =
-              client?.subscribe(
-                "/topic/livetalk",
-                (message: { body: string }) => {
-                  const receivedMessage: LiveTalkApiMessage = JSON.parse(
-                    message.body
-                  );
-                  const convertedMessage = convertMessage(receivedMessage);
-
-                  setMessages((prev) => {
-                    if (prev.some((msg) => msg.id === convertedMessage.id)) {
-                      return prev;
-                    }
-
-                    if (convertedMessage.sender === "me") {
-                      const tempIndex = prev.findIndex(
-                        (msg) =>
-                          msg.isTemp &&
-                          msg.sender === "me" &&
-                          msg.text === convertedMessage.text
-                      );
-
-                      if (tempIndex !== -1) {
-                        const nextMessages = [...prev];
-                        nextMessages[tempIndex] = convertedMessage;
-                        return nextMessages;
-                      }
-                    }
-
-                    return [...prev, convertedMessage];
-                  });
-
-                  if (convertedMessage.sender === "me") {
-                    shouldScrollToBottomRef.current = true;
-                    markAsRead();
-                  } else {
-                    const chatArea = chatAreaRef.current;
-                    const isNearBottom = chatArea
-                      ? chatArea.scrollHeight -
-                          chatArea.scrollTop -
-                          chatArea.clientHeight <
-                        80
-                      : true;
-
-                    if (isNearBottom) {
-                      shouldScrollToBottomRef.current = true;
-                      markAsRead();
-                    } else {
-                      fetchUnreadCount();
-                    }
-                  }
-                }
-              ) ?? null;
-          },
-
-          onWebSocketError: (error: Event) => {
-            console.error("WebSocket 에러:", error);
-          },
-
-          onWebSocketClose: () => {
-            console.log("WebSocket 닫힘");
-            setIsSocketConnected(false);
-          },
-
-          onStompError: (frame: unknown) => {
-            console.error("STOMP 에러:", frame);
-          },
-        });
-
-        client.activate();
-        stompClientRef.current = client;
-      } catch (error) {
-        console.error("WebSocket 모듈 로딩 실패:", error);
-      }
-    };
-
-    connectWebSocket();
-
-    return () => {
-      isUnmounted = true;
-      setIsSocketConnected(false);
-
-      subscription?.unsubscribe();
-
-      if (client) {
-        client.deactivate();
-      }
-
-      stompClientRef.current = null;
-    };
-  }, [API_URL]);
+    setMessages(messageList.map(convertMessage));
+    setHasMorePreviousMessages(false);
+    shouldScrollToBottomRef.current = true;
+  }, []);
 
   useEffect(() => {
     if (messages.length === 0) return;
@@ -503,24 +368,9 @@ export default function LiveTalkComponent() {
     const trimmedText = text.trim();
     if (!trimmedText) return;
 
-    const client = stompClientRef.current;
-
-    if (!client || !client.connected) {
-      console.error("WebSocket이 아직 연결되지 않았습니다.");
-      return;
-    }
-
     shouldScrollToBottomRef.current = true;
 
     setMessages((prev) => [...prev, createTempMessage(trimmedText)]);
-
-    client.publish({
-      destination: "/app/livetalk.send",
-      body: JSON.stringify({
-        guestUuid: guestUuidRef.current,
-        content: trimmedText,
-      }),
-    });
   };
 
   const hideBannerText = () => {
