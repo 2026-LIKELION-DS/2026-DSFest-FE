@@ -224,7 +224,7 @@ export default function SchedulePage() {
   // const [currentDay, setCurrentDay] = useState<DayKey>("day2");
 
   // 실제 날짜 api
-  const [nowStatus, setNowStatus] = useState<NowStatus | null>(null);
+  // const [nowStatus, setNowStatus] = useState<NowStatus | null>(null);
   // useEffect(() => {
   //   if (!baseUrl) return;
   //   axios
@@ -234,11 +234,10 @@ export default function SchedulePage() {
   //     })
   //     .catch((err) => console.error("연동 에러:", err));
   // }, [baseUrl]);
-  useEffect(() => {
-    if (ScheduleDetail.isSuccess) {
-      setNowStatus(ScheduleDetail.result);
-    }
-  }, []);
+  // useEffect 지우고
+  const [nowStatus] = useState<NowStatus | null>(
+    ScheduleDetail.isSuccess ? (ScheduleDetail.result as NowStatus) : null,
+  );
   const getCurrentDay = (): DayKey => {
     const today = new Date().getDate();
     if (today === 13) return "day1";
