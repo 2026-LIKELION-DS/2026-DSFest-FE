@@ -1,5 +1,6 @@
 import * as S from "../styles/Schedule.style";
-import axios from "axios";
+// import axios from "axios";
+import ScheduleDetail from "../data/ScheduleJson/ScheduleDetail.json";
 import TimeTable from "../components/Schedule/TimeTableComponent";
 import ScheduleButton from "../components/Schedule/ScheduleButton";
 import CamFlower from "../assets/Schedule/camFlower.svg";
@@ -204,7 +205,7 @@ const days = [
 ] as const;
 
 export default function SchedulePage() {
-  const baseUrl = import.meta.env.VITE_API_URL;
+  // const baseUrl = import.meta.env.VITE_API_URL;
 
   //임시 시간 설정 (데이2 낮 12시)
   // const [nowStatus, setNowStatus] = useState<NowStatus | null>({
@@ -224,15 +225,20 @@ export default function SchedulePage() {
 
   // 실제 날짜 api
   const [nowStatus, setNowStatus] = useState<NowStatus | null>(null);
+  // useEffect(() => {
+  //   if (!baseUrl) return;
+  //   axios
+  //     .get(`${baseUrl}/api/schedules/now`)
+  //     .then((res) => {
+  //       if (res.data.isSuccess) setNowStatus(res.data.result);
+  //     })
+  //     .catch((err) => console.error("연동 에러:", err));
+  // }, [baseUrl]);
   useEffect(() => {
-    if (!baseUrl) return;
-    axios
-      .get(`${baseUrl}/api/schedules/now`)
-      .then((res) => {
-        if (res.data.isSuccess) setNowStatus(res.data.result);
-      })
-      .catch((err) => console.error("연동 에러:", err));
-  }, [baseUrl]);
+    if (ScheduleDetail.isSuccess) {
+      setNowStatus(ScheduleDetail.result);
+    }
+  }, []);
   const getCurrentDay = (): DayKey => {
     const today = new Date().getDate();
     if (today === 13) return "day1";
