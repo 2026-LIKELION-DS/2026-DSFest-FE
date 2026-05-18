@@ -3,18 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as S from "../../styles/AdminNoticeWrite.styles";
 import AdminConfirmModal from "./AdminConfirmModal";
 import { getAdminToken } from "../../utils/Admin";
+import adminNoticeDetails from "../../data/AdminJson/adminNoticeDetails.json";
 
 type NoticeTag = "안내" | "공연" | "이벤트" | "기타";
 type NoticeCategory = "NOTICE" | "PERFORMANCE" | "EVENT" | "ETC";
 
 const TAGS: NoticeTag[] = ["안내", "공연", "이벤트", "기타"];
-
-const CATEGORY_MAP: Record<NoticeTag, NoticeCategory> = {
-  안내: "NOTICE",
-  공연: "PERFORMANCE",
-  이벤트: "EVENT",
-  기타: "ETC",
-};
 
 const TAG_MAP: Record<NoticeCategory, NoticeTag> = {
   NOTICE: "안내",
@@ -38,7 +32,9 @@ interface NoticeDetail {
 export default function AdminNoticeWrite() {
   const navigate = useNavigate();
   const { noticeId } = useParams();
-  const API_URL = import.meta.env.VITE_API_URL;
+
+  // 백 API 아카이빙으로 인해 사용하지 않음
+  // const API_URL = import.meta.env.VITE_API_URL;
 
   const isEditMode = !!noticeId;
 
@@ -55,18 +51,26 @@ export default function AdminNoticeWrite() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    const token = getAdminToken();
+
+    if (!token) {
+      alert("로그인이 필요합니다.");
+      navigate("/AdminLogin");
+      return;
+    }
+
     if (!isEditMode) return;
 
+    if (!noticeId) {
+      alert("공지 ID가 없습니다.");
+      navigate("/AdminNotice");
+      return;
+    }
+
+    // 기존 백 API 연동 코드
+    /*
     const fetchNoticeDetail = async () => {
       try {
-        const token = getAdminToken();
-
-        if (!token) {
-          alert("로그인이 필요합니다.");
-          navigate("/AdminLogin");
-          return;
-        }
-
         const response = await fetch(
           `${API_URL}/api/admin/notices/${noticeId}`,
           {
@@ -74,7 +78,7 @@ export default function AdminNoticeWrite() {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         const data = await response.json();
@@ -100,7 +104,24 @@ export default function AdminNoticeWrite() {
     };
 
     fetchNoticeDetail();
-  }, [API_URL, isEditMode, navigate, noticeId]);
+    */
+
+    const foundNotice = (adminNoticeDetails as NoticeDetail[]).find(
+      (item) => item.id === Number(noticeId)
+    );
+
+    if (!foundNotice) {
+      alert("공지 정보를 찾을 수 없습니다.");
+      navigate("/AdminNotice");
+      return;
+    }
+
+    setTitle(foundNotice.title);
+    setSelectedTag(TAG_MAP[foundNotice.category]);
+    setIsEmergency(foundNotice.urgent);
+    setContent(foundNotice.content);
+    setKeepImageUrls(foundNotice.imageUrls || []);
+  }, [isEditMode, navigate, noticeId]);
 
   const handleClickImageAdd = () => {
     fileInputRef.current?.click();
@@ -115,6 +136,7 @@ export default function AdminNoticeWrite() {
 
     e.target.value = "";
   };
+
   const handleRemoveKeepImage = (targetUrl: string) => {
     setKeepImageUrls((prev) => prev.filter((url) => url !== targetUrl));
   };
@@ -137,127 +159,22 @@ export default function AdminNoticeWrite() {
     setShowModal(true);
   };
 
-  const handleCreateNotice = async () => {
-    const token = getAdminToken();
+  const handleConfirmSubmit = () => {
+    // 기존 백 API 등록/수정 코드
+    /*
+    const response = isEditMode
+      ? await handleEditNotice()
+      : await handleCreateNotice();
+    */
 
-    if (!token) {
-      alert("로그인이 필요합니다.");
-      navigate("/AdminLogin");
-      return;
-    }
-
-    const formData = new FormData();
-
-    const data = {
-      title: title.trim(),
-      category: CATEGORY_MAP[selectedTag],
-      urgent: isEmergency,
-      content: content.trim(),
-    };
-
-    formData.append(
-      "data",
-      new Blob([JSON.stringify(data)], {
-        type: "application/json",
-      })
+    alert(
+      isEditMode
+        ? "아카이빙 버전에서는 공지 수정이 실제로 저장되지 않습니다."
+        : "아카이빙 버전에서는 공지 등록이 실제로 저장되지 않습니다."
     );
 
-    newImages.forEach((image) => {
-      formData.append("images", image, image.name);
-    });
-
-    const response = await fetch(`${API_URL}/api/admin/notices`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    });
-
-    return response;
-  };
-
-  const handleEditNotice = async () => {
-    const token = getAdminToken();
-
-    if (!token) {
-      alert("로그인이 필요합니다.");
-      navigate("/AdminLogin");
-      return;
-    }
-
-    if (!noticeId) {
-      alert("공지 ID가 없습니다.");
-      navigate("/AdminNotice");
-      return;
-    }
-
-    const formData = new FormData();
-
-    const data = {
-      title: title.trim(),
-      category: CATEGORY_MAP[selectedTag],
-      urgent: isEmergency,
-      content: content.trim(),
-      keepImageUrls,
-    };
-
-    formData.append(
-      "data",
-      new Blob([JSON.stringify(data)], {
-        type: "application/json",
-      })
-    );
-
-    newImages.forEach((image) => {
-      formData.append("newImages", image, image.name);
-    });
-
-    const response = await fetch(`${API_URL}/api/admin/notices/${noticeId}`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    });
-
-    return response;
-  };
-
-  const handleConfirmSubmit = async () => {
-    try {
-      const response = isEditMode
-        ? await handleEditNotice()
-        : await handleCreateNotice();
-
-      if (!response) return;
-
-      const responseData = await response.json();
-
-      if (!response.ok || !responseData.isSuccess) {
-        alert(
-          responseData.message ||
-            (isEditMode
-              ? "공지 수정에 실패했습니다."
-              : "공지 등록에 실패했습니다.")
-        );
-        return;
-      }
-
-      alert(
-        isEditMode ? "공지사항이 수정되었습니다." : "공지사항이 등록되었습니다."
-      );
-      setShowModal(false);
-
-      navigate("/AdminNotice");
-    } catch (error) {
-      console.error(error);
-      alert(
-        isEditMode
-          ? "공지 수정 중 오류가 발생했습니다."
-          : "공지 등록 중 오류가 발생했습니다."
-      );
-    }
+    setShowModal(false);
+    navigate("/AdminNotice");
   };
 
   return (

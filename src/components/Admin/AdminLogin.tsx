@@ -5,40 +5,52 @@ import { saveAdminToken } from "../../utils/Admin";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL;
+
+  // 백 API 아카이빙으로 인해 사용하지 않음
+  // const API_URL = import.meta.env.VITE_API_URL;
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async () => {
-    try {
-      const response = await fetch(`${API_URL}/api/admin/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
+  const handleLogin = () => {
+    // 기존 백 API 연동 코드
+    /*
+    const handleLogin = async () => {
+      try {
+        const response = await fetch(`${API_URL}/api/admin/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (!response.ok || !data.isSuccess) {
-        alert("아이디 또는 비밀번호가 올바르지 않습니다.");
-        return;
+        if (!response.ok || !data.isSuccess) {
+          alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+          return;
+        }
+
+        const accessToken = data.result.accessToken;
+
+        saveAdminToken(accessToken);
+
+        navigate("/AdminNotice");
+      } catch (error) {
+        console.error(error);
+        alert("로그인 중 오류가 발생했습니다.");
       }
+    };
+    */
 
-      const accessToken = data.result.accessToken;
+    // 아카이빙용 가짜 토큰 저장
+    saveAdminToken("archive-admin-token");
 
-      saveAdminToken(accessToken);
-
-      navigate("/AdminNotice");
-    } catch (error) {
-      console.error(error);
-      alert("로그인 중 오류가 발생했습니다.");
-    }
+    navigate("/AdminNotice");
   };
 
   return (
