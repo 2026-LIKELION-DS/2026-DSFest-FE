@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { trackEvent } from "../../utils/analytics";
+//import { trackEvent } from "../../utils/analytics";
 import * as S from "../../styles/FoodBanner.styles";
 
 import bannerData from "../../data/FoodJson/foodtruckBanners.json";
@@ -134,7 +134,7 @@ export default function FoodBannerCarousel({ onBannerClick }: Props) {
     e: React.PointerEvent<HTMLDivElement>,
     storeName: string
   ) => {
-    trackEvent("foodtruck_banner_scroll");
+    //  trackEvent("foodtruck_banner_scroll");
 
     isDraggingRef.current = true;
     hasMovedRef.current = false;
