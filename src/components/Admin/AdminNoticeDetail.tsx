@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as S from "../../styles/AdminNoticeDetail.styles";
 import AdminConfirmModal from "./AdminConfirmModal";
 import { getAdminToken } from "../../utils/Admin";
+import adminNoticeDetails from "../../data/AdminJson/adminNoticeDetails.json";
 
 type ModalType = "edit" | "delete" | null;
 
@@ -22,28 +23,31 @@ export default function AdminNoticeDetail() {
   const navigate = useNavigate();
   const { noticeId } = useParams();
 
-  const API_URL = import.meta.env.VITE_API_URL;
+  // 백 API 아카이빙으로 인해 사용하지 않음
+  // const API_URL = import.meta.env.VITE_API_URL;
 
   const [notice, setNotice] = useState<NoticeDetail | null>(null);
   const [modalType, setModalType] = useState<ModalType>(null);
 
   useEffect(() => {
+    const token = getAdminToken();
+
+    if (!token) {
+      alert("로그인이 필요합니다.");
+      navigate("/AdminLogin");
+      return;
+    }
+
+    if (!noticeId) {
+      alert("공지 ID가 없습니다.");
+      navigate("/AdminNotice");
+      return;
+    }
+
+    // 기존 백 API 연동 코드
+    /*
     const fetchNoticeDetail = async () => {
       try {
-        const token = getAdminToken();
-
-        if (!token) {
-          alert("로그인이 필요합니다.");
-          navigate("/AdminLogin");
-          return;
-        }
-
-        if (!noticeId) {
-          alert("공지 ID가 없습니다.");
-          navigate("/AdminNotice");
-          return;
-        }
-
         const response = await fetch(
           `${API_URL}/api/admin/notices/${noticeId}`,
           {
@@ -51,7 +55,7 @@ export default function AdminNoticeDetail() {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         const data = await response.json();
@@ -71,45 +75,67 @@ export default function AdminNoticeDetail() {
     };
 
     fetchNoticeDetail();
-  }, [API_URL, navigate, noticeId]);
+    */
 
-  const handleDeleteNotice = async () => {
-    try {
-      const token = getAdminToken();
+    const foundNotice = (adminNoticeDetails as NoticeDetail[]).find(
+      (item) => item.id === Number(noticeId)
+    );
 
-      if (!token) {
-        alert("로그인이 필요합니다.");
-        navigate("/AdminLogin");
-        return;
-      }
-
-      if (!noticeId) {
-        alert("공지 ID가 없습니다.");
-        navigate("/AdminNotice");
-        return;
-      }
-
-      const response = await fetch(`${API_URL}/api/admin/notices/${noticeId}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data.isSuccess) {
-        alert(data.message || "공지 삭제에 실패했습니다.");
-        return;
-      }
-
-      alert("공지사항이 삭제되었습니다.");
-      setModalType(null);
+    if (!foundNotice) {
+      alert("공지 상세 정보를 찾을 수 없습니다.");
       navigate("/AdminNotice");
-    } catch (error) {
-      console.error(error);
-      alert("공지 삭제 중 오류가 발생했습니다.");
+      return;
     }
+
+    setNotice(foundNotice);
+  }, [navigate, noticeId]);
+
+  const handleDeleteNotice = () => {
+    // 기존 백 API 연동 코드
+    /*
+    const handleDeleteNotice = async () => {
+      try {
+        const token = getAdminToken();
+
+        if (!token) {
+          alert("로그인이 필요합니다.");
+          navigate("/AdminLogin");
+          return;
+        }
+
+        if (!noticeId) {
+          alert("공지 ID가 없습니다.");
+          navigate("/AdminNotice");
+          return;
+        }
+
+        const response = await fetch(`${API_URL}/api/admin/notices/${noticeId}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.isSuccess) {
+          alert(data.message || "공지 삭제에 실패했습니다.");
+          return;
+        }
+
+        alert("공지사항이 삭제되었습니다.");
+        setModalType(null);
+        navigate("/AdminNotice");
+      } catch (error) {
+        console.error(error);
+        alert("공지 삭제 중 오류가 발생했습니다.");
+      }
+    };
+    */
+
+    alert("아카이빙 버전에서는 공지 삭제가 실제로 저장되지 않습니다.");
+    setModalType(null);
+    navigate("/AdminNotice");
   };
 
   const handleConfirm = () => {
@@ -128,7 +154,6 @@ export default function AdminNoticeDetail() {
   if (!notice) {
     return null;
   }
-  // 이미지 여러장 추가 기능 수정함
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { trackEvent } from "../../utils/analytics";
+//import { trackEvent } from "../../utils/analytics";
 import { useEffect, useState } from "react";
 import * as S from "../../styles/FoodTruckCard.styles";
 
@@ -125,11 +125,11 @@ export default function FoodTruckCard({
   const handleLike = async () => {
     const nextIsLiked = !isLiked;
 
-    if (nextIsLiked) {
+   /* if (nextIsLiked) {
       trackEvent("foodtruck_like", {
         foodtruck_name: truck.name,
       });
-    }
+    }*/
 
     setIsLiked(nextIsLiked);
 
