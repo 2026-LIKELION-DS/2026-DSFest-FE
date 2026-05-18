@@ -6,12 +6,12 @@
     "urgent": false,
     "content": "🌿2026 근화제 <청춘> 드레스코드 안내🌿\n\n2026 근화제 <청춘>의 드레스코드를 공개합니다!\n\nDAY 1 - 베이지\nDAY 2 - 노랑\nDAY 3 - 초록\n\nEVERYDAY - 청바지\n드레스코드는 총학생회 프로그램에서도 활용되니 많은 참여 부탁드립니다.\n*드레스코드는 필수가 아닌, 축제를 더 즐기기 위한 선택사항입니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
     "imageUrls": [
-      "/src/assets/Notice/Notice_ID1_1.png",
-      "/src/assets/Notice/Notice_ID1_2.png",
-      "/src/assets/Notice/Notice_ID1_3.png",
-      "/src/assets/Notice/Notice_ID1_4.png",
-      "/src/assets/Notice/Notice_ID1_5.png",
-      "/src/assets/Notice/Notice_ID1_6.png"
+      "/assets/NoticeJsonIMG/Notice_ID1_1.png",
+      "/assets/NoticeJsonIMG/Notice_ID1_2.png",
+      "/assets/NoticeJsonIMG/Notice_ID1_3.png",
+      "/assets/NoticeJsonIMG/Notice_ID1_4.png",
+      "/assets/NoticeJsonIMG/Notice_ID1_5.png",
+      "/assets/NoticeJsonIMG/Notice_ID1_6.png"
     ],
     "createdAt": "2026-05-01T01:10:22.38233",
     "updatedAt": "2026-05-11T23:39:54.558116",
@@ -24,15 +24,15 @@
     "urgent": false,
     "content": "🌿2026 근화제 <청춘> 굿즈 판매 안내🌿\n\n2026 근화제 <청춘> 에서 판매하는 굿즈를 안내드립니다!\n\n🌿 판매 기간: 05.13.(수)~05.15.(금) 11:00~19:00\n🌿 판매 장소: 소영근터 내 “총학 굿즈 판매” 부스\n🌿 판매 대상: 덕성여자대학교 학부생, 대학원생, 교직원생\n🌿 판매 물품\n리무버블 스티커 세트 1,500\n안경닦이 2,000\n밴드 2,500\n민주덕성 타월 6,000\n농구 유니폼 30,000\n하키 유니폼 39,000\n\n자세한 사항은 카드뉴스를 참고해 주세요!\n\n많은 관심과 구매 부탁드립니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
     "imageUrls": [
-      "/src/assets/Notice/Notice_ID2_1.png",
-      "/src/assets/Notice/Notice_ID2_2.png",
-      "/src/assets/Notice/Notice_ID2_3.png",
-      "/src/assets/Notice/Notice_ID2_4.png",
-      "/src/assets/Notice/Notice_ID2_5.png",
-      "/src/assets/Notice/Notice_ID2_6.png",
-      "/src/assets/Notice/Notice_ID2_7.png",
-      "/src/assets/Notice/Notice_ID2_8.png",
-      "/src/assets/Notice/Notice_ID2_9.png"
+      "/assets/NoticeJsonIMG/Notice_ID2_1.png",
+      "/assets/NoticeJsonIMG/Notice_ID2_2.png",
+      "/assets/NoticeJsonIMG/Notice_ID2_3.png",
+      "/assets/NoticeJsonIMG/Notice_ID2_4.png",
+      "/assets/NoticeJsonIMG/Notice_ID2_5.png",
+      "/assets/NoticeJsonIMG/Notice_ID2_6.png",
+      "/assets/NoticeJsonIMG/Notice_ID2_7.png",
+      "/assets/NoticeJsonIMG/Notice_ID2_8.png",
+      "/assets/NoticeJsonIMG/Notice_ID2_9.png"
     ],
     "createdAt": "2026-05-01T01:11:01.723512",
     "updatedAt": "2026-05-11T23:40:04.214206",
@@ -45,9 +45,9 @@
     "urgent": false,
     "content": "🌿2026 근화제 <청춘> 무대 안내🌿\n\n근화제의 중심! 청춘의 열기를 가장 잘 느낄 수 있는 공간을 만나보세요\n\n📌무대 안내\n운영 기간: 5월 13일(수)~5월 15일(금)\n*무대 프로그램은 일자별로 상이하오니, 상세 일정은 타임테이블을 확인해주시기 바랍니다.\n위치: 영근터 무대\n프로그램, 동아리•재학생 공연, 아티스트 공연 등\n\n📢관람 안내\n- 일부 프로그램은 사전 신청을 통해 진행될 수 있습니다.\n- 열정 충전소(덕우존)는 스탠딩 존으로, 입장 시간에 맞추어 입장 가능합니다.\n- 낭만 충전소(영근터)는 돗자리 존으로, 자유롭게 돗자리를 펼쳐 무대를 관람할 수 있는 공간입니다.\n\n⚠️유의사항\n- 안전한 관람을 위해 질서 유지 및 스태프 안내에 협조해주시기 바랍니다.\n- 열정 충전소(덕우존) 및 낭만 충전소(영근터) 이용의 자세한 내용은 카드뉴스를 확인해주시기 바랍니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
     "imageUrls": [
-      "/src/assets/Notice/Notice_ID3_1.png",
-      "/src/assets/Notice/Notice_ID3_2.png",
-      "/src/assets/Notice/Notice_ID3_3.png"
+      "/assets/NoticeJsonIMG/Notice_ID3_1.png",
+      "/assets/NoticeJsonIMG/Notice_ID3_2.png",
+      "/assets/NoticeJsonIMG/Notice_ID3_3.png"
     ],
     "createdAt": "2026-05-01T01:11:25.333987",
     "updatedAt": "2026-05-11T23:40:12.153463",
@@ -74,5 +74,410 @@
     "createdAt": "2026-05-01T01:12:15.115727",
     "updatedAt": "2026-05-11T23:40:28.590733",
     "viewCount": 314
+  },
+  {
+    "id": 18,
+    "title": "추억 충전소(포토부스) 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "🌿2026 근화제 <청춘> 추억 충전소(포토부스) 안내🌿\n\n청춘의 순간을 지금, 사진으로 남겨보세요!\n\n📌 운영 안내\n- 운영 일시: 5월 13일(수)~5월 15일(금) 10:00~20:00\n- 장소:\n학생회관 앞(HALF 4CUT)\n스타트업 큐브-카페 ing 사이(FULL 4CUT)\n- 가격:\n4,000원 (HALF 4CUT / 2장)\n5,000원 (FULL 4CUT / 2장)\n\n📍 이용 안내\n- 포토부스 기기별로 촬영 가능한 프레임 사이즈가 상이합니다.\n- 총장네컷을 제외한 모든 프레임은 3일간 이용 가능합니다.\n- QR코드를 통한 사진 저장은 불가합니다.\n- 카드 결제만 가능하며, 현금 및 계좌이체는 불가합니다.\n\n🎓 총장네컷 안내\n📌 운영 안내\n26.05.15. (금) 10:00~20:00\n장소: 부스 5번\n프레임: HALF 4CUT(2장)\n* 해당 프레임은 5월 15일에만 이용 가능합니다.\n* 총장네컷은 현장 스태프에게 결제 후 이용해주시기 바랍니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [],
+    "createdAt": "2026-05-11T17:20:48.828958",
+    "updatedAt": "2026-05-11T23:40:36.528291",
+    "viewCount": 25
+  },
+  {
+    "id": 58,
+    "title": "어흥..아르릉..어흥..어흥! 🦁",
+    "category": "ETC",
+    "urgent": true,
+    "content": "사이트 제작을 맡은 Team 멋쟁이사자처럼 운영진입니다. \n\n시험 기간과 겹친 개발 기간에도 운영진이 밤낮 없이 작업하여 악착같이 완성했습니다. 부디 많은 피드백과 관심 부탁드립니다.\n\n고생한 사자들에게 복복복 해주시면 감사하겠습니다.🫳🫳🫳\n\n@likelion_ds \n-14기 운영진 일동\n\n\n\n\n* 13일부터 본 공지는 내려갈 예정입니다.",
+    "imageUrls": ["/assets/NoticeJsonIMG/Notice_ID58.jpg"],
+    "createdAt": "2026-05-11T23:41:29.150096",
+    "updatedAt": "2026-05-12T13:26:55.19401",
+    "viewCount": 776
+  },
+  {
+    "id": 61,
+    "title": "협찬 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "청춘을 더 풍성하게 만들어줄 협찬품들을 소개합니다.\n근화제 <청춘>에서는 다양한 협찬품을 만나보실 수 있습니다.\n\n🌿 배부 장소: 총학생회 운영 본부 옆 스타트업 큐브 ‘청춘 협찬’\n🌿 배부 대상: 덕성여자대학교 재학생 및 휴학생\n🌿 배부 시간:\n- 1일차: 05/13 (수) 14:30~16:30\n- 2일차: 05/14 (목) 12:00~14:30\n- 3일차: 05/15 (금) 15:00~17:00\n* 당일 준비된 수량 소진 시 조기 마감될 수 있습니다.\n* 협찬품을 담을 수 있는 작은 가방을 지참해 주시기 바랍니다. 별도 봉투는 제공되지 않습니다.\n\n🎁 협찬품 안내\n- 농심ㅣ빵부장 솔티 꽈배기\n- 힐리크ㅣ파인트리 샴푸바\n- 키위글로우ㅣ비건 제주 연꽃 마일드 각질케어 토너패드(여행용)\n- 비피블랑쉬ㅣ스쿠알란 시어버터 핸드크림\n- 비피블랑쉬ㅣ체험키트\n- 디어스킨ㅣ에어쿨링 중형 생리대\n- 노크ㅣ노크 퍼퓸 오일 로지\n- 메디쿨텐ㅣ프로폴리스 잇몸가글 구강청결제 스틱\n- 일화ㅣ일화차시 호박팥차\n- 일화ㅣ팅글 레몬애사비소다\n- 오쎄ㅣ페치 논알콜 맥주\n- 캐치미패치ㅣ오리지널 스팟패치 27매\n- 기분좋은음식들ㅣ무라벨 생수 500개\n\n2026 덕성여자대학교 근화제 <청춘>을 더욱 풍성하게 만들어주신 협찬사 여러분께 진심으로 감사드립니다.\n\n자세한 정보는 카드뉴스를 통해 확인해 주시기 바랍니다.\n\n2026.05.13.~2026.05.15.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID61_1.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_2.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_3.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_4.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_5.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_6.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_7.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_8.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_9.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_10.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_11.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_12.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_13.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_14.png",
+      "/assets/NoticeJsonIMG/Notice_ID61_15.png"
+    ],
+    "createdAt": "2026-05-12T16:02:50.942057",
+    "updatedAt": "2026-05-12T16:02:50.942057",
+    "viewCount": 49
+  },
+  {
+    "id": 64,
+    "title": "학생회비 납부자 혜택 공개",
+    "category": "EVENT",
+    "urgent": false,
+    "content": "2026 근화제 <청춘>에서 준비한 총학생회비 납부자 혜택을 공개합니다.\n\n우리 학교의 이름과, 교화를 담은 “德成(덕성)”, “槿花(근화)” 카라비너를 배부할 예정입니다.\n\n5월 13일(수) ~ 5월 15일(금) 3일동안 선착순으로 배부됩니다.\n총학생회비를 납부한 학우분들께서는 총학생회 부스로 오셔서 받아 가시면 됩니다.\n\n자세한 사항은 카드뉴스를 참고해 주세요!\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID64_1.png",
+      "/assets/NoticeJsonIMG/Notice_ID64_2.png",
+      "/assets/NoticeJsonIMG/Notice_ID64_3.png",
+      "/assets/NoticeJsonIMG/Notice_ID64_4.png"
+    ],
+    "createdAt": "2026-05-12T16:03:43.315929",
+    "updatedAt": "2026-05-12T16:04:15.025471",
+    "viewCount": 25
+  },
+  {
+    "id": 66,
+    "title": "개인 규율 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "2026 근화제 <청춘> 개인 규율을 공개합니다.\n\n2026년 5월 13일부터 15일까지 진행되는 2026 근화제 <청춘>을 모든 덕성 구성원 여러분께서 더욱 안전하고 쾌적하게 즐기실 수 있도록, 카드뉴스를 통해 개인 규율을 안내드립니다.\n\n축제 운영과 구성원 모두의 안전을 위해 반드시 내용을 확인해 주시고, 현장에서 함께 지켜주시기를 부탁드립니다.\n2026 근화제 <청춘> 전체 규율은 홈페이지 > 대학생활 > 총학생회 게시판 > 공지사항에서 확인하실 수 있습니다.\n🔗https://www.duksung.ac.kr/bbs/boardView.do?bsIdx=1989&bIdx=905899&page=1&menuId=4368&bcIdx=0\n\n*규율 미숙지로 인한 위반 사항 적발 시, 이에 따른 패널티는 본인 책임으로 적용될 수 있으니 반드시 사전에 숙지해 주시기 바랍니다.\n\n모두가 즐거운 축제를 만들기 위해서는 서로에 대한 배려와 기본적인 질서는 필수입니다.\n보다 안전하고 편안한 2026 근화제 <청춘>이 될 수 있도록 많은 협조 부탁드립니다.\n\n감사합니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID66_1.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID66_2.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID66_3.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID66_4.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID66_5.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID66_6.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID66_7.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID66_8.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID66_9.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID66_10.jpg"
+    ],
+    "createdAt": "2026-05-12T17:15:35.346957",
+    "updatedAt": "2026-05-12T17:15:35.346957",
+    "viewCount": 12
+  },
+  {
+    "id": 67,
+    "title": "내부인 인증 및 손목띠 착용 방법",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "2026 근화제 <청춘> 내부인 인증 및 손목띠 착용 방법을 안내해 드립니다!\n\n5월 13일(수)부터 5월 15일(금)까지 진행하는 2026 근화제 <청춘>에서는 모든 학우 여러분의 안전을 위해 엄격한 외부인 출입 통제가 이루어질 예정입니다.\n\n모든 덕성 구성원이 보다 편안하고 안전하게 무대를 즐기실 수 있도록 축제 기간 동안 정문과 후문에 배치된 스태프 부스에서 내부인 인증 및 손목띠 착용 과정이 진행됩니다.\n이후 무대가 진행되는 시간부터는 손목띠가 없는 외부인을 제한하고 적발시 패널티 적용을 진행하고 있으니 각별히 유의 부탁드립니다.\n\n2026 근화제 <청춘>을 함께 마음껏 즐길 수 있도록 손목띠 착용에 적극적으로 동참해주시기 바랍니다.\n\n덕성 구성원 모두에게 2026 근화제 <청춘>이 편안하고 아름다운 추억으로 남기를 바랍니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID67_1.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID67_2.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID67_3.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID67_4.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID67_5.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID67_6.jpg"
+    ],
+    "createdAt": "2026-05-12T17:16:07.112535",
+    "updatedAt": "2026-05-12T17:16:07.112535",
+    "viewCount": 32
+  },
+  {
+    "id": 68,
+    "title": "배리어프리존 사전 신청 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "2026 근화제 <청춘> 배리어프리존 사전 신청을 진행합니다!\n\n2026년 5월 13일부터 15일까지 진행하는 2026 근화제 <청춘>에서 모든 덕성 구성원이 보다 편안하고 안전하게 무대를 즐기실 수 있도록 ’배리어프리존‘을 운영합니다.\n\n배리어프리존은 온라인 사전 신청과 현장 신청을 통해 이용하실 수 있습니다.\n현장 신청의 경우 ‘2026 근화제 <청춘> x 옐로우블록’ 부스 운영 시간 내 방문하여 신청할 수 있습니다.\n\n📅 온라인 사전 신청 기간ㅣ26.05.01.(금)~26.05.09.(토) 22:00까지\n👥 신청 대상ㅣ덕우존과 돗자리존 이용에 불편을 겪는 학우\n⌛ 이용 가능 시간ㅣ5월 13일(수) 22:00까지 / 5월 14일(목) · 5월 15일(금) 21:30까지\n*상황에 따라 운영 시간이 변동될 수 있으니 참고 바랍니다.\n✅ 확정 문자 발송ㅣ5월 11일(월) 10시 이후 순차 발송\n🔗 신청 구글폼ㅣhttps://forms.gle/dCSTJPv9qTK54fQJ8\n\n덕성 구성원 모두에게  2026 근화제 <청춘>이 편안하고 즐거운 추억으로 남기를 바랍니다.\n\n감사합니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID68_1.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID68_2.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID68_3.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID68_4.jpg"
+    ],
+    "createdAt": "2026-05-12T17:19:00.579674",
+    "updatedAt": "2026-05-12T17:19:00.579674",
+    "viewCount": 5
+  },
+  {
+    "id": 69,
+    "title": "축제 지도 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "2026 근화제 <청춘>의 행사 공간 위치를 한눈에 볼 수 있는 축제 지도를 공개합니다.\n\n⚡활력 충전소(푸드트럭) - 다채로운 먹거리를 즐길 수 있는 공간\n\uD83C\uDF89행복 충전소(소영근터) - 행복을 누릴 수 있는 공간\n\uD83D\uDD25열정 충전소(덕우존) - 열정적인 무대를 즐길 수 있는 덕우만의 공간\n\uD83E\uDEE7낭만 충전소(영근터) - 돗자리를 펴고 낭만을 느낄 수 있는 공간\n\uD83C\uDFAA부스 - 다양한 경험을 할 수 있는 공간\n\n낭만과 추억, 열정과 활력으로 가득찰 캠퍼스를 만나보세요!\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID69_1.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID69_2.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID69_3.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID69_4.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID69_5.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID69_6.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID69_7.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID69_8.jpeg"
+    ],
+    "createdAt": "2026-05-12T17:21:51.926876",
+    "updatedAt": "2026-05-12T17:21:51.926876",
+    "viewCount": 11
+  },
+  {
+    "id": 70,
+    "title": "총학생회 부스 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "2026 근화제 <청춘> 에서 진행되는 총학생회 부스 안내드립니다!\n\n5월 13일(수) ~ 5월 15일(금) 3일간 다양한 부스를 만나보실 수 있습니다.\n\n\uD83C\uDF3F운영 본부\n- 근화제 전반 운영 및 안전 총괄\n- 총학생회비 납부자 혜택 굿즈 배부\n\n\uD83C\uDF3F굿즈 판매 및 대여 사업\n\n\uD83C\uDF3F협찬품 배부\n\n\uD83C\uDF3F참여형 부스\n- 총학을 이겨라\n- 행운의 문장 뽑기\n\n자세한 사항은 카드뉴스를 참고해 주세요!\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID70_1.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID70_2.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID70_3.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID70_4.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID70_5.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID70_6.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID70_7.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID70_8.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID70_9.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID70_10.jpeg"
+    ],
+    "createdAt": "2026-05-12T17:30:27.376049",
+    "updatedAt": "2026-05-12T17:30:27.376049",
+    "viewCount": 20
+  },
+  {
+    "id": 71,
+    "title": "DAY 1-3 일정표",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "🌿2026 근화제 <청춘> 1일차 일정표 안내🌿\n\n2026 근화제 <청춘> 일정표를 공개합니다!\n\n보고 싶은 공연과 무대, 다양한 프로그램, 부스 운영 시간까지 일정표를 미리 확인하시고 근화제를 더 알차게 즐겨보세요!\n\n자세한 사항은 카드뉴스를 참고해 주세요!\n\n2026.05.13.~2026.05.15.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀\n\n@journey_mode_duksung\n일치단결 민주덕성 제42대 총학생회\n\uD835\uDC7B\uD835\uDC89\uD835\uDC86 \uD835\uDFD2\uD835\uDFD0\uD835\uDC8F\uD835\uDC85 \uD835\uDC7A\uD835\uDC95\uD835\uDC96\uD835\uDC85\uD835\uDC86\uD835\uDC8F\uD835\uDC95 \uD835\uDC6A\uD835\uDC90\uD835\uDC96\uD835\uDC8F\uD835\uDC84\uD835\uDC8A\uD835\uDC8D \uD835\uDC90\uD835\uDC87 \uD835\uDC6B\uD835\uDC96\uD835\uDC8C\uD835\uDC94\uD835\uDC96\uD835\uDC8F\uD835\uDC88 \uD835\uDC7E\uD835\uDC90\uD835\uDC8E\uD835\uDC86\uD835\uDC8F'\uD835\uDC94 \uD835\uDC7C\uD835\uDC8F\uD835\uDC8A\uD835\uDC97\uD835\uDC86\uD835\uDC93\uD835\uDC94\uD835\uDC8A\uD835\uDC95\uD835\uDC9A",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID71_1.heic",
+      "/assets/NoticeJsonIMG/Notice_ID71_2.heic",
+      "/assets/NoticeJsonIMG/Notice_ID71_3.heic"
+    ],
+    "createdAt": "2026-05-12T17:34:48.938806",
+    "updatedAt": "2026-05-12T17:34:48.938806",
+    "viewCount": 13
+  },
+  {
+    "id": 72,
+    "title": "안전 사항 및 우천 시 행동 강령 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "2026 근화제를 맞이하여 즐겁고 안전한 행사 진행을 위해 안전 사항 및 우천 시 행동 강령을 안내 드립니다.\n\n본 안내에는 화재 및 응급 상황 발생 시 대처 방법, 군중 밀집 시 주의 사항 등이 포함되어 있으니 참고하시어 비상 상황에 대비하시기 바랍니다. 또한 행사 안전을 위해 공연 관람 안내 사항을 사전에 확인하여 주시기 바랍니다.\n\n기상 상황에 대비하여 우천 시 행동 강령을 안내 드리며, 공연장 내 우산 반입이 금지되므로 우천 시에는 우비 착용을 권장 드립니다.\n\n2026 근화제 <청춘> 안전 사항 및 우천 시 행동 강령은 홈페이지 > 대학생활 > 총학생회 게시판 > 공지사항에서 확인하실 수 있습니다.\n🔗https://www.duksung.ac.kr/bbs/boardView.do?bsIdx=1989&bIdx=906781&page=1&menuId=4368&bcIdx=0\n\n모두가 안전하게 근화제를 즐길 수 있도록 학우 여러분의 협조 부탁드립니다.\n\n자세한 내용은 카드뉴스를 통해 확인하실 수 있습니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID72_1.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_2.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_3.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_4.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_5.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_6.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_7.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_8.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_9.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_10.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_11.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID72_12.jpeg"
+    ],
+    "createdAt": "2026-05-12T17:35:47.633579",
+    "updatedAt": "2026-05-12T17:35:47.633579",
+    "viewCount": 7
+  },
+  {
+    "id": 73,
+    "title": "부스 배치도 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "2026 근화제 <청춘>의 3일간 부스 배치도를 안내드립니다!\n\n개인학생 부스부터 단위별 학생회, 제휴 부스, 동아리 및 총학생회 부스까지 청춘과 낭만을 한껏 느낄 수 있는 다양한 부스들이 준비되어 있습니다.\n\n추가로, 부스 배치도를 쉽게 확인할 수 있는 웹사이트 또한 공개될 예정이니 학우 여러분들의 많은 관심과 참여 부탁드립니다!\n\n2026.05.13.~2026.05.15.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID73_1.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID73_2.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID73_3.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID73_4.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID73_5.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID73_6.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID73_7.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID73_8.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID73_9.jpeg"
+    ],
+    "createdAt": "2026-05-12T17:38:57.855202",
+    "updatedAt": "2026-05-12T17:38:57.855202",
+    "viewCount": 25
+  },
+  {
+    "id": 74,
+    "title": "총학생회 프로그램 (1) - QUIZ! 덕쏭달쏭",
+    "category": "EVENT",
+    "urgent": false,
+    "content": "2026 근화제 <청춘>에서 진행하게 될 <QUIZ! 덕쏭달쏭: 똑똑 덕우를 찾아라!> 프로그램을 안내드립니다.\n\n❓QUIZ! 덕쏭달쏭: 똑똑 덕우를 찾아라!❓\n\n\uD83D\uDDD3️프로그램 일시 l 2026년 5월 14일 목요일 11:00~13:00\n장소 l 덕성여자대학교 영근터\n대상 l DS-FM, DS-GLM 소속인 멘토/멘티 및 재학생 \n\n\uD83D\uDCCB프로그램 참가자 안내\n집결 장소 l 덕성여자대학교 영근터 무대 앞\n집결 시간 l 10:30\n\n\uD83D\uDCCC유의사항\n 13:30부터 2일차 돗자리존 입장 가능\n*프로그램 진행을 위해, 재학생분들의 협조 부탁드립니다.\n\n\uD83C\uDF81상품 안내\n1등 l 젠틀몬스터 30만원권\n2등 l 아웃백 상품권 20만원권\n3등 l 농협안심한우 ‘스페셜 구이세트’ 900g\n4등 l 현대백화점 상품권 5만원권\n5등 l 올리브영 3만원권\n\n*모든 참가자에게 카페ing 5,000원권과 1인용 돗자리가 제공됩니다.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID74_1.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID74_2.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID74_3.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID74_4.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID74_5.jpeg"
+    ],
+    "createdAt": "2026-05-12T17:41:18.637296",
+    "updatedAt": "2026-05-12T17:41:18.637296",
+    "viewCount": 95
+  },
+  {
+    "id": 75,
+    "title": "총학생회 프로그램 (2) - 사진 콘테스트, 럭키드로우",
+    "category": "EVENT",
+    "urgent": false,
+    "content": "📷사진 콘테스트: 청춘 한 컷✨\n\n🗓️️프로그램 일정 l 2026년 5월 15일 금요일 18:30~19:00\n장소 l 덕성여자대학교 영근터 무대\n참여 대상 l 덕성여자대학교 재학생/휴학생\n\n🗓️️사진 제출 기간 l 5월 13일 수요일 10:00~5월 14일 목요일 20:00\n🔗사진 제출용 1:1 오픈채팅방 l https://open.kakao.com/o/sIiNPesi\n참여 방식 l 1:1 오픈채팅방을 통해 주제에 맞는 사진 제출\n*입장 시 이름 설정 l 성함/선택\n**사진 제출 시, 전공/학번/성함/연락처/사진 제목 및 설명 제출 필수\n\n🗓️️투표 진행 시간 l 5월 15일 금요일 00:00~17:00\n투표 대상 l 덕성여자대학교 재학생/휴학생\n투표 방식 l 멋쟁이사자처럼 사이트에서 투표 진행\n\n🎁상품 안내\n1등 l 젠틀몬스터 30만원권\n2등 l 돌체구스토 캡슐 커피머신 지니오S 플러스팩1004\n3등 l 코닥 다회용 카메라\n\n🎲럭키드로우: 럭키 덕우🍀\n\n🗓️️프로그램 일정 | 2026년 5월 15일 금요일 19:00~19:30\n장소 | 덕성여자대학교 영근터 무대\n참여 대상 | 총학생회 부스 2가지 모두 참여 후 응모한 학생\n\n📋진행 방식\n\n총학생회 부스 2개 모두 참여 후 도장이 찍힌 응모권으로 응모 가능\n응모권에 학번/성함/연락처 작성 후 응모\n3일차 영근터 무대 위에서 3인 추첨\n*부스 참여 후 도장이 찍힌 응모권만 응모 가능\n\n📌유의사항\n절취한 응모권을 소지하고 있어야 당첨 시 현장에서 상품 지급 가능\n응모권 분실 시 재발급 불가능\n1인 1응모 원칙\n준비된 응모권이 모두 소진될 시, 응모가 어렵습니다.\n\n🎁상품 안내\n1등 l 에어팟 맥스\n2등 l 미니 제습기\n3등 l 스탠리 텀블러\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID75_1.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID75_2.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID75_3.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID75_4.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID75_5.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID75_6.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID75_7.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID75_8.jpeg"
+    ],
+    "createdAt": "2026-05-12T17:43:49.716528",
+    "updatedAt": "2026-05-12T17:44:22.099204",
+    "viewCount": 195
+  },
+  {
+    "id": 76,
+    "title": "웹사이트 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "🌿2026 근화제 <청춘> 웹사이트 안내🌿\n\n여정X멋쟁이사자처럼의 2026 근화제 <청춘> 웹사이트를 안내드립니다.\n\n웹사이트에서 다양한 프로그램과 지도, 푸드트럭, 공지사항 등을 확인하고, 총학생회 프로그램과 청춘 유형 테스트에도 참여해 보세요!\n\n내부인 인증 손목띠에도 웹사이트 QR이 있으니 멋쟁이사자처럼과의 콜라보에 많은 관심 부탁드립니다!\n\n2026.05.13.~2026.05.15.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀\n\n@journey_mode_duksung\n일치단결 민주덕성 제42대 총학생회\n\uD835\uDC7B\uD835\uDC89\uD835\uDC86 \uD835\uDFD2\uD835\uDFD0\uD835\uDC8F\uD835\uDC85 \uD835\uDC7A\uD835\uDC95\uD835\uDC96\uD835\uDC85\uD835\uDC86\uD835\uDC8F\uD835\uDC95 \uD835\uDC6A\uD835\uDC90\uD835\uDC96\uD835\uDC8F\uD835\uDC84\uD835\uDC8A\uD835\uDC8D \uD835\uDC90\uD835\uDC87 \uD835\uDC6B\uD835\uDC96\uD835\uDC8C\uD835\uDC94\uD835\uDC96\uD835\uDC8F\uD835\uDC88 \uD835\uDC7E\uD835\uDC90\uD835\uDC8E\uD835\uDC86\uD835\uDC8F'\uD835\uDC94 \uD835\uDC7C\uD835\uDC8F\uD835\uDC8A\uD835\uDC97\uD835\uDC86\uD835\uDC93\uD835\uDC94\uD835\uDC8A\uD835\uDC95\uD835\uDC9A",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID76_1.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_2.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_3.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_4.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_5.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_6.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_7.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_8.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_9.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_10.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_11.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_12.heic",
+      "/assets/NoticeJsonIMG/Notice_ID76_13.heic"
+    ],
+    "createdAt": "2026-05-12T17:45:13.601716",
+    "updatedAt": "2026-05-12T17:45:13.601716",
+    "viewCount": 25
+  },
+  {
+    "id": 77,
+    "title": "제휴 및 협업 부스 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "덕성여자대학교 제42대 총학생회 <여정>과 제휴를 맺은 여러 기관 및 업체가 2026 근화제 <청춘>을 더욱 풍성하게 만들어 주기 위해 직접 찾아옵니다.\n\n부스 운영 시간: 11:00~19:00 \n*각 부스별 세부 운영 시간은 상이할 수 있습니다.\n부스 위치: 학생회관 앞 및 민주동산 옆 일대\n\n🌿 5월 13일 수요일\n도봉경찰서\n강북청년창업마루 X 강북청년일자리센터\n강남브랜드안과\n서울베스트의료의원\n대학일자리본부\n\n🌿 5월 14일 목요일\n국제처\n올레이디짐\n대학일자리본부\nRISE 사업단X장미원 시장\n강남브랜드안과\n서울베스트의료의원\n시원스쿨\n\n🌿 5월 15일 금요일\n국제처\n대학일자리본부\n도봉구 보건소X서울시 자살예방센터\n서울베스트의료의원\n팔색미인 (낮 부스만 운영)\n\n자세한 부스 소개는 카드뉴스를 확인해주시기 바랍니다.\n다양한 체험과 유익한 프로그램이 준비된 제휴 및 협업 부스에 덕우 여러분의 많은 관심과 참여 부탁드립니다.\n\n2026.05.13.~2026.05.15.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID77_1.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID77_2.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID77_3.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID77_4.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID77_5.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID77_6.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID77_7.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID77_8.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID77_9.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID77_10.jpg"
+    ],
+    "createdAt": "2026-05-12T17:47:39.705337",
+    "updatedAt": "2026-05-12T17:47:39.705337",
+    "viewCount": 40
+  },
+  {
+    "id": 78,
+    "title": "추억 충전소(포토부스) 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "2026 근화제 <청춘> 추억 충전소(포토부스)에서 추억을 남겨보세요!\n\n추억 충전소인 <청춘>의 추억 충전소(포토부스)에서 프레임을 직접 골라 덕우들의 청춘을 포착해봅시다.\n\n\uD83D\uDCF7 추억 충전소(포토부스) \n운영 일시: 26.05.13.(수)~26.05.15.(금) 10:00~20:00\n부스 위치: 학생회관 앞\n이용 금액: 4,000원(2장)\n프레임 종류: HALF 4CUT\n1. 청춘 포스터\n2. 청춘 블랙\n3. 청춘 화이트\n\n\uD83D\uDCF7 추억 충전소(포토부스)\n운영 일시: 26.05.13.(수)~26.05.15.(금) 10:00~20:00\n부스 위치: 스타트업 큐브(청춘 협찬)와 카페 ing 사이\n이용 금액: 5,000원(2장)\n프레임 종류: FULL 4CUT\n1. 청춘 포스터\n2. 청춘 블랙\n3. 청춘 화이트\n4. 민주덕성\n\n\uD83D\uDCF7 추억 충전소(포토부스)\n운영 일시: 26.05.15.(금) 10:00~20:00\n부스 위치: 부스 5번(학생회관 CU쪽 민주동산 길)\n이용 금액: 4,000원(2장)\n프레임 종류: HALF 4CUT, 총장네컷\n\n\uD83D\uDEA8 유의사항\n포토부스 기기마다 촬영 가능한 프레임 사이즈가 상이합니다.\n총장네컷을 제외한 모든 프레임은 3일 모두 이용 가능합니다. \nQR코드로 사진 저장이 불가합니다.\n카드 결제만 가능하며, 현금 및 계좌이체는 불가합니다. \n\n덕우들의 많은 관심과 이용 부탁드립니다.\n\n2026.05.13.~2026.05.15.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID78_1.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID78_2.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID78_3.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID78_4.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID78_5.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID78_6.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID78_7.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID78_8.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID78_9.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID78_10.jpg",
+      "/assets/NoticeJsonIMG/Notice_ID78_11.jpg"
+    ],
+    "createdAt": "2026-05-12T17:50:28.158461",
+    "updatedAt": "2026-05-12T17:50:28.158461",
+    "viewCount": 27
+  },
+  {
+    "id": 79,
+    "title": "푸드트럭(활력 충전소) 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "청춘의 활력을 불어넣어줄 푸드트럭, 활력 충전소를 소개합니다.\n근화제 <청춘>에서는 다양한 먹거리를 만나보실 수 있습니다.\n\n🍴푸드트럭 안내\n\n▫ Take one\n* 프리미엄 수제 닭다리살 직화구이 꼬치\n\n▫ 타우라푸드\n* 수제 닭강정\n* 수제 후라이드\n* Vegan 떡꼬치\n\n▫ 얌얌츄러스\n* 수제 찹쌀츄러스\n* 소프트 아이스크림\n* 젤라또 아이스크림\n* 소프트 아츄\n* 젤라또 아츄\n\n▫ 이태원케밥\n* 터키 아이스크림\n* 닭고기 케밥\n* 양고기 케밥\n* MIX 케밥\n\n▫ 순대써는남자\n* 철판버터오징어구이\n* 철판버터문어구이\n* Vegan 콩고기 스테이크(2pc)\n\n▫ 모디\n* 토시살스테이크덮밥\n* Vegan 벨기에감자튀김\n\n▫ 야미\n* 소고기불초밥(8pc)\n* 갈릭새우초밥(8pc)\n* Vegan 유부초밥(5pc)\n\n▫ KogiBBQ\n* 돼지목살바베큐\n* 오리훈제바베큐\n* Vegan 비건소세지\n\n▫ 짱가곱창\n* 야채곱창\n* 양념막창\n* 막창소금구이\n* Vegan 양배추샐러드\n\n▫ 오야붕\n* 辛불야끼소바\n* 소고기야끼소바\n* 오코노미야끼\n* Vegan 야채야끼소바\n\n▫ 골드키즈\n* 피자 3종\n* Vegan 치즈피자\n\n▫ 썬플라워\n* 칠리새우\n* 크림새우\n* 반반새우\n* Vegan 빅치즈스틱(2개)\n\n▫ 스위트퍼플\n* 밀크쉐이크\n* 커피음료류\n\n※ 게시된 푸드트럭 명칭은 참여 업체의 상호명을 기준으로 표기되었습니다.\n\n자세한 메뉴 가격은 카드뉴스를 통해 확인해주세요.\n\n비건/논비건 모두가 즐길 수 있는 메뉴를 준비했으니, 많이 방문하셔서 활력 충전하시기 바랍니다.\n\n2026.05.13.~2026.05.15.\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID79_1.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_2.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_3.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_4.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_5.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_6.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_7.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_8.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_9.jpeg"
+    ],
+    "createdAt": "2026-05-12T17:54:50.395779",
+    "updatedAt": "2026-05-12T17:54:50.395779",
+    "viewCount": 56
+  },
+  {
+    "id": 80,
+    "title": "충전소 안내",
+    "category": "NOTICE",
+    "urgent": false,
+    "content": "🌿2026 근화제 <청춘> 충전소 안내🌿\n\n근화제 <청춘>을 더욱 알차게 즐길 수 있는 각 구역들을 상세히 안내해드립니다!\n\n🔋 낭만 충전소\n돗자리를 펴고 쉬며 낭만 넘치게 근화제를 즐길 청춘들을 위한 자리!\n📍 위치 | 덕성여자대학교 영근터\n🗓️ 일시 | 5월 13일(수), 5월 15일(금) 11:00 ~ 23:00 / 5월 14일(목) 13:30 ~ 23:00\n\n🎤 열정 충전소\n열정 넘치는 무대를 스탠딩에서 관람할 청춘들을 위한 자리!\n📍 위치 | 덕성여자대학교 영근터\n🗓️ 일시 | 5월 13일(수) 17:30 ~ 22:30 / 5월 14일(목) 17:30 ~ 21:00 / 5월 15일(금) 15:30 ~ 21:30\n\n🍴 행복 충전소\n외부음식과 푸드트럭 음식으로 행복을 충전할 청춘들을 위한 자리!\n📍 위치 | 덕성여자대학교 영근터\n🗓️ 일시 | 5월 13일(수) ~ 5월 15일(금) 11:00 ~ 21:00\n\n🍱 활력 충전소\n근화제 <청춘>에서만 맛 볼 수 있는 활력을 충전할 청춘들을 위한 공간!\n📍 위치 | 덕성여자대학교 도서관 앞\n🗓️ 일시 | 5월 13일(수) ~ 5월 15일(금) 08:30~22:00\n\n📸 추억 충전소\n근화제 <청춘>에서만 남길 수 있는 추억을 충전할 청춘들을 위한 공간!\n📍 위치 | 덕성여자대학교 학생회관 앞, 예술대학 앞\n🗓️ 일시 | 5월 13일(수) ~ 5월 15일(금) 10:00~20:00\n\n* 자세한 내용은 카드뉴스를 통해 확인해 주세요!\n\n☀함께 나아가는 발걸음, 서로를 잇는 길☀\n\n@journey_mode_duksung\n일치단결 민주덕성 제42대 총학생회\nThe 42nd Student Council of Duksung Women's University",
+    "imageUrls": [
+      "/assets/NoticeJsonIMG/Notice_ID79_1.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_2.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_3.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_4.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_5.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_6.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_7.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_8.jpeg",
+      "/assets/NoticeJsonIMG/Notice_ID79_9.jpeg"
+    ],
+    "createdAt": "2026-05-12T17:55:39.833716",
+    "updatedAt": "2026-05-12T17:55:39.833716",
+    "viewCount": 31
+  },
+  {
+    "id": 81,
+    "title": "'민주덕성 타월’ 추가 판매 안내",
+    "category": "NOTICE",
+    "urgent": true,
+    "content": "[2026 근화제 <청춘> 굿즈 ‘민주덕성 타월’ 추가 판매 안내]\n\n안녕하세요. 덕성여자대학교 제42대 총학생회 <여정>입니다.\n\n2026 근화제 <청춘>에서 판매 중인 굿즈 ‘민주덕성 타월’에 보내주신 많은 관심과 성원에 감사드립니다.\n\n학우 여러분의 뜨거운 반응에 힘입어 총학생회에서 추가 제작을 진행하였으며, 5월 15일(금) 추가 판매를 진행합니다.\n\n‘민주덕성 타월’은 5/15(금) 총학생회 굿즈 판매 부스에서 만나보실 수 있으며, 자세한 사항은 근화제 <청춘> 굿즈 판매 안내 카드뉴스를 참고해 주시기 바랍니다.\n\n학우 여러분께서 더욱 풍성하고 즐거운 축제를 보내실 수 있도록 끝까지 최선을 다하겠습니다.\n\n많은 관심 부탁드립니다.\n감사합니다.\n\n💬 문의 | 덕성여자대학교 제42대 총학생회 여정\nhttps://pf.kakao.com/_gUyQn\n*에브리타임과 인스타그램을 통한 문의는 받지 않습니다.",
+    "imageUrls": [],
+    "createdAt": "2026-05-13T16:20:24.902511",
+    "updatedAt": "2026-05-13T16:20:24.902511",
+    "viewCount": 221
+  },
+  {
+    "id": 82,
+    "title": "[긴급 안내] 푸드트럭 골드키즈(피자) 운영 지연 안내",
+    "category": "ETC",
+    "urgent": false,
+    "content": "안녕하세요, 덕성여자대학교 제42대 총학생회 <여정>입니다.\n\n피자 메뉴를 판매하는 골드키즈 푸드트럭은 담당자의 건강상 사유로 인해 오후 중 운영이 시작될 예정입니다. 이용에 불편을 드려 죄송하며, 학우분들의 너른 양해 부탁드립니다.\n\n감사합니다.\n\n💬 문의 | 덕성여자대학교 제42대 총학생회 여정\nhttps://pf.kakao.com/_gUyQn\n*에브리타임과 인스타그램을 통한 문의는 받지 않습니다.",
+    "imageUrls": [],
+    "createdAt": "2026-05-14T09:25:34.879258",
+    "updatedAt": "2026-05-15T08:50:29.428875",
+    "viewCount": 238
+  },
+  {
+    "id": 83,
+    "title": "3일차 무대 관람 안내",
+    "category": "NOTICE",
+    "urgent": true,
+    "content": "안녕하세요, 덕성여자대학교 제42대 총학생회 <여정>입니다.\n\n2026 근화제 <청춘> 3일차 무대 관람 관련 사항 안내드립니다.\n\n덕우존 입장은 15:30부터 가능하며, 입장 시간 이전 대기는 절대 불가합니다. 대기줄 형성 시, 총학생회 스태프가 해산 조치 예정이며 불응할 시 손목띠를 회수할 예정입니다. \n\n덕우존 입장은 '손목띠+도장+포털 확인+얼굴 사진이 포함된 신분증'을 모두 인증하신 덕성인만 가능합니다.\n* 실물 인증: 얼굴이 포함된 학생증·주민등록증·운전면허증·여권\n* 온라인 인증: 얼굴이 포함된 카카오 인증서·정부24·PASS만 가능\n\n아티스트 공연 시간에는 중도 입장이 절대 불가합니다. 또한 안전상의 이유로 덕우존 입장 인원 제한이 존재한다는 점 참고해 주시기 바랍니다.\n\n아울러, 많은 인파가 몰릴 것으로 예상되어 장소별 무대 관람 구역을 확대하였음을 안내드립니다. 상세한 내용은 카드뉴스를 참고해 주시기 바랍니다. \n\n모든 학우 여러분께서는 안전하고 즐거운 축제를 즐기실 수 있도록 해당 사항을 필히 확인해 주시기 바랍니다.\n\n감사합니다.\n\n💬 문의 | 덕성여자대학교 제42대 총학생회 여정\nhttps://pf.kakao.com/_gUyQn\n*에브리타임과 인스타그램을 통한 문의는 받지 않습니다.",
+    "imageUrls": [],
+    "createdAt": "2026-05-15T08:53:58.354826",
+    "updatedAt": "2026-05-15T08:53:58.354826",
+    "viewCount": 200
   }
 ]

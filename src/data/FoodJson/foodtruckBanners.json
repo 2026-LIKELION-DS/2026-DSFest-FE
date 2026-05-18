@@ -5,67 +5,67 @@
   "result": [
     {
       "id": 1,
-      "imageUrl": "/src/assets/Food/TakeOne1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/TakeOne1.jpeg",
       "title": "직화 닭꼬치 어때요?"
     },
     {
       "id": 2,
-      "imageUrl": "/src/assets/Food/Taura1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/Taura1.jpeg",
       "title": "닭강정 어때요?"
     },
     {
       "id": 3,
-      "imageUrl": "/src/assets/Food/CHUROS1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/CHUROS1.jpeg",
       "title": "츄러스 어때요?"
     },
     {
       "id": 4,
-      "imageUrl": "/src/assets/Food/Kebab.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/Kebab.jpeg",
       "title": "케밥 어때요?"
     },
     {
       "id": 5,
-      "imageUrl": "/src/assets/Food/sundae.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/sundae.jpeg",
       "title": "철판버터오징어 어때요?"
     },
     {
       "id": 6,
-      "imageUrl": "/src/assets/Food/modi1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/modi1.jpeg",
       "title": "스테이크 덮밥 어때요?"
     },
     {
       "id": 7,
-      "imageUrl": "/src/assets/Food/yami1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/yami1.jpeg",
       "title": "소고기불초밥 어때요?"
     },
     {
       "id": 8,
-      "imageUrl": "/src/assets/Food/BBQ.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/BBQ.jpeg",
       "title": "바베큐 어때요?"
     },
     {
       "id": 9,
-      "imageUrl": "/src/assets/Food/JJanga1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/JJanga1.jpeg",
       "title": "곱창·막창 어때요?"
     },
     {
       "id": 10,
-      "imageUrl": "/src/assets/Food/Oyabung1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/Oyabung1.jpeg",
       "title": "야끼소바 어때요?"
     },
     {
       "id": 11,
-      "imageUrl": "/src/assets/Food/pizza1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/pizza1.jpeg",
       "title": "피자 어때요?"
     },
     {
       "id": 12,
-      "imageUrl": "/src/assets/Food/SunFlower1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/SunFlower1.jpeg",
       "title": "크림새우 어때요?"
     },
     {
       "id": 13,
-      "imageUrl": "/src/assets/Food/SweetPurple.jpg",
+      "imageUrl": "/assets/FoodJsonIMG/SweetPurple.jpg",
       "title": "밀크쉐이크 어때요?"
     }
   ]
