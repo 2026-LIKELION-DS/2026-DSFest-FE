@@ -130,7 +130,6 @@ const BoothPage: React.FC = () => {
     }
   };
 
-  // ★ [중요 추가/수정] SchedulePage에서 넘어온 day와 time 쿼리 파라미터를 실시간으로 감지하여 state에 반영
   useEffect(() => {
     const now = new Date();
     const year = now.getFullYear();
