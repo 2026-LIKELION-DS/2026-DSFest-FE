@@ -35,13 +35,7 @@ type LiveTalkTopic = {
   artistId: number | null;
 };
 
-type TopicResponse = {
-  isSuccess: boolean;
-  code: string;
-  message: string;
-  result: LiveTalkTopic | null;
-};
-
+/* 
 type StompClientLike = {
   connected: boolean;
   activate: () => void;
@@ -52,19 +46,32 @@ type StompClientLike = {
     callback: (message: { body: string }) => void
   ) => { unsubscribe: () => void };
 };
+*/
 
 export default function LiveTalkComponent() {
+  /* 
   const API_URL = import.meta.env.VITE_API_URL;
+  */
 
   const [bannerMode, setBannerMode] = useState<BannerMode>("default");
   const [showBannerText, setShowBannerText] = useState(true);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [topic, setTopic] = useState<LiveTalkTopic | null>(null);
+
+  /* 
   const [isLoadingPrevious, setIsLoadingPrevious] = useState(false);
-  const [hasMorePreviousMessages, setHasMorePreviousMessages] = useState(true);
+  const [hasMorePreviousMessages, setHasMorePreviousMessages] =
+    useState(true);
+  */
+
   const navigate = useNavigate();
+
+  /* 
   const stompClientRef = useRef<StompClientLike | null>(null);
+  */
+
   const chatAreaRef = useRef<HTMLDivElement | null>(null);
+
   const previousBannerModeRef =
     useRef<Exclude<BannerMode, "collapsed">>("default");
 
@@ -73,6 +80,7 @@ export default function LiveTalkComponent() {
   const bannerTextTimerRef = useRef<number | null>(null);
   const shouldScrollToBottomRef = useRef(true);
 
+  /*
   const guestUuidRef = useRef(getGuestUuid());
 
   function getGuestUuid() {
@@ -85,10 +93,9 @@ export default function LiveTalkComponent() {
 
     return newUuid;
   }
+  */
 
-  const getApiUrl = (path: string) => {
-    return `${API_URL.replace(/\/$/, "")}${path}`;
-  };
+ 
 
   const scrollToBottom = () => {
     requestAnimationFrame(() => {
@@ -99,40 +106,7 @@ export default function LiveTalkComponent() {
     });
   };
 
-  const markAsRead = async () => {
-    try {
-      await fetch(
-        getApiUrl(`/api/livetalk/read?guestUuid=${guestUuidRef.current}`),
-        {
-          method: "PATCH",
-        }
-      );
-
-      setUnreadCount(0);
-    } catch (error) {
-      console.error("읽음 처리 실패:", error);
-    }
-  };
-
-  const fetchUnreadCount = async () => {
-    try {
-      const response = await fetch(
-        getApiUrl(
-          `/api/livetalk/unread-count?guestUuid=${guestUuidRef.current}`
-        )
-      );
-
-      if (!response.ok) return;
-
-      const data = await response.json();
-
-      if (data.isSuccess) {
-        setUnreadCount(data.result);
-      }
-    } catch (error) {
-      console.error("안 읽은 개수 조회 실패:", error);
-    }
-  };
+ 
 
   const getValidDate = (dateString?: string) => {
     const date = dateString ? new Date(dateString) : new Date();
@@ -173,7 +147,10 @@ export default function LiveTalkComponent() {
     return {
       id: message.messageId,
       text: message.content,
-      sender: message.senderGuestUuid === guestUuidRef.current ? "me" : "other",
+
+      
+      sender: "other",
+
       time: formatTime(message.createdAt),
       dateKey: formatDateKey(message.createdAt),
       dateText: formatDateText(message.createdAt),
@@ -194,88 +171,13 @@ export default function LiveTalkComponent() {
     };
   };
 
-  const getMessageListFromResponse = (data: unknown): LiveTalkApiMessage[] => {
-    if (Array.isArray(data)) return data as LiveTalkApiMessage[];
+  /* 
+  const getMessageListFromResponse = (...) => { ... };
+  */
 
-    if (typeof data !== "object" || data === null) return [];
-
-    const response = data as {
-      result?: LiveTalkApiMessage[];
-      messages?: LiveTalkApiMessage[];
-      data?: LiveTalkApiMessage[];
-      content?: LiveTalkApiMessage[];
-    };
-
-    return (
-      response.result ??
-      response.messages ??
-      response.data ??
-      response.content ??
-      []
-    );
-  };
-
-  const fetchPreviousMessages = async () => {
-    if (
-      isLoadingPrevious ||
-      !hasMorePreviousMessages ||
-      messages.length === 0
-    ) {
-      return;
-    }
-
-    const firstRealMessage = messages.find((message) => !message.isTemp);
-    if (!firstRealMessage) return;
-
-    const chatArea = chatAreaRef.current;
-    const previousScrollHeight = chatArea?.scrollHeight ?? 0;
-
-    try {
-      setIsLoadingPrevious(true);
-      shouldScrollToBottomRef.current = false;
-
-      const response = await fetch(
-        getApiUrl(
-          `/api/livetalk/messages/before?messageId=${firstRealMessage.id}`
-        )
-      );
-
-      if (!response.ok) {
-        throw new Error("이전 메시지 목록을 불러오지 못했습니다.");
-      }
-
-      const data = await response.json();
-      const messageList = getMessageListFromResponse(data);
-
-      if (messageList.length === 0) {
-        setHasMorePreviousMessages(false);
-        return;
-      }
-
-      const previousMessages = messageList.map(convertMessage);
-
-      setMessages((prev) => {
-        const existingIds = new Set(prev.map((message) => message.id));
-        const filteredPreviousMessages = previousMessages.filter(
-          (message) => !existingIds.has(message.id)
-        );
-
-        return [...filteredPreviousMessages, ...prev];
-      });
-
-      requestAnimationFrame(() => {
-        const currentChatArea = chatAreaRef.current;
-        if (!currentChatArea) return;
-
-        const nextScrollHeight = currentChatArea.scrollHeight;
-        currentChatArea.scrollTop = nextScrollHeight - previousScrollHeight;
-      });
-    } catch (error) {
-      console.error("이전 메시지 로딩 실패:", error);
-    } finally {
-      setIsLoadingPrevious(false);
-    }
-  };
+  /* 
+  const fetchPreviousMessages = async () => { ... };
+  */
 
   const handleChatAreaScroll = () => {
     const chatArea = chatAreaRef.current;
@@ -285,66 +187,27 @@ export default function LiveTalkComponent() {
       chatArea.scrollHeight - chatArea.scrollTop - chatArea.clientHeight;
 
     shouldScrollToBottomRef.current = distanceFromBottom < 80;
-
-    if (chatArea.scrollTop <= 20) {
-      fetchPreviousMessages();
-    }
   };
 
   useEffect(() => {
-    const fetchCurrentTopic = async () => {
-      try {
-        const response = await fetch(
-          getApiUrl("/api/livetalk/topics/current"),
-          {
-            method: "GET",
-            headers: {
-              Accept: "application/json",
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(`대화 주제 조회 실패: ${response.status}`);
-        }
-
-        const data: TopicResponse = await response.json();
-
-        if (!data.isSuccess || !data.result) {
-          console.warn("현재 시간에 진행 중인 대화 주제가 없습니다.");
-          setTopic(null);
-          previousBannerModeRef.current = "default";
-          setBannerMode((prev) =>
-            prev === "collapsed" ? "collapsed" : "default"
-          );
-          return;
-        }
-
-        const currentTopic = data.result;
-        setTopic(currentTopic);
-
-        const nextBannerMode: Exclude<BannerMode, "collapsed"> =
-          currentTopic.topicType === "ARTIST" ? "artist" : "default";
-
-        previousBannerModeRef.current = nextBannerMode;
-
-        setBannerMode((prev) => {
-          if (prev === "collapsed") return "collapsed";
-          return nextBannerMode;
-        });
-      } catch (error) {
-        console.error("대화 주제 API 연동 실패:", error);
-      }
+    const artistTopic: LiveTalkTopic = {
+      id: 1,
+      title: "아티스트 공연 보러가기",
+      subtitle: "지금 진행 중인 공연을 확인해보세요",
+      topicType: "ARTIST",
+      artistId: 1,
     };
 
-    fetchCurrentTopic();
-  }, [API_URL]);
+    setTopic(artistTopic);
+    previousBannerModeRef.current = "artist";
+    setBannerMode("artist");
+  }, []);
 
+ 
   useEffect(() => {
     const messageList = liveTalkJson.messages;
 
     setMessages(messageList.map(convertMessage));
-    setHasMorePreviousMessages(false);
     shouldScrollToBottomRef.current = true;
   }, []);
 
@@ -364,6 +227,7 @@ export default function LiveTalkComponent() {
     };
   }, []);
 
+ 
   const sendMessage = (text: string) => {
     const trimmedText = text.trim();
     if (!trimmedText) return;
@@ -433,9 +297,7 @@ export default function LiveTalkComponent() {
 
     try {
       e.currentTarget.releasePointerCapture(e.pointerId);
-    } catch {
-      // pointer capture가 이미 해제된 경우 무시
-    }
+    } catch {}
   };
 
   const handleBannerClick = () => {
@@ -450,8 +312,6 @@ export default function LiveTalkComponent() {
       showBannerTextAfterTransition();
       return;
     }
-
-    console.log("배너 클릭됨", topic);
 
     if (topic?.topicType === "ARTIST") {
       navigate("/artist");
@@ -490,18 +350,16 @@ export default function LiveTalkComponent() {
         onScroll={handleChatAreaScroll}
         $hasBanner={!!topic}
       >
-        {isLoadingPrevious && (
-          <S.DateText>이전 메시지 불러오는 중...</S.DateText>
-        )}
-
         {messages.map((message, index) => {
           const previousMessage = messages[index - 1];
+
           const shouldShowDate =
             !previousMessage || previousMessage.dateKey !== message.dateKey;
 
           return (
             <div key={message.id}>
               {shouldShowDate && <S.DateText>{message.dateText}</S.DateText>}
+
               <ChatItem message={message} />
             </div>
           );
