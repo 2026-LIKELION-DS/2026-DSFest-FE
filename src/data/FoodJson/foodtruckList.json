@@ -5,7 +5,7 @@
   "result": [
     {
       "id": 3,
-      "imageUrl": "/src/assets/Food/CHUROS1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/CHUROS1.jpeg",
       "name": "얌얌츄러스",
       "representativeMenu": "수제 찹쌀츄러스",
       "description": "간편식, 디저트",
@@ -15,7 +15,7 @@
     },
     {
       "id": 13,
-      "imageUrl": "/src/assets/Food/SweetPurple.jpg",
+      "imageUrl": "/assets/FoodJsonIMG/SweetPurple.jpg",
       "name": "스위트퍼플",
       "representativeMenu": "밀크쉐이크",
       "description": "간편식, 디저트",
@@ -25,7 +25,7 @@
     },
     {
       "id": 5,
-      "imageUrl": "/src/assets/Food/sundae.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/sundae.jpeg",
       "name": "순대써는남자",
       "representativeMenu": "철판버터오징어구이",
       "description": "간편식, 비건",
@@ -35,7 +35,7 @@
     },
     {
       "id": 6,
-      "imageUrl": "/src/assets/Food/modi1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/modi1.jpeg",
       "name": "모디",
       "representativeMenu": "토시살스테이크덮밥",
       "description": "고기/BBQ, 면/식사류, 간편식",
@@ -45,7 +45,7 @@
     },
     {
       "id": 11,
-      "imageUrl": "/src/assets/Food/pizza1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/pizza1.jpeg",
       "name": "골드키즈",
       "representativeMenu": "피자 3종",
       "description": "면/식사류, 비건",
@@ -55,7 +55,7 @@
     },
     {
       "id": 4,
-      "imageUrl": "/src/assets/Food/Kebab.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/Kebab.jpeg",
       "name": "이태원케밥",
       "representativeMenu": "닭고기 케밥",
       "description": "간편식, 디저트, 고기/BBQ",
@@ -65,7 +65,7 @@
     },
     {
       "id": 7,
-      "imageUrl": "/src/assets/Food/yami1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/yami1.jpeg",
       "name": "야미",
       "representativeMenu": "소고기불초밥",
       "description": "고기/BBQ, 면/식사류, 해산물, 비건",
@@ -75,7 +75,7 @@
     },
     {
       "id": 12,
-      "imageUrl": "/src/assets/Food/SunFlower1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/SunFlower1.jpeg",
       "name": "썬플라워",
       "representativeMenu": "칠리새우/크림새우",
       "description": "면/식사류, 해산물, 간편식, 비건",
@@ -85,7 +85,7 @@
     },
     {
       "id": 10,
-      "imageUrl": "/src/assets/Food/Oyabung1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/Oyabung1.jpeg",
       "name": "오야붕",
       "representativeMenu": "辛불야끼소바",
       "description": "면/식사류, 해산물, 비건",
@@ -95,7 +95,7 @@
     },
     {
       "id": 9,
-      "imageUrl": "/src/assets/Food/JJanga1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/JJanga1.jpeg",
       "name": "짱가곱창",
       "representativeMenu": "야채곱창",
       "description": "곱창/막창, 면/식사류, 비건",
@@ -105,7 +105,7 @@
     },
     {
       "id": 1,
-      "imageUrl": "/src/assets/Food/TakeOne1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/TakeOne1.jpeg",
       "name": "Take one",
       "representativeMenu": "프리미엄 수제 닭다리살 직화구이 꼬치",
       "description": "간편식, 고기/BBQ",
@@ -115,7 +115,7 @@
     },
     {
       "id": 2,
-      "imageUrl": "/src/assets/Food/Taura1.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/Taura1.jpeg",
       "name": "타우라푸드",
       "representativeMenu": "수제 닭강정/수제 후라이드",
       "description": "고기/BBQ, 비건",
@@ -125,7 +125,7 @@
     },
     {
       "id": 8,
-      "imageUrl": "/src/assets/Food/BBQ.jpeg",
+      "imageUrl": "/assets/FoodJsonIMG/BBQ.jpeg",
       "name": "KogiBBQ",
       "representativeMenu": "돼지목살바베큐",
       "description": "고기/BBQ, 면/식사류, 간편식, 비건",
