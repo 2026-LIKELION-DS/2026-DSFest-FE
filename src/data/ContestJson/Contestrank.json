@@ -1,0 +1,13 @@
+{
+  "isSuccess": true,
+  "code": "COMMON200",
+  "message": "요청에 성공하였습니다.",
+  "result": [
+    { "photoEntryId": 3, "voteCount": 42 },
+    { "photoEntryId": 1, "voteCount": 35 },
+    { "photoEntryId": 5, "voteCount": 28 },
+    { "photoEntryId": 2, "voteCount": 21 },
+    { "photoEntryId": 6, "voteCount": 17 },
+    { "photoEntryId": 4, "voteCount": 9 }
+  ]
+}
