@@ -4,6 +4,7 @@ import ContestNotice from "../components/Contest/ContestNotice";
 import ContestImg from "../assets/Contest/Contest.png";
 import ContestVoteButton from "../components/Contest/ContestVoteButton";
 // import axios from "axios";
+import contestStatusMock from "../data/ContestJson/contestStatus.json" with { type: "json" };
 
 const ENTRY_START = new Date("2026-05-13T10:00:00");
 const ENTRY_END = new Date("2026-05-14T20:00:00");
@@ -32,10 +33,11 @@ function formatRemaining(targetTime: string): string {
 }
 
 export default function ContestPag() {
-  const baseUrl = import.meta.env.VITE_API_URL;
-  const [contestStatus, setContestStatus] = useState<ContestStatus | null>(
-    null,
-  );
+  // const baseUrl = import.meta.env.VITE_API_URL;
+  // const [contestStatus, setContestStatus] = useState<ContestStatus | null>(
+  //   null,
+  // );
+  const contestStatus = contestStatusMock.result as ContestStatus;
   const [remainingTime, setRemainingTime] = useState("00:00:00");
 
   // useEffect(() => {
