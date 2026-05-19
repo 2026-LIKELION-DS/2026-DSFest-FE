@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ContestInfoModal from "../components/Contest/ContestInformation";
 // import axios from "axios";
 import contestPhotos from "../data/ContestJson/contestphotos.json";
-import contestRank from "../data/ContestJson/Contestrank.json";
+import contestRank from "../data/ContestJson/contestrank.json";
 
 // 비공개 시간 체크: 15일 15:00 ~ 19:00
 const isRankHidden = () => {
