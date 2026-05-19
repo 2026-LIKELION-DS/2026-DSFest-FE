@@ -1,0 +1,49 @@
+{
+  "isSuccess": true,
+  "code": "COMMON200",
+  "message": "요청에 성공하였습니다.",
+  "result": [
+    {
+      "photoEntryId": 6,
+      "title": "궁댕이 사리기 (that's yellow-yellow)",
+      "authorName": "문지윤",
+      "voteCount": 56,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%EB%AC%B8%EC%A7%80%EC%9C%A4.jpg"
+    },
+    {
+      "photoEntryId": 4,
+      "title": "끝나지 않는 열정",
+      "authorName": "김재윤",
+      "voteCount": 49,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%EA%B9%80%EC%9E%AC%EC%9C%A4.jpg"
+    },
+    {
+      "photoEntryId": 2,
+      "title": "덕성에서 마지막 근화제🌿🫶🏻",
+      "authorName": "한서영",
+      "voteCount": 43,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%ED%95%9C%EC%84%9C%EC%98%81.jpg"
+    },
+    {
+      "photoEntryId": 1,
+      "title": "비눗방울",
+      "authorName": "장서연",
+      "voteCount": 41,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%EC%9E%A5%EC%84%9C%EC%97%B0.jpg"
+    },
+    {
+      "photoEntryId": 5,
+      "title": "눈부신 한때 그날의 우리",
+      "authorName": "김도현",
+      "voteCount": 20,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%EA%B9%80%EB%8F%84%ED%98%84.jpg"
+    },
+    {
+      "photoEntryId": 3,
+      "title": "여전히 설레는 마음으로💚",
+      "authorName": "현소정",
+      "voteCount": 8,
+      "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%ED%98%84%EC%86%8C%EC%A0%95.jpg"
+    }
+  ]
+}
