@@ -34,11 +34,12 @@ import Banner from "../components/Home/Banner";
 import OnBoarding from "../components/Home/OnBoarding";
 
 export default function Home() {
-  // const urgentNotice = "(긴급) 하현상 무대 시간 지연 공지";
+  const urgentNotice = "어흥..아르릉..어흥..어흥! 🦁";
+  const urgentId = 58;
   // 개발용 테스트 코드 입니다.
 
-  const [urgentNotice, setUrgentNotice] = useState<string | null>(null);
-  const [urgentId, setUrgentId] = useState<number | null>(null);
+  // const [urgentNotice, setUrgentNotice] = useState<string | null>(null);
+  // const [urgentId, setUrgentId] = useState<number | null>(null);
 
   const [showOnBoarding, setShowOnBoarding] = useState<boolean>(() => {
     return localStorage.getItem("hasSeenOnboarding_v2") === null;
@@ -83,37 +84,37 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
-    const fetchUrgentNotice = async () => {
+  // useEffect(() => {
+  //   const fetchUrgentNotice = async () => {
 
-      const BaseUrl = import.meta.env.VITE_API_URL;
+  //     const BaseUrl = import.meta.env.VITE_API_URL;
 
-      try {
-        const response = await fetch(
-          `${BaseUrl}/api/notices/urgent`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+  //     try {
+  //       const response = await fetch(
+  //         `${BaseUrl}/api/notices/urgent`,
+  //         {
+  //           method: "GET",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //         }
+  //       );
 
-        const data = await response.json();
+  //       const data = await response.json();
 
-        if (data.isSuccess && data.result) {
-          setUrgentNotice(data.result.title);
-          setUrgentId(data.result.id);
-        } else {
-          setUrgentNotice(null); // 긴급공지 없음
-        }
-      } catch (error) {
-        console.error("긴급공지 조회 실패:", error);
-      }
-    };
+  //       if (data.isSuccess && data.result) {
+  //         setUrgentNotice(data.result.title);
+  //         setUrgentId(data.result.id);
+  //       } else {
+  //         setUrgentNotice(null); // 긴급공지 없음
+  //       }
+  //     } catch (error) {
+  //       console.error("긴급공지 조회 실패:", error);
+  //     }
+  //   };
 
-    fetchUrgentNotice();
-  }, []);
+  //   fetchUrgentNotice();
+  // }, []);
 
   useEffect(() => {
     const container = document.querySelector(
