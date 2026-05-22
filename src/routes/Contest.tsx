@@ -3,7 +3,8 @@ import * as S from "../styles/Contest.style";
 import ContestNotice from "../components/Contest/ContestNotice";
 import ContestImg from "../assets/Contest/Contest.png";
 import ContestVoteButton from "../components/Contest/ContestVoteButton";
-import axios from "axios";
+// import axios from "axios";
+import contestStatusMock from "../data/ContestJson/contestStatus.json" with { type: "json" };
 
 const ENTRY_START = new Date("2026-05-13T10:00:00");
 const ENTRY_END = new Date("2026-05-14T20:00:00");
@@ -32,23 +33,24 @@ function formatRemaining(targetTime: string): string {
 }
 
 export default function ContestPag() {
-  const baseUrl = import.meta.env.VITE_API_URL;
-  const [contestStatus, setContestStatus] = useState<ContestStatus | null>(
-    null,
-  );
+  // const baseUrl = import.meta.env.VITE_API_URL;
+  // const [contestStatus, setContestStatus] = useState<ContestStatus | null>(
+  //   null,
+  // );
+  const contestStatus = contestStatusMock.result as ContestStatus;
   const [remainingTime, setRemainingTime] = useState("00:00:00");
 
-  useEffect(() => {
-    if (!baseUrl) return;
-    axios
-      .get(`${baseUrl}/api/photo-contest/status`)
-      .then((res) => {
-        if (res.data.isSuccess) {
-          setContestStatus(res.data.result);
-        }
-      })
-      .catch((err) => console.error("콘테스트 상태 에러:", err));
-  }, [baseUrl]);
+  // useEffect(() => {
+  //   if (!baseUrl) return;
+  //   axios
+  //     .get(`${baseUrl}/api/photo-contest/status`)
+  //     .then((res) => {
+  //       if (res.data.isSuccess) {
+  //         setContestStatus(res.data.result);
+  //       }
+  //     })
+  //     .catch((err) => console.error("콘테스트 상태 에러:", err));
+  // }, [baseUrl]);
 
   // 타이머
   useEffect(() => {

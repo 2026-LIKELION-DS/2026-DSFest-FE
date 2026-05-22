@@ -1,9 +1,11 @@
 import * as S from "../styles/ContestVote.style";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PhotoCard from "../components/Contest/ContestPhotoCard";
 import { useNavigate } from "react-router-dom";
 import ContestInfoModal from "../components/Contest/ContestInformation";
-import axios from "axios";
+// import axios from "axios";
+import contestPhotos from "../data/ContestJson/contestphotos.json";
+import contestRank from "../data/ContestJson/contestrank.json";
 
 // 비공개 시간 체크: 15일 15:00 ~ 19:00
 const isRankHidden = () => {
@@ -25,52 +27,59 @@ interface PhotoItem {
 }
 
 export default function ContestVotePage() {
-  const baseUrl = import.meta.env.VITE_API_URL;
+  // const baseUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
-  const [photos, setPhotos] = useState<PhotoItem[]>([]);
+  // const [photos, setPhotos] = useState<PhotoItem[]>([]);
+  const photos = contestPhotos.result.photos as PhotoItem[];
   const [selectedPhotoId, setSelectedPhotoId] = useState<number | null>(null);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
-  const [rankMap, setRankMap] = useState<Record<number, 1 | 2 | 3>>({});
+  // const [rankMap, setRankMap] = useState<Record<number, 1 | 2 | 3>>({});
 
-  useEffect(() => {
-    if (!baseUrl) return;
-    axios
-      .get(`${baseUrl}/api/photo-contest`)
-      .then((res) => {
-        if (res.data.isSuccess) {
-          // setPhotoList(res.data.result);
-          setPhotos(res.data.result.photos);
-        }
-      })
-      .catch((err) => console.error("목록 조회 에러:", err));
-  }, [baseUrl]);
+  // useEffect(() => {
+  //   if (!baseUrl) return;
+  //   axios
+  //     .get(`${baseUrl}/api/photo-contest`)
+  //     .then((res) => {
+  //       if (res.data.isSuccess) {
+  //         // setPhotoList(res.data.result);
+  //         setPhotos(res.data.result.photos);
+  //       }
+  //     })
+  //     .catch((err) => console.error("목록 조회 에러:", err));
+  // }, [baseUrl]);
+  const rankMap = Object.fromEntries(
+    [...contestRank.result]
+      .sort((a, b) => (b.voteCount ?? 0) - (a.voteCount ?? 0))
+      .slice(0, 3)
+      .map((item, index) => [item.photoEntryId, (index + 1) as 1 | 2 | 3]),
+  ) as Record<number, 1 | 2 | 3>;
 
-  useEffect(() => {
-    if (!baseUrl) return;
-    axios
-      .get(`${baseUrl}/api/photo-contest/rank`)
-      .then((res) => {
-        if (!res.data.isSuccess || !Array.isArray(res.data.result)) return;
+  // useEffect(() => {
+  //   if (!baseUrl) return;
+  //   axios
+  //     .get(`${baseUrl}/api/photo-contest/rank`)
+  //     .then((res) => {
+  //       if (!res.data.isSuccess || !Array.isArray(res.data.result)) return;
 
-        const map: Record<number, 1 | 2 | 3> = {};
-        const rankList = res.data.result;
-        const sorted = [...rankList].sort((a, b) => {
-          const aCount = a.voteCount ?? 0;
-          const bCount = b.voteCount ?? 0;
-          return bCount - aCount;
-        });
+  //       const map: Record<number, 1 | 2 | 3> = {};
+  //       const rankList = res.data.result;
+  //       const sorted = [...rankList].sort((a, b) => {
+  //         const aCount = a.voteCount ?? 0;
+  //         const bCount = b.voteCount ?? 0;
+  //         return bCount - aCount;
+  //       });
 
-        sorted.slice(0, 3).forEach((item, index) => {
-          map[item.photoEntryId] = (index + 1) as 1 | 2 | 3;
-        });
+  //       sorted.slice(0, 3).forEach((item, index) => {
+  //         map[item.photoEntryId] = (index + 1) as 1 | 2 | 3;
+  //       });
 
-        setRankMap(map);
+  //       setRankMap(map);
 
-        setRankMap(map);
-      })
-      .catch((err) => console.error("랭킹 조회 에러:", err));
-  }, [baseUrl]);
+  //       setRankMap(map);
+  //     })
+  //     .catch((err) => console.error("랭킹 조회 에러:", err));
+  // }, [baseUrl]);
 
   const handleSelectPhoto = (id: number) => {
     setSelectedPhotoId((prev) => (prev === id ? null : id));

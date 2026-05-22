@@ -1,0 +1,10 @@
+{
+  "isSuccess": true,
+  "code": "COMMON200",
+  "message": "요청에 성공하였습니다.",
+  "result": {
+    "status": "VOTING",
+    "startTime": "2026-05-15T15:00:00",
+    "endTime": "2026-05-15T19:00:00"
+  }
+}
