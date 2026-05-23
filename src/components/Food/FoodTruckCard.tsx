@@ -1,5 +1,5 @@
 //import { trackEvent } from "../../utils/analytics";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import * as S from "../../styles/FoodTruckCard.styles";
 
 import ImageDetailComponent from "../Common/ImageDetail";
@@ -34,32 +34,32 @@ interface Props {
   onForceOpenDone?: () => void;
 }
 
-interface FoodTruckDetailMenu {
-  menuName: string;
-  price: number;
-  isVegan: boolean;
-}
+// interface FoodTruckDetailMenu {
+//   menuName: string;
+//   price: number;
+//   isVegan: boolean;
+// }
 
-interface FoodTruckDetailResponse {
-  id: number;
-  imageUrls: string[];
-  name: string;
-  description: string;
-  operatingString: string;
-  menus: FoodTruckDetailMenu[];
-  likeCount: number;
-  isLiked: boolean;
-}
+// interface FoodTruckDetailResponse {
+//   id: number;
+//   imageUrls: string[];
+//   name: string;
+//   description: string;
+//   operatingString: string;
+//   menus: FoodTruckDetailMenu[];
+//   likeCount: number;
+//   isLiked: boolean;
+// }
 
-const TEMP_GUEST_UUID = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+// const TEMP_GUEST_UUID = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
 
-const getGuestUuid = () => {
-  const savedUuid = localStorage.getItem("guest_uuid");
-  if (savedUuid) return savedUuid;
+// const getGuestUuid = () => {
+//   const savedUuid = localStorage.getItem("guest_uuid");
+//   if (savedUuid) return savedUuid;
 
-  localStorage.setItem("guest_uuid", TEMP_GUEST_UUID);
-  return TEMP_GUEST_UUID;
-};
+//   localStorage.setItem("guest_uuid", TEMP_GUEST_UUID);
+//   return TEMP_GUEST_UUID;
+// };
 
 const getLikeKey = (id: number) => `foodtruck_like_${id}`;
 
@@ -87,7 +87,7 @@ export default function FoodTruckCard({
 
   const isOperating = truck.isOpen;
 
-  const fetchFoodTruckDetail = async () => {
+  const fetchFoodTruckDetail = useCallback(async () => {
     const detail = foodTruckDetailsData.find((item) => item.id === truck.id);
 
     if (!detail) {
@@ -96,23 +96,18 @@ export default function FoodTruckCard({
     }
 
     setImages(detail.imageUrls);
-
     setMenus(
       detail.menus.map((menu) => ({
         name: menu.menuName,
         price: `${menu.price.toLocaleString()}원`,
         isVegan: menu.isVegan,
-      }))
+      })),
     );
-
     setLikeCount(detail.likeCount);
-
     setIsLiked(detail.isLiked);
-
     localStorage.setItem(getLikeKey(truck.id), String(detail.isLiked));
-
     setIsDetailLoaded(true);
-  };
+  }, [truck.id]);
 
   const handleToggleOpen = async () => {
     if (!isOpen && !isDetailLoaded) {
@@ -125,7 +120,7 @@ export default function FoodTruckCard({
   const handleLike = async () => {
     const nextIsLiked = !isLiked;
 
-   /* if (nextIsLiked) {
+    /* if (nextIsLiked) {
       trackEvent("foodtruck_like", {
         foodtruck_name: truck.name,
       });
@@ -137,12 +132,10 @@ export default function FoodTruckCard({
 
     setLikeCount((prev) => (nextIsLiked ? prev + 1 : Math.max(prev - 1, 0)));
   };
-
   const handleImageClick = async () => {
     if (!isDetailLoaded) {
       await fetchFoodTruckDetail();
     }
-
     setIsImageModalOpen(true);
   };
   useEffect(() => {
@@ -161,7 +154,8 @@ export default function FoodTruckCard({
     };
 
     openCard();
-  }, [forceOpen, isDetailLoaded, onForceOpenDone]);
+  }, [forceOpen, isDetailLoaded, onForceOpenDone, fetchFoodTruckDetail]);
+
   return (
     <>
       <S.Card onClick={handleToggleOpen}>
