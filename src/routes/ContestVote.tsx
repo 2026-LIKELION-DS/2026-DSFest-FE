@@ -24,6 +24,7 @@ interface PhotoItem {
   authorName: string;
   imageUrl: string;
   voteCount?: number;
+  description?: string;
 }
 
 export default function ContestVotePage() {

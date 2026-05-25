@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import * as S from "../../styles/ContestPhotoCard.style";
 import ContestDetail from "./ContestDetail";
 import VoteOff from "../../assets/Contest/VoteOff.svg";
@@ -8,6 +8,7 @@ import Zoom from "../../assets/Contest/ZoomIcon.svg";
 import Medal1 from "../../assets/Contest/Medal1.svg";
 import Medal2 from "../../assets/Contest/Medal2.svg";
 import Medal3 from "../../assets/Contest/Medal3.svg";
+import contestPhotos from "../../data/ContestJson/contestphotos.json";
 
 const medalSrcMap = {
   1: Medal1,
@@ -36,20 +37,35 @@ export default function ContestPhotoCard({
   onSelect,
   rank,
 }: ContestPhotoCardProps) {
-  const baseUrl = import.meta.env.VITE_API_URL;
+  // const baseUrl = import.meta.env.VITE_API_URL;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [detail, setDetail] = useState<PhotoDetail | null>(null);
 
+  // const handleCardClick = () => {
+  //   axios
+  //     .get(`${baseUrl}/api/photo-contest/${photo.id}`)
+  //     .then((res) => {
+  //       if (res.data.isSuccess) {
+  //         setDetail(res.data.result);
+  //         setIsModalOpen(true);
+  //       }
+  //     })
+  //     .catch((err) => console.error("상세 조회 에러:", err));
+  // };
   const handleCardClick = () => {
-    axios
-      .get(`${baseUrl}/api/photo-contest/${photo.id}`)
-      .then((res) => {
-        if (res.data.isSuccess) {
-          setDetail(res.data.result);
-          setIsModalOpen(true);
-        }
-      })
-      .catch((err) => console.error("상세 조회 에러:", err));
+    const found = contestPhotos.result.photos.find(
+      (p) => p.photoEntryId === photo.id,
+    );
+    if (found) {
+      setDetail({
+        id: found.photoEntryId,
+        title: found.title,
+        authorName: found.authorName,
+        description: found.description ?? "",
+        imageUrl: found.imageUrl,
+      });
+      setIsModalOpen(true);
+    }
   };
 
   return (
