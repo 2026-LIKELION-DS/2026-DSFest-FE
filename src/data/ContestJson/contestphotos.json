@@ -8,36 +8,42 @@
         "photoEntryId": 1,
         "title": "비눗방울",
         "authorName": "장서연",
+        "description": "청춘은 금방 지나가니까 팡 터지기전에 이 순간을 기록하는 사진입니다.",
         "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%EC%9E%A5%EC%84%9C%EC%97%B0.jpg"
       },
       {
         "photoEntryId": 2,
         "title": "덕성에서 마지막 근화제🌿🫶🏻",
         "authorName": "한서영",
+        "description": "이 사진은 제 덕성여대 청춘의 전부인 친구 서현이가 찍어준 사진입니다 🫶🏻\r\n눈 떠보니 4학년이라 근화제 <청춘>이 제 마지막 축제가 되었는데요..! 4년 동안 함께한 동기들이랑 웃고 떠들면서 돌아다니다 처음으로 학교 타월도 구매해 보고!! 너무 즐거워서 방방 뛰던 분위기가 그대로 담긴 것 같아서 제일 좋아하는 사진이에요💚\r\n포토월에 햇살이랑 비눗방울까지 예쁘게 담겨서 근화제 <청춘>의 현장 분위기와 따스한 느낌이 잘 살아있는 것 같아 제출하게 됐습니다🌿💚\r\n",
         "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%ED%95%9C%EC%84%9C%EC%98%81.jpg"
       },
       {
         "photoEntryId": 3,
         "title": "여전히 설레는 마음으로💚",
         "authorName": "현소정",
+        "description": "청춘에는 정해진 형태가 없다고 생각합니다. \r\n누군가는 사람들 속에서, 다른 누군가는 혼자인 순간 속에서 자신들만의 방식으로 청춘을 즐기고 있다고 생각합니다. \r\n졸업 후 다시 찾은 축제의 무대 앞에서 저는 여전히 설렘 가득한 마음으로 축제가 \r\n시작되는 순간을 기다리며\r\n온전히 그 순간을 저만의 방식으로 축제를 즐기고자 하였으며 그 마음가짐과 저만의 방식으로 즐겼던 모든 순간 자체가 저에게 있어서는 \r\n저만의 청춘이라고 생각합니다.\r\n",
         "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%ED%98%84%EC%86%8C%EC%A0%95.jpg"
       },
       {
         "photoEntryId": 4,
         "title": "끝나지 않는 열정",
         "authorName": "김재윤",
+        "description": "매일 밤새며 프로젝트 하던 동방.",
         "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%EA%B9%80%EC%9E%AC%EC%9C%A4.jpg"
       },
       {
         "photoEntryId": 5,
         "title": "눈부신 한때 그날의 우리",
         "authorName": "김도현",
+        "description": "✅드레스 코드(목) : 엘지 타월,양현종 이니셜  (노란색) !! \r\n✅근화제 현장 아주 잘 담음 !!\r\n✅청춘 가장 잘 담음 !! (배경,학우들,유니폼 =완벽)\r\n모두가 한마음으로 야구 유니폼을 맞춰 입고 밝은 에너지를 내뿜는 모습이 청춘 그 자체로 느껴졌습니다. 저는 야구를 잘 모르지만 학우들이 즐거워하는 모습을 보니 사진 찍으면서 너무 행복했어요 ☺️ 철학이들아 사랑해 !!! ❤️ \r\n",
         "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%EA%B9%80%EB%8F%84%ED%98%84.jpg"
       },
       {
         "photoEntryId": 6,
         "title": "궁댕이 사리기 (that's yellow-yellow)",
         "authorName": "문지윤",
+        "description": "목요일(14일) 드레스코드인 청바지와 노란색으로 코디를 하였습니다! 청바지와 더불어 가방, 신발, 키링, 모자, 거울, 반지, 귀걸이, 머리핀, 과자 등 노란색 아이템을 준비하였습니다✨ 신발을 벗어 '맨발의 청춘'을 표현하고자 하였고 바닥에 냅다 엉덩이를 대고 앉는 포즈, 거만한 표정 등으로 청춘의 무모함과 열정을 표현하였습니다! 뒷배경은 영근터 무대를 배경으로 뒤에서는 무대를 하고 있지만 '나는 굴하지 않는다'는 자신감을 나타내보고자 하였습니다!! 감사합니다😗\r\n",
         "imageUrl": "https://dsfest.s3.ap-northeast-2.amazonaws.com/photo_contest/%EB%AC%B8%EC%A7%80%EC%9C%A4.jpg"
       }
     ]
